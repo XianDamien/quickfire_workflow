@@ -61,50 +61,133 @@ python3 scripts/captioner_qwen3.py <audio_file_path>
 
 ---
 
-# workflow.py - 统一工作流程（新增）
+# workflow.py - 统一工作流程（支持多种 ASR 引擎）
 
 ## 功能概述
 提供端到端的命令行工作流，自动执行：
-1. 音频转写 (ASR)
+1. 音频转写 (ASR) - 支持 Qwen 和 FunASR 两种引擎
 2. 题库加载
 3. 发音评测
 4. JSON报告输出
 
 ## 快速使用
 
-### 基础用法（输出到控制台）
+### 基础用法（Qwen ASR，输出到控制台）
 ```bash
 python3 workflow.py --audio-path ../audio/sample.mp3 --qb-path ../data/R1-65(1).csv
 ```
 
-### 指定输出文件
+### 指定输出文件（Qwen ASR）
 ```bash
 python3 workflow.py --audio-path ../audio/sample.mp3 --qb-path ../data/R1-65(1).csv --output result.json
 ```
 
-### 使用 file:// 前缀
+### 使用 FunASR 引擎（从 .env 自动读取 OSS 配置 - 推荐）
 ```bash
-python3 workflow.py --audio-path file://./audio/sample.mp3 --qb-path ./data/R1-65(1).csv
+python3 workflow.py --audio-path ./audio/sample.mp3 --qb-path ./data/R1-65(1).csv \
+  --asr-engine funasr
+```
+**说明**：OSS 配置（region、bucket、endpoint）自动从 `.env` 文件读取
+
+### 使用 FunASR 引擎（命令行参数覆盖 .env）
+```bash
+python3 workflow.py --audio-path ./audio/sample.mp3 --qb-path ./data/R1-65(1).csv \
+  --asr-engine funasr --oss-region cn-hangzhou --oss-bucket your-bucket
+```
+
+### FunASR 引擎（带自定义端点）
+```bash
+python3 workflow.py --audio-path ./audio/sample.mp3 --qb-path ./data/R1-65(1).csv \
+  --asr-engine funasr --oss-region cn-hangzhou --oss-bucket your-bucket \
+  --oss-endpoint oss-cn-hangzhou.aliyuncs.com
 ```
 
 ## 命令行参数
+
+### 必需参数
+| 参数 | 说明 |
+|------|------|
+| `--audio-path` | 音频文件路径（相对或绝对路径，支持 file:// 前缀） |
+| `--qb-path` | 题库CSV文件路径 |
+
+### 可选参数（通用）
+| 参数 | 默认值 | 说明 |
+|------|--------|------|
+| `--output` | 无（输出到控制台） | 输出文件路径 |
+| `--api-key` | 环境变量 `DASHSCOPE_API_KEY` | DashScope API密钥 |
+| `--asr-engine` | `qwen` | ASR 引擎选择（qwen/funasr） |
+
+### FunASR 专用参数
 | 参数 | 必需 | 说明 |
 |------|------|------|
-| `--audio-path` | 是 | 音频文件路径（相对或绝对路径，支持 file:// 前缀） |
-| `--qb-path` | 是 | 题库CSV文件路径 |
-| `--output` | 否 | 输出文件路径（可选，默认输出到控制台） |
-| `--api-key` | 否 | DashScope API密钥（可选，默认读取环境变量） |
+| `--oss-region` | 否（可从 .env 读取） | OSS 区域（如 cn-hangzhou）。优先级：命令行 > .env 文件 |
+| `--oss-bucket` | 否（可从 .env 读取） | OSS 桶名称。优先级：命令行 > .env 文件 |
+| `--oss-endpoint` | 否 | OSS 端点（如 oss-cn-hangzhou.aliyuncs.com）。可选，优先级：命令行 > .env 文件 |
+| `--keep-oss-file` | 否 | 转写完成后是否保留 OSS 文件（默认删除） |
+
+**参数优先级说明**：
+- 优先级：命令行参数 > .env 文件配置 > 默认值
+- .env 配置示例：
+  ```env
+  OSS_REGION=cn-shanghai
+  OSS_BUCKET_NAME=quickfire-audio
+  OSS_ENDPOINT=oss-cn-shanghai.aliyuncs.com
+  ```
 
 ## 工作流程图
+
+### Qwen ASR 模式
 ```
 ┌─────────────────┐
 │  输入参数验证   │
 └────────┬────────┘
          │
+┌────────▼────────────────────────────┐
+│   Qwen 多模态音频转写 (ASR)          │
+│   (captioner_qwen3.transcribe_audio) │
+└────────┬────────────────────────────┘
+         │
 ┌────────▼────────┐
-│   音频转写      │ (captioner_qwen3.transcribe_audio)
-│   (ASR)         │
+│   加载题库      │ (qwen3.load_qb)
 └────────┬────────┘
+         │
+┌────────▼────────┐
+│   执行评测      │ (qwen3.evaluate_pronunciation)
+│   生成报告      │
+└────────┬────────┘
+         │
+┌────────▼────────┐
+│   输出结果      │ (文件或控制台)
+└─────────────────┘
+```
+
+### FunASR 模式
+```
+┌──────────────────────────────────┐
+│  加载 .env 配置                   │
+│  参数优先级处理                   │
+│  (命令行 > .env > 默认值)        │
+└────────┬─────────────────────────┘
+         │
+┌────────▼──────────────────┐
+│  验证 OSS 凭证            │
+│  (verify_oss_credentials)│
+└────────┬──────────────────┘
+         │
+┌────────▼──────────────────┐
+│   上传音频到 OSS          │
+│   (upload_audio_to_oss)   │
+└────────┬──────────────────┘
+         │
+┌────────▼──────────────────────┐
+│   FunASR 异步转写            │
+│   (transcribe_with_funasr)    │
+└────────┬──────────────────────┘
+         │
+┌────────▼──────────────────────┐
+│   标准化转写结果              │
+│   (normalize_asr_output)      │
+└────────┬──────────────────────┘
          │
 ┌────────▼────────┐
 │   加载题库      │ (qwen3.load_qb)
@@ -121,6 +204,56 @@ python3 workflow.py --audio-path file://./audio/sample.mp3 --qb-path ./data/R1-6
 ```
 
 ## 核心函数（模块化复用）
+
+### workflow.py 新增函数（Phase 1: 核心基础设施）
+
+#### `load_env_config(env_path: str = ".env") -> dict`
+从 .env 文件读取 OSS 相关配置
+
+**功能**：
+- 自动加载 .env 文件中的 OSS 配置参数
+- 支持读取：OSS_BUCKET_NAME、OSS_REGION、OSS_ENDPOINT
+- .env 不存在时返回空字典（不中断流程）
+
+**使用示例**：
+```python
+from workflow import load_env_config
+
+config = load_env_config()  # 加载当前目录的 .env
+print(config)  # {'bucket': 'quickfire-audio', 'region': 'cn-shanghai', ...}
+```
+
+#### `verify_oss_credentials(region: str, bucket: str, endpoint: str = None) -> tuple[bool, str]`
+验证 OSS 凭证和参数的有效性
+
+**功能**：
+- 检查环境变量中的阿里云凭证（ALIBABA_CLOUD_ACCESS_KEY_*）
+- 尝试连接 OSS 进行轻量级验证（head_bucket）
+- 返回验证结果和详细的诊断信息
+
+**使用示例**：
+```python
+from workflow import verify_oss_credentials
+
+success, message = verify_oss_credentials(
+    region='cn-shanghai',
+    bucket='quickfire-audio',
+    endpoint='oss-cn-shanghai.aliyuncs.com'
+)
+if success:
+    print("✅ 凭证有效")
+else:
+    print(f"❌ {message}")  # 输出诊断建议
+```
+
+**诊断信息示例**：
+```
+❌ OSS 凭证验证失败: Access Denied
+
+💡 诊断建议：
+   - 检查 OSS 凭证权限（需要 GetBucketInfo 权限）
+   - 验证环境变量是否配置（ALIBABA_CLOUD_ACCESS_KEY_*）
+```
 
 ### 可导入的函数
 
@@ -142,12 +275,228 @@ result = evaluate_pronunciation(asr_data, qb_data, api_key="...", model="qwen-pl
 ```python
 from captioner_qwen3 import transcribe_audio
 
-# 转写音频
+# 转写音频 (Qwen 多模态)
 asr_result = transcribe_audio("path/to/audio.mp3", api_key="...")
+```
+
+#### funasr_workflow.py（新增）
+```python
+from funasr_workflow import upload_audio_to_oss, transcribe_with_funasr, normalize_asr_output
+
+# 上传音频到 OSS
+oss_url, status, key = upload_audio_to_oss("path/to/audio.mp3", region="cn-hangzhou", bucket="your-bucket")
+
+# FunASR 异步转写
+funasr_result = transcribe_with_funasr(oss_url)
+
+# 标准化输出
+normalized_json = normalize_asr_output(funasr_result)
+```
+
+## 何时使用各种 ASR 引擎
+
+| 场景 | 推荐引擎 | 原因 |
+|------|--------|------|
+| 快速单音频转写 | Qwen | 直接处理本地文件，无需上传 |
+| 批量处理 | Qwen 或 FunASR | 两者都支持，FunASR 异步特性可能更高效 |
+| 中文/口音识别 | FunASR | 专业 ASR 服务，针对复杂语音优化 |
+| 生产环境 | FunASR | 阿里云官方服务，SLA 保证 |
+
+## 环境变量配置
+
+### 必需
+```bash
+export DASHSCOPE_API_KEY="sk-xxxxx"  # 阿里云 DashScope API 密钥
+```
+
+### FunASR 模式需要
+```bash
+# 方案 1：使用阿里云凭证（推荐）
+export ALIBABA_CLOUD_ACCESS_KEY_ID="xxxxx"
+export ALIBABA_CLOUD_ACCESS_KEY_SECRET="xxxxx"
+
+# 方案 2：使用阿里云 credentials 文件
+# ~/.alibabacloud/credentials (JSON 格式)
 ```
 
 ## 向后兼容性
 - ✅ 原脚本保持独立可用性
 - ✅ `qwen3.py` 仍可直接运行：`python3 qwen3.py`
 - ✅ `captioner_qwen3.py` 仍可直接运行：`python3 captioner_qwen3.py <audio>`
+- ✅ 不指定 `--asr-engine` 时自动使用 Qwen（向后兼容）
 - ✅ 所有函数已提取为可重用模块
+
+## 故障排除
+
+### OSS 凭证缺失（FunASR 模式）
+**症状**：
+```
+❌ 错误：使用 FunASR 模式必须指定以下参数：
+   - OSS_REGION (--oss-region 或 .env 中的 OSS_REGION)
+   - OSS_BUCKET_NAME (--oss-bucket 或 .env 中的 OSS_BUCKET_NAME)
+```
+
+**解决方案**：
+1. 创建或更新 `.env` 文件：
+   ```env
+   OSS_REGION=cn-shanghai
+   OSS_BUCKET_NAME=your-bucket-name
+   OSS_ENDPOINT=oss-cn-shanghai.aliyuncs.com
+   ```
+
+2. 或通过命令行参数指定：
+   ```bash
+   python3 workflow.py ... --oss-region cn-shanghai --oss-bucket your-bucket
+   ```
+
+### OSS 凭证验证失败
+**症状**：
+```
+❌ OSS 凭证验证失败: Access Denied
+
+💡 诊断建议：
+   - 检查 OSS 凭证权限（需要 GetBucketInfo 权限）
+   - 验证环境变量是否配置（ALIBABA_CLOUD_ACCESS_KEY_*）
+```
+
+**解决方案**：
+1. 确保环境变量已设置：
+   ```bash
+   export ALIBABA_CLOUD_ACCESS_KEY_ID="your-access-key-id"
+   export ALIBABA_CLOUD_ACCESS_KEY_SECRET="your-access-key-secret"
+   ```
+
+2. 或使用阿里云凭证文件（~/.alibabacloud/credentials）
+
+3. 确认凭证有以下权限：
+   - oss:GetBucketInfo
+   - oss:PutObject
+   - oss:DeleteObject
+
+### FunASR 上传失败
+```
+❌ 上传失败: OSS 上传失败
+💡 诊断建议：
+   - 检查 OSS 区域和桶名称是否正确
+   - 验证 OSS 凭证权限（需要 PutObject 权限）
+   - 检查环境变量是否配置（ALIBABA_CLOUD_*）
+```
+
+### FunASR 转写超时
+```
+❌ 转写超时：轮询 10 次后仍未完成
+   请稍后查询任务 ID: task-xxxxx
+```
+
+---
+
+# funasr_workflow.py - FunASR 工作流模块（新增）
+
+## 功能概述
+集成阿里云 FunASR 服务，提供以下功能：
+1. 本地音频文件上传到 OSS
+2. FunASR 异步转写任务提交和轮询
+3. 结果标准化处理（转换为通用格式）
+
+## 核心函数
+
+### `upload_audio_to_oss(local_path, region, bucket, endpoint=None, keep_file=False)`
+上传本地音频到阿里云 OSS
+
+**参数**：
+- `local_path` (str): 本地音频文件路径
+- `region` (str): OSS 区域（如 cn-hangzhou）
+- `bucket` (str): OSS 桶名称
+- `endpoint` (str, optional): OSS 端点，默认使用默认端点
+- `keep_file` (bool, optional): 转写后是否保留文件，默认 False
+
+**返回**：
+- `(oss_url, status_code, file_key)` - OSS URL、HTTP 状态码、文件 key
+
+**示例**：
+```python
+from funasr_workflow import upload_audio_to_oss
+
+oss_url, status, key = upload_audio_to_oss(
+    "./audio/sample.mp3",
+    region="cn-hangzhou",
+    bucket="my-bucket"
+)
+print(f"上传完成: {oss_url}")
+```
+
+### `transcribe_with_funasr(oss_url, max_retries=10, retry_interval=2)`
+使用 FunASR 转写 OSS 中的音频
+
+**参数**：
+- `oss_url` (str): OSS 中音频文件的 URL
+- `max_retries` (int, optional): 最多轮询次数，默认 10 次
+- `retry_interval` (int, optional): 轮询间隔（秒），默认 2 秒
+
+**返回**：
+- FunASR 转写结果对象
+
+**示例**：
+```python
+from funasr_workflow import transcribe_with_funasr
+
+result = transcribe_with_funasr("https://my-bucket.oss-cn-hangzhou.aliyuncs.com/audio/sample.mp3")
+print(f"转写完成: {result.task_id}")
+```
+
+### `normalize_asr_output(funasr_result)`
+将 FunASR 输出转换为标准格式（与 Qwen ASR 兼容）
+
+**参数**：
+- `funasr_result` (dict): FunASR 的原始输出
+
+**返回**：
+- 标准化的 JSON 字符串
+
+**标准格式**：
+```json
+[
+  {
+    "speaker": "spk0",
+    "text": "hello world",
+    "start_time": 0,
+    "end_time": 1500,
+    "word_timestamp": [
+      {"word": "hello", "start": 0, "end": 500},
+      {"word": "world", "start": 800, "end": 1500}
+    ]
+  }
+]
+```
+
+## 依赖
+
+```
+dashscope >= 1.24.6
+alibabacloud_oss_v2 >= 0.3.0
+```
+
+## 使用示例
+
+### 完整工作流
+```python
+from funasr_workflow import upload_audio_to_oss, transcribe_with_funasr, normalize_asr_output
+import json
+
+# 1. 上传
+oss_url, _, _ = upload_audio_to_oss(
+    "./audio/sample.mp3",
+    region="cn-hangzhou",
+    bucket="my-bucket"
+)
+
+# 2. 转写
+funasr_result = transcribe_with_funasr(oss_url)
+
+# 3. 标准化
+normalized = normalize_asr_output(funasr_result)
+
+# 4. 使用标准化结果
+asr_data = json.loads(normalized)
+print(f"转写了 {len(asr_data)} 条语句")
+```

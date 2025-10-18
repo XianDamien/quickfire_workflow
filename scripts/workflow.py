@@ -146,7 +146,7 @@ C级: 3个及以上 MEANING_ERROR
 
 def load_env_config(env_path: str = ".env") -> dict:
     """
-    从 .env 文件读取 OSS 相关配置
+    从 .env 文件读取 OSS 相关配置和凭证
 
     Args:
         env_path: .env 文件路径，默认为项目根目录的 .env
@@ -156,6 +156,8 @@ def load_env_config(env_path: str = ".env") -> dict:
             - bucket: OSS 桶名称 (来自 OSS_BUCKET_NAME)
             - region: OSS 区域 (来自 OSS_REGION)
             - endpoint: OSS 端点 (来自 OSS_ENDPOINT)
+            - access_key_id: OSS 访问密钥 ID (来自 OSS_ACCESS_KEY_ID)
+            - access_key_secret: OSS 访问密钥 Secret (来自 OSS_ACCESS_KEY_SECRET)
     """
     config = {}
 
@@ -183,6 +185,12 @@ def load_env_config(env_path: str = ".env") -> dict:
                     config['region'] = value
                 elif key == 'OSS_ENDPOINT':
                     config['endpoint'] = value
+                elif key == 'OSS_ACCESS_KEY_ID':
+                    config['access_key_id'] = value
+                elif key == 'OSS_ACCESS_KEY_SECRET':
+                    config['access_key_secret'] = value
+                elif key == 'DASHSCOPE_API_KEY':
+                    config['dashscope_api_key'] = value
 
     except Exception as e:
         print(f"⚠️  警告：读取 .env 失败 ({str(e)})，继续使用命令行参数")
@@ -207,8 +215,25 @@ def verify_oss_credentials(region: str, bucket: str, endpoint: str = None) -> tu
     try:
         import alibabacloud_oss_v2 as oss
 
-        # 配置
-        credentials_provider = oss.credentials.EnvironmentVariableCredentialsProvider()
+        # 从环境变量读取 OSS 凭证
+        # 优先级：ALIBABA_CLOUD_* → OSS_* → .env 文件
+        access_key_id = os.getenv('ALIBABA_CLOUD_ACCESS_KEY_ID')
+        access_key_secret = os.getenv('ALIBABA_CLOUD_ACCESS_KEY_SECRET')
+
+        # 如果标准环境变量不存在，尝试读取 OSS_* 格式的变量
+        if not access_key_id or not access_key_secret:
+            access_key_id = os.getenv('OSS_ACCESS_KEY_ID')
+            access_key_secret = os.getenv('OSS_ACCESS_KEY_SECRET')
+
+        if not access_key_id or not access_key_secret:
+            return False, ("❌ OSS 凭证验证失败: 凭证缺失\n"
+                          "💡 诊断建议：\n"
+                          "   - 设置环境变量 ALIBABA_CLOUD_ACCESS_KEY_ID 和 ALIBABA_CLOUD_ACCESS_KEY_SECRET\n"
+                          "   - 或设置环境变量 OSS_ACCESS_KEY_ID 和 OSS_ACCESS_KEY_SECRET\n"
+                          "   - 或配置 .env 文件中的 OSS_ACCESS_KEY_ID 和 OSS_ACCESS_KEY_SECRET")
+
+        # 使用静态凭证提供器
+        credentials_provider = oss.credentials.StaticCredentialsProvider(access_key_id, access_key_secret)
         cfg = oss.config.load_default()
         cfg.credentials_provider = credentials_provider
         cfg.region = region
@@ -218,13 +243,13 @@ def verify_oss_credentials(region: str, bucket: str, endpoint: str = None) -> tu
         # 尝试创建客户端
         client = oss.Client(cfg)
 
-        # 轻量级测试：尝试获取桶信息
-        result = client.head_bucket(oss.HeadBucketRequest(bucket=bucket))
+        # 轻量级测试：尝试检查桶是否存在
+        exists = client.is_bucket_exist(bucket)
 
-        if result.status_code == 200:
+        if exists:
             return True, "✅ OSS 凭证验证通过"
         else:
-            return False, f"❌ OSS 验证失败 (状态码: {result.status_code})"
+            return False, f"❌ OSS 验证失败: 桶不存在或无访问权限"
 
     except ImportError:
         return False, "❌ 缺少 alibabacloud_oss_v2 依赖，请安装：pip install alibabacloud_oss_v2"
@@ -238,11 +263,11 @@ def verify_oss_credentials(region: str, bucket: str, endpoint: str = None) -> tu
             suggestions.append("- 检查 OSS 区域是否与桶对应")
         elif "AccessDenied" in error_str or "403" in error_str:
             suggestions.append("- 检查 OSS 凭证权限（需要 GetBucketInfo 权限）")
-            suggestions.append("- 验证环境变量是否配置（ALIBABA_CLOUD_ACCESS_KEY_*）")
+            suggestions.append("- 验证凭证是否有效（OSS_ACCESS_KEY_ID/SECRET 或 ALIBABA_CLOUD_ACCESS_KEY_*）")
         elif "InvalidAccessKeyId" in error_str:
-            suggestions.append("- 检查 ALIBABA_CLOUD_ACCESS_KEY_ID 是否正确")
+            suggestions.append("- 检查 OSS_ACCESS_KEY_ID 是否正确")
         elif "InvalidAccessKeySecret" in error_str:
-            suggestions.append("- 检查 ALIBABA_CLOUD_ACCESS_KEY_SECRET 是否正确")
+            suggestions.append("- 检查 OSS_ACCESS_KEY_SECRET 是否正确")
         elif "Network" in error_str or "Connection" in error_str:
             suggestions.append("- 检查网络连接")
             suggestions.append("- 检查 OSS 端点是否正确")
@@ -284,7 +309,11 @@ def run_workflow(audio_path, qb_path, output_path=None, api_key=None, asr_engine
     if api_key is None:
         api_key = os.getenv('DASHSCOPE_API_KEY')
         if not api_key:
-            print("❌ 错误：未设置环境变量 DASHSCOPE_API_KEY")
+            print("❌ 错误：未设置 DASHSCOPE_API_KEY")
+            print("💡 解决方案：")
+            print("   方案 1：在 .env 文件中添加 DASHSCOPE_API_KEY=sk-xxxxx")
+            print("   方案 2：设置环境变量 export DASHSCOPE_API_KEY=sk-xxxxx")
+            print("   方案 3：使用命令行参数 --api-key sk-xxxxx")
             sys.exit(1)
 
     print("=" * 60)
@@ -548,6 +577,19 @@ def main():
     # 加载 .env 配置
     env_config = load_env_config()
 
+    # 如果环境变量中没有凭证，则从 .env 配置中设置
+    # 优先级：环境变量 > .env 文件
+    if not os.getenv('ALIBABA_CLOUD_ACCESS_KEY_ID') and not os.getenv('OSS_ACCESS_KEY_ID'):
+        # 尝试从 .env 读取的凭证设置为环境变量
+        if 'access_key_id' in env_config:
+            os.environ['OSS_ACCESS_KEY_ID'] = env_config['access_key_id']
+        if 'access_key_secret' in env_config:
+            os.environ['OSS_ACCESS_KEY_SECRET'] = env_config['access_key_secret']
+
+    # 处理 DashScope API Key（从 .env 读取）
+    if not os.getenv('DASHSCOPE_API_KEY') and 'dashscope_api_key' in env_config:
+        os.environ['DASHSCOPE_API_KEY'] = env_config['dashscope_api_key']
+
     # 实现参数优先级：命令行参数 > .env 配置 > 默认值
     oss_region = args.oss_region or env_config.get('region') or None
     oss_bucket = args.oss_bucket or env_config.get('bucket') or None
@@ -587,6 +629,15 @@ def main():
         print(message)
         if not success:
             sys.exit(1)
+
+    # 显示 DashScope API Key 配置来源
+    dashscope_api_key = args.api_key or os.getenv('DASHSCOPE_API_KEY')
+    if dashscope_api_key:
+        print("\n✓ DashScope API Key 配置来源：")
+        source = '命令行参数' if args.api_key else '.env 文件或环境变量'
+        # 掩码显示 API Key（保护敏感信息）
+        masked_key = dashscope_api_key[:5] + '...' + dashscope_api_key[-4:] if len(dashscope_api_key) > 9 else '***'
+        print(f"   {masked_key} (来自 {source})")
 
     # 执行工作流
     run_workflow(
