@@ -18,6 +18,7 @@ from pathlib import Path
 # 导入模块函数
 from captioner_qwen3 import transcribe_audio
 from qwen3 import load_asr_data, load_qb, evaluate_pronunciation
+from funasr_workflow import upload_audio_to_oss, transcribe_with_funasr, normalize_asr_output
 
 
 # ===== 系统提示词（复用自 qwen3.py）=====
@@ -143,6 +144,118 @@ C级: 3个及以上 MEANING_ERROR
 请开始分析，并仅输出JSON结果。"""
 
 
+def load_env_config(env_path: str = ".env") -> dict:
+    """
+    从 .env 文件读取 OSS 相关配置
+
+    Args:
+        env_path: .env 文件路径，默认为项目根目录的 .env
+
+    Returns:
+        dict: 配置字典，包含以下键（若存在）：
+            - bucket: OSS 桶名称 (来自 OSS_BUCKET_NAME)
+            - region: OSS 区域 (来自 OSS_REGION)
+            - endpoint: OSS 端点 (来自 OSS_ENDPOINT)
+    """
+    config = {}
+
+    # 检查文件是否存在
+    if not Path(env_path).exists():
+        return config
+
+    try:
+        # 手动解析 .env（避免引入新依赖）
+        with open(env_path, 'r', encoding='utf-8') as f:
+            for line in f:
+                line = line.strip()
+                # 跳过注释和空行
+                if line.startswith('#') or '=' not in line:
+                    continue
+
+                key, value = line.split('=', 1)
+                key = key.strip()
+                value = value.strip().strip('"\'')
+
+                # 映射 .env 键到配置字典
+                if key == 'OSS_BUCKET_NAME':
+                    config['bucket'] = value
+                elif key == 'OSS_REGION':
+                    config['region'] = value
+                elif key == 'OSS_ENDPOINT':
+                    config['endpoint'] = value
+
+    except Exception as e:
+        print(f"⚠️  警告：读取 .env 失败 ({str(e)})，继续使用命令行参数")
+
+    return config
+
+
+def verify_oss_credentials(region: str, bucket: str, endpoint: str = None) -> tuple:
+    """
+    验证 OSS 凭证和参数的有效性
+
+    Args:
+        region: OSS 区域（如 cn-shanghai）
+        bucket: OSS 桶名称
+        endpoint: OSS 端点（可选）
+
+    Returns:
+        (success: bool, message: str)
+            - success=True: 凭证有效
+            - success=False: 凭证无效，message 包含故障信息
+    """
+    try:
+        import alibabacloud_oss_v2 as oss
+
+        # 配置
+        credentials_provider = oss.credentials.EnvironmentVariableCredentialsProvider()
+        cfg = oss.config.load_default()
+        cfg.credentials_provider = credentials_provider
+        cfg.region = region
+        if endpoint:
+            cfg.endpoint = endpoint
+
+        # 尝试创建客户端
+        client = oss.Client(cfg)
+
+        # 轻量级测试：尝试获取桶信息
+        result = client.head_bucket(oss.HeadBucketRequest(bucket=bucket))
+
+        if result.status_code == 200:
+            return True, "✅ OSS 凭证验证通过"
+        else:
+            return False, f"❌ OSS 验证失败 (状态码: {result.status_code})"
+
+    except ImportError:
+        return False, "❌ 缺少 alibabacloud_oss_v2 依赖，请安装：pip install alibabacloud_oss_v2"
+    except Exception as e:
+        error_str = str(e)
+        suggestions = []
+
+        # 根据错误信息提供建议
+        if "NoSuchBucket" in error_str or "404" in error_str:
+            suggestions.append("- 检查 OSS 桶名称是否正确")
+            suggestions.append("- 检查 OSS 区域是否与桶对应")
+        elif "AccessDenied" in error_str or "403" in error_str:
+            suggestions.append("- 检查 OSS 凭证权限（需要 GetBucketInfo 权限）")
+            suggestions.append("- 验证环境变量是否配置（ALIBABA_CLOUD_ACCESS_KEY_*）")
+        elif "InvalidAccessKeyId" in error_str:
+            suggestions.append("- 检查 ALIBABA_CLOUD_ACCESS_KEY_ID 是否正确")
+        elif "InvalidAccessKeySecret" in error_str:
+            suggestions.append("- 检查 ALIBABA_CLOUD_ACCESS_KEY_SECRET 是否正确")
+        elif "Network" in error_str or "Connection" in error_str:
+            suggestions.append("- 检查网络连接")
+            suggestions.append("- 检查 OSS 端点是否正确")
+
+        message = f"❌ OSS 凭证验证失败: {error_str}\n"
+        if suggestions:
+            message += "💡 诊断建议：\n"
+            for s in suggestions:
+                message += f"   {s}\n"
+
+        return False, message
+
+
 def validate_file(filepath):
     """验证文件是否存在"""
     if not Path(filepath).exists():
@@ -150,7 +263,7 @@ def validate_file(filepath):
         sys.exit(1)
 
 
-def run_workflow(audio_path, qb_path, output_path=None, api_key=None):
+def run_workflow(audio_path, qb_path, output_path=None, api_key=None, asr_engine="qwen", oss_region=None, oss_bucket=None, oss_endpoint=None, keep_oss_file=False):
     """
     执行评测工作流：音频转写 → 评测评分 → 输出报告
 
@@ -159,6 +272,11 @@ def run_workflow(audio_path, qb_path, output_path=None, api_key=None):
         qb_path (str): 题库文件路径
         output_path (str, optional): 输出文件路径，如果为None则打印到控制台
         api_key (str, optional): DashScope API密钥，默认从环境变量读取
+        asr_engine (str, optional): ASR 引擎选择 ("qwen" 或 "funasr")，默认 "qwen"
+        oss_region (str, optional): OSS 区域（FunASR 模式必需）
+        oss_bucket (str, optional): OSS 桶名称（FunASR 模式必需）
+        oss_endpoint (str, optional): OSS 端点（可选）
+        keep_oss_file (bool, optional): 转写后是否保留 OSS 文件，默认 False
 
     Returns:
         dict: 评测结果（JSON对象）
@@ -173,7 +291,7 @@ def run_workflow(audio_path, qb_path, output_path=None, api_key=None):
     print("📊 评测工作流启动")
     print("=" * 60)
 
-    # 第1步：验证输入文件
+    # 第1步：验证输入文件和参数
     print("\n✓ 第1步：验证输入参数...")
     validate_file(qb_path)
     # audio_path 可能是 file:// 格式，只验证普通路径
@@ -181,13 +299,67 @@ def run_workflow(audio_path, qb_path, output_path=None, api_key=None):
         validate_file(audio_path)
     print(f"   音频文件: {audio_path}")
     print(f"   题库文件: {qb_path}")
+    print(f"   ASR 引擎: {asr_engine}")
+
+    # 如果使用 FunASR，验证必需参数
+    if asr_engine == "funasr":
+        if not oss_region or not oss_bucket:
+            print("❌ 错误：使用 FunASR 模式必须指定 --oss-region 和 --oss-bucket")
+            print("\n用法示例：")
+            print("  python3 workflow.py --audio-path ./audio/sample.mp3 --qb-path ./data/qb.csv \\")
+            print("    --asr-engine funasr --oss-region cn-hangzhou --oss-bucket your-bucket")
+            sys.exit(1)
+
+    # 第1.5步：验证 OSS 凭证（仅 FunASR 模式）
+    if asr_engine == "funasr":
+        print("\n✓ 第1.5步：验证 OSS 凭证...")
+        success, message = verify_oss_credentials(oss_region, oss_bucket, oss_endpoint)
+        print(message)
+        if not success:
+            sys.exit(1)
 
     # 第2步：音频转写
     print("\n✓ 第2步：执行音频转写 (ASR)...")
     try:
-        print("   🎵 正在转写音频，请稍候...")
-        asr_result = transcribe_audio(audio_path, api_key=api_key)
-        print("   ✅ 音频转写完成")
+        if asr_engine == "qwen":
+            # 使用 Qwen 多模态 ASR
+            print(f"   🎵 使用 Qwen 引擎转写音频，请稍候...")
+            asr_result = transcribe_audio(audio_path, api_key=api_key)
+            print("   ✅ Qwen 音频转写完成")
+
+        elif asr_engine == "funasr":
+            # 使用 FunASR 引擎
+            print(f"   🎵 使用 FunASR 引擎转写音频...")
+            print(f"   第 2.1 步：上传音频到 OSS...")
+            try:
+                oss_url, status_code, file_key = upload_audio_to_oss(
+                    local_path=audio_path,
+                    region=oss_region,
+                    bucket=oss_bucket,
+                    endpoint=oss_endpoint
+                )
+                print(f"   ✅ 上传完成")
+            except Exception as e:
+                print(f"   ❌ 上传失败: {str(e)}")
+                print("   💡 诊断建议：")
+                print("      - 检查 OSS 区域和桶名称是否正确")
+                print("      - 验证 OSS 凭证权限（需要 PutObject 权限）")
+                print("      - 检查环境变量是否配置（ALIBABA_CLOUD_*）")
+                sys.exit(1)
+
+            print(f"   第 2.2 步：调用 FunASR 进行转写...")
+            try:
+                funasr_output = transcribe_with_funasr(oss_url)
+                # 标准化 FunASR 输出
+                asr_result = normalize_asr_output(funasr_output)
+                print("   ✅ FunASR 音频转写完成")
+            except Exception as e:
+                print(f"   ❌ 转写失败: {str(e)}")
+                sys.exit(1)
+
+        else:
+            print(f"❌ 错误：不支持的 ASR 引擎: {asr_engine}")
+            sys.exit(1)
 
         # 可观测性输出：ASR 转写结果
         print("\n" + "=" * 60)
@@ -287,18 +459,36 @@ def run_workflow(audio_path, qb_path, output_path=None, api_key=None):
 def main():
     """命令行入口"""
     parser = argparse.ArgumentParser(
-        description="英语发音作业评测系统 - 统一工作流入口",
+        description="英语发音作业评测系统 - 统一工作流入口 (支持多种 ASR 引擎)",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 示例用法:
-  # 基础用法 (输出到控制台)
+  # 基础用法 (Qwen ASR，输出到控制台)
   python3 workflow.py --audio-path ../audio/sample.mp3 --qb-path ../data/R1-65(1).csv
 
-  # 指定输出文件
+  # 指定输出文件 (Qwen ASR)
   python3 workflow.py --audio-path ../audio/sample.mp3 --qb-path ../data/R1-65(1).csv --output result.json
+
+  # 使用 FunASR 引擎 (从 .env 自动读取 OSS 配置)
+  python3 workflow.py --audio-path ./audio/sample.mp3 --qb-path ./data/R1-65(1).csv \\
+    --asr-engine funasr
+
+  # 使用 FunASR 引擎并通过命令行覆盖 OSS 配置
+  python3 workflow.py --audio-path ./audio/sample.mp3 --qb-path ./data/R1-65(1).csv \\
+    --asr-engine funasr --oss-region cn-hangzhou --oss-bucket your-bucket
+
+  # FunASR 引擎（带自定义端点）
+  python3 workflow.py --audio-path ./audio/sample.mp3 --qb-path ./data/R1-65(1).csv \\
+    --asr-engine funasr --oss-region cn-hangzhou --oss-bucket your-bucket \\
+    --oss-endpoint oss-cn-hangzhou.aliyuncs.com
 
   # 使用 file:// 前缀
   python3 workflow.py --audio-path file://./audio/sample.mp3 --qb-path ./data/R1-65(1).csv
+
+参数优先级（从高到低）:
+  1. 命令行参数 (--oss-region, --oss-bucket 等)
+  2. .env 文件配置 (OSS_REGION, OSS_BUCKET_NAME 等)
+  3. 默认值
         """
     )
 
@@ -323,14 +513,92 @@ def main():
         help='DashScope API密钥（可选，默认从环境变量 DASHSCOPE_API_KEY 读取）'
     )
 
+    # ===== ASR 引擎选择 =====
+    parser.add_argument(
+        '--asr-engine',
+        choices=['qwen', 'funasr'],
+        default='qwen',
+        help='ASR 引擎选择（默认: qwen，支持 qwen/funasr）'
+    )
+
+    # ===== FunASR 相关参数 =====
+    parser.add_argument(
+        '--oss-region',
+        default=None,
+        help='OSS 区域（如 cn-hangzhou，优先级：命令行 > .env 文件）'
+    )
+    parser.add_argument(
+        '--oss-bucket',
+        default=None,
+        help='OSS 桶名称（优先级：命令行 > .env 文件）'
+    )
+    parser.add_argument(
+        '--oss-endpoint',
+        default=None,
+        help='OSS 端点（可选，如 oss-cn-hangzhou.aliyuncs.com，优先级：命令行 > .env 文件）'
+    )
+    parser.add_argument(
+        '--keep-oss-file',
+        action='store_true',
+        help='转写完成后是否保留 OSS 文件（可选标志，默认删除）'
+    )
+
     args = parser.parse_args()
+
+    # 加载 .env 配置
+    env_config = load_env_config()
+
+    # 实现参数优先级：命令行参数 > .env 配置 > 默认值
+    oss_region = args.oss_region or env_config.get('region') or None
+    oss_bucket = args.oss_bucket or env_config.get('bucket') or None
+    oss_endpoint = args.oss_endpoint or env_config.get('endpoint') or None
+
+    # 验证 FunASR 模式的必需参数
+    if args.asr_engine == "funasr":
+        if not oss_region or not oss_bucket:
+            # 记录哪些参数缺失及其来源
+            missing = []
+            if not oss_region:
+                missing.append("OSS_REGION (--oss-region 或 .env 中的 OSS_REGION)")
+            if not oss_bucket:
+                missing.append("OSS_BUCKET_NAME (--oss-bucket 或 .env 中的 OSS_BUCKET_NAME)")
+
+            print("❌ 错误：使用 FunASR 模式必须指定以下参数：")
+            for item in missing:
+                print(f"   - {item}")
+            print("\n💡 解决方案：")
+            print("   方案 1：创建或更新 .env 文件并添加配置")
+            print("           OSS_REGION=cn-hangzhou")
+            print("           OSS_BUCKET_NAME=your-bucket")
+            print("   方案 2：使用命令行参数")
+            print("           --oss-region cn-hangzhou --oss-bucket your-bucket")
+            sys.exit(1)
+
+        # 显示 OSS 配置来源
+        print("✓ OSS 配置来源：")
+        print(f"   Region: {oss_region} (来自 {'命令行' if args.oss_region else '.env 文件'})")
+        print(f"   Bucket: {oss_bucket} (来自 {'命令行' if args.oss_bucket else '.env 文件'})")
+        if oss_endpoint:
+            print(f"   Endpoint: {oss_endpoint} (来自 {'命令行' if args.oss_endpoint else '.env 文件'})")
+
+        # 验证 OSS 凭证（在工作流开始前）
+        print("\n✓ 验证 OSS 凭证...")
+        success, message = verify_oss_credentials(oss_region, oss_bucket, oss_endpoint)
+        print(message)
+        if not success:
+            sys.exit(1)
 
     # 执行工作流
     run_workflow(
         audio_path=args.audio_path,
         qb_path=args.qb_path,
         output_path=args.output,
-        api_key=args.api_key
+        api_key=args.api_key,
+        asr_engine=args.asr_engine,
+        oss_region=oss_region,
+        oss_bucket=oss_bucket,
+        oss_endpoint=oss_endpoint,
+        keep_oss_file=args.keep_oss_file
     )
 
 

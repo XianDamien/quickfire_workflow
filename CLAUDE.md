@@ -62,3 +62,4 @@ python3 scripts/captioner_qwen3.py <audio>  # 音频转写
 
 ## 详细指南
 查看 `scripts/CLAUDE.md` 和 `data/CLAUDE.md` 获取模块级文档。
+- make it DRY(Don't Repeat Yourself), keep it simple stupid (KISS)
