@@ -168,9 +168,9 @@ def process_student(
                 "data": audio_data
             })
 
-        # Use Gemini 2.0 Flash model
+        # Use Gemini 2.5 Pro model
         model = genai.GenerativeModel(
-            model_name="gemini-2.0-flash",
+            model_name="gemini-2.5-pro",
             system_instruction="你是一个专业的AI语言教师助教。按输入的题库、ASR结果和音频进行评测。严格遵循评分规则，只输出一个JSON对象，不要包含任何多余文本。"
         )
 
