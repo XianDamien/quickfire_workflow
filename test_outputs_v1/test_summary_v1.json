@@ -1,0 +1,57 @@
+{
+  "timestamp": "2025-10-20T19:26:08.198665",
+  "model": "gemini-2.0-flash",
+  "total_students": 6,
+  "results": [
+    {
+      "student": "Cathy",
+      "status": "success",
+      "output_file": "/Users/damien/Desktop/LanProject/quickfire_workflow/test_outputs_v1/Cathy_v1_result.json",
+      "grade": "C",
+      "hard_errors": 3,
+      "soft_errors": 0
+    },
+    {
+      "student": "Frances Wang",
+      "status": "success",
+      "output_file": "/Users/damien/Desktop/LanProject/quickfire_workflow/test_outputs_v1/Frances_Wang_v1_result.json",
+      "grade": "C",
+      "hard_errors": 3,
+      "soft_errors": 0
+    },
+    {
+      "student": "Lucy",
+      "status": "success",
+      "output_file": "/Users/damien/Desktop/LanProject/quickfire_workflow/test_outputs_v1/Lucy_v1_result.json",
+      "grade": "C",
+      "hard_errors": 3,
+      "soft_errors": 0
+    },
+    {
+      "student": "Oscar",
+      "status": "skip",
+      "error": "No ASR file found"
+    },
+    {
+      "student": "Rico",
+      "status": "success",
+      "output_file": "/Users/damien/Desktop/LanProject/quickfire_workflow/test_outputs_v1/Rico_v1_result.json",
+      "grade": "C",
+      "hard_errors": 4,
+      "soft_errors": 1
+    },
+    {
+      "student": "Yoyo",
+      "status": "success",
+      "output_file": "/Users/damien/Desktop/LanProject/quickfire_workflow/test_outputs_v1/Yoyo_v1_result.json",
+      "grade": "B",
+      "hard_errors": 1,
+      "soft_errors": 0
+    }
+  ],
+  "statistics": {
+    "success": 5,
+    "error": 0,
+    "skip": 1
+  }
+}
