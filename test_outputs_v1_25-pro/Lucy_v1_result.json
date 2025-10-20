@@ -1,0 +1,104 @@
+{
+  "final_grade_suggestion": "B",
+  "mistake_count": {
+    "hard_errors": 1,
+    "soft_errors": 2
+  },
+  "annotations": [
+    {
+      "card_index": 0,
+      "question": "不",
+      "expected_answer": "not",
+      "related_student_utterance": {
+        "detected_text": "not. ",
+        "start_time": 1860,
+        "end_time": 3220,
+        "issue_type": null
+      }
+    },
+    {
+      "card_index": 1,
+      "question": "双倍的；双的",
+      "expected_answer": "double",
+      "related_student_utterance": {
+        "detected_text": "builder. ",
+        "start_time": 12200,
+        "end_time": 13720,
+        "issue_type": "PRONUNCIATION_ERROR"
+      }
+    },
+    {
+      "card_index": 2,
+      "question": "一半",
+      "expected_answer": "half",
+      "related_student_utterance": {
+        "detected_text": "health. ",
+        "start_time": 20660,
+        "end_time": 21420,
+        "issue_type": "MEANING_ERROR"
+      }
+    },
+    {
+      "card_index": 3,
+      "question": "角色；部分",
+      "expected_answer": "part",
+      "related_student_utterance": null
+    },
+    {
+      "card_index": 4,
+      "question": "两个的",
+      "expected_answer": "both",
+      "related_student_utterance": null
+    },
+    {
+      "card_index": 5,
+      "question": "两者",
+      "expected_answer": "both",
+      "related_student_utterance": null
+    },
+    {
+      "card_index": 6,
+      "question": "两者都",
+      "expected_answer": "both",
+      "related_student_utterance": {
+        "detected_text": " both. ",
+        "start_time": 59360,
+        "end_time": 60340,
+        "issue_type": null
+      }
+    },
+    {
+      "card_index": 7,
+      "question": "全部的",
+      "expected_answer": "all",
+      "related_student_utterance": {
+        "detected_text": "哦。",
+        "start_time": 68520,
+        "end_time": 69120,
+        "issue_type": "PRONUNCIATION_ERROR"
+      }
+    },
+    {
+      "card_index": 8,
+      "question": "每个",
+      "expected_answer": "each",
+      "related_student_utterance": {
+        "detected_text": "each。",
+        "start_time": 78660,
+        "end_time": 79100,
+        "issue_type": null
+      }
+    },
+    {
+      "card_index": 9,
+      "question": "每个的；每一的",
+      "expected_answer": "each",
+      "related_student_utterance": {
+        "detected_text": "each. ",
+        "start_time": 91940,
+        "end_time": 92820,
+        "issue_type": null
+      }
+    }
+  ]
+}

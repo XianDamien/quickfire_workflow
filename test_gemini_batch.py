@@ -26,7 +26,11 @@ logger = logging.getLogger(__name__)
 ARCHIVE_DIR = Path(__file__).parent / 'archive' / 'Zoe41900-9.8'
 SHARED_CONTEXT_DIR = ARCHIVE_DIR / '_shared_context'
 PROMPTS_DIR = Path(__file__).parent / 'prompts'
-OUTPUT_BASE_DIR = Path(__file__).parent / 'test_outputs_v1'
+# Use model name in output directory to avoid overwriting previous results
+MODEL_NAME = "gemini-2.5-pro"
+# Create versioned output directory: e.g., "test_outputs_v1_25pro" for gemini-2.5-pro
+MODEL_VARIANT = MODEL_NAME.replace("gemini-", "").replace(".", "")  # "25pro"
+OUTPUT_BASE_DIR = Path(__file__).parent / f'test_outputs_v1_{MODEL_VARIANT}'
 
 # Students to process
 STUDENTS = ['Cathy', 'Frances Wang', 'Lucy', 'Oscar', 'Rico', 'Yoyo']
@@ -106,7 +110,8 @@ def process_student(
     student_name: str,
     eval_template: str,
     vocabulary: dict,
-    output_dir: Path
+    output_dir: Path,
+    save_prompts: bool = True
 ) -> dict:
     """Process a single student."""
     logger.info(f"\n{'='*60}")
@@ -152,6 +157,14 @@ def process_student(
     # Build prompt
     prompt = build_prompt(eval_template, vocabulary, asr_data)
     logger.info(f"📝 Prompt length: {len(prompt)} characters")
+
+    # Save prompt for debugging (if enabled)
+    if save_prompts:
+        output_dir.mkdir(parents=True, exist_ok=True)
+        prompt_file = output_dir / f"{student_name.replace(' ', '_')}_v1_prompt.txt"
+        with open(prompt_file, 'w', encoding='utf-8') as f:
+            f.write(prompt)
+        logger.info(f"💾 Prompt saved to: {prompt_file}")
 
     # Call Gemini API
     logger.info("🔄 Calling Gemini API...")
@@ -294,7 +307,7 @@ def main():
 
     summary = {
         'timestamp': datetime.now().isoformat(),
-        'model': 'gemini-2.0-flash',
+        'model': MODEL_NAME,
         'total_students': len(STUDENTS),
         'results': results,
         'statistics': {
