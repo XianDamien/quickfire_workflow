@@ -11,6 +11,7 @@ Uses custom vocabulary from manifest to improve ASR accuracy.
 import os
 import sys
 import json
+import csv
 import argparse
 import subprocess
 import tempfile
@@ -282,39 +283,114 @@ class QwenASRProvider:
     @staticmethod
     def load_vocabulary(vocab_path: str) -> Dict[str, list]:
         """
-        Load vocabulary from JSON file.
-        Handles UTF-8 BOM if present.
-
+        从 JSON 或 CSV 文件加载词汇表。
+        
+        支持格式:
+        - JSON: [{"问题": "...", "答案": "..."}, ...] 或 {"key": ["中文", "English", ...], ...}
+        - CSV: 第1列=中文, 第2列=English (跳过表头)
+        
         Args:
-            vocab_path: Path to vocabulary JSON file
-
+            vocab_path: 词汇表文件路径 (.json 或 .csv)
+        
         Returns:
-            Dictionary with vocabulary entries
+            词汇字典 {index: [问题, 答案]} 或 {index: [中文, English, ...]}
+        
+        Raises:
+            ValueError: 文件格式不支持时
         """
-        with open(vocab_path, 'r', encoding='utf-8-sig') as f:
-            return json.load(f)
+        file_ext = os.path.splitext(vocab_path)[1].lower()
+        
+        if file_ext == '.json':
+            # JSON 格式
+            with open(vocab_path, 'r', encoding='utf-8-sig') as f:
+                data = json.load(f)
+            
+            # 处理不同的 JSON 格式
+            if isinstance(data, list):
+                # 题库格式：[{"问题": "...", "答案": "..."}, ...]
+                vocabulary = {}
+                for idx, item in enumerate(data):
+                    if isinstance(item, dict):
+                        # 优先使用 "问题" 和 "答案"
+                        if "问题" in item and "答案" in item:
+                            vocabulary[str(idx)] = [
+                                item["问题"].strip(),
+                                item["答案"].strip()
+                            ]
+                        # 否则使用前两个可用的值
+                        else:
+                            values = list(item.values())
+                            if len(values) >= 2:
+                                vocabulary[str(idx)] = [
+                                    str(values[0]).strip(),
+                                    str(values[1]).strip()
+                                ]
+                return vocabulary
+            else:
+                # 传统字典格式：{"key": ["中文", "English", ...], ...}
+                return data
+        
+        elif file_ext == '.csv':
+            # CSV 格式（题库）
+            vocabulary = {}
+            with open(vocab_path, 'r', encoding='utf-8-sig') as f:
+                reader = csv.reader(f)
+                next(reader, None)  # 跳过表头
+                
+                for idx, row in enumerate(reader):
+                    if len(row) >= 2:
+                        # row[0]=中文, row[1]=English
+                        vocabulary[str(idx)] = [row[0].strip(), row[1].strip()]
+            
+            return vocabulary
+        
+        else:
+            raise ValueError(f"不支持的文件格式: {file_ext}。仅支持 .json 和 .csv")
 
     @staticmethod
     def build_context_text(vocabulary: Dict[str, list]) -> str:
         """
-        Build context text from vocabulary for ASR optimization.
-
+        从词汇表构建 ASR 上下文文本以优化识别。
+        
+        Qwen3-ASR 通过 System Message 中的上下文文本，可显著提升
+        特定领域词汇（如人名、地名、产品术语）的识别准确率。
+        
+        支持的上下文类型：
+        - 热词列表 (分隔符任意，如逗号、分号等)
+        - 任意长度的段落或篇章
+        - 词表与段落的混合内容
+        - 无关/无意义文本（容错性高）
+        
+        限制: 上下文总长度 ≤ 10000 Token
+        
         Args:
-            vocabulary: Dictionary with vocabulary entries
-
+            vocabulary: 词汇字典 {key: [中文, English, ...]}
+        
         Returns:
-            Formatted context text for ASR
+            格式化的上下文文本，用于 ASR 识别优化
         """
-        # Extract English terms and Chinese meanings
+        if not vocabulary:
+            return ""
+        
+        # 提取中文和英文术语
         terms = []
         for key, values in vocabulary.items():
             if isinstance(values, list) and len(values) >= 2:
-                chinese_term = values[0]
-                english_term = values[1]
-                terms.append(f"{chinese_term}({english_term})")
-
-        # Create context string
+                chinese_term = values[0].strip()
+                english_term = values[1].strip()
+                
+                # 双语术语对：中文(English)
+                if chinese_term and english_term:
+                    terms.append(f"{chinese_term}({english_term})")
+        
+        if not terms:
+            return ""
+        
+        # 构建上下文文本
+        # 格式: "Domain vocabulary: 术语1, 术语2, 术语3, ..."
+        # Qwen3-ASR 对分隔符容错性极高，支持多种格式
         context = "Domain vocabulary: " + ", ".join(terms)
+        
         return context
 
     def transcribe_audio(
@@ -718,6 +794,50 @@ def resolve_dataset_path(dataset_name: str) -> Path:
     return dataset_path
 
 
+
+def find_vocabulary_file(shared_context_dir: Path) -> Optional[Path]:
+    """
+    在 _shared_context 目录中自动查找题库文件。
+    
+    优先级顺序:
+    1. vocabulary.json (标准词汇表)
+    2. R*.json (JSON 格式题库)
+    3. R*.csv (CSV 格式题库，如 R3-14.csv、R1-65.csv)
+    4. 任何其他 .csv 文件
+    5. 无则返回 None
+    
+    Args:
+        shared_context_dir: _shared_context 目录路径
+    
+    Returns:
+        词汇/题库文件 Path 对象，或 None
+    """
+    if not shared_context_dir.exists():
+        return None
+    
+    # 优先级 1: vocabulary.json
+    vocab_json = shared_context_dir / "vocabulary.json"
+    if vocab_json.exists():
+        return vocab_json
+    
+    # 优先级 2: R*.json
+    for r_json in shared_context_dir.glob("R*.json"):
+        if r_json.is_file():
+            return r_json
+    
+    # 优先级 3: R*.csv (题库，如 R3-14.csv、R1-65.csv)
+    r_csv_files = sorted(shared_context_dir.glob("R*.csv"))
+    for r_csv in r_csv_files:
+        if r_csv.is_file() and "vocabulary" not in r_csv.name.lower():
+            return r_csv
+    
+    # 优先级 4: 任何 .csv
+    for csv_file in shared_context_dir.glob("*.csv"):
+        if csv_file.is_file() and "vocabulary" not in csv_file.name.lower():
+            return csv_file
+    
+    return None
+
 def find_audio_file(student_dir: Path) -> Optional[Path]:
     """
     发现学生目录中的音频文件。
@@ -813,17 +933,14 @@ def process_student(dataset_name: str, student_name: str, api_key: Optional[str]
             print(f"❌ 错误：{str(e)}")
             return 1
 
-        # 查找词汇文件（如果存在）
+        # 查找词汇文件（优先级：vocabulary.json > R*.json > R*.csv > *.csv）
         shared_context = student_dir.parent / "_shared_context"
         vocab_file = None
         if shared_context.exists():
-            vocab_json = shared_context / "vocabulary.json"
-            if vocab_json.exists():
-                vocab_file = str(vocab_json)
-            else:
-                csv_files = list(shared_context.glob("*.csv"))
-                if csv_files:
-                    vocab_file = str(csv_files[0])
+            vocab_path = find_vocabulary_file(shared_context)
+            if vocab_path:
+                vocab_file = str(vocab_path)
+                print(f"   📚 题库: {vocab_path.name}")
 
         # 转写并保存（支持长音频分段处理）
         print(f"  ⟳ {student_name}: 处理音频...")
@@ -871,17 +988,14 @@ def process_dataset(dataset_name: str, api_key: Optional[str] = None) -> Tuple[i
             print(f"❌ 错误：{str(e)}")
             return 0, 0
 
-        # 查找词汇文件
+        # 查找词汇文件（优先级：vocabulary.json > R*.json > R*.csv > *.csv）
         shared_context = dataset_path / "_shared_context"
         vocab_file = None
         if shared_context.exists():
-            vocab_json = shared_context / "vocabulary.json"
-            if vocab_json.exists():
-                vocab_file = str(vocab_json)
-            else:
-                csv_files = list(shared_context.glob("*.csv"))
-                if csv_files:
-                    vocab_file = str(csv_files[0])
+            vocab_path = find_vocabulary_file(shared_context)
+            if vocab_path:
+                vocab_file = str(vocab_path)
+                print(f"   📚 题库: {vocab_path.name}")
 
         # 发现并处理所有学生
         student_names = find_students_in_dataset(dataset_name)
