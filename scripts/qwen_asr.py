@@ -12,12 +12,260 @@ import os
 import sys
 import json
 import argparse
+import subprocess
+import tempfile
+import shutil
+from concurrent.futures import ThreadPoolExecutor, as_completed
 import dashscope
 from pathlib import Path
 from typing import Optional, Dict, Any, List, Tuple
 from dotenv import load_dotenv
 
 load_dotenv()
+
+
+# ===== 音频处理辅助函数 =====
+
+def get_audio_duration(audio_path: str) -> float:
+    """
+    获取音频文件时长（秒）。
+
+    使用 ffprobe 探测音频时长。
+
+    Args:
+        audio_path: 音频文件路径
+
+    Returns:
+        时长（秒），获取失败返回 0
+
+    Raises:
+        Exception: ffprobe 不可用时
+    """
+    try:
+        cmd = [
+            'ffprobe', '-v', 'quiet', '-show_entries', 'format=duration',
+            '-of', 'json', audio_path
+        ]
+        result = subprocess.run(cmd, capture_output=True, text=True, check=True, timeout=10)
+        data = json.loads(result.stdout)
+        return float(data['format']['duration'])
+    except FileNotFoundError:
+        print("⚠️  warning: ffprobe not found, cannot split long audio files")
+        return 0
+    except Exception as e:
+        print(f"⚠️  无法获取音频时长: {e}")
+        return 0
+
+
+def split_audio(audio_path: str, segment_duration: int = 180) -> List[str]:
+    """
+    将音频文件分割成指定长度的片段。
+
+    如果音频时长小于等于 segment_duration，直接返回原文件。
+    否则使用 ffmpeg 分割音频。
+
+    Args:
+        audio_path: 原始音频文件路径
+        segment_duration: 每段时长（秒），默认 180 秒（3分钟）
+
+    Returns:
+        分割后的音频文件路径列表。如果无法分割，返回 [audio_path]
+
+    Note:
+        需要安装 ffmpeg。临时文件存储在系统临时目录。
+    """
+    try:
+        duration = get_audio_duration(audio_path)
+
+        # 如果音频时长不超过 segment_duration，直接返回
+        if duration == 0 or duration <= segment_duration:
+            print(f"   ℹ️  音频时长 {duration:.1f}s，无需分割")
+            return [audio_path]
+
+        print(f"   ℹ️  音频时长 {duration:.1f}s，超过 {segment_duration}s，准备分割...")
+
+        # 创建临时目录
+        temp_dir = tempfile.mkdtemp(prefix='qwen_asr_segments_')
+        segment_files = []
+        segment_count = int(duration // segment_duration) + (1 if duration % segment_duration > 0 else 0)
+
+        print(f"   📂 临时目录: {temp_dir}")
+        print(f"   ✂️  分割成 {segment_count} 段...")
+
+        for i in range(segment_count):
+            start_time = i * segment_duration
+            output_file = os.path.join(temp_dir, f"segment_{i:03d}.mp3")
+
+            # 确定本段时长（最后一段可能更短）
+            this_segment_duration = min(segment_duration, duration - start_time)
+
+            cmd = [
+                'ffmpeg', '-i', audio_path,
+                '-ss', str(start_time),
+                '-t', str(this_segment_duration),
+                '-c', 'copy',
+                '-y',  # 覆盖输出文件
+                output_file
+            ]
+
+            result = subprocess.run(cmd, capture_output=True, text=True, timeout=60)
+            if result.returncode == 0 and os.path.exists(output_file):
+                segment_files.append(output_file)
+                segment_size = os.path.getsize(output_file) / (1024 * 1024)  # MB
+                print(f"      ✓ 片段 {i+1}/{segment_count}: {output_file} ({segment_size:.1f}MB)")
+            else:
+                print(f"      ✗ 片段 {i+1} 创建失败: {result.stderr}")
+                # 分割失败，返回原文件
+                shutil.rmtree(temp_dir, ignore_errors=True)
+                return [audio_path]
+
+        return segment_files
+
+    except FileNotFoundError:
+        print("⚠️  ffmpeg not found, cannot split audio files")
+        return [audio_path]
+    except Exception as e:
+        print(f"❌ 音频分割失败: {e}")
+        return [audio_path]
+
+
+def cleanup_audio_segments(segment_files: List[str]) -> None:
+    """
+    清理分割的音频临时文件。
+
+    Args:
+        segment_files: 音频文件路径列表
+    """
+    try:
+        # 获取第一个文件所在的临时目录
+        if segment_files and len(segment_files) > 0:
+            temp_dir = os.path.dirname(segment_files[0])
+            if 'qwen_asr_segments' in temp_dir:
+                shutil.rmtree(temp_dir, ignore_errors=True)
+                print(f"   🧹 已清理临时文件: {temp_dir}")
+    except Exception as e:
+        print(f"⚠️  清理临时文件失败: {e}")
+
+
+def merge_transcription_results(results: List[Dict[str, Any]]) -> str:
+    """
+    合并多个音频片段的转写结果。
+
+    Args:
+        results: 转写结果列表，每个结果可以是：
+                 1. Qwen API Response 对象 (dashscope 响应)
+                 2. 字典格式: {"output": {"text": "..."}}
+                 3. 字典格式: {"status_code": "200", "output": {"text": "..."}}
+
+    Returns:
+        合并后的转写文本
+    """
+    if not results:
+        return ""
+
+    # 提取所有转写文本并按顺序连接
+    texts = []
+    for i, result in enumerate(results):
+        try:
+            text = None
+
+            # 处理 dashscope Response 对象
+            if hasattr(result, 'output') and result.output:
+                if hasattr(result.output, 'choices') and result.output.choices:
+                    content = result.output.choices[0].message.content
+                    text = content
+
+            # 处理字典格式的结果（带 "output" 字段）
+            elif isinstance(result, dict) and "output" in result:
+                output = result["output"]
+                if isinstance(output, dict):
+                    # 尝试提取 "text" 字段
+                    if "text" in output:
+                        text = output["text"]
+                    # 尝试提取 "choices" 字段（LLM 格式）
+                    elif "choices" in output and output["choices"]:
+                        text = output["choices"][0].get("message", {}).get("content", "")
+
+            if text:
+                texts.append(str(text))
+                print(f"   ✓ 片段 {i+1}: {len(text)} 字符")
+        except Exception as e:
+            print(f"   ✗ 片段 {i+1} 结果提取失败: {e}")
+
+    merged_text = "".join(texts)
+    print(f"   ✓ 合并完成: 总共 {len(merged_text)} 字符")
+    return merged_text
+
+
+def merge_json_results(results: List[Dict[str, Any]]) -> Dict[str, Any]:
+    """
+    合并多个音频片段的 JSON 转写结果。
+
+    Args:
+        results: JSON 结果列表，每个结果的格式：
+                 {"status_code": "200", "output": {"text": "..."}, "segment_idx": 0}
+
+    Returns:
+        合并后的 JSON 结构，格式为标准 Qwen API 响应
+    """
+    if not results:
+        return {
+            "status_code": 200,
+            "output": {
+                "text": "",
+                "sentences": []
+            },
+            "segment_count": 0,
+            "merged": True
+        }
+
+    if len(results) == 1:
+        return results[0]
+
+    # 合并多个片段的结果
+    # 按 segment_idx 排序确保顺序正确
+    sorted_results = sorted(results, key=lambda x: x.get("segment_idx", 0))
+
+    # 合并文本
+    merged_texts = []
+    merged_sentences = []
+    total_duration = 0.0
+
+    for result in sorted_results:
+        try:
+            if isinstance(result, dict) and "output" in result:
+                output = result["output"]
+                if isinstance(output, dict):
+                    # 提取并合并文本
+                    if "text" in output:
+                        merged_texts.append(output["text"])
+
+                    # 提取并合并句子信息
+                    if "sentences" in output and isinstance(output["sentences"], list):
+                        merged_sentences.extend(output["sentences"])
+
+                    # 计算总时长
+                    if "sentences" in output and output["sentences"]:
+                        last_sentence = output["sentences"][-1]
+                        if "end_time" in last_sentence:
+                            total_duration += last_sentence["end_time"] / 1000.0  # 转换为秒
+        except Exception as e:
+            print(f"   ⚠️  合并片段 {result.get('segment_idx', '?')} 失败: {e}")
+
+    # 构建合并后的响应
+    merged = {
+        "status_code": 200,
+        "output": {
+            "text": "".join(merged_texts),
+            "sentences": merged_sentences
+        },
+        "segment_count": len(results),
+        "merged": True,
+        "total_duration": total_duration,
+        "segments": sorted_results  # 保留原始分段结果以供参考
+    }
+
+    return merged
 
 
 class QwenASRProvider:
@@ -175,6 +423,118 @@ class QwenASRProvider:
 
         print(f"ASR transcription saved to: {output_path}")
         return response
+
+    def transcribe_and_save_with_segmentation(
+        self,
+        input_audio_path: str,
+        output_dir: str,
+        vocabulary_path: Optional[str] = None,
+        output_filename: str = "2_qwen_asr.json",
+        language: Optional[str] = None,
+        segment_duration: int = 180,
+        max_workers: int = 3,
+    ) -> Dict[str, Any]:
+        """
+        转写音频并保存结果，支持长音频自动分段并行处理。
+
+        如果音频时长超过 segment_duration，自动分割并使用线程池并行转写。
+
+        Args:
+            input_audio_path: 输入音频路径
+            output_dir: 输出目录
+            vocabulary_path: 可选的词汇表路径
+            output_filename: 输出文件名
+            language: 可选的语言代码
+            segment_duration: 分段时长（秒），默认 180（3分钟）
+            max_workers: 并行线程数，默认 3
+
+        Returns:
+            转写结果字典
+
+        Note:
+            如果音频需要分段，最终结果会包含 merged=True 和 segment_count 字段。
+        """
+        print(f"🎙️  开始转写音频: {input_audio_path}")
+
+        # 获取音频时长
+        duration = get_audio_duration(input_audio_path)
+        print(f"   📊 音频时长: {duration:.1f} 秒")
+
+        # 检查是否需要分段
+        segment_files = split_audio(input_audio_path, segment_duration)
+
+        try:
+            if len(segment_files) == 1:
+                # 无需分段，直接转写
+                print("   ▶️  无需分段，直接转写...")
+                response = self.transcribe_and_save(
+                    input_audio_path=segment_files[0],
+                    output_dir=output_dir,
+                    vocabulary_path=vocabulary_path,
+                    output_filename=output_filename,
+                    language=language,
+                )
+                return response
+            else:
+                # 需要分段并行处理
+                print(f"   ⚙️  启动并行转写（{max_workers} 线程）...")
+
+                # 使用线程池并行转写各段
+                segment_results = []
+                with ThreadPoolExecutor(max_workers=max_workers) as executor:
+                    future_to_segment = {
+                        executor.submit(
+                            self.transcribe_audio,
+                            audio_path=seg_file,
+                            vocabulary_path=vocabulary_path,
+                            language=language,
+                        ): (i, seg_file)
+                        for i, seg_file in enumerate(segment_files)
+                    }
+
+                    for future in as_completed(future_to_segment):
+                        segment_idx, seg_file = future_to_segment[future]
+                        try:
+                            result = future.result()
+                            segment_results.append((segment_idx, result))
+                            print(f"   ✓ 片段 {segment_idx+1}/{len(segment_files)} 转写完成")
+                        except Exception as e:
+                            print(f"   ✗ 片段 {segment_idx+1} 转写失败: {e}")
+
+                # 按顺序排序结果
+                segment_results.sort(key=lambda x: x[0])
+                results = [result for _, result in segment_results]
+
+                # 合并结果
+                print("   🔀 合并转写结果...")
+                merged_text = merge_transcription_results(results)
+
+                # 创建最终响应
+                final_response = {
+                    "status_code": 200,
+                    "merged": True,
+                    "segment_count": len(segment_files),
+                    "total_duration": duration,
+                    "merged_text": merged_text,
+                    "segments": results,
+                }
+
+                # 保存结果
+                os.makedirs(output_dir, exist_ok=True)
+                output_path = os.path.join(output_dir, output_filename)
+
+                with open(output_path, 'w', encoding='utf-8') as f:
+                    json.dump(final_response, f, ensure_ascii=False, indent=2)
+
+                print(f"   ✅ 转写完成！结果已保存到: {output_path}")
+                print(f"   📈 统计: {len(segment_files)} 段 | 总长度: {duration:.1f}s | 总文本: {len(merged_text)} 字符")
+
+                return final_response
+
+        finally:
+            # 清理临时文件
+            if len(segment_files) > 1:
+                cleanup_audio_segments(segment_files)
 
 
 def process_all_students():
@@ -462,14 +822,16 @@ def process_student(dataset_name: str, student_name: str, api_key: Optional[str]
                 if csv_files:
                     vocab_file = str(csv_files[0])
 
-        # 转写并保存
+        # 转写并保存（支持长音频分段处理）
         print(f"  ⟳ {student_name}: 处理音频...")
-        response = provider.transcribe_and_save(
+        response = provider.transcribe_and_save_with_segmentation(
             input_audio_path=str(audio_file),
             output_dir=str(student_dir),
             vocabulary_path=vocab_file,
             output_filename="2_qwen_asr.json",
             language="zh",
+            segment_duration=180,  # 3 分钟
+            max_workers=3,
         )
 
         print(f"  ✓ {student_name}: 已保存到 2_qwen_asr.json")
@@ -539,15 +901,17 @@ def process_dataset(dataset_name: str, api_key: Optional[str] = None) -> Tuple[i
                 total_skipped += 1
                 continue
 
-            # 转写并保存
+            # 转写并保存（支持长音频分段处理）
             try:
                 print(f"  ⟳ {student_name}: 处理音频...")
-                response = provider.transcribe_and_save(
+                response = provider.transcribe_and_save_with_segmentation(
                     input_audio_path=str(audio_file),
                     output_dir=str(student_dir),
                     vocabulary_path=vocab_file,
                     output_filename="2_qwen_asr.json",
                     language="zh",
+                    segment_duration=180,  # 3 分钟
+                    max_workers=3,
                 )
 
                 print(f"  ✓ {student_name}: 已保存到 2_qwen_asr.json")
