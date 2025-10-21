@@ -467,8 +467,15 @@ class QwenASRProvider:
             if len(segment_files) == 1:
                 # 无需分段，直接转写
                 print("   ▶️  无需分段，直接转写...")
+
+                # 转换为 file:// URL 格式（如果是本地文件）
+                seg_path = segment_files[0]
+                if not seg_path.startswith("file://") and not seg_path.startswith("http"):
+                    abs_path = os.path.abspath(seg_path)
+                    seg_path = f"file://{abs_path}"
+
                 response = self.transcribe_and_save(
-                    input_audio_path=segment_files[0],
+                    input_audio_path=seg_path,
                     output_dir=output_dir,
                     vocabulary_path=vocabulary_path,
                     output_filename=output_filename,
@@ -482,18 +489,23 @@ class QwenASRProvider:
                 # 使用线程池并行转写各段
                 segment_results = []
                 with ThreadPoolExecutor(max_workers=max_workers) as executor:
-                    future_to_segment = {
-                        executor.submit(
+                    future_to_segment = {}
+
+                    for i, seg_file in enumerate(segment_files):
+                        # 转换为 file:// URL 格式（多模态 API 需要）
+                        abs_path = os.path.abspath(seg_file)
+                        audio_url = f"file://{abs_path}"
+
+                        future = executor.submit(
                             self.transcribe_audio,
-                            audio_path=seg_file,
+                            audio_path=audio_url,
                             vocabulary_path=vocabulary_path,
                             language=language,
-                        ): (i, seg_file)
-                        for i, seg_file in enumerate(segment_files)
-                    }
+                        )
+                        future_to_segment[future] = (i, seg_file, audio_url)
 
                     for future in as_completed(future_to_segment):
-                        segment_idx, seg_file = future_to_segment[future]
+                        segment_idx, seg_file, audio_url = future_to_segment[future]
                         try:
                             result = future.result()
                             segment_results.append((segment_idx, result))
