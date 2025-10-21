@@ -149,51 +149,45 @@ def cleanup_audio_segments(segment_files: List[str]) -> None:
 
 def merge_transcription_results(results: List[Dict[str, Any]]) -> str:
     """
-    合并多个音频片段的转写结果。
+    合并多个音频片段的转写结果文本。
 
     Args:
-        results: 转写结果列表，每个结果可以是：
-                 1. Qwen API Response 对象 (dashscope 响应)
-                 2. 字典格式: {"output": {"text": "..."}}
-                 3. 字典格式: {"status_code": "200", "output": {"text": "..."}}
+        results: 转写结果列表，每个结果是 Qwen API 响应
 
     Returns:
-        合并后的转写文本
+        合并后的转写文本（不包含任何标点或间隔）
     """
     if not results:
         return ""
 
-    # 提取所有转写文本并按顺序连接
     texts = []
     for i, result in enumerate(results):
         try:
+            # 从 API 响应中提取文本
             text = None
 
-            # 处理 dashscope Response 对象
-            if hasattr(result, 'output') and result.output:
-                if hasattr(result.output, 'choices') and result.output.choices:
-                    content = result.output.choices[0].message.content
-                    text = content
+            if isinstance(result, dict):
+                # 标准 API 响应格式
+                if "output" in result and isinstance(result["output"], dict):
+                    output = result["output"]
 
-            # 处理字典格式的结果（带 "output" 字段）
-            elif isinstance(result, dict) and "output" in result:
-                output = result["output"]
-                if isinstance(output, dict):
-                    # 尝试提取 "text" 字段
-                    if "text" in output:
-                        text = output["text"]
-                    # 尝试提取 "choices" 字段（LLM 格式）
-                    elif "choices" in output and output["choices"]:
-                        text = output["choices"][0].get("message", {}).get("content", "")
+                    # 从 choices 中提取文本
+                    if "choices" in output and output["choices"]:
+                        choice = output["choices"][0]
+                        if "message" in choice and "content" in choice["message"]:
+                            content_list = choice["message"]["content"]
+                            if isinstance(content_list, list) and content_list:
+                                text = content_list[0].get("text", "")
+                            elif isinstance(content_list, str):
+                                text = content_list
 
             if text:
                 texts.append(str(text))
-                print(f"   ✓ 片段 {i+1}: {len(text)} 字符")
         except Exception as e:
-            print(f"   ✗ 片段 {i+1} 结果提取失败: {e}")
+            pass  # 忽略错误，继续处理下一个片段
 
+    # 直接连接，不添加任何间隔或标点
     merged_text = "".join(texts)
-    print(f"   ✓ 合并完成: 总共 {len(merged_text)} 字符")
     return merged_text
 
 
@@ -202,67 +196,69 @@ def merge_json_results(results: List[Dict[str, Any]]) -> Dict[str, Any]:
     合并多个音频片段的 JSON 转写结果。
 
     Args:
-        results: JSON 结果列表，每个结果的格式：
-                 {"status_code": "200", "output": {"text": "..."}, "segment_idx": 0}
+        results: JSON 结果列表，每个结果是 Qwen API 响应
 
     Returns:
-        合并后的 JSON 结构，格式为标准 Qwen API 响应
+        合并后的标准 Qwen API 响应格式（与单个音频响应一致）
     """
     if not results:
         return {
             "status_code": 200,
+            "request_id": "",
+            "code": "",
+            "message": "",
             "output": {
-                "text": "",
-                "sentences": []
-            },
-            "segment_count": 0,
-            "merged": True
+                "text": None,
+                "finish_reason": None,
+                "choices": []
+            }
         }
 
     if len(results) == 1:
         return results[0]
 
-    # 合并多个片段的结果
     # 按 segment_idx 排序确保顺序正确
     sorted_results = sorted(results, key=lambda x: x.get("segment_idx", 0))
 
-    # 合并文本
-    merged_texts = []
-    merged_sentences = []
-    total_duration = 0.0
+    # 合并所有段的文本
+    merged_text = merge_transcription_results(sorted_results)
 
-    for result in sorted_results:
-        try:
-            if isinstance(result, dict) and "output" in result:
-                output = result["output"]
-                if isinstance(output, dict):
-                    # 提取并合并文本
-                    if "text" in output:
-                        merged_texts.append(output["text"])
+    # 从第一个结果获取元数据（request_id, usage 等）
+    first_result = sorted_results[0]
+    request_id = first_result.get("request_id", "")
+    usage = first_result.get("usage", {})
 
-                    # 提取并合并句子信息
-                    if "sentences" in output and isinstance(output["sentences"], list):
-                        merged_sentences.extend(output["sentences"])
-
-                    # 计算总时长
-                    if "sentences" in output and output["sentences"]:
-                        last_sentence = output["sentences"][-1]
-                        if "end_time" in last_sentence:
-                            total_duration += last_sentence["end_time"] / 1000.0  # 转换为秒
-        except Exception as e:
-            print(f"   ⚠️  合并片段 {result.get('segment_idx', '?')} 失败: {e}")
-
-    # 构建合并后的响应
+    # 合并后的标准响应格式
     merged = {
         "status_code": 200,
+        "request_id": request_id,
+        "code": "",
+        "message": "",
         "output": {
-            "text": "".join(merged_texts),
-            "sentences": merged_sentences
+            "text": None,
+            "finish_reason": None,
+            "choices": [
+                {
+                    "finish_reason": "stop",
+                    "message": {
+                        "role": "assistant",
+                        "content": [
+                            {
+                                "text": merged_text
+                            }
+                        ],
+                        "annotations": [
+                            {
+                                "language": "zh",
+                                "type": "audio_info"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "audio": None
         },
-        "segment_count": len(results),
-        "merged": True,
-        "total_duration": total_duration,
-        "segments": sorted_results  # 保留原始分段结果以供参考
+        "usage": usage
     }
 
     return merged
@@ -519,17 +515,13 @@ class QwenASRProvider:
 
                 # 合并结果
                 print("   🔀 合并转写结果...")
-                merged_text = merge_transcription_results(results)
 
-                # 创建最终响应
-                final_response = {
-                    "status_code": 200,
-                    "merged": True,
-                    "segment_count": len(segment_files),
-                    "total_duration": duration,
-                    "merged_text": merged_text,
-                    "segments": results,
-                }
+                # 为每个结果添加 segment_idx（用于排序）
+                for i, result in enumerate(results):
+                    result["segment_idx"] = i
+
+                # 生成标准格式的合并响应
+                final_response = merge_json_results(results)
 
                 # 保存结果
                 os.makedirs(output_dir, exist_ok=True)
@@ -539,7 +531,6 @@ class QwenASRProvider:
                     json.dump(final_response, f, ensure_ascii=False, indent=2)
 
                 print(f"   ✅ 转写完成！结果已保存到: {output_path}")
-                print(f"   📈 统计: {len(segment_files)} 段 | 总长度: {duration:.1f}s | 总文本: {len(merged_text)} 字符")
 
                 return final_response
 
