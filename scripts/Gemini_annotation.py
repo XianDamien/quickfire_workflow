@@ -556,6 +556,9 @@ def process_student_annotations(dataset_name: str, student_name: str) -> dict:
 **A级:** 0 个 `NO_ANSWER` / 'MEANING_ERROR'
 **B级:** 1-2 个 `NO_ANSWER`/'MEANING_ERROR'
 **C级:** 3个及以上 `NO_ANSWER`/'MEANING_ERROR'
+# 注意事项
+1. 有的时候问题可能因为学生漏录，不会出现，只要检测到重复两次的答案即可进行定位，当出现两次答案时，前一个答案为学生回答'detected_answer'，后一个答案为教师公布的答案'expected_answer'。
+2. 如果错误超过5个，请花更长时间进行复核：是否是定位学生回答的范围错误？两次重复的答案是否取的是前一次的答案作为学生回答？
 """
 
         # 如果没有转录文件，使用空字符串
@@ -907,8 +910,6 @@ def main():
             if result.get("status") == "success":
                 print(f"\n✅ {args.student} 处理成功!")
                 print(f"   最终等级: {result['final_grade_suggestion']}")
-                print(f"   硬错误: {result['mistake_count']['hard_errors']}")
-                print(f"   软错误: {result['mistake_count']['soft_errors']}")
             else:
                 print(f"\n❌ {args.student} 处理失败: {result.get('error', 'Unknown error')}")
                 sys.exit(1)
