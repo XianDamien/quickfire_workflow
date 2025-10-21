@@ -492,18 +492,23 @@ def process_student_annotations(dataset_name: str, student_name: str) -> dict:
         script_dir = Path(__file__).parent
         prompt_template_path = script_dir.parent / "prompts" / "annotation.txt"
 
-        # 显式查找 R3-14-D4*.json 题库文件
+        # 显式查找题库文件（支持 R3-14-D4*.json 和 R1-65*.json 等模式）
         question_bank_path = None
-        for file in shared_context.glob("R3-14-D4*.json"):
-            if file.is_file():
-                question_bank_path = file
+
+        # 优先查找 R3-14-D4 和 R1-65 等常见题库模式
+        for pattern in ["R3-14-D4*.json", "R1-65*.json", "R*.json"]:
+            for file in shared_context.glob(pattern):
+                if file.is_file() and "vocabulary" not in file.name.lower():
+                    question_bank_path = file
+                    break
+            if question_bank_path:
                 break
 
         if not question_bank_path:
             return {
                 "student_name": student_name,
                 "status": "error",
-                "error": "未找到题库文件 (R3-14-D4*.json)"
+                "error": "未找到题库文件 (R*.json，不包括 vocabulary)"
             }
 
         # 查找对应的转录文件（可选）
