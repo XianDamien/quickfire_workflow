@@ -1,9 +1,188 @@
 # scripts/CLAUDE.md - 评测引擎模块
 
 ## 模块职责
+- `qwen_asr.py` → **批量音频转写工具**（推荐使用），支持 CLI 参数化处理，自动跳过已处理文件
 - `workflow.py` → **统一工作流入口**（推荐使用）, 端到端集成音频转写 + 评测评分
 - `qwen3.py` → 主评测引擎，文本模式，加载题库+ASR数据，调用Qwen Plus生成评分报告（可单独导入模块）
 - `captioner_qwen3.py` → 音频转写辅助工具，多模态模式，接收音频文件路径，输出ASR转写（可单独导入模块）
+
+---
+
+# qwen_asr.py - Qwen ASR 批量转写工具
+
+## 功能概述
+
+支持灵活的命令行参数化批量音频转写，自动发现数据集和学生，实现幂等处理（已转写文件自动跳过）。
+
+**关键特性**:
+- ✅ 按数据集/学生选择性处理
+- ✅ 自动去重（已存在 2_qwen_asr.json 则跳过）
+- ✅ 清晰的进度报告
+- ✅ 完全向后兼容
+- ✅ 错误自动恢复
+
+## 快速使用
+
+### 处理所有数据集（向后兼容）
+```bash
+python3 scripts/qwen_asr.py
+```
+处理 `archive/` 下所有数据集中的所有学生。
+
+### 处理特定数据集中的所有学生
+```bash
+python3 scripts/qwen_asr.py --dataset Zoe51530-9.8
+```
+只处理 `archive/Zoe51530-9.8/` 下的所有学生。
+
+### 处理单个学生
+```bash
+python3 scripts/qwen_asr.py --dataset Zoe51530-9.8 --student Alvin
+```
+只处理 `archive/Zoe51530-9.8/Alvin/` 下的音频。
+
+### 自定义 API Key
+```bash
+python3 scripts/qwen_asr.py --dataset Zoe51530-9.8 --api-key sk-xxxxx
+```
+
+### 显示帮助
+```bash
+python3 scripts/qwen_asr.py --help
+```
+
+## 数据集格式
+
+数据集名称格式: `<CourseName>-<Date>` (例如: `Zoe51530-9.8`)
+
+目录结构:
+```
+archive/
+├── Zoe51530-9.8/
+│   ├── Alvin/
+│   │   ├── 1_input_audio.mp3 (输入)
+│   │   ├── 2_qwen_asr.json (输出 - 新)
+│   │   └── ...
+│   ├── Kevin/
+│   │   ├── 1_input_audio.mp3
+│   │   ├── 2_qwen_asr.json
+│   │   └── ...
+│   └── _shared_context/
+│       ├── vocabulary.json (可选词汇表)
+│       └── *.csv (题库文件)
+└── Zoe41900-9.8/
+    └── ...
+```
+
+## 输出文件
+
+所有转写结果保存为 `2_qwen_asr.json`，位于学生目录中：
+- **文件名**: `2_qwen_asr.json`（标准化命名）
+- **位置**: `archive/<DATASET>/<STUDENT>/2_qwen_asr.json`
+- **格式**: JSON（Qwen ASR API 原始响应）
+
+## 音频文件发现
+
+脚本自动按优先级查找学生音频文件：
+1. `1_input_audio.*` (任何格式: .mp3, .mp4, .wav, .m4a, .flac, .ogg)
+2. `<StudentName>.*` (例如: Alvin.mp3)
+3. 第一个找到的音频文件
+4. 无则跳过该学生
+
+## 去重逻辑
+
+如果学生目录已存在 `2_qwen_asr.json` 文件，则自动跳过该学生，无需重复转写。支持安全的重新运行。
+
+## 可调用函数
+
+### 导入和使用
+
+```python
+from scripts.qwen_asr import (
+    QwenASRProvider,
+    find_datasets,
+    find_students_in_dataset,
+    find_audio_file,
+    should_process,
+    process_student,
+    process_dataset,
+    process_all_students
+)
+
+# 发现可用数据集
+datasets = find_datasets()
+
+# 发现数据集中的学生
+students = find_students_in_dataset("Zoe51530-9.8")
+
+# 处理单个学生
+exit_code = process_student("Zoe51530-9.8", "Alvin")
+
+# 处理整个数据集
+processed, skipped = process_dataset("Zoe51530-9.8")
+
+# 处理所有数据集（向后兼容）
+process_all_students()
+```
+
+## 环境变量
+
+### 必需
+```bash
+export DASHSCOPE_API_KEY="sk-xxxxx"  # 阿里云 DashScope API 密钥
+```
+
+## 错误处理
+
+| 错误 | 处理方式 |
+|------|--------|
+| 数据集不存在 | 打印错误并退出 (code 1) |
+| 学生目录不存在 | 打印错误并退出 (code 1) |
+| 无音频文件 | 跳过该学生，继续处理 |
+| API 调用失败 | 打印错误，跳过该学生，继续 |
+| 无 API Key | 打印错误并退出 (code 1) |
+
+## 示例输出
+
+```
+============================================================
+处理数据集: Zoe51530-9.8
+============================================================
+  ⟳ Alvin: 处理音频...
+  ✓ Alvin: 已保存到 2_qwen_asr.json
+  ✓ Kevin: 已处理过（跳过）
+  ⊘ Lesson: 未找到音频文件
+  ✗ Phoebe: 错误 - API 超时
+
+============================================================
+处理完成！
+处理: 1, 跳过: 3
+============================================================
+```
+
+## 命令行参数
+
+| 参数 | 说明 | 例子 |
+|------|------|------|
+| `--dataset` | 数据集名称 (可选) | `--dataset Zoe51530-9.8` |
+| `--student` | 学生名称 (需要 --dataset) | `--student Alvin` |
+| `--api-key` | DashScope API 密钥 (可选) | `--api-key sk-xxxxx` |
+| `-h, --help` | 显示帮助 | `-h` |
+
+## 返回码
+
+- `0`: 成功或部分成功
+- `1`: 致命错误（参数错误、API Key 缺失、数据集不存在等）
+
+## 向后兼容性
+
+✅ **完全向后兼容**
+
+- 现有 `process_all_students()` 函数保持不变
+- 现有 `QwenASRProvider` 类无任何改动
+- 默认行为（无 CLI 参数）与之前完全相同
+
+
 
 ## qwen3.py 核心流程
 ```
