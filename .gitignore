@@ -79,3 +79,6 @@ archive/
 *.tmp
 *.temp
 .cache/
+
+# Question bank MP4 files
+1_input_mp4/
