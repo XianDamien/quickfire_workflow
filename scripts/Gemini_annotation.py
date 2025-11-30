@@ -375,38 +375,38 @@ def extract_progress_info(question_bank_path: str) -> str:
     return ""
 
 
-def find_question_bank(shared_context_dir: Path, dataset_name: str = None) -> tuple:
+def find_question_bank_from_student_dir(student_dir: Path) -> tuple:
     """
-    查找题库文件（支持多种模式和位置）
+    从学生目录中查找题库文件
 
-    搜索顺序:
-    1. 在指定的 shared_context_dir 中搜索 (默认: archive/{dataset}/_shared_context)
-    2. 未来支持: /questionbank 目录中按数据集名称组织的题库
-
-    支持的文件模式（按优先级）:
-    - R3-14-D4*.json
-    - R1-65*.json
-    - R*.json (排除 vocabulary 文件)
+    搜索优先级:
+    1. student_dir/current_qb.json (如果存在，表示已提取的题库)
+    2. /questionbank 中匹配的题库 (基于任何可用的索引)
 
     Args:
-        shared_context_dir: 题库所在目录 (通常是 archive/{dataset}/_shared_context)
-        dataset_name: 数据集名称（用于未来支持 /questionbank 路径）
+        student_dir: 学生目录路径
 
     Returns:
         (question_bank_path, question_bank_filename) 元组
         如果未找到返回 (None, None)
     """
-    # 首先在 shared_context_dir 中搜索
-    if shared_context_dir.exists():
+    # 首先检查学生目录中的 current_qb.json
+    current_qb = student_dir / "current_qb.json"
+    if current_qb.exists():
+        return current_qb, current_qb.name
+
+    # 从 /questionbank 搜索
+    # 这里可以添加逻辑来从 questionbank 中选择匹配的题库
+    # 基于数据集名称、学生特征或其他标识符
+    project_root = Path(__file__).parent.parent
+    questionbank_dir = project_root / "questionbank"
+
+    if questionbank_dir.exists():
+        # 优先查找模式: R3-14-D4*.json, R1-65*.json, R*.json
         for pattern in ["R3-14-D4*.json", "R1-65*.json", "R*.json"]:
-            for file in shared_context_dir.glob(pattern):
+            for file in questionbank_dir.glob(pattern):
                 if file.is_file() and "vocabulary" not in file.name.lower():
                     return file, file.name
-
-    # 未来支持: 从 /questionbank 目录搜索
-    # 这个逻辑保留用于将来实现，当用户将题库从 archive/_shared_context 迁移到 /questionbank 时
-    # 例如: /questionbank/{dataset_name}/ 或 /questionbank/shared/
-    # 目前该功能尚未激活
 
     return None, None
 
@@ -468,15 +468,14 @@ def process_student_annotations(dataset_name: str, student_name: str, verbose: b
         dataset_path = project_root / "archive" / dataset_name
         student_dir = dataset_path / student_name
 
-        # 查找题库文件
-        shared_context = dataset_path / "_shared_context"
-        question_bank_path, question_bank_filename = find_question_bank(shared_context)
+        # 从学生目录中查找题库文件 (不再使用 _shared_context)
+        question_bank_path, question_bank_filename = find_question_bank_from_student_dir(student_dir)
 
         if not question_bank_path:
             return {
                 "student_name": student_name,
                 "status": "error",
-                "error": "未找到题库文件 (R*.json，不包括 vocabulary)"
+                "error": "未找到题库文件 (current_qb.json 或 /questionbank 中的题库)"
             }
 
         asr_file = find_asr_file(student_dir)
