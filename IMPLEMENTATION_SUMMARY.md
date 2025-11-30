@@ -73,22 +73,24 @@ from prompt_loader import PromptLoader, PromptContextBuilder
 - `build_full_prompt()` - Replaced by Jinja2 template rendering
 
 #### Functions Added
-- `find_question_bank(shared_context_dir, dataset_name)` - Unified question bank discovery
+- `find_question_bank_from_student_dir(student_dir)` - Student-centric question bank discovery
+  - Priority 1: `student_dir/current_qb.json` (student-specific question bank)
+  - Priority 2: `/questionbank/` directory (central shared pool)
   - Supports patterns: R3-14-D4*.json, R1-65*.json, R*.json
   - Excludes vocabulary files
-  - Prepared for future /questionbank path support
 
 #### Major Changes to `process_student_annotations()`
-**Before:**
+
+**Question Bank Discovery:**
 ```python
-prompt_template = load_prompt_template(prompt_template_path)
-question_bank = load_file_content(str(question_bank_path))
-system_instruction = """# 角色\n你是一个..."""  # Hardcoded
-full_prompt = build_full_prompt(prompt_template, question_bank, student_asr_text)
+# OLD: search archive/{dataset}/_shared_context/
+# NEW: search student_dir/current_qb.json, then /questionbank/
+question_bank_path, qb_filename = find_question_bank_from_student_dir(student_dir)
 ```
 
-**After:**
+**Prompt Loading & Rendering:**
 ```python
+# NEW: Structured prompt loading with metadata
 prompt_loader = PromptLoader(str(prompt_dir))
 prompt_context = PromptContextBuilder.build(
     question_bank_json=question_bank,
@@ -108,21 +110,25 @@ Added to `4_llm_prompt_log.txt`:
 - `PROMPT METADATA`: Full metadata from metadata.json (description, owner, tags, etc.)
 - Maintains all existing logging (system instruction, user prompt)
 
-### 4. Question Bank Discovery (Future-Ready)
+### 4. Question Bank Discovery (Student-Centric + Central)
 
-Current implementation:
+New implementation (no longer uses _shared_context):
 ```python
-# Searches archive/{dataset}/_shared_context/ with patterns
-for pattern in ["R3-14-D4*.json", "R1-65*.json", "R*.json"]:
-    # Find first matching file excluding vocabulary
+# 1. First checks student_dir/current_qb.json (highest priority)
+# 2. Falls back to /questionbank directory structure
 ```
 
-Future support stub:
-```python
-# Prepared for /questionbank directory structure
-# Example: /questionbank/{dataset_name}/ or /questionbank/shared/
-# Can be activated when users migrate question banks
-```
+Key advantages:
+- Each student can have their own `current_qb.json` (course-specific)
+- Central `/questionbank` serves as fallback and shared pool
+- Supports multi-dataset scenarios with different question banks
+- Enables future versioning/organization in /questionbank
+
+Search order:
+1. `{student_dir}/current_qb.json` - Student-specific question bank
+2. `/questionbank/R3-14-D4*.json` - Central question bank pool
+3. `/questionbank/R1-65*.json` - Alternative pattern
+4. `/questionbank/R*.json` - Fallback pattern (excluding vocabulary)
 
 ## Technical Design Decisions
 
@@ -207,7 +213,36 @@ If there are existing annotation.txt files in different formats:
 
 ## Future Enhancements
 
-### 1. Multiple Prompt Variants (Branch-Based)
+### 1. Question Bank Organization in /questionbank
+Current structure: flat list of R*.json files
+Proposed: organize by course/level
+```
+/questionbank/
+  course-a/
+    R1-1-*.json
+    R1-2-*.json
+  course-b/
+    R3-14-*.json
+```
+Implementation: Add metadata to student directory or filename pattern matching.
+
+### 2. Question Bank Versioning
+Enable tracking of question bank versions:
+```
+/questionbank/
+  R3-14-D4-v1.json
+  R3-14-D4-v2.json
+```
+With stored version reference in `current_qb.json`:
+```json
+{
+  "qb_file": "R3-14-D4-v2.json",
+  "qb_version": "2.0",
+  "items": [...]
+}
+```
+
+### 3. Multiple Prompt Variants (Branch-Based)
 ```bash
 # On a feature branch
 git checkout -b experiment/new-grading-logic
@@ -217,25 +252,24 @@ git commit ...
 # Merge only when approved
 ```
 
-### 2. Support for /questionbank Directory
-Activate the future-ready code in `find_question_bank()`:
-```python
-# Check /questionbank/{dataset_name}/ for question banks
-questionbank_root = Path("/Users/damien/Desktop/LanProject/quickfire_workflow/questionbank")
-if dataset_name:
-    dataset_qb = questionbank_root / dataset_name
-    # Search there if shared_context not found
-```
-
-### 3. Prompt Testing Framework
+### 4. Prompt Testing Framework
 - Load multiple prompt versions from different git commits
 - Run parallel processing with each
 - Compare results quantitatively
 
-### 4. Metadata-Based Filtering
-- Tag prompts by skill level, domain, etc.
-- Select prompts programmatically based on dataset characteristics
-- Maintain metadata index for quick lookups
+### 5. Question Bank Metadata
+Add optional metadata to /questionbank directory:
+```json
+# /questionbank/metadata.json
+{
+  "R3-14-D4.json": {
+    "level": "Advanced",
+    "domain": "Business English",
+    "item_count": 50,
+    "deprecated": false
+  }
+}
+```
 
 ## Files Modified
 
