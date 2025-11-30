@@ -21,20 +21,14 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from google import genai
 from google.genai import types
+from dotenv import load_dotenv
 
-def load_env_variables():
-    """从 .env 文件加载环境变量"""
-    env_file = Path(".env")
-    if env_file.exists():
-        with open(env_file, 'r', encoding='utf-8') as f:
-            for line in f:
-                line = line.strip()
-                if line and not line.startswith('#') and '=' in line:
-                    key, value = line.split('=', 1)
-                    os.environ[key.strip()] = value.strip()
+# Add prompts directory to Python path for importing prompt_loader
+sys.path.insert(0, str(Path(__file__).parent.parent / "prompts"))
+from prompt_loader import PromptLoader, PromptContextBuilder
 
 # 加载 .env 文件中的环境变量
-load_env_variables()
+load_dotenv()
 
 # 配置 Gemini API
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
@@ -59,25 +53,6 @@ def load_file_content(file_path: str) -> str:
         sys.exit(1)
 
 
-def load_prompt_template(template_path: str) -> str:
-    """加载提示词模板"""
-    template_content = load_file_content(template_path)
-
-    # 移除 markdown 标记
-    if "```text" in template_content:
-        template_content = template_content.replace("```text", "").replace("```", "")
-
-    return template_content.strip()
-
-
-def build_full_prompt(template: str, question_bank: str, teacher_transcript: str, student_asr: str) -> str:
-    """构建完整的提示词"""
-    # 提取模板中的占位符
-    template = template.replace("{{在此处粘贴题库 JSON}}", question_bank)
-    template = template.replace("{{在此处粘贴老师音频转录文本}}", teacher_transcript)
-    template = template.replace("{{在此处粘贴学生音频转录文本}}", student_asr)
-
-    return template
 
 
 def extract_text_from_asr_json(asr_json_path: str) -> str:
@@ -103,16 +78,35 @@ def extract_text_from_asr_json(asr_json_path: str) -> str:
         sys.exit(1)
 
 
-def call_gemini_api(prompt: str, system_instruction: str = None) -> str:
+def call_gemini_api(prompt: str, system_instruction: str = None, verbose: bool = False) -> str:
     """调用 Gemini API"""
     max_retries = 5
     response = None
 
     for attempt in range(max_retries):
         try:
-            print(f"📤 尝试 {attempt + 1}/{max_retries} - 发送提示词长度: {len(prompt)} 字符")
-            if attempt == 0:
-                print(f"📤 提示词预览: {prompt[:200]}...")
+            if verbose:
+                print(f"📤 尝试 {attempt + 1}/{max_retries} - 发送提示词长度: {len(prompt)} 字符")
+
+                # 打印完整的 System Prompt
+                if attempt == 0:
+                    print("\n" + "="*80)
+                    print("🔍 SYSTEM PROMPT (完整内容):")
+                    print("="*80)
+                    if system_instruction:
+                        print(system_instruction)
+                    else:
+                        print("(无 system instruction)")
+                    print("="*80)
+
+                    # 打印完整的 User Prompt
+                    print("\n" + "="*80)
+                    print("🔍 USER PROMPT (完整内容):")
+                    print("="*80)
+                    print(prompt)
+                    print("="*80 + "\n")
+            else:
+                print(f"📤 尝试 {attempt + 1}/{max_retries}...")
 
             # 创建配置对象
             config_kwargs = {
@@ -132,15 +126,17 @@ def call_gemini_api(prompt: str, system_instruction: str = None) -> str:
             )
 
             # 成功收到响应
-            print(f"📥 收到响应 (尝试 {attempt + 1})")
-            print(f"   候选结果数量: {len(response.candidates) if response.candidates else 0}")
+            if verbose:
+                print(f"📥 收到响应 (尝试 {attempt + 1})")
+                print(f"   候选结果数量: {len(response.candidates) if response.candidates else 0}")
             break
 
         except Exception as e:
-            print(f"⚠️  尝试 {attempt + 1} 失败: {e}")
+            if verbose:
+                print(f"⚠️  尝试 {attempt + 1} 失败: {e}")
             if attempt < max_retries - 1:
-                print(f"   等待 5 秒后重试...")
-                import time
+                if verbose:
+                    print(f"   等待 5 秒后重试...")
                 time.sleep(5)
                 continue
             else:
@@ -154,27 +150,28 @@ def call_gemini_api(prompt: str, system_instruction: str = None) -> str:
     if response.candidates and len(response.candidates) > 0:
         candidate = response.candidates[0]
 
-        # 输出完整调试信息
-        print(f"🔍 完整调试信息:")
-        print(f"   finish_reason: {candidate.finish_reason}")
-        if hasattr(candidate, 'finish_reason'):
-            print(f"   finish_reason (enum): {candidate.finish_reason}")
-            if hasattr(candidate.finish_reason, 'name'):
-                print(f"   finish_reason.name: {candidate.finish_reason.name}")
-            if hasattr(candidate.finish_reason, 'value'):
-                print(f"   finish_reason.value: {candidate.finish_reason.value}")
+        # 输出完整调试信息（仅当 verbose 时）
+        if verbose:
+            print(f"🔍 完整调试信息:")
+            print(f"   finish_reason: {candidate.finish_reason}")
+            if hasattr(candidate, 'finish_reason'):
+                print(f"   finish_reason (enum): {candidate.finish_reason}")
+                if hasattr(candidate.finish_reason, 'name'):
+                    print(f"   finish_reason.name: {candidate.finish_reason.name}")
+                if hasattr(candidate.finish_reason, 'value'):
+                    print(f"   finish_reason.value: {candidate.finish_reason.value}")
 
-        # 检查安全评级
-        if hasattr(candidate, 'safety_ratings') and candidate.safety_ratings:
-            print(f"   安全评级详情:")
-            for rating in candidate.safety_ratings:
-                print(f"     - {rating.category}: {rating.probability} (blocked: {getattr(rating, 'blocked', 'N/A')})")
+            # 检查安全评级
+            if hasattr(candidate, 'safety_ratings') and candidate.safety_ratings:
+                print(f"   安全评级详情:")
+                for rating in candidate.safety_ratings:
+                    print(f"     - {rating.category}: {rating.probability} (blocked: {getattr(rating, 'blocked', 'N/A')})")
 
-        # 检查内容
-        print(f"   候选内容: {candidate.content}")
-        print(f"   响应文本属性: {hasattr(response, 'text')}")
-        if hasattr(response, 'text'):
-            print(f"   response.text: {repr(response.text)}")
+            # 检查内容
+            print(f"   候选内容: {candidate.content}")
+            print(f"   响应文本属性: {hasattr(response, 'text')}")
+            if hasattr(response, 'text'):
+                print(f"   response.text: {repr(response.text)}")
 
         # 处理不同的完成原因
         if hasattr(candidate, 'finish_reason') and candidate.finish_reason:
@@ -286,57 +283,6 @@ def create_simple_response(prompt: str) -> str:
         return "[]"
 
 
-def create_fallback_response(prompt: str) -> str:
-    """创建备用响应"""
-    print("🔄 使用本地解析方法...")
-
-    try:
-        # 尝试从提示词中提取题库信息并生成基础响应
-        import re
-
-        # 从提示词中提取题库
-        question_bank_match = re.search(r'题库.*?```json\s*(.*?)\s*```', prompt, re.DOTALL)
-        if question_bank_match:
-            question_bank_json = question_bank_match.group(1)
-            question_bank = json.loads(question_bank_json)
-
-            # 创建基础响应结构
-            response = []
-            for i, item in enumerate(question_bank, 1):
-                response.append({
-                    "card_index": i,
-                    "问题": item.get("问题", ""),
-                    "学生回答": "未作答",  # 默认标记为未作答
-                    "答案": item.get("答案", "")
-                })
-
-            print("✅ 生成了备用响应（所有问题标记为未作答）")
-            return json.dumps(response, ensure_ascii=False, indent=2)
-
-        return "[]"
-
-    except Exception as fallback_error:
-        print(f"❌ 备用方法也失败: {fallback_error}")
-        return "[]"
-
-
-def save_result(result: str, output_path: str):
-    """保存结果到文件"""
-    try:
-        # 确保输出目录存在
-        output_dir = Path(output_path).parent
-        output_dir.mkdir(parents=True, exist_ok=True)
-
-        with open(output_path, 'w', encoding='utf-8') as f:
-            f.write(result)
-
-        print(f"✅ 结果已保存到: {output_path}")
-
-    except Exception as e:
-        print(f"❌ 错误: 保存文件时出错 - {e}")
-        sys.exit(1)
-
-
 # ===== 数据集和学生发现辅助函数 =====
 
 def parse_dataset_name(dataset_name: str):
@@ -429,6 +375,42 @@ def extract_progress_info(question_bank_path: str) -> str:
     return ""
 
 
+def find_question_bank(shared_context_dir: Path, dataset_name: str = None) -> tuple:
+    """
+    查找题库文件（支持多种模式和位置）
+
+    搜索顺序:
+    1. 在指定的 shared_context_dir 中搜索 (默认: archive/{dataset}/_shared_context)
+    2. 未来支持: /questionbank 目录中按数据集名称组织的题库
+
+    支持的文件模式（按优先级）:
+    - R3-14-D4*.json
+    - R1-65*.json
+    - R*.json (排除 vocabulary 文件)
+
+    Args:
+        shared_context_dir: 题库所在目录 (通常是 archive/{dataset}/_shared_context)
+        dataset_name: 数据集名称（用于未来支持 /questionbank 路径）
+
+    Returns:
+        (question_bank_path, question_bank_filename) 元组
+        如果未找到返回 (None, None)
+    """
+    # 首先在 shared_context_dir 中搜索
+    if shared_context_dir.exists():
+        for pattern in ["R3-14-D4*.json", "R1-65*.json", "R*.json"]:
+            for file in shared_context_dir.glob(pattern):
+                if file.is_file() and "vocabulary" not in file.name.lower():
+                    return file, file.name
+
+    # 未来支持: 从 /questionbank 目录搜索
+    # 这个逻辑保留用于将来实现，当用户将题库从 archive/_shared_context 迁移到 /questionbank 时
+    # 例如: /questionbank/{dataset_name}/ 或 /questionbank/shared/
+    # 目前该功能尚未激活
+
+    return None, None
+
+
 def find_asr_file(student_dir: Path) -> Path:
     """
     查找学生目录中的 ASR 结果文件
@@ -469,7 +451,7 @@ def should_process_student(student_dir: Path) -> bool:
     return not output_file.exists()
 
 
-def process_student_annotations(dataset_name: str, student_name: str) -> dict:
+def process_student_annotations(dataset_name: str, student_name: str, verbose: bool = False) -> dict:
     """
     处理单个学生的回答提取
 
@@ -486,23 +468,9 @@ def process_student_annotations(dataset_name: str, student_name: str) -> dict:
         dataset_path = project_root / "archive" / dataset_name
         student_dir = dataset_path / student_name
 
-        # 查找必要文件
+        # 查找题库文件
         shared_context = dataset_path / "_shared_context"
-        # 提示词模板相对于脚本位置
-        script_dir = Path(__file__).parent
-        prompt_template_path = script_dir.parent / "prompts" / "annotation.txt"
-
-        # 显式查找题库文件（支持 R3-14-D4*.json 和 R1-65*.json 等模式）
-        question_bank_path = None
-
-        # 优先查找 R3-14-D4 和 R1-65 等常见题库模式
-        for pattern in ["R3-14-D4*.json", "R1-65*.json", "R*.json"]:
-            for file in shared_context.glob(pattern):
-                if file.is_file() and "vocabulary" not in file.name.lower():
-                    question_bank_path = file
-                    break
-            if question_bank_path:
-                break
+        question_bank_path, question_bank_filename = find_question_bank(shared_context)
 
         if not question_bank_path:
             return {
@@ -510,19 +478,6 @@ def process_student_annotations(dataset_name: str, student_name: str) -> dict:
                 "status": "error",
                 "error": "未找到题库文件 (R*.json，不包括 vocabulary)"
             }
-
-        # 查找对应的转录文件（可选）
-        teacher_transcript_path = None
-        possible_names = [
-            f"{question_bank_path.stem}_transcription.txt",
-            f"{question_bank_path.stem}_merged_transcription.txt",
-            "R3-14-D4_transcription.txt"
-        ]
-        for name in possible_names:
-            path = shared_context / name
-            if path.exists():
-                teacher_transcript_path = path
-                break
 
         asr_file = find_asr_file(student_dir)
 
@@ -534,47 +489,33 @@ def process_student_annotations(dataset_name: str, student_name: str) -> dict:
             }
 
         # 加载所有内容
-        prompt_template = load_prompt_template(prompt_template_path)
-
-        if teacher_transcript_path:
-            teacher_transcript = load_file_content(str(teacher_transcript_path))
-        else:
-            teacher_transcript = ""  # 无转录文件时使用空字符串
-
         question_bank = load_file_content(str(question_bank_path))
         student_asr_text = extract_text_from_asr_json(str(asr_file))
 
-        # 构建系统指令
-        system_instruction = """# 角色
-你是一个精通数据处理和文本分析的 AI 助手。
+        # 初始化提示词加载器
+        script_dir = Path(__file__).parent
+        prompt_dir = script_dir.parent / "prompts" / "annotation"
 
-# 背景信息
-1. "老师音频转录文本"是一个模板，遵循【问题】-【停顿】-【答案】的固定模式。
-2. "学生音频转录文本"是实际发生的录音。学生在听老师念出【问题】后，会在【停顿】期间尝试自己回答。之后，老师会念出【答案】。
-3. 因此，在"学生音频转录文本"中，出现在某个【问题】和对应的【答案】之间的文本，就是学生的回答。
-最后的评分逻辑按照检测出的errors错误来评级：
-**A级:** 0 个 `NO_ANSWER` / 'MEANING_ERROR'
-**B级:** 1-2 个 `NO_ANSWER`/'MEANING_ERROR'
-**C级:** 3个及以上 `NO_ANSWER`/'MEANING_ERROR'
-# 注意事项
-1. 有的时候问题可能因为学生漏录，不会出现，只要检测到重复两次的答案即可进行定位，当出现两次答案时，前一个答案为学生回答'detected_answer'，后一个答案为教师公布的答案'expected_answer'。
-2. 如果错误超过5个，请花更长时间进行复核：是否是定位学生回答的范围错误？两次重复的答案是否取的是前一次的答案作为学生回答？
-"""
+        try:
+            prompt_loader = PromptLoader(str(prompt_dir))
+        except (FileNotFoundError, json.JSONDecodeError) as e:
+            raise RuntimeError(f"Failed to load prompt templates: {e}")
 
-        # 如果没有转录文件，使用空字符串
-        if not teacher_transcript_path:
-            teacher_transcript = ""
-
-        # 构建完整提示词
-        full_prompt = build_full_prompt(
-            prompt_template,
-            question_bank,
-            teacher_transcript,
-            student_asr_text
+        # 构建提示词上下文
+        prompt_context = PromptContextBuilder.build(
+            question_bank_json=question_bank,
+            student_asr_text=student_asr_text,
+            dataset_name=dataset_name,
+            student_name=student_name,
+            metadata=prompt_loader.metadata
         )
 
+        # 获取系统指令和渲染用户提示词
+        system_instruction = prompt_loader.system_instruction
+        full_prompt = prompt_loader.render_user_prompt(prompt_context)
+
         # 调用 Gemini API
-        result = call_gemini_api(full_prompt, system_instruction)
+        result = call_gemini_api(full_prompt, system_instruction, verbose=verbose)
 
         # 清理结果
         result = result.strip()
@@ -603,15 +544,54 @@ def process_student_annotations(dataset_name: str, student_name: str) -> dict:
             final_grade = 'C'
             mistake_count = {"errors": 0}
 
+        # 获取当前 git commit hash
+        git_commit = "unknown"
+        try:
+            import subprocess
+            result_git = subprocess.run(
+                ["git", "rev-parse", "HEAD"],
+                cwd=project_root,
+                capture_output=True,
+                text=True,
+                timeout=5
+            )
+            if result_git.returncode == 0:
+                git_commit = result_git.stdout.strip()
+        except Exception:
+            pass  # 如果 git 命令失败，继续使用 "unknown"
+
         # 保存提示词日志
         prompt_log_path = student_dir / "4_llm_prompt_log.txt"
         try:
             with open(prompt_log_path, 'w', encoding='utf-8') as f:
-                f.write("=== 学生回答提取 - 完整提示词 ===\n\n")
+                f.write("=== 学生回答提取 - 完整提示词日志 ===\n\n")
                 f.write(f"生成时间: {datetime.now().isoformat()}\n")
-                f.write(f"提示词长度: {len(full_prompt)} 字符\n")
-                f.write("=" * 50 + "\n\n")
+                f.write(f"Git Commit: {git_commit}\n")
+                f.write(f"题库文件: {question_bank_filename}\n")
+                f.write(f"System Instruction 长度: {len(system_instruction)} 字符\n")
+                f.write(f"User Prompt 长度: {len(full_prompt)} 字符\n")
+                f.write("=" * 80 + "\n\n")
+
+                # 记录 Prompt 元数据
+                f.write("=" * 80 + "\n")
+                f.write("PROMPT METADATA (提示词元数据)\n")
+                f.write("=" * 80 + "\n")
+                f.write(json.dumps(prompt_loader.metadata, ensure_ascii=False, indent=2))
+                f.write("\n\n")
+
+                # 记录 System Instruction
+                f.write("=" * 80 + "\n")
+                f.write("SYSTEM INSTRUCTION (系统指令)\n")
+                f.write("=" * 80 + "\n")
+                f.write(system_instruction)
+                f.write("\n\n")
+
+                # 记录 User Prompt
+                f.write("=" * 80 + "\n")
+                f.write("USER PROMPT (用户提示词)\n")
+                f.write("=" * 80 + "\n")
                 f.write(full_prompt)
+                f.write("\n")
         except Exception as e:
             print(f"⚠️  保存提示词失败: {e}")
 
@@ -710,12 +690,14 @@ def create_batch_report(dataset_name: str, student_results: list) -> dict:
     return report
 
 
-def process_all_students(max_workers: int = 3):
+def process_all_students(max_workers: int = 3, verbose: bool = False, force: bool = False):
     """
     处理所有数据集中的所有学生
 
     Args:
         max_workers: 并行处理的最大线程数
+        verbose: 是否显示详细信息
+        force: 是否强制重新处理已处理过的学生
     """
     print("🚀 开始批量处理所有学生回答...")
     print("=" * 60)
@@ -730,20 +712,22 @@ def process_all_students(max_workers: int = 3):
         print(f"处理数据集: {dataset_name}")
         print(f"{'='*60}")
 
-        process_dataset_with_parallel(dataset_name, max_workers)
+        process_dataset_with_parallel(dataset_name, max_workers, verbose=verbose, force=force)
 
     print(f"\n{'='*60}")
     print("✅ 所有数据集处理完成!")
     print(f"{'='*60}")
 
 
-def process_dataset_with_parallel(dataset_name: str, max_workers: int = 3):
+def process_dataset_with_parallel(dataset_name: str, max_workers: int = 3, verbose: bool = False, force: bool = False):
     """
     使用并行处理处理整个数据集
 
     Args:
         dataset_name: 数据集名称
         max_workers: 并行处理的最大线程数
+        verbose: 是否显示详细信息
+        force: 是否强制重新处理已处理过的学生
     """
     students = find_students_in_dataset(dataset_name)
     if not students:
@@ -752,7 +736,7 @@ def process_dataset_with_parallel(dataset_name: str, max_workers: int = 3):
 
     print(f"  📋 找到 {len(students)} 个学生")
 
-    # 检查是否存在已处理过的学生（重复处理检查）
+    # 检查是否存在已处理过的学生
     project_root = Path(__file__).parent.parent
     already_processed = []
     students_to_process = []
@@ -765,27 +749,13 @@ def process_dataset_with_parallel(dataset_name: str, max_workers: int = 3):
         else:
             already_processed.append(student_name)
 
-    # 如果存在已处理过的学生，报错并停止
+    # 处理已处理过的学生
     if already_processed:
-        error_msg = f"""
-❌ 错误: 检测到已处理过的学生，无法继续处理！
-
-已处理过的学生 ({len(already_processed)}):
-  {', '.join(already_processed)}
-
-原因: 检测到这些学生已存在 4_llm_annotation.json 文件
-
-解决方案:
-  1. 如果要重新处理整个班级，请删除所有学生的 4_llm_annotation.json:
-     rm archive/{dataset_name}/*/4_llm_annotation.json
-
-  2. 如果要继续处理其他班级，请使用:
-     python3 scripts/Gemini_annotation.py --dataset <其他班级名>
-
-⚠️  为了数据一致性，不允许部分重新处理！
-        """.strip()
-        print(error_msg)
-        sys.exit(1)
+        if force:
+            print(f"  ⚠️  检测到 {len(already_processed)} 个已处理的学生，使用 --force 重新处理")
+            students_to_process.extend(already_processed)
+        else:
+            print(f"  ℹ️  跳过 {len(already_processed)} 个已处理的学生（使用 --force 重新处理）")
 
     if not students_to_process:
         print("  ✓ 所有学生都已处理过")
@@ -799,7 +769,7 @@ def process_dataset_with_parallel(dataset_name: str, max_workers: int = 3):
         # 提交所有任务
         future_to_student = {}
         for student_name in students_to_process:
-            future = executor.submit(process_student_annotations, dataset_name, student_name)
+            future = executor.submit(process_student_annotations, dataset_name, student_name, verbose=verbose)
             future_to_student[future] = student_name
 
         # 收集结果
@@ -887,6 +857,18 @@ def main():
         help='并行处理的最大线程数 (默认: 3)'
     )
 
+    parser.add_argument(
+        '--verbose',
+        action='store_true',
+        help='显示详细的调试信息'
+    )
+
+    parser.add_argument(
+        '--force',
+        action='store_true',
+        help='强制重新处理所有学生，即使已处理过'
+    )
+
     args = parser.parse_args()
 
     # 验证参数依赖关系
@@ -905,7 +887,7 @@ def main():
             print(f"🎯 处理单个学生: {args.dataset}/{args.student}")
             print("=" * 50)
 
-            result = process_student_annotations(args.dataset, args.student)
+            result = process_student_annotations(args.dataset, args.student, verbose=args.verbose)
 
             if result.get("status") == "success":
                 print(f"\n✅ {args.student} 处理成功!")
@@ -916,10 +898,10 @@ def main():
 
         elif args.dataset:
             # 处理整个数据集
-            process_dataset_with_parallel(args.dataset, args.workers)
+            process_dataset_with_parallel(args.dataset, args.workers, verbose=args.verbose, force=args.force)
         else:
             # 处理所有数据集（后向兼容）
-            process_all_students(args.workers)
+            process_all_students(args.workers, verbose=args.verbose, force=args.force)
 
     except Exception as e:
         print(f"❌ 错误: {str(e)}")
