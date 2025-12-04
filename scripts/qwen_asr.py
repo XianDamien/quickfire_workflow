@@ -1,8 +1,17 @@
 """
-Qwen3-ASR provider for audio transcription with vocabulary context.
-Uses custom vocabulary from manifest to improve ASR accuracy.
+Qwen3-ASR 音频转写系统 - 支持多种输入模式
 
-支持命令行批量转写功能：
+【输入来源】
+1. 标准模式：基于 archive/<dataset>/<student>/ 目录结构
+   - 音频来源：archive/<dataset>/<student>/1_input_audio.* 或 <StudentName>.*
+   - 使用函数：process_student() / process_dataset()
+
+【输出结构】
+统一输出到项目根目录的 asr/ 目录：
+- asr/{学生名字}.json：Qwen ASR 转写结果（标准 API 响应格式）
+- asr/{学生名字}_metadata.json：元数据（数据集、学生、音频文件、处理时间）
+
+【命令行用法】
   python3 qwen_asr.py                                    # 转写所有数据集
   python3 qwen_asr.py --dataset Zoe51530-9.8            # 转写指定数据集
   python3 qwen_asr.py --dataset Zoe51530-9.8 --student Oscar  # 转写单个学生
@@ -16,6 +25,7 @@ import argparse
 import subprocess
 import tempfile
 import shutil
+import datetime
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import dashscope
 from pathlib import Path
@@ -877,17 +887,19 @@ def find_audio_file(student_dir: Path) -> Optional[Path]:
     return None
 
 
-def should_process(student_dir: Path) -> bool:
+def should_process(student_name: str) -> bool:
     """
     检查学生是否应该被处理（即是否已存在输出文件）。
 
     Args:
-        student_dir: 学生目录路径
+        student_name: 学生名称
 
     Returns:
         True 如果应该处理（文件不存在），False 如果应该跳过（文件存在）
     """
-    output_file = student_dir / "2_qwen_asr.json"
+    project_root = Path(__file__).parent.parent
+    asr_dir = project_root / "asr"
+    output_file = asr_dir / f"{student_name}.json"
     return not output_file.exists()
 
 
@@ -922,7 +934,7 @@ def process_student(dataset_name: str, student_name: str, api_key: Optional[str]
             return 0
 
         # 检查是否应该处理
-        if not should_process(student_dir):
+        if not should_process(student_name):
             print(f"  ✓ {student_name}: 已处理过（跳过）")
             return 0
 
@@ -932,6 +944,11 @@ def process_student(dataset_name: str, student_name: str, api_key: Optional[str]
         except ValueError as e:
             print(f"❌ 错误：{str(e)}")
             return 1
+
+        # 创建输出目录
+        project_root = Path(__file__).parent.parent
+        asr_dir = project_root / "asr"
+        asr_dir.mkdir(parents=True, exist_ok=True)
 
         # 查找词汇文件（优先级：vocabulary.json > R*.json > R*.csv > *.csv）
         shared_context = student_dir.parent / "_shared_context"
@@ -946,15 +963,27 @@ def process_student(dataset_name: str, student_name: str, api_key: Optional[str]
         print(f"  ⟳ {student_name}: 处理音频...")
         response = provider.transcribe_and_save_with_segmentation(
             input_audio_path=str(audio_file),
-            output_dir=str(student_dir),
+            output_dir=str(asr_dir),
             vocabulary_path=vocab_file,
-            output_filename="2_qwen_asr.json",
+            output_filename=f"{student_name}.json",
             language="zh",
             segment_duration=180,  # 3 分钟
             max_workers=3,
         )
 
-        print(f"  ✓ {student_name}: 已保存到 2_qwen_asr.json")
+        # 保存元数据
+        metadata = {
+            "dataset": dataset_name,
+            "student": student_name,
+            "audio_file": audio_file.name,
+            "processed_at": str(datetime.datetime.now().isoformat()),
+        }
+
+        metadata_file = asr_dir / f"{student_name}_metadata.json"
+        with open(metadata_file, 'w', encoding='utf-8') as f:
+            json.dump(metadata, f, ensure_ascii=False, indent=2)
+
+        print(f"  ✓ {student_name}: 已保存到 asr/{student_name}.json")
         return 0
 
     except Exception as e:
@@ -1013,25 +1042,42 @@ def process_dataset(dataset_name: str, api_key: Optional[str] = None) -> Tuple[i
                 continue
 
             # 检查是否应该处理
-            if not should_process(student_dir):
+            if not should_process(student_name):
                 print(f"  ✓ {student_name}: 已处理过（跳过）")
                 total_skipped += 1
                 continue
+
+            # 创建输出目录
+            project_root = Path(__file__).parent.parent
+            asr_dir = project_root / "asr"
+            asr_dir.mkdir(parents=True, exist_ok=True)
 
             # 转写并保存（支持长音频分段处理）
             try:
                 print(f"  ⟳ {student_name}: 处理音频...")
                 response = provider.transcribe_and_save_with_segmentation(
                     input_audio_path=str(audio_file),
-                    output_dir=str(student_dir),
+                    output_dir=str(asr_dir),
                     vocabulary_path=vocab_file,
-                    output_filename="2_qwen_asr.json",
+                    output_filename=f"{student_name}.json",
                     language="zh",
                     segment_duration=180,  # 3 分钟
                     max_workers=3,
                 )
 
-                print(f"  ✓ {student_name}: 已保存到 2_qwen_asr.json")
+                # 保存元数据
+                metadata = {
+                    "dataset": dataset_name,
+                    "student": student_name,
+                    "audio_file": audio_file.name,
+                    "processed_at": str(datetime.datetime.now().isoformat()),
+                }
+
+                metadata_file = asr_dir / f"{student_name}_metadata.json"
+                with open(metadata_file, 'w', encoding='utf-8') as f:
+                    json.dump(metadata, f, ensure_ascii=False, indent=2)
+
+                print(f"  ✓ {student_name}: 已保存到 asr/{student_name}.json")
                 total_processed += 1
 
             except Exception as e:
