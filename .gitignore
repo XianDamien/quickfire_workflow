@@ -82,3 +82,42 @@ archive/
 
 # Question bank MP4 files
 1_input_mp4/
+
+# -----------------------------------------------------------------------------
+# Business / customer data & generated artifacts (avoid accidental leaks)
+# -----------------------------------------------------------------------------
+# Local tool settings / histories
+.claude/settings.local.json
+scripts/.claude/
+.serena/cache/
+.serena/memories/
+
+# Data inputs/outputs (often contain user audio, transcripts, reports, etc.)
+backend_input/
+backend_output/
+asr/
+asr_timestamp/
+questionbank/
+products/
+homework_submission/
+
+# Common large/sensitive artifacts
+archive_reportjson.zip
+*.mp4
+*.mov
+*.zip
+*.7z
+*.rar
+
+# Common Python caches/reports
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.coverage
+coverage/
+htmlcov/
+
+# API client scratch files (often include tokens / real request payloads)
+*.http
+*.rest
+*.har

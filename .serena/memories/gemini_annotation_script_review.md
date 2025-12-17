@@ -9,13 +9,17 @@
 - **修复**: 移除所有硬编码评分逻辑，直接返回 Gemini 的结果
 - **验证**: 如果 Gemini 不返回有效等级会抛出 ValueError
 
-### ✅ 修复2: 题库加载显式化
+### ✅ 修复2: 题库加载统一为 /questionbank/ 目录（最新重构）
 - **文件**: scripts/Gemini_annotation.py
-- **位置**: 第494-506行
-- **问题**: 使用通配符遍历，无法确定具体加载哪个文件
-- **修复前**: `for pattern in ["*.json", "*.csv"]: for file in shared_context.glob(pattern):`
-- **修复后**: `for file in shared_context.glob("R3-14-D4*.json"):`
-- **结果**: 显式查找题库文件，避免选错
+- **位置**: `find_questionbank_file()` 函数
+- **问题**: 原使用 _shared_context 目录（已弃用）
+- **修复**: 统一从 `/questionbank/` 目录查找题库文件
+- **优先级**:
+  1. `R3-14-D4*.json` (特定班级题库)
+  2. `R1-65*.json` (备用班级题库)
+  3. `R*.json` (任意题库)
+  4. 排除 vocabulary 相关文件
+- **结果**: 显式查找题库文件，避免选错，无依赖 _shared_context
 
 ### ✅ 修复3: 保存每个学生的 4_llm_annotation.json
 - **文件**: scripts/Gemini_annotation.py
@@ -83,7 +87,7 @@ archive/Zoe51530-9.8/
 
 | 检查项 | 状态 | 说明 |
 |------|------|------|
-| 题库加载 | ✅ | 显式查找 R3-14-D4*.json |
+| 题库加载 | ✅ | 统一查找 /questionbank/ 内 R3-14-D4*/R1-65*/R*.json |
 | 评分逻辑 | ✅ | 完全由 Gemini 负责 |
 | 批量报告 | ✅ | 拼接所有学生结果 |
 | 并行处理 | ✅ | ThreadPoolExecutor (3 workers) |

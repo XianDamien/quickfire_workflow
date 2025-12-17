@@ -2,24 +2,86 @@
 
 ## 环境设置
 ```bash
-export DASHSCOPE_API_KEY="sk-xxxxx"
+export DASHSCOPE_API_KEY="sk-xxxxx"  # Qwen ASR API 密钥
+export GEMINI_API_KEY="sk-xxxxx"     # Gemini API 密钥
 ```
 
 ## 核心命令
-```bash
-# 主评测引擎（文本模式）
-python3 scripts/qwen3.py
 
-# 音频转写辅助（多模态模式，需参数）
-python3 scripts/captioner_qwen3.py <audio_file_path>
+### ASR 转写 (qwen_asr.py)
+
+**标准模式**（基于 archive 目录结构）：
+```bash
+# 转写所有数据集
+python3 scripts/qwen_asr.py
+
+# 转写指定数据集的所有学生
+python3 scripts/qwen_asr.py --dataset Zoe51530-9.8
+
+# 转写指定学生
+python3 scripts/qwen_asr.py --dataset Zoe51530-9.8 --student Oscar
 ```
 
-## 文件路径配置
-在脚本中修改以下变量：
-```python
-qb_filepath = "./data/R1-65(1).csv"           # 题库
-asr_filepath = "./data/caption_result.txt"    # ASR纯文本结果
-audio_file_path = "file://./audio/sample.mp3" # 音频文件(多模态)
+**✨ 文件名解析模式**（新增，无需目录结构）：
+```bash
+# 直接处理单个音频文件，自动从文件名解析班级、日期、进度、学生
+python3 scripts/qwen_asr.py --file /path/to/Abby61000_2025-10-30_R1-27-D2_Benjamin.mp3
+
+# 指定输出目录
+python3 scripts/qwen_asr.py --file /path/to/audio.mp3 --output /path/to/output
+
+# 指定 API 密钥
+python3 scripts/qwen_asr.py --file /path/to/audio.mp3 --api-key YOUR_KEY
+```
+
+### Gemini 评分 (Gemini_annotation.py)
+```bash
+# 处理所有数据集
+python3 scripts/Gemini_annotation.py
+
+# 处理指定数据集
+python3 scripts/Gemini_annotation.py --dataset Zoe51530-9.8
+
+# 处理指定学生
+python3 scripts/Gemini_annotation.py --dataset Zoe51530-9.8 --student Oscar
+
+# 指定并发线程数
+python3 scripts/Gemini_annotation.py --dataset Zoe51530-9.8 --workers 5
+
+# 强制重新处理（跳过已处理检查）
+python3 scripts/Gemini_annotation.py --dataset Zoe51530-9.8 --force
+```
+
+## 数据目录结构
+
+### archive 目录（标准模式）
+```
+archive/
+├── <dataset>/
+│   └── <student>/
+│       ├── 1_input_audio.mp3          # 输入音频
+│       ├── 2_qwen_asr.json            # ASR 输出
+│       ├── 2_qwen_asr_metadata.json   # ASR 元数据
+│       ├── 4_llm_annotation.json      # Gemini 评分
+│       └── 4_llm_prompt_log.txt       # 提示词日志
+```
+
+### questionbank 目录（题库来源）
+```
+questionbank/
+├── R1-27-D2*.json
+├── R1-65*.json
+├── R3-14-D4*.json
+└── R*.json
+```
+
+### prompts 目录（提示词模板）
+```
+prompts/
+└── annotation/
+    ├── system.md         # 系统指令
+    ├── user.txt          # Jinja2 模板
+    └── metadata.json     # 版本元数据
 ```
 
 ## 常见修改

@@ -30,29 +30,39 @@
 **输出示例:**
 ```json
 {
-  "final_grade_suggestion": "A",
-  "mistake_count": {
-    "errors": 0，
-  },
-  "annotations": [
-    {
-      "card_index": 1,
-      "question": "不",
-      "expected_answer": "not",
-      "related_student_utterance": {
-        "detected_text": null,
-        "issue_type":"NO_ANSWER"
-      }
+    "final_grade_suggestion": "B",
+    "mistake_count": {
+      "errors": 2
     },
-    {
-      "card_index": 1,
-      "question": "双倍的；双的",
-      "expected_answer": "double",
-      "related_student_utterance": {
-        "detected_text": "double",
-        "issue_type": null
+    "annotations": [
+      {
+        "card_index": 1,
+        "question": "不",
+        "expected_answer": "not",
+        "related_student_utterance": {
+          "detected_text": null,
+          "issue_type":"NO_ANSWER"
+        }
+      },
+      {
+        "card_index": 2,
+        "question": "双倍的；双的",
+        "expected_answer": "double",
+        "related_student_utterance": {
+          "detected_text": "double",
+          "issue_type": null
+        }
+      },
+      {
+        "card_index": 3,
+        "question": "list，及物动词",
+        "expected_answer": "把……列成表；列举",
+        "related_student_utterance": {
+          "detected_text": "清单，目录。",
+          "issue_type": "MEANING_ERROR"
+        }
       }
-
-]
+    ]
+  }
 ```
 
