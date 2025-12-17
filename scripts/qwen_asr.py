@@ -2,18 +2,28 @@
 Qwen3-ASR 音频转写系统 - 支持多种输入模式
 
 【输入来源】
-1. 标准模式：基于 archive/<dataset>/<student>/ 目录结构
+1. 新模式：backend_input/ 目录中的文件（推荐）
+   - 文件格式：{ClassCode}_{Date}_{QuestionBank}_{StudentName}.mp3
+   - 例如：Abby61000_2025-10-30_R1-27-D2_Benjamin.mp3
+   - 题库自动从 questionbank/ 目录查找
+
+2. 旧模式：archive/<dataset>/<student>/ 目录结构（向后兼容）
    - 音频来源：archive/<dataset>/<student>/1_input_audio.* 或 <StudentName>.*
    - 使用函数：process_student() / process_dataset()
 
 【输出结构】
 统一输出到项目根目录的 asr/ 目录：
 - asr/{学生名字}.json：Qwen ASR 转写结果（标准 API 响应格式）
-- asr/{学生名字}_metadata.json：元数据（数据集、学生、音频文件、处理时间）
+- asr/{学生名字}_metadata.json：元数据（班级、日期、题库、处理时间）
 
 【命令行用法】
-  python3 qwen_asr.py                                    # 转写所有数据集
-  python3 qwen_asr.py --dataset Zoe51530-9.8            # 转写指定数据集
+  # 新模式
+  python3 qwen_asr.py backend_input/Abby61000_2025-10-30_R1-27-D2_Benjamin.mp3  # 单个文件
+  python3 qwen_asr.py --class Abby61000 --date 2025-10-30  # 批量处理
+  python3 qwen_asr.py --all  # 处理所有文件
+
+  # 旧模式（向后兼容）
+  python3 qwen_asr.py --dataset Zoe51530-9.8  # 转写指定数据集
   python3 qwen_asr.py --dataset Zoe51530-9.8 --student Oscar  # 转写单个学生
 """
 
@@ -21,6 +31,7 @@ import os
 import sys
 import json
 import csv
+import re
 import argparse
 import subprocess
 import tempfile
@@ -291,79 +302,83 @@ class QwenASRProvider:
         self.model = "qwen3-asr-flash"
 
     @staticmethod
-    def load_vocabulary(vocab_path: str) -> Dict[str, list]:
+    def load_vocabulary(vocab_path: str) -> List[Dict[str, str]]:
         """
-        从 JSON 或 CSV 文件加载词汇表。
-        
+        从 JSON 文件加载词汇表（题库格式）。
+
         支持格式:
-        - JSON: [{"问题": "...", "答案": "..."}, ...] 或 {"key": ["中文", "English", ...], ...}
-        - CSV: 第1列=中文, 第2列=English (跳过表头)
-        
+        - JSON: [{"question": "...", "answer": "...", "hint": "..."}, ...]
+
         Args:
-            vocab_path: 词汇表文件路径 (.json 或 .csv)
-        
+            vocab_path: 词汇表文件路径 (.json)
+
         Returns:
-            词汇字典 {index: [问题, 答案]} 或 {index: [中文, English, ...]}
-        
+            词条列表 [{"question": "英文", "answer": "中文释义", "hint": "词性"}, ...]
+
         Raises:
             ValueError: 文件格式不支持时
         """
         file_ext = os.path.splitext(vocab_path)[1].lower()
-        
+
         if file_ext == '.json':
             # JSON 格式
             with open(vocab_path, 'r', encoding='utf-8-sig') as f:
                 data = json.load(f)
-            
-            # 处理不同的 JSON 格式
+
+            # 处理题库列表格式
             if isinstance(data, list):
-                # 题库格式：[{"问题": "...", "答案": "..."}, ...]
-                vocabulary = {}
-                for idx, item in enumerate(data):
+                vocabulary = []
+                for item in data:
                     if isinstance(item, dict):
-                        # 优先使用 "问题" 和 "答案"
-                        if "问题" in item and "答案" in item:
-                            vocabulary[str(idx)] = [
-                                item["问题"].strip(),
-                                item["答案"].strip()
-                            ]
-                        # 否则使用前两个可用的值
-                        else:
-                            values = list(item.values())
-                            if len(values) >= 2:
-                                vocabulary[str(idx)] = [
-                                    str(values[0]).strip(),
-                                    str(values[1]).strip()
-                                ]
+                        entry = {}
+                        # 提取 question, answer, hint
+                        if "question" in item:
+                            entry["question"] = item["question"].strip()
+                        elif "问题" in item:
+                            entry["question"] = item["问题"].strip()
+                        
+                        if "answer" in item:
+                            entry["answer"] = item["answer"].strip()
+                        elif "答案" in item:
+                            entry["answer"] = item["答案"].strip()
+                        
+                        if "hint" in item:
+                            entry["hint"] = item["hint"].strip()
+                        elif "提示" in item:
+                            entry["hint"] = item["提示"].strip()
+                        
+                        # 只添加包含必要字段的条目
+                        if "question" in entry and "answer" in entry:
+                            vocabulary.append(entry)
+                
                 return vocabulary
             else:
-                # 传统字典格式：{"key": ["中文", "English", ...], ...}
-                return data
-        
-        elif file_ext == '.csv':
-            # CSV 格式（题库）
-            vocabulary = {}
-            with open(vocab_path, 'r', encoding='utf-8-sig') as f:
-                reader = csv.reader(f)
-                next(reader, None)  # 跳过表头
-                
-                for idx, row in enumerate(reader):
-                    if len(row) >= 2:
-                        # row[0]=中文, row[1]=English
-                        vocabulary[str(idx)] = [row[0].strip(), row[1].strip()]
-            
-            return vocabulary
+                # 如果是字典格式，尝试转换为列表格式
+                vocabulary = []
+                for key, values in data.items():
+                    if isinstance(values, list) and len(values) >= 2:
+                        entry = {
+                            "question": values[0].strip() if len(values) > 0 else "",
+                            "answer": values[1].strip() if len(values) > 1 else "",
+                            "hint": values[2].strip() if len(values) > 2 else ""
+                        }
+                        if entry["question"] and entry["answer"]:
+                            vocabulary.append(entry)
+                return vocabulary
         
         else:
-            raise ValueError(f"不支持的文件格式: {file_ext}。仅支持 .json 和 .csv")
+            raise ValueError(f"不支持的文件格式: {file_ext}。仅支持 .json")
 
     @staticmethod
-    def build_context_text(vocabulary: Dict[str, list]) -> str:
+    def build_context_text(vocabulary: List[Dict[str, str]]) -> str:
         """
         从词汇表构建 ASR 上下文文本以优化识别。
         
         Qwen3-ASR 通过 System Message 中的上下文文本，可显著提升
         特定领域词汇（如人名、地名、产品术语）的识别准确率。
+        
+        格式：{英文单词}{词性}。{中文释义}。
+        例如："rise不及物动词。太阳、月亮等上升、上涨、起立、起床。rise名词。升高、升起、上涨、增长。"
         
         支持的上下文类型：
         - 热词列表 (分隔符任意，如逗号、分号等)
@@ -374,7 +389,7 @@ class QwenASRProvider:
         限制: 上下文总长度 ≤ 10000 Token
         
         Args:
-            vocabulary: 词汇字典 {key: [中文, English, ...]}
+            vocabulary: 词条列表 [{"question": "英文", "answer": "中文", "hint": "词性"}, ...]
         
         Returns:
             格式化的上下文文本，用于 ASR 识别优化
@@ -382,24 +397,32 @@ class QwenASRProvider:
         if not vocabulary:
             return ""
         
-        # 提取中文和英文术语
-        terms = []
-        for key, values in vocabulary.items():
-            if isinstance(values, list) and len(values) >= 2:
-                chinese_term = values[0].strip()
-                english_term = values[1].strip()
-                
-                # 双语术语对：中文(English)
-                if chinese_term and english_term:
-                    terms.append(f"{chinese_term}({english_term})")
+        # 构建词条列表
+        entries = []
+        for item in vocabulary:
+            if not isinstance(item, dict):
+                continue
+            
+            question = item.get("question", "").strip()
+            answer = item.get("answer", "").strip()
+            hint = item.get("hint", "").strip()
+            
+            if not question or not answer:
+                continue
+            
+            # 格式：{英文}{词性}。{中文释义}。
+            if hint:
+                entry = f"{question}{hint}。{answer}。"
+            else:
+                entry = f"{question}。{answer}。"
+            
+            entries.append(entry)
         
-        if not terms:
+        if not entries:
             return ""
         
-        # 构建上下文文本
-        # 格式: "Domain vocabulary: 术语1, 术语2, 术语3, ..."
-        # Qwen3-ASR 对分隔符容错性极高，支持多种格式
-        context = "Domain vocabulary: " + ", ".join(terms)
+        # 直接连接所有词条（无需额外分隔符，因为每条已有句号）
+        context = "".join(entries)
         
         return context
 
@@ -903,6 +926,226 @@ def should_process(student_name: str) -> bool:
     return not output_file.exists()
 
 
+def parse_audio_filename(filename: str) -> Optional[Dict[str, str]]:
+    """
+    解析 backend_input 音频文件名。
+
+    格式: {ClassCode}_{Date}_{QuestionBank}_{StudentName}.mp3
+    示例: Abby61000_2025-10-30_R1-27-D2_Benjamin.mp3
+
+    Args:
+        filename: 音频文件名（不含路径）
+
+    Returns:
+        包含解析字段的字典，或 None 如果格式不匹配
+    """
+    # 移除数字后缀（用于分段文件，如 *_1.mp3）
+    base_name = re.sub(r'_\d+\.mp3$', '.mp3', filename)
+
+    pattern = r'^([A-Za-z0-9]+)_(\d{4}-\d{2}-\d{2})_([A-Za-z0-9-]+)_(.+)\.mp3$'
+    match = re.match(pattern, base_name)
+
+    if not match:
+        return None
+
+    class_code, date, question_bank, student_name = match.groups()
+
+    return {
+        "class_code": class_code,
+        "date": date,
+        "question_bank": question_bank,
+        "student_name": student_name,
+        "filename": filename
+    }
+
+
+def find_questionbank_file(question_bank_code: str) -> Optional[Path]:
+    """
+    在 questionbank/ 目录中查找题库文件，支持多级 fallback。
+    """
+    project_root = Path(__file__).parent.parent
+    questionbank_dir = project_root / "questionbank"
+
+    if not questionbank_dir.exists():
+        return None
+
+    exact = questionbank_dir / f"{question_bank_code}.json"
+    if exact.exists():
+        return exact
+
+    for f in sorted(questionbank_dir.glob(f"{question_bank_code}*.json")):
+        if f.is_file():
+            return f
+
+    parts = question_bank_code.rsplit('-', 1)
+    if len(parts) == 2:
+        prefix = parts[0]
+        for f in sorted(questionbank_dir.glob(f"{prefix}-*.json")):
+            if f.is_file():
+                return f
+
+    if '-' in question_bank_code:
+        parts = question_bank_code.split('-')
+        if len(parts) >= 2:
+            short_code = f"{parts[0]}-{parts[1]}"
+            short_file = questionbank_dir / f"{short_code}.json"
+            if short_file.exists():
+                return short_file
+
+    return None
+
+
+def discover_backend_files(
+    class_code: Optional[str] = None,
+    date: Optional[str] = None,
+    student: Optional[str] = None,
+    question_bank: Optional[str] = None
+) -> List[Path]:
+    """
+    在 backend_input 目录中发现音频文件并按条件过滤。
+    """
+    project_root = Path(__file__).parent.parent
+    backend_input_dir = project_root / "backend_input"
+
+    if not backend_input_dir.exists():
+        return []
+
+    files: List[Path] = []
+    for f in backend_input_dir.glob("*.mp3"):
+        parsed = parse_audio_filename(f.name)
+        if not parsed:
+            continue
+
+        if class_code and parsed["class_code"] != class_code:
+            continue
+        if date and parsed["date"] != date:
+            continue
+        if student and student.lower() not in parsed["student_name"].lower():
+            continue
+        if question_bank and parsed["question_bank"] != question_bank:
+            continue
+
+        files.append(f)
+
+    return sorted(files)
+
+
+def process_backend_file(audio_file_path: str, api_key: Optional[str] = None) -> int:
+    """
+    处理单个 backend_input 音频文件。
+    """
+    try:
+        project_root = Path(__file__).parent.parent
+        audio_file = Path(audio_file_path)
+
+        if not audio_file.exists():
+            print(f"❌ 文件不存在: {audio_file}")
+            return 1
+
+        parsed = parse_audio_filename(audio_file.name)
+        if not parsed:
+            print(f"❌ 文件名格式无效: {audio_file.name}")
+            print("   预期格式: {ClassCode}_{Date}_{QuestionBank}_{StudentName}.mp3")
+            return 1
+
+        student_name = parsed["student_name"]
+
+        if not should_process(student_name):
+            print(f"  ✓ {student_name}: 已处理过（跳过）")
+            return 0
+
+        qb_code = parsed["question_bank"]
+        vocab_file = None
+        qb_path = find_questionbank_file(qb_code)
+        if qb_path:
+            vocab_file = str(qb_path)
+            print(f"   📚 题库: {qb_path.name}")
+        else:
+            print(f"   ⚠️  未找到题库: {qb_code}")
+
+        try:
+            provider = QwenASRProvider(api_key=api_key)
+        except ValueError as e:
+            print(f"❌ 错误: {str(e)}")
+            return 1
+
+        asr_dir = project_root / "asr"
+        asr_dir.mkdir(parents=True, exist_ok=True)
+
+        print(f"  ⟳ {student_name}: 处理音频...")
+        provider.transcribe_and_save_with_segmentation(
+            input_audio_path=str(audio_file),
+            output_dir=str(asr_dir),
+            vocabulary_path=vocab_file,
+            output_filename=f"{student_name}.json",
+            language="zh",
+            segment_duration=180,
+            max_workers=3,
+        )
+
+        metadata = {
+            "class_code": parsed["class_code"],
+            "date": parsed["date"],
+            "question_bank": parsed["question_bank"],
+            "student": student_name,
+            "audio_file": audio_file.name,
+            "processed_at": datetime.datetime.now().isoformat(),
+        }
+
+        metadata_file = asr_dir / f"{student_name}_metadata.json"
+        with open(metadata_file, 'w', encoding='utf-8') as f:
+            json.dump(metadata, f, ensure_ascii=False, indent=2)
+
+        print(f"  ✓ {student_name}: 已保存到 asr/{student_name}.json")
+        return 0
+
+    except Exception as e:
+        print(f"  ✗ 处理失败: {str(e)}")
+        return 1
+
+
+def process_backend_files_batch(
+    class_code: Optional[str] = None,
+    date: Optional[str] = None,
+    student: Optional[str] = None,
+    question_bank: Optional[str] = None,
+    api_key: Optional[str] = None
+) -> Tuple[int, int]:
+    """
+    批量处理 backend_input 中的音频文件。
+    """
+    files = discover_backend_files(
+        class_code=class_code,
+        date=date,
+        student=student,
+        question_bank=question_bank
+    )
+
+    if not files:
+        print("❌ 没有找到符合条件的音频文件")
+        return 0, 0
+
+    print(f"\n{'='*60}")
+    print(f"处理 {len(files)} 个文件")
+    print(f"{'='*60}\n")
+
+    processed = 0
+    skipped = 0
+
+    for audio_file in files:
+        exit_code = process_backend_file(str(audio_file), api_key=api_key)
+        if exit_code == 0:
+            processed += 1
+        else:
+            skipped += 1
+
+    print(f"\n{'='*60}")
+    print(f"处理完成！处理: {processed}, 失败: {skipped}")
+    print(f"{'='*60}")
+
+    return processed, skipped
+
+
 # ===== 处理函数 =====
 
 def process_student(dataset_name: str, student_name: str, api_key: Optional[str] = None) -> int:
@@ -972,12 +1215,26 @@ def process_student(dataset_name: str, student_name: str, api_key: Optional[str]
         )
 
         # 保存元数据
+        class_code = None
+        record_date = None
+        try:
+            class_code, record_date = parse_dataset_name(dataset_name)
+        except ValueError:
+            pass
+
         metadata = {
             "dataset": dataset_name,
             "student": student_name,
             "audio_file": audio_file.name,
             "processed_at": str(datetime.datetime.now().isoformat()),
         }
+
+        if class_code:
+            metadata["class_code"] = class_code
+        if record_date:
+            metadata["date"] = record_date
+        if vocab_file:
+            metadata["question_bank"] = Path(vocab_file).stem
 
         metadata_file = asr_dir / f"{student_name}_metadata.json"
         with open(metadata_file, 'w', encoding='utf-8') as f:
@@ -1009,6 +1266,13 @@ def process_dataset(dataset_name: str, api_key: Optional[str] = None) -> Tuple[i
         print(f"\n{'='*60}")
         print(f"处理数据集: {dataset_name}")
         print(f"{'='*60}")
+
+        class_code = None
+        record_date = None
+        try:
+            class_code, record_date = parse_dataset_name(dataset_name)
+        except ValueError:
+            pass
 
         # 创建 ASR 提供者
         try:
@@ -1073,6 +1337,13 @@ def process_dataset(dataset_name: str, api_key: Optional[str] = None) -> Tuple[i
                     "processed_at": str(datetime.datetime.now().isoformat()),
                 }
 
+                if class_code:
+                    metadata["class_code"] = class_code
+                if record_date:
+                    metadata["date"] = record_date
+                if vocab_file:
+                    metadata["question_bank"] = Path(vocab_file).stem
+
                 metadata_file = asr_dir / f"{student_name}_metadata.json"
                 with open(metadata_file, 'w', encoding='utf-8') as f:
                     json.dump(metadata, f, ensure_ascii=False, indent=2)
@@ -1098,42 +1369,46 @@ def process_dataset(dataset_name: str, api_key: Optional[str] = None) -> Tuple[i
 
 def main():
     """
-    主入口点 - 支持 CLI 参数的批量转写。
-
-    用法:
-        python3 qwen_asr.py                                    # 转写所有数据集
-        python3 qwen_asr.py --dataset Zoe51530-9.8            # 转写指定数据集
-        python3 qwen_asr.py --dataset Zoe51530-9.8 --student Oscar  # 转写单个学生
+    主入口点 - 支持两种模式：
+    1. 新模式：处理 backend_input 目录中的文件
+    2. 旧模式：处理 archive/<dataset>/<student>/ 结构（向后兼容）
     """
     parser = argparse.ArgumentParser(
         description='Qwen ASR 批量转写工具',
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 示例用法:
-  # 转写所有数据集和学生
-  python3 qwen_asr.py
+  # 新模式 - 单个文件
+  python3 qwen_asr.py backend_input/Abby61000_2025-10-30_R1-27-D2_Benjamin.mp3
 
-  # 转写指定数据集中的所有学生
+  # 新模式 - 批量处理
+  python3 qwen_asr.py --class Abby61000 --date 2025-10-30
+  python3 qwen_asr.py --all
+
+  # 旧模式 - 向后兼容
   python3 qwen_asr.py --dataset Zoe51530-9.8
-
-  # 转写指定学生
   python3 qwen_asr.py --dataset Zoe51530-9.8 --student Oscar
-
-  # 显示帮助
-  python3 qwen_asr.py --help
         """
     )
 
     parser.add_argument(
+        'input_file',
+        nargs='?',
+        default=None,
+        help='单个音频文件路径 (例如: backend_input/Abby61000_2025-10-30_R1-27-D2_Benjamin.mp3)'
+    )
+
+    parser.add_argument('--class', dest='class_code', help='班级代码 (例如: Abby61000)')
+    parser.add_argument('--date', help='日期 (例如: 2025-10-30)')
+    parser.add_argument('--student', help='学生名字 (支持模糊匹配)')
+    parser.add_argument('--question-bank', help='题库代码 (例如: R1-27-D2)')
+    parser.add_argument('--all', action='store_true', help='处理 backend_input 中的所有文件')
+
+    # 旧模式参数（向后兼容）
+    parser.add_argument(
         '--dataset',
         type=str,
         help='数据集名称 (例如: Zoe51530-9.8)。格式: CourseName-Date'
-    )
-
-    parser.add_argument(
-        '--student',
-        type=str,
-        help='学生名称 (例如: Oscar)。需要指定 --dataset'
     )
 
     parser.add_argument(
@@ -1144,30 +1419,42 @@ def main():
 
     args = parser.parse_args()
 
-    # 验证参数依赖关系
-    if args.student and not args.dataset:
-        parser.error("错误: --student 需要指定 --dataset")
-
     # 获取 API 密钥
     api_key = args.api_key or os.getenv("DASHSCOPE_API_KEY")
     if not api_key:
         print("❌ 错误: 请设置 DASHSCOPE_API_KEY 环境变量或通过 --api-key 传递")
         sys.exit(1)
 
-    # 根据参数执行相应的处理
     try:
-        if args.student:
-            # 处理单个学生
-            exit_code = process_student(args.dataset, args.student, api_key=api_key)
-            sys.exit(exit_code)
-        elif args.dataset:
-            # 处理整个数据集
+        # 旧模式处理（向后兼容）
+        if args.dataset:
+            if args.student:
+                exit_code = process_student(args.dataset, args.student, api_key=api_key)
+                sys.exit(exit_code)
+
             processed, skipped = process_dataset(args.dataset, api_key=api_key)
             sys.exit(0 if (processed > 0 or skipped > 0) else 1)
-        else:
-            # 处理所有数据集（后向兼容）
-            process_all_students()
-            sys.exit(0)
+
+        # 新模式：单文件
+        if args.input_file:
+            exit_code = process_backend_file(args.input_file, api_key=api_key)
+            sys.exit(exit_code)
+
+        # 新模式：批量
+        if args.all or args.class_code or args.date or args.student or args.question_bank:
+            processed, skipped = process_backend_files_batch(
+                class_code=args.class_code,
+                date=args.date,
+                student=args.student,
+                question_bank=args.question_bank,
+                api_key=api_key
+            )
+            sys.exit(0 if (processed > 0 or skipped > 0) else 1)
+
+        # 无参数时显示帮助
+        parser.print_help()
+        sys.exit(1)
+
     except Exception as e:
         print(f"❌ 错误: {str(e)}")
         sys.exit(1)

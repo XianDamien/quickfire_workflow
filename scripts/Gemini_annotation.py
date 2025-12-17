@@ -1,13 +1,30 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-学生回答提取脚本
-使用 Gemini LLM 根据提示词模板提取学生回答内容
+学生回答提取与评分系统（基于 Gemini LLM）
 
-支持命令行批量处理功能：
+【输入来源】
+- 题库：/questionbank/ 目录或学生目录下的 current_qb.json
+  优先级：R3-14-D4*.json > R1-65*.json > R*.json
+- ASR：2_qwen_asr.json（来自 qwen_asr.py 的转写结果）
+- 提示词：prompts/annotation/（Jinja2 模板：system.md + user.txt + metadata.json）
+- API：GEMINI_API_KEY 环境变量
+
+【输出】
+- 4_llm_annotation.json：单个学生的评分结果
+  {
+    "final_grade_suggestion": "A|B|C",
+    "mistake_count": {...},
+    "annotations": [...]
+  }
+- 4_llm_prompt_log.txt：完整的提示词日志（git commit + 元数据 + 系统指令 + 用户提示词）
+- batch_annotation_report.json：班级级聚合报告（所有学生结果）
+
+【命令行用法】
   python3 Gemini_annotation.py                                    # 处理所有数据集
   python3 Gemini_annotation.py --dataset Zoe51530-9.8            # 处理指定数据集
   python3 Gemini_annotation.py --dataset Zoe51530-9.8 --student Oscar  # 处理单个学生
+  python3 Gemini_annotation.py --dataset Zoe51530-9.8 --workers 5  # 指定并发数
 """
 
 import json
