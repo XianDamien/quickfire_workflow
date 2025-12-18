@@ -12,7 +12,7 @@
 - 处理时间统计（ASR 和 LLM）
 
 ## Tech Stack
-- **Python 3.12.12** - 主要开发语言
+- **Python 3.13** - 主要开发语言（与 `pyproject.toml` 的 `requires-python >= 3.13` 保持一致）
 - **Google Gemini API** - LLM 服务提供商（用于评分和分析）
 - **阿里云 Qwen ASR** - 音频转写服务
   - `qwen-asr` 模型 - 音频转文字
@@ -128,7 +128,7 @@
 ## Important Constraints
 
 ### 技术约束
-- Python 版本固定为 3.12.12
+- Python 版本固定为 3.13（或满足 `requires-python >= 3.13`）
 - 使用 Google Gemini API 进行评分
 - 使用阿里云 Qwen ASR 进行音频转写
 - API 调用需要网络连接和有效的 API Key

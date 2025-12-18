@@ -2,22 +2,30 @@
 Qwen3-ASR 音频转写系统 - 支持多种输入模式
 
 【输入来源】
-1. 新模式：backend_input/ 目录中的文件（推荐）
+1. Archive 批处理模式（推荐）：
+   - 目录结构：archive/{class_code}_{date}/{student}/1_input_audio.*
+   - 题库来源：archive/{class_code}_{date}/metadata.json -> question_bank_file
+   - 命令：python3 qwen_asr.py --archive-batch Zoe41900_2025-09-08
+
+2. backend_input 模式：
    - 文件格式：{ClassCode}_{Date}_{QuestionBank}_{StudentName}.mp3
    - 例如：Abby61000_2025-10-30_R1-27-D2_Benjamin.mp3
    - 题库自动从 questionbank/ 目录查找
 
-2. 旧模式：archive/<dataset>/<student>/ 目录结构（向后兼容）
+3. 旧模式：archive/<dataset>/<student>/ 目录结构（向后兼容）
    - 音频来源：archive/<dataset>/<student>/1_input_audio.* 或 <StudentName>.*
    - 使用函数：process_student() / process_dataset()
 
 【输出结构】
-统一输出到项目根目录的 asr/ 目录：
-- asr/{学生名字}.json：Qwen ASR 转写结果（标准 API 响应格式）
-- asr/{学生名字}_metadata.json：元数据（班级、日期、题库、处理时间）
+- Archive 模式：输出到 archive/{class}_{date}/{student}/2_qwen_asr.json
+- backend_input 模式：输出到 asr/{学生名字}.json + asr/{学生名字}_metadata.json
 
 【命令行用法】
-  # 新模式
+  # Archive 批处理模式（推荐）
+  python3 qwen_asr.py --archive-batch Zoe41900_2025-09-08  # 处理整个班级
+  python3 qwen_asr.py --archive-batch Zoe41900_2025-09-08 --student Oscar  # 单个学生
+
+  # backend_input 模式
   python3 qwen_asr.py backend_input/Abby61000_2025-10-30_R1-27-D2_Benjamin.mp3  # 单个文件
   python3 qwen_asr.py --class Abby61000 --date 2025-10-30  # 批量处理
   python3 qwen_asr.py --all  # 处理所有文件
@@ -373,57 +381,53 @@ class QwenASRProvider:
     def build_context_text(vocabulary: List[Dict[str, str]]) -> str:
         """
         从词汇表构建 ASR 上下文文本以优化识别。
-        
+
         Qwen3-ASR 通过 System Message 中的上下文文本，可显著提升
         特定领域词汇（如人名、地名、产品术语）的识别准确率。
-        
-        格式：{英文单词}{词性}。{中文释义}。
-        例如："rise不及物动词。太阳、月亮等上升、上涨、起立、起床。rise名词。升高、升起、上涨、增长。"
-        
-        支持的上下文类型：
-        - 热词列表 (分隔符任意，如逗号、分号等)
-        - 任意长度的段落或篇章
-        - 词表与段落的混合内容
-        - 无关/无意义文本（容错性高）
-        
+
+        格式：纯词汇列表，逗号分隔
+        例如："not, double, half, part, both, all, each, 不, 双倍的, 一半, ..."
+
+        注意：使用纯词汇列表格式而非结构化模板，避免 ASR 将上下文
+        当作"期望输出格式"而非"可能出现的词汇"。
+
+        适用场景：小孩子发音不清晰，只要大概意思到了就能识别。
+
         限制: 上下文总长度 ≤ 10000 Token
-        
+
         Args:
             vocabulary: 词条列表 [{"question": "英文", "answer": "中文", "hint": "词性"}, ...]
-        
+
         Returns:
-            格式化的上下文文本，用于 ASR 识别优化
+            纯词汇列表文本，用于 ASR 识别优化
         """
         if not vocabulary:
             return ""
-        
-        # 构建词条列表
-        entries = []
+
+        # 构建纯词汇列表（去重）
+        words = set()
         for item in vocabulary:
             if not isinstance(item, dict):
                 continue
-            
+
             question = item.get("question", "").strip()
             answer = item.get("answer", "").strip()
-            hint = item.get("hint", "").strip()
-            
-            if not question or not answer:
-                continue
-            
-            # 格式：{英文}{词性}。{中文释义}。
-            if hint:
-                entry = f"{question}{hint}。{answer}。"
-            else:
-                entry = f"{question}。{answer}。"
-            
-            entries.append(entry)
-        
-        if not entries:
+
+            if question:
+                words.add(question)
+            if answer:
+                # 中文释义可能包含逗号分隔的多个词，拆分添加
+                for part in answer.replace("，", ",").split(","):
+                    part = part.strip()
+                    if part:
+                        words.add(part)
+
+        if not words:
             return ""
-        
-        # 直接连接所有词条（无需额外分隔符，因为每条已有句号）
-        context = "".join(entries)
-        
+
+        # 逗号分隔的纯词汇列表
+        context = ", ".join(sorted(words))
+
         return context
 
     def transcribe_audio(
@@ -447,7 +451,10 @@ class QwenASRProvider:
         Returns:
             Response dictionary with transcription results
         """
-        # Build vocabulary context if provided
+        # Build vocabulary context if provided (pure word list format)
+        # Note: Using comma-separated word list instead of structured template
+        # to avoid ASR treating context as "expected output format".
+        # This helps recognize unclear pronunciation from children.
         system_context = ""
         if vocabulary_path and os.path.exists(vocabulary_path):
             vocab = self.load_vocabulary(vocabulary_path)
@@ -1146,6 +1153,281 @@ def process_backend_files_batch(
     return processed, skipped
 
 
+# ===== Archive 批处理模式 =====
+
+def load_archive_metadata(archive_batch: str) -> Dict[str, Any]:
+    """
+    加载 archive/{class}_{date}/metadata.json
+
+    Args:
+        archive_batch: 分组名称（如 Zoe41900_2025-09-08）
+
+    Returns:
+        metadata 字典
+
+    Raises:
+        FileNotFoundError: metadata.json 不存在
+    """
+    project_root = Path(__file__).parent.parent
+    metadata_path = project_root / "archive" / archive_batch / "metadata.json"
+
+    if not metadata_path.exists():
+        raise FileNotFoundError(f"metadata.json 不存在: {metadata_path}")
+
+    with open(metadata_path, 'r', encoding='utf-8') as f:
+        return json.load(f)
+
+
+def find_archive_vocabulary_file(archive_batch: str, metadata: Dict[str, Any]) -> Optional[Path]:
+    """
+    根据 metadata 查找题库文件
+
+    符合 dataset_conventions.md 规范：
+    - 优先使用 question_bank_path（指向 questionbank/ 目录）
+    - Fallback: question_bank_file（旧格式）
+    - Fallback: progress 字段在 questionbank/ 中查找
+
+    Args:
+        archive_batch: 分组名称
+        metadata: metadata.json 内容
+
+    Returns:
+        题库文件路径，或 None
+    """
+    project_root = Path(__file__).parent.parent
+
+    # 优先级 1: question_bank_path（新格式，指向 questionbank/）
+    qb_path_str = metadata.get("question_bank_path")
+    if qb_path_str:
+        qb_path = project_root / qb_path_str
+        if qb_path.exists():
+            return qb_path
+
+    # 优先级 2: 使用 progress 在 questionbank/ 中查找
+    progress = metadata.get("progress")
+    if progress:
+        qb_file = find_questionbank_file(progress)
+        if qb_file:
+            return qb_file
+
+    # Fallback: question_bank_file（旧格式，相对于 archive 目录）
+    archive_dir = project_root / "archive" / archive_batch
+    qb_file_old = metadata.get("question_bank_file")
+    if qb_file_old:
+        qb_path = archive_dir / qb_file_old
+        if qb_path.exists():
+            return qb_path
+
+    return None
+
+
+def find_archive_students(archive_batch: str) -> List[str]:
+    """
+    发现 archive/{class}_{date}/ 下的所有学生目录
+
+    Args:
+        archive_batch: 分组名称
+
+    Returns:
+        学生名称列表
+    """
+    project_root = Path(__file__).parent.parent
+    archive_dir = project_root / "archive" / archive_batch
+
+    if not archive_dir.exists():
+        return []
+
+    students = []
+    for item in archive_dir.iterdir():
+        if item.is_dir() and not item.name.startswith('_') and not item.name.startswith('.'):
+            students.append(item.name)
+
+    return sorted(students)
+
+
+def find_archive_audio_file(student_dir: Path) -> Optional[Path]:
+    """
+    查找学生目录中的音频文件
+
+    Args:
+        student_dir: 学生目录路径
+
+    Returns:
+        音频文件路径，或 None
+    """
+    audio_formats = {'.mp3', '.mp4', '.wav', '.m4a', '.flac', '.ogg'}
+
+    # 优先级 1: 1_input_audio.*
+    for audio_file in student_dir.glob('1_input_audio.*'):
+        if audio_file.suffix.lower() in audio_formats:
+            return audio_file
+
+    # 优先级 2: 任何音频文件
+    for audio_file in student_dir.glob('*'):
+        if audio_file.is_file() and audio_file.suffix.lower() in audio_formats:
+            return audio_file
+
+    return None
+
+
+def should_process_archive_student(student_dir: Path) -> bool:
+    """
+    检查学生是否应该被处理（是否已存在 2_qwen_asr.json）
+
+    Args:
+        student_dir: 学生目录路径
+
+    Returns:
+        True 如果应该处理，False 如果应该跳过
+    """
+    output_file = student_dir / "2_qwen_asr.json"
+    return not output_file.exists()
+
+
+def process_archive_student(
+    archive_batch: str,
+    student_name: str,
+    vocabulary_path: Optional[str] = None,
+    api_key: Optional[str] = None,
+    force: bool = False
+) -> int:
+    """
+    处理单个 archive 学生的 ASR 转写
+
+    Args:
+        archive_batch: 分组名称（如 Zoe41900_2025-09-08）
+        student_name: 学生名称
+        vocabulary_path: 词汇表路径
+        api_key: API 密钥
+        force: 是否强制重新处理
+
+    Returns:
+        0 成功，1 错误
+    """
+    project_root = Path(__file__).parent.parent
+    student_dir = project_root / "archive" / archive_batch / student_name
+
+    if not student_dir.exists():
+        print(f"  ✗ {student_name}: 目录不存在")
+        return 1
+
+    # 检查是否需要处理
+    if not force and not should_process_archive_student(student_dir):
+        print(f"  ✓ {student_name}: 已处理过（跳过）")
+        return 0
+
+    # 查找音频文件
+    audio_file = find_archive_audio_file(student_dir)
+    if not audio_file:
+        print(f"  ⊘ {student_name}: 未找到音频文件")
+        return 1
+
+    try:
+        # 创建 ASR 提供者
+        provider = QwenASRProvider(api_key=api_key)
+
+        # 转写并保存到学生目录
+        print(f"  ⟳ {student_name}: 处理音频...")
+        provider.transcribe_and_save_with_segmentation(
+            input_audio_path=str(audio_file),
+            output_dir=str(student_dir),
+            vocabulary_path=vocabulary_path,
+            output_filename="2_qwen_asr.json",
+            language="zh",
+            segment_duration=180,
+            max_workers=3,
+        )
+
+        print(f"  ✓ {student_name}: 已保存到 2_qwen_asr.json")
+        return 0
+
+    except Exception as e:
+        print(f"  ✗ {student_name}: 错误 - {str(e)}")
+        return 1
+
+
+def process_archive_batch(
+    archive_batch: str,
+    student_name: Optional[str] = None,
+    api_key: Optional[str] = None,
+    force: bool = False
+) -> Tuple[int, int]:
+    """
+    批量处理 archive/{class}_{date}/ 下的所有学生
+
+    Args:
+        archive_batch: 分组名称（如 Zoe41900_2025-09-08）
+        student_name: 可选的单个学生名称
+        api_key: API 密钥
+        force: 是否强制重新处理
+
+    Returns:
+        (成功数, 跳过/失败数)
+    """
+    project_root = Path(__file__).parent.parent
+    archive_dir = project_root / "archive" / archive_batch
+
+    if not archive_dir.exists():
+        print(f"❌ Archive 目录不存在: {archive_dir}")
+        return 0, 0
+
+    print(f"\n{'='*60}")
+    print(f"📁 Archive 批处理: {archive_batch}")
+    print(f"{'='*60}")
+
+    # 加载 metadata
+    try:
+        metadata = load_archive_metadata(archive_batch)
+        print(f"   班级: {metadata.get('class_code', 'N/A')}")
+        print(f"   日期: {metadata.get('date', 'N/A')}")
+        print(f"   进度: {metadata.get('progress', 'N/A')}")
+    except FileNotFoundError as e:
+        print(f"⚠️  {e}")
+        metadata = {}
+
+    # 查找题库文件
+    vocab_file = find_archive_vocabulary_file(archive_batch, metadata)
+    if vocab_file:
+        print(f"   📚 题库: {vocab_file.name}")
+    else:
+        print(f"   ⚠️  未找到题库文件")
+
+    # 获取学生列表
+    if student_name:
+        students = [student_name]
+    else:
+        students = find_archive_students(archive_batch)
+
+    if not students:
+        print("   ⊘ 未找到任何学生")
+        return 0, 0
+
+    print(f"   👥 学生数: {len(students)}")
+
+    # 处理学生
+    processed = 0
+    skipped = 0
+
+    for student in students:
+        exit_code = process_archive_student(
+            archive_batch,
+            student,
+            vocabulary_path=str(vocab_file) if vocab_file else None,
+            api_key=api_key,
+            force=force
+        )
+        if exit_code == 0:
+            processed += 1
+        else:
+            skipped += 1
+
+    print(f"\n{'='*60}")
+    print(f"✅ 处理完成！成功: {processed}, 跳过/失败: {skipped}")
+    print(f"{'='*60}")
+
+    return processed, skipped
+
+
 # ===== 处理函数 =====
 
 def process_student(dataset_name: str, student_name: str, api_key: Optional[str] = None) -> int:
@@ -1369,19 +1651,24 @@ def process_dataset(dataset_name: str, api_key: Optional[str] = None) -> Tuple[i
 
 def main():
     """
-    主入口点 - 支持两种模式：
-    1. 新模式：处理 backend_input 目录中的文件
-    2. 旧模式：处理 archive/<dataset>/<student>/ 结构（向后兼容）
+    主入口点 - 支持三种模式：
+    1. Archive 批处理模式（推荐）：处理 archive/{class}_{date}/ 结构
+    2. backend_input 模式：处理 backend_input 目录中的文件
+    3. 旧模式：处理 archive/<dataset>/<student>/ 结构（向后兼容）
     """
     parser = argparse.ArgumentParser(
         description='Qwen ASR 批量转写工具',
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 示例用法:
-  # 新模式 - 单个文件
+  # Archive 批处理模式（推荐）
+  python3 qwen_asr.py --archive-batch Zoe41900_2025-09-08
+  python3 qwen_asr.py --archive-batch Zoe41900_2025-09-08 --student Oscar
+
+  # backend_input 模式 - 单个文件
   python3 qwen_asr.py backend_input/Abby61000_2025-10-30_R1-27-D2_Benjamin.mp3
 
-  # 新模式 - 批量处理
+  # backend_input 模式 - 批量处理
   python3 qwen_asr.py --class Abby61000 --date 2025-10-30
   python3 qwen_asr.py --all
 
@@ -1398,11 +1685,19 @@ def main():
         help='单个音频文件路径 (例如: backend_input/Abby61000_2025-10-30_R1-27-D2_Benjamin.mp3)'
     )
 
+    # Archive 批处理模式参数
+    parser.add_argument(
+        '--archive-batch',
+        type=str,
+        help='Archive 批处理模式 (例如: Zoe41900_2025-09-08)'
+    )
+
     parser.add_argument('--class', dest='class_code', help='班级代码 (例如: Abby61000)')
     parser.add_argument('--date', help='日期 (例如: 2025-10-30)')
     parser.add_argument('--student', help='学生名字 (支持模糊匹配)')
     parser.add_argument('--question-bank', help='题库代码 (例如: R1-27-D2)')
     parser.add_argument('--all', action='store_true', help='处理 backend_input 中的所有文件')
+    parser.add_argument('--force', action='store_true', help='强制重新处理已处理过的学生')
 
     # 旧模式参数（向后兼容）
     parser.add_argument(
@@ -1426,6 +1721,16 @@ def main():
         sys.exit(1)
 
     try:
+        # Archive 批处理模式（推荐）
+        if args.archive_batch:
+            processed, skipped = process_archive_batch(
+                args.archive_batch,
+                student_name=args.student,
+                api_key=api_key,
+                force=args.force
+            )
+            sys.exit(0 if (processed > 0 or skipped > 0) else 1)
+
         # 旧模式处理（向后兼容）
         if args.dataset:
             if args.student:
@@ -1435,13 +1740,13 @@ def main():
             processed, skipped = process_dataset(args.dataset, api_key=api_key)
             sys.exit(0 if (processed > 0 or skipped > 0) else 1)
 
-        # 新模式：单文件
+        # backend_input 模式：单文件
         if args.input_file:
             exit_code = process_backend_file(args.input_file, api_key=api_key)
             sys.exit(exit_code)
 
-        # 新模式：批量
-        if args.all or args.class_code or args.date or args.student or args.question_bank:
+        # backend_input 模式：批量
+        if args.all or args.class_code or args.date or args.question_bank:
             processed, skipped = process_backend_files_batch(
                 class_code=args.class_code,
                 date=args.date,
