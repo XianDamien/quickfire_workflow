@@ -1,7 +1,8 @@
 {
+  "prompt_version": "1.0.0",
   "description": "Gemini annotation prompt for extracting student responses from mixed audio transcription (teacher questions + student answers + expected answers)",
   "owner": "data-ops@lan",
-  "updated_at": "2025-11-30T12:00:00+08:00",
+  "updated_at": "2025-12-18T21:30:00+08:00",
   "tags": ["annotation", "gemini", "student-response-extraction", "vocabulary"],
   "notes": "Prompt extracts student responses between teacher questions and expected answers. Marks NO_ANSWER when no response detected between question and answer. Marks MEANING_ERROR when student response is semantically unrelated to expected answer. Keep NO_ANSWER and MEANING_ERROR detection logic aligned with rubric.",
   "contact": ["pm@lan"]

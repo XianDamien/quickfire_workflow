@@ -677,9 +677,11 @@ def process_student_annotations(dataset_name: str, student_name: str, verbose: b
 
         # 保存提示词日志
         prompt_log_path = student_dir / "4_llm_prompt_log.txt"
+        prompt_version = prompt_loader.metadata.get("prompt_version", "unknown")
         try:
             with open(prompt_log_path, 'w', encoding='utf-8') as f:
                 f.write("=== 学生回答提取 - 完整提示词日志 ===\n\n")
+                f.write(f"Prompt Version: {prompt_version}\n")
                 f.write(f"生成时间: {datetime.now().isoformat()}\n")
                 f.write(f"Git Commit: {git_commit}\n")
                 f.write(f"题库文件: {question_bank_filename}\n")
@@ -1123,9 +1125,11 @@ def process_archive_student_annotation(
 
         # 保存提示词日志到 runs/{run_id}/
         prompt_log_path = run_dir / "4_llm_prompt_log.txt"
+        prompt_version = prompt_loader.metadata.get("prompt_version", "unknown")
         try:
             with open(prompt_log_path, 'w', encoding='utf-8') as f:
                 f.write("=== 学生回答提取 - 完整提示词日志 ===\n\n")
+                f.write(f"Prompt Version: {prompt_version}\n")
                 f.write(f"生成时间: {datetime.now().isoformat()}\n")
                 f.write(f"Run ID: {run_id}\n")
                 f.write(f"Git Commit: {git_commit}\n")
