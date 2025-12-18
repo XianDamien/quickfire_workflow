@@ -2,6 +2,25 @@
 FunASR 异步语音转写脚本
 使用阿里云 DashScope API 进行批量音频转写
 支持基于题库的动态热词管理
+
+【输入来源】
+1. Archive 批处理模式（推荐）：
+   - 目录结构：archive/{class_code}_{date}/{student}/1_input_audio.*
+   - 题库来源：archive/{class_code}_{date}/metadata.json -> question_bank_file
+   - 输出：archive/{class}_{date}/{student}/3_asr_timestamp.json
+
+2. URL 模式（原有）：
+   - 输入：音频文件 URL 列表
+   - 输出：asr_timestamp/{filename}.json
+
+【命令行用法】
+  # Archive 批处理模式（推荐）
+  python3 funasr.py --archive-batch Zoe41900_2025-09-08
+  python3 funasr.py --archive-batch Zoe41900_2025-09-08 --student Oscar
+
+  # URL 模式（原有）
+  python3 funasr.py <url1> <url2> ...
+  python3 funasr.py --hotwords <url1> <url2> ...
 """
 from http import HTTPStatus
 from dashscope.audio.asr import Transcription, VocabularyService, Recognition
@@ -33,7 +52,7 @@ QUESTIONBANK_DIR = Path(__file__).parent.parent / 'questionbank'
 
 # 热词配置
 VOCABULARY_PREFIX = "qf"  # quickfire 前缀
-VOCABULARY_MODEL = "fun-asr-2025-11-07"  # 与转写模型一致
+VOCABULARY_MODEL = "paraformer-realtime-v2"  # DashScope ASR 模型
 
 
 def get_filename_from_url(url: str) -> str:
@@ -69,12 +88,12 @@ def parse_audio_filename(filename: str) -> Optional[Dict[str, str]]:
     return None
 
 
-def load_questionbank(question_bank_code: str) -> List[Dict]:
+def load_questionbank(question_bank_path: str | Path) -> List[Dict]:
     """
-    从题库目录加载指定的题库文件
+    从指定路径加载题库文件
 
     Args:
-        question_bank_code: 题库代码，如 R1-65-D5
+        question_bank_path: 题库文件路径（可以是完整路径或题库代码）
 
     Returns:
         题库条目列表
@@ -82,18 +101,24 @@ def load_questionbank(question_bank_code: str) -> List[Dict]:
     Raises:
         FileNotFoundError: 题库文件不存在
     """
-    questionbank_path = QUESTIONBANK_DIR / f"{question_bank_code}.json"
+    path = Path(question_bank_path)
 
-    if not questionbank_path.exists():
-        raise FileNotFoundError(
-            f"题库文件不存在: {questionbank_path}\n"
-            f"期望路径: questionbank/{question_bank_code}.json"
-        )
+    # 如果不是完整路径，尝试在 questionbank/ 目录查找
+    if not path.exists():
+        # 尝试作为题库代码处理
+        questionbank_path_full = QUESTIONBANK_DIR / f"{question_bank_path}.json"
+        if questionbank_path_full.exists():
+            path = questionbank_path_full
+        else:
+            raise FileNotFoundError(
+                f"题库文件不存在: {question_bank_path}\n"
+                f"尝试路径: {path}, {questionbank_path_full}"
+            )
 
-    with open(questionbank_path, 'r', encoding='utf-8') as f:
+    with open(path, 'r', encoding='utf-8') as f:
         data = json.load(f)
 
-    print(f"已加载题库: {question_bank_code}.json, 条目数: {len(data)}")
+    print(f"已加载题库: {path.name}, 条目数: {len(data)}")
     return data
 
 
@@ -363,7 +388,7 @@ def async_transcribe(
 
     # 异步提交任务
     task_response = Transcription.async_call(
-        model='fun-asr-2025-11-07',
+        model='paraformer-v2',  # 使用 paraformer-v2 模型
         file_urls=file_urls,
         vocabulary_id=vocabulary_id,  # 热词表 ID
         language_hints=['zh', 'en']
@@ -433,8 +458,420 @@ def save_results(results: list[dict], output_dir: Path) -> None:
         print(f"已保存: {output_path}")
 
 
+# ===== Archive 批处理模式 =====
+
+def load_archive_metadata(archive_batch: str) -> Dict:
+    """
+    加载 archive/{class}_{date}/metadata.json
+
+    Args:
+        archive_batch: 分组名称（如 Zoe41900_2025-09-08）
+
+    Returns:
+        metadata 字典
+    """
+    project_root = Path(__file__).parent.parent
+    metadata_path = project_root / "archive" / archive_batch / "metadata.json"
+
+    if not metadata_path.exists():
+        raise FileNotFoundError(f"metadata.json 不存在: {metadata_path}")
+
+    with open(metadata_path, 'r', encoding='utf-8') as f:
+        return json.load(f)
+
+
+def find_archive_students(archive_batch: str) -> List[str]:
+    """
+    发现 archive/{class}_{date}/ 下的所有学生目录
+
+    Args:
+        archive_batch: 分组名称
+
+    Returns:
+        学生名称列表
+    """
+    project_root = Path(__file__).parent.parent
+    archive_dir = project_root / "archive" / archive_batch
+
+    if not archive_dir.exists():
+        return []
+
+    students = []
+    for item in archive_dir.iterdir():
+        if item.is_dir() and not item.name.startswith('_') and not item.name.startswith('.'):
+            students.append(item.name)
+
+    return sorted(students)
+
+
+def find_archive_audio_file(student_dir: Path) -> Optional[Path]:
+    """
+    查找学生目录中的音频文件
+
+    Args:
+        student_dir: 学生目录路径
+
+    Returns:
+        音频文件路径，或 None
+    """
+    audio_formats = {'.mp3', '.mp4', '.wav', '.m4a', '.flac', '.ogg'}
+
+    # 优先级 1: 1_input_audio.*
+    for audio_file in student_dir.glob('1_input_audio.*'):
+        if audio_file.suffix.lower() in audio_formats:
+            return audio_file
+
+    # 优先级 2: 任何音频文件
+    for audio_file in student_dir.glob('*'):
+        if audio_file.is_file() and audio_file.suffix.lower() in audio_formats:
+            return audio_file
+
+    return None
+
+
+def find_questionbank_by_code(question_bank_code: str) -> Optional[Path]:
+    """
+    在 questionbank/ 目录中查找题库文件
+
+    Args:
+        question_bank_code: 题库代码（如 R1-65-D5）
+
+    Returns:
+        题库文件路径，或 None
+    """
+    # 精确匹配
+    exact = QUESTIONBANK_DIR / f"{question_bank_code}.json"
+    if exact.exists():
+        return exact
+
+    # 前缀匹配
+    for f in sorted(QUESTIONBANK_DIR.glob(f"{question_bank_code}*.json")):
+        if f.is_file():
+            return f
+
+    return None
+
+
+def find_archive_vocabulary_file(archive_batch: str, metadata: Dict) -> Optional[Path]:
+    """
+    根据 metadata 查找题库文件
+
+    符合 dataset_conventions.md 规范：
+    - 优先使用 question_bank_path（指向 questionbank/ 目录）
+    - Fallback: 使用 progress 字段在 questionbank/ 中查找
+    - Fallback: question_bank_file（旧格式）
+
+    Args:
+        archive_batch: 分组名称
+        metadata: metadata.json 内容
+
+    Returns:
+        题库文件路径，或 None
+    """
+    project_root = Path(__file__).parent.parent
+
+    # 优先级 1: question_bank_path（新格式，指向 questionbank/）
+    qb_path_str = metadata.get("question_bank_path")
+    if qb_path_str:
+        qb_path = project_root / qb_path_str
+        if qb_path.exists():
+            return qb_path
+
+    # 优先级 2: 使用 progress 在 questionbank/ 中查找
+    progress = metadata.get("progress")
+    if progress:
+        qb_file = find_questionbank_by_code(progress)
+        if qb_file:
+            return qb_file
+
+    # Fallback: question_bank_file（旧格式，相对于 archive 目录）
+    archive_dir = project_root / "archive" / archive_batch
+    qb_file_old = metadata.get("question_bank_file")
+    if qb_file_old:
+        qb_path = archive_dir / qb_file_old
+        if qb_path.exists():
+            return qb_path
+
+    return None
+
+
+def should_process_archive_student(student_dir: Path) -> bool:
+    """
+    检查学生是否应该被处理（是否已存在 3_asr_timestamp.json）
+
+    Args:
+        student_dir: 学生目录路径
+
+    Returns:
+        True 如果应该处理，False 如果应该跳过
+    """
+    output_file = student_dir / "3_asr_timestamp.json"
+    return not output_file.exists()
+
+
+def process_archive_student_local(
+    student_dir: Path,
+    student_name: str,
+    vocabulary_id: Optional[str] = None,
+    force: bool = False,
+    oss_url: Optional[str] = None
+) -> bool:
+    """
+    处理单个 archive 学生的音频转写（优先使用 OSS URL + Transcription API）
+
+    Args:
+        student_dir: 学生目录路径
+        student_name: 学生名称
+        vocabulary_id: 热词槽位 ID
+        force: 是否强制重新处理
+        oss_url: OSS URL（如果有的话，优先使用）
+
+    Returns:
+        True 成功，False 失败
+    """
+    # 检查是否需要处理
+    if not force and not should_process_archive_student(student_dir):
+        print(f"  ✓ {student_name}: 已处理过（跳过）")
+        return True
+
+    # 优先使用 OSS URL + Transcription API（支持 sentences）
+    if oss_url:
+        print(f"  ⟳ {student_name}: 使用 OSS URL 转写...")
+        try:
+            # 使用异步 Transcription API
+            results = async_transcribe([oss_url], poll_interval=3, vocabulary_id=vocabulary_id)
+
+            if results and len(results) > 0:
+                result = results[0]
+                sentences = []
+                for transcript in result.get('transcripts', []):
+                    sentences.extend(transcript.get('sentences', []))
+
+                # Phase 1: 严格校验 - sentences 为空则视为失败
+                if not sentences:
+                    print(f"  ✗ {student_name}: 转写成功但 sentences 为空，不保存 3_asr_timestamp.json")
+                    print(f"     原因: Transcription API 未返回句子级别的时间戳数据")
+                    return False
+
+                # 保存结果
+                output_path = student_dir / "3_asr_timestamp.json"
+                with open(output_path, 'w', encoding='utf-8') as f:
+                    json.dump(result, f, ensure_ascii=False, indent=2)
+
+                print(f"  ✓ {student_name}: 已保存到 3_asr_timestamp.json (sentences: {len(sentences)})")
+                return True
+            else:
+                print(f"  ✗ {student_name}: Transcription API 未返回结果")
+                return False
+
+        except Exception as e:
+            print(f"  ✗ {student_name}: OSS 转写失败 - {str(e)}")
+            return False
+
+    # Fallback: 本地文件 + Recognition API（可能没有 sentences）
+    audio_file = find_archive_audio_file(student_dir)
+    if not audio_file:
+        print(f"  ⊘ {student_name}: 未找到音频文件且无 OSS URL")
+        return False
+
+    try:
+        print(f"  ⟳ {student_name}: 使用本地文件转写 (可能无时间戳)...")
+
+        # 检测音频采样率
+        import subprocess
+        try:
+            ffprobe_result = subprocess.run(
+                ['ffprobe', '-v', 'error', '-select_streams', 'a:0',
+                 '-show_entries', 'stream=sample_rate',
+                 '-of', 'default=noprint_wrappers=1:nokey=1',
+                 str(audio_file)],
+                capture_output=True, text=True, timeout=10
+            )
+            detected_sample_rate = int(ffprobe_result.stdout.strip())
+        except Exception:
+            detected_sample_rate = 16000
+
+        recognition = Recognition(
+            model=VOCABULARY_MODEL,
+            format=audio_file.suffix.lstrip('.'),
+            sample_rate=detected_sample_rate,
+            callback=None,
+            vocabulary_id=vocabulary_id,
+            language_hints=['zh', 'en']
+        )
+
+        result = recognition.call(str(audio_file))
+
+        if result.status_code == HTTPStatus.OK:
+            sentences = result.output.get('sentences', [])
+            if not sentences:
+                print(f"  ✗ {student_name}: Recognition API 不支持 sentences，需要 OSS URL")
+                print(f"     请确保 metadata.json 中包含该学生的 oss_url")
+                return False
+
+            output = {
+                'file_url': f'file://{audio_file}',
+                'transcripts': [{
+                    'channel_id': 0,
+                    'transcript': result.output.get('text', ''),
+                    'sentences': sentences
+                }]
+            }
+
+            output_path = student_dir / "3_asr_timestamp.json"
+            with open(output_path, 'w', encoding='utf-8') as f:
+                json.dump(output, f, ensure_ascii=False, indent=2)
+
+            print(f"  ✓ {student_name}: 已保存到 3_asr_timestamp.json (sentences: {len(sentences)})")
+            return True
+        else:
+            print(f"  ✗ {student_name}: 识别失败 - {result.code}: {result.message}")
+            return False
+
+    except Exception as e:
+        print(f"  ✗ {student_name}: 错误 - {str(e)}")
+        return False
+
+
+def process_archive_batch(
+    archive_batch: str,
+    student_name: Optional[str] = None,
+    use_hotwords: bool = True,
+    force: bool = False
+) -> tuple:
+    """
+    批量处理 archive/{class}_{date}/ 下的所有学生
+
+    Args:
+        archive_batch: 分组名称（如 Zoe41900_2025-09-08）
+        student_name: 可选的单个学生名称
+        use_hotwords: 是否使用热词
+        force: 是否强制重新处理
+
+    Returns:
+        (成功数, 跳过/失败数)
+    """
+    project_root = Path(__file__).parent.parent
+    archive_dir = project_root / "archive" / archive_batch
+
+    if not archive_dir.exists():
+        print(f"❌ Archive 目录不存在: {archive_dir}")
+        return 0, 0
+
+    print(f"\n{'='*60}")
+    print(f"📁 FunASR Archive 批处理: {archive_batch}")
+    print(f"{'='*60}")
+
+    # 加载 metadata
+    try:
+        metadata = load_archive_metadata(archive_batch)
+        print(f"   班级: {metadata.get('class_code', 'N/A')}")
+        print(f"   日期: {metadata.get('date', 'N/A')}")
+        print(f"   进度: {metadata.get('progress', 'N/A')}")
+    except FileNotFoundError as e:
+        print(f"⚠️  {e}")
+        metadata = {}
+
+    # 初始化热词
+    vocabulary_id = None
+    if use_hotwords:
+        vocab_file = find_archive_vocabulary_file(archive_batch, metadata)
+        if vocab_file:
+            print(f"   📚 题库: {vocab_file.name}")
+            try:
+                # 加载题库并更新热词（使用完整路径）
+                questionbank = load_questionbank(vocab_file)
+                vocabulary = extract_vocabulary(questionbank)
+
+                vocab_manager = VocabularySlotManager()
+                vocab_manager.get_or_create_slot()
+                vocab_manager.update_vocabulary(vocabulary)
+                vocabulary_id = vocab_manager.vocabulary_id
+            except Exception as e:
+                print(f"   ⚠️  热词初始化失败: {e}")
+        else:
+            print(f"   ⚠️  未找到题库文件，不使用热词")
+
+    # 构建学生 -> OSS URL 映射
+    student_oss_urls = {}
+    for item in metadata.get('items', []):
+        s = item.get('student')
+        url = item.get('oss_url')
+        if s and url:
+            student_oss_urls[s] = url
+
+    # 获取学生列表
+    if student_name:
+        students = [student_name]
+    else:
+        students = find_archive_students(archive_batch)
+
+    if not students:
+        print("   ⊘ 未找到任何学生")
+        return 0, 0
+
+    print(f"   👥 学生数: {len(students)}")
+
+    # 处理学生
+    success_count = 0
+    fail_count = 0
+
+    for student in students:
+        student_dir = archive_dir / student
+        oss_url = student_oss_urls.get(student)  # 从 metadata 获取 OSS URL
+        success = process_archive_student_local(
+            student_dir,
+            student,
+            vocabulary_id=vocabulary_id,
+            force=force,
+            oss_url=oss_url
+        )
+        if success:
+            success_count += 1
+        else:
+            fail_count += 1
+
+    print(f"\n{'='*60}")
+    print(f"✅ 处理完成！成功: {success_count}, 跳过/失败: {fail_count}")
+    print(f"{'='*60}")
+
+    return success_count, fail_count
+
+
 def main():
-    parser = argparse.ArgumentParser(description='FunASR 异步语音转写（支持动态热词）')
+    parser = argparse.ArgumentParser(
+        description='FunASR 异步语音转写（支持动态热词）',
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+示例用法:
+  # Archive 批处理模式（推荐）
+  python3 funasr.py --archive-batch Zoe41900_2025-09-08
+  python3 funasr.py --archive-batch Zoe41900_2025-09-08 --student Oscar
+
+  # URL 模式（原有）
+  python3 funasr.py <url1> <url2> ...
+  python3 funasr.py --hotwords <url1> <url2> ...
+        """
+    )
+
+    # Archive 批处理模式参数
+    parser.add_argument(
+        '--archive-batch',
+        type=str,
+        help='Archive 批处理模式 (例如: Zoe41900_2025-09-08)'
+    )
+    parser.add_argument(
+        '--student',
+        type=str,
+        help='指定单个学生（仅在 --archive-batch 模式下有效）'
+    )
+    parser.add_argument(
+        '--force',
+        action='store_true',
+        help='强制重新处理已处理过的学生'
+    )
+
+    # URL 模式参数
     parser.add_argument(
         'file_urls',
         nargs='*',
@@ -460,6 +897,17 @@ def main():
 
     args = parser.parse_args()
 
+    # Archive 批处理模式
+    if args.archive_batch:
+        success, fail = process_archive_batch(
+            args.archive_batch,
+            student_name=args.student,
+            use_hotwords=True,  # Archive 模式默认启用热词
+            force=args.force
+        )
+        return 0 if (success > 0 or fail > 0) else 1
+
+    # URL 模式
     # 如果没有提供 URL，使用示例 URL
     file_urls = args.file_urls or [
         'https://quickfire-audio.oss-cn-shanghai.aliyuncs.com/audio/Zoe41900_2025-09-08_R1-65-D5_Oscar.mp3',

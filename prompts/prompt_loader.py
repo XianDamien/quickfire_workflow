@@ -63,7 +63,10 @@ class PromptLoader:
     def _load_artifacts(self) -> PromptArtifacts:
         """Load all prompt files and metadata."""
         system_file = self.prompt_dir / "system.md"
-        user_file = self.prompt_dir / "user.txt"
+        # 优先使用 user.md，fallback 到 user.txt
+        user_file = self.prompt_dir / "user.md"
+        if not user_file.exists():
+            user_file = self.prompt_dir / "user.txt"
         metadata_file = self.prompt_dir / "metadata.json"
 
         # Load system instruction
@@ -159,6 +162,7 @@ class PromptContextBuilder:
         student_asr_text: str,
         dataset_name: str,
         student_name: str,
+        student_asr_with_timestamp: str = None,
         guidance: str = None,
         metadata: dict = None
     ) -> dict:
@@ -170,6 +174,7 @@ class PromptContextBuilder:
             student_asr_text: The student ASR transcription text.
             dataset_name: Name of the dataset (e.g., 'Zoe51530-9.8').
             student_name: Name of the student.
+            student_asr_with_timestamp: Optional timestamped ASR text (from 3_asr_timestamp.json).
             guidance: Optional guidance or notes.
             metadata: Optional metadata dictionary (from prompt metadata).
 
@@ -182,6 +187,15 @@ class PromptContextBuilder:
             'dataset_name': dataset_name,
             'student_name': student_name,
         }
+
+        # 带时间戳的 ASR 文本（严格必填，用于时间戳估算）
+        # Phase 1: 消灭 fallback，缺失时直接失败
+        if not student_asr_with_timestamp or not student_asr_with_timestamp.strip():
+            raise ValueError(
+                "缺少 student_asr_with_timestamp（依赖 3_asr_timestamp.json）。\n"
+                "请先运行 funasr.py 生成时间戳数据。"
+            )
+        context['student_asr_with_timestamp'] = student_asr_with_timestamp
 
         if guidance:
             context['guidance'] = guidance

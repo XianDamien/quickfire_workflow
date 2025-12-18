@@ -4,27 +4,31 @@
 学生回答提取与评分系统（基于 Gemini LLM）
 
 【输入来源】
-- 题库：/questionbank/ 目录或学生目录下的 current_qb.json
-  优先级：R3-14-D4*.json > R1-65*.json > R*.json
-- ASR：2_qwen_asr.json（来自 qwen_asr.py 的转写结果）
-- 提示词：prompts/annotation/（Jinja2 模板：system.md + user.txt + metadata.json）
-- API：GEMINI_API_KEY 环境变量
+1. Archive 批处理模式（推荐）：
+   - 目录结构：archive/{class_code}_{date}/{student}/
+   - 题库：archive/{class_code}_{date}/metadata.json -> question_bank_file
+   - ASR 文本：{student}/2_qwen_asr.json
+   - ASR 时间戳：{student}/3_asr_timestamp.json
+   - 提示词：prompts/annotation/（system.md + user.md + metadata.json）
+
+2. 旧模式（向后兼容）：
+   - 题库：/questionbank/ 目录或学生目录下的 current_qb.json
+   - ASR：2_qwen_asr.json
 
 【输出】
-- 4_llm_annotation.json：单个学生的评分结果
-  {
-    "final_grade_suggestion": "A|B|C",
-    "mistake_count": {...},
-    "annotations": [...]
-  }
-- 4_llm_prompt_log.txt：完整的提示词日志（git commit + 元数据 + 系统指令 + 用户提示词）
-- batch_annotation_report.json：班级级聚合报告（所有学生结果）
+- {student}/4_llm_annotation.json：评分结果（含时间戳）
+- {student}/4_llm_prompt_log.txt：完整提示词日志
+- archive/{class}_{date}/batch_annotation_report.json：班级级聚合报告
 
 【命令行用法】
-  python3 Gemini_annotation.py                                    # 处理所有数据集
-  python3 Gemini_annotation.py --dataset Zoe51530-9.8            # 处理指定数据集
-  python3 Gemini_annotation.py --dataset Zoe51530-9.8 --student Oscar  # 处理单个学生
-  python3 Gemini_annotation.py --dataset Zoe51530-9.8 --workers 5  # 指定并发数
+  # Archive 批处理模式（推荐）
+  python3 Gemini_annotation.py --archive-batch Zoe41900_2025-09-08
+  python3 Gemini_annotation.py --archive-batch Zoe41900_2025-09-08 --student Oscar
+
+  # 旧模式（向后兼容）
+  python3 Gemini_annotation.py --dataset Zoe51530-9.8
+  python3 Gemini_annotation.py --dataset Zoe51530-9.8 --student Oscar
+  python3 Gemini_annotation.py --dataset Zoe51530-9.8 --workers 5
 """
 
 import json
@@ -93,6 +97,101 @@ def extract_text_from_asr_json(asr_json_path: str) -> str:
     except (KeyError, IndexError, TypeError) as e:
         print(f"❌ 错误: 无法解析 ASR 文件结构 - {e}")
         sys.exit(1)
+
+
+def extract_timestamp_text_from_asr_json(asr_timestamp_path: str) -> str:
+    """
+    从 3_asr_timestamp.json 提取带时间戳的文本（严格模式）
+
+    输入格式 (FunASR 输出):
+    {
+        "file_url": "...",
+        "transcripts": [{
+            "channel_id": 0,
+            "transcript": "全文文本",
+            "sentences": [
+                {"begin_time": 1000, "end_time": 2000, "text": "文本片段"},
+                ...
+            ]
+        }]
+    }
+
+    输出格式 (用于 Prompt):
+    00:01 文本片段1
+    00:02 文本片段2
+    ...
+
+    Args:
+        asr_timestamp_path: 3_asr_timestamp.json 文件路径
+
+    Returns:
+        带时间戳的文本（MM:SS 格式）
+
+    Raises:
+        FileNotFoundError: 文件不存在
+        json.JSONDecodeError: JSON 格式错误
+        ValueError: 结构校验失败（缺少 transcripts/sentences 或字段类型错误）
+    """
+    # Phase 1: 严格失败 - 不再吞掉异常
+    with open(asr_timestamp_path, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+
+    # 结构校验
+    transcripts = data.get('transcripts')
+    if not transcripts or not isinstance(transcripts, list):
+        raise ValueError(
+            f"3_asr_timestamp.json 结构无效: 缺少 transcripts 数组\n"
+            f"文件: {asr_timestamp_path}"
+        )
+
+    lines = []
+    has_valid_sentences = False
+
+    for transcript in transcripts:
+        sentences = transcript.get('sentences')
+        if not sentences or not isinstance(sentences, list):
+            continue
+
+        for sentence in sentences:
+            # 校验必要字段存在且类型正确
+            begin_time_ms = sentence.get('begin_time')
+            end_time_ms = sentence.get('end_time')
+            text = sentence.get('text')
+
+            if begin_time_ms is None or end_time_ms is None or text is None:
+                raise ValueError(
+                    f"3_asr_timestamp.json 句子结构无效: 缺少 begin_time/end_time/text\n"
+                    f"句子内容: {sentence}\n"
+                    f"文件: {asr_timestamp_path}"
+                )
+
+            # 校验时间戳为整数（毫秒）
+            if not isinstance(begin_time_ms, int) or not isinstance(end_time_ms, int):
+                raise ValueError(
+                    f"3_asr_timestamp.json 时间戳类型错误: begin_time/end_time 必须是 int(ms)\n"
+                    f"实际值: begin_time={begin_time_ms} ({type(begin_time_ms).__name__}), "
+                    f"end_time={end_time_ms} ({type(end_time_ms).__name__})\n"
+                    f"文件: {asr_timestamp_path}"
+                )
+
+            text = text.strip()
+            if text:
+                has_valid_sentences = True
+                # 将毫秒转换为 MM:SS 格式
+                total_seconds = begin_time_ms // 1000
+                minutes = total_seconds // 60
+                seconds = total_seconds % 60
+                timestamp = f"{minutes:02d}:{seconds:02d}"
+                lines.append(f"{timestamp} {text}")
+
+    # 校验至少有一个有效句子
+    if not has_valid_sentences:
+        raise ValueError(
+            f"3_asr_timestamp.json 内容为空: 没有有效的 sentences\n"
+            f"文件: {asr_timestamp_path}"
+        )
+
+    return "\n".join(lines)
 
 
 def call_gemini_api(prompt: str, system_instruction: str = None, verbose: bool = False) -> str:
@@ -706,6 +805,590 @@ def create_batch_report(dataset_name: str, student_results: list) -> dict:
     return report
 
 
+# ===== Archive 批处理模式 =====
+
+def generate_run_id() -> str:
+    """
+    生成唯一的 run_id，用于区分不同的处理批次
+
+    格式: {timestamp}_{git_short}
+    例如: 20251218_143022_a5cd771
+
+    Returns:
+        run_id 字符串
+    """
+    import subprocess
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    try:
+        git_short = subprocess.check_output(
+            ["git", "rev-parse", "--short", "HEAD"],
+            stderr=subprocess.DEVNULL
+        ).decode().strip()
+    except Exception:
+        git_short = "nogit"
+    return f"{timestamp}_{git_short}"
+
+
+def load_archive_metadata(archive_batch: str) -> dict:
+    """
+    加载 archive/{class}_{date}/metadata.json
+
+    Args:
+        archive_batch: 分组名称（如 Zoe41900_2025-09-08）
+
+    Returns:
+        metadata 字典
+    """
+    project_root = Path(__file__).parent.parent
+    metadata_path = project_root / "archive" / archive_batch / "metadata.json"
+
+    if not metadata_path.exists():
+        raise FileNotFoundError(f"metadata.json 不存在: {metadata_path}")
+
+    with open(metadata_path, 'r', encoding='utf-8') as f:
+        return json.load(f)
+
+
+def find_archive_students(archive_batch: str) -> list:
+    """
+    发现 archive/{class}_{date}/ 下的所有学生目录
+
+    Args:
+        archive_batch: 分组名称
+
+    Returns:
+        学生名称列表
+    """
+    project_root = Path(__file__).parent.parent
+    archive_dir = project_root / "archive" / archive_batch
+
+    if not archive_dir.exists():
+        return []
+
+    students = []
+    for item in archive_dir.iterdir():
+        if item.is_dir() and not item.name.startswith('_') and not item.name.startswith('.'):
+            students.append(item.name)
+
+    return sorted(students)
+
+
+def find_archive_vocabulary_file(archive_batch: str, metadata: dict) -> tuple:
+    """
+    根据 metadata 查找题库文件
+
+    符合 dataset_conventions.md 规范的三级优先级：
+    1. question_bank_path（新格式，指向 questionbank/）
+    2. question_bank_file（旧格式）
+    3. progress 字段在 questionbank/ 中查找
+
+    Args:
+        archive_batch: 分组名称
+        metadata: metadata.json 内容
+
+    Returns:
+        (题库文件路径, 题库文件名) 元组
+    """
+    project_root = Path(__file__).parent.parent
+    archive_dir = project_root / "archive" / archive_batch
+
+    # 优先级 1: question_bank_path（新格式，指向 questionbank/）
+    qb_path_str = metadata.get("question_bank_path")
+    if qb_path_str:
+        qb_path = project_root / qb_path_str
+        if qb_path.exists():
+            return qb_path, qb_path.name
+
+    # 优先级 2: question_bank_file（旧格式）
+    qb_file = metadata.get("question_bank_file")
+    if qb_file:
+        qb_path = archive_dir / qb_file
+        if qb_path.exists():
+            return qb_path, qb_path.name
+
+    # 优先级 3: progress 字段在 questionbank/ 中查找
+    progress = metadata.get("progress")
+    if progress:
+        questionbank_dir = project_root / "questionbank"
+        if questionbank_dir.exists():
+            qb_path = questionbank_dir / f"{progress}.json"
+            if qb_path.exists():
+                return qb_path, qb_path.name
+
+    # Fallback: 查找 _shared_context 目录中的题库（向后兼容）
+    shared_context = archive_dir / "_shared_context"
+    if shared_context.exists():
+        for f in shared_context.glob("R*.json"):
+            if f.is_file() and "vocabulary" not in f.name.lower():
+                return f, f.name
+
+    return None, None
+
+
+def should_process_archive_student(student_dir: Path) -> bool:
+    """
+    检查学生是否应该被处理（是否已存在 4_llm_annotation.json）
+
+    Args:
+        student_dir: 学生目录路径
+
+    Returns:
+        True 如果应该处理，False 如果应该跳过
+    """
+    output_file = student_dir / "4_llm_annotation.json"
+    return not output_file.exists()
+
+
+def process_archive_student_annotation(
+    archive_batch: str,
+    student_name: str,
+    question_bank_path: Path,
+    question_bank_filename: str,
+    run_id: str,
+    verbose: bool = False
+) -> dict:
+    """
+    处理单个 archive 学生的评分（支持时间戳）
+
+    符合 dataset_conventions.md 规范：
+    - 输出到 {student}/runs/{run_id}/4_llm_annotation.json
+    - 生成 {student}/runs/{run_id}/run_metadata.json
+
+    Args:
+        archive_batch: 分组名称
+        student_name: 学生名称
+        question_bank_path: 题库文件路径
+        question_bank_filename: 题库文件名
+        run_id: 运行批次 ID
+        verbose: 是否显示详细信息
+
+    Returns:
+        包含学生信息的字典
+    """
+    try:
+        project_root = Path(__file__).parent.parent
+        student_dir = project_root / "archive" / archive_batch / student_name
+
+        # 检查 ASR 文件是否存在
+        asr_file = student_dir / "2_qwen_asr.json"
+        if not asr_file.exists():
+            return {
+                "student_name": student_name,
+                "status": "error",
+                "error": "未找到 ASR 转写文件 (2_qwen_asr.json)"
+            }
+
+        # 加载题库
+        question_bank = load_file_content(str(question_bank_path))
+
+        # 提取 ASR 文本
+        student_asr_text = extract_text_from_asr_json(str(asr_file))
+
+        # 提取时间戳文本（Phase 1: 严格必填）
+        asr_timestamp_file = student_dir / "3_asr_timestamp.json"
+        if not asr_timestamp_file.exists():
+            raise FileNotFoundError(
+                f"3_asr_timestamp.json 不存在: {asr_timestamp_file}\n"
+                f"请先运行 funasr.py --archive-batch {archive_batch} --student {student_name}"
+            )
+
+        # 提取时间戳文本（会抛异常如果结构无效）
+        student_asr_with_timestamp = extract_timestamp_text_from_asr_json(str(asr_timestamp_file))
+
+        # 双重校验：确保提取的内容非空
+        if not student_asr_with_timestamp or not student_asr_with_timestamp.strip():
+            raise ValueError(
+                f"3_asr_timestamp.json 解析后为空，说明 sentences 无有效内容\n"
+                f"文件: {asr_timestamp_file}"
+            )
+
+        # 初始化提示词加载器
+        script_dir = Path(__file__).parent
+        prompt_dir = script_dir.parent / "prompts" / "annotation"
+
+        try:
+            prompt_loader = PromptLoader(str(prompt_dir))
+        except (FileNotFoundError, json.JSONDecodeError) as e:
+            raise RuntimeError(f"Failed to load prompt templates: {e}")
+
+        # 构建提示词上下文（包含时间戳）
+        prompt_context = PromptContextBuilder.build(
+            question_bank_json=question_bank,
+            student_asr_text=student_asr_text,
+            dataset_name=archive_batch,
+            student_name=student_name,
+            student_asr_with_timestamp=student_asr_with_timestamp,
+            metadata=prompt_loader.metadata
+        )
+
+        # 获取系统指令和渲染用户提示词
+        system_instruction = prompt_loader.system_instruction
+        full_prompt = prompt_loader.render_user_prompt(prompt_context)
+
+        # 调用 Gemini API
+        result = call_gemini_api(full_prompt, system_instruction, verbose=verbose)
+
+        # 清理结果
+        result = result.strip()
+        if "```json" in result:
+            result = result.replace("```json", "").replace("```", "").strip()
+
+        # 解析结果
+        try:
+            api_result = json.loads(result)
+        except json.JSONDecodeError:
+            api_result = {"annotations": []}
+
+        # 处理不同的响应格式
+        if isinstance(api_result, dict):
+            annotations = api_result.get('annotations', [])
+            final_grade = api_result.get('final_grade_suggestion', 'C')
+            mistake_count = api_result.get('mistake_count', {})
+        elif isinstance(api_result, list):
+            annotations = api_result
+            final_grade = 'C'
+            mistake_count = {"errors": 0}
+        else:
+            annotations = []
+            final_grade = 'C'
+            mistake_count = {"errors": 0}
+
+        # Phase 1: card_timestamp 校验 - 任何 null 或无效格式直接失败
+        # 保存原始输出以便排错
+        raw_output_for_debug = result
+
+        def validate_card_timestamp(ts):
+            """校验 card_timestamp 格式为 MM:SS"""
+            if not ts or ts is None:
+                return False
+            if not isinstance(ts, str):
+                return False
+            # 匹配 MM:SS 格式（允许 M:SS 和 MM:SS）
+            import re
+            return bool(re.match(r'^\d{1,2}:\d{2}$', ts.strip()))
+
+        invalid_timestamps = []
+        for idx, annotation in enumerate(annotations):
+            card_ts = annotation.get('card_timestamp')
+            if not validate_card_timestamp(card_ts):
+                invalid_timestamps.append({
+                    'index': idx,
+                    'card_index': annotation.get('card_index', 'N/A'),
+                    'card_timestamp': card_ts
+                })
+
+        if invalid_timestamps:
+            # 保存原始输出到 run 目录便于排错
+            run_dir = student_dir / "runs" / run_id
+            run_dir.mkdir(parents=True, exist_ok=True)
+            raw_output_path = run_dir / "raw_api_output_debug.txt"
+            with open(raw_output_path, 'w', encoding='utf-8') as f:
+                f.write(f"=== Gemini API 原始输出 (card_timestamp 校验失败) ===\n")
+                f.write(f"时间: {datetime.now().isoformat()}\n")
+                f.write(f"学生: {student_name}\n")
+                f.write(f"无效时间戳数: {len(invalid_timestamps)}\n")
+                f.write(f"无效项:\n{json.dumps(invalid_timestamps, ensure_ascii=False, indent=2)}\n")
+                f.write("=" * 80 + "\n")
+                f.write(raw_output_for_debug)
+
+            raise ValueError(
+                f"card_timestamp 校验失败: {len(invalid_timestamps)} 个 annotation 的时间戳无效或为 null\n"
+                f"无效项: {invalid_timestamps[:3]}{'...' if len(invalid_timestamps) > 3 else ''}\n"
+                f"原始输出已保存到: {raw_output_path}"
+            )
+
+        # 获取 git commit hash
+        git_commit = "unknown"
+        try:
+            import subprocess
+            result_git = subprocess.run(
+                ["git", "rev-parse", "HEAD"],
+                cwd=project_root,
+                capture_output=True,
+                text=True,
+                timeout=5
+            )
+            if result_git.returncode == 0:
+                git_commit = result_git.stdout.strip()
+        except Exception:
+            pass
+
+        # 创建 runs/{run_id}/ 目录
+        run_dir = student_dir / "runs" / run_id
+        run_dir.mkdir(parents=True, exist_ok=True)
+
+        # 计算 prompt hash
+        import hashlib
+        prompt_hash = hashlib.sha256(full_prompt.encode('utf-8')).hexdigest()[:16]
+
+        # 保存提示词日志到 runs/{run_id}/
+        prompt_log_path = run_dir / "4_llm_prompt_log.txt"
+        try:
+            with open(prompt_log_path, 'w', encoding='utf-8') as f:
+                f.write("=== 学生回答提取 - 完整提示词日志 ===\n\n")
+                f.write(f"生成时间: {datetime.now().isoformat()}\n")
+                f.write(f"Run ID: {run_id}\n")
+                f.write(f"Git Commit: {git_commit}\n")
+                f.write(f"题库文件: {question_bank_filename}\n")
+                f.write(f"System Instruction 长度: {len(system_instruction)} 字符\n")
+                f.write(f"User Prompt 长度: {len(full_prompt)} 字符\n")
+                f.write(f"Prompt Hash: {prompt_hash}\n")
+                f.write("=" * 80 + "\n\n")
+                f.write("=" * 80 + "\n")
+                f.write("PROMPT METADATA\n")
+                f.write("=" * 80 + "\n")
+                f.write(json.dumps(prompt_loader.metadata, ensure_ascii=False, indent=2))
+                f.write("\n\n")
+                f.write("=" * 80 + "\n")
+                f.write("SYSTEM INSTRUCTION\n")
+                f.write("=" * 80 + "\n")
+                f.write(system_instruction)
+                f.write("\n\n")
+                f.write("=" * 80 + "\n")
+                f.write("USER PROMPT\n")
+                f.write("=" * 80 + "\n")
+                f.write(full_prompt)
+                f.write("\n")
+        except Exception as e:
+            print(f"⚠️  保存提示词日志失败: {e}")
+
+        # 验证评分
+        if not final_grade or final_grade not in ['A', 'B', 'C']:
+            raise ValueError(f"Gemini 未返回有效的评分等级: {final_grade}")
+
+        # 保存学生评分结果到 runs/{run_id}/
+        student_result = {
+            "student_name": student_name,
+            "final_grade_suggestion": final_grade,
+            "mistake_count": mistake_count,
+            "annotations": annotations
+        }
+
+        annotation_file_path = run_dir / "4_llm_annotation.json"
+        try:
+            with open(annotation_file_path, 'w', encoding='utf-8') as f:
+                json.dump(student_result, f, ensure_ascii=False, indent=2)
+            print(f"  ✓ {student_name}: 已保存到 runs/{run_id}/4_llm_annotation.json")
+        except Exception as e:
+            print(f"⚠️  保存评分结果失败: {e}")
+
+        # 保存 run_metadata.json
+        run_metadata = {
+            "run_id": run_id,
+            "git_commit": git_commit,
+            "model": "gemini-2.5-pro",
+            "prompt_path": "prompts/annotation/user.md",
+            "prompt_hash": f"sha256:{prompt_hash}",
+            "created_at": datetime.now().isoformat()
+        }
+        run_metadata_path = run_dir / "run_metadata.json"
+        try:
+            with open(run_metadata_path, 'w', encoding='utf-8') as f:
+                json.dump(run_metadata, f, ensure_ascii=False, indent=2)
+        except Exception as e:
+            print(f"⚠️  保存 run_metadata.json 失败: {e}")
+
+        return {
+            "student_name": student_name,
+            "status": "success",
+            "final_grade_suggestion": final_grade,
+            "mistake_count": mistake_count,
+            "annotations": annotations
+        }
+
+    except Exception as e:
+        return {
+            "student_name": student_name,
+            "status": "error",
+            "error": str(e)
+        }
+
+
+def create_archive_batch_report(archive_batch: str, student_results: list, metadata: dict) -> dict:
+    """
+    创建 archive 批处理报告
+
+    Args:
+        archive_batch: 分组名称
+        student_results: 学生结果列表
+        metadata: metadata.json 内容
+
+    Returns:
+        批量报告字典
+    """
+    report = {
+        "package_info": {
+            "package_id": archive_batch,
+            "class_label": metadata.get("class_code", ""),
+            "date": metadata.get("date", ""),
+            "progress": metadata.get("progress", ""),
+            "type": "vocabulary",
+            "processing_timestamp": datetime.now().isoformat() + "Z"
+        },
+        "student_reports": []
+    }
+
+    for result in student_results:
+        if result.get("status") == "success":
+            report["student_reports"].append({
+                "student_name": result["student_name"],
+                "final_grade_suggestion": result["final_grade_suggestion"],
+                "mistake_count": result["mistake_count"],
+                "annotations": result["annotations"]
+            })
+        else:
+            report["student_reports"].append({
+                "student_name": result["student_name"],
+                "status": "error",
+                "error": result.get("error", "Unknown error")
+            })
+
+    return report
+
+
+def process_archive_batch(
+    archive_batch: str,
+    student_name: str = None,
+    max_workers: int = 3,
+    verbose: bool = False,
+    force: bool = False
+) -> tuple:
+    """
+    批量处理 archive/{class}_{date}/ 下的所有学生
+
+    Args:
+        archive_batch: 分组名称（如 Zoe41900_2025-09-08）
+        student_name: 可选的单个学生名称
+        max_workers: 并行线程数
+        verbose: 是否显示详细信息
+        force: 是否强制重新处理
+
+    Returns:
+        (成功数, 跳过/失败数)
+    """
+    project_root = Path(__file__).parent.parent
+    archive_dir = project_root / "archive" / archive_batch
+
+    if not archive_dir.exists():
+        print(f"❌ Archive 目录不存在: {archive_dir}")
+        return 0, 0
+
+    print(f"\n{'='*60}")
+    print(f"📁 Gemini Annotation Archive 批处理: {archive_batch}")
+    print(f"{'='*60}")
+
+    # 加载 metadata
+    try:
+        metadata = load_archive_metadata(archive_batch)
+        print(f"   班级: {metadata.get('class_code', 'N/A')}")
+        print(f"   日期: {metadata.get('date', 'N/A')}")
+        print(f"   进度: {metadata.get('progress', 'N/A')}")
+    except FileNotFoundError as e:
+        print(f"⚠️  {e}")
+        metadata = {}
+
+    # 查找题库文件
+    question_bank_path, question_bank_filename = find_archive_vocabulary_file(archive_batch, metadata)
+    if not question_bank_path:
+        print(f"❌ 未找到题库文件")
+        return 0, 0
+
+    print(f"   📚 题库: {question_bank_filename}")
+
+    # 生成 run_id
+    run_id = generate_run_id()
+    print(f"   🆔 Run ID: {run_id}")
+
+    # 获取学生列表
+    if student_name:
+        students = [student_name]
+    else:
+        students = find_archive_students(archive_batch)
+
+    if not students:
+        print("   ⊘ 未找到任何学生")
+        return 0, 0
+
+    # 过滤已处理的学生
+    students_to_process = []
+    skipped_students = []
+
+    for student in students:
+        student_dir = archive_dir / student
+        if force or should_process_archive_student(student_dir):
+            students_to_process.append(student)
+        else:
+            skipped_students.append(student)
+
+    if skipped_students:
+        if force:
+            print(f"   ⚠️  强制重新处理 {len(skipped_students)} 个已处理的学生")
+            students_to_process.extend(skipped_students)
+        else:
+            print(f"   ℹ️  跳过 {len(skipped_students)} 个已处理的学生（使用 --force 重新处理）")
+
+    if not students_to_process:
+        print("   ✓ 所有学生都已处理过")
+        return 0, len(students)
+
+    print(f"   👥 将处理 {len(students_to_process)} 个学生")
+
+    # 并行处理
+    student_results = []
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        future_to_student = {}
+        for s_name in students_to_process:
+            future = executor.submit(
+                process_archive_student_annotation,
+                archive_batch,
+                s_name,
+                question_bank_path,
+                question_bank_filename,
+                run_id,
+                verbose
+            )
+            future_to_student[future] = s_name
+
+        for future in as_completed(future_to_student):
+            s_name = future_to_student[future]
+            try:
+                result = future.result()
+                student_results.append(result)
+                if result.get("status") != "success":
+                    print(f"  ✗ {s_name}: {result.get('error', 'Unknown error')}")
+            except Exception as e:
+                print(f"  ✗ {s_name}: 处理失败 - {str(e)}")
+                student_results.append({
+                    "student_name": s_name,
+                    "status": "error",
+                    "error": str(e)
+                })
+
+    # 创建批量报告
+    batch_report = create_archive_batch_report(archive_batch, student_results, metadata)
+    batch_report["run_id"] = run_id  # 添加 run_id 到报告中
+
+    # 创建 reports/{run_id}/ 目录并保存批量报告
+    reports_dir = archive_dir / "reports" / run_id
+    reports_dir.mkdir(parents=True, exist_ok=True)
+
+    output_path = reports_dir / "batch_annotation_report.json"
+    with open(output_path, 'w', encoding='utf-8') as f:
+        json.dump(batch_report, f, ensure_ascii=False, indent=2)
+
+    print(f"\n   📊 批量报告已保存到: reports/{run_id}/batch_annotation_report.json")
+
+    # 统计
+    success_count = sum(1 for r in student_results if r.get("status") == "success")
+    error_count = len(student_results) - success_count
+
+    print(f"\n{'='*60}")
+    print(f"✅ 处理完成！成功: {success_count}, 失败: {error_count}")
+    print(f"{'='*60}")
+
+    return success_count, error_count
+
+
 def process_all_students(max_workers: int = 3, verbose: bool = False, force: bool = False):
     """
     处理所有数据集中的所有学生
@@ -831,29 +1514,32 @@ def main():
     主入口点 - 支持 CLI 参数的批量处理
 
     用法:
-        python3 Gemini_annotation.py                                    # 处理所有数据集
-        python3 Gemini_annotation.py --dataset Zoe51530-9.8            # 处理指定数据集
-        python3 Gemini_annotation.py --dataset Zoe51530-9.8 --student Oscar  # 处理单个学生
+        python3 Gemini_annotation.py --archive-batch Zoe41900_2025-09-08  # Archive 批处理模式
+        python3 Gemini_annotation.py --dataset Zoe51530-9.8               # 旧模式
     """
     parser = argparse.ArgumentParser(
         description='Gemini 批量标注工具',
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 示例用法:
-  # 处理所有数据集和学生
-  python3 Gemini_annotation.py
+  # Archive 批处理模式（推荐）
+  python3 Gemini_annotation.py --archive-batch Zoe41900_2025-09-08
+  python3 Gemini_annotation.py --archive-batch Zoe41900_2025-09-08 --student Oscar
 
-  # 处理指定数据集中的所有学生
+  # 旧模式（向后兼容）
   python3 Gemini_annotation.py --dataset Zoe51530-9.8
-
-  # 处理指定学生
   python3 Gemini_annotation.py --dataset Zoe51530-9.8 --student Oscar
-
-  # 显示帮助
-  python3 Gemini_annotation.py --help
         """
     )
 
+    # Archive 批处理模式参数
+    parser.add_argument(
+        '--archive-batch',
+        type=str,
+        help='Archive 批处理模式 (例如: Zoe41900_2025-09-08)'
+    )
+
+    # 旧模式参数（向后兼容）
     parser.add_argument(
         '--dataset',
         type=str,
@@ -863,7 +1549,7 @@ def main():
     parser.add_argument(
         '--student',
         type=str,
-        help='学生名称 (例如: Oscar)。需要指定 --dataset'
+        help='学生名称 (例如: Oscar)'
     )
 
     parser.add_argument(
@@ -888,8 +1574,8 @@ def main():
     args = parser.parse_args()
 
     # 验证参数依赖关系
-    if args.student and not args.dataset:
-        parser.error("错误: --student 需要指定 --dataset")
+    if args.student and not args.dataset and not args.archive_batch:
+        parser.error("错误: --student 需要指定 --dataset 或 --archive-batch")
 
     # 检查 Gemini API 密钥
     if not os.getenv("GEMINI_API_KEY"):
@@ -898,8 +1584,19 @@ def main():
 
     # 根据参数执行相应的处理
     try:
-        if args.student:
-            # 处理单个学生
+        # Archive 批处理模式（推荐）
+        if args.archive_batch:
+            success, fail = process_archive_batch(
+                args.archive_batch,
+                student_name=args.student,
+                max_workers=args.workers,
+                verbose=args.verbose,
+                force=args.force
+            )
+            sys.exit(0 if (success > 0 or fail > 0) else 1)
+
+        # 旧模式：单个学生
+        if args.student and args.dataset:
             print(f"🎯 处理单个学生: {args.dataset}/{args.student}")
             print("=" * 50)
 
@@ -913,10 +1610,10 @@ def main():
                 sys.exit(1)
 
         elif args.dataset:
-            # 处理整个数据集
+            # 旧模式：整个数据集
             process_dataset_with_parallel(args.dataset, args.workers, verbose=args.verbose, force=args.force)
         else:
-            # 处理所有数据集（后向兼容）
+            # 旧模式：所有数据集
             process_all_students(args.workers, verbose=args.verbose, force=args.force)
 
     except Exception as e:
