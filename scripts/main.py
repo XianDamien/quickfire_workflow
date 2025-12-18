@@ -14,10 +14,7 @@ DAG 节点与依赖:
 """
 
 import argparse
-import hashlib
 import json
-import os
-import shutil
 import subprocess
 import sys
 from datetime import datetime
@@ -28,6 +25,10 @@ from typing import Optional, List, Tuple
 SCRIPT_DIR = Path(__file__).parent.resolve()
 PROJECT_ROOT = SCRIPT_DIR.parent
 ARCHIVE_DIR = PROJECT_ROOT / "archive"
+
+# 确保项目根目录在 Python path 中
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
 
 # 虚拟环境 Python 路径
 VENV_PYTHON = PROJECT_ROOT / ".venv" / "bin" / "python"
@@ -43,36 +44,15 @@ def get_python_executable() -> str:
     return sys.executable
 
 
-def get_git_commit() -> str:
-    """获取当前 git commit hash"""
-    try:
-        result = subprocess.run(
-            ["git", "rev-parse", "--short", "HEAD"],
-            capture_output=True, text=True, cwd=PROJECT_ROOT
-        )
-        return result.stdout.strip() if result.returncode == 0 else "unknown"
-    except Exception:
-        return "unknown"
-
-
-def get_file_hash(file_path: Path) -> str:
-    """计算文件的 sha256 hash（前16位）"""
-    if not file_path.exists():
-        return "missing"
-    hasher = hashlib.sha256()
-    with open(file_path, "rb") as f:
-        for chunk in iter(lambda: f.read(8192), b""):
-            hasher.update(chunk)
-    return f"sha256:{hasher.hexdigest()[:16]}"
+# 使用 common 模块的共用函数
+from scripts.common.runs import get_git_commit, new_run_id
+from scripts.common.hash import file_hash
+from scripts.common.archive import find_audio_file as _find_audio_file
 
 
 def find_audio_file(student_dir: Path) -> Optional[Path]:
-    """查找学生目录下的音频文件"""
-    for ext in [".mp3", ".wav", ".m4a", ".flac", ".ogg"]:
-        audio_file = student_dir / f"1_input_audio{ext}"
-        if audio_file.exists():
-            return audio_file
-    return None
+    """查找学生目录下的音频文件（兼容包装）"""
+    return _find_audio_file(student_dir)
 
 
 def check_stage_complete(student_dir: Path, stage: str) -> bool:
@@ -194,139 +174,50 @@ def run_annotation(archive_batch: str, student_name: str,
     """
     执行标注阶段，输出到分层 runs 目录
     输出: archive/{dataset_id}/{student}/runs/{annotator_name}/{run_id}/cards.json
+
+    使用模块化 annotator 调用，不再依赖 subprocess。
     """
+    from scripts.annotators import get_annotator
+    from scripts.common.runs import ensure_run_dir
+
     student_dir = ARCHIVE_DIR / archive_batch / student_name
-    git_commit = get_git_commit()
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    run_id = f"{timestamp}_{git_commit}"
+    run_id = new_run_id()
 
     # 目标目录: runs/{annotator_name}/{run_id}/
-    annotator_dir = student_dir / "runs" / annotator
-    run_dir = annotator_dir / run_id
+    run_dir = ensure_run_dir(archive_batch, student_name, annotator, run_id)
 
     if dry_run:
         print(f"  [dry-run] 会创建: {run_dir}/cards.json")
         return True
 
-    # 调用 Gemini annotation 脚本
-    # 目前只支持 gemini，后续可扩展
-    if annotator.startswith("gemini"):
-        cmd = [
-            get_python_executable(), str(SCRIPT_DIR / "Gemini_annotation.py"),
-            "--archive-batch", archive_batch,
-            "--student", student_name
-        ]
-        if force:
-            cmd.append("--force")
+    print(f"  [执行] annotator={annotator} --archive-batch {archive_batch} --student {student_name}")
 
-        print(f"  [执行] Gemini_annotation.py --archive-batch {archive_batch} --student {student_name}")
-        result = subprocess.run(cmd, cwd=PROJECT_ROOT)
+    try:
+        # 获取 annotator 实例
+        impl = get_annotator(annotator)
 
-        if result.returncode != 0:
-            print(f"  [✗] annotation 失败 (exit code: {result.returncode})")
+        # 调用标注
+        result = impl.run_archive_student(
+            archive_batch=archive_batch,
+            student_name=student_name,
+            run_dir=run_dir,
+            force=force,
+            verbose=False
+        )
+
+        if result.success:
+            print(f"  [✓] cards 完成 -> {run_dir.relative_to(PROJECT_ROOT)}/cards.json")
+            return True
+        else:
+            print(f"  [✗] annotation 失败: {result.error}")
             return False
 
-        # 迁移输出到分层目录
-        # Gemini_annotation.py 输出到 runs/{run_id}/4_llm_annotation.json
-        # 我们需要把它移动/复制到 runs/{annotator}/{run_id}/cards.json
-        legacy_runs = student_dir / "runs"
-        if legacy_runs.exists():
-            # 找到最新的 run 目录（不在 annotator 子目录下）
-            latest_run = None
-            latest_time = None
-            for item in legacy_runs.iterdir():
-                if item.is_dir() and not item.name.startswith('.'):
-                    # 跳过 annotator 子目录
-                    if item.name in ["gemini-2.5-pro", "gemini-2.0-flash", "openai"]:
-                        continue
-                    # 检查是否有 4_llm_annotation.json
-                    if (item / "4_llm_annotation.json").exists():
-                        try:
-                            mtime = item.stat().st_mtime
-                            if latest_time is None or mtime > latest_time:
-                                latest_time = mtime
-                                latest_run = item
-                        except:
-                            pass
-
-            if latest_run and (latest_run / "4_llm_annotation.json").exists():
-                # 创建目标目录
-                run_dir.mkdir(parents=True, exist_ok=True)
-
-                # 复制并重命名文件
-                src_annotation = latest_run / "4_llm_annotation.json"
-                dst_cards = run_dir / "cards.json"
-                shutil.copy2(src_annotation, dst_cards)
-
-                # 复制其他文件
-                for src_file in ["4_llm_prompt_log.txt", "run_metadata.json"]:
-                    src = latest_run / src_file
-                    if src.exists():
-                        dst_name = src_file.replace("4_llm_prompt_log.txt", "prompt_log.txt")
-                        shutil.copy2(src, run_dir / dst_name)
-
-                # 更新 run_manifest.json（增强版 metadata）
-                manifest = create_run_manifest(
-                    student_dir, run_id, annotator,
-                    run_dir / "prompt_log.txt" if (run_dir / "prompt_log.txt").exists() else None
-                )
-                with open(run_dir / "run_manifest.json", "w", encoding="utf-8") as f:
-                    json.dump(manifest, f, indent=2, ensure_ascii=False)
-
-                print(f"  [✓] cards 完成 -> {run_dir.relative_to(PROJECT_ROOT)}/cards.json")
-                return True
-
-        # 如果没找到输出，报错
-        print(f"  [✗] annotation 输出未找到")
+    except NotImplementedError as e:
+        print(f"  [✗] {e}")
         return False
-
-    else:
-        print(f"  [✗] 不支持的 annotator: {annotator}")
+    except Exception as e:
+        print(f"  [✗] annotation 异常: {e}")
         return False
-
-
-def create_run_manifest(student_dir: Path, run_id: str, annotator: str,
-                        prompt_log_path: Optional[Path]) -> dict:
-    """创建 run_manifest.json"""
-    manifest = {
-        "run_id": run_id,
-        "annotator_name": annotator,
-        "created_at": datetime.now().isoformat(),
-        "code": {
-            "git_commit": get_git_commit(),
-        },
-        "inputs": {},
-        "prompt": {}
-    }
-
-    # 记录输入文件的 hash
-    audio_file = find_audio_file(student_dir)
-    if audio_file:
-        manifest["inputs"]["audio"] = get_file_hash(audio_file)
-
-    qwen_asr = student_dir / "2_qwen_asr.json"
-    if qwen_asr.exists():
-        manifest["inputs"]["qwen_asr"] = get_file_hash(qwen_asr)
-
-    timestamps = student_dir / "3_asr_timestamp.json"
-    if timestamps.exists():
-        manifest["inputs"]["timestamps"] = get_file_hash(timestamps)
-
-    # 题库 hash
-    shared_ctx = student_dir.parent / "_shared_context"
-    if shared_ctx.exists():
-        for qb in shared_ctx.glob("R*.json"):
-            if "vocabulary" not in qb.name.lower():
-                manifest["inputs"]["question_bank"] = get_file_hash(qb)
-                break
-
-    # prompt hash
-    prompt_path = PROJECT_ROOT / "prompts" / "annotation" / "user.md"
-    if prompt_path.exists():
-        manifest["prompt"]["path"] = str(prompt_path.relative_to(PROJECT_ROOT))
-        manifest["prompt"]["hash"] = get_file_hash(prompt_path)
-
-    return manifest
 
 
 def resolve_stages(target: Optional[str], only: Optional[str], until: Optional[str],
