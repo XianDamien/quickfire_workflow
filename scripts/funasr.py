@@ -22,23 +22,40 @@ FunASR 异步语音转写脚本
   python3 funasr.py <url1> <url2> ...
   python3 funasr.py --hotwords <url1> <url2> ...
 """
-from http import HTTPStatus
-from dashscope.audio.asr import Transcription, VocabularyService, Recognition
-import dashscope
+
 import os
 import json
 import time
-import re
-import requests
 import argparse
+import sys
 from pathlib import Path
-from urllib.parse import urlparse, unquote
-from dotenv import load_dotenv
 from typing import List, Dict, Optional
 
-# 加载 .env 文件
-env_path = Path(__file__).parent / '.env'
-load_dotenv(env_path)
+import dashscope
+
+# 确保项目根目录在 Python path 中
+_SCRIPT_DIR = Path(__file__).parent.resolve()
+_PROJECT_ROOT = _SCRIPT_DIR.parent.resolve()
+if str(_PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(_PROJECT_ROOT))
+
+# 统一加载环境变量
+from scripts.common.env import load_env
+load_env()
+
+# 导入公共工具函数
+from scripts.common.naming import parse_backend_input_mp3_name
+from scripts.common.archive import find_audio_file as _find_audio_file_common
+
+# 导入 ASR Provider（核心转写逻辑已抽取到 scripts/asr/funasr.py）
+from scripts.asr.funasr import (
+    FunASRTimestampProvider,
+    VocabularySlotManager,
+    async_transcribe,
+    get_filename_from_url,
+    load_questionbank,
+    extract_vocabulary,
+)
 
 # 北京地域 URL
 dashscope.base_http_api_url = 'https://dashscope.aliyuncs.com/api/v1'
@@ -50,253 +67,46 @@ OUTPUT_DIR = Path(__file__).parent.parent / 'asr_timestamp'
 # 题库目录
 QUESTIONBANK_DIR = Path(__file__).parent.parent / 'questionbank'
 
-# 热词配置
-VOCABULARY_PREFIX = "qf"  # quickfire 前缀
-VOCABULARY_MODEL = "paraformer-realtime-v2"  # DashScope ASR 模型
-
-
-def get_filename_from_url(url: str) -> str:
-    """从 URL 中提取文件名（不含扩展名）"""
-    parsed = urlparse(url)
-    filename = unquote(Path(parsed.path).stem)
-    return filename
-
 
 def parse_audio_filename(filename: str) -> Optional[Dict[str, str]]:
     """
     解析音频文件名: {ClassCode}_{Date}_{QuestionBank}_{Student}.mp3
 
-    Args:
-        filename: 文件名（不含扩展名）
-
-    Returns:
-        解析结果字典，包含 class_code, date, question_bank, student
-        解析失败返回 None
+    已迁移到 scripts.common.naming.parse_backend_input_mp3_name，此函数为兼容性别名。
     """
-    # 匹配格式: ClassCode_Date_QuestionBank_Student
-    # 例如: Zoe41900_2025-09-08_R1-65-D5_Oscar
-    pattern = r'^([A-Za-z0-9]+)_(\d{4}-\d{2}-\d{2})_([A-Za-z0-9-]+)_(.+)$'
-    match = re.match(pattern, filename)
-
-    if match:
+    result = parse_backend_input_mp3_name(filename + ".mp3")
+    if result:
+        # 保持原有返回格式兼容性（student 而非 student_name）
         return {
-            'class_code': match.group(1),
-            'date': match.group(2),
-            'question_bank': match.group(3),
-            'student': match.group(4)
+            'class_code': result['class_code'],
+            'date': result['date'],
+            'question_bank': result['question_bank'],
+            'student': result['student_name']
         }
     return None
 
 
-def load_questionbank(question_bank_path: str | Path) -> List[Dict]:
+def find_questionbank_by_code(question_bank_code: str) -> Optional[Path]:
     """
-    从指定路径加载题库文件
+    在 questionbank/ 目录中查找题库文件
 
     Args:
-        question_bank_path: 题库文件路径（可以是完整路径或题库代码）
+        question_bank_code: 题库代码（如 R1-65-D5）
 
     Returns:
-        题库条目列表
-
-    Raises:
-        FileNotFoundError: 题库文件不存在
+        题库文件路径，或 None
     """
-    path = Path(question_bank_path)
+    # 精确匹配
+    exact = QUESTIONBANK_DIR / f"{question_bank_code}.json"
+    if exact.exists():
+        return exact
 
-    # 如果不是完整路径，尝试在 questionbank/ 目录查找
-    if not path.exists():
-        # 尝试作为题库代码处理
-        questionbank_path_full = QUESTIONBANK_DIR / f"{question_bank_path}.json"
-        if questionbank_path_full.exists():
-            path = questionbank_path_full
-        else:
-            raise FileNotFoundError(
-                f"题库文件不存在: {question_bank_path}\n"
-                f"尝试路径: {path}, {questionbank_path_full}"
-            )
+    # 前缀匹配
+    for f in sorted(QUESTIONBANK_DIR.glob(f"{question_bank_code}*.json")):
+        if f.is_file():
+            return f
 
-    with open(path, 'r', encoding='utf-8') as f:
-        data = json.load(f)
-
-    print(f"已加载题库: {path.name}, 条目数: {len(data)}")
-    return data
-
-
-def extract_vocabulary(questionbank: List[Dict]) -> List[Dict[str, any]]:
-    """
-    从题库提取热词列表
-
-    Args:
-        questionbank: 题库条目列表
-
-    Returns:
-        热词列表，格式: [{"text": "word", "weight": 4, "lang": "zh"}, ...]
-    """
-    vocabulary = []
-    seen = set()  # 去重
-
-    def add_word(text: str):
-        """添加单个词到热词列表"""
-        text = text.strip()
-        if text and text not in seen:
-            seen.add(text)
-            vocabulary.append({"text": text, "weight": 4, "lang": "zh"})
-
-    for item in questionbank:
-        # 提取 question
-        question = item.get('question', '').strip()
-        if question:
-            # 按顿号、逗号拆分
-            for word in re.split(r'[、，,]', question):
-                add_word(word)
-
-        # 提取 answer
-        answer = item.get('answer', '').strip()
-        if answer:
-            for word in re.split(r'[、，,]', answer):
-                add_word(word)
-
-    print(f"提取热词数: {len(vocabulary)} (去重后)")
-    return vocabulary
-
-
-class VocabularySlotManager:
-    """热词槽位管理器，实现复用策略"""
-
-    def __init__(self):
-        self.service = VocabularyService()
-        self.vocabulary_id = None
-
-    def get_or_create_slot(self) -> str:
-        """
-        获取或创建热词槽位
-        优先复用已有的槽位，没有则创建新的
-
-        Returns:
-            vocabulary_id
-        """
-        try:
-            # 优先查找指定前缀的槽位
-            existing = self.service.list_vocabularies(prefix=VOCABULARY_PREFIX)
-            if existing:
-                self.vocabulary_id = existing[0]['vocabulary_id']
-                print(f"复用热词槽位 (prefix={VOCABULARY_PREFIX}): {self.vocabulary_id}")
-                return self.vocabulary_id
-
-            # 没有指定前缀的，复用任意现有槽位
-            all_vocabs = self.service.list_vocabularies()
-            if all_vocabs:
-                self.vocabulary_id = all_vocabs[0]['vocabulary_id']
-                print(f"复用现有热词槽位: {self.vocabulary_id}")
-                return self.vocabulary_id
-
-        except Exception as e:
-            print(f"查询热词槽位失败: {e}")
-
-        # 只有在完全没有槽位时才创建新的
-        initial_vocab = [{"text": "初始化", "weight": 1, "lang": "zh"}]
-        try:
-            self.vocabulary_id = self.service.create_vocabulary(
-                prefix=VOCABULARY_PREFIX,
-                target_model=VOCABULARY_MODEL,
-                vocabulary=initial_vocab
-            )
-            print(f"创建新热词槽位: {self.vocabulary_id}")
-            return self.vocabulary_id
-        except Exception as e:
-            print(f"创建热词槽位失败: {e}")
-            raise
-
-    def update_vocabulary(self, vocabulary: List[Dict]) -> None:
-        """
-        更新热词内容
-
-        Args:
-            vocabulary: 新的热词列表
-        """
-        if not self.vocabulary_id:
-            raise ValueError("未初始化热词槽位，请先调用 get_or_create_slot()")
-
-        try:
-            self.service.update_vocabulary(self.vocabulary_id, vocabulary)
-            print(f"已更新热词槽位 {self.vocabulary_id}，词数: {len(vocabulary)}")
-        except Exception as e:
-            print(f"更新热词失败: {e}")
-            raise
-
-
-def fetch_transcription_result(transcription_url: str) -> dict:
-    """通过 HTTP 获取转写结果 JSON"""
-    response = requests.get(transcription_url)
-    response.raise_for_status()
-    return response.json()
-
-
-def extract_transcript(result: dict) -> dict:
-    """提取 text 字段和时间戳，返回简化的结果"""
-    transcripts = []
-
-    if 'transcripts' in result:
-        for item in result['transcripts']:
-            # 提取句子级别的时间戳
-            sentences = []
-            for sent in item.get('sentences', []):
-                sentences.append({
-                    'begin_time': sent.get('begin_time', 0),
-                    'end_time': sent.get('end_time', 0),
-                    'text': sent.get('text', '')
-                })
-
-            transcripts.append({
-                'channel_id': item.get('channel_id', 0),
-                'transcript': item.get('text', ''),  # API 返回的字段名是 text
-                'sentences': sentences  # 带时间戳的句子列表
-            })
-
-    return {
-        'file_url': result.get('file_url', ''),
-        'transcripts': transcripts
-    }
-
-
-def recognize_with_vocabulary(
-    audio_file: str,
-    vocabulary_id: str,
-    audio_format: str = 'mp3',
-    sample_rate: int = 16000
-) -> dict:
-    """
-    使用热词进行同步语音识别
-
-    Args:
-        audio_file: 本地音频文件路径
-        vocabulary_id: 热词槽位 ID
-        audio_format: 音频格式 (mp3, wav, etc.)
-        sample_rate: 采样率
-
-    Returns:
-        识别结果
-    """
-    recognition = Recognition(
-        model=VOCABULARY_MODEL,
-        format=audio_format,
-        sample_rate=sample_rate,
-        callback=None,
-        vocabulary_id=vocabulary_id,
-        language_hints=['zh', 'en']
-    )
-
-    result = recognition.call(audio_file)
-
-    # 解析结果
-    if result.status_code == HTTPStatus.OK:
-        return {
-            'file_path': audio_file,
-            'transcript': result.output.get('text', ''),
-            'sentences': result.output.get('sentences', [])
-        }
-    else:
-        raise Exception(f"识别失败: {result.code} - {result.message}")
+    return None
 
 
 def transcribe_with_hotwords(
@@ -340,9 +150,11 @@ def transcribe_with_hotwords(
 
         try:
             # 加载题库并更新热词
-            questionbank = load_questionbank(qb_code)
-            vocabulary = extract_vocabulary(questionbank)
-            vocab_manager.update_vocabulary(vocabulary)
+            qb_file = find_questionbank_by_code(qb_code)
+            if qb_file:
+                questionbank = load_questionbank(qb_file)
+                vocabulary = extract_vocabulary(questionbank)
+                vocab_manager.update_vocabulary(vocabulary)
 
             # 使用带热词的异步转写
             group_results = async_transcribe(
@@ -362,79 +174,6 @@ def transcribe_with_hotwords(
         print(f"\n处理未分组文件 ({len(ungrouped)} 个)")
         ungrouped_results = async_transcribe(ungrouped, poll_interval)
         results.extend(ungrouped_results)
-
-    return results
-
-
-def async_transcribe(
-    file_urls: list[str],
-    poll_interval: int = 5,
-    vocabulary_id: str = None
-) -> list[dict]:
-    """
-    异步提交转写任务并轮询获取结果
-
-    Args:
-        file_urls: 音频文件 URL 列表
-        poll_interval: 轮询间隔（秒）
-        vocabulary_id: 热词表 ID（可选）
-
-    Returns:
-        转写结果列表
-    """
-    print(f"提交 {len(file_urls)} 个文件进行转写...")
-    if vocabulary_id:
-        print(f"使用热词表: {vocabulary_id}")
-
-    # 异步提交任务
-    task_response = Transcription.async_call(
-        model='paraformer-v2',  # 使用 paraformer-v2 模型
-        file_urls=file_urls,
-        vocabulary_id=vocabulary_id,  # 热词表 ID
-        language_hints=['zh', 'en']
-    )
-
-    task_id = task_response.output.task_id
-    print(f"任务已提交，task_id: {task_id}")
-
-    # 轮询等待结果
-    while True:
-        transcribe_response = Transcription.fetch(task=task_id)
-        status = transcribe_response.output.task_status
-
-        print(f"任务状态: {status}")
-
-        if status in ('SUCCEEDED', 'FAILED'):
-            break
-
-        time.sleep(poll_interval)
-
-    # 处理结果
-    results = []
-
-    if transcribe_response.status_code == HTTPStatus.OK:
-        for item in transcribe_response.output.results:
-            file_url = item.get('file_url', '')
-            subtask_status = item.get('subtask_status', '')
-
-            if subtask_status == 'SUCCEEDED':
-                transcription_url = item.get('transcription_url', '')
-                if transcription_url:
-                    try:
-                        # 通过 HTTP 获取转写结果
-                        full_result = fetch_transcription_result(transcription_url)
-                        full_result['file_url'] = file_url
-                        result = extract_transcript(full_result)
-                        results.append(result)
-                        print(f"✓ 成功获取: {get_filename_from_url(file_url)}")
-                    except Exception as e:
-                        print(f"✗ 获取结果失败 {file_url}: {e}")
-            else:
-                code = item.get('code', '')
-                message = item.get('message', '')
-                print(f"✗ 子任务失败 {file_url}: {code} - {message}")
-    else:
-        print(f"任务失败: {transcribe_response.code} - {transcribe_response.message}")
 
     return results
 
@@ -508,48 +247,9 @@ def find_archive_audio_file(student_dir: Path) -> Optional[Path]:
     """
     查找学生目录中的音频文件
 
-    Args:
-        student_dir: 学生目录路径
-
-    Returns:
-        音频文件路径，或 None
+    已迁移到 scripts.common.archive.find_audio_file，此函数为兼容性别名。
     """
-    audio_formats = {'.mp3', '.mp4', '.wav', '.m4a', '.flac', '.ogg'}
-
-    # 优先级 1: 1_input_audio.*
-    for audio_file in student_dir.glob('1_input_audio.*'):
-        if audio_file.suffix.lower() in audio_formats:
-            return audio_file
-
-    # 优先级 2: 任何音频文件
-    for audio_file in student_dir.glob('*'):
-        if audio_file.is_file() and audio_file.suffix.lower() in audio_formats:
-            return audio_file
-
-    return None
-
-
-def find_questionbank_by_code(question_bank_code: str) -> Optional[Path]:
-    """
-    在 questionbank/ 目录中查找题库文件
-
-    Args:
-        question_bank_code: 题库代码（如 R1-65-D5）
-
-    Returns:
-        题库文件路径，或 None
-    """
-    # 精确匹配
-    exact = QUESTIONBANK_DIR / f"{question_bank_code}.json"
-    if exact.exists():
-        return exact
-
-    # 前缀匹配
-    for f in sorted(QUESTIONBANK_DIR.glob(f"{question_bank_code}*.json")):
-        if f.is_file():
-            return f
-
-    return None
+    return _find_audio_file_common(student_dir)
 
 
 def find_archive_vocabulary_file(archive_batch: str, metadata: Dict) -> Optional[Path]:
@@ -612,17 +312,17 @@ def should_process_archive_student(student_dir: Path) -> bool:
 def process_archive_student_local(
     student_dir: Path,
     student_name: str,
-    vocabulary_id: Optional[str] = None,
+    vocabulary_path: Optional[str] = None,
     force: bool = False,
     oss_url: Optional[str] = None
 ) -> bool:
     """
-    处理单个 archive 学生的音频转写（优先使用 OSS URL + Transcription API）
+    处理单个 archive 学生的音频转写（使用 FunASRTimestampProvider）
 
     Args:
         student_dir: 学生目录路径
         student_name: 学生名称
-        vocabulary_id: 热词槽位 ID
+        vocabulary_path: 题库文件路径
         force: 是否强制重新处理
         oss_url: OSS URL（如果有的话，优先使用）
 
@@ -634,103 +334,23 @@ def process_archive_student_local(
         print(f"  ✓ {student_name}: 已处理过（跳过）")
         return True
 
-    # 优先使用 OSS URL + Transcription API（支持 sentences）
-    if oss_url:
-        print(f"  ⟳ {student_name}: 使用 OSS URL 转写...")
-        try:
-            # 使用异步 Transcription API
-            results = async_transcribe([oss_url], poll_interval=3, vocabulary_id=vocabulary_id)
+    # 创建 provider
+    provider = FunASRTimestampProvider()
 
-            if results and len(results) > 0:
-                result = results[0]
-                sentences = []
-                for transcript in result.get('transcripts', []):
-                    sentences.extend(transcript.get('sentences', []))
-
-                # Phase 1: 严格校验 - sentences 为空则视为失败
-                if not sentences:
-                    print(f"  ✗ {student_name}: 转写成功但 sentences 为空，不保存 3_asr_timestamp.json")
-                    print(f"     原因: Transcription API 未返回句子级别的时间戳数据")
-                    return False
-
-                # 保存结果
-                output_path = student_dir / "3_asr_timestamp.json"
-                with open(output_path, 'w', encoding='utf-8') as f:
-                    json.dump(result, f, ensure_ascii=False, indent=2)
-
-                print(f"  ✓ {student_name}: 已保存到 3_asr_timestamp.json (sentences: {len(sentences)})")
-                return True
-            else:
-                print(f"  ✗ {student_name}: Transcription API 未返回结果")
-                return False
-
-        except Exception as e:
-            print(f"  ✗ {student_name}: OSS 转写失败 - {str(e)}")
-            return False
-
-    # Fallback: 本地文件 + Recognition API（可能没有 sentences）
+    # 查找音频文件（作为 fallback）
     audio_file = find_archive_audio_file(student_dir)
-    if not audio_file:
-        print(f"  ⊘ {student_name}: 未找到音频文件且无 OSS URL")
-        return False
+    audio_source = str(audio_file) if audio_file else ""
 
-    try:
-        print(f"  ⟳ {student_name}: 使用本地文件转写 (可能无时间戳)...")
-
-        # 检测音频采样率
-        import subprocess
-        try:
-            ffprobe_result = subprocess.run(
-                ['ffprobe', '-v', 'error', '-select_streams', 'a:0',
-                 '-show_entries', 'stream=sample_rate',
-                 '-of', 'default=noprint_wrappers=1:nokey=1',
-                 str(audio_file)],
-                capture_output=True, text=True, timeout=10
-            )
-            detected_sample_rate = int(ffprobe_result.stdout.strip())
-        except Exception:
-            detected_sample_rate = 16000
-
-        recognition = Recognition(
-            model=VOCABULARY_MODEL,
-            format=audio_file.suffix.lstrip('.'),
-            sample_rate=detected_sample_rate,
-            callback=None,
-            vocabulary_id=vocabulary_id,
-            language_hints=['zh', 'en']
-        )
-
-        result = recognition.call(str(audio_file))
-
-        if result.status_code == HTTPStatus.OK:
-            sentences = result.output.get('sentences', [])
-            if not sentences:
-                print(f"  ✗ {student_name}: Recognition API 不支持 sentences，需要 OSS URL")
-                print(f"     请确保 metadata.json 中包含该学生的 oss_url")
-                return False
-
-            output = {
-                'file_url': f'file://{audio_file}',
-                'transcripts': [{
-                    'channel_id': 0,
-                    'transcript': result.output.get('text', ''),
-                    'sentences': sentences
-                }]
-            }
-
-            output_path = student_dir / "3_asr_timestamp.json"
-            with open(output_path, 'w', encoding='utf-8') as f:
-                json.dump(output, f, ensure_ascii=False, indent=2)
-
-            print(f"  ✓ {student_name}: 已保存到 3_asr_timestamp.json (sentences: {len(sentences)})")
-            return True
-        else:
-            print(f"  ✗ {student_name}: 识别失败 - {result.code}: {result.message}")
-            return False
-
-    except Exception as e:
-        print(f"  ✗ {student_name}: 错误 - {str(e)}")
-        return False
+    # 使用 provider 进行转写
+    return provider.transcribe_and_save(
+        audio_source=audio_source,
+        output_dir=student_dir,
+        student_name=student_name,
+        vocabulary_path=vocabulary_path,
+        output_filename="3_asr_timestamp.json",
+        oss_url=oss_url,
+        force=force
+    )
 
 
 def process_archive_batch(
@@ -772,23 +392,12 @@ def process_archive_batch(
         print(f"⚠️  {e}")
         metadata = {}
 
-    # 初始化热词
-    vocabulary_id = None
+    # 查找题库文件
+    vocab_file = None
     if use_hotwords:
         vocab_file = find_archive_vocabulary_file(archive_batch, metadata)
         if vocab_file:
             print(f"   📚 题库: {vocab_file.name}")
-            try:
-                # 加载题库并更新热词（使用完整路径）
-                questionbank = load_questionbank(vocab_file)
-                vocabulary = extract_vocabulary(questionbank)
-
-                vocab_manager = VocabularySlotManager()
-                vocab_manager.get_or_create_slot()
-                vocab_manager.update_vocabulary(vocabulary)
-                vocabulary_id = vocab_manager.vocabulary_id
-            except Exception as e:
-                print(f"   ⚠️  热词初始化失败: {e}")
         else:
             print(f"   ⚠️  未找到题库文件，不使用热词")
 
@@ -822,7 +431,7 @@ def process_archive_batch(
         success = process_archive_student_local(
             student_dir,
             student,
-            vocabulary_id=vocabulary_id,
+            vocabulary_path=str(vocab_file) if vocab_file else None,
             force=force,
             oss_url=oss_url
         )
