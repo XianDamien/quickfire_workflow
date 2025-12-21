@@ -432,7 +432,6 @@ class QwenASRProvider:
         vocabulary_path: Optional[str] = None,
         language: Optional[str] = None,
         enable_itn: bool = False,
-        enable_lid: bool = True,
     ) -> Dict[str, Any]:
         """
         Transcribe audio file using Qwen3-ASR with optional vocabulary context.
@@ -442,7 +441,6 @@ class QwenASRProvider:
             vocabulary_path: Optional path to vocabulary JSON file for context
             language: Optional language code (e.g., "zh" for Chinese)
             enable_itn: Enable inverse text normalization
-            enable_lid: Enable language identification
 
         Returns:
             Response dictionary with transcription results
@@ -459,7 +457,6 @@ class QwenASRProvider:
         # Build ASR options
         asr_options = {
             "enable_itn": enable_itn,
-            "enable_lid": enable_lid,
         }
         if language:
             asr_options["language"] = language

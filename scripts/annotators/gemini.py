@@ -33,7 +33,7 @@ class GeminiAnnotator(BaseAnnotator):
     Gemini Annotator 实现
 
     支持的模型:
-    - gemini-2.5-pro (默认)
+    - gemini-3-pro-preview
     - gemini-2.0-flash
     """
 
