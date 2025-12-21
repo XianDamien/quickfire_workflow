@@ -193,7 +193,7 @@ class PromptContextBuilder:
         if not student_asr_with_timestamp or not student_asr_with_timestamp.strip():
             raise ValueError(
                 "缺少 student_asr_with_timestamp（依赖 3_asr_timestamp.json）。\n"
-                "请先运行 funasr.py 生成时间戳数据。"
+                "请先运行: python3 scripts/main.py --archive-batch <batch> --target timestamps"
             )
         context['student_asr_with_timestamp'] = student_asr_with_timestamp
 

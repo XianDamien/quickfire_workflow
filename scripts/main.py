@@ -5,6 +5,10 @@ Quickfire 一键入口 - DAG 依赖驱动的批处理工具
 DAG 节点与依赖:
     audio → qwen_asr → timestamps → cards
 
+Provider 约束:
+    - qwen_asr (text) 阶段: 只能使用 Text provider (QwenASRProvider)
+    - timestamps 阶段: 只能使用 Timestamp provider (FunASRTimestampProvider)
+
 用法:
     python3 scripts/main.py --archive-batch Zoe41900_2025-09-08 --target cards
     python3 scripts/main.py --archive-batch Zoe41900_2025-09-08 --student Oscar --target cards
@@ -15,11 +19,10 @@ DAG 节点与依赖:
 
 import argparse
 import json
-import subprocess
 import sys
 from datetime import datetime
 from pathlib import Path
-from typing import Optional, List, Tuple
+from typing import Optional, List, Tuple, Dict, Any
 
 # 项目根目录
 SCRIPT_DIR = Path(__file__).parent.resolve()
@@ -34,24 +37,14 @@ if str(PROJECT_ROOT) not in sys.path:
 from scripts.common.env import load_env
 load_env()
 
-# 虚拟环境 Python 路径
-VENV_PYTHON = PROJECT_ROOT / ".venv" / "bin" / "python"
-
 # DAG 节点定义（顺序即依赖顺序）
 DAG_STAGES = ["audio", "qwen_asr", "timestamps", "cards"]
-
-
-def get_python_executable() -> str:
-    """获取 Python 可执行文件路径（优先使用虚拟环境）"""
-    if VENV_PYTHON.exists():
-        return str(VENV_PYTHON)
-    return sys.executable
 
 
 # 使用 common 模块的共用函数
 from scripts.common.runs import get_git_commit, new_run_id
 from scripts.common.hash import file_hash
-from scripts.common.archive import find_audio_file as _find_audio_file
+from scripts.common.archive import find_audio_file as _find_audio_file, resolve_question_bank
 
 
 def find_audio_file(student_dir: Path) -> Optional[Path]:
@@ -105,6 +98,187 @@ def get_students(archive_batch: str, student_filter: Optional[str] = None) -> Li
     return students
 
 
+def load_batch_metadata(archive_batch: str) -> Dict[str, Any]:
+    """
+    加载 archive/{batch}/metadata.json
+
+    Args:
+        archive_batch: 分组名称
+
+    Returns:
+        metadata 字典，加载失败返回空字典
+    """
+    metadata_path = ARCHIVE_DIR / archive_batch / "metadata.json"
+    if not metadata_path.exists():
+        return {}
+    try:
+        with open(metadata_path, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    except Exception:
+        return {}
+
+
+def get_student_oss_url(metadata: Dict[str, Any], student_name: str) -> Optional[str]:
+    """
+    从 metadata 中获取学生的 OSS URL
+
+    Args:
+        metadata: batch metadata
+        student_name: 学生名称
+
+    Returns:
+        OSS URL 或 None
+    """
+    for item in metadata.get('items', []):
+        if item.get('student') == student_name:
+            return item.get('oss_url')
+    return None
+
+
+def run_qwen_asr(
+    archive_batch: str,
+    student_name: str,
+    force: bool = False,
+    dry_run: bool = False
+) -> bool:
+    """
+    执行 qwen_asr (text) 阶段
+
+    使用 Text provider: QwenASRProvider
+    输出: 2_qwen_asr.json
+
+    Args:
+        archive_batch: 批次名称
+        student_name: 学生名称
+        force: 是否强制重新处理
+        dry_run: 是否只打印不执行
+
+    Returns:
+        True=成功, False=失败
+    """
+    student_dir = ARCHIVE_DIR / archive_batch / student_name
+
+    # 查找音频文件
+    audio_file = find_audio_file(student_dir)
+    if not audio_file:
+        print(f"  [✗] 缺少音频文件: {student_dir}/1_input_audio.*")
+        return False
+
+    # 加载 metadata 获取题库
+    metadata = load_batch_metadata(archive_batch)
+    vocab_file = resolve_question_bank(archive_batch, metadata)
+
+    # 输出路径
+    output_file = student_dir / "2_qwen_asr.json"
+
+    if dry_run:
+        print(f"  [dry-run] qwen_asr 阶段")
+        print(f"    音频路径: {audio_file}")
+        print(f"    题库路径: {vocab_file or '(无)'}")
+        print(f"    输出路径: {output_file}")
+        print(f"    Provider: QwenASRProvider (Text)")
+        return True
+
+    print(f"  [执行] qwen_asr -> {student_name}")
+
+    try:
+        # 直接调用 Text provider
+        from scripts.asr.qwen import QwenASRProvider
+
+        provider = QwenASRProvider()
+        provider.transcribe_and_save_with_segmentation(
+            input_audio_path=str(audio_file),
+            output_dir=str(student_dir),
+            vocabulary_path=str(vocab_file) if vocab_file else None,
+            output_filename="2_qwen_asr.json",
+            language="zh",
+            segment_duration=180,
+            max_workers=3,
+        )
+
+        print(f"  [✓] qwen_asr 完成 -> 2_qwen_asr.json")
+        return True
+
+    except Exception as e:
+        print(f"  [✗] qwen_asr 失败: {e}")
+        return False
+
+
+def run_timestamps(
+    archive_batch: str,
+    student_name: str,
+    force: bool = False,
+    dry_run: bool = False
+) -> bool:
+    """
+    执行 timestamps 阶段
+
+    使用 Timestamp provider: FunASRTimestampProvider
+    输出: 3_asr_timestamp.json
+
+    Args:
+        archive_batch: 批次名称
+        student_name: 学生名称
+        force: 是否强制重新处理
+        dry_run: 是否只打印不执行
+
+    Returns:
+        True=成功, False=失败
+    """
+    student_dir = ARCHIVE_DIR / archive_batch / student_name
+
+    # 查找音频文件
+    audio_file = find_audio_file(student_dir)
+    if not audio_file:
+        print(f"  [✗] 缺少音频文件: {student_dir}/1_input_audio.*")
+        return False
+
+    # 加载 metadata 获取题库和 OSS URL
+    metadata = load_batch_metadata(archive_batch)
+    vocab_file = resolve_question_bank(archive_batch, metadata)
+    oss_url = get_student_oss_url(metadata, student_name)
+
+    # 输出路径
+    output_file = student_dir / "3_asr_timestamp.json"
+
+    if dry_run:
+        print(f"  [dry-run] timestamps 阶段")
+        print(f"    音频路径: {audio_file}")
+        print(f"    题库路径: {vocab_file or '(无)'}")
+        print(f"    OSS URL: {oss_url or '(无)'}")
+        print(f"    输出路径: {output_file}")
+        print(f"    Provider: FunASRTimestampProvider (Timestamp)")
+        return True
+
+    print(f"  [执行] timestamps -> {student_name}")
+
+    try:
+        # 直接调用 Timestamp provider
+        from scripts.asr.funasr import FunASRTimestampProvider
+
+        provider = FunASRTimestampProvider()
+        success = provider.transcribe_and_save(
+            audio_source=str(audio_file),
+            output_dir=student_dir,
+            student_name=student_name,
+            vocabulary_path=str(vocab_file) if vocab_file else None,
+            output_filename="3_asr_timestamp.json",
+            oss_url=oss_url,
+            force=force
+        )
+
+        if success:
+            print(f"  [✓] timestamps 完成 -> 3_asr_timestamp.json")
+            return True
+        else:
+            print(f"  [✗] timestamps 失败")
+            return False
+
+    except Exception as e:
+        print(f"  [✗] timestamps 失败: {e}")
+        return False
+
+
 def run_stage(stage: str, archive_batch: str, student_name: str,
               force: bool = False, annotator: str = None,
               dry_run: bool = False) -> bool:
@@ -129,46 +303,12 @@ def run_stage(stage: str, archive_batch: str, student_name: str,
             return False
 
     elif stage == "qwen_asr":
-        cmd = [
-            get_python_executable(), str(SCRIPT_DIR / "qwen_asr.py"),
-            "--archive-batch", archive_batch,
-            "--student", student_name
-        ]
-        if force:
-            cmd.append("--force")
-
-        if dry_run:
-            print(f"  [dry-run] {' '.join(cmd)}")
-            return True
-
-        print(f"  [执行] qwen_asr.py --archive-batch {archive_batch} --student {student_name}")
-        result = subprocess.run(cmd, cwd=PROJECT_ROOT)
-        if result.returncode != 0:
-            print(f"  [✗] qwen_asr 失败 (exit code: {result.returncode})")
-            return False
-        print(f"  [✓] qwen_asr 完成")
-        return True
+        # Text provider: QwenASRProvider
+        return run_qwen_asr(archive_batch, student_name, force, dry_run)
 
     elif stage == "timestamps":
-        cmd = [
-            get_python_executable(), str(SCRIPT_DIR / "funasr.py"),
-            "--archive-batch", archive_batch,
-            "--student", student_name
-        ]
-        if force:
-            cmd.append("--force")
-
-        if dry_run:
-            print(f"  [dry-run] {' '.join(cmd)}")
-            return True
-
-        print(f"  [执行] funasr.py --archive-batch {archive_batch} --student {student_name}")
-        result = subprocess.run(cmd, cwd=PROJECT_ROOT)
-        if result.returncode != 0:
-            print(f"  [✗] funasr (timestamps) 失败 (exit code: {result.returncode})")
-            return False
-        print(f"  [✓] timestamps 完成")
-        return True
+        # Timestamp provider: FunASRTimestampProvider
+        return run_timestamps(archive_batch, student_name, force, dry_run)
 
     elif stage == "cards":
         return run_annotation(archive_batch, student_name, annotator, force, dry_run)
