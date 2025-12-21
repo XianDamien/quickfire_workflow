@@ -45,7 +45,7 @@ load_env()
 
 # 导入公共工具函数
 from scripts.common.naming import parse_backend_input_mp3_name
-from scripts.common.archive import find_audio_file as _find_audio_file_common
+from scripts.common.archive import find_audio_file as _find_audio_file_common, resolve_question_bank
 
 # 导入 ASR Provider（核心转写逻辑已抽取到 scripts/asr/funasr.py）
 from scripts.asr.funasr import (
@@ -252,49 +252,6 @@ def find_archive_audio_file(student_dir: Path) -> Optional[Path]:
     return _find_audio_file_common(student_dir)
 
 
-def find_archive_vocabulary_file(archive_batch: str, metadata: Dict) -> Optional[Path]:
-    """
-    根据 metadata 查找题库文件
-
-    符合 dataset_conventions.md 规范：
-    - 优先使用 question_bank_path（指向 questionbank/ 目录）
-    - Fallback: 使用 progress 字段在 questionbank/ 中查找
-    - Fallback: question_bank_file（旧格式）
-
-    Args:
-        archive_batch: 分组名称
-        metadata: metadata.json 内容
-
-    Returns:
-        题库文件路径，或 None
-    """
-    project_root = Path(__file__).parent.parent
-
-    # 优先级 1: question_bank_path（新格式，指向 questionbank/）
-    qb_path_str = metadata.get("question_bank_path")
-    if qb_path_str:
-        qb_path = project_root / qb_path_str
-        if qb_path.exists():
-            return qb_path
-
-    # 优先级 2: 使用 progress 在 questionbank/ 中查找
-    progress = metadata.get("progress")
-    if progress:
-        qb_file = find_questionbank_by_code(progress)
-        if qb_file:
-            return qb_file
-
-    # Fallback: question_bank_file（旧格式，相对于 archive 目录）
-    archive_dir = project_root / "archive" / archive_batch
-    qb_file_old = metadata.get("question_bank_file")
-    if qb_file_old:
-        qb_path = archive_dir / qb_file_old
-        if qb_path.exists():
-            return qb_path
-
-    return None
-
-
 def should_process_archive_student(student_dir: Path) -> bool:
     """
     检查学生是否应该被处理（是否已存在 3_asr_timestamp.json）
@@ -392,10 +349,10 @@ def process_archive_batch(
         print(f"⚠️  {e}")
         metadata = {}
 
-    # 查找题库文件
+    # 查找题库文件（统一使用 common/archive.py 的 resolve_question_bank）
     vocab_file = None
     if use_hotwords:
-        vocab_file = find_archive_vocabulary_file(archive_batch, metadata)
+        vocab_file = resolve_question_bank(archive_batch, metadata)
         if vocab_file:
             print(f"   📚 题库: {vocab_file.name}")
         else:

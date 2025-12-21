@@ -20,12 +20,12 @@ if str(_PROJECT_ROOT) not in sys.path:
 
 from google import genai
 from google.genai import types
-from dotenv import load_dotenv
 
 from .base import BaseAnnotator, AnnotatorInput, AnnotatorOutput
 
-# 加载 .env
-load_dotenv()
+# 统一加载环境变量（如果 main.py 已加载则跳过）
+from scripts.common.env import load_env
+load_env()
 
 
 class GeminiAnnotator(BaseAnnotator):
@@ -39,9 +39,9 @@ class GeminiAnnotator(BaseAnnotator):
 
     def __init__(
         self,
-        model: str = "gemini-2.5-pro",
+        model: str = None,
         temperature: float = 0.2,
-        max_output_tokens: int = 16384,
+        max_output_tokens: Optional[int] = None,
         max_retries: int = 5,
         retry_delay: int = 5,
     ):
@@ -55,9 +55,25 @@ class GeminiAnnotator(BaseAnnotator):
             max_retries: 最大重试次数
             retry_delay: 重试延迟（秒）
         """
+        from .config import (
+            DEFAULT_ANNOTATOR,
+            DEFAULT_MAX_OUTPUT_TOKENS,
+            GEMINI3_MAX_OUTPUT_TOKENS,
+        )
+
+        # 使用配置的默认模型
+        if model is None:
+            model = DEFAULT_ANNOTATOR
+
         self.model = model
         self.name = model
         self.temperature = temperature
+        if max_output_tokens is None:
+            max_output_tokens = (
+                GEMINI3_MAX_OUTPUT_TOKENS
+                if model.startswith("gemini-3-")
+                else DEFAULT_MAX_OUTPUT_TOKENS
+            )
         self.max_output_tokens = max_output_tokens
         self.max_retries = max_retries
         self.retry_delay = retry_delay
@@ -74,7 +90,7 @@ class GeminiAnnotator(BaseAnnotator):
         prompt: str,
         system_instruction: Optional[str] = None,
         verbose: bool = False
-    ) -> str:
+    ) -> tuple:
         """
         调用 Gemini API
 
@@ -84,12 +100,13 @@ class GeminiAnnotator(BaseAnnotator):
             verbose: 是否显示详细信息
 
         Returns:
-            API 响应文本
+            (API 响应文本, 响应时间毫秒)
 
         Raises:
             ValueError: API 调用失败
         """
         response = None
+        response_time_ms = None
 
         for attempt in range(self.max_retries):
             try:
@@ -120,14 +137,21 @@ class GeminiAnnotator(BaseAnnotator):
                 if system_instruction:
                     config_kwargs["system_instruction"] = system_instruction
 
+                # 记录 API 调用开始时间
+                api_start_time = time.time()
+
                 response = self.client.models.generate_content(
                     model=self.model,
                     contents=prompt,
                     config=types.GenerateContentConfig(**config_kwargs)
                 )
 
+                # 计算响应时间
+                api_end_time = time.time()
+                response_time_ms = (api_end_time - api_start_time) * 1000
+
                 if verbose:
-                    print(f"📥 收到响应 (尝试 {attempt + 1})")
+                    print(f"📥 收到响应 (尝试 {attempt + 1}, 耗时 {response_time_ms:.0f}ms)")
 
                 break
 
@@ -146,7 +170,7 @@ class GeminiAnnotator(BaseAnnotator):
             raise ValueError("无法获得 API 响应")
 
         # 处理响应
-        return self._extract_response_text(response, verbose)
+        return self._extract_response_text(response, verbose), response_time_ms
 
     def _extract_response_text(self, response: Any, verbose: bool = False) -> str:
         """从 API 响应中提取文本"""
@@ -178,7 +202,10 @@ class GeminiAnnotator(BaseAnnotator):
                 raise ValueError("内容被安全过滤器阻止")
 
             elif reason_name == "MAX_TOKENS":
-                print("⚠️  响应被截断 - 达到最大 token 限制")
+                print(
+                    "⚠️  响应被截断 - 达到最大 token 限制 "
+                    f"(model={self.model}, max_output_tokens={self.max_output_tokens})"
+                )
                 if hasattr(response, "text") and response.text:
                     return response.text
                 raise ValueError("响应被截断且无法获取部分内容")
@@ -261,7 +288,7 @@ class GeminiAnnotator(BaseAnnotator):
             system_instruction, full_prompt, prompt_hash, prompt_loader = self._build_prompt(input_data)
 
             # 调用 API
-            raw_response = self._call_api(
+            raw_response, response_time_ms = self._call_api(
                 full_prompt,
                 system_instruction,
                 verbose=input_data.verbose
@@ -269,6 +296,21 @@ class GeminiAnnotator(BaseAnnotator):
 
             # 解析响应
             parsed = parse_api_response(raw_response)
+            if parsed.get("_parse_error"):
+                raw_output_path = run_dir / "raw_api_output_parse_error.txt"
+                with open(raw_output_path, "w", encoding="utf-8") as f:
+                    f.write("=== Gemini API 原始输出 (JSON 解析失败) ===\n")
+                    f.write(f"时间: {datetime.now().isoformat()}\n")
+                    f.write(f"学生: {input_data.student_name}\n")
+                    f.write(f"Model: {self.model}\n")
+                    f.write(f"max_output_tokens: {self.max_output_tokens}\n")
+                    f.write("=" * 80 + "\n")
+                    f.write(raw_response)
+
+                raise ValueError(
+                    "LLM 输出不是有效 JSON（很可能是触发 MAX_TOKENS 导致被截断）。\n"
+                    f"原始输出已保存到: {raw_output_path}"
+                )
             annotations = parsed["annotations"]
             final_grade = parsed["final_grade_suggestion"]
             mistake_count = parsed["mistake_count"]
@@ -311,6 +353,7 @@ class GeminiAnnotator(BaseAnnotator):
                 prompt_loader=prompt_loader,
                 run_id=run_id,
                 question_bank_filename=input_data.question_bank_path.name,
+                response_time_ms=response_time_ms,
             )
 
             # 写入 manifest
@@ -325,7 +368,13 @@ class GeminiAnnotator(BaseAnnotator):
                 model=self.model,
             )
 
-            print(f"  ✓ {input_data.student_name}: 已保存到 runs/{self.name}/{run_id}/")
+            # 格式化响应时间
+            if response_time_ms < 1000:
+                time_str = f"{response_time_ms:.0f}ms"
+            else:
+                time_str = f"{response_time_ms / 1000:.2f}s"
+
+            print(f"  ✓ {input_data.student_name}: 已保存到 runs/{self.name}/{run_id}/ (⏱ {time_str})")
 
             return AnnotatorOutput(
                 success=True,
@@ -337,6 +386,7 @@ class GeminiAnnotator(BaseAnnotator):
                 run_dir=run_dir,
                 model=self.model,
                 prompt_hash=prompt_hash,
+                response_time_ms=response_time_ms,
             )
 
         except Exception as e:
@@ -360,6 +410,7 @@ class GeminiAnnotator(BaseAnnotator):
         prompt_loader: Any,
         run_id: str,
         question_bank_filename: str,
+        response_time_ms: float,
     ) -> None:
         """保存输出文件到 run_dir"""
         from scripts.common.runs import get_git_commit
@@ -367,24 +418,27 @@ class GeminiAnnotator(BaseAnnotator):
         git_commit = get_git_commit(short=False)
         prompt_version = prompt_loader.metadata.get("prompt_version", "unknown")
 
-        # 1. 保存 cards.json (标准输出)
-        cards_result = {
+        # 保存 4_llm_annotation.json (唯一标准输出)
+        annotation_result = {
             "student_name": student_name,
             "final_grade_suggestion": final_grade,
             "mistake_count": mistake_count,
-            "annotations": annotations
+            "annotations": annotations,
+            "_metadata": {
+                "model": self.model,
+                "response_time_ms": response_time_ms,
+                "prompt_version": prompt_version,
+                "run_id": run_id,
+                "git_commit": git_commit,
+                "timestamp": datetime.now().isoformat(),
+            }
         }
 
-        cards_path = run_dir / "cards.json"
-        with open(cards_path, "w", encoding="utf-8") as f:
-            json.dump(cards_result, f, ensure_ascii=False, indent=2)
-
-        # 2. 保存 4_llm_annotation.json (兼容旧格式)
         annotation_path = run_dir / "4_llm_annotation.json"
         with open(annotation_path, "w", encoding="utf-8") as f:
-            json.dump(cards_result, f, ensure_ascii=False, indent=2)
+            json.dump(annotation_result, f, ensure_ascii=False, indent=2)
 
-        # 3. 保存 prompt_log.txt
+        # 保存 prompt_log.txt
         prompt_log_path = run_dir / "prompt_log.txt"
         with open(prompt_log_path, "w", encoding="utf-8") as f:
             f.write("=== 学生回答提取 - 完整提示词日志 ===\n\n")

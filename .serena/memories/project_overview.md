@@ -23,8 +23,18 @@
 - 模型：qwen-plus (默认) | qwen3-omni-30b-a3b-captioner | qwen3-max | qwen3-omni-flash
 
 ## 模块结构
+- `scripts/main.py` → 一键入口，DAG 依赖驱动的批处理工具
 - `scripts/qwen_asr.py` → Qwen ASR 音频转写（支持标准模式和文件名模式）
+- `scripts/funasr.py` → FunASR 带时间戳转写（阿里云 DashScope）
 - `scripts/Gemini_annotation.py` → Gemini 回答提取与评分
+- `scripts/common/` → 公共工具模块
+  - `env.py` → 统一环境变量加载（scripts/.env 优先）
+  - `naming.py` → 统一命名解析（parse_backend_input_mp3_name 等）
+  - `archive.py` → Archive 目录操作（find_audio_file 等）
+  - `runs.py` → Run ID 管理
+- `scripts/annotators/` → 可替换 LLM annotator 架构
+  - `gemini.py` → Gemini 实现
+  - `base.py` → 基类定义
 - `prompts/prompt_loader.py` → Jinja2 提示词加载与渲染
 - `prompts/annotation/` → 提示词模板（system.md + user.txt + metadata.json）
 - `questionbank/` → 题库源文件（R*.json 格式）
@@ -64,17 +74,45 @@ python3 scripts/qwen_asr.py --file /path/to/audio.mp3 --output /path/to/output
 
 ## 数据流
 ```
-学生音频
+学生音频（1_input_audio.mp3）
     ↓
 Qwen ASR 转写（2_qwen_asr.json）
+    ↓
+FunASR 时间戳转写（3_asr_timestamp.json）
     ↓
 题库（/questionbank/R*.json）+ Jinja2 提示词模板
     ↓
 Gemini LLM 回答提取与评分
     ↓
-4_llm_annotation.json（单学生结果）
+runs/{run_id}/4_llm_annotation.json（单学生结果）
     ↓
 批量聚合
     ↓
-batch_annotation_report.json（班级级报告）
+reports/{run_id}/batch_annotation_report.json（班级级报告）
 ```
+
+## 一键入口 main.py
+
+### 使用方式
+```bash
+# 完整流程（默认 --target cards）
+python3 scripts/main.py --archive-batch Zoe41900_2025-09-08
+
+# 指定学生
+python3 scripts/main.py -b Zoe41900_2025-09-08 -s Oscar
+
+# 干运行（预览命令）
+python3 scripts/main.py -b Zoe41900_2025-09-08 --dry-run
+
+# 执行到指定阶段
+python3 scripts/main.py -b Zoe41900_2025-09-08 --until timestamps
+```
+
+### DAG 阶段
+```
+audio → qwen_asr → timestamps → cards
+```
+- `audio`: 检查音频文件存在
+- `qwen_asr`: Qwen ASR 转写
+- `timestamps`: FunASR 时间戳转写
+- `cards`: Gemini LLM 评分

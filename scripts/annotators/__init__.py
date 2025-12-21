@@ -26,6 +26,7 @@ scripts/annotators - Annotator 模块
 
 from typing import Dict, Type, Optional, Union
 from .base import BaseAnnotator, AnnotatorInput, AnnotatorOutput
+from .config import DEFAULT_ANNOTATOR, AVAILABLE_GEMINI_MODELS
 
 # Annotator 注册表
 _REGISTRY: Dict[str, Type[BaseAnnotator]] = {}
@@ -42,7 +43,7 @@ def register_annotator(name: str, cls: Type[BaseAnnotator]) -> None:
     _REGISTRY[name] = cls
 
 
-def get_annotator(name: str, **kwargs) -> BaseAnnotator:
+def get_annotator(name: str = None, **kwargs) -> BaseAnnotator:
     """
     获取 annotator 实例
 
@@ -61,6 +62,10 @@ def get_annotator(name: str, **kwargs) -> BaseAnnotator:
     Raises:
         ValueError: 不支持的 annotator
     """
+    # 使用默认值
+    if name is None:
+        name = DEFAULT_ANNOTATOR
+
     # 解析 provider:model 格式
     if ":" in name:
         provider, model = name.split(":", 1)

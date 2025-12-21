@@ -59,6 +59,9 @@ class AnnotatorOutput:
     model: str = "unknown"
     prompt_hash: str = ""
 
+    # 性能指标
+    response_time_ms: Optional[float] = None  # API 响应时间（毫秒）
+
     def to_dict(self) -> Dict[str, Any]:
         """转换为字典格式"""
         return {
@@ -70,7 +73,16 @@ class AnnotatorOutput:
             "annotations": self.annotations,
             "run_id": self.run_id,
             "model": self.model,
+            "response_time_ms": self.response_time_ms,
         }
+
+    def format_response_time(self) -> str:
+        """格式化响应时间为可读字符串"""
+        if self.response_time_ms is None:
+            return "N/A"
+        if self.response_time_ms < 1000:
+            return f"{self.response_time_ms:.0f}ms"
+        return f"{self.response_time_ms / 1000:.2f}s"
 
 
 class BaseAnnotator(ABC):

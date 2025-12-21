@@ -52,16 +52,38 @@ def find_audio_file(student_directory: Path) -> Optional[Path]:
     """
     查找学生目录下的音频文件
 
+    优先级顺序:
+    1. 1_input_audio.* (任何支持格式)
+    2. <StudentName>.* (匹配目录名)
+    3. 第一个找到的音频文件
+    4. 无则返回 None
+
+    支持的格式: .mp3, .mp4, .wav, .m4a, .flac, .ogg
+
     Args:
         student_directory: 学生目录 Path
 
     Returns:
         音频文件 Path，未找到返回 None
     """
-    for ext in [".mp3", ".wav", ".m4a", ".flac", ".ogg"]:
-        audio_file = student_directory / f"1_input_audio{ext}"
-        if audio_file.exists():
+    audio_formats = {'.mp3', '.mp4', '.wav', '.m4a', '.flac', '.ogg'}
+
+    # 优先级 1: 1_input_audio.*
+    for audio_file in student_directory.glob('1_input_audio.*'):
+        if audio_file.suffix.lower() in audio_formats:
             return audio_file
+
+    # 优先级 2: <StudentName>.* (匹配目录名)
+    student_name = student_directory.name
+    for audio_file in student_directory.glob(f'{student_name}.*'):
+        if audio_file.suffix.lower() in audio_formats:
+            return audio_file
+
+    # 优先级 3: 第一个音频文件
+    for audio_file in student_directory.glob('*'):
+        if audio_file.is_file() and audio_file.suffix.lower() in audio_formats:
+            return audio_file
+
     return None
 
 

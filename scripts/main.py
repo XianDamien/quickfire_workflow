@@ -30,6 +30,10 @@ ARCHIVE_DIR = PROJECT_ROOT / "archive"
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
+# 统一加载环境变量（最早调用，确保后续 import 能拿到 key）
+from scripts.common.env import load_env
+load_env()
+
 # 虚拟环境 Python 路径
 VENV_PYTHON = PROJECT_ROOT / ".venv" / "bin" / "python"
 
@@ -64,16 +68,19 @@ def check_stage_complete(student_dir: Path, stage: str) -> bool:
     elif stage == "timestamps":
         return (student_dir / "3_asr_timestamp.json").exists()
     elif stage == "cards":
-        # cards 阶段：检查 runs/ 目录下是否有 cards.json
+        # cards 阶段：检查 runs/ 目录下是否有 4_llm_annotation.json（兼容旧的 cards.json）
         runs_dir = student_dir / "runs"
         if not runs_dir.exists():
             return False
-        # 查找任意 annotator 下的 cards.json
+        # 查找任意 annotator 下的 4_llm_annotation.json 或 cards.json（兼容）
         for annotator_dir in runs_dir.iterdir():
             if annotator_dir.is_dir():
                 for run_dir in annotator_dir.iterdir():
-                    if run_dir.is_dir() and (run_dir / "cards.json").exists():
-                        return True
+                    if run_dir.is_dir():
+                        if (run_dir / "4_llm_annotation.json").exists():
+                            return True
+                        if (run_dir / "cards.json").exists():  # 兼容旧数据
+                            return True
         return False
     return False
 
@@ -99,7 +106,7 @@ def get_students(archive_batch: str, student_filter: Optional[str] = None) -> Li
 
 
 def run_stage(stage: str, archive_batch: str, student_name: str,
-              force: bool = False, annotator: str = "gemini-2.5-pro",
+              force: bool = False, annotator: str = None,
               dry_run: bool = False) -> bool:
     """
     执行单个阶段
@@ -173,7 +180,7 @@ def run_annotation(archive_batch: str, student_name: str,
                    annotator: str, force: bool, dry_run: bool) -> bool:
     """
     执行标注阶段，输出到分层 runs 目录
-    输出: archive/{dataset_id}/{student}/runs/{annotator_name}/{run_id}/cards.json
+    输出: archive/{dataset_id}/{student}/runs/{annotator_name}/{run_id}/4_llm_annotation.json
 
     使用模块化 annotator 调用，不再依赖 subprocess。
     """
@@ -187,7 +194,7 @@ def run_annotation(archive_batch: str, student_name: str,
     run_dir = ensure_run_dir(archive_batch, student_name, annotator, run_id)
 
     if dry_run:
-        print(f"  [dry-run] 会创建: {run_dir}/cards.json")
+        print(f"  [dry-run] 会创建: {run_dir}/4_llm_annotation.json")
         return True
 
     print(f"  [执行] annotator={annotator} --archive-batch {archive_batch} --student {student_name}")
@@ -206,7 +213,7 @@ def run_annotation(archive_batch: str, student_name: str,
         )
 
         if result.success:
-            print(f"  [✓] cards 完成 -> {run_dir.relative_to(PROJECT_ROOT)}/cards.json")
+            print(f"  [✓] cards 完成 -> {run_dir.relative_to(PROJECT_ROOT)}/4_llm_annotation.json")
             return True
         else:
             print(f"  [✗] annotation 失败: {result.error}")
@@ -319,11 +326,14 @@ DAG 阶段: audio → qwen_asr → timestamps → cards
         help='执行到指定阶段为止（包括）'
     )
 
+    # 从配置获取默认 annotator
+    from scripts.annotators.config import DEFAULT_ANNOTATOR
+
     parser.add_argument(
         '--annotator', '-a',
         type=str,
-        default='gemini-2.5-pro',
-        help='标注模型 (默认: gemini-2.5-pro)'
+        default=DEFAULT_ANNOTATOR,
+        help=f'标注模型 (默认: {DEFAULT_ANNOTATOR})'
     )
 
     parser.add_argument(

@@ -6,9 +6,9 @@ scripts/common/runs.py - Runs 目录管理
 
 Runs 目录结构：
     archive/{batch}/{student}/runs/{annotator_name}/{run_id}/
-        ├── cards.json          # 标注结果
-        ├── prompt_log.txt      # 完整提示词日志
-        └── run_manifest.json   # 运行元数据
+        ├── 4_llm_annotation.json  # 标注结果（唯一标准输出）
+        ├── prompt_log.txt         # 完整提示词日志
+        └── run_manifest.json      # 运行元数据
 """
 
 import json

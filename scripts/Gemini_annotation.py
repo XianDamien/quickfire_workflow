@@ -42,14 +42,23 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from google import genai
 from google.genai import types
-from dotenv import load_dotenv
+
+# 确保项目根目录在 Python path 中
+_SCRIPT_DIR = Path(__file__).parent.resolve()
+_PROJECT_ROOT = _SCRIPT_DIR.parent.resolve()
+if str(_PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(_PROJECT_ROOT))
 
 # Add prompts directory to Python path for importing prompt_loader
-sys.path.insert(0, str(Path(__file__).parent.parent / "prompts"))
+sys.path.insert(0, str(_PROJECT_ROOT / "prompts"))
 from prompt_loader import PromptLoader, PromptContextBuilder
 
-# 加载 .env 文件中的环境变量
-load_dotenv()
+# 统一加载环境变量
+from scripts.common.env import load_env
+load_env()
+
+# 导入公共工具函数
+from scripts.common.archive import resolve_question_bank
 
 # 配置 Gemini API
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
@@ -875,58 +884,6 @@ def find_archive_students(archive_batch: str) -> list:
     return sorted(students)
 
 
-def find_archive_vocabulary_file(archive_batch: str, metadata: dict) -> tuple:
-    """
-    根据 metadata 查找题库文件
-
-    符合 dataset_conventions.md 规范的三级优先级：
-    1. question_bank_path（新格式，指向 questionbank/）
-    2. question_bank_file（旧格式）
-    3. progress 字段在 questionbank/ 中查找
-
-    Args:
-        archive_batch: 分组名称
-        metadata: metadata.json 内容
-
-    Returns:
-        (题库文件路径, 题库文件名) 元组
-    """
-    project_root = Path(__file__).parent.parent
-    archive_dir = project_root / "archive" / archive_batch
-
-    # 优先级 1: question_bank_path（新格式，指向 questionbank/）
-    qb_path_str = metadata.get("question_bank_path")
-    if qb_path_str:
-        qb_path = project_root / qb_path_str
-        if qb_path.exists():
-            return qb_path, qb_path.name
-
-    # 优先级 2: question_bank_file（旧格式）
-    qb_file = metadata.get("question_bank_file")
-    if qb_file:
-        qb_path = archive_dir / qb_file
-        if qb_path.exists():
-            return qb_path, qb_path.name
-
-    # 优先级 3: progress 字段在 questionbank/ 中查找
-    progress = metadata.get("progress")
-    if progress:
-        questionbank_dir = project_root / "questionbank"
-        if questionbank_dir.exists():
-            qb_path = questionbank_dir / f"{progress}.json"
-            if qb_path.exists():
-                return qb_path, qb_path.name
-
-    # Fallback: 查找 _shared_context 目录中的题库（向后兼容）
-    shared_context = archive_dir / "_shared_context"
-    if shared_context.exists():
-        for f in shared_context.glob("R*.json"):
-            if f.is_file() and "vocabulary" not in f.name.lower():
-                return f, f.name
-
-    return None, None
-
-
 def should_process_archive_student(student_dir: Path) -> bool:
     """
     检查学生是否应该被处理（是否已存在 4_llm_annotation.json）
@@ -1291,11 +1248,12 @@ def process_archive_batch(
         print(f"⚠️  {e}")
         metadata = {}
 
-    # 查找题库文件
-    question_bank_path, question_bank_filename = find_archive_vocabulary_file(archive_batch, metadata)
+    # 查找题库文件（统一使用 common/archive.py 的 resolve_question_bank）
+    question_bank_path = resolve_question_bank(archive_batch, metadata)
     if not question_bank_path:
         print(f"❌ 未找到题库文件")
         return 0, 0
+    question_bank_filename = question_bank_path.name
 
     print(f"   📚 题库: {question_bank_filename}")
 

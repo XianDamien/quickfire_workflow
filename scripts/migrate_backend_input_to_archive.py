@@ -55,38 +55,23 @@ from pathlib import Path
 from typing import Optional, Dict, List, Tuple
 from datetime import datetime
 
+# 确保项目根目录在 Python path 中
+_SCRIPT_DIR = Path(__file__).parent.resolve()
+_PROJECT_ROOT = _SCRIPT_DIR.parent.resolve()
+if str(_PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(_PROJECT_ROOT))
+
+# 导入公共工具函数
+from scripts.common.naming import parse_backend_input_mp3_name
+
 
 def parse_audio_filename(filename: str) -> Optional[Dict[str, str]]:
     """
     解析 backend_input 音频文件名。
 
-    格式: {ClassCode}_{Date}_{QuestionBank}_{StudentName}.mp3
-    示例: Abby61000_2025-10-30_R1-27-D2_Benjamin.mp3
-
-    Args:
-        filename: 音频文件名（不含路径）
-
-    Returns:
-        包含解析字段的字典，或 None 如果格式不匹配
+    已迁移到 scripts.common.naming.parse_backend_input_mp3_name，此函数为兼容性别名。
     """
-    # 移除数字后缀（用于分段文件，如 *_1.mp3）
-    base_name = re.sub(r'_\d+\.mp3$', '.mp3', filename)
-
-    pattern = r'^([A-Za-z0-9]+)_(\d{4}-\d{2}-\d{2})_([A-Za-z0-9-]+)_(.+)\.mp3$'
-    match = re.match(pattern, base_name)
-
-    if not match:
-        return None
-
-    class_code, date, question_bank, student_name = match.groups()
-
-    return {
-        "class_code": class_code,
-        "date": date,
-        "question_bank": question_bank,
-        "student_name": student_name,
-        "filename": filename
-    }
+    return parse_backend_input_mp3_name(filename)
 
 
 def find_questionbank_file(question_bank_code: str, questionbank_dir: Path) -> Optional[Path]:
