@@ -42,8 +42,9 @@ class GeminiAnnotator(BaseAnnotator):
         model: str = None,
         temperature: float = 0.2,
         max_output_tokens: Optional[int] = None,
-        max_retries: int = 5,
-        retry_delay: int = 5,
+        max_retries: int = None,
+        retry_delay: int = None,
+        http_timeout: int = None,
     ):
         """
         初始化 Gemini Annotator
@@ -54,11 +55,15 @@ class GeminiAnnotator(BaseAnnotator):
             max_output_tokens: 最大输出 tokens
             max_retries: 最大重试次数
             retry_delay: 重试延迟（秒）
+            http_timeout: HTTP 超时（毫秒，最小 10000）
         """
         from .config import (
             DEFAULT_ANNOTATOR,
             DEFAULT_MAX_OUTPUT_TOKENS,
             GEMINI3_MAX_OUTPUT_TOKENS,
+            DEFAULT_HTTP_TIMEOUT,
+            DEFAULT_MAX_RETRIES,
+            DEFAULT_RETRY_DELAY,
         )
 
         # 使用配置的默认模型
@@ -75,15 +80,24 @@ class GeminiAnnotator(BaseAnnotator):
                 else DEFAULT_MAX_OUTPUT_TOKENS
             )
         self.max_output_tokens = max_output_tokens
-        self.max_retries = max_retries
-        self.retry_delay = retry_delay
+        self.max_retries = max_retries if max_retries is not None else DEFAULT_MAX_RETRIES
+        self.retry_delay = retry_delay if retry_delay is not None else DEFAULT_RETRY_DELAY
+        self.http_timeout = http_timeout if http_timeout is not None else DEFAULT_HTTP_TIMEOUT
 
         # 初始化 API 客户端
         api_key = os.getenv("GEMINI_API_KEY")
         if not api_key:
             raise ValueError("GEMINI_API_KEY 环境变量未设置")
 
-        self.client = genai.Client(api_key=api_key)
+        # 配置 HTTP 选项（包括 timeout）
+        http_options = types.HttpOptions(
+            timeout=self.http_timeout,
+        )
+
+        self.client = genai.Client(
+            api_key=api_key,
+            http_options=http_options
+        )
 
     def _call_api(
         self,

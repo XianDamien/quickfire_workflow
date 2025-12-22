@@ -5,6 +5,8 @@ scripts/annotators/config.py - Annotator 配置
 集中管理 annotator 相关的默认配置。
 """
 
+import os
+
 # 默认 annotator 模型
 DEFAULT_ANNOTATOR = "gemini-3-pro-preview"
 
@@ -13,6 +15,16 @@ DEFAULT_ANNOTATOR = "gemini-3-pro-preview"
 # - 非 Gemini 3 模型若不支持这么大的输出上限，请在调用处显式传入 max_output_tokens。
 DEFAULT_MAX_OUTPUT_TOKENS = 16384
 GEMINI3_MAX_OUTPUT_TOKENS = 64000
+
+# HTTP 超时配置（毫秒）
+# - Gemini 3 系列 max_output_tokens=64000 时生成时间较长，需要更长超时
+# - Google API 要求最小 timeout 为 10000ms (10秒)
+# - 可通过环境变量 GEMINI_HTTP_TIMEOUT 覆盖（单位：毫秒）
+DEFAULT_HTTP_TIMEOUT = int(os.getenv("GEMINI_HTTP_TIMEOUT", "600000"))  # 默认 10 分钟 (600秒)
+
+# 重试配置
+DEFAULT_MAX_RETRIES = 5
+DEFAULT_RETRY_DELAY = 5  # 秒
 
 # 可用的 Gemini 模型列表
 AVAILABLE_GEMINI_MODELS = [

@@ -53,7 +53,12 @@ def find_audio_file(student_dir: Path) -> Optional[Path]:
 
 
 def check_stage_complete(student_dir: Path, stage: str) -> bool:
-    """检查某个阶段是否已完成"""
+    """
+    检查某个阶段是否已完成
+
+    注意: cards 阶段始终返回 False，因为每次运行都应该生成新的 run
+    用于对比不同模型或不同 prompt 版本的结果
+    """
     if stage == "audio":
         return find_audio_file(student_dir) is not None
     elif stage == "qwen_asr":
@@ -61,19 +66,9 @@ def check_stage_complete(student_dir: Path, stage: str) -> bool:
     elif stage == "timestamps":
         return (student_dir / "3_asr_timestamp.json").exists()
     elif stage == "cards":
-        # cards 阶段：检查 runs/ 目录下是否有 4_llm_annotation.json（兼容旧的 cards.json）
-        runs_dir = student_dir / "runs"
-        if not runs_dir.exists():
-            return False
-        # 查找任意 annotator 下的 4_llm_annotation.json 或 cards.json（兼容）
-        for annotator_dir in runs_dir.iterdir():
-            if annotator_dir.is_dir():
-                for run_dir in annotator_dir.iterdir():
-                    if run_dir.is_dir():
-                        if (run_dir / "4_llm_annotation.json").exists():
-                            return True
-                        if (run_dir / "cards.json").exists():  # 兼容旧数据
-                            return True
+        # cards 阶段：始终返回 False，每次都生成新的 run
+        # 这样可以支持多次运行来对比不同模型/prompt 的效果
+        # 如果真的想跳过，使用 --only qwen_asr 或 --until timestamps
         return False
     return False
 
@@ -281,48 +276,57 @@ def run_timestamps(
 
 def run_stage(stage: str, archive_batch: str, student_name: str,
               force: bool = False, annotator: str = None,
-              dry_run: bool = False) -> bool:
+              dry_run: bool = False, annotator_kwargs: dict = None) -> tuple:
     """
     执行单个阶段
-    返回: True=成功, False=失败
+
+    Returns:
+        (success: bool, error_msg: Optional[str])
     """
     student_dir = ARCHIVE_DIR / archive_batch / student_name
 
     # 检查是否需要执行
     if not force and check_stage_complete(student_dir, stage):
         print(f"  [跳过] {stage} 已完成")
-        return True
+        return True, None
 
     if stage == "audio":
         # audio 阶段只检查，不执行
         if find_audio_file(student_dir):
             print(f"  [✓] audio 已存在")
-            return True
+            return True, None
         else:
-            print(f"  [✗] 缺少音频文件: {student_dir}/1_input_audio.*")
-            return False
+            error_msg = f"缺少音频文件: {student_dir}/1_input_audio.*"
+            print(f"  [✗] {error_msg}")
+            return False, error_msg
 
     elif stage == "qwen_asr":
         # Text provider: QwenASRProvider
-        return run_qwen_asr(archive_batch, student_name, force, dry_run)
+        success = run_qwen_asr(archive_batch, student_name, force, dry_run)
+        return (success, None) if success else (False, "qwen_asr 失败")
 
     elif stage == "timestamps":
         # Timestamp provider: FunASRTimestampProvider
-        return run_timestamps(archive_batch, student_name, force, dry_run)
+        success = run_timestamps(archive_batch, student_name, force, dry_run)
+        return (success, None) if success else (False, "timestamps 失败")
 
     elif stage == "cards":
-        return run_annotation(archive_batch, student_name, annotator, force, dry_run)
+        return run_annotation(archive_batch, student_name, annotator, force, dry_run, annotator_kwargs)
 
-    return False
+    return False, "未知阶段"
 
 
 def run_annotation(archive_batch: str, student_name: str,
-                   annotator: str, force: bool, dry_run: bool) -> bool:
+                   annotator: str, force: bool, dry_run: bool,
+                   annotator_kwargs: dict = None) -> tuple:
     """
     执行标注阶段，输出到分层 runs 目录
     输出: archive/{dataset_id}/{student}/runs/{annotator_name}/{run_id}/4_llm_annotation.json
 
     使用模块化 annotator 调用，不再依赖 subprocess。
+
+    Returns:
+        (success: bool, error_msg: Optional[str])
     """
     from scripts.annotators import get_annotator
     from scripts.common.runs import ensure_run_dir
@@ -335,13 +339,14 @@ def run_annotation(archive_batch: str, student_name: str,
 
     if dry_run:
         print(f"  [dry-run] 会创建: {run_dir}/4_llm_annotation.json")
-        return True
+        return True, None
 
     print(f"  [执行] annotator={annotator} --archive-batch {archive_batch} --student {student_name}")
 
     try:
-        # 获取 annotator 实例
-        impl = get_annotator(annotator)
+        # 获取 annotator 实例（传入配置参数）
+        kwargs = annotator_kwargs or {}
+        impl = get_annotator(annotator, **kwargs)
 
         # 调用标注
         result = impl.run_archive_student(
@@ -354,17 +359,20 @@ def run_annotation(archive_batch: str, student_name: str,
 
         if result.success:
             print(f"  [✓] cards 完成 -> {run_dir.relative_to(PROJECT_ROOT)}/4_llm_annotation.json")
-            return True
+            return True, None
         else:
-            print(f"  [✗] annotation 失败: {result.error}")
-            return False
+            error_msg = f"annotation 失败: {result.error}"
+            print(f"  [✗] {error_msg}")
+            return False, error_msg
 
     except NotImplementedError as e:
-        print(f"  [✗] {e}")
-        return False
+        error_msg = str(e)
+        print(f"  [✗] {error_msg}")
+        return False, error_msg
     except Exception as e:
-        print(f"  [✗] annotation 异常: {e}")
-        return False
+        error_msg = f"annotation 异常: {e}"
+        print(f"  [✗] {error_msg}")
+        return False, error_msg
 
 
 def resolve_stages(target: Optional[str], only: Optional[str], until: Optional[str],
@@ -488,6 +496,37 @@ DAG 阶段: audio → qwen_asr → timestamps → cards
         help='干运行，只显示要执行的命令'
     )
 
+    parser.add_argument(
+        '--continue-on-error',
+        action='store_true',
+        help='继续处理其他学生即使某个学生失败（默认：严格失败模式）'
+    )
+
+    # Gemini 参数配置
+    parser.add_argument(
+        '--max-output-tokens',
+        type=int,
+        help='LLM 最大输出 tokens（默认：Gemini 3 系列 64000，其他 16384）'
+    )
+
+    parser.add_argument(
+        '--max-retries',
+        type=int,
+        help='API 调用最大重试次数（默认：5）'
+    )
+
+    parser.add_argument(
+        '--retry-delay',
+        type=int,
+        help='API 调用重试延迟（秒，默认：5）'
+    )
+
+    parser.add_argument(
+        '--http-timeout',
+        type=int,
+        help='HTTP 请求超时（毫秒，默认：600000 即 10 分钟，最小 10000，可通过环境变量 GEMINI_HTTP_TIMEOUT 设置）'
+    )
+
     args = parser.parse_args()
 
     # 检测 --target 是否是用户显式设置的
@@ -503,6 +542,17 @@ DAG 阶段: audio → qwen_asr → timestamps → cards
         print(f"错误: 没有找到学生" + (f" (filter: {args.student})" if args.student else ""))
         sys.exit(1)
 
+    # 构建 annotator 参数
+    annotator_kwargs = {}
+    if args.max_output_tokens is not None:
+        annotator_kwargs['max_output_tokens'] = args.max_output_tokens
+    if args.max_retries is not None:
+        annotator_kwargs['max_retries'] = args.max_retries
+    if args.retry_delay is not None:
+        annotator_kwargs['retry_delay'] = args.retry_delay
+    if args.http_timeout is not None:
+        annotator_kwargs['http_timeout'] = args.http_timeout
+
     print(f"=" * 60)
     print(f"Quickfire Pipeline")
     print(f"=" * 60)
@@ -510,16 +560,25 @@ DAG 阶段: audio → qwen_asr → timestamps → cards
     print(f"学生数: {len(students)}")
     print(f"阶段: {' → '.join(stages)}")
     print(f"Annotator: {args.annotator}")
+    if annotator_kwargs:
+        print(f"Annotator 参数:")
+        for k, v in annotator_kwargs.items():
+            print(f"  - {k}: {v}")
     if args.force:
         print(f"模式: 强制重新处理")
     if args.dry_run:
         print(f"模式: 干运行")
+    if args.continue_on_error:
+        print(f"模式: 继续处理模式（单个学生失败不影响后续）")
+    else:
+        print(f"模式: 严格失败模式（任何失败立即停止）")
     print(f"=" * 60)
     print()
 
     # 统计
     success_count = 0
     fail_count = 0
+    failed_students = []  # 收集失败的学生信息
 
     # 处理每个学生
     for student_name, student_dir in students:
@@ -527,33 +586,58 @@ DAG 阶段: audio → qwen_asr → timestamps → cards
 
         # 执行每个阶段
         student_success = True
+        failure_info = None
         for stage in stages:
-            success = run_stage(
+            success, error_msg = run_stage(
                 stage, args.archive_batch, student_name,
                 force=args.force, annotator=args.annotator,
-                dry_run=args.dry_run
+                dry_run=args.dry_run, annotator_kwargs=annotator_kwargs
             )
             if not success:
                 student_success = False
-                fail_count += 1
-                print(f"  [停止] 严格失败模式：{stage} 失败，停止处理")
-                # 严格失败模式：错一个就停
-                print()
-                print(f"=" * 60)
-                print(f"错误: 学生 '{student_name}' 在阶段 '{stage}' 失败")
-                print(f"已处理: {success_count} 成功, {fail_count} 失败")
-                print(f"=" * 60)
-                sys.exit(1)
+                failure_info = {
+                    'student': student_name,
+                    'stage': stage,
+                    'error': error_msg or '未知错误'
+                }
+
+                if args.continue_on_error:
+                    # 继续模式：记录失败，继续下一个学生
+                    print(f"  [跳过] {stage} 失败，继续处理其他学生")
+                    break  # 跳过该学生的剩余阶段
+                else:
+                    # 严格模式：立即停止
+                    print(f"  [停止] 严格失败模式：{stage} 失败，停止处理")
+                    print()
+                    print(f"=" * 60)
+                    print(f"错误: 学生 '{student_name}' 在阶段 '{stage}' 失败")
+                    print(f"错误详情: {error_msg}")
+                    print(f"已处理: {success_count} 成功, {fail_count + 1} 失败")
+                    print(f"=" * 60)
+                    sys.exit(1)
 
         if student_success:
             success_count += 1
             print(f"  [完成] 所有阶段成功")
+        else:
+            fail_count += 1
+            if failure_info:
+                failed_students.append(failure_info)
         print()
 
     # 总结
     print(f"=" * 60)
     print(f"完成: {success_count} 成功, {fail_count} 失败")
     print(f"=" * 60)
+
+    # 如果有失败的学生，显示失败列表
+    if failed_students:
+        print()
+        print(f"失败的学生列表:")
+        print(f"-" * 60)
+        for info in failed_students:
+            print(f"  - {info['student']} ({info['stage']}): {info['error']}")
+        print(f"-" * 60)
 
     sys.exit(0 if fail_count == 0 else 1)
 
