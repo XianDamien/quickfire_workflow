@@ -1,5 +1,5 @@
 {
-  "prompt_version": "1.1.0",
+  "prompt_version": "1.1.1",
   "description": "Gemini annotation prompt for extracting student responses from mixed audio transcription (teacher questions + student answers + expected answers)",
   "owner": "data-ops@lan",
   "updated_at": "2025-12-18T21:30:00+08:00",
