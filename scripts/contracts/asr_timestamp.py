@@ -166,3 +166,89 @@ def extract_timestamp_text(
         )
 
     return result
+
+
+def extract_sentences_json(
+    file_path: Union[str, Path],
+    strict: bool = True
+) -> str:
+    """
+    从 3_asr_timestamp.json 提取完整的 sentences 数组（JSON 格式）
+
+    这个函数用于 FunASR 等需要完整时间戳信息的场景，包含：
+    - sentence 级别的 begin_time, end_time, text
+    - words 级别的详细时间戳数组
+
+    输入格式 (FunASR 输出):
+    {
+        "file_url": "...",
+        "transcripts": [{
+            "channel_id": 0,
+            "transcript": "全文文本",
+            "sentences": [
+                {
+                    "begin_time": 1000,
+                    "end_time": 2000,
+                    "text": "文本片段",
+                    "words": [
+                        {"begin_time": 1000, "end_time": 1500, "text": "文本"},
+                        {"begin_time": 1500, "end_time": 2000, "text": "片段"}
+                    ]
+                },
+                ...
+            ]
+        }]
+    }
+
+    输出格式 (JSON 字符串):
+    返回 sentences 数组的 JSON 字符串，保留所有时间戳信息
+
+    Args:
+        file_path: 3_asr_timestamp.json 文件路径
+        strict: 严格模式，校验失败时抛异常（默认 True）
+
+    Returns:
+        sentences 数组的 JSON 字符串（格式化，带缩进）
+
+    Raises:
+        FileNotFoundError: 文件不存在
+        json.JSONDecodeError: JSON 格式错误
+        ValueError: 结构校验失败（strict=True 时）
+    """
+    path = Path(file_path)
+
+    # 读取文件
+    with open(path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    # 严格模式下进行校验
+    if strict:
+        errors = validate_asr_timestamp(data)
+        if errors:
+            raise ValueError(
+                f"3_asr_timestamp.json 结构无效:\n"
+                f"  - " + "\n  - ".join(errors) + f"\n"
+                f"文件: {path}"
+            )
+
+    # 提取所有 sentences
+    all_sentences: List[Dict[str, Any]] = []
+    transcripts = data.get("transcripts", [])
+
+    for transcript in transcripts:
+        sentences = transcript.get("sentences", [])
+        if not isinstance(sentences, list):
+            continue
+
+        # 保留完整的 sentence 结构（包括 words 数组）
+        all_sentences.extend(sentences)
+
+    # 严格模式下检查结果非空
+    if strict and not all_sentences:
+        raise ValueError(
+            f"3_asr_timestamp.json 没有有效的 sentences 数据\n"
+            f"文件: {path}"
+        )
+
+    # 返回格式化的 JSON 字符串
+    return json.dumps(all_sentences, ensure_ascii=False, indent=2)

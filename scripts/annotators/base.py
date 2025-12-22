@@ -189,7 +189,9 @@ class BaseAnnotator(ABC):
 
             # 预加载内容
             input_data.question_bank_content = load_file_content(question_bank_path)
-            input_data.asr_with_timestamp = extract_timestamp_text(timestamp_path)
+            # 使用 extract_sentences_json 获取完整的 sentences 数组（包含 words 时间戳）
+            from scripts.contracts.asr_timestamp import extract_sentences_json
+            input_data.asr_with_timestamp = extract_sentences_json(timestamp_path)
 
             # 提取纯文本 ASR
             import json
