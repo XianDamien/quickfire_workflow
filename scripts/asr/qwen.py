@@ -23,7 +23,9 @@ import json
 import subprocess
 import tempfile
 import shutil
+import hashlib
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Optional, Dict, Any, List
 
@@ -301,6 +303,20 @@ class QwenASRProvider:
         self.model = "qwen3-asr-flash"
 
     @staticmethod
+    def _sha256_text(text: str) -> str:
+        return hashlib.sha256((text or "").encode("utf-8")).hexdigest()
+
+    @staticmethod
+    def _preview_text(text: str, max_len: int = 300) -> str:
+        if not text:
+            return ""
+        if len(text) <= max_len:
+            return text
+        head = text[: max_len // 2].rstrip()
+        tail = text[-max_len // 2 :].lstrip()
+        return f"{head} … {tail}"
+
+    @staticmethod
     def load_vocabulary(vocab_path: str) -> List[Dict[str, str]]:
         """
         从 JSON 文件加载词汇表（题库格式）。
@@ -392,16 +408,21 @@ class QwenASRProvider:
         Returns:
             纯词汇列表文本，用于 ASR 识别优化
         """
-        if not vocabulary:
+        context_words = QwenASRProvider.build_context_words(vocabulary)
+        if not context_words:
             return ""
+        return ", ".join(context_words)
 
-        # 构建纯词汇列表（去重）
-        # 所有分隔符统一转换为逗号后拆分，确保每个热词都是独立单词
+    @staticmethod
+    def build_context_words(vocabulary: List[Dict[str, str]]) -> List[str]:
+        """从题库词条提取热词（去重+排序）。"""
+        if not vocabulary:
+            return []
+
         words = set()
         separators = ["、", "，", "/", "／", "；", ";", "｜", "|"]
 
         def split_and_add(text: str):
-            """拆分文本并添加到热词集合"""
             if not text:
                 return
             normalized = text
@@ -418,13 +439,55 @@ class QwenASRProvider:
             split_and_add(item.get("question", ""))
             split_and_add(item.get("answer", ""))
 
-        if not words:
-            return ""
+        return sorted(words)
 
-        # 逗号分隔的纯词汇列表
-        context = ", ".join(sorted(words))
+    def _build_run_meta(
+        self,
+        *,
+        audio_path: str,
+        vocabulary_path: Optional[str],
+        language: Optional[str],
+        enable_itn: bool,
+        context_words: List[str],
+        segment_duration: Optional[int] = None,
+        segment_count: Optional[int] = None,
+        max_workers: Optional[int] = None,
+    ) -> Dict[str, Any]:
+        context_text = ", ".join(context_words or [])
+        return {
+            "provider": "qwen3-asr",
+            "requested_model": self.model,
+            "language": language or "auto",
+            "enable_itn": enable_itn,
+            "audio_path": audio_path,
+            "vocabulary_path": vocabulary_path,
+            "context": {
+                "delimiter": ", ",
+                "words_count": len(context_words or []),
+                "words": context_words or [],
+                "text_sha256": self._sha256_text(context_text),
+                "text_preview": self._preview_text(context_text),
+            },
+            "segmentation": {
+                "segment_duration": segment_duration,
+                "segment_count": segment_count,
+                "max_workers": max_workers,
+            },
+            "created_at": datetime.now(timezone.utc).isoformat(),
+        }
 
-        return context
+    def _print_run_inputs(self, meta: Dict[str, Any]) -> None:
+        context = meta.get("context", {}) if isinstance(meta, dict) else {}
+        print(f"   🤖 ASR 模型: {meta.get('requested_model')}")
+        if meta.get("vocabulary_path"):
+            print(f"   📚 题库: {meta.get('vocabulary_path')}")
+        print(
+            f"   🔥 Context 热词数: {context.get('words_count', 0)} "
+            f"(sha256={str(context.get('text_sha256', ''))[:12]}...)"
+        )
+        preview = context.get("text_preview")
+        if preview:
+            print(f"   🧩 Context 预览: {preview}")
 
     def transcribe_audio(
         self,
@@ -432,6 +495,7 @@ class QwenASRProvider:
         vocabulary_path: Optional[str] = None,
         language: Optional[str] = None,
         enable_itn: bool = False,
+        system_context_override: Optional[str] = None,
     ) -> Dict[str, Any]:
         """
         Transcribe audio file using Qwen3-ASR with optional vocabulary context.
@@ -449,8 +513,8 @@ class QwenASRProvider:
         # Note: Using comma-separated word list instead of structured template
         # to avoid ASR treating context as "expected output format".
         # This helps recognize unclear pronunciation from children.
-        system_context = ""
-        if vocabulary_path and os.path.exists(vocabulary_path):
+        system_context = system_context_override or ""
+        if not system_context and vocabulary_path and os.path.exists(vocabulary_path):
             vocab = self.load_vocabulary(vocabulary_path)
             system_context = self.build_context_text(vocab)
 
@@ -497,6 +561,8 @@ class QwenASRProvider:
         vocabulary_path: Optional[str] = None,
         output_filename: str = "5_qwen_asr_output.json",
         language: Optional[str] = None,
+        log_inputs: bool = True,
+        meta_override: Optional[Dict[str, Any]] = None,
     ) -> Dict[str, Any]:
         """
         Transcribe audio and save results to file.
@@ -511,15 +577,38 @@ class QwenASRProvider:
         Returns:
             Response dictionary with transcription results
         """
+        context_words: List[str] = []
+        if vocabulary_path and os.path.exists(vocabulary_path):
+            try:
+                vocab = self.load_vocabulary(vocabulary_path)
+                context_words = self.build_context_words(vocab)
+            except Exception:
+                context_words = []
+
+        meta = meta_override or self._build_run_meta(
+            audio_path=input_audio_path,
+            vocabulary_path=vocabulary_path,
+            language=language,
+            enable_itn=False,
+            context_words=context_words,
+        )
+        if log_inputs:
+            self._print_run_inputs(meta)
+
         # Transcribe audio
         response = self.transcribe_audio(
             audio_path=input_audio_path,
             vocabulary_path=vocabulary_path,
             language=language,
+            enable_itn=False,
+            system_context_override=", ".join(context_words) if context_words else None,
         )
 
         # Ensure output directory exists
         os.makedirs(output_dir, exist_ok=True)
+
+        if isinstance(response, dict):
+            response["qf_meta"] = meta
 
         # Save response
         output_path = os.path.join(output_dir, output_filename)
@@ -569,6 +658,26 @@ class QwenASRProvider:
         segment_files = split_audio(input_audio_path, segment_duration)
 
         try:
+            context_words: List[str] = []
+            if vocabulary_path and os.path.exists(vocabulary_path):
+                try:
+                    vocab = self.load_vocabulary(vocabulary_path)
+                    context_words = self.build_context_words(vocab)
+                except Exception:
+                    context_words = []
+
+            meta = self._build_run_meta(
+                audio_path=input_audio_path,
+                vocabulary_path=vocabulary_path,
+                language=language,
+                enable_itn=False,
+                context_words=context_words,
+                segment_duration=segment_duration,
+                segment_count=len(segment_files),
+                max_workers=max_workers,
+            )
+            self._print_run_inputs(meta)
+
             if len(segment_files) == 1:
                 # 无需分段，直接转写
                 print("   ▶️  无需分段，直接转写...")
@@ -585,6 +694,8 @@ class QwenASRProvider:
                     vocabulary_path=vocabulary_path,
                     output_filename=output_filename,
                     language=language,
+                    log_inputs=False,
+                    meta_override=meta,
                 )
                 return response
             else:
@@ -606,6 +717,8 @@ class QwenASRProvider:
                             audio_path=audio_url,
                             vocabulary_path=vocabulary_path,
                             language=language,
+                            enable_itn=False,
+                            system_context_override=", ".join(context_words) if context_words else None,
                         )
                         future_to_segment[future] = (i, seg_file, audio_url)
 
@@ -631,6 +744,8 @@ class QwenASRProvider:
 
                 # 生成标准格式的合并响应
                 final_response = merge_json_results(results)
+                if isinstance(final_response, dict):
+                    final_response["qf_meta"] = meta
 
                 # 保存结果
                 os.makedirs(output_dir, exist_ok=True)
