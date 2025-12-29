@@ -89,10 +89,16 @@ class GeminiAnnotator(BaseAnnotator):
         if not api_key:
             raise ValueError("GEMINI_API_KEY 环境变量未设置")
 
-        # 配置 HTTP 选项（包括 timeout）
-        http_options = types.HttpOptions(
-            timeout=self.http_timeout,
-        )
+        # 读取中转站配置
+        base_url = os.getenv("GEMINI_BASE_URL")
+
+        # 配置 HTTP 选项（包括 timeout 和可选的 base_url）
+        http_options_kwargs = {"timeout": self.http_timeout}
+        if base_url:
+            http_options_kwargs["base_url"] = base_url
+            print(f"📡 使用中转站: {base_url}")
+
+        http_options = types.HttpOptions(**http_options_kwargs)
 
         self.client = genai.Client(
             api_key=api_key,
