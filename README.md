@@ -54,13 +54,26 @@ quickfire_workflow/
 
 ### 前置条件
 
-1. **安装依赖**
+1. **安装 uv**（推荐的 Python 包管理器）
 
 ```bash
-pip install dashscope openai python-dotenv google-generativeai pydub
+# macOS/Linux
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# 或使用 Homebrew
+brew install uv
 ```
 
-2. **安装 FFmpeg**（音频分段处理所需）
+2. **安装项目依赖**
+
+```bash
+# 使用 uv 自动创建虚拟环境并安装依赖
+uv sync
+```
+
+> **注意**: 推荐使用 `uv run python` 执行脚本，**无需手动激活虚拟环境**
+
+3. **安装 FFmpeg**（音频分段处理所需）
 
 ```bash
 # macOS
@@ -73,7 +86,7 @@ sudo apt-get install ffmpeg
 choco install ffmpeg
 ```
 
-3. **配置环境变量**
+4. **配置环境变量**
 
 在项目根目录创建 `.env` 文件：
 
@@ -111,22 +124,19 @@ archive/
 #### 转写所有数据集
 
 ```bash
-cd scripts
-python3 qwen_asr.py
+uv run python scripts/qwen_asr.py
 ```
 
 #### 转写指定数据集
 
 ```bash
-cd scripts
-python3 qwen_asr.py --dataset Zoe51530-9.8
+uv run python scripts/qwen_asr.py --dataset Zoe51530-9.8
 ```
 
 #### 转写单个学生
 
 ```bash
-cd scripts
-python3 qwen_asr.py --dataset Zoe51530-9.8 --student Oscar
+uv run python scripts/qwen_asr.py --dataset Zoe51530-9.8 --student Oscar
 ```
 
 **输出文件**: `archive/Zoe51530-9.8/Oscar/2_qwen_asr.json`
@@ -176,22 +186,19 @@ ASR 支持从 CSV/JSON 题库加载热词来改进转写准确度：
 #### 处理所有数据集
 
 ```bash
-cd scripts
-python3 Gemini_annotation.py
+uv run python scripts/Gemini_annotation.py
 ```
 
 #### 处理指定数据集
 
 ```bash
-cd scripts
-python3 Gemini_annotation.py --dataset Zoe51530-9.8
+uv run python scripts/Gemini_annotation.py --dataset Zoe51530-9.8
 ```
 
 #### 处理单个学生
 
 ```bash
-cd scripts
-python3 Gemini_annotation.py --dataset Zoe51530-9.8 --student Oscar
+uv run python scripts/Gemini_annotation.py --dataset Zoe51530-9.8 --student Oscar
 ```
 
 **输出文件**:
@@ -238,8 +245,7 @@ python3 Gemini_annotation.py --dataset Zoe51530-9.8 --student Oscar
 #     1_input_audio.mp3
 
 # 2. 运行 Qwen ASR 转写
-cd scripts
-python3 qwen_asr.py --dataset Zoe51530-9.8
+uv run python scripts/qwen_asr.py --dataset Zoe51530-9.8
 
 # 预期结果：
 # ✓ 所有学生生成 2_qwen_asr.json
@@ -247,7 +253,7 @@ python3 qwen_asr.py --dataset Zoe51530-9.8
 # ✓ 转写结果成功合并
 
 # 3. 运行 Gemini 注解
-python3 Gemini_annotation.py --dataset Zoe51530-9.8
+uv run python scripts/Gemini_annotation.py --dataset Zoe51530-9.8
 
 # 预期结果：
 # ✓ 所有学生生成 4_llm_annotation.json
@@ -269,9 +275,8 @@ find . -name "2_qwen_asr.json" -delete
 find . -name "4_llm_annotation.json" -delete
 
 # 2. 重新运行处理流程
-cd ../../scripts
-python3 qwen_asr.py --dataset Zoe51530-9.8
-python3 Gemini_annotation.py --dataset Zoe51530-9.8
+uv run python scripts/qwen_asr.py --dataset Zoe51530-9.8
+uv run python scripts/Gemini_annotation.py --dataset Zoe51530-9.8
 
 # 验证结果一致性（对比历史版本）
 ```
@@ -282,17 +287,16 @@ python3 Gemini_annotation.py --dataset Zoe51530-9.8
 
 ```bash
 # 测试单个学生
-cd scripts
-python3 qwen_asr.py --dataset Zoe51530-9.8 --student Oscar
+uv run python scripts/qwen_asr.py --dataset Zoe51530-9.8 --student Oscar
 
 # 检查 ASR 输出
-cat ../archive/Zoe51530-9.8/Oscar/2_qwen_asr.json | python3 -m json.tool
+cat archive/Zoe51530-9.8/Oscar/2_qwen_asr.json | uv run python -m json.tool
 
 # 继续注解
-python3 Gemini_annotation.py --dataset Zoe51530-9.8 --student Oscar
+uv run python scripts/Gemini_annotation.py --dataset Zoe51530-9.8 --student Oscar
 
 # 检查注解输出
-cat ../archive/Zoe51530-9.8/Oscar/4_llm_annotation.json | python3 -m json.tool
+cat archive/Zoe51530-9.8/Oscar/4_llm_annotation.json | uv run python -m json.tool
 ```
 
 ### 场景 4：多数据集批量处理
@@ -301,10 +305,9 @@ cat ../archive/Zoe51530-9.8/Oscar/4_llm_annotation.json | python3 -m json.tool
 
 ```bash
 # 处理所有数据集
-cd scripts
 
 # 所有 ASR 转写
-python3 qwen_asr.py
+uv run python scripts/qwen_asr.py
 
 # 预期：处理 archive/ 下所有数据集
 # - Zoe51530-9.8
@@ -313,7 +316,7 @@ python3 qwen_asr.py
 # - Niko60900-10.12
 
 # 所有 Gemini 注解
-python3 Gemini_annotation.py
+uv run python scripts/Gemini_annotation.py
 
 # 预期：所有数据集都生成 batch_annotation_report.json
 ```
@@ -375,8 +378,7 @@ echo $DASHSCOPE_API_KEY
 file archive/Zoe51530-9.8/Oscar/1_input_audio.mp3
 
 # 3. 查看详细日志
-cd scripts
-python3 qwen_asr.py --dataset Zoe51530-9.8 --student Oscar 2>&1 | tee debug.log
+uv run python scripts/qwen_asr.py --dataset Zoe51530-9.8 --student Oscar 2>&1 | tee debug.log
 
 # 4. 检查 ffprobe（音频分段所需）
 which ffprobe
@@ -393,14 +395,13 @@ which ffprobe
 echo $GEMINI_API_KEY | head -c 20
 
 # 2. 检查 ASR 文件存在
-cat archive/Zoe51530-9.8/Oscar/2_qwen_asr.json | python3 -m json.tool
+cat archive/Zoe51530-9.8/Oscar/2_qwen_asr.json | uv run python -m json.tool
 
 # 3. 检查题库文件
 ls -la archive/Zoe51530-9.8/_shared_context/
 
 # 4. 运行单学生测试
-cd scripts
-python3 Gemini_annotation.py --dataset Zoe51530-9.8 --student Oscar
+uv run python scripts/Gemini_annotation.py --dataset Zoe51530-9.8 --student Oscar
 
 # 5. 检查 prompt 日志
 cat ../archive/Zoe51530-9.8/Oscar/4_llm_prompt_log.txt
@@ -421,7 +422,7 @@ cat ../archive/Zoe51530-9.8/Oscar/4_llm_prompt_log.txt
 # 方案 2：完全重新处理
 # 删除已处理的文件再运行
 find archive/Zoe51530-9.8 -name "4_llm_annotation.json" -delete
-python3 Gemini_annotation.py --dataset Zoe51530-9.8
+uv run python scripts/Gemini_annotation.py --dataset Zoe51530-9.8
 ```
 
 ### 问题 4：音频分段失败
