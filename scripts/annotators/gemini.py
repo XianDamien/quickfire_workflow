@@ -85,18 +85,28 @@ class GeminiAnnotator(BaseAnnotator):
         self.http_timeout = http_timeout if http_timeout is not None else DEFAULT_HTTP_TIMEOUT
 
         # 初始化 API 客户端
-        api_key = os.getenv("GEMINI_API_KEY")
-        if not api_key:
-            raise ValueError("GEMINI_API_KEY 环境变量未设置")
+        # 优先使用中转站配置，否则使用官方 API
+        relay_base_url = os.getenv("GEMINI_RELAY_BASE_URL")
+        relay_api_key = os.getenv("GEMINI_RELAY_API_KEY")
 
-        # 读取中转站配置
-        base_url = os.getenv("GEMINI_BASE_URL")
+        if relay_base_url:
+            # 使用中转站
+            api_key = relay_api_key
+            if not api_key:
+                raise ValueError("使用中转站时必须设置 GEMINI_RELAY_API_KEY")
+            base_url = relay_base_url
+            print(f"📡 使用中转站: {base_url}")
+        else:
+            # 使用官方 API
+            api_key = os.getenv("GEMINI_API_KEY")
+            if not api_key:
+                raise ValueError("GEMINI_API_KEY 环境变量未设置")
+            base_url = None
 
         # 配置 HTTP 选项（包括 timeout 和可选的 base_url）
         http_options_kwargs = {"timeout": self.http_timeout}
         if base_url:
             http_options_kwargs["base_url"] = base_url
-            print(f"📡 使用中转站: {base_url}")
 
         http_options = types.HttpOptions(**http_options_kwargs)
 

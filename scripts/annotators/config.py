@@ -23,9 +23,10 @@ GEMINI3_MAX_OUTPUT_TOKENS = 64000
 DEFAULT_HTTP_TIMEOUT = int(os.getenv("GEMINI_HTTP_TIMEOUT", "600000"))  # 默认 10 分钟 (600秒)
 
 # 中转站配置
-# - 设置 GEMINI_BASE_URL 使用第三方中转站（如 OpenAI 兼容代理）
-# - 不设置则使用 Google 官方 API
-GEMINI_BASE_URL = os.getenv("GEMINI_BASE_URL", None)
+# - 设置 GEMINI_RELAY_BASE_URL 和 GEMINI_RELAY_API_KEY 使用第三方中转站
+# - 不设置则使用官方 GEMINI_API_KEY
+GEMINI_RELAY_BASE_URL = os.getenv("GEMINI_RELAY_BASE_URL", None)
+GEMINI_RELAY_API_KEY = os.getenv("GEMINI_RELAY_API_KEY", None)
 
 # 重试配置
 DEFAULT_MAX_RETRIES = 5
