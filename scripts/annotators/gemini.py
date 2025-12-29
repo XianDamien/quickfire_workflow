@@ -9,6 +9,7 @@ import json
 import os
 import sys
 import time
+import requests
 from datetime import datetime
 from pathlib import Path
 from typing import Optional, Dict, Any
@@ -90,30 +91,28 @@ class GeminiAnnotator(BaseAnnotator):
         relay_api_key = os.getenv("GEMINI_RELAY_API_KEY")
 
         if relay_base_url:
-            # 使用中转站
-            api_key = relay_api_key
-            if not api_key:
+            # 使用中转站 - 直接 REST API 调用（绕过 SDK 兼容性问题）
+            if not relay_api_key:
                 raise ValueError("使用中转站时必须设置 GEMINI_RELAY_API_KEY")
-            base_url = relay_base_url
-            print(f"📡 使用中转站: {base_url}")
+            self.use_relay = True
+            self.relay_base_url = relay_base_url.rstrip("/")
+            self.relay_api_key = relay_api_key
+            self.client = None
+            print(f"📡 使用中转站: {self.relay_base_url}")
         else:
             # 使用官方 API
+            self.use_relay = False
             api_key = os.getenv("GEMINI_API_KEY")
             if not api_key:
                 raise ValueError("GEMINI_API_KEY 环境变量未设置")
-            base_url = None
 
-        # 配置 HTTP 选项（包括 timeout 和可选的 base_url）
-        http_options_kwargs = {"timeout": self.http_timeout}
-        if base_url:
-            http_options_kwargs["base_url"] = base_url
+            # 配置 HTTP 选项
+            http_options = types.HttpOptions(timeout=self.http_timeout)
 
-        http_options = types.HttpOptions(**http_options_kwargs)
-
-        self.client = genai.Client(
-            api_key=api_key,
-            http_options=http_options
-        )
+            self.client = genai.Client(
+                api_key=api_key,
+                http_options=http_options
+            )
 
     def _call_api(
         self,
@@ -135,6 +134,150 @@ class GeminiAnnotator(BaseAnnotator):
         Raises:
             ValueError: API 调用失败
         """
+        if self.use_relay:
+            return self._call_relay_api(prompt, system_instruction, verbose)
+        else:
+            return self._call_sdk_api(prompt, system_instruction, verbose)
+
+    def _call_relay_api(
+        self,
+        prompt: str,
+        system_instruction: Optional[str] = None,
+        verbose: bool = False
+    ) -> tuple:
+        """使用 REST API 直接调用中转站"""
+        response_text = None
+        response_time_ms = None
+
+        for attempt in range(self.max_retries):
+            try:
+                if verbose:
+                    print(f"📤 尝试 {attempt + 1}/{self.max_retries} - 发送提示词长度: {len(prompt)} 字符")
+                    if attempt == 0:
+                        print("\n" + "=" * 80)
+                        print("🔍 SYSTEM PROMPT (完整内容):")
+                        print("=" * 80)
+                        print(system_instruction if system_instruction else "(无 system instruction)")
+                        print("=" * 80)
+                        print("\n" + "=" * 80)
+                        print("🔍 USER PROMPT (完整内容):")
+                        print("=" * 80)
+                        print(prompt)
+                        print("=" * 80 + "\n")
+                else:
+                    print(f"📤 尝试 {attempt + 1}/{self.max_retries}...")
+
+                # 构建请求
+                url = f"{self.relay_base_url}/{self.model}:generateContent"
+                headers = {
+                    "Content-Type": "application/json",
+                    "x-goog-api-key": self.relay_api_key,
+                }
+
+                # 构建请求体
+                contents = []
+                if system_instruction:
+                    contents.append({
+                        "role": "user",
+                        "parts": [{"text": f"[System Instructions]\n{system_instruction}\n\n[User Request]\n{prompt}"}]
+                    })
+                else:
+                    contents.append({
+                        "role": "user",
+                        "parts": [{"text": prompt}]
+                    })
+
+                data = {
+                    "contents": contents,
+                    "generationConfig": {
+                        "temperature": self.temperature,
+                        "maxOutputTokens": self.max_output_tokens,
+                        "responseMimeType": "application/json",
+                    }
+                }
+
+                # 发送请求
+                api_start_time = time.time()
+                resp = requests.post(
+                    url,
+                    headers=headers,
+                    json=data,
+                    timeout=self.http_timeout / 1000  # 转换为秒
+                )
+                api_end_time = time.time()
+                response_time_ms = (api_end_time - api_start_time) * 1000
+
+                if resp.status_code != 200:
+                    raise ValueError(f"API 返回错误: {resp.status_code} - {resp.text[:500]}")
+
+                result = resp.json()
+
+                if verbose:
+                    print(f"📥 收到响应 (尝试 {attempt + 1}, 耗时 {response_time_ms:.0f}ms)")
+
+                # 提取响应文本
+                response_text = self._extract_relay_response_text(result, verbose)
+                break
+
+            except Exception as e:
+                if verbose:
+                    print(f"⚠️  尝试 {attempt + 1} 失败: {e}")
+                if attempt < self.max_retries - 1:
+                    if verbose:
+                        print(f"   等待 {self.retry_delay} 秒后重试...")
+                    time.sleep(self.retry_delay)
+                    continue
+                else:
+                    raise e
+
+        if response_text is None:
+            raise ValueError("无法获得 API 响应")
+
+        return response_text, response_time_ms
+
+    def _extract_relay_response_text(self, result: dict, verbose: bool = False) -> str:
+        """从中转站 REST API 响应中提取文本"""
+        candidates = result.get("candidates", [])
+        if not candidates:
+            raise ValueError("API 没有返回候选结果")
+
+        candidate = candidates[0]
+        finish_reason = candidate.get("finishReason", "")
+
+        if verbose:
+            print(f"🔍 finish_reason: {finish_reason}")
+
+        if finish_reason == "STOP":
+            content = candidate.get("content", {})
+            parts = content.get("parts", [])
+            if parts:
+                return parts[0].get("text", "[]")
+            return "[]"
+
+        elif finish_reason == "SAFETY":
+            raise ValueError("内容被安全过滤器阻止")
+
+        elif finish_reason == "MAX_TOKENS":
+            print(
+                f"⚠️  响应被截断 - 达到最大 token 限制 "
+                f"(model={self.model}, max_output_tokens={self.max_output_tokens})"
+            )
+            content = candidate.get("content", {})
+            parts = content.get("parts", [])
+            if parts:
+                return parts[0].get("text", "")
+            raise ValueError("响应被截断且无法获取部分内容")
+
+        else:
+            raise ValueError(f"API 返回异常状态: {finish_reason}")
+
+    def _call_sdk_api(
+        self,
+        prompt: str,
+        system_instruction: Optional[str] = None,
+        verbose: bool = False
+    ) -> tuple:
+        """使用 Google SDK 调用官方 API"""
         response = None
         response_time_ms = None
 
