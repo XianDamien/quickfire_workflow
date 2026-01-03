@@ -41,3 +41,90 @@ AVAILABLE_GEMINI_MODELS = [
     "gemini-2.0-flash",
     "gemini-2.0-flash-lite",
 ]
+
+# 可用的 Qwen 模型列表
+AVAILABLE_QWEN_MODELS = [
+    "qwen-max",
+    "qwen-max-latest",
+    "qwen3-max",
+]
+
+# 模型最大输出 token 上限映射
+# - 键可以是完整模型名或前缀，按最长匹配原则
+# - 用于在初始化 annotator 时自动限制 max_output_tokens
+MODEL_MAX_OUTPUT_TOKENS = {
+    # Qwen 系列（阿里云 DashScope API 限制: 1-8192）
+    "qwen-max": 8192,
+    "qwen-max-latest": 8192,
+    "qwen3-max": 8192,
+    "qwen": 8192,  # 默认 Qwen 系列
+
+    # Gemini 3 系列（支持更大输出）
+    "gemini-3-": 64000,
+
+    # Gemini 2.5 系列
+    "gemini-2.5-": 16384,
+
+    # Gemini 2.0 系列
+    "gemini-2.0-": 16384,
+
+    # Gemini 默认
+    "gemini-": 16384,
+}
+
+
+def get_max_output_tokens(model: str, default: int = None) -> int:
+    """
+    根据模型名称获取最大输出 token 上限
+
+    按最长前缀匹配原则查找，确保精确匹配优先于模糊匹配。
+
+    示例:
+        >>> get_max_output_tokens("qwen-max")
+        8192
+        >>> get_max_output_tokens("gemini-3-pro-preview")
+        64000
+        >>> get_max_output_tokens("gemini-2.5-pro")
+        16384
+        >>> get_max_output_tokens("unknown-model")
+        16384  # DEFAULT_MAX_OUTPUT_TOKENS
+
+    Args:
+        model: 模型名称
+        default: 默认值（如果未找到匹配）。如果为 None，使用 DEFAULT_MAX_OUTPUT_TOKENS
+
+    Returns:
+        最大输出 token 数
+    """
+    if default is None:
+        default = DEFAULT_MAX_OUTPUT_TOKENS
+
+    # 按键长度降序排列，确保最长匹配优先
+    sorted_keys = sorted(MODEL_MAX_OUTPUT_TOKENS.keys(), key=len, reverse=True)
+
+    for key in sorted_keys:
+        if model.startswith(key):
+            return MODEL_MAX_OUTPUT_TOKENS[key]
+
+    return default
+
+
+def clamp_max_output_tokens(model: str, requested: int) -> int:
+    """
+    限制 max_output_tokens 在模型支持的范围内
+
+    如果请求的 token 数超过模型上限，自动降低到模型上限。
+
+    Args:
+        model: 模型名称
+        requested: 请求的 max_output_tokens
+
+    Returns:
+        限制后的 max_output_tokens（不超过模型上限）
+    """
+    model_max = get_max_output_tokens(model)
+
+    if requested > model_max:
+        return model_max
+
+    return requested

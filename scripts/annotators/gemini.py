@@ -46,6 +46,7 @@ class GeminiAnnotator(BaseAnnotator):
         max_retries: int = None,
         retry_delay: int = None,
         http_timeout: int = None,
+        force_relay: Optional[bool] = None,  # None=自动, True=强制中转站, False=强制官方SDK
     ):
         """
         初始化 Gemini Annotator
@@ -57,14 +58,18 @@ class GeminiAnnotator(BaseAnnotator):
             max_retries: 最大重试次数
             retry_delay: 重试延迟（秒）
             http_timeout: HTTP 超时（毫秒，最小 10000）
+            force_relay: 强制使用中转站或官方SDK
+                - None: 自动检测（优先中转站，否则官方SDK）
+                - True: 强制使用中转站
+                - False: 强制使用官方SDK
         """
         from .config import (
             DEFAULT_ANNOTATOR,
-            DEFAULT_MAX_OUTPUT_TOKENS,
-            GEMINI3_MAX_OUTPUT_TOKENS,
             DEFAULT_HTTP_TIMEOUT,
             DEFAULT_MAX_RETRIES,
             DEFAULT_RETRY_DELAY,
+            get_max_output_tokens,
+            clamp_max_output_tokens,
         )
 
         # 使用配置的默认模型
@@ -74,45 +79,57 @@ class GeminiAnnotator(BaseAnnotator):
         self.model = model
         self.name = model
         self.temperature = temperature
+
+        # 使用配置的模型上限
         if max_output_tokens is None:
-            max_output_tokens = (
-                GEMINI3_MAX_OUTPUT_TOKENS
-                if model.startswith("gemini-3-")
-                else DEFAULT_MAX_OUTPUT_TOKENS
-            )
-        self.max_output_tokens = max_output_tokens
+            self.max_output_tokens = get_max_output_tokens(model)
+        else:
+            # 如果用户指定了值，确保不超过模型上限
+            self.max_output_tokens = clamp_max_output_tokens(model, max_output_tokens)
+
         self.max_retries = max_retries if max_retries is not None else DEFAULT_MAX_RETRIES
         self.retry_delay = retry_delay if retry_delay is not None else DEFAULT_RETRY_DELAY
         self.http_timeout = http_timeout if http_timeout is not None else DEFAULT_HTTP_TIMEOUT
 
         # 初始化 API 客户端
-        # 优先使用中转站配置，否则使用官方 API
         relay_base_url = os.getenv("GEMINI_RELAY_BASE_URL")
         relay_api_key = os.getenv("GEMINI_RELAY_API_KEY")
+        official_api_key = os.getenv("GEMINI_API_KEY")
 
-        if relay_base_url:
-            # 使用中转站 - 直接 REST API 调用（绕过 SDK 兼容性问题）
-            if not relay_api_key:
-                raise ValueError("使用中转站时必须设置 GEMINI_RELAY_API_KEY")
+        # 确定使用哪种 API
+        if force_relay is True:
+            # 强制使用中转站
+            if not relay_base_url or not relay_api_key:
+                raise ValueError("强制使用中转站但未设置 GEMINI_RELAY_BASE_URL 或 GEMINI_RELAY_API_KEY")
             self.use_relay = True
+        elif force_relay is False:
+            # 强制使用官方 SDK
+            if not official_api_key:
+                raise ValueError("强制使用官方SDK但未设置 GEMINI_API_KEY")
+            self.use_relay = False
+        else:
+            # 自动检测：优先中转站，否则官方SDK
+            if relay_base_url and relay_api_key:
+                self.use_relay = True
+            elif official_api_key:
+                self.use_relay = False
+            else:
+                raise ValueError("未设置任何 API 密钥：需要设置 GEMINI_RELAY_* 或 GEMINI_API_KEY")
+
+        # 初始化相应的客户端
+        if self.use_relay:
             self.relay_base_url = relay_base_url.rstrip("/")
             self.relay_api_key = relay_api_key
             self.client = None
             print(f"📡 使用中转站: {self.relay_base_url}")
         else:
             # 使用官方 API
-            self.use_relay = False
-            api_key = os.getenv("GEMINI_API_KEY")
-            if not api_key:
-                raise ValueError("GEMINI_API_KEY 环境变量未设置")
-
-            # 配置 HTTP 选项
             http_options = types.HttpOptions(timeout=self.http_timeout)
-
             self.client = genai.Client(
-                api_key=api_key,
+                api_key=official_api_key,
                 http_options=http_options
             )
+            print(f"🔑 使用官方 SDK")
 
     def _call_api(
         self,

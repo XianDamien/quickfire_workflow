@@ -20,8 +20,8 @@ scripts/annotators - Annotator 模块
 支持的 annotator:
     - gemini-2.5-pro (默认)
     - gemini-2.0-flash
+    - qwen-max
     - (预留) openai:gpt-4.1
-    - (预留) qwen:qwen-max
 """
 
 from typing import Dict, Type, Optional, Union
@@ -52,8 +52,9 @@ def get_annotator(name: str = None, **kwargs) -> BaseAnnotator:
             - gemini-2.5-pro
             - gemini-2.0-flash
             - gemini (别名，默认使用 gemini-2.5-pro)
+            - qwen-max / qwen-max-latest / qwen3-max
+            - qwen:model-name
             - openai:model-name (预留)
-            - qwen:model-name (预留)
         **kwargs: 传递给 annotator 构造函数的参数
 
     Returns:
@@ -101,12 +102,15 @@ def get_annotator(name: str = None, **kwargs) -> BaseAnnotator:
             f"预留接口，待后续实现"
         )
 
-    # Qwen 系列 (预留)
+    # Qwen 系列
     if provider == "qwen":
-        raise NotImplementedError(
-            f"Qwen annotator 尚未实现: {name}\n"
-            f"预留接口，待后续实现"
-        )
+        from .qwen import QwenAnnotator
+
+        # 规范化模型名称
+        if model in ["qwen", "qwen-max"]:
+            model = "qwen-max"
+
+        return QwenAnnotator(model=model, **kwargs)
 
     # 检查注册表
     if name in _REGISTRY:
@@ -128,6 +132,9 @@ def list_annotators() -> list:
     builtin = [
         "gemini-2.5-pro",
         "gemini-2.0-flash",
+        "qwen-max",
+        "qwen-max-latest",
+        "qwen3-max",
     ]
     custom = list(_REGISTRY.keys())
     return builtin + custom

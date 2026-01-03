@@ -23,7 +23,8 @@ scripts/
 │   ├── __init__.py
 │   ├── base.py                          # Annotator 基础接口
 │   ├── config.py                        # 配置文件
-│   └── gemini.py                        # Gemini Annotator 实现
+│   ├── gemini.py                        # Gemini Annotator 实现
+│   └── qwen.py                          # Qwen Annotator 实现
 │
 ├── common/                              # 通用工具模块
 │   ├── __init__.py
@@ -397,6 +398,77 @@ output = annotator.annotate(input_data)
     "run_id": "20250101_120000_abc123",
     "git_commit": "e2d253f...",
     "timestamp": "2025-01-01T12:00:00"
+  }
+}
+```
+
+---
+
+#### qwen.py - Qwen Annotator
+
+**功能**: 使用阿里云通义千问 API 进行学生回答标注和评分
+
+**核心类**: `QwenAnnotator`
+
+**支持的模型**:
+- qwen-max (默认)
+- qwen-max-latest
+- qwen3-max
+
+**示例**:
+
+```python
+from scripts.annotators.qwen import QwenAnnotator
+
+annotator = QwenAnnotator(
+    model="qwen-max",
+    temperature=0.2,
+    max_retries=5
+)
+
+output = annotator.annotate(input_data)
+```
+
+**使用命令行**:
+
+```bash
+# 使用 Qwen 模型进行评分
+python scripts/main.py \
+    --archive-batch Zoe51530_2025-09-08 \
+    --student Stefan \
+    --only cards \
+    --annotator qwen-max
+
+# 使用其他 Qwen 模型
+python scripts/main.py \
+    --archive-batch Zoe51530_2025-09-08 \
+    --annotator qwen-max-latest
+```
+
+**特性**:
+- API 来源: 阿里云 DashScope
+- 重试机制: 最多重试 5 次
+- 响应时间追踪: 记录 API 响应时间
+- 提示词管理: 复用与 Gemini 相同的提示词模板
+- 校验机制: 严格校验输出格式和时间戳
+
+**环境变量**:
+- `DASHSCOPE_API_KEY`: 阿里云 API 密钥（必需）
+
+**输出格式**: 与 Gemini Annotator 完全一致
+
+```json
+{
+  "student_name": "Stefan",
+  "final_grade_suggestion": "A",
+  "mistake_count": {
+    "errors": 0
+  },
+  "annotations": [...],
+  "_metadata": {
+    "model": "qwen-max",
+    "response_time_ms": 2145,
+    ...
   }
 }
 ```
