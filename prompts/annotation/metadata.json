@@ -1,9 +1,9 @@
 {
-  "prompt_version": "1.1.1",
-  "description": "Gemini annotation prompt for extracting student responses from mixed audio transcription (teacher questions + student answers + expected answers)",
+  "prompt_version": "1.2.0",
+  "description": "LLM annotation: 从ASR转写提取学生回答+评分+时间戳定位",
   "owner": "data-ops@lan",
-  "updated_at": "2025-12-18T21:30:00+08:00",
-  "tags": ["annotation", "gemini", "student-response-extraction", "vocabulary"],
-  "notes": "Prompt extracts student responses between teacher questions and expected answers. Marks NO_ANSWER when no response detected between question and answer. Marks MEANING_ERROR when student response is semantically unrelated to expected answer. Keep NO_ANSWER and MEANING_ERROR detection logic aligned with rubric.",
+  "updated_at": "2026-01-04T15:30:00+08:00",
+  "tags": ["annotation", "gemini", "qwen", "funasr", "timestamp"],
+  "notes": "v1.2新增: 接受FunASR时间戳JSON输入，输出card_timestamp字段(格式00:17)",
   "contact": ["pm@lan"]
 }
