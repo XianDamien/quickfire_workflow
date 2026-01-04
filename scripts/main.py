@@ -186,7 +186,7 @@ def run_qwen_asr(
             output_dir=str(student_dir),
             vocabulary_path=str(vocab_file) if vocab_file else None,
             output_filename="2_qwen_asr.json",
-            language=None,  # 不指定语言，让 ASR 自动检测中英双语
+            language=None,  # 不指定语言，让 ASR 自动检测多语种
             segment_duration=180,
             max_workers=3,
         )

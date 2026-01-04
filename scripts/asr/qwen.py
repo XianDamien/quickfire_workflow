@@ -277,7 +277,7 @@ class QwenASRProvider:
     """Qwen3-ASR provider for audio transcription with custom vocabulary.
 
     提供 Qwen3-ASR 语音转写功能，支持：
-    - 自定义词汇表/热词上下文优化识别
+    - 自定义词汇表/热词上下文优化识别（默认不注入）
     - 长音频自动分段并行处理
     - 多种输入格式（本地文件、URL）
 
@@ -305,6 +305,41 @@ class QwenASRProvider:
     @staticmethod
     def _sha256_text(text: str) -> str:
         return hashlib.sha256((text or "").encode("utf-8")).hexdigest()
+
+    def _save_hotwords(
+        self,
+        output_dir: str,
+        vocabulary_path: Optional[str],
+        context_words: List[str],
+        output_filename: str = "2_qwen_asr_hotwords.json",
+    ) -> None:
+        """
+        保存热词元数据到文件。
+
+        Args:
+            output_dir: 输出目录
+            vocabulary_path: 词汇表文件路径（用于记录来源）
+            context_words: 热词列表
+            output_filename: 输出文件名
+        """
+        os.makedirs(output_dir, exist_ok=True)
+        output_path = os.path.join(output_dir, output_filename)
+
+        context_text = ", ".join(context_words) if context_words else ""
+        hotword_meta = {
+            "vocabulary_path": vocabulary_path,
+            "hotwords": context_words or [],
+            "count": len(context_words) if context_words else 0,
+            "sha256": self._sha256_text(context_text),
+            "created_at": datetime.now(timezone.utc).isoformat(),
+            "provider": "qwen3-asr",
+            "model": self.model,
+        }
+
+        with open(output_path, "w", encoding="utf-8") as f:
+            json.dump(hotword_meta, f, ensure_ascii=False, indent=2)
+
+        print(f"   📝 热词元数据已保存: {output_path}")
 
     @staticmethod
     def _preview_text(text: str, max_len: int = 300) -> str:
@@ -509,14 +544,9 @@ class QwenASRProvider:
         Returns:
             Response dictionary with transcription results
         """
-        # Build vocabulary context if provided (pure word list format)
-        # Note: Using comma-separated word list instead of structured template
-        # to avoid ASR treating context as "expected output format".
-        # This helps recognize unclear pronunciation from children.
+        # Hotword context is disabled by default to preserve mixed-language output.
+        # Callers can still pass system_context_override explicitly if needed.
         system_context = system_context_override or ""
-        if not system_context and vocabulary_path and os.path.exists(vocabulary_path):
-            vocab = self.load_vocabulary(vocabulary_path)
-            system_context = self.build_context_text(vocab)
 
         # Build ASR options
         asr_options = {
@@ -578,12 +608,6 @@ class QwenASRProvider:
             Response dictionary with transcription results
         """
         context_words: List[str] = []
-        if vocabulary_path and os.path.exists(vocabulary_path):
-            try:
-                vocab = self.load_vocabulary(vocabulary_path)
-                context_words = self.build_context_words(vocab)
-            except Exception:
-                context_words = []
 
         meta = meta_override or self._build_run_meta(
             audio_path=input_audio_path,
@@ -601,7 +625,7 @@ class QwenASRProvider:
             vocabulary_path=vocabulary_path,
             language=language,
             enable_itn=False,
-            system_context_override=", ".join(context_words) if context_words else None,
+            system_context_override=None,
         )
 
         # Ensure output directory exists
@@ -659,12 +683,6 @@ class QwenASRProvider:
 
         try:
             context_words: List[str] = []
-            if vocabulary_path and os.path.exists(vocabulary_path):
-                try:
-                    vocab = self.load_vocabulary(vocabulary_path)
-                    context_words = self.build_context_words(vocab)
-                except Exception:
-                    context_words = []
 
             meta = self._build_run_meta(
                 audio_path=input_audio_path,
@@ -677,6 +695,13 @@ class QwenASRProvider:
                 max_workers=max_workers,
             )
             self._print_run_inputs(meta)
+
+            # 保存热词元数据
+            self._save_hotwords(
+                output_dir=output_dir,
+                vocabulary_path=vocabulary_path,
+                context_words=context_words,
+            )
 
             if len(segment_files) == 1:
                 # 无需分段，直接转写
@@ -718,7 +743,7 @@ class QwenASRProvider:
                             vocabulary_path=vocabulary_path,
                             language=language,
                             enable_itn=False,
-                            system_context_override=", ".join(context_words) if context_words else None,
+                            system_context_override=None,
                         )
                         future_to_segment[future] = (i, seg_file, audio_url)
 
