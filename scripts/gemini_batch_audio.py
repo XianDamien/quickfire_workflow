@@ -188,8 +188,14 @@ def build_audio_request(
     # 提取纯文本 ASR
     with open(qwen_asr_path, "r", encoding="utf-8") as f:
         asr_data = json.load(f)
+
+    # 检查 ASR 是否成功
+    if asr_data.get("status_code") != 200 or asr_data.get("output") is None:
+        error_msg = asr_data.get("message", "ASR 失败")
+        raise ValueError(f"ASR 失败: {error_msg}")
+
     asr_text = (
-        asr_data.get("output", {})
+        (asr_data.get("output") or {})
         .get("choices", [{}])[0]
         .get("message", {})
         .get("content", [{}])[0]
