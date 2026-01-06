@@ -257,9 +257,25 @@ def build_audio_request(
             "parts": [{"text": system_instruction}]
         }
 
+    # 加载 prompt 版本信息
+    metadata_path = prompt_dir / "metadata.json"
+    prompt_version = "unknown"
+    if metadata_path.exists():
+        with open(metadata_path, "r", encoding="utf-8") as f:
+            prompt_metadata = json.load(f)
+            prompt_version = prompt_metadata.get("prompt_version", "unknown")
+
     return {
         "key": f"{archive_batch}:{student_name}:{run_id}",
-        "request": request
+        "request": request,
+        # 额外信息用于保存 prompt_log
+        "_prompt_info": {
+            "full_prompt": full_prompt,
+            "system_instruction": system_instruction,
+            "prompt_version": prompt_version,
+            "question_bank_path": str(question_bank_path),
+            "audio_file_uri": audio_file_uri,
+        }
     }
 
 
@@ -275,11 +291,29 @@ def generate_jsonl(
     output_path: Path,
     model: str = DEFAULT_MODEL,
 ) -> List[Dict[str, Any]]:
-    """生成音频版 JSONL 输入文件"""
+    """
+    生成音频版 JSONL 输入文件，同时为每个学生保存 prompt_log.txt
+
+    Args:
+        archive_batch: batch 名称
+        students: 学生列表
+        run_id: 运行 ID
+        audio_file_map: 学生->音频文件URI映射
+        output_path: 输出文件路径
+        model: 模型名称
+
+    Returns:
+        生成的请求列表（用于 manifest）
+    """
+    from scripts.common.runs import get_git_commit
+    from scripts.common.archive import student_dir
+
     requests = []
     errors = []
 
     print(f"\n  生成 JSONL 文件: {output_path.name}")
+
+    git_commit = get_git_commit(short=False)
 
     with open(output_path, "w", encoding="utf-8") as f:
         for i, student in enumerate(students, 1):
@@ -296,7 +330,38 @@ def generate_jsonl(
                     audio_file_uri=audio_file_map[student],
                     model=model,
                 )
-                f.write(json.dumps(req, ensure_ascii=False) + "\n")
+
+                # 写入 JSONL（不包含 _prompt_info）
+                jsonl_entry = {"key": req["key"], "request": req["request"]}
+                f.write(json.dumps(jsonl_entry, ensure_ascii=False) + "\n")
+
+                # 保存 prompt_log.txt 到学生目录（与 2_qwen_asr.json 并列）
+                prompt_info = req.get("_prompt_info", {})
+                if prompt_info:
+                    stu_dir = student_dir(archive_batch, student)
+                    prompt_log_path = stu_dir / "3_prompt_log.txt"
+                    with open(prompt_log_path, "w", encoding="utf-8") as pf:
+                        pf.write("=== Batch Audio API 完整提示词日志 ===\n\n")
+                        pf.write(f"生成时间: {datetime.now().isoformat()}\n")
+                        pf.write(f"Run ID: {run_id}\n")
+                        pf.write(f"Model: {model}\n")
+                        pf.write(f"Git Commit: {git_commit}\n")
+                        pf.write(f"Student: {student}\n")
+                        pf.write(f"Archive Batch: {archive_batch}\n")
+                        pf.write(f"Prompt Version: {prompt_info.get('prompt_version', 'unknown')}\n")
+                        pf.write(f"Question Bank: {prompt_info.get('question_bank_path', 'unknown')}\n")
+                        pf.write(f"Audio File URI: {prompt_info.get('audio_file_uri', 'unknown')}\n")
+                        pf.write(f"User Prompt 长度: {len(prompt_info.get('full_prompt', ''))} 字符\n")
+                        pf.write(f"System Instruction 长度: {len(prompt_info.get('system_instruction', ''))} 字符\n")
+                        pf.write(f"\n{'='*60}\n")
+                        pf.write("System Instruction:\n")
+                        pf.write(f"{'='*60}\n\n")
+                        pf.write(prompt_info.get("system_instruction", "") or "(无)")
+                        pf.write(f"\n\n{'='*60}\n")
+                        pf.write("User Prompt:\n")
+                        pf.write(f"{'='*60}\n\n")
+                        pf.write(prompt_info.get("full_prompt", ""))
+
                 requests.append({
                     "key": req["key"],
                     "student_name": student,
