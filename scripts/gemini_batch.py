@@ -30,7 +30,9 @@ scripts/gemini_batch.py - Gemini Batch API 批量处理脚本
     └── batch_manifest.json    # 元信息（含处理时间等）
 
     archive/{batch}/{student}/runs/{model}/{run_id}/
-    └── 4_llm_annotation.json  # 回填的评分结果
+    ├── prompt_log.txt         # 完整提示词日志（生成时保存）
+    ├── 4_llm_annotation.json  # 回填的评分结果
+    └── run_manifest.json      # 运行元数据
 """
 
 import argparse
@@ -239,7 +241,14 @@ def build_batch_request(
 
     return {
         "key": key,
-        "request": request
+        "request": request,
+        # 额外信息用于保存 prompt_log
+        "_prompt_info": {
+            "full_prompt": full_prompt,
+            "system_instruction": system_instruction,
+            "prompt_version": prompt_loader.metadata.get("prompt_version", "unknown"),
+            "question_bank_path": str(question_bank_path),
+        }
     }
 
 
@@ -251,7 +260,7 @@ def generate_jsonl(
     model: str = DEFAULT_MODEL,
 ) -> List[Dict[str, Any]]:
     """
-    生成 JSONL 输入文件
+    生成 JSONL 输入文件，同时为每个学生保存 prompt_log.txt
 
     Args:
         archive_batch: batch 名称
@@ -263,18 +272,57 @@ def generate_jsonl(
     Returns:
         生成的请求列表（用于 manifest）
     """
+    from scripts.common.runs import ensure_run_dir, get_git_commit
+
     requests = []
     errors = []
 
     print(f"\n📝 生成 JSONL 文件: {output_path}")
     print(f"   学生数量: {len(students)}")
 
+    git_commit = get_git_commit(short=False)
+
     with open(output_path, "w", encoding="utf-8") as f:
         for i, student in enumerate(students, 1):
             try:
                 print(f"   [{i}/{len(students)}] {student}...", end=" ")
                 req = build_batch_request(archive_batch, student, run_id, model)
-                f.write(json.dumps(req, ensure_ascii=False) + "\n")
+
+                # 写入 JSONL（不包含 _prompt_info）
+                jsonl_entry = {"key": req["key"], "request": req["request"]}
+                f.write(json.dumps(jsonl_entry, ensure_ascii=False) + "\n")
+
+                # 保存 prompt_log.txt 到学生的 run 目录
+                prompt_info = req.get("_prompt_info", {})
+                if prompt_info:
+                    stu_run_dir = ensure_run_dir(
+                        archive_batch=archive_batch,
+                        student_name=student,
+                        annotator_name=model,
+                        run_id=run_id,
+                    )
+                    prompt_log_path = stu_run_dir / "prompt_log.txt"
+                    with open(prompt_log_path, "w", encoding="utf-8") as pf:
+                        pf.write("=== Batch API 完整提示词日志 ===\n\n")
+                        pf.write(f"生成时间: {datetime.now().isoformat()}\n")
+                        pf.write(f"Run ID: {run_id}\n")
+                        pf.write(f"Model: {model}\n")
+                        pf.write(f"Git Commit: {git_commit}\n")
+                        pf.write(f"Student: {student}\n")
+                        pf.write(f"Archive Batch: {archive_batch}\n")
+                        pf.write(f"Prompt Version: {prompt_info.get('prompt_version', 'unknown')}\n")
+                        pf.write(f"Question Bank: {prompt_info.get('question_bank_path', 'unknown')}\n")
+                        pf.write(f"User Prompt 长度: {len(prompt_info.get('full_prompt', ''))} 字符\n")
+                        pf.write(f"System Instruction 长度: {len(prompt_info.get('system_instruction', ''))} 字符\n")
+                        pf.write(f"\n{'='*60}\n")
+                        pf.write("System Instruction:\n")
+                        pf.write(f"{'='*60}\n\n")
+                        pf.write(prompt_info.get("system_instruction", "") or "(无)")
+                        pf.write(f"\n\n{'='*60}\n")
+                        pf.write("User Prompt:\n")
+                        pf.write(f"{'='*60}\n\n")
+                        pf.write(prompt_info.get("full_prompt", ""))
+
                 requests.append({
                     "key": req["key"],
                     "student_name": student,
@@ -1044,6 +1092,8 @@ def cmd_run(args: argparse.Namespace) -> int:
                 prompt_hash="batch",
                 model=model,
             )
+
+            # prompt_log.txt 已在 generate_jsonl 时保存
 
             print(f"      ✓ {student_name}: {final_grade} ({mistake_count} mistakes)")
             success_count += 1
