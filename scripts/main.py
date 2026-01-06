@@ -38,7 +38,8 @@ from scripts.common.env import load_env
 load_env()
 
 # DAG 节点定义（顺序即依赖顺序）
-DAG_STAGES = ["audio", "qwen_asr", "gatekeeper", "timestamps", "cards"]
+# 注意：timestamps 阶段暂时从流程移除，代码保留供后续对比测试
+DAG_STAGES = ["audio", "qwen_asr", "gatekeeper", "cards"]
 
 
 # 使用 common 模块的共用函数
@@ -615,6 +616,19 @@ DAG 阶段: audio → qwen_asr → timestamps → cards
         help='继续处理其他学生即使某个学生失败（默认：严格失败模式）'
     )
 
+    # Batch API 模式
+    parser.add_argument(
+        '--batch',
+        action='store_true',
+        help='使用 Gemini Batch API（ASR 文本版，50%% 成本节省）'
+    )
+
+    parser.add_argument(
+        '--batch-audio',
+        action='store_true',
+        help='使用 Gemini Batch API（音频版，最高准确率）'
+    )
+
     # Gemini 参数配置
     parser.add_argument(
         '--max-output-tokens',
@@ -666,12 +680,25 @@ DAG 阶段: audio → qwen_asr → timestamps → cards
     if args.http_timeout is not None:
         annotator_kwargs['http_timeout'] = args.http_timeout
 
+    # 确定运行模式
+    batch_mode = None
+    if args.batch:
+        batch_mode = "asr"
+    elif args.batch_audio:
+        batch_mode = "audio"
+
     print(f"=" * 60)
     print(f"Quickfire Pipeline")
     print(f"=" * 60)
     print(f"Archive: {args.archive_batch}")
     print(f"学生数: {len(students)}")
-    print(f"阶段: {' → '.join(stages)}")
+    if batch_mode:
+        # Batch 模式：只执行前置阶段，然后统一 batch 处理
+        pre_stages = [s for s in stages if s != "cards"]
+        print(f"阶段: {' → '.join(pre_stages)} → [BATCH]")
+        print(f"Batch 模式: {'ASR 文本版' if batch_mode == 'asr' else '音频版'}")
+    else:
+        print(f"阶段: {' → '.join(stages)}")
     print(f"Annotator: {args.annotator}")
     if annotator_kwargs:
         print(f"Annotator 参数:")
@@ -688,6 +715,104 @@ DAG 阶段: audio → qwen_asr → timestamps → cards
     print(f"=" * 60)
     print()
 
+    # ========== Batch 模式处理 ==========
+    if batch_mode:
+        # 1. 执行前置阶段（不包括 cards）
+        pre_stages = [s for s in stages if s != "cards"]
+        passed_students = []
+        failed_students = []
+
+        print(f"[Phase 1] 执行前置阶段: {' → '.join(pre_stages)}")
+        print(f"-" * 60)
+
+        for student_name, student_dir in students:
+            print(f"[{student_name}]")
+            student_success = True
+
+            for stage in pre_stages:
+                success, error_msg = run_stage(
+                    stage, args.archive_batch, student_name,
+                    force=args.force, annotator=args.annotator,
+                    dry_run=args.dry_run, annotator_kwargs=annotator_kwargs
+                )
+                if not success:
+                    student_success = False
+                    failed_students.append({
+                        'student': student_name,
+                        'stage': stage,
+                        'error': error_msg or '未知错误'
+                    })
+                    print(f"  [跳过] {stage} 失败，不加入 batch")
+                    break
+
+            if student_success:
+                passed_students.append(student_name)
+                print(f"  [✓] 前置阶段完成，加入 batch 队列")
+            print()
+
+        print(f"-" * 60)
+        print(f"前置阶段完成: {len(passed_students)} 通过, {len(failed_students)} 失败")
+        print()
+
+        if not passed_students:
+            print("❌ 没有学生通过前置阶段，终止")
+            sys.exit(1)
+
+        if args.dry_run:
+            print(f"[dry-run] 将调用 Batch API 处理 {len(passed_students)} 个学生")
+            sys.exit(0)
+
+        # 2. 调用 Batch API
+        print(f"[Phase 2] 调用 Gemini Batch API")
+        print(f"-" * 60)
+
+        if batch_mode == "asr":
+            # ASR 文本版 batch
+            from scripts.gemini_batch import cmd_run
+            import argparse as ap
+            batch_args = ap.Namespace(
+                archive_batch=args.archive_batch,
+                students=",".join(passed_students),
+                model=args.annotator,
+                display_name=None,
+                poll_interval=30,
+                timeout=None,
+                proxy=None,
+            )
+            result = cmd_run(batch_args)
+        else:
+            # 音频版 batch
+            from scripts.gemini_batch_audio import cmd_run
+            import argparse as ap
+            batch_args = ap.Namespace(
+                archive_batch=args.archive_batch,
+                students=",".join(passed_students),
+                model=args.annotator,
+                display_name=None,
+                poll_interval=30,
+                timeout=None,
+                proxy=None,
+            )
+            result = cmd_run(batch_args)
+
+        # 3. 汇总结果
+        print()
+        print(f"=" * 60)
+        if result == 0:
+            print(f"✅ Batch 处理完成!")
+        else:
+            print(f"⚠️  Batch 处理完成，但有错误")
+
+        if failed_students:
+            print()
+            print(f"前置阶段失败的学生:")
+            for info in failed_students:
+                print(f"  - {info['student']} ({info['stage']}): {info['error']}")
+
+        print(f"=" * 60)
+        sys.exit(result)
+
+    # ========== 常规模式处理 ==========
     # 统计
     success_count = 0
     fail_count = 0
