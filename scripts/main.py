@@ -766,34 +766,22 @@ DAG 阶段: audio → qwen_asr → timestamps → cards
         print(f"[Phase 2] 调用 Gemini Batch API")
         print(f"-" * 60)
 
+        # 动态导入对应的 batch 模块
         if batch_mode == "asr":
-            # ASR 文本版 batch
             from scripts.gemini_batch import cmd_run
-            import argparse as ap
-            batch_args = ap.Namespace(
-                archive_batch=args.archive_batch,
-                students=",".join(passed_students),
-                model=args.annotator,
-                display_name=None,
-                poll_interval=30,
-                timeout=None,
-                proxy=None,
-            )
-            result = cmd_run(batch_args)
         else:
-            # 音频版 batch
             from scripts.gemini_batch_audio import cmd_run
-            import argparse as ap
-            batch_args = ap.Namespace(
-                archive_batch=args.archive_batch,
-                students=",".join(passed_students),
-                model=args.annotator,
-                display_name=None,
-                poll_interval=30,
-                timeout=None,
-                proxy=None,
-            )
-            result = cmd_run(batch_args)
+
+        batch_args = argparse.Namespace(
+            archive_batch=args.archive_batch,
+            students=",".join(passed_students),
+            model=args.annotator,
+            display_name=None,
+            poll_interval=30,
+            timeout=None,
+            proxy=None,
+        )
+        result = cmd_run(batch_args)
 
         # 3. 汇总结果
         print()
