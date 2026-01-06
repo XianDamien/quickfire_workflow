@@ -58,14 +58,15 @@ uv run python scripts/main.py --archive-batch Zoe51530_2025-12-16 --only qwen_as
 ### 输入目录
 
 ```
-archive/{batch_id}/
-├── metadata.json                    # 批次元数据
-├── _shared_context/
-│   └── {progress}.json              # 题库文件
-├── {Student1}/
-│   └── 1_input_audio.mp3            # 学生音频
-└── {Student2}/
-    └── 1_input_audio.mp3
+quickfire_workflow/
+├── questionbank/
+│   └── {progress}.json              # 题库文件（全局共享）
+└── archive/{batch_id}/
+    ├── metadata.json                # 批次元数据
+    ├── {Student1}/
+    │   └── 1_input_audio.mp3        # 学生音频
+    └── {Student2}/
+        └── 1_input_audio.mp3
 ```
 
 ### 输出结果
@@ -150,8 +151,8 @@ archive/{batch_id}/{Student}/
 详见 [后端接口协议文档](docs/backend-integration.md)
 
 **后端需提供**:
+- `questionbank/{progress}.json` - 题库（全局共享）
 - `archive/{batch_id}/metadata.json` - 批次元数据
-- `archive/{batch_id}/_shared_context/*.json` - 题库
 - `archive/{batch_id}/{student}/1_input_audio.mp3` - 学生音频
 
 **系统输出**:

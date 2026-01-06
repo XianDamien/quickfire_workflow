@@ -39,15 +39,16 @@ Quickfire 英语发音评测系统通过**文件系统接口**与后端对接。
 ### 2.1 目录结构
 
 ```
-archive/{batch_id}/
-├── metadata.json                          # 必须：批次元数据
-├── _shared_context/
-│   └── {progress_id}.json                 # 必须：题库文件
-├── {StudentName1}/
-│   └── 1_input_audio.mp3                  # 必须：学生音频
-├── {StudentName2}/
-│   └── 1_input_audio.mp3
-└── ...
+quickfire_workflow/
+├── questionbank/
+│   └── {progress_id}.json                 # 必须：题库文件（全局共享）
+└── archive/{batch_id}/
+    ├── metadata.json                      # 必须：批次元数据
+    ├── {StudentName1}/
+    │   └── 1_input_audio.mp3              # 必须：学生音频
+    ├── {StudentName2}/
+    │   └── 1_input_audio.mp3
+    └── ...
 ```
 
 ### 2.2 metadata.json (必须)
@@ -59,7 +60,7 @@ archive/{batch_id}/
   "class_code": "Zoe51530",
   "date": "2025-12-16",
   "progress": "130-18-EC",
-  "question_bank_path": "_shared_context/130-18-EC.json",
+  "question_bank_path": "questionbank/130-18-EC.json",
   "items": [
     {
       "file_id": "Zoe51530_2025-12-16_130-18-EC_Qihang",
@@ -91,7 +92,7 @@ archive/{batch_id}/
 
 ### 2.3 题库文件 (必须)
 
-位置: `archive/{batch_id}/_shared_context/{progress}.json`
+位置: `questionbank/{progress}.json` （项目根目录下，全局共享）
 
 ```json
 [
@@ -281,19 +282,19 @@ audio → qwen_asr → gatekeeper → cards
 ### 5.1 后端准备数据流程
 
 ```python
-# 1. 创建批次目录
-batch_id = f"{class_code}_{date}"
-batch_dir = f"archive/{batch_id}"
-os.makedirs(batch_dir, exist_ok=True)
-os.makedirs(f"{batch_dir}/_shared_context", exist_ok=True)
-
-# 2. 保存题库
+# 1. 保存题库（全局共享，只需保存一次）
 question_bank = [
     {"question": "celebrate", "answer": "庆祝", "hint": ""},
     {"question": "cent", "answer": "一分钱", "hint": ""},
 ]
-with open(f"{batch_dir}/_shared_context/{progress}.json", "w") as f:
+os.makedirs("questionbank", exist_ok=True)
+with open(f"questionbank/{progress}.json", "w") as f:
     json.dump(question_bank, f, ensure_ascii=False, indent=2)
+
+# 2. 创建批次目录
+batch_id = f"{class_code}_{date}"
+batch_dir = f"archive/{batch_id}"
+os.makedirs(batch_dir, exist_ok=True)
 
 # 3. 保存学生音频
 for student in students:
