@@ -73,13 +73,17 @@ quickfire_workflow/
 
 ```
 archive/{batch_id}/{Student}/
-├── 2_qwen_asr.json                  # ASR 转写
-├── 2_qwen_asr_hotwords.json         # 热词日志
+├── 2_qwen_asr.json                  # ASR 转写 + token/时间统计
+├── 2_qwen_asr_context.json          # ASR context + 题库引用
 └── runs/{annotator}/{run_id}/
     ├── 4_llm_annotation.json        # 评分结果
-    ├── prompt_log.txt               # 提示词日志
-    └── run_metadata.json            # 运行元数据
+    ├── prompt_log.txt               # 完整 LLM prompt
+    └── run_manifest.json            # 输入文件 hash + git commit
 ```
+
+**关键追踪数据** (用于迭代优化):
+- ASR: `usage.seconds`, `usage.audio_tokens`, `qf_meta.vocabulary_path`
+- LLM: `_metadata.timestamp`, `run_manifest.inputs` (输入文件 hash)
 
 ### 评分结果格式
 

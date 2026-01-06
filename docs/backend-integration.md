@@ -221,15 +221,85 @@ quickfire_workflow/
 | B | 错误数 = 1-2 |
 | C | 错误数 >= 3 |
 
-### 3.2 中间产物（可选获取）
+### 3.2 中间产物（用于迭代优化）
+
+#### ASR 阶段
 
 | 文件 | 位置 | 说明 |
 |------|------|------|
-| ASR 转写 | `{student}/2_qwen_asr.json` | 语音转文本原始结果 |
-| 热词日志 | `{student}/2_qwen_asr_hotwords.json` | ASR 使用的热词 |
-| 时间戳 | `{student}/3_asr_timestamp.json` | 带时间戳的转写 |
-| 提示词日志 | `runs/.../prompt_log.txt` | LLM 输入的完整提示词 |
-| 运行元数据 | `runs/.../run_metadata.json` | 运行配置和状态 |
+| ASR 转写 | `{student}/2_qwen_asr.json` | 转写结果 + token/时间统计 |
+| ASR Context | `{student}/2_qwen_asr_context.json` | ASR 系统提示 + 题库来源 |
+
+**`2_qwen_asr.json` 关键字段**:
+```json
+{
+  "output": { "choices": [{ "message": { "content": [{ "text": "转写文本..." }] } }] },
+  "usage": {
+    "input_tokens": 3407,
+    "output_tokens": 292,
+    "audio_tokens": 3325,
+    "seconds": 133
+  },
+  "qf_meta": {
+    "provider": "qwen3-asr",
+    "audio_path": "archive/.../1_input_audio.mp3",
+    "vocabulary_path": "questionbank/130-18-EC.json",
+    "created_at": "2026-01-05T14:01:56Z"
+  }
+}
+```
+
+**`2_qwen_asr_context.json` 关键字段**:
+```json
+{
+  "system_context": {
+    "text": "这里是中英混合的文本...",
+    "sha256": "480a5703...",
+    "source": "prompts/asr_context/system.md"
+  },
+  "hotwords": {
+    "vocabulary_path": "questionbank/130-18-EC.json",
+    "words": [],
+    "sha256": "e3b0c442..."
+  },
+  "provider": "qwen3-asr",
+  "model": "qwen3-asr-flash"
+}
+```
+
+#### LLM 评分阶段
+
+| 文件 | 位置 | 说明 |
+|------|------|------|
+| 评分结果 | `runs/{annotator}/{run_id}/4_llm_annotation.json` | 最终评分 + 元数据 |
+| 完整 Prompt | `runs/{annotator}/{run_id}/prompt_log.txt` | LLM 输入的完整提示词 |
+| 运行清单 | `runs/{annotator}/{run_id}/run_manifest.json` | 输入文件 hash + git commit |
+
+**`run_manifest.json` 结构**:
+```json
+{
+  "run_id": "20260106_002923_eb28926",
+  "annotator_name": "gemini-3-pro-preview",
+  "model": "gemini-3-pro-preview",
+  "created_at": "2026-01-06T09:57:45Z",
+  "code": { "git_commit": "eb28926..." },
+  "inputs": {
+    "audio": "sha256:426e64e1...",
+    "qwen_asr": "sha256:613bfde7...",
+    "timestamps": "sha256:65525709..."
+  },
+  "prompt": { "path": "prompts/annotation/user.md" }
+}
+```
+
+#### 输入文件引用
+
+| 输入 | 位置 |
+|------|------|
+| 学生音频 | `archive/{batch_id}/{student}/1_input_audio.mp3` |
+| 题库 | `questionbank/{progress}.json` |
+| ASR Prompt | `prompts/asr_context/system.md` |
+| 评分 Prompt | `prompts/annotation/user.md` |
 
 ---
 
