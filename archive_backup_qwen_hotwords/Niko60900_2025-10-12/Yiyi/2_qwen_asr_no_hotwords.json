@@ -1,0 +1,60 @@
+{
+  "status_code": 200,
+  "request_id": "2ae7de2d-434d-4f61-a2fa-13a83b077104",
+  "code": "",
+  "message": "",
+  "output": {
+    "text": null,
+    "finish_reason": null,
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": [
+            {
+              "text": "单词表十一，英翻中。Mouse 老鼠。老鼠。Elephant 大象。大象。Tiger 老虎。老虎。Lion 狮子。狮子。Wolf 狼。狼。Panda 熊猫。熊猫。Monkey 猴子。猴子。"
+            }
+          ],
+          "annotations": [
+            {
+              "emotion": "neutral",
+              "language": "zh",
+              "type": "audio_info"
+            }
+          ]
+        }
+      }
+    ],
+    "audio": null
+  },
+  "usage": {
+    "input_tokens": 1160,
+    "output_tokens": 73,
+    "characters": 0,
+    "audio_tokens": 1147,
+    "input_tokens_details": {
+      "audio_tokens": 1147,
+      "text_tokens": 13
+    },
+    "output_tokens_details": {
+      "text_tokens": 73
+    },
+    "seconds": 45,
+    "total_tokens": 1233
+  },
+  "qf_meta": {
+    "provider": "qwen3-asr",
+    "requested_model": "qwen3-asr-flash",
+    "language": "auto",
+    "enable_itn": false,
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Niko60900_2025-10-12/Yiyi/1_input_audio.mp3",
+    "vocabulary_path": null,
+    "context": {
+      "words_count": 0,
+      "words": []
+    },
+    "note": "NO HOTWORDS - for comparison",
+    "created_at": "2026-01-04T11:24:13.212871+00:00"
+  }
+}

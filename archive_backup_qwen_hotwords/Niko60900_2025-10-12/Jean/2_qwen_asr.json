@@ -1,0 +1,79 @@
+{
+  "status_code": 200,
+  "request_id": "b66c76b0-5c01-4042-8e71-7162966bc7e8",
+  "code": "",
+  "message": "",
+  "output": {
+    "text": null,
+    "finish_reason": null,
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": [
+            {
+              "text": "一分钟。mouse。老鼠。老鼠。elephant。大象。大象。tiger。老虎。老虎。lion。狮子。狮子。wolf。狼。狼。panda。熊猫。熊猫。monkey。猴子。猴子。"
+            }
+          ],
+          "annotations": [
+            {
+              "emotion": "neutral",
+              "language": "zh",
+              "type": "audio_info"
+            }
+          ]
+        }
+      }
+    ],
+    "audio": null
+  },
+  "usage": {
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "characters": 0,
+    "input_tokens_details": {
+      "text_tokens": 60
+    },
+    "output_tokens_details": {
+      "text_tokens": 54
+    },
+    "seconds": 42
+  },
+  "qf_meta": {
+    "provider": "qwen3-asr",
+    "requested_model": "qwen3-asr-flash",
+    "language": "auto",
+    "enable_itn": false,
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Niko60900_2025-10-12/Jean/1_input_audio.mp3",
+    "vocabulary_path": "/Users/damien/Desktop/Venture/quickfire_workflow/questionbank/R1-11-D2.json",
+    "context": {
+      "delimiter": ", ",
+      "words_count": 14,
+      "words": [
+        "Elephant",
+        "Lion",
+        "Monkey",
+        "Mouse",
+        "Panda",
+        "Tiger",
+        "Wolf",
+        "大象",
+        "熊猫",
+        "狮子",
+        "狼",
+        "猴子",
+        "老虎",
+        "老鼠"
+      ],
+      "text_sha256": "c86f70123ddca7790b06c94c13363f3d8540dcfda943e9ede4f5e22896d6151a",
+      "text_preview": "Elephant, Lion, Monkey, Mouse, Panda, Tiger, Wolf, 大象, 熊猫, 狮子, 狼, 猴子, 老虎, 老鼠"
+    },
+    "segmentation": {
+      "segment_duration": 180,
+      "segment_count": 1,
+      "max_workers": 3
+    },
+    "created_at": "2026-01-04T11:10:09.439219+00:00"
+  }
+}

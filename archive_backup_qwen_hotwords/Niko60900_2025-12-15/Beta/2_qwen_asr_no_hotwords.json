@@ -1,0 +1,60 @@
+{
+  "status_code": 200,
+  "request_id": "0c362e9d-582f-4682-bf7c-7b61293a84ef",
+  "code": "",
+  "message": "",
+  "output": {
+    "text": null,
+    "finish_reason": null,
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": [
+            {
+              "text": "Housework. Housework. 整理收拾. Tidy. Tidy. 整洁的整齐的. Tidy. Tidy. 打扫清除. Sweep. 专门有个扫的感觉，是吧？Sweep. 洗. Wash. Wash. 清扫清洁. Clean. Clean. 干净的. Clean. Clean. 刷子. Brush. Brush. 刷，用刷子刷. Brush. Brush."
+            }
+          ],
+          "annotations": [
+            {
+              "emotion": "neutral",
+              "language": "en",
+              "type": "audio_info"
+            }
+          ]
+        }
+      }
+    ],
+    "audio": null
+  },
+  "usage": {
+    "input_tokens": 1020,
+    "output_tokens": 102,
+    "characters": 0,
+    "audio_tokens": 1007,
+    "input_tokens_details": {
+      "audio_tokens": 1007,
+      "text_tokens": 13
+    },
+    "output_tokens_details": {
+      "text_tokens": 102
+    },
+    "seconds": 40,
+    "total_tokens": 1122
+  },
+  "qf_meta": {
+    "provider": "qwen3-asr",
+    "requested_model": "qwen3-asr-flash",
+    "language": "auto",
+    "enable_itn": false,
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Niko60900_2025-12-15/Beta/1_input_audio.mp3",
+    "vocabulary_path": null,
+    "context": {
+      "words_count": 0,
+      "words": []
+    },
+    "note": "NO HOTWORDS - for comparison",
+    "created_at": "2026-01-04T11:31:56.537069+00:00"
+  }
+}

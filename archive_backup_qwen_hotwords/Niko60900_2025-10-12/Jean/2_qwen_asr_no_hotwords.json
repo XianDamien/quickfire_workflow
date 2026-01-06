@@ -1,0 +1,60 @@
+{
+  "status_code": 200,
+  "request_id": "f43acfee-9c97-4f1e-a01b-8bdbc1a25d33",
+  "code": "",
+  "message": "",
+  "output": {
+    "text": null,
+    "finish_reason": null,
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": [
+            {
+              "text": "一分钟。mouse。老鼠。老鼠。elephant。大象。大象。tiger。老虎。老虎。lion。狮子。狮子。wolf。狼。狼。panda。熊猫。熊猫。monkey。猴子。猴子。"
+            }
+          ],
+          "annotations": [
+            {
+              "emotion": "neutral",
+              "language": "zh",
+              "type": "audio_info"
+            }
+          ]
+        }
+      }
+    ],
+    "audio": null
+  },
+  "usage": {
+    "input_tokens": 1079,
+    "output_tokens": 54,
+    "characters": 0,
+    "audio_tokens": 1066,
+    "input_tokens_details": {
+      "audio_tokens": 1066,
+      "text_tokens": 13
+    },
+    "output_tokens_details": {
+      "text_tokens": 54
+    },
+    "seconds": 42,
+    "total_tokens": 1133
+  },
+  "qf_meta": {
+    "provider": "qwen3-asr",
+    "requested_model": "qwen3-asr-flash",
+    "language": "auto",
+    "enable_itn": false,
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Niko60900_2025-10-12/Jean/1_input_audio.mp3",
+    "vocabulary_path": null,
+    "context": {
+      "words_count": 0,
+      "words": []
+    },
+    "note": "NO HOTWORDS - for comparison",
+    "created_at": "2026-01-04T11:24:08.708660+00:00"
+  }
+}

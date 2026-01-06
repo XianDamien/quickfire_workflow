@@ -32,6 +32,29 @@ from typing import Optional, Dict, Any, List
 import dashscope
 
 
+# ===== Prompt 加载函数 =====
+
+def load_asr_context_prompt() -> str:
+    """
+    从 prompts/asr_context/system.md 加载 ASR system context。
+
+    Returns:
+        System context 字符串，如果文件不存在则返回默认值
+    """
+    prompt_path = Path(__file__).parent.parent.parent / "prompts" / "asr_context" / "system.md"
+
+    try:
+        with open(prompt_path, 'r', encoding='utf-8') as f:
+            context = f.read().strip()
+        return context
+    except FileNotFoundError:
+        # 如果文件不存在，返回默认值
+        return "这里是中英混合的文本。请准确转写音频内容，保留所有中英文。"
+    except Exception as e:
+        print(f"⚠️  加载 ASR context prompt 失败: {e}")
+        return "这里是中英混合的文本。请准确转写音频内容，保留所有中英文。"
+
+
 # ===== 音频处理辅助函数 =====
 
 def get_audio_duration(audio_path: str) -> float:
@@ -306,40 +329,49 @@ class QwenASRProvider:
     def _sha256_text(text: str) -> str:
         return hashlib.sha256((text or "").encode("utf-8")).hexdigest()
 
-    def _save_hotwords(
+    def _save_context_metadata(
         self,
         output_dir: str,
         vocabulary_path: Optional[str],
         context_words: List[str],
-        output_filename: str = "2_qwen_asr_hotwords.json",
+        system_context: str,
+        output_filename: str = "2_qwen_asr_context.json",
     ) -> None:
         """
-        保存热词元数据到文件。
+        保存 ASR context 元数据到文件（包含 system context 和热词）。
 
         Args:
             output_dir: 输出目录
             vocabulary_path: 词汇表文件路径（用于记录来源）
             context_words: 热词列表
+            system_context: System message context 文本
             output_filename: 输出文件名
         """
         os.makedirs(output_dir, exist_ok=True)
         output_path = os.path.join(output_dir, output_filename)
 
-        context_text = ", ".join(context_words) if context_words else ""
-        hotword_meta = {
-            "vocabulary_path": vocabulary_path,
-            "hotwords": context_words or [],
-            "count": len(context_words) if context_words else 0,
-            "sha256": self._sha256_text(context_text),
+        hotwords_text = ", ".join(context_words) if context_words else ""
+        context_meta = {
+            "system_context": {
+                "text": system_context,
+                "sha256": self._sha256_text(system_context),
+                "source": "prompts/asr_context/system.md"
+            },
+            "hotwords": {
+                "vocabulary_path": vocabulary_path,
+                "words": context_words or [],
+                "count": len(context_words) if context_words else 0,
+                "sha256": self._sha256_text(hotwords_text),
+            },
             "created_at": datetime.now(timezone.utc).isoformat(),
             "provider": "qwen3-asr",
             "model": self.model,
         }
 
         with open(output_path, "w", encoding="utf-8") as f:
-            json.dump(hotword_meta, f, ensure_ascii=False, indent=2)
+            json.dump(context_meta, f, ensure_ascii=False, indent=2)
 
-        print(f"   📝 热词元数据已保存: {output_path}")
+        print(f"   📝 ASR Context 元数据已保存: {output_path}")
 
     @staticmethod
     def _preview_text(text: str, max_len: int = 300) -> str:
@@ -544,9 +576,12 @@ class QwenASRProvider:
         Returns:
             Response dictionary with transcription results
         """
-        # Hotword context is disabled by default to preserve mixed-language output.
+        # Load system context from prompt file
         # Callers can still pass system_context_override explicitly if needed.
-        system_context = system_context_override or ""
+        if system_context_override:
+            system_context = system_context_override
+        else:
+            system_context = load_asr_context_prompt()
 
         # Build ASR options
         asr_options = {
@@ -561,7 +596,7 @@ class QwenASRProvider:
                 "role": "system",
                 "content": [
                     {
-                        "text": system_context if system_context else "You are an ASR assistant. Transcribe the audio accurately."
+                        "text": system_context
                     }
                 ]
             },
@@ -684,6 +719,9 @@ class QwenASRProvider:
         try:
             context_words: List[str] = []
 
+            # 加载 system context
+            system_context = load_asr_context_prompt()
+
             meta = self._build_run_meta(
                 audio_path=input_audio_path,
                 vocabulary_path=vocabulary_path,
@@ -696,12 +734,17 @@ class QwenASRProvider:
             )
             self._print_run_inputs(meta)
 
-            # 保存热词元数据
-            self._save_hotwords(
+            # 保存 ASR context 元数据（包含 system context 和热词）
+            self._save_context_metadata(
                 output_dir=output_dir,
                 vocabulary_path=vocabulary_path,
                 context_words=context_words,
+                system_context=system_context,
             )
+
+            # 输出 system context 预览
+            context_preview = system_context[:60] + "..." if len(system_context) > 60 else system_context
+            print(f"   💬 System Context: {context_preview}")
 
             if len(segment_files) == 1:
                 # 无需分段，直接转写

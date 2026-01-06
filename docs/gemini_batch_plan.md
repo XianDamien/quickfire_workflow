@@ -30,6 +30,20 @@
 - 作业生命周期：需要轮询状态（pending/running/succeeded/failed/cancelled/expired）。
 - 取回结果：成功后下载结果文件（JSONL），逐行解析；每行可能是 response 或 error。
 
+## 中转站兼容性现状与选择
+
+现有中转站仅对 `:generateContent` 返回正常响应，但 `:batchGenerateContent` 路由返回 404，说明当前中转站**未实现 Gemini Developer Batch API**。同时 Batch API 还依赖文件上传/下载端点，因此无法“只补一条路由”解决。
+
+**解决方案（二选一）**：
+
+1. **中转站补齐兼容层**：完整实现并代理 Gemini Developer Batch API 相关端点与鉴权映射，至少包含：
+   - `POST /v1beta/models/{model}:batchGenerateContent`
+   - `GET /v1beta/{batches/...}`
+   - `POST /upload/v1beta/files`（resumable 上传）
+   - `GET /download/v1beta/{file}:download`
+   - （可选）`POST /v1beta/{batches/...}:cancel`、`DELETE /v1beta/{batches/...}`
+2. **直接调用官方接口**：绕过中转站，使用官方 SDK 或 REST 调用 `generativelanguage.googleapis.com` 完成 Batch API；同步调用可继续保留走中转站。
+
 ## 建议方案概述
 
 ### 总体策略
@@ -160,4 +174,3 @@ Batch JSONL 每行建议结构：
 1. 新增的“特殊命令”希望挂在现有 `scripts/main.py` 下（如 `--stage batch-cards`），还是独立脚本（如 `scripts/gemini_batch.py`）？
 2. 回填产物以 `cards.json` 为准，还是继续以 `4_llm_annotation.json` 为主并在下游迁移？
 3. prompt log：是否必须逐学生完整保存（可能很大），还是只保存 prompt 元信息 + sha256？
-

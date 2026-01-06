@@ -32,7 +32,7 @@
 3. **核心任务1**：检查`detected_answer(学生回答)`中是否至少有一个词的意思跟`expected_answer(答案)`中某个词的意思是相似的(充分利用你的泛化能力,不要太严格)，如果学生的回答与标准答案不相关/错误,请把issue_type标记为'MEANING_ERROR'；如果在"问题"和"答案"间没有找到任何实质性的回答文本,请将'expected_answer'输出为null, issue_type则为'NO_ANSWER';
 4. **核心任务2**: 根据`题库文件`、利用`带时间戳的音频转录文本` (JSON数据) 定位到每道题的`question（问题）`字段出现的时间戳。
    - 必须精确定位，从 JSON 数组中查找包含 `question` 对应的 `words` 数组里面的 `text`，读取时间戳信息
-   - 输出为 `card_timestamp` 字段（格式如 "00:17"）
+   - 输出为 `card_timestamp` 字段（格式如 "00:17"），当无法确定时间戳时且确认学生有输出时，请返回估算值。
 
 
 

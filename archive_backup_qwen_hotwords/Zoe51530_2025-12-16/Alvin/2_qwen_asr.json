@@ -1,0 +1,106 @@
+{
+  "status_code": 200,
+  "request_id": "33743a1e-f4cf-49e3-964b-9d92123aecac",
+  "code": "",
+  "message": "",
+  "output": {
+    "text": null,
+    "finish_reason": null,
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": [
+            {
+              "text": "十八，celebrate，提示撤了，不吃了，准备干嘛？庆祝。cent，一分钱或者一美分。center，中心。century，世纪，一个世纪等于多久？一百年。certain，特定的，确定的。certainly，当然，当然也是一种确定。chain，提示缠绕的缠，链条或者是束缚。chair，椅子。challenge，提示采灵芝需要去山谷悬崖上采，所以challenge，有挑战。chance或者chance，机会。change，改变。changeable，改变的形容词，可改变的。channel，提示铲子的铲c h a n再加上一个n型拱形，铲出一个拱形。隧道、水渠、频道。character，提示刻入刻它，特点、特征、人物。charge有四个主要意思，一，The hotel will charge you twenty dollars for breakfast. 这里的charge，收费、费用。第二，She is in charge of organizing the school event. 这里in charge of，掌管。三，Please charge your phone before we leave. 这里的charge，充电。四，Luo Fan suddenly charged at the monster. 冲。"
+            }
+          ],
+          "annotations": [
+            {
+              "emotion": "neutral",
+              "language": "zh",
+              "type": "audio_info"
+            }
+          ]
+        }
+      }
+    ],
+    "audio": null
+  },
+  "usage": {
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "characters": 0,
+    "input_tokens_details": {
+      "text_tokens": 152
+    },
+    "output_tokens_details": {
+      "text_tokens": 252
+    },
+    "seconds": 132
+  },
+  "qf_meta": {
+    "provider": "qwen3-asr",
+    "requested_model": "qwen3-asr-flash",
+    "language": "auto",
+    "enable_itn": false,
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe51530_2025-12-16/Alvin/1_input_audio.mp3",
+    "vocabulary_path": "/Users/damien/Desktop/Venture/quickfire_workflow/questionbank/130-18-EC.json",
+    "context": {
+      "delimiter": ", ",
+      "words_count": 41,
+      "words": [
+        "celebrate",
+        "cent",
+        "center",
+        "century",
+        "certain",
+        "certainly",
+        "chain",
+        "chair",
+        "challenge",
+        "chance",
+        "change",
+        "changeable",
+        "channel",
+        "character",
+        "charge",
+        "一分钱",
+        "一百年",
+        "一美分",
+        "世纪",
+        "中心",
+        "人物",
+        "充电",
+        "冲",
+        "可改变的",
+        "庆祝",
+        "当然",
+        "挑战",
+        "掌管",
+        "收费",
+        "改变",
+        "机会",
+        "束缚",
+        "椅子",
+        "水渠",
+        "特定的",
+        "特征",
+        "特点",
+        "确定的",
+        "链条",
+        "隧道",
+        "频道"
+      ],
+      "text_sha256": "23bdd7f06629a44b49b6a8583e4a9747298fde20ad06a25fc0e8401ea891ee6a",
+      "text_preview": "celebrate, cent, center, century, certain, certainly, chain, chair, challenge, chance, change, changeable, channel, character, charge, 一分钱, 一百年, 一美分, 世纪, 中心, 人物, 充电, 冲, 可改变的, 庆祝, 当然, 挑战, 掌管, 收费, 改变, 机会, 束缚, 椅子, 水渠, 特定的, 特征, 特点, 确定的, 链条, 隧道, 频道"
+    },
+    "segmentation": {
+      "segment_duration": 180,
+      "segment_count": 1,
+      "max_workers": 3
+    },
+    "created_at": "2026-01-04T11:10:28.543510+00:00"
+  }
+}

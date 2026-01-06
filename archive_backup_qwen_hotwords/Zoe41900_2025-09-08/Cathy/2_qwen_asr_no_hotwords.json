@@ -1,0 +1,60 @@
+{
+  "status_code": 200,
+  "request_id": "5d3dc96d-64ab-4181-a893-9e27ae1149f2",
+  "code": "",
+  "message": "",
+  "output": {
+    "text": null,
+    "finish_reason": null,
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": [
+            {
+              "text": "Not. Not. 双倍的，双的。嗯，double double. 一半，半。Half. Half. 角色，部分。Part. Part. 形容词，两个的。嗯，both both. 代词，两者。Both. Both. 副词，两者都。Both. Both. 全部的。Oh. All. 代词，每，每个。Each. Each. 形容词，每个的，每一的。Each. Each."
+            }
+          ],
+          "annotations": [
+            {
+              "emotion": "neutral",
+              "language": "en",
+              "type": "audio_info"
+            }
+          ]
+        }
+      }
+    ],
+    "audio": null
+  },
+  "usage": {
+    "input_tokens": 2418,
+    "output_tokens": 114,
+    "characters": 0,
+    "audio_tokens": 2405,
+    "input_tokens_details": {
+      "audio_tokens": 2405,
+      "text_tokens": 13
+    },
+    "output_tokens_details": {
+      "text_tokens": 114
+    },
+    "seconds": 96,
+    "total_tokens": 2532
+  },
+  "qf_meta": {
+    "provider": "qwen3-asr",
+    "requested_model": "qwen3-asr-flash",
+    "language": "auto",
+    "enable_itn": false,
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe41900_2025-09-08/Cathy/1_input_audio.mp3",
+    "vocabulary_path": null,
+    "context": {
+      "words_count": 0,
+      "words": []
+    },
+    "note": "NO HOTWORDS - for comparison",
+    "created_at": "2026-01-04T11:32:09.362486+00:00"
+  }
+}

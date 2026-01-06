@@ -1,0 +1,43 @@
+{
+  "status_code": 200,
+  "request_id": "9df62994-15ab-4b43-93d3-53d7d19aeea0",
+  "code": "",
+  "message": "",
+  "output": {
+    "text": null,
+    "finish_reason": null,
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": [
+            {
+              "text": "初中单词 basic 二十六，cry，哭和喊叫。哭和喊叫。culture，提示，很多这个东西靠扯，指什么？国画。文化。cup，茶杯杯子。茶杯杯子。custom，提示，卡死他们，谁最喜欢干？海关。海关，而且这是他们的什么？习惯习俗。习俗习惯。那么custom加上一样，customer是什么意思？顾客。坑死他们。顾客。顾客，当然不能这样了。cut，剪切。剪切。cute，可爱的。可爱的。cycle，循环。循环。dad，爸爸。爸爸。daily，每日的日常的。每日的。damage，提示大面积。损坏。破坏。dance，跳舞。跳舞，联想一下confidence，功夫跳舞是什么？confidence，展示自信。dancer，跳舞者。跳舞者。danger，危险。危害。dangerous，危险的。危险的。"
+            }
+          ],
+          "annotations": [
+            {
+              "emotion": "neutral",
+              "language": "zh",
+              "type": "audio_info"
+            }
+          ]
+        }
+      }
+    ],
+    "audio": null
+  },
+  "usage": {
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "characters": 0,
+    "input_tokens_details": {
+      "text_tokens": 122
+    },
+    "output_tokens_details": {
+      "text_tokens": 194
+    },
+    "seconds": 85
+  }
+}

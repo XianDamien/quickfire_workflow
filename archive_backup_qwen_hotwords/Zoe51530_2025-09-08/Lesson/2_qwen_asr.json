@@ -1,0 +1,43 @@
+{
+  "status_code": 200,
+  "request_id": "cd0d9614-6a23-45ae-95a6-597e9bfad2e7",
+  "code": "",
+  "message": "",
+  "output": {
+    "text": null,
+    "finish_reason": null,
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": [
+            {
+              "text": "简单的。简单的、简易的、朴素的、简朴的。complete，形容词。完整的。完整的、完全的、彻底的。complete，及物动词。完成。完成。list，名词。清单、目录。清单、目录、一览表。list，及物动词。把什么什么列成表。把什么什么列成表，举例。assist，名词。帮助。帮助、助攻。assist，不及物动词。呃，出席。参加、出席。assist，及物动词。帮助、促进。帮助、促进。scientist，名词。科学家。科学家。tourist，名词。观光者。旅游者、观光者。case，名词。盒子。箱子、盒子、情况、状况。chase，及物动词。追捕。追捕、追求、雕刻、试图赢得。chase，不及物动词。奔跑。奔跑、追赶。chase，名词。追捕。追捕、争取、狩猎。purchase，及物动词。购买。购买。purchase，名词。购买的物品。购买、购买的物品。increase，行为动词。增加、增大。增加、增大。increase，名词。增加、增长。增加、增长。rise，不及物动词。上升、上涨、起床、起立。太阳、月亮等上升、上涨、起立、起床。rise，名词。升高。升高、升起、上涨、增长。raise，及物动词。抬高。抬高、举起、提高、养育、提起话题。surprise，及物动词。使惊奇、使惊异。使惊奇、使诧异。surprise，名词。令人惊讶、哎呀、吃惊的事。令人吃惊的事。exercise，名词。练习。锻炼、运动、体操、练习、习题。exercise，不及物动词。锻炼。练习、锻炼。praise，及物动词。赞扬、表扬。赞扬、表扬。praise，名词。赞扬、称赞。赞扬、表扬、称赞。noise，名词。噪音。嘈杂声、喧闹声、噪音。"
+            }
+          ],
+          "annotations": [
+            {
+              "emotion": "neutral",
+              "language": "zh",
+              "type": "audio_info"
+            }
+          ]
+        }
+      }
+    ],
+    "audio": null
+  },
+  "usage": {
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "characters": 0,
+    "input_tokens_details": {
+      "text_tokens": 336
+    },
+    "output_tokens_details": {
+      "text_tokens": 447
+    },
+    "seconds": 166
+  }
+}

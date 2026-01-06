@@ -1,0 +1,85 @@
+{
+  "status_code": 200,
+  "request_id": "9383683b-2f05-4b86-97f0-ec413785b212",
+  "code": "",
+  "message": "",
+  "output": {
+    "text": null,
+    "finish_reason": null,
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": [
+            {
+              "text": "二十七 in 班中。kid 小孩。now 小孩，pupil 小学生。now 小学生或者瞳孔，baby 婴儿。now 婴儿，twin 双胞胎之一。双胞胎之一，twin adjective 双胞胎的孪生的。leader 领袖。now 领导者领袖，friend 朋友。朋友，classmate 同班同学。"
+            }
+          ],
+          "annotations": [
+            {
+              "emotion": "neutral",
+              "language": "zh",
+              "type": "audio_info"
+            }
+          ]
+        }
+      }
+    ],
+    "audio": null
+  },
+  "usage": {
+    "input_tokens": 983,
+    "output_tokens": 103,
+    "characters": 0,
+    "audio_tokens": 917,
+    "input_tokens_details": {
+      "audio_tokens": 917,
+      "text_tokens": 66
+    },
+    "output_tokens_details": {
+      "text_tokens": 103
+    },
+    "seconds": 36,
+    "total_tokens": 1086
+  },
+  "qf_meta": {
+    "provider": "qwen3-asr",
+    "requested_model": "qwen3-asr-flash",
+    "language": "auto",
+    "enable_itn": false,
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Abby61000_2025-11-05/Jeffery/1_input_audio.mp3",
+    "vocabulary_path": "/Users/damien/Desktop/Venture/quickfire_workflow/questionbank/R1-27-D3.json",
+    "context": {
+      "delimiter": ", ",
+      "words_count": 17,
+      "words": [
+        "baby",
+        "classmate",
+        "friend",
+        "kid",
+        "leader",
+        "pupil",
+        "twin",
+        "双胞胎之一",
+        "双胞胎的",
+        "同班同学",
+        "婴儿",
+        "孪生的",
+        "小学生或者瞳孔",
+        "小孩",
+        "朋友",
+        "领导者",
+        "领袖"
+      ],
+      "text_sha256": "7c8452e625c74239a7b5e10d08c84bf4f6f5c2562b93cc243f1137102568bde2",
+      "text_preview": "baby, classmate, friend, kid, leader, pupil, twin, 双胞胎之一, 双胞胎的, 同班同学, 婴儿, 孪生的, 小学生或者瞳孔, 小孩, 朋友, 领导者, 领袖"
+    },
+    "segmentation": {
+      "segment_duration": 180,
+      "segment_count": 1,
+      "max_workers": 3
+    },
+    "created_at": "2026-01-04T11:10:37.478605+00:00"
+  }
+}

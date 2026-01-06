@@ -295,6 +295,64 @@ result = provider.transcribe_with_timestamp(
 
 ---
 
+### 热词元数据日志
+
+ASR 模块在处理过程中会保存使用的热词信息，用于调试和审计。
+
+#### Qwen ASR 热词日志
+
+**文件**: `2_qwen_asr_hotwords.json`
+
+**位置**: `archive/{batch}/{student}/`
+
+**格式**:
+
+```json
+{
+  "vocabulary_path": "archive/Zoe41900_2025-09-08/_shared_context/R1-65.json",
+  "hotwords": ["all", "both", "double", "each", "half", "not", "part", "一半", "不", ...],
+  "count": 42,
+  "sha256": "abc123...",
+  "created_at": "2026-01-03T10:00:00Z",
+  "provider": "qwen3-asr",
+  "model": "qwen3-asr-flash"
+}
+```
+
+#### FunASR 热词日志
+
+**文件**: `3_asr_timestamp_hotwords.json`
+
+**位置**: `archive/{batch}/{student}/`
+
+**格式**:
+
+```json
+{
+  "vocabulary_path": "archive/Zoe41900_2025-09-08/_shared_context/R1-65.json",
+  "hotwords": [
+    {"text": "not", "weight": 4, "lang": "en"},
+    {"text": "双倍的", "weight": 4, "lang": "zh"},
+    ...
+  ],
+  "count": 42,
+  "sha256": "def456...",
+  "created_at": "2026-01-03T10:00:00Z",
+  "provider": "fun-asr",
+  "model": "fun-asr",
+  "vocabulary_id": "vocab-20250103-xyz"
+}
+```
+
+#### 用途
+
+- **调试**: 验证 ASR 使用了正确的热词
+- **审计**: 追踪热词变更历史
+- **复现**: 使用相同热词重新运行转写
+- **排查**: 热词配置问题的诊断入口
+
+---
+
 ### Annotators 模块 (`annotators/`)
 
 #### base.py - Annotator 基础接口
@@ -801,7 +859,9 @@ archive/{ClassCode}_{Date}/
 ├── {Student}/
 │   ├── 1_input_audio.mp3           # 原始音频
 │   ├── 2_qwen_asr.json             # Qwen ASR 转写结果
+│   ├── 2_qwen_asr_hotwords.json    # Qwen ASR 热词元数据
 │   ├── 3_asr_timestamp.json        # FunASR 带时间戳转写
+│   ├── 3_asr_timestamp_hotwords.json # FunASR 热词元数据
 │   └── runs/
 │       └── {annotator}/
 │           └── {run_id}/

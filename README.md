@@ -161,16 +161,9 @@ uv run python scripts/qwen_asr.py --dataset Zoe51530-9.8 --student Oscar
 }
 ```
 
-#### 热词增强（可选）
+#### 热词注入（已禁用）
 
-ASR 支持从 CSV/JSON 题库加载热词来改进转写准确度：
-
-```python
-# scripts/qwen_asr.py 会自动从题库中提取关键词作为上下文
-# 支持格式：
-# 1. CSV: questions 列中的内容
-# 2. JSON: questions 数组中的内容
-```
+由于热词注入会歪曲中英混杂的原样输出，当前流程不再注入热词。
 
 **音频分段处理说明**：
 - 自动检测音频时长
@@ -539,4 +532,3 @@ ffprobe -version
 
 **最后更新**: 2025-10-22
 **版本**: 1.0.0
-

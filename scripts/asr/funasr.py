@@ -27,7 +27,9 @@ import json
 import re
 import time
 import subprocess
+import hashlib
 import requests
+from datetime import datetime, timezone
 from http import HTTPStatus
 from pathlib import Path
 from typing import Optional, Dict, Any, List
@@ -363,6 +365,46 @@ class FunASRTimestampProvider:
         self.model = model
         self.vocab_manager = VocabularySlotManager(prefix=vocabulary_prefix, model=model)
         self._vocabulary_initialized = False
+        self._last_vocabulary: List[Dict] = []
+        self._last_vocabulary_path: Optional[str] = None
+
+    @staticmethod
+    def _sha256_json(data: Any) -> str:
+        """计算 JSON 数据的 SHA-256 哈希值。"""
+        return hashlib.sha256(
+            json.dumps(data, ensure_ascii=False, sort_keys=True).encode("utf-8")
+        ).hexdigest()
+
+    def _save_hotwords(
+        self,
+        output_dir: Path,
+        output_filename: str = "3_asr_timestamp_hotwords.json",
+    ) -> None:
+        """
+        保存热词元数据到文件。
+
+        Args:
+            output_dir: 输出目录
+            output_filename: 输出文件名
+        """
+        output_dir.mkdir(parents=True, exist_ok=True)
+        output_path = output_dir / output_filename
+
+        hotword_meta = {
+            "vocabulary_path": self._last_vocabulary_path,
+            "hotwords": self._last_vocabulary,
+            "count": len(self._last_vocabulary),
+            "sha256": self._sha256_json(self._last_vocabulary),
+            "created_at": datetime.now(timezone.utc).isoformat(),
+            "provider": "fun-asr",
+            "model": self.model,
+            "vocabulary_id": self.vocab_manager.vocabulary_id,
+        }
+
+        with open(output_path, "w", encoding="utf-8") as f:
+            json.dump(hotword_meta, f, ensure_ascii=False, indent=2)
+
+        print(f"  📝 热词元数据已保存: {output_path}")
 
     def _init_vocabulary(self, vocabulary_path: Optional[str] = None) -> Optional[str]:
         """
@@ -375,12 +417,18 @@ class FunASRTimestampProvider:
             vocabulary_id 或 None
         """
         if not vocabulary_path:
+            self._last_vocabulary = []
+            self._last_vocabulary_path = None
             return None
 
         try:
             # 加载题库并更新热词
             questionbank = load_questionbank(vocabulary_path)
             vocabulary = extract_vocabulary(questionbank)
+
+            # 存储热词用于后续保存
+            self._last_vocabulary = vocabulary
+            self._last_vocabulary_path = vocabulary_path
 
             self.vocab_manager.get_or_create_slot()
             self.vocab_manager.update_vocabulary(vocabulary)
@@ -389,6 +437,8 @@ class FunASRTimestampProvider:
             return self.vocab_manager.vocabulary_id
         except Exception as e:
             print(f"热词初始化失败: {e}")
+            self._last_vocabulary = []
+            self._last_vocabulary_path = vocabulary_path
             return None
 
     def transcribe_with_timestamp(
@@ -548,6 +598,10 @@ class FunASRTimestampProvider:
                 with open(output_path, 'w', encoding='utf-8') as f:
                     json.dump(result, f, ensure_ascii=False, indent=2)
 
+                # 保存热词元数据
+                if vocabulary_path:
+                    self._save_hotwords(output_dir)
+
                 print(f"  ✓ {student_name}: 已保存到 {output_filename} (sentences: {len(sentences)})")
                 return True
             else:
@@ -577,6 +631,10 @@ class FunASRTimestampProvider:
 
             with open(output_path, 'w', encoding='utf-8') as f:
                 json.dump(result, f, ensure_ascii=False, indent=2)
+
+            # 保存热词元数据
+            if vocabulary_path:
+                self._save_hotwords(output_dir)
 
             print(f"  ✓ {student_name}: 已保存到 {output_filename} (sentences: {len(sentences)})")
             return True

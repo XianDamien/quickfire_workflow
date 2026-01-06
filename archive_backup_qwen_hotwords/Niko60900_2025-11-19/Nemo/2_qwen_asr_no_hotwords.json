@@ -1,0 +1,60 @@
+{
+  "status_code": 200,
+  "request_id": "ef7093c2-1da7-420e-9c84-d410ac748973",
+  "code": "",
+  "message": "",
+  "output": {
+    "text": null,
+    "finish_reason": null,
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": [
+            {
+              "text": "Teapot, T E A P O T. Teapot. Bed, B E D. Bed. Table, T A B L E. Table. Desk, D E S K. Desk. Chair, C H A I R. Chair. Sofa, S O F A. Sofa. Couch, C O U C H. Couch. Tent, T E N T. Tent."
+            }
+          ],
+          "annotations": [
+            {
+              "emotion": "neutral",
+              "language": "en",
+              "type": "audio_info"
+            }
+          ]
+        }
+      }
+    ],
+    "audio": null
+  },
+  "usage": {
+    "input_tokens": 1108,
+    "output_tokens": 85,
+    "characters": 0,
+    "audio_tokens": 1095,
+    "input_tokens_details": {
+      "audio_tokens": 1095,
+      "text_tokens": 13
+    },
+    "output_tokens_details": {
+      "text_tokens": 85
+    },
+    "seconds": 43,
+    "total_tokens": 1193
+  },
+  "qf_meta": {
+    "provider": "qwen3-asr",
+    "requested_model": "qwen3-asr-flash",
+    "language": "auto",
+    "enable_itn": false,
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Niko60900_2025-11-19/Nemo/1_input_audio.mp3",
+    "vocabulary_path": null,
+    "context": {
+      "words_count": 0,
+      "words": []
+    },
+    "note": "NO HOTWORDS - for comparison",
+    "created_at": "2026-01-04T11:31:54.672884+00:00"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "asr-gatekeeper",
+  "description": "ASR quality gate: detects questionbank direction mismatch and audio anomalies",
+  "version": "1.3.0",
+  "changelog": {
+    "1.3.0": "综合分析多个词对而非单一词对，处理学生漏录场景，不确定时采用严格策略（FAIL）",
+    "1.2.0": "修正ASR模式定义，统一'中→英'/'英→中'表述，明确题库方向与ASR模式匹配逻辑",
+    "1.1.0": "明确老师念题流程，清晰定义ASR模式判断逻辑，增强示例说明",
+    "1.0.0": "初始版本"
+  },
+  "updated_at": "2026-01-05"
+}

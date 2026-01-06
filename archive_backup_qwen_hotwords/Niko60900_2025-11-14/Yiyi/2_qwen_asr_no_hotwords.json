@@ -1,0 +1,60 @@
+{
+  "status_code": 200,
+  "request_id": "d4852e81-ba1c-41d1-9b2a-4bf1f214fb70",
+  "code": "",
+  "message": "",
+  "output": {
+    "text": null,
+    "finish_reason": null,
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": [
+            {
+              "text": "单词表十五中翻英。勺子 spoon。 spoon。盘子、菜品、佳肴。This this plate what pot plate what pot plate what pot dish plate what pot。盘子 plate bowl。 plate。碗 bowl。 pot pot pot pot。 pot。杯子 cup。 cup。玻璃杯玻璃 glass。 glass。茶壶 teapot。 teapot。床 bed bed bed bed bed bed。 bed。桌子餐桌 table。 table。 desk 桌子 desk desk desk desk desk。 chair 椅子 chair。 chair。沙发 sofa。 sofa。长椅、睡椅 couch。 couch。帐篷 tent tent tent tent tent tent。 tent。"
+            }
+          ],
+          "annotations": [
+            {
+              "emotion": "neutral",
+              "language": "zh",
+              "type": "audio_info"
+            }
+          ]
+        }
+      }
+    ],
+    "audio": null
+  },
+  "usage": {
+    "input_tokens": 4526,
+    "output_tokens": 141,
+    "characters": 0,
+    "audio_tokens": 4513,
+    "input_tokens_details": {
+      "audio_tokens": 4513,
+      "text_tokens": 13
+    },
+    "output_tokens_details": {
+      "text_tokens": 141
+    },
+    "seconds": 180,
+    "total_tokens": 4667
+  },
+  "qf_meta": {
+    "provider": "qwen3-asr",
+    "requested_model": "qwen3-asr-flash",
+    "language": "auto",
+    "enable_itn": false,
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Niko60900_2025-11-14/Yiyi/1_input_audio.mp3",
+    "vocabulary_path": null,
+    "context": {
+      "words_count": 0,
+      "words": []
+    },
+    "note": "NO HOTWORDS - for comparison",
+    "created_at": "2026-01-04T11:25:56.626019+00:00"
+  }
+}

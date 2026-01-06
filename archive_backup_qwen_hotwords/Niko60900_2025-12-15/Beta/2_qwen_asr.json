@@ -1,0 +1,43 @@
+{
+  "status_code": 200,
+  "request_id": "fc8f5f30-2ffd-4bee-80f5-6b5b9643da6f",
+  "code": "",
+  "message": "",
+  "output": {
+    "text": null,
+    "finish_reason": null,
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": [
+            {
+              "text": "Housework. Housework. 整理收拾. Tidy. Tidy. 整洁的整齐的. Tidy. Tidy. 打扫清除. Sweep. 专门有个扫的感觉，是吧？Sweep. 洗. Wash. Wash. 清扫清洁. Clean. 干净的. Clean. Clean. 刷子. Brush. Brush. 刷，用刷子刷. Brush."
+            }
+          ],
+          "annotations": [
+            {
+              "emotion": "neutral",
+              "language": "zh",
+              "type": "audio_info"
+            }
+          ]
+        }
+      }
+    ],
+    "audio": null
+  },
+  "usage": {
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "characters": 0,
+    "input_tokens_details": {
+      "text_tokens": 71
+    },
+    "output_tokens_details": {
+      "text_tokens": 95
+    },
+    "seconds": 40
+  }
+}

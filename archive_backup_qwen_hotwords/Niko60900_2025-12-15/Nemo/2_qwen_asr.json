@@ -1,0 +1,81 @@
+{
+  "status_code": 200,
+  "request_id": "e632c01b-6488-4e61-85a1-1e36ab0a04b6",
+  "code": "",
+  "message": "",
+  "output": {
+    "text": null,
+    "finish_reason": null,
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": [
+            {
+              "text": "家。 housework h o u s e w o r k housework 整理收拾 tidy t i d y tidy 整洁的整齐的 tidy t i d y tidy 打扫清除 sweep s w e e p 专门有扫的那件事嘛 sweep 洗 wash w a s h wash 清扫清洁 clean c l e a n 干净的 clean c l e a n clean 刷子 brush b r u s h brush brush b r u s h brush."
+            }
+          ],
+          "annotations": [
+            {
+              "emotion": "neutral",
+              "language": "zh",
+              "type": "audio_info"
+            }
+          ]
+        }
+      }
+    ],
+    "audio": null
+  },
+  "usage": {
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "characters": 0,
+    "input_tokens_details": {
+      "text_tokens": 68
+    },
+    "output_tokens_details": {
+      "text_tokens": 111
+    },
+    "seconds": 46
+  },
+  "qf_meta": {
+    "provider": "qwen3-asr",
+    "requested_model": "qwen3-asr-flash",
+    "language": "auto",
+    "enable_itn": false,
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Niko60900_2025-12-15/Nemo/1_input_audio.mp3",
+    "vocabulary_path": "/Users/damien/Desktop/Venture/quickfire_workflow/questionbank/R1-20-D5.json",
+    "context": {
+      "delimiter": ", ",
+      "words_count": 16,
+      "words": [
+        "brush",
+        "clean",
+        "homework",
+        "housework",
+        "sweep",
+        "tidy",
+        "wash",
+        "作业",
+        "刷子",
+        "家务",
+        "整理收拾",
+        "洗",
+        "清扫",
+        "清洁打扫",
+        "清洁的",
+        "清洁的干净的"
+      ],
+      "text_sha256": "acc0e360c4524f2a0df821ee3e727e6eb931a94f2a4d1c2b1e6d6f84f805f95b",
+      "text_preview": "brush, clean, homework, housework, sweep, tidy, wash, 作业, 刷子, 家务, 整理收拾, 洗, 清扫, 清洁打扫, 清洁的, 清洁的干净的"
+    },
+    "segmentation": {
+      "segment_duration": 180,
+      "segment_count": 1,
+      "max_workers": 3
+    },
+    "created_at": "2026-01-04T11:10:26.465634+00:00"
+  }
+}

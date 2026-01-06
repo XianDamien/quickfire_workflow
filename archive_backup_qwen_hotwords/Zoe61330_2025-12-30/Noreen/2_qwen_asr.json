@@ -1,0 +1,62 @@
+{
+  "status_code": 400,
+  "request_id": "25ef2c38-adca-4817-9b58-e773b9b2899c",
+  "code": "InvalidParameter",
+  "message": "<400> InternalError.Algo.InvalidParameter: The audio format is illegal and cannot be opened",
+  "output": null,
+  "usage": null,
+  "qf_meta": {
+    "provider": "qwen3-asr",
+    "requested_model": "qwen3-asr-flash",
+    "language": "auto",
+    "enable_itn": false,
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe61330_2025-12-30/Noreen/1_input_audio.mp3",
+    "vocabulary_path": "/Users/damien/Desktop/Venture/quickfire_workflow/questionbank/130-27-EC.json",
+    "context": {
+      "delimiter": ", ",
+      "words_count": 32,
+      "words": [
+        "dare",
+        "dark",
+        "date",
+        "daughter",
+        "day",
+        "dead",
+        "deal",
+        "dear",
+        "death",
+        "debate",
+        "decide",
+        "decision",
+        "decorate",
+        "deep",
+        "degree",
+        "交易",
+        "亲爱的",
+        "决定",
+        "分配",
+        "天",
+        "女儿",
+        "学位",
+        "度数",
+        "敢",
+        "死亡",
+        "死的",
+        "深的",
+        "温度",
+        "约会",
+        "装修",
+        "辩论",
+        "黑暗"
+      ],
+      "text_sha256": "e755656c890ac614cb0921741a62e83737af7628c34ff64a1852af47806a6dd6",
+      "text_preview": "dare, dark, date, daughter, day, dead, deal, dear, death, debate, decide, decision, decorate, deep, degree, 交易, 亲爱的, 决定, 分配, 天, 女儿, 学位, 度数, 敢, 死亡, 死的, 深的, 温度, 约会, 装修, 辩论, 黑暗"
+    },
+    "segmentation": {
+      "segment_duration": 180,
+      "segment_count": 1,
+      "max_workers": 3
+    },
+    "created_at": "2026-01-04T11:10:36.211889+00:00"
+  }
+}

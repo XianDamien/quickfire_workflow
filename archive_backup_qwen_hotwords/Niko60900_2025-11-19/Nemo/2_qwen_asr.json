@@ -1,0 +1,87 @@
+{
+  "status_code": 200,
+  "request_id": "10f8d18f-1ab1-4b7d-bdf0-c1e62e28f129",
+  "code": "",
+  "message": "",
+  "output": {
+    "text": null,
+    "finish_reason": null,
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": [
+            {
+              "text": "Teapot, T E A P O T. Teapot. Bed, B E D. Bed. Table, T A B L E. Table. Desk, D E S K. Desk. Chair, C H A I R. Chair. Sofa, S O F A. Sofa. Couch, C O U C H. Couch. Tent, T E N T. Tent."
+            }
+          ],
+          "annotations": [
+            {
+              "emotion": "neutral",
+              "language": "en",
+              "type": "audio_info"
+            }
+          ]
+        }
+      }
+    ],
+    "audio": null
+  },
+  "usage": {
+    "input_tokens": 1163,
+    "output_tokens": 85,
+    "characters": 0,
+    "audio_tokens": 1095,
+    "input_tokens_details": {
+      "audio_tokens": 1095,
+      "text_tokens": 68
+    },
+    "output_tokens_details": {
+      "text_tokens": 85
+    },
+    "seconds": 43,
+    "total_tokens": 1248
+  },
+  "qf_meta": {
+    "provider": "qwen3-asr",
+    "requested_model": "qwen3-asr-flash",
+    "language": "auto",
+    "enable_itn": false,
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Niko60900_2025-11-19/Nemo/1_input_audio.mp3",
+    "vocabulary_path": "/Users/damien/Desktop/Venture/quickfire_workflow/questionbank/R1-15-D5.json",
+    "context": {
+      "delimiter": ", ",
+      "words_count": 19,
+      "words": [
+        "bed",
+        "chair",
+        "couch",
+        "desk",
+        "sofa",
+        "table",
+        "teapot",
+        "tent",
+        "书桌",
+        "办公桌",
+        "帐篷",
+        "床",
+        "桌子",
+        "椅子",
+        "沙发",
+        "睡椅",
+        "茶壶",
+        "长椅",
+        "餐桌"
+      ],
+      "text_sha256": "78bf7b2caaa4a8488f9979464def857f156888cd4f58793e008acf63fdc72a7b",
+      "text_preview": "bed, chair, couch, desk, sofa, table, teapot, tent, 书桌, 办公桌, 帐篷, 床, 桌子, 椅子, 沙发, 睡椅, 茶壶, 长椅, 餐桌"
+    },
+    "segmentation": {
+      "segment_duration": 180,
+      "segment_count": 1,
+      "max_workers": 3
+    },
+    "created_at": "2026-01-04T11:10:20.656962+00:00"
+  }
+}

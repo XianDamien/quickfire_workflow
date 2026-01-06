@@ -1,0 +1,60 @@
+{
+  "status_code": 200,
+  "request_id": "6e631e2a-2ec9-4c8d-8194-883745d25b31",
+  "code": "",
+  "message": "",
+  "output": {
+    "text": null,
+    "finish_reason": null,
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": [
+            {
+              "text": "simple，形容词。简单的。简单的，简易的，朴素的，简朴的。complete，形容词。完整的。完整的，完全的，彻底的。complete，及物动词。完成。完成。list，名词。清单。清单，目录，一览表。list，及物动词。呃，列举。把什么什么列成表，举例。assist，名词。帮助。帮助，助攻。assist，不及物动词。呃，参加。参加，出席。assist，及物动词。帮助。帮助，促进。scientist，名词。科学家。科学家。tourist，名词。旅游者。旅游者，观光者。case，名词。情况，箱子。箱子，盒子，情况，状况。chase，及物动词。追捕。追捕，追求，雕刻，试图赢得。chase，不及物动词。奔跑，追赶。chase，名词。追捕。追捕，争取，狩猎。purchase，及物动词。购买。购买。purchase，名词。购买。购买，购买的物品。increase，行为动词。增加。增加，增大。increase，名词。增加。增加，增长。rise，不及物动词。呃，太阳、月亮的上升。太阳、月亮等上升、上涨、起立、起床。rise，名词。身高。升高，升起，上涨，增长。raise，及物动词。呃，举起。抬高，举起，提高，养育，提起话题。surprise，及物动词。是惊奇。使惊奇，使诧异。surprise，名词。惊讶。惊讶，令人吃惊的是。exercise，名词。锻炼或者练习题。锻炼，运动，体操，练习，习题。exercise，不及物动词。练习。练习，锻炼。praise，及物动词。表扬。赞扬，表扬。praise，名词。表扬。赞扬，表扬，称赞。noise，名词。噪音。嘈杂声，喧闹声，噪音。"
+            }
+          ],
+          "annotations": [
+            {
+              "emotion": "neutral",
+              "language": "zh",
+              "type": "audio_info"
+            }
+          ]
+        }
+      }
+    ],
+    "audio": null
+  },
+  "usage": {
+    "input_tokens": 4197,
+    "output_tokens": 429,
+    "characters": 0,
+    "audio_tokens": 4184,
+    "input_tokens_details": {
+      "audio_tokens": 4184,
+      "text_tokens": 13
+    },
+    "output_tokens_details": {
+      "text_tokens": 429
+    },
+    "seconds": 167,
+    "total_tokens": 4626
+  },
+  "qf_meta": {
+    "provider": "qwen3-asr",
+    "requested_model": "qwen3-asr-flash",
+    "language": "auto",
+    "enable_itn": false,
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe51530_2025-09-08/Stefan/1_input_audio.mp3",
+    "vocabulary_path": null,
+    "context": {
+      "words_count": 0,
+      "words": []
+    },
+    "note": "NO HOTWORDS - for comparison",
+    "created_at": "2026-01-04T11:34:37.970569+00:00"
+  }
+}

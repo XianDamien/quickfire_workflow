@@ -38,7 +38,7 @@ from scripts.common.env import load_env
 load_env()
 
 # DAG 节点定义（顺序即依赖顺序）
-DAG_STAGES = ["audio", "qwen_asr", "timestamps", "cards"]
+DAG_STAGES = ["audio", "qwen_asr", "gatekeeper", "timestamps", "cards"]
 
 
 # 使用 common 模块的共用函数
@@ -58,11 +58,17 @@ def check_stage_complete(student_dir: Path, stage: str) -> bool:
 
     注意: cards 阶段始终返回 False，因为每次运行都应该生成新的 run
     用于对比不同模型或不同 prompt 版本的结果
+
+    注意: gatekeeper 阶段始终返回 False，每次都应该重新检查
     """
     if stage == "audio":
         return find_audio_file(student_dir) is not None
     elif stage == "qwen_asr":
         return (student_dir / "2_qwen_asr.json").exists()
+    elif stage == "gatekeeper":
+        # gatekeeper 阶段：始终返回 False，每次都重新检查
+        # 确保质检门禁每次都执行
+        return False
     elif stage == "timestamps":
         return (student_dir / "3_asr_timestamp.json").exists()
     elif stage == "cards":
@@ -199,6 +205,106 @@ def run_qwen_asr(
         return False
 
 
+def run_gatekeeper(
+    archive_batch: str,
+    student_name: str,
+    force: bool = False,
+    dry_run: bool = False,
+    verbose: bool = False
+) -> bool:
+    """
+    执行 gatekeeper 阶段
+
+    使用 Qwen Plus 模型检测题库选择错误和音频异常
+    输出: 检查结果（不保存文件，直接返回 PASS/FAIL）
+
+    Args:
+        archive_batch: 批次名称
+        student_name: 学生名称
+        force: 是否强制重新处理（gatekeeper 始终执行）
+        dry_run: 是否只打印不执行
+        verbose: 是否显示详细信息
+
+    Returns:
+        True=PASS (可继续), False=FAIL (需人工干预)
+    """
+    student_dir = ARCHIVE_DIR / archive_batch / student_name
+
+    # 检查依赖文件
+    qwen_asr_path = student_dir / "2_qwen_asr.json"
+    if not qwen_asr_path.exists():
+        print(f"  [✗] 缺少 ASR 文件: {qwen_asr_path}")
+        return False
+
+    # 加载 metadata 获取题库
+    metadata = load_batch_metadata(archive_batch)
+    question_bank_path = resolve_question_bank(archive_batch, metadata)
+    if not question_bank_path:
+        print(f"  [✗] 未找到题库文件")
+        return False
+
+    if dry_run:
+        print(f"  [dry-run] gatekeeper 阶段")
+        print(f"    ASR 文件: {qwen_asr_path}")
+        print(f"    题库路径: {question_bank_path}")
+        print(f"    模型: qwen-plus")
+        return True
+
+    print(f"  [执行] gatekeeper -> {student_name}")
+
+    try:
+        # 导入 gatekeeper
+        from scripts.gatekeeper import QwenPlusGatekeeper, GatekeeperInput
+
+        # 加载题库内容
+        with open(question_bank_path, "r", encoding="utf-8") as f:
+            question_bank_content = f.read()
+
+        # 加载 ASR 文本
+        with open(qwen_asr_path, "r", encoding="utf-8") as f:
+            asr_data = json.load(f)
+        asr_text = (
+            asr_data.get("output", {})
+            .get("choices", [{}])[0]
+            .get("message", {})
+            .get("content", [{}])[0]
+            .get("text", "")
+        )
+
+        # 创建输入
+        gatekeeper_input = GatekeeperInput(
+            archive_batch=archive_batch,
+            student_name=student_name,
+            question_bank_path=question_bank_path,
+            qwen_asr_path=qwen_asr_path,
+            verbose=verbose,
+            question_bank_content=question_bank_content,
+            asr_text=asr_text,
+        )
+
+        # 执行检查
+        gatekeeper = QwenPlusGatekeeper()
+        result = gatekeeper.check(gatekeeper_input)
+
+        # 显示结果
+        if result.is_pass():
+            print(f"  [✓] gatekeeper PASS - 质检通过 ({result.format_response_time()})")
+            return True
+        else:
+            print(f"  [✗] gatekeeper FAIL - {result.issue_type} ({result.format_response_time()})")
+            print(f"      问题类型: {result.issue_type}")
+            if result.issue_type == "WRONG_QUESTIONBANK":
+                print(f"      建议: 检查题库选择是否正确（翻译方向或词汇内容）")
+            elif result.issue_type == "AUDIO_ANOMALY":
+                print(f"      建议: 检查音频文件是否完整，是否包含老师声音")
+            return False
+
+    except Exception as e:
+        print(f"  [✗] gatekeeper 失败: {e}")
+        # 失败时保守处理，返回 False 阻止继续
+        return False
+
+
 def run_timestamps(
     archive_batch: str,
     student_name: str,
@@ -304,6 +410,13 @@ def run_stage(stage: str, archive_batch: str, student_name: str,
         # Text provider: QwenASRProvider
         success = run_qwen_asr(archive_batch, student_name, force, dry_run)
         return (success, None) if success else (False, "qwen_asr 失败")
+
+    elif stage == "gatekeeper":
+        # Gatekeeper: QwenPlusGatekeeper
+        # 注意：传递 verbose 参数（从 annotator_kwargs 获取）
+        verbose = annotator_kwargs.get("verbose", False) if annotator_kwargs else False
+        success = run_gatekeeper(archive_batch, student_name, force, dry_run, verbose)
+        return (success, None) if success else (False, "gatekeeper 质检失败 - 需人工干预")
 
     elif stage == "timestamps":
         # Timestamp provider: FunASRTimestampProvider
