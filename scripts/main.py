@@ -88,8 +88,9 @@ def get_students(archive_batch: str, student_filter: Optional[str] = None) -> Li
         sys.exit(1)
 
     students = []
+    excluded = {"reports", "_shared_context", "runs"}
     for item in sorted(batch_dir.iterdir()):
-        if item.is_dir() and not item.name.startswith('.') and item.name not in ["reports", "_shared_context"]:
+        if item.is_dir() and not item.name.startswith('.') and item.name not in excluded:
             if student_filter:
                 # 模糊匹配
                 if student_filter.lower() in item.name.lower():
@@ -261,16 +262,11 @@ def run_gatekeeper(
         with open(question_bank_path, "r", encoding="utf-8") as f:
             question_bank_content = f.read()
 
-        # 加载 ASR 文本
+        # 加载 ASR 文本（仅保留文本，过滤元数据）
+        from scripts.common.asr import extract_qwen_asr_text
         with open(qwen_asr_path, "r", encoding="utf-8") as f:
             asr_data = json.load(f)
-        asr_text = (
-            asr_data.get("output", {})
-            .get("choices", [{}])[0]
-            .get("message", {})
-            .get("content", [{}])[0]
-            .get("text", "")
-        )
+        asr_text = extract_qwen_asr_text(asr_data)
 
         # 创建输入
         gatekeeper_input = GatekeeperInput(

@@ -20,6 +20,7 @@ scripts/annotators - Annotator 模块
 支持的 annotator:
     - gemini-2.5-pro (默认)
     - gemini-2.0-flash
+    - gemini-audio (同步音频模式)
     - qwen-max
     - (预留) openai:gpt-4.1
 """
@@ -66,6 +67,10 @@ def get_annotator(name: str = None, **kwargs) -> BaseAnnotator:
     # 使用默认值
     if name is None:
         name = DEFAULT_ANNOTATOR
+
+    if name == "gemini-audio":
+        from .gemini_audio import GeminiAudioAnnotator
+        return GeminiAudioAnnotator(**kwargs)
 
     # 解析 provider:model 格式
     if ":" in name:
@@ -118,7 +123,7 @@ def get_annotator(name: str = None, **kwargs) -> BaseAnnotator:
 
     raise ValueError(
         f"不支持的 annotator: {name}\n"
-        f"可用的 annotator: gemini-2.5-pro, gemini-2.0-flash"
+        f"可用的 annotator: gemini-2.5-pro, gemini-2.0-flash, gemini-audio"
     )
 
 
@@ -132,6 +137,7 @@ def list_annotators() -> list:
     builtin = [
         "gemini-2.5-pro",
         "gemini-2.0-flash",
+        "gemini-audio",
         "qwen-max",
         "qwen-max-latest",
         "qwen3-max",

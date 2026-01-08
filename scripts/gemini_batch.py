@@ -6,22 +6,22 @@ scripts/gemini_batch.py - Gemini Batch API 批量处理脚本
 
 用法:
     # 推荐: 一键运行（提交 + 监听 + 回填）
-    python3 scripts/gemini_batch.py run --archive-batch <name> [--students s1,s2,...]
+    uv run python scripts/gemini_batch.py run --archive-batch <name> [--students s1,s2,...]
 
     # 带超时的一键运行（超时后可用 fetch 恢复）
-    python3 scripts/gemini_batch.py run --archive-batch <name> --timeout 600
+    uv run python scripts/gemini_batch.py run --archive-batch <name> --timeout 600
 
     # 仅提交（不等待）
-    python3 scripts/gemini_batch.py submit --archive-batch <name>
+    uv run python scripts/gemini_batch.py submit --archive-batch <name>
 
     # 获取结果并回填（用于恢复超时的 job）
-    python3 scripts/gemini_batch.py fetch --manifest <path>
+    uv run python scripts/gemini_batch.py fetch --manifest <path>
 
     # 查看 job 状态
-    python3 scripts/gemini_batch.py status --job batches/xxx
+    uv run python scripts/gemini_batch.py status --job batches/xxx
 
     # 列出所有 jobs
-    python3 scripts/gemini_batch.py list
+    uv run python scripts/gemini_batch.py list
 
 输出:
     archive/{batch}/_batch_runs/{run_id}/
@@ -65,12 +65,23 @@ from google.genai import types
 DEFAULT_MODEL = "gemini-3-pro-preview"
 DEFAULT_POLL_INTERVAL = 30  # 秒
 DEFAULT_TIMEOUT = 300000  # 毫秒 (5分钟)
+MODE_ASR = "asr"
 COMPLETED_STATES = {
     "JOB_STATE_SUCCEEDED",
     "JOB_STATE_FAILED",
     "JOB_STATE_CANCELLED",
     "JOB_STATE_EXPIRED",
 }
+
+# 统一错误码
+ERROR_API = "api_error"
+ERROR_INVALID_KEY = "invalid_key"
+ERROR_NO_RESPONSE = "no_response"
+ERROR_EXTRACT_FAILED = "extract_failed"
+ERROR_JSON_PARSE_FAILED = "json_parse_failed"
+ERROR_VALIDATION_FAILED = "validation_failed"
+ERROR_INVALID_GRADE = "invalid_grade"
+ERROR_SAVE_FAILED = "save_failed"
 
 
 # ============================================================================
@@ -96,7 +107,14 @@ def create_client(
 
     # 确定代理地址
     if proxy is None:
-        proxy = os.getenv("HTTPS_PROXY") or os.getenv("ALL_PROXY")
+        proxy = (
+            os.getenv("HTTPS_PROXY")
+            or os.getenv("ALL_PROXY")
+            or os.getenv("HTTP_PROXY")
+            or os.getenv("PROXY")
+        )
+        if not proxy:
+            proxy = "socks5://127.0.0.1:7890"
 
     http_options_kwargs: Dict[str, Any] = {
         "timeout": timeout_ms,
@@ -189,16 +207,11 @@ def build_batch_request(
     question_bank_content = load_file_content(question_bank_path)
     asr_with_timestamp = extract_sentences_json(timestamp_path)
 
-    # 提取纯文本 ASR
+    # 提取纯文本 ASR（仅保留文本，过滤元数据）
+    from scripts.common.asr import extract_qwen_asr_text
     with open(qwen_asr_path, "r", encoding="utf-8") as f:
         asr_data = json.load(f)
-    asr_text = (
-        asr_data.get("output", {})
-        .get("choices", [{}])[0]
-        .get("message", {})
-        .get("content", [{}])[0]
-        .get("text", "")
-    )
+    asr_text = extract_qwen_asr_text(asr_data)
 
     # 构建 prompt 上下文
     prompt_context = PromptContextBuilder.build(
@@ -441,6 +454,7 @@ def cmd_submit(args: argparse.Namespace) -> int:
         "archive_batch": archive_batch,
         "run_id": run_id,
         "model": model,
+        "mode": MODE_ASR,
         "job_name": batch_job.name,
         "display_name": display_name,
         "input_file": uploaded_file.name,
@@ -459,7 +473,7 @@ def cmd_submit(args: argparse.Namespace) -> int:
     print(f"   Job Name: {batch_job.name}")
     print(f"   Manifest: {manifest_path}")
     print(f"\n💡 使用以下命令获取结果:")
-    print(f"   python3 scripts/gemini_batch.py fetch --manifest {manifest_path}")
+    print(f"   uv run python scripts/gemini_batch.py fetch --manifest {manifest_path}")
 
     return 0
 
@@ -484,6 +498,7 @@ def cmd_fetch(args: argparse.Namespace) -> int:
 
     # 确定 job name 和 manifest
     manifest = None
+    manifest_path = None
     job_name = None
 
     if args.manifest:
@@ -514,11 +529,13 @@ def cmd_fetch(args: argparse.Namespace) -> int:
     print(f"   轮询间隔: {poll_interval}s")
 
     start_time = time.time()
+    poll_count = 0
     batch_job = client.batches.get(name=job_name)
 
     while True:
         state = batch_job.state.name if hasattr(batch_job.state, "name") else str(batch_job.state)
         elapsed = time.time() - start_time
+        poll_count += 1
 
         print(f"   [{elapsed:.0f}s] 状态: {state}")
 
@@ -533,6 +550,8 @@ def cmd_fetch(args: argparse.Namespace) -> int:
 
         time.sleep(poll_interval)
         batch_job = client.batches.get(name=job_name)
+
+    api_processing_time = time.time() - start_time
 
     # 检查最终状态
     final_state = batch_job.state.name if hasattr(batch_job.state, "name") else str(batch_job.state)
@@ -552,12 +571,19 @@ def cmd_fetch(args: argparse.Namespace) -> int:
     result_file_name = batch_job.dest.file_name
     print(f"\n📥 下载结果文件: {result_file_name}")
 
+    download_start = time.time()
     try:
         result_content = client.files.download(file=result_file_name)
         result_text = result_content.decode("utf-8")
+        download_time = time.time() - download_start
     except Exception as e:
         print(f"   ✗ 下载失败: {e}")
         return 1
+
+    if manifest_path:
+        raw_result_path = manifest_path.parent / "batch_output.jsonl"
+        with open(raw_result_path, "w", encoding="utf-8") as f:
+            f.write(result_text)
 
     # 解析结果
     print(f"\n📊 解析结果...")
@@ -589,6 +615,16 @@ def cmd_fetch(args: argparse.Namespace) -> int:
 
     success_count = 0
     fail_count = 0
+    grade_distribution = {"A": 0, "B": 0, "C": 0}
+    student_results = []
+    total_tokens = {
+        "prompt_tokens": 0,
+        "thoughts_tokens": 0,
+        "candidates_tokens": 0,
+        "total_tokens": 0,
+    }
+
+    model = manifest.get("model", DEFAULT_MODEL) if manifest else DEFAULT_MODEL
 
     for result in results:
         key = result.get("key", "")
@@ -602,16 +638,24 @@ def cmd_fetch(args: argparse.Namespace) -> int:
 
         archive_batch, student_name, run_id = parts
 
+        usage = result.get("response", {}).get("usageMetadata", {})
+        total_tokens["prompt_tokens"] += usage.get("promptTokenCount", 0)
+        total_tokens["thoughts_tokens"] += usage.get("thoughtsTokenCount", 0)
+        total_tokens["candidates_tokens"] += usage.get("candidatesTokenCount", 0)
+        total_tokens["total_tokens"] += usage.get("totalTokenCount", 0)
+
         # 检查响应
         if "error" in result:
             print(f"   ✗ {student_name}: {result['error']}")
             fail_count += 1
+            student_results.append({"student": student_name, "status": "error", "error": ERROR_API})
             continue
 
         response = result.get("response", {})
         if not response:
             print(f"   ✗ {student_name}: 无响应")
             fail_count += 1
+            student_results.append({"student": student_name, "status": "error", "error": ERROR_NO_RESPONSE})
             continue
 
         # 提取文本
@@ -629,6 +673,7 @@ def cmd_fetch(args: argparse.Namespace) -> int:
         except Exception as e:
             print(f"   ✗ {student_name}: 提取响应失败 - {e}")
             fail_count += 1
+            student_results.append({"student": student_name, "status": "error", "error": ERROR_EXTRACT_FAILED})
             continue
 
         # 解析 JSON 响应
@@ -636,6 +681,7 @@ def cmd_fetch(args: argparse.Namespace) -> int:
         if parsed.get("_parse_error"):
             print(f"   ✗ {student_name}: JSON 解析失败")
             fail_count += 1
+            student_results.append({"student": student_name, "status": "error", "error": ERROR_JSON_PARSE_FAILED})
             continue
 
         annotations = parsed["annotations"]
@@ -647,18 +693,17 @@ def cmd_fetch(args: argparse.Namespace) -> int:
         if not is_valid:
             print(f"   ✗ {student_name}: 校验失败 ({len(invalid_items)} 无效项)")
             fail_count += 1
+            student_results.append({"student": student_name, "status": "error", "error": ERROR_VALIDATION_FAILED})
             continue
 
         if final_grade not in ["A", "B", "C"]:
             print(f"   ✗ {student_name}: 无效评分 {final_grade}")
             fail_count += 1
+            student_results.append({"student": student_name, "status": "error", "error": ERROR_INVALID_GRADE})
             continue
 
         # 保存到 run 目录
         try:
-            # 使用 manifest 中的 model，否则使用默认值
-            model = manifest.get("model", DEFAULT_MODEL) if manifest else DEFAULT_MODEL
-
             run_dir = ensure_run_dir(
                 archive_batch=archive_batch,
                 student_name=student_name,
@@ -674,6 +719,7 @@ def cmd_fetch(args: argparse.Namespace) -> int:
                 "annotations": annotations,
                 "_metadata": {
                     "model": model,
+                    "mode": MODE_ASR,
                     "batch_job": job_name,
                     "run_id": run_id,
                     "git_commit": get_git_commit(short=False),
@@ -696,25 +742,62 @@ def cmd_fetch(args: argparse.Namespace) -> int:
                 prompt_path=_PROJECT_ROOT / "prompts" / "annotation" / "user.md",
                 prompt_hash="batch",
                 model=model,
+                extra={"mode": MODE_ASR},
             )
 
             print(f"   ✓ {student_name}: {final_grade} → runs/{model}/{run_id}/")
             success_count += 1
+            grade_distribution[final_grade] += 1
+            student_results.append({
+                "student": student_name,
+                "status": "success",
+                "grade": final_grade,
+                "mistake_count": mistake_count,
+            })
 
         except Exception as e:
             print(f"   ✗ {student_name}: 保存失败 - {e}")
             fail_count += 1
+            student_results.append({"student": student_name, "status": "error", "error": ERROR_SAVE_FAILED})
 
     # 更新 manifest
     if manifest and args.manifest:
+        manifest["mode"] = MODE_ASR
         manifest["fetched_at"] = datetime.now().isoformat()
         manifest["result_file"] = result_file_name
         manifest["final_state"] = final_state
-        manifest["success_count"] = success_count
-        manifest["fail_count"] = fail_count
+        manifest["statistics"] = {
+            "students_count": manifest.get("students_count", len(student_results)),
+            "success_count": success_count,
+            "fail_count": fail_count,
+            "grade_distribution": grade_distribution,
+        }
+        manifest["token_usage"] = total_tokens
+        manifest["student_results"] = student_results
+
+        timing = manifest.get("timing", {})
+        timing.update({
+            "fetched_at": datetime.now().isoformat(),
+            "api_processing_time_seconds": round(api_processing_time, 2),
+            "download_time_seconds": round(download_time, 2),
+            "poll_count": poll_count,
+        })
+        manifest["timing"] = timing
 
         with open(args.manifest, "w", encoding="utf-8") as f:
             json.dump(manifest, f, ensure_ascii=False, indent=2)
+
+        _generate_batch_report(
+            run_dir=manifest_path.parent,
+            archive_batch=manifest.get("archive_batch", ""),
+            model=model,
+            run_id=manifest.get("run_id", ""),
+            results=results,
+            student_results=student_results,
+            grade_distribution=grade_distribution,
+            total_tokens=total_tokens,
+            manifest=manifest,
+        )
 
     # 汇总
     print(f"\n✅ 回填完成!")
@@ -963,6 +1046,12 @@ def cmd_run(args: argparse.Namespace) -> int:
     fail_count = 0
     grade_distribution = {"A": 0, "B": 0, "C": 0}
     student_results = []
+    total_tokens = {
+        "prompt_tokens": 0,
+        "thoughts_tokens": 0,
+        "candidates_tokens": 0,
+        "total_tokens": 0,
+    }
 
     for result in results:
         key = result.get("key", "")
@@ -974,6 +1063,12 @@ def cmd_run(args: argparse.Namespace) -> int:
 
         archive_batch_key, student_name, run_id_key = parts
 
+        usage = result.get("response", {}).get("usageMetadata", {})
+        total_tokens["prompt_tokens"] += usage.get("promptTokenCount", 0)
+        total_tokens["thoughts_tokens"] += usage.get("thoughtsTokenCount", 0)
+        total_tokens["candidates_tokens"] += usage.get("candidatesTokenCount", 0)
+        total_tokens["total_tokens"] += usage.get("totalTokenCount", 0)
+
         # 检查响应
         if "error" in result:
             print(f"      ✗ {student_name}: {result['error']}")
@@ -981,7 +1076,7 @@ def cmd_run(args: argparse.Namespace) -> int:
             student_results.append({
                 "student": student_name,
                 "status": "error",
-                "error": result["error"],
+                "error": ERROR_API,
             })
             continue
 
@@ -992,7 +1087,7 @@ def cmd_run(args: argparse.Namespace) -> int:
             student_results.append({
                 "student": student_name,
                 "status": "error",
-                "error": "no_response",
+                "error": ERROR_NO_RESPONSE,
             })
             continue
 
@@ -1012,7 +1107,7 @@ def cmd_run(args: argparse.Namespace) -> int:
             student_results.append({
                 "student": student_name,
                 "status": "error",
-                "error": f"extract_failed: {e}",
+                "error": ERROR_EXTRACT_FAILED,
             })
             continue
 
@@ -1024,7 +1119,7 @@ def cmd_run(args: argparse.Namespace) -> int:
             student_results.append({
                 "student": student_name,
                 "status": "error",
-                "error": "json_parse_failed",
+                "error": ERROR_JSON_PARSE_FAILED,
             })
             continue
 
@@ -1040,7 +1135,7 @@ def cmd_run(args: argparse.Namespace) -> int:
             student_results.append({
                 "student": student_name,
                 "status": "error",
-                "error": f"validation_failed: {len(invalid_items)} invalid items",
+                "error": ERROR_VALIDATION_FAILED,
             })
             continue
 
@@ -1050,7 +1145,7 @@ def cmd_run(args: argparse.Namespace) -> int:
             student_results.append({
                 "student": student_name,
                 "status": "error",
-                "error": f"invalid_grade: {final_grade}",
+                "error": ERROR_INVALID_GRADE,
             })
             continue
 
@@ -1070,6 +1165,7 @@ def cmd_run(args: argparse.Namespace) -> int:
                 "annotations": annotations,
                 "_metadata": {
                     "model": model,
+                    "mode": MODE_ASR,
                     "batch_job": job_name,
                     "run_id": run_id,
                     "git_commit": get_git_commit(short=False),
@@ -1091,6 +1187,7 @@ def cmd_run(args: argparse.Namespace) -> int:
                 prompt_path=_PROJECT_ROOT / "prompts" / "annotation" / "user.md",
                 prompt_hash="batch",
                 model=model,
+                extra={"mode": MODE_ASR},
             )
 
             # prompt_log.txt 已在 generate_jsonl 时保存
@@ -1111,7 +1208,7 @@ def cmd_run(args: argparse.Namespace) -> int:
             student_results.append({
                 "student": student_name,
                 "status": "error",
-                "error": f"save_failed: {e}",
+                "error": ERROR_SAVE_FAILED,
             })
 
     # ========== Phase 5: 保存完整 Manifest ==========
@@ -1122,6 +1219,7 @@ def cmd_run(args: argparse.Namespace) -> int:
         "archive_batch": archive_batch,
         "run_id": run_id,
         "model": model,
+        "mode": MODE_ASR,
         "job_name": job_name,
         "display_name": display_name,
         "input_file": uploaded_file.name,
@@ -1147,6 +1245,7 @@ def cmd_run(args: argparse.Namespace) -> int:
             "fail_count": fail_count,
             "grade_distribution": grade_distribution,
         },
+        "token_usage": total_tokens,
         # 详细结果
         "requests": requests,
         "student_results": student_results,
@@ -1197,6 +1296,7 @@ def _save_partial_manifest(
         "archive_batch": archive_batch,
         "run_id": run_id,
         "model": model,
+        "mode": MODE_ASR,
         "job_name": job_name,
         "display_name": display_name,
         "input_file": input_file,
@@ -1338,13 +1438,16 @@ def _generate_batch_report(
             "total_tokens": usage.get("totalTokenCount", 0),
         }
 
-        student_details.append({
+        detail = {
             "student_name": student_name,
             "status": student_result.get("status", "unknown"),
             "grade": student_result.get("grade"),
             "mistake_count": student_result.get("mistake_count"),
             "token_usage": token_usage,
-        })
+        }
+        if student_result.get("status") == "error":
+            detail["error"] = student_result.get("error")
+        student_details.append(detail)
 
         # 保存完整数据
         student_full_data[student_name] = {
@@ -1353,12 +1456,14 @@ def _generate_batch_report(
             "grade": student_result.get("grade"),
             "mistake_count": student_result.get("mistake_count"),
             "status": student_result.get("status", "unknown"),
+            "error": student_result.get("error"),
         }
 
     # 生成汇总报告
     report = {
         "batch_id": archive_batch,
         "model": model,
+        "mode": MODE_ASR,
         "run_id": run_id,
         "generated_at": datetime.now().isoformat(),
         # 时间信息
@@ -1408,6 +1513,7 @@ def _generate_batch_report(
             "_metadata": {
                 "batch_id": archive_batch,
                 "model": model,
+                "mode": MODE_ASR,
                 "run_id": run_id,
                 "status": detail["status"],
                 "token_usage": detail["token_usage"],
@@ -1415,6 +1521,9 @@ def _generate_batch_report(
                 "source": "batch_api",
             }
         }
+
+        if detail.get("status") == "error":
+            student_report["error"] = detail.get("error")
 
         # 安全的文件名
         safe_name = student_name.replace(" ", "_").replace("/", "_")
@@ -1569,13 +1678,13 @@ def cmd_fetch_all(args: argparse.Namespace) -> int:
 
             if "error" in result:
                 fail_count += 1
-                student_results.append({"student": student_name, "status": "error", "error": result["error"]})
+                student_results.append({"student": student_name, "status": "error", "error": ERROR_API})
                 continue
 
             response = result.get("response", {})
             if not response:
                 fail_count += 1
-                student_results.append({"student": student_name, "status": "error", "error": "no_response"})
+                student_results.append({"student": student_name, "status": "error", "error": ERROR_NO_RESPONSE})
                 continue
 
             try:
@@ -1589,13 +1698,13 @@ def cmd_fetch_all(args: argparse.Namespace) -> int:
                 raw_text = parts_list[0].get("text", "")
             except Exception as e:
                 fail_count += 1
-                student_results.append({"student": student_name, "status": "error", "error": f"extract_failed: {e}"})
+                student_results.append({"student": student_name, "status": "error", "error": ERROR_EXTRACT_FAILED})
                 continue
 
             parsed = parse_api_response(raw_text)
             if parsed.get("_parse_error"):
                 fail_count += 1
-                student_results.append({"student": student_name, "status": "error", "error": "json_parse_failed"})
+                student_results.append({"student": student_name, "status": "error", "error": ERROR_JSON_PARSE_FAILED})
                 continue
 
             annotations = parsed["annotations"]
@@ -1605,12 +1714,12 @@ def cmd_fetch_all(args: argparse.Namespace) -> int:
             is_valid, invalid_items = validate_cards(annotations, strict_timestamp=True)
             if not is_valid:
                 fail_count += 1
-                student_results.append({"student": student_name, "status": "error", "error": f"validation_failed"})
+                student_results.append({"student": student_name, "status": "error", "error": ERROR_VALIDATION_FAILED})
                 continue
 
             if final_grade not in ["A", "B", "C"]:
                 fail_count += 1
-                student_results.append({"student": student_name, "status": "error", "error": f"invalid_grade: {final_grade}"})
+                student_results.append({"student": student_name, "status": "error", "error": ERROR_INVALID_GRADE})
                 continue
 
             # 保存到学生 run 目录
@@ -1627,13 +1736,14 @@ def cmd_fetch_all(args: argparse.Namespace) -> int:
                     "final_grade_suggestion": final_grade,
                     "mistake_count": mistake_count,
                     "annotations": annotations,
-                    "_metadata": {
-                        "model": model,
-                        "batch_job": job_name,
-                        "run_id": run_id,
-                        "git_commit": get_git_commit(short=False),
-                        "timestamp": datetime.now().isoformat(),
-                        "source": "batch_api",
+                "_metadata": {
+                    "model": model,
+                    "mode": MODE_ASR,
+                    "batch_job": job_name,
+                    "run_id": run_id,
+                    "git_commit": get_git_commit(short=False),
+                    "timestamp": datetime.now().isoformat(),
+                    "source": "batch_api",
                     }
                 }
 
@@ -1650,6 +1760,7 @@ def cmd_fetch_all(args: argparse.Namespace) -> int:
                     prompt_path=_PROJECT_ROOT / "prompts" / "annotation" / "user.md",
                     prompt_hash="batch",
                     model=model,
+                    extra={"mode": MODE_ASR},
                 )
 
                 success_count += 1
@@ -1663,7 +1774,7 @@ def cmd_fetch_all(args: argparse.Namespace) -> int:
 
             except Exception as e:
                 fail_count += 1
-                student_results.append({"student": student_name, "status": "error", "error": f"save_failed: {e}"})
+                student_results.append({"student": student_name, "status": "error", "error": ERROR_SAVE_FAILED})
 
         # 计算 token 统计
         total_tokens = {
@@ -1680,11 +1791,13 @@ def cmd_fetch_all(args: argparse.Namespace) -> int:
             total_tokens["total_tokens"] += usage.get("totalTokenCount", 0)
 
         # 更新 manifest
+        manifest["mode"] = MODE_ASR
         manifest["state"] = actual_state
         manifest["final_state"] = actual_state
         manifest["result_file"] = result_file_name
         manifest["fetched_at"] = datetime.now().isoformat()
         manifest["statistics"] = {
+            "students_count": manifest.get("students_count", len(student_results)),
             "success_count": success_count,
             "fail_count": fail_count,
             "grade_distribution": grade_distribution,

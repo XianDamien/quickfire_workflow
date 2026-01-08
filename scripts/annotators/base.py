@@ -32,6 +32,7 @@ class AnnotatorInput:
     run_id: Optional[str] = None
     verbose: bool = False
     force: bool = False
+    audio_path: Optional[Path] = None
 
     # 从文件加载的内容（延迟加载）
     question_bank_content: Optional[str] = None
@@ -193,17 +194,12 @@ class BaseAnnotator(ABC):
             from scripts.contracts.asr_timestamp import extract_sentences_json
             input_data.asr_with_timestamp = extract_sentences_json(timestamp_path)
 
-            # 提取纯文本 ASR
+            # 提取纯文本 ASR（仅保留文本，过滤元数据）
             import json
+            from scripts.common.asr import extract_qwen_asr_text
             with open(qwen_asr_path, "r", encoding="utf-8") as f:
                 asr_data = json.load(f)
-            input_data.asr_text = (
-                asr_data.get("output", {})
-                .get("choices", [{}])[0]
-                .get("message", {})
-                .get("content", [{}])[0]
-                .get("text", "")
-            )
+            input_data.asr_text = extract_qwen_asr_text(asr_data)
 
             # 调用标注
             output = self.annotate(input_data)

@@ -129,7 +129,7 @@ def list_students(
         return []
 
     students = []
-    excluded = {"reports", "_shared_context"}
+    excluded = {"reports", "_shared_context", "runs"}
 
     for item in sorted(batch_dir.iterdir()):
         if not item.is_dir():
