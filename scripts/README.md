@@ -24,6 +24,7 @@ scripts/
 │   ├── base.py                          # Annotator 基础接口
 │   ├── config.py                        # 配置文件
 │   ├── gemini.py                        # Gemini Annotator 实现
+│   ├── gemini_audio.py                  # Gemini 同步音频 Annotator
 │   └── qwen.py                          # Qwen Annotator 实现
 │
 ├── common/                              # 通用工具模块
@@ -377,6 +378,7 @@ class AnnotatorInput:
     run_id: Optional[str] = None
     verbose: bool = False
     force: bool = False
+    audio_path: Optional[Path] = None
     # 延迟加载的内容
     question_bank_content: Optional[str] = None
     asr_text: Optional[str] = None
@@ -459,6 +461,25 @@ output = annotator.annotate(input_data)
   }
 }
 ```
+
+---
+
+#### gemini_audio.py - Gemini 同步音频 Annotator
+
+**功能**: 使用音频文件进行同步评分（复用 `prompts/annotation/user_with_audio.md`）
+
+**核心类**: `GeminiAudioAnnotator`
+
+**使用方式**:
+
+```bash
+python3 scripts/main.py --archive-batch Zoe41900_2025-09-08 --annotator gemini-audio
+```
+
+**特性**:
+- 直接上传 `1_input_audio.*`，并与 ASR 文本联合评分
+- 记录 token 使用量与音频上传耗时
+- 输出与 `gemini.py` 保持一致结构
 
 ---
 

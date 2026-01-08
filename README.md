@@ -49,8 +49,58 @@ uv run python scripts/main.py --archive-batch Zoe51530_2025-12-16 --dry-run
 # 指定评分模型
 uv run python scripts/main.py --archive-batch Zoe51530_2025-12-16 --annotator qwen-max
 
+# 同步音频评分（Gemini Audio）
+uv run python scripts/main.py --archive-batch Zoe51530_2025-12-16 --annotator gemini-audio
+
 # 只运行 ASR 阶段
 uv run python scripts/main.py --archive-batch Zoe51530_2025-12-16 --only qwen_asr
+```
+
+## 批处理服务端（FastAPI）
+
+适用于提交后持续轮询日志与结果的长任务（10-20 分钟）。
+
+### 启动服务
+
+```bash
+uv run python3 scripts/batch_server.py
+```
+
+### 提交任务
+
+```bash
+curl -X POST http://127.0.0.1:8000/jobs \\
+  -H 'Content-Type: application/json' \\
+  -d '{
+    "mode": "asr",
+    "archive_batch": "Zoe51530_2025-12-16",
+    "students": ["Qihang"]
+  }'
+```
+
+默认代理：`socks5://127.0.0.1:7890`。如需自定义，请在请求中传 `proxy` 字段。
+
+```bash
+curl -X POST http://127.0.0.1:8000/jobs \\
+  -H 'Content-Type: application/json' \\
+  -d '{
+    "mode": "asr",
+    "archive_batch": "Zoe51530_2025-12-16",
+    "students": ["Qihang"],
+    "proxy": "socks5://127.0.0.1:7890"
+  }'
+```
+
+### 轮询日志
+
+```bash
+curl "http://127.0.0.1:8000/jobs/{job_id}/logs?cursor=0"
+```
+
+### 获取结果（包含 token 消耗与耗时）
+
+```bash
+curl "http://127.0.0.1:8000/jobs/{job_id}/result"
 ```
 
 ## 数据结构
