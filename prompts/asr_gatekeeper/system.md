@@ -13,3 +13,8 @@
 - `PASS`: 无问题，可继续处理（issue_type 为 null）
 - `FAIL`: 存在问题，需人工干预（必须指定 issue_type）
 - 无法确定时输出 `FAIL`
+
+issue_type 取值：
+- `WRONG_QUESTIONBANK`: 题库方向或内容明显不匹配
+- `AUDIO_ANOMALY`: 音频或转写异常
+

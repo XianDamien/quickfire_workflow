@@ -11,7 +11,7 @@ import os
 import sys
 import time
 from pathlib import Path
-from typing import Any, Optional, Tuple
+from typing import Optional, Tuple
 
 PROJECT_ROOT = Path(__file__).parent.parent.resolve()
 if str(PROJECT_ROOT) not in sys.path:
@@ -21,39 +21,13 @@ import dashscope
 
 from prompts.prompt_loader import PromptLoader
 from scripts.common.env import load_env
+from scripts.common.asr import load_qwen_asr_text
 
 
 def read_text_file(path: Path) -> str:
     return path.read_text(encoding="utf-8").strip()
 
 
-def extract_message_text(message_content: Any) -> str:
-    if isinstance(message_content, list):
-        parts = []
-        for item in message_content:
-            if isinstance(item, dict) and "text" in item:
-                parts.append(str(item["text"]))
-            elif isinstance(item, str):
-                parts.append(item)
-        return "".join(parts).strip()
-    if isinstance(message_content, str):
-        return message_content.strip()
-    return ""
-
-
-def load_qwen_asr_text(asr_path: Path) -> str:
-    try:
-        data = json.loads(read_text_file(asr_path))
-    except json.JSONDecodeError as exc:
-        raise ValueError(f"Invalid ASR JSON: {asr_path}") from exc
-
-    content = (
-        data.get("output", {})
-        .get("choices", [{}])[0]
-        .get("message", {})
-        .get("content", "")
-    )
-    return extract_message_text(content)
 
 
 def truncate_text(text: str, max_chars: int) -> str:
