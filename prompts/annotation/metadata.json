@@ -1,9 +1,27 @@
 {
-  "prompt_version": "1.2.0",
-  "description": "LLM annotation: 从ASR转写提取学生回答+评分+时间戳定位",
+  "prompt_version": "2.0.0",
+  "description": "LLM annotation: 从音频直传提取学生回答+评分+时间戳定位（Gemini Audio API）",
   "owner": "data-ops@lan",
-  "updated_at": "2026-01-04T15:30:00+08:00",
-  "tags": ["annotation", "gemini", "qwen", "funasr", "timestamp"],
-  "notes": "v1.2新增: 接受FunASR时间戳JSON输入，输出card_timestamp字段(格式00:17)",
-  "contact": ["pm@lan"]
+  "updated_at": "2026-01-22T16:00:00+08:00",
+  "tags": ["annotation", "gemini", "audio-direct", "timestamp"],
+  "notes": "v2.0: 重大更新 - 移除FunASR依赖，直接使用Gemini Audio API处理音频。user_with_audio.md为主要prompt。",
+  "contact": ["pm@lan"],
+  "files": {
+    "system": "system.md",
+    "user_primary": "user_with_audio.md",
+    "user_legacy_timestamp": "archived/user.md",
+    "user_legacy_no_timestamp": "archived/user_no_timestamp.md"
+  },
+  "changelog": [
+    {
+      "version": "2.0.0",
+      "date": "2026-01-22",
+      "changes": "移除FunASR时间戳依赖，直接使用音频输入。user_with_audio.md作为主要版本。"
+    },
+    {
+      "version": "1.2.0",
+      "date": "2026-01-04",
+      "changes": "新增FunASR时间戳JSON输入，输出card_timestamp字段"
+    }
+  ]
 }
