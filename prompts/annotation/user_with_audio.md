@@ -20,6 +20,30 @@
 
 
 # 处理指令
+
+## 第一步：前置校验（validation）
+
+在进行标注之前，先检查输入数据是否有效。检测以下4种错误：
+
+| 错误类型 | 错误码 | 判断方法 |
+|---------|--------|---------|
+| 中翻英/英翻中选错 | `WRONG_DIRECTION` | 题库answer字段语言 vs ASR中重复出现内容的语言不一致 |
+| 题库内容不匹配 | `WRONG_QUESTIONBANK` | ASR文本中能匹配到题库的条目比例过低（<50%） |
+| 没录到老师音频 | `NO_TEACHER_AUDIO` | 答案字段没有重复出现（正常应该是：学生答1次 + 老师答1次 = 至少2次） |
+| 学生跟读 | `STUDENT_FOLLOWING` | 问题字段也出现2次（学生跟着念问题，而不是提前回答） |
+
+**正常模式**：`问题1次 → 学生回答 → 老师念答案` = 问题1次，答案至少2次
+
+**异常示例**：
+- `Juice果汁。Milk牛奶。Cola可乐。` → 每个答案只1次 = `NO_TEACHER_AUDIO`
+- `nephew nephew。侄子。侄子。wife wife。妻子。妻子。` → 问题重复2次 = `STUDENT_FOLLOWING`
+
+如果检测到任何错误，`validation.status` 设为 `FAIL`，并在 `errors` 数组中列出所有错误码。
+
+---
+
+## 第二步：标注处理
+
 1. 本次题库包含`question（问题）`、`hint（提示，可能为空）`和`expected_answer(答案)`/`answer（答案）`,每个题库文件包含多个题目，`card_index(题目索引)`是老师录音念题目的顺序，每个题目一般的顺序为先念`question（问题）`，再念`hint（提示，可能为空）`，中间留空让学生回答，最后揭晓`expected_answer(答案)`/`answer（答案）`,在`学生音频转录文本`（只能从这个来源）中定位到对应的`question（问题）`文本和`expected_answer(答案)`文本，注意，学生可能在`question（问题）`和`expected_answer(答案)`/`answer（答案）`之间的任何时间说出我们需要的`detected_answer(学生回答)`。
 
 2. **提取** 位于`学生音频转录文本`当中，`question（问题）`和`expected_answer(答案)`之间的所有文本内容,作为`detected_answer(学生回答)`。
@@ -29,9 +53,12 @@
 
 
 # 输出格式要求
-- 输出必须是严格的、格式正确的 JSON 数组。
-- 数组中的每个对象都必须包含 `card_index`, `question(问题)`,`card_timestamp（问题时间戳）`， `detected_answer(学生回答)`, `expected_answer(答案)` 四个键。
-- 键和字符串值都必须使用双引号 `""`.
+- 输出必须是严格的、格式正确的 JSON 对象
+- **必须包含 `validation` 字段**，包含 `status`（PASS/FAIL）和 `errors` 数组
+- 如果 `validation.status` 为 FAIL，则 `annotations` 为空数组，`final_grade_suggestion` 和 `mistake_count` 为 null
+- 如果 `validation.status` 为 PASS，则继续输出完整标注结果
+- `annotations` 数组中的每个对象必须包含 `card_index`, `question`, `card_timestamp`, `expected_answer`, `related_student_utterance`
+- 键和字符串值都必须使用双引号 `""`
 - 注意 `detected_answer(学生回答)`必须来源于`学生音频转录文本`，不能来源于`带时间戳的音频转录文本`
 - 注意 `detected_answer(学生回答)`不能包含老师说的`hint（提示，可能为空）`，需要精确识别和提取学生`detected_answer(学生回答)`的回答。
 
@@ -40,6 +67,10 @@
 **输出示例:**
 ```json
 {
+    "validation": {
+      "status": "PASS",
+      "errors": []
+    },
     "final_grade_suggestion": "B",
     "mistake_count": {
       "errors": 2
@@ -76,5 +107,18 @@
         }
       }
     ]
+  }
+```
+
+**校验失败时的输出示例:**
+```json
+{
+    "validation": {
+      "status": "FAIL",
+      "errors": ["WRONG_DIRECTION"]
+    },
+    "final_grade_suggestion": null,
+    "mistake_count": null,
+    "annotations": []
   }
 ```

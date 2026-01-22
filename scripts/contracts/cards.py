@@ -93,7 +93,7 @@ def parse_api_response(raw_response: str) -> Dict[str, Any]:
         raw_response: API 原始响应字符串
 
     Returns:
-        解析后的字典，包含 annotations, final_grade_suggestion, mistake_count
+        解析后的字典，包含 validation, annotations, final_grade_suggestion, mistake_count
     """
     import json
 
@@ -107,6 +107,7 @@ def parse_api_response(raw_response: str) -> Dict[str, Any]:
         api_result = json.loads(result)
     except json.JSONDecodeError:
         return {
+            "validation": {"status": "PASS", "errors": []},
             "annotations": [],
             "final_grade_suggestion": "C",
             "mistake_count": {"errors": 0},
@@ -115,20 +116,26 @@ def parse_api_response(raw_response: str) -> Dict[str, Any]:
 
     # 处理不同的响应格式
     if isinstance(api_result, dict):
+        # 提取 validation 字段（如果存在）
+        validation = api_result.get("validation", {"status": "PASS", "errors": []})
+
         return {
+            "validation": validation,
             "annotations": api_result.get("annotations", []),
-            "final_grade_suggestion": api_result.get("final_grade_suggestion", "C"),
-            "mistake_count": api_result.get("mistake_count", {"errors": 0})
+            "final_grade_suggestion": api_result.get("final_grade_suggestion"),
+            "mistake_count": api_result.get("mistake_count")
         }
     elif isinstance(api_result, list):
         # 旧格式：直接是列表
         return {
+            "validation": {"status": "PASS", "errors": []},
             "annotations": api_result,
             "final_grade_suggestion": "C",
             "mistake_count": {"errors": 0}
         }
     else:
         return {
+            "validation": {"status": "PASS", "errors": []},
             "annotations": [],
             "final_grade_suggestion": "C",
             "mistake_count": {"errors": 0},

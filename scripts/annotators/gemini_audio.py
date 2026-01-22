@@ -196,19 +196,27 @@ class GeminiAudioAnnotator(BaseAnnotator):
                 "total_tokens": 0,
                 "cached_content_tokens": 0,
             }
-        return {
+
+        # 提取所有可能的 token 字段
+        result = {
             "prompt_tokens": usage.prompt_token_count or 0,
             "candidates_tokens": usage.candidates_token_count or 0,
             "total_tokens": usage.total_token_count or 0,
             "cached_content_tokens": usage.cached_content_token_count or 0,
         }
 
+        # 检查是否有 thinking tokens（Extended Thinking 模式）
+        if hasattr(usage, "thoughts_token_count"):
+            result["thoughts_tokens"] = usage.thoughts_token_count or 0
+
+        return result
+
     def _save_outputs(
         self,
         run_dir: Path,
         student_name: str,
-        final_grade: str,
-        mistake_count: Dict[str, Any],
+        final_grade: Optional[str],
+        mistake_count: Optional[Dict[str, Any]],
         annotations: list,
         system_instruction: str,
         full_prompt: str,
@@ -220,6 +228,8 @@ class GeminiAudioAnnotator(BaseAnnotator):
         token_usage: Dict[str, int],
         audio_file_uri: str,
         audio_upload_time_seconds: float,
+        ink: str = "normal",
+        validation: Optional[Dict[str, Any]] = None,
     ) -> None:
         from scripts.common.runs import get_git_commit
 
@@ -227,9 +237,11 @@ class GeminiAudioAnnotator(BaseAnnotator):
 
         annotation_result = {
             "student_name": student_name,
+            "validation": validation or {"status": "PASS", "errors": []},
             "final_grade_suggestion": final_grade,
             "mistake_count": mistake_count,
             "annotations": annotations,
+            "ink": ink,
             "_metadata": {
                 "model": self.model,
                 "response_time_ms": response_time_ms,
@@ -275,7 +287,8 @@ class GeminiAudioAnnotator(BaseAnnotator):
         student_name: str,
         run_dir: Path,
         force: bool = False,
-        verbose: bool = False
+        verbose: bool = False,
+        ink: str = "normal",
     ) -> AnnotatorOutput:
         from scripts.common.archive import (
             student_dir,
@@ -341,6 +354,7 @@ class GeminiAudioAnnotator(BaseAnnotator):
                 verbose=verbose,
                 force=force,
                 audio_path=audio_path,
+                ink=ink,
             )
             input_data.question_bank_content = question_bank_content
             input_data.asr_text = asr_text
@@ -353,6 +367,7 @@ class GeminiAudioAnnotator(BaseAnnotator):
                 error=str(e),
                 student_name=student_name,
                 model=self.model,
+                ink=ink,
             )
 
     def annotate(self, input_data: AnnotatorInput) -> AnnotatorOutput:
@@ -440,10 +455,74 @@ class GeminiAudioAnnotator(BaseAnnotator):
                     f"原始输出已保存到: {raw_output_path}"
                 )
 
+            # 提取 validation 结果
+            validation = parsed.get("validation", {"status": "PASS", "errors": []})
+            validation_status = validation.get("status", "PASS")
+            validation_errors = validation.get("errors", [])
+
             annotations = parsed["annotations"]
             final_grade = parsed["final_grade_suggestion"]
             mistake_count = parsed["mistake_count"]
 
+            # 如果 validation 失败，跳过 cards 校验和 grade 校验
+            if validation_status == "FAIL":
+                print(f"  ⚠️  {input_data.student_name}: Validation FAIL - {validation_errors}")
+                # 保存结果（validation 失败时 annotations 为空，grade/mistake_count 为 null）
+                self._save_outputs(
+                    run_dir=run_dir,
+                    student_name=input_data.student_name,
+                    final_grade=None,
+                    mistake_count=None,
+                    annotations=[],
+                    system_instruction=system_instruction,
+                    full_prompt=full_prompt,
+                    prompt_hash=prompt_hash,
+                    prompt_version=prompt_version,
+                    run_id=run_id,
+                    question_bank_filename=input_data.question_bank_path.name,
+                    response_time_ms=response_time_ms,
+                    token_usage=token_usage,
+                    audio_file_uri=uploaded.uri,
+                    audio_upload_time_seconds=audio_upload_time,
+                    ink=input_data.ink,
+                    validation=validation,
+                )
+
+                write_run_manifest(
+                    run_dir=run_dir,
+                    annotator_name=self.name,
+                    run_id=run_id,
+                    archive_batch=input_data.archive_batch,
+                    student_name=input_data.student_name,
+                    prompt_path=_PROJECT_ROOT / "prompts" / "annotation" / AUDIO_PROMPT_TEMPLATE,
+                    prompt_hash=prompt_hash,
+                    model=self.model,
+                    extra={
+                        "timing": {
+                            "audio_upload_time_seconds": round(audio_upload_time, 2),
+                            "api_response_time_ms": round(response_time_ms, 2),
+                        },
+                        "token_usage": token_usage,
+                        "validation": validation,
+                    },
+                )
+
+                return AnnotatorOutput(
+                    success=True,  # API 调用成功，但 validation 失败
+                    student_name=input_data.student_name,
+                    final_grade=None,
+                    mistake_count=None,
+                    annotations=[],
+                    run_id=run_id,
+                    run_dir=run_dir,
+                    model=self.model,
+                    prompt_hash=prompt_hash,
+                    response_time_ms=response_time_ms,
+                    ink=input_data.ink,
+                    validation=validation,
+                )
+
+            # validation 通过，继续原有的 cards 校验逻辑
             is_valid, invalid_items = validate_cards(annotations, strict_timestamp=True)
             if not is_valid:
                 raw_output_path = run_dir / "raw_api_output_debug.txt"
@@ -480,6 +559,8 @@ class GeminiAudioAnnotator(BaseAnnotator):
                 token_usage=token_usage,
                 audio_file_uri=uploaded.uri,
                 audio_upload_time_seconds=audio_upload_time,
+                ink=input_data.ink,
+                validation=validation,
             )
 
             write_run_manifest(
@@ -497,6 +578,7 @@ class GeminiAudioAnnotator(BaseAnnotator):
                         "api_response_time_ms": round(response_time_ms, 2),
                     },
                     "token_usage": token_usage,
+                    "validation": validation,
                 },
             )
 
@@ -504,7 +586,25 @@ class GeminiAudioAnnotator(BaseAnnotator):
                 time_str = f"{response_time_ms:.0f}ms"
             else:
                 time_str = f"{response_time_ms / 1000:.2f}s"
-            print(f"  ✓ {input_data.student_name}: 已保存到 runs/{self.name}/{run_id}/ (⏱ {time_str})")
+
+            # Token 统计信息
+            input_tokens = token_usage.get("prompt_tokens", 0)
+            output_tokens = token_usage.get("candidates_tokens", 0)
+            thoughts_tokens = token_usage.get("thoughts_tokens", 0)
+            total_tokens = token_usage.get("total_tokens", 0)
+            cached_tokens = token_usage.get("cached_content_tokens", 0)
+
+            # 计算总输出 token（包括思考 token）
+            total_output_tokens = output_tokens + thoughts_tokens
+
+            token_str = f"📊 Token: ↑{input_tokens} ↓{total_output_tokens}"
+            if thoughts_tokens > 0:
+                token_str += f" (💭{thoughts_tokens} thinking)"
+            token_str += f" ∑{total_tokens}"
+            if cached_tokens > 0:
+                token_str += f" (💾{cached_tokens} cached)"
+
+            print(f"  ✓ {input_data.student_name}: 已保存到 runs/{self.name}/{run_id}/ (⏱ {time_str}, {token_str})")
 
             return AnnotatorOutput(
                 success=True,
@@ -517,6 +617,8 @@ class GeminiAudioAnnotator(BaseAnnotator):
                 model=self.model,
                 prompt_hash=prompt_hash,
                 response_time_ms=response_time_ms,
+                ink=input_data.ink,
+                validation=validation,
             )
 
         except Exception as e:
@@ -525,4 +627,5 @@ class GeminiAudioAnnotator(BaseAnnotator):
                 error=str(e),
                 student_name=input_data.student_name,
                 model=self.model,
+                ink=input_data.ink,
             )

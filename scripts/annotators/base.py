@@ -34,6 +34,9 @@ class AnnotatorInput:
     force: bool = False
     audio_path: Optional[Path] = None
 
+    # 异常标记（来自 gatekeeper）
+    ink: str = "normal"  # "normal", "wrong_questionbank", "audio_anomaly"
+
     # 从文件加载的内容（延迟加载）
     question_bank_content: Optional[str] = None
     asr_text: Optional[str] = None
@@ -50,9 +53,15 @@ class AnnotatorOutput:
 
     # 评分结果
     student_name: str = ""
-    final_grade: str = "C"
-    mistake_count: Dict[str, Any] = field(default_factory=dict)
+    final_grade: Optional[str] = "C"
+    mistake_count: Optional[Dict[str, Any]] = field(default_factory=dict)
     annotations: List[Dict[str, Any]] = field(default_factory=list)
+
+    # 异常标记（来自 gatekeeper）
+    ink: str = "normal"  # "normal", "wrong_questionbank", "audio_anomaly"
+
+    # Validation 结果（前置校验）
+    validation: Optional[Dict[str, Any]] = None
 
     # 元数据
     run_id: str = ""
@@ -65,17 +74,21 @@ class AnnotatorOutput:
 
     def to_dict(self) -> Dict[str, Any]:
         """转换为字典格式"""
-        return {
+        result = {
             "student_name": self.student_name,
             "status": "success" if self.success else "error",
             "error": self.error,
             "final_grade_suggestion": self.final_grade,
             "mistake_count": self.mistake_count,
             "annotations": self.annotations,
+            "ink": self.ink,
             "run_id": self.run_id,
             "model": self.model,
             "response_time_ms": self.response_time_ms,
         }
+        if self.validation:
+            result["validation"] = self.validation
+        return result
 
     def format_response_time(self) -> str:
         """格式化响应时间为可读字符串"""
@@ -116,7 +129,8 @@ class BaseAnnotator(ABC):
         student_name: str,
         run_dir: Path,
         force: bool = False,
-        verbose: bool = False
+        verbose: bool = False,
+        ink: str = "normal"
     ) -> AnnotatorOutput:
         """
         便捷方法：处理单个 archive 学生
@@ -129,6 +143,7 @@ class BaseAnnotator(ABC):
             run_dir: 输出目录
             force: 是否强制重新处理
             verbose: 是否显示详细信息
+            ink: 异常标记（来自 gatekeeper）
 
         Returns:
             AnnotatorOutput 对象
@@ -152,14 +167,16 @@ class BaseAnnotator(ABC):
                 return AnnotatorOutput(
                     success=False,
                     error=f"未找到 ASR 文件: {qwen_asr_path}",
-                    student_name=student_name
+                    student_name=student_name,
+                    ink=ink
                 )
 
             if not timestamp_path.exists():
                 return AnnotatorOutput(
                     success=False,
                     error=f"未找到时间戳文件: {timestamp_path}",
-                    student_name=student_name
+                    student_name=student_name,
+                    ink=ink
                 )
 
             # 加载 metadata 和题库
@@ -173,7 +190,8 @@ class BaseAnnotator(ABC):
                 return AnnotatorOutput(
                     success=False,
                     error="未找到题库文件",
-                    student_name=student_name
+                    student_name=student_name,
+                    ink=ink
                 )
 
             # 创建输入
@@ -186,6 +204,7 @@ class BaseAnnotator(ABC):
                 run_id=run_dir.name,
                 verbose=verbose,
                 force=force,
+                ink=ink
             )
 
             # 预加载内容
@@ -211,5 +230,6 @@ class BaseAnnotator(ABC):
             return AnnotatorOutput(
                 success=False,
                 error=str(e),
-                student_name=student_name
+                student_name=student_name,
+                ink=ink
             )
