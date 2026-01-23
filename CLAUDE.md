@@ -10,6 +10,32 @@
 
 > 测试时可临时使用其他模型，但生产环境必须使用此模型。
 
+## 测试模式
+
+项目支持两种测试模式：
+
+| 模式 | 脚本 | 用途 |
+|------|------|------|
+| **Batch 模式** | `gemini_batch_audio.py` | 正常端到端流程，批量处理多个学生 |
+| **同步模式** | `GeminiAudioAnnotator` 直接调用 | 临时修改 prompt 后快速迭代验证 |
+
+**同步测试示例：**
+```python
+from scripts.annotators.gemini_audio import GeminiAudioAnnotator
+from scripts.common.runs import new_run_id, ensure_run_dir
+
+annotator = GeminiAudioAnnotator(model='gemini-3-pro-preview')
+run_id = new_run_id()
+run_dir = ensure_run_dir(BATCH, STUDENT, annotator.name, run_id)
+
+result = annotator.run_archive_student(
+    archive_batch=BATCH,
+    student_name=STUDENT,
+    run_dir=run_dir,
+)
+print(result.validation, result.final_grade)
+```
+
 ## 代码规范
 
 - 不允许模拟 ASR 数据
