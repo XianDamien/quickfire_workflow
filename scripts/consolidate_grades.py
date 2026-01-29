@@ -156,7 +156,7 @@ def process_all_batches():
                 continue
             if student_dir.name.startswith("."):
                 continue
-            if student_dir.name in ["reports", "_shared_context"]:
+            if student_dir.name in ["reports", "_shared_context", "_batch_runs", "runs"]:
                 continue
 
             student_name = student_dir.name

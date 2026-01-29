@@ -544,6 +544,7 @@ class GeminiAnnotator(BaseAnnotator):
                 run_id=run_id,
                 question_bank_filename=input_data.question_bank_path.name,
                 response_time_ms=response_time_ms,
+                ink=input_data.ink,
             )
 
             # 写入 manifest
@@ -572,6 +573,7 @@ class GeminiAnnotator(BaseAnnotator):
                 final_grade=final_grade,
                 mistake_count=mistake_count,
                 annotations=annotations,
+                ink=input_data.ink,
                 run_id=run_id,
                 run_dir=run_dir,
                 model=self.model,
@@ -585,6 +587,7 @@ class GeminiAnnotator(BaseAnnotator):
                 error=str(e),
                 student_name=input_data.student_name,
                 model=self.model,
+                ink=input_data.ink,
             )
 
     def _save_outputs(
@@ -601,6 +604,7 @@ class GeminiAnnotator(BaseAnnotator):
         run_id: str,
         question_bank_filename: str,
         response_time_ms: float,
+        ink: str = "normal",
     ) -> None:
         """保存输出文件到 run_dir"""
         from scripts.common.runs import get_git_commit
@@ -614,6 +618,7 @@ class GeminiAnnotator(BaseAnnotator):
             "final_grade_suggestion": final_grade,
             "mistake_count": mistake_count,
             "annotations": annotations,
+            "ink": ink,
             "_metadata": {
                 "model": self.model,
                 "response_time_ms": response_time_ms,

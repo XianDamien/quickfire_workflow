@@ -7,8 +7,8 @@ scripts/annotators - Annotator 模块
 用法:
     from scripts.annotators import get_annotator
 
-    # 获取默认 Gemini annotator
-    annotator = get_annotator("gemini-2.5-pro")
+    # 获取默认 Gemini audio annotator
+    annotator = get_annotator("gemini-3-pro-preview")
 
     # 处理单个学生
     result = annotator.run_archive_student(
@@ -18,7 +18,7 @@ scripts/annotators - Annotator 模块
     )
 
 支持的 annotator:
-    - gemini-2.5-pro (默认)
+    - gemini-3-pro-preview (默认，音频模式)
     - gemini-2.0-flash
     - gemini-audio (同步音频模式)
     - qwen-max
@@ -70,7 +70,7 @@ def get_annotator(name: str = None, **kwargs) -> BaseAnnotator:
 
     if name == "gemini-audio":
         from .gemini_audio import GeminiAudioAnnotator
-        return GeminiAudioAnnotator(**kwargs)
+        return GeminiAudioAnnotator(name_override="gemini-audio", **kwargs)
 
     # 解析 provider:model 格式
     if ":" in name:
@@ -90,15 +90,15 @@ def get_annotator(name: str = None, **kwargs) -> BaseAnnotator:
             provider = name
             model = name
 
-    # Gemini 系列
+    # Gemini 系列（统一走音频 annotator）
     if provider == "gemini":
-        from .gemini import GeminiAnnotator
+        from .gemini_audio import GeminiAudioAnnotator
 
         # 规范化模型名称
         if model in ["gemini", "gemini-pro"]:
-            model = "gemini-2.5-pro"
+            model = "gemini-3-pro-preview"
 
-        return GeminiAnnotator(model=model, **kwargs)
+        return GeminiAudioAnnotator(model=model, name_override=name, **kwargs)
 
     # OpenAI 系列 (预留)
     if provider == "openai":

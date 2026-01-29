@@ -88,6 +88,7 @@ class GeminiAudioAnnotator(BaseAnnotator):
     def __init__(
         self,
         model: str = None,
+        name_override: Optional[str] = None,
         temperature: float = 0.2,
         max_output_tokens: Optional[int] = None,
         max_retries: int = None,
@@ -107,7 +108,7 @@ class GeminiAudioAnnotator(BaseAnnotator):
             model = DEFAULT_MODEL
 
         self.model = model
-        self.name = "gemini-audio"
+        self.name = name_override or model
         self.temperature = temperature
         self.max_retries = max_retries if max_retries is not None else DEFAULT_MAX_RETRIES
         self.retry_delay = retry_delay if retry_delay is not None else DEFAULT_RETRY_DELAY

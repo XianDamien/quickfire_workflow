@@ -20,6 +20,7 @@ if str(_PROJECT_ROOT) not in sys.path:
 import dashscope
 
 from .base import BaseGatekeeper, GatekeeperInput, GatekeeperOutput
+from scripts.common.constants import InkMark
 
 # 统一加载环境变量
 from scripts.common.env import load_env
@@ -320,10 +321,14 @@ class QwenPlusGatekeeper(BaseGatekeeper):
             if status == "PASS" and issue_type is not None:
                 raise ValueError("status 为 PASS 但指定了 issue_type")
 
+            # Convert to ink mark
+            ink = InkMark.from_gatekeeper_status(status, issue_type)
+
             # 返回结果
             return GatekeeperOutput(
                 status=status,
                 issue_type=issue_type,
+                ink=ink.value,
                 student_name=input_data.student_name,
                 model=self.model,
                 response_time_ms=response_time_ms
@@ -331,10 +336,11 @@ class QwenPlusGatekeeper(BaseGatekeeper):
 
         except Exception as e:
             print(f"✗ Gatekeeper 检查失败: {e}")
-            # 失败时默认返回 FAIL 以保守处理
+            # 失败时默认返回 FAIL 以保守处理，但 pipeline 继续执行
             return GatekeeperOutput(
                 status="FAIL",
                 issue_type="AUDIO_ANOMALY",
+                ink=InkMark.AUDIO_ANOMALY.value,
                 student_name=input_data.student_name,
                 model=self.model
             )

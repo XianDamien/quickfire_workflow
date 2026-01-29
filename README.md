@@ -7,11 +7,16 @@
 ```
 学生音频 → Qwen ASR → LLM 评分 → 评分结果
     ↓          ↓          ↓          ↓
-1_input    2_qwen     gatekeeper  4_llm_
-_audio.mp3 _asr.json   (质检)     annotation.json
+1_input    2_qwen     annotator  4_llm_
+_audio.mp3 _asr.json            annotation.json
 ```
 
-**DAG Pipeline**: `audio → qwen_asr → gatekeeper → cards`
+**DAG Pipeline**: `audio → qwen_asr → cards`
+
+**Gatekeeper 独立工具**:
+- Gatekeeper 已从主流程移除，现在作为独立工具运行
+- 用于检测题库选择错误和音频异常
+- 不影响主流程评分，可按需运行
 
 ## 快速开始
 
@@ -54,6 +59,9 @@ uv run python scripts/main.py --archive-batch Zoe51530_2025-12-16 --annotator ge
 
 # 只运行 ASR 阶段
 uv run python scripts/main.py --archive-batch Zoe51530_2025-12-16 --only qwen_asr
+
+# 运行 Gatekeeper 质检（独立工具）
+uv run python scripts/gatekeeper_standalone.py --archive-batch Zoe51530_2025-12-16
 ```
 
 ## 批处理服务端（FastAPI）
@@ -142,6 +150,7 @@ archive/{batch_id}/{Student}/
   "student_name": "Qihang",
   "final_grade_suggestion": "A",
   "mistake_count": { "errors": 0 },
+  "ink": "normal",
   "annotations": [
     {
       "card_index": 1,
@@ -161,6 +170,13 @@ archive/{batch_id}/{Student}/
 
 **错误类型**: `null` (正确) / `NO_ANSWER` (未作答) / `MEANING_ERROR` (意思错误)
 
+**ink 字段** (默认 `normal`):
+- `normal`: 正常状态（默认值）
+- `wrong_questionbank`: 题库选择错误（通过独立 Gatekeeper 工具检测）
+- `audio_anomaly`: 音频异常（通过独立 Gatekeeper 工具检测）
+
+> **注意**: Gatekeeper 已从主流程移除，`ink` 字段默认为 `normal`。如需异常检测，请运行独立工具 `scripts/gatekeeper_standalone.py`。
+
 ## 模块说明
 
 | 模块 | 说明 |
@@ -169,7 +185,8 @@ archive/{batch_id}/{Student}/
 | `scripts/asr/qwen.py` | Qwen3-ASR (自动分段长音频) |
 | `scripts/asr/funasr.py` | FunASR 时间戳 |
 | `scripts/annotators/` | LLM 评分器 (Gemini/Qwen) |
-| `scripts/gatekeeper/` | ASR 质检门禁 |
+| `scripts/gatekeeper/` | 异常检测（独立工具） |
+| `scripts/gatekeeper_standalone.py` | Gatekeeper 独立工具入口 |
 | `scripts/common/` | 通用工具 |
 
 ## 支持的模型
@@ -186,10 +203,23 @@ archive/{batch_id}/{Student}/
 | `--archive-batch` | 批次 ID (必须) |
 | `--student` | 指定学生 |
 | `--annotator` | 评分模型 |
-| `--only` | 只运行指定阶段: `audio`, `qwen_asr`, `gatekeeper`, `cards` |
+| `--only` | 只运行指定阶段: `audio`, `qwen_asr`, `cards` |
 | `--until` | 运行到指定阶段为止 |
 | `--dry-run` | 预览模式 |
 | `--force` | 强制重新处理 |
+
+### Gatekeeper 独立工具参数
+
+```bash
+# 检查所有学生
+python3 scripts/gatekeeper_standalone.py --archive-batch Zoe51530_2025-12-16
+
+# 检查单个学生
+python3 scripts/gatekeeper_standalone.py --archive-batch Zoe51530_2025-12-16 --student Qihang
+
+# 显示详细信息
+python3 scripts/gatekeeper_standalone.py --archive-batch Zoe51530_2025-12-16 --verbose
+```
 
 ## 性能
 

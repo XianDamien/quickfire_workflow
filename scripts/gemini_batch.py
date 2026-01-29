@@ -717,6 +717,7 @@ def cmd_fetch(args: argparse.Namespace) -> int:
                 "final_grade_suggestion": final_grade,
                 "mistake_count": mistake_count,
                 "annotations": annotations,
+                "ink": "normal",  # Batch API 模式下默认为 normal（未运行 gatekeeper）
                 "_metadata": {
                     "model": model,
                     "mode": MODE_ASR,
@@ -1163,6 +1164,7 @@ def cmd_run(args: argparse.Namespace) -> int:
                 "final_grade_suggestion": final_grade,
                 "mistake_count": mistake_count,
                 "annotations": annotations,
+                "ink": "normal",  # Batch API 模式下默认为 normal（未运行 gatekeeper）
                 "_metadata": {
                     "model": model,
                     "mode": MODE_ASR,
@@ -1736,6 +1738,7 @@ def cmd_fetch_all(args: argparse.Namespace) -> int:
                     "final_grade_suggestion": final_grade,
                     "mistake_count": mistake_count,
                     "annotations": annotations,
+                    "ink": "normal",  # Batch API 模式下默认为 normal（未运行 gatekeeper）
                 "_metadata": {
                     "model": model,
                     "mode": MODE_ASR,

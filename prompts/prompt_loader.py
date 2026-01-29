@@ -5,7 +5,7 @@ Structured prompt loader for Gemini annotation system.
 
 This module provides a clean interface for loading and rendering prompt templates
 without version management or fallback logic. All prompts are versioned via git,
-and any breaking changes require explicit updates to system.md and user.txt.
+and any breaking changes require explicit updates to system.md and user_with_audio.md.
 """
 
 import json
@@ -28,9 +28,11 @@ class PromptLoader:
 
     Expected directory structure:
         prompts/annotation/
-            system.md          # Markdown system instruction
-            user.txt           # Jinja2 template for user prompt
-            metadata.json      # Descriptive metadata (no version)
+            system.md            # Markdown system instruction
+            user_with_audio.md   # Jinja2 template for user prompt (preferred)
+            user.md              # Jinja2 template for user prompt (fallback)
+            user.txt             # Jinja2 template for user prompt (legacy fallback)
+            metadata.json        # Descriptive metadata (no version)
 
     No folder-based versioning, no manifests, no fallback copies.
     Git history is the sole version control mechanism.
@@ -63,8 +65,10 @@ class PromptLoader:
     def _load_artifacts(self) -> PromptArtifacts:
         """Load all prompt files and metadata."""
         system_file = self.prompt_dir / "system.md"
-        # 优先使用 user.md，fallback 到 user.txt
-        user_file = self.prompt_dir / "user.md"
+        # 优先使用 user_with_audio.md，fallback 到 user.md / user.txt
+        user_file = self.prompt_dir / "user_with_audio.md"
+        if not user_file.exists():
+            user_file = self.prompt_dir / "user.md"
         if not user_file.exists():
             user_file = self.prompt_dir / "user.txt"
         metadata_file = self.prompt_dir / "metadata.json"
@@ -152,7 +156,7 @@ class PromptContextBuilder:
     """
     Helper class to assemble the context dictionary for prompt rendering.
 
-    Ensures that both prompt files (system.md and user.txt) are consumed together
+    Ensures that both prompt files (system.md and user_with_audio.md) are consumed together
     with consistent metadata and question bank context.
     """
 
@@ -186,6 +190,7 @@ class PromptContextBuilder:
             'student_asr_text': student_asr_text,
             'dataset_name': dataset_name,
             'student_name': student_name,
+            'student_input_audio': "[音频文件已作为附件传入，请直接读取分析]",
         }
 
         # 带时间戳的 ASR 文本（严格必填，用于时间戳估算）

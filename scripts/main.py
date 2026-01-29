@@ -14,7 +14,7 @@ Provider 约束:
     python3 scripts/main.py --archive-batch Zoe41900_2025-09-08 --student Oscar --target cards
     python3 scripts/main.py --archive-batch Zoe41900_2025-09-08 --only qwen_asr
     python3 scripts/main.py --archive-batch Zoe41900_2025-09-08 --until timestamps
-    python3 scripts/main.py --archive-batch Zoe41900_2025-09-08 --target cards --annotator gemini-2.5-pro
+    python3 scripts/main.py --archive-batch Zoe41900_2025-09-08 --target cards --annotator gemini-3-pro-preview
 """
 
 import argparse
@@ -39,7 +39,8 @@ load_env()
 
 # DAG 节点定义（顺序即依赖顺序）
 # 注意：timestamps 阶段暂时从流程移除，代码保留供后续对比测试
-DAG_STAGES = ["audio", "qwen_asr", "gatekeeper", "cards"]
+# 注意：gatekeeper 已从主流程移除，可作为独立工具运行
+DAG_STAGES = ["audio", "qwen_asr", "cards"]
 
 
 # 使用 common 模块的共用函数
@@ -59,16 +60,14 @@ def check_stage_complete(student_dir: Path, stage: str) -> bool:
 
     注意: cards 阶段始终返回 False，因为每次运行都应该生成新的 run
     用于对比不同模型或不同 prompt 版本的结果
-
-    注意: gatekeeper 阶段始终返回 False，每次都应该重新检查
     """
     if stage == "audio":
         return find_audio_file(student_dir) is not None
     elif stage == "qwen_asr":
         return (student_dir / "2_qwen_asr.json").exists()
     elif stage == "gatekeeper":
-        # gatekeeper 阶段：始终返回 False，每次都重新检查
-        # 确保质检门禁每次都执行
+        # gatekeeper 已从主流程移除，但仍保留检查逻辑供独立使用
+        # 始终返回 False，每次都重新检查
         return False
     elif stage == "timestamps":
         return (student_dir / "3_asr_timestamp.json").exists()
@@ -213,12 +212,14 @@ def run_gatekeeper(
     force: bool = False,
     dry_run: bool = False,
     verbose: bool = False
-) -> bool:
+) -> tuple:
     """
     执行 gatekeeper 阶段
 
     使用 Qwen Plus 模型检测题库选择错误和音频异常
-    输出: 检查结果（不保存文件，直接返回 PASS/FAIL）
+    输出: (success, ink_value) 元组
+    - success: 始终返回 True（gatekeeper 不再阻塞 pipeline）
+    - ink_value: 异常标记 ("normal", "wrong_questionbank", "audio_anomaly")
 
     Args:
         archive_batch: 批次名称
@@ -228,7 +229,7 @@ def run_gatekeeper(
         verbose: 是否显示详细信息
 
     Returns:
-        True=PASS (可继续), False=FAIL (需人工干预)
+        (True, ink_value) - 始终成功，ink_value 用于传递给 annotator
     """
     student_dir = ARCHIVE_DIR / archive_batch / student_name
 
@@ -236,21 +237,21 @@ def run_gatekeeper(
     qwen_asr_path = student_dir / "2_qwen_asr.json"
     if not qwen_asr_path.exists():
         print(f"  [✗] 缺少 ASR 文件: {qwen_asr_path}")
-        return False
+        return False, "audio_anomaly"
 
     # 加载 metadata 获取题库
     metadata = load_batch_metadata(archive_batch)
     question_bank_path = resolve_question_bank(archive_batch, metadata)
     if not question_bank_path:
         print(f"  [✗] 未找到题库文件")
-        return False
+        return False, "audio_anomaly"
 
     if dry_run:
         print(f"  [dry-run] gatekeeper 阶段")
         print(f"    ASR 文件: {qwen_asr_path}")
         print(f"    题库路径: {question_bank_path}")
         print(f"    模型: qwen-plus")
-        return True
+        return True, "normal"
 
     print(f"  [执行] gatekeeper -> {student_name}")
 
@@ -286,20 +287,23 @@ def run_gatekeeper(
         # 显示结果
         if result.is_pass():
             print(f"  [✓] gatekeeper PASS - 质检通过 ({result.format_response_time()})")
-            return True
         else:
-            print(f"  [✗] gatekeeper FAIL - {result.issue_type} ({result.format_response_time()})")
+            print(f"  [!] gatekeeper FAIL - {result.issue_type} ({result.format_response_time()})")
             print(f"      问题类型: {result.issue_type}")
             if result.issue_type == "WRONG_QUESTIONBANK":
                 print(f"      建议: 检查题库选择是否正确（翻译方向或词汇内容）")
             elif result.issue_type == "AUDIO_ANOMALY":
                 print(f"      建议: 检查音频文件是否完整，是否包含老师声音")
-            return False
+            print(f"      标记: ink={result.ink} (标注将继续执行)")
+
+        # 始终返回 True，不再阻塞 pipeline
+        # ink 值将传递给 annotator 并包含在输出中
+        return True, result.ink
 
     except Exception as e:
         print(f"  [✗] gatekeeper 失败: {e}")
-        # 失败时保守处理，返回 False 阻止继续
-        return False
+        # 失败时也返回 True（不阻塞），但标记为 audio_anomaly
+        return True, "audio_anomaly"
 
 
 def run_timestamps(
@@ -409,11 +413,11 @@ def run_stage(stage: str, archive_batch: str, student_name: str,
         return (success, None) if success else (False, "qwen_asr 失败")
 
     elif stage == "gatekeeper":
-        # Gatekeeper: QwenPlusGatekeeper
-        # 注意：传递 verbose 参数（从 annotator_kwargs 获取）
-        verbose = annotator_kwargs.get("verbose", False) if annotator_kwargs else False
-        success = run_gatekeeper(archive_batch, student_name, force, dry_run, verbose)
-        return (success, None) if success else (False, "gatekeeper 质检失败 - 需人工干预")
+        # Gatekeeper 已从主流程移除
+        # 如果需要运行，请使用独立的 gatekeeper 工具
+        error_msg = "gatekeeper 已从主流程移除，请使用独立工具运行"
+        print(f"  [✗] {error_msg}")
+        return False, error_msg
 
     elif stage == "timestamps":
         # Timestamp provider: FunASRTimestampProvider
@@ -537,7 +541,7 @@ def main():
   python3 scripts/main.py --archive-batch Zoe41900_2025-09-08 --until timestamps
 
   # 指定 annotator
-  python3 scripts/main.py --archive-batch Zoe41900_2025-09-08 --annotator gemini-2.5-pro
+  python3 scripts/main.py --archive-batch Zoe41900_2025-09-08 --annotator gemini-3-pro-preview
 
   # 强制重新处理
   python3 scripts/main.py --archive-batch Zoe41900_2025-09-08 --force
@@ -545,7 +549,7 @@ def main():
   # 干运行（不实际执行）
   python3 scripts/main.py --archive-batch Zoe41900_2025-09-08 --dry-run
 
-DAG 阶段: audio → qwen_asr → timestamps → cards
+DAG 阶段: audio → qwen_asr → cards
         """
     )
 
