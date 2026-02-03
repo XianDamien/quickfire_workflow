@@ -121,3 +121,11 @@ htmlcov/
 *.http
 *.rest
 *.har
+
+# ==========================================
+# 敏感信息防护 (2026-02-03 added)
+# ==========================================
+docs/comparison_test/
+docs/**/test_*.md
+docs/**/*_EXECUTE*.md
+scripts/qwen_audio.py

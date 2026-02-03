@@ -19,8 +19,10 @@ scripts/annotators - Annotator 模块
 
 支持的 annotator:
     - gemini-3-pro-preview (默认，音频模式)
+    - gemini-2.5-pro
     - gemini-2.0-flash
     - gemini-audio (同步音频模式)
+    - qwen-omni-flash (Qwen3-Omni 音频模式)
     - qwen-max
     - (预留) openai:gpt-4.1
 """
@@ -109,6 +111,12 @@ def get_annotator(name: str = None, **kwargs) -> BaseAnnotator:
 
     # Qwen 系列
     if provider == "qwen":
+        # 检查是否是 Qwen3-Omni 系列
+        if "omni" in model:
+            from .qwen_omni import Qwen3OmniAnnotator
+            return Qwen3OmniAnnotator(model=model, **kwargs)
+
+        # 普通 Qwen 文本模型
         from .qwen import QwenAnnotator
 
         # 规范化模型名称
@@ -135,12 +143,14 @@ def list_annotators() -> list:
         annotator 名称列表
     """
     builtin = [
+        "gemini-3-pro-preview",  # 默认
         "gemini-2.5-pro",
         "gemini-2.0-flash",
         "gemini-audio",
         "qwen-max",
         "qwen-max-latest",
         "qwen3-max",
+        "qwen-omni-flash",  # 新增
     ]
     custom = list(_REGISTRY.keys())
     return builtin + custom

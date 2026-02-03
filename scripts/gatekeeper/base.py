@@ -43,9 +43,6 @@ class GatekeeperOutput:
     status: str  # "PASS" or "FAIL"
     issue_type: Optional[str] = None  # "WRONG_QUESTIONBANK" or "AUDIO_ANOMALY"
 
-    # Anomaly mark (non-blocking)
-    ink: str = "normal"  # "normal", "wrong_questionbank", "audio_anomaly"
-
     # 元数据
     student_name: str = ""
     model: str = "unknown"

@@ -1,14 +1,39 @@
 # 项目规则 (Project Rules)
 
-## 模型规范
+## Annotator 模块规范
 
-**整个项目必须使用 Gemini 3 Pro Preview 作为默认标注模型。**
+### 可替换性原则
 
-- 模型名称: `gemini-3-pro-preview`
-- 配置位置: `scripts/annotators/config.py`
-- 原因: 该模型在音频理解和多语言标注任务上表现最优，能正确识别异常音频（如 NO_TEACHER_AUDIO）
+项目采用 **Annotator 接口抽象**，所有评分模型实现统一的 `BaseAnnotator` 接口，支持即插即用。
 
-> 测试时可临时使用其他模型，但生产环境必须使用此模型。
+### 支持的 Annotator
+
+| Annotator | 模型 | 输入方式 | 推荐场景 |
+|-----------|------|---------|---------|
+| **Gemini Audio** | `gemini-3-pro-preview` | 音频直传 | 🌟 **默认生产模型** |
+| | `gemini-2.5-pro` | 音频直传 | 备选高质量模型 |
+| | `gemini-2.0-flash` | 音频直传 | 快速测试 |
+| **Qwen3-Omni** | `qwen-omni-flash` | 音频直传 (OpenAI 兼容) | 备用方案，100MB/20min |
+| **Qwen Text** | `qwen-max` 等 | 仅文本 | 不推荐（无音频理解） |
+
+### 默认模型
+
+**生产环境默认**: `gemini-3-pro-preview`
+- 配置位置: `scripts/annotators/config.py::DEFAULT_ANNOTATOR`
+- 原因: 音频理解、多语言标注、异常检测表现最优
+
+### 切换 Annotator
+
+```bash
+# 使用默认 annotator
+python scripts/main.py --archive-batch Batch123
+
+# 切换到 Qwen3-Omni Flash
+python scripts/main.py --archive-batch Batch123 --annotator qwen-omni-flash
+
+# 切换到 Gemini 2.5 Pro
+python scripts/main.py --archive-batch Batch123 --annotator gemini-2.5-pro
+```
 
 ## 测试模式
 
@@ -52,7 +77,10 @@ prompts/annotation/
 └── archived/              # 旧版本归档
 
 scripts/annotators/
-├── config.py              # 模型配置 (DEFAULT_ANNOTATOR)
+├── config.py              # 模型配置
+├── base.py                # BaseAnnotator 接口
 ├── gemini_audio.py        # Gemini 音频 annotator
-└── base.py                # 基类定义
+├── qwen.py                # Qwen 文本 annotator
+├── qwen_omni.py           # Qwen3-Omni 音频 annotator (NEW)
+└── __init__.py            # get_annotator() 工厂函数
 ```

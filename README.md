@@ -150,7 +150,6 @@ archive/{batch_id}/{Student}/
   "student_name": "Qihang",
   "final_grade_suggestion": "A",
   "mistake_count": { "errors": 0 },
-  "ink": "normal",
   "annotations": [
     {
       "card_index": 1,
@@ -170,13 +169,6 @@ archive/{batch_id}/{Student}/
 
 **错误类型**: `null` (正确) / `NO_ANSWER` (未作答) / `MEANING_ERROR` (意思错误)
 
-**ink 字段** (默认 `normal`):
-- `normal`: 正常状态（默认值）
-- `wrong_questionbank`: 题库选择错误（通过独立 Gatekeeper 工具检测）
-- `audio_anomaly`: 音频异常（通过独立 Gatekeeper 工具检测）
-
-> **注意**: Gatekeeper 已从主流程移除，`ink` 字段默认为 `normal`。如需异常检测，请运行独立工具 `scripts/gatekeeper_standalone.py`。
-
 ## 模块说明
 
 | 模块 | 说明 |
@@ -191,10 +183,11 @@ archive/{batch_id}/{Student}/
 
 ## 支持的模型
 
-| 评分器 | 模型 |
-|--------|------|
-| Gemini | `gemini-3-pro-preview`, `gemini-2.5-pro`, `gemini-2.0-flash` |
-| Qwen | `qwen-max`, `qwen-max-latest`, `qwen3-max` |
+| 评分器 | 模型 | 输入方式 |
+|--------|------|---------|
+| Gemini Audio | `gemini-3-pro-preview` (默认), `gemini-2.5-pro`, `gemini-2.0-flash` | 音频直传 |
+| Qwen3-Omni | `qwen-omni-flash` | 音频直传 (OpenAI 兼容) |
+| Qwen Text | `qwen-max`, `qwen-max-latest`, `qwen3-max` | 仅文本 |
 
 ## 命令参数
 

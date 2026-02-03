@@ -76,6 +76,25 @@ def audio_annotator_name(model: str) -> str:
     return f"{model}{AUDIO_SUFFIX}"
 
 
+def _round2(value: Optional[float]) -> Optional[float]:
+    """Round to 2 decimals, returning None if value is falsy."""
+    return round(value, 2) if value else None
+
+
+def _load_audio_duration_map(archive_batch: str) -> Dict[str, float]:
+    """从 metadata.json 提取 student -> duration_seconds 映射"""
+    from scripts.common.archive import load_metadata
+    try:
+        meta = load_metadata(archive_batch)
+        return {
+            item["student"]: item["duration_seconds"]
+            for item in meta.get("items", [])
+            if item.get("student") and item.get("duration_seconds") is not None
+        }
+    except FileNotFoundError:
+        return {}
+
+
 # ============================================================================
 # SDK 客户端初始化（支持代理）
 # ============================================================================
@@ -427,6 +446,9 @@ def cmd_submit(args: argparse.Namespace) -> int:
         print(f"  未找到学生: {archive_batch}")
         return 1
 
+    # 加载 metadata 获取每个学生的音频时长
+    audio_duration_map = _load_audio_duration_map(archive_batch)
+
     print(f"\n{'='*60}")
     print(f"  Gemini Batch API - 音频版 (submit)")
     print(f"{'='*60}")
@@ -523,7 +545,7 @@ def cmd_submit(args: argparse.Namespace) -> int:
         "archive_batch": archive_batch,
         "run_id": run_id,
         "model": model,
-        "mode": "audio",
+        "mode": "batch",
         "job_name": batch_job.name,
         "display_name": display_name,
         "input_file": uploaded_jsonl.name,
@@ -531,6 +553,9 @@ def cmd_submit(args: argparse.Namespace) -> int:
         "state": state,
         "requests": requests,
         "students_count": len(students),
+        "audio_duration_seconds": _round2(
+            sum(audio_duration_map.get(s, 0) for s in students if s in audio_file_map)
+        ) if audio_duration_map else None,
         "audio_files": audio_file_map,
         "timing": {
             "started_at": run_started_at.isoformat(),
@@ -581,6 +606,12 @@ def cmd_fetch(args: argparse.Namespace) -> int:
         return 1
 
     client = create_client(proxy=args.proxy)
+
+    # 加载 metadata 获取每个学生的音频时长
+    audio_duration_map = {}
+    _archive_batch = manifest.get("archive_batch") if manifest else None
+    if _archive_batch:
+        audio_duration_map = _load_audio_duration_map(_archive_batch)
 
     poll_interval = args.poll_interval or DEFAULT_POLL_INTERVAL
     timeout = args.timeout
@@ -734,19 +765,29 @@ def cmd_fetch(args: argparse.Namespace) -> int:
                 run_id=run_id_key,
             )
 
+            # 提取该学生的 token 使用和音频时长
+            stu_token_usage = {
+                "prompt_tokens": usage.get("promptTokenCount", 0),
+                "thoughts_tokens": usage.get("thoughtsTokenCount", 0),
+                "candidates_tokens": usage.get("candidatesTokenCount", 0),
+                "total_tokens": usage.get("totalTokenCount", 0),
+            }
+            stu_audio_duration = audio_duration_map.get(student_name)
+
             annotation_result = {
                 "student_name": student_name,
                 "final_grade_suggestion": final_grade,
                 "mistake_count": mistake_count,
                 "annotations": annotations,
-                "ink": "normal",  # Batch API 模式下默认为 normal（未运行 gatekeeper）
                 "_metadata": {
                     "model": model,
-                    "mode": "audio",
+                    "mode": "batch",
                     "batch_job": job_name,
                     "run_id": run_id_key,
                     "git_commit": get_git_commit(short=False),
                     "timestamp": datetime.now().isoformat(),
+                    "audio_duration_seconds": _round2(stu_audio_duration),
+                    "token_usage": stu_token_usage,
                     "source": "batch_api_audio",
                 }
             }
@@ -764,7 +805,11 @@ def cmd_fetch(args: argparse.Namespace) -> int:
                 prompt_path=_PROJECT_ROOT / "prompts" / "annotation" / "user_with_audio.md",
                 prompt_hash="batch_audio",
                 model=model,
-                extra={"mode": "audio"},
+                extra={
+                    "mode": "batch",
+                    "audio_duration_seconds": _round2(stu_audio_duration),
+                    "token_usage": stu_token_usage,
+                },
             )
 
             success_count += 1
@@ -782,10 +827,25 @@ def cmd_fetch(args: argparse.Namespace) -> int:
             student_results.append({"student": student_name, "status": "error", "error": ERROR_SAVE_FAILED})
 
     if manifest and manifest_path:
-        manifest["mode"] = "audio"
+        manifest["mode"] = "batch"
         manifest["fetched_at"] = datetime.now().isoformat()
         manifest["result_file"] = result_file_name
         manifest["final_state"] = final_state
+
+        # 计算总音频时长和总处理时间
+        total_audio_duration = sum(audio_duration_map.values()) if audio_duration_map else None
+        manifest["audio_duration_seconds"] = _round2(total_audio_duration)
+
+        # total_time_seconds: 从 submit 开始到 fetch 完成
+        started_at_str = manifest.get("timing", {}).get("started_at")
+        if started_at_str:
+            try:
+                started_at_dt = datetime.fromisoformat(started_at_str)
+                total_elapsed = (datetime.now() - started_at_dt).total_seconds()
+                manifest["total_time_seconds"] = round(total_elapsed, 2)
+            except (ValueError, TypeError):
+                pass
+
         manifest["statistics"] = {
             "students_count": manifest.get("students_count", len(student_results)),
             "success_count": success_count,
@@ -817,6 +877,7 @@ def cmd_fetch(args: argparse.Namespace) -> int:
             grade_distribution=grade_distribution,
             total_tokens=total_tokens,
             manifest=manifest,
+            audio_duration_map=audio_duration_map,
         )
 
     print(f"\n  回填完成: 成功 {success_count} 失败 {fail_count}")
@@ -852,6 +913,9 @@ def cmd_run(args: argparse.Namespace) -> int:
     if not students:
         print(f"  未找到学生: {archive_batch}")
         return 1
+
+    # 加载 metadata 获取每个学生的音频时长
+    audio_duration_map = _load_audio_duration_map(archive_batch)
 
     print(f"\n{'='*60}")
     print(f"  Gemini Batch API - 音频版")
@@ -1107,19 +1171,29 @@ def cmd_run(args: argparse.Namespace) -> int:
                 run_id=run_id,
             )
 
+            # 提取该学生的 token 使用和音频时长
+            stu_token_usage = {
+                "prompt_tokens": usage.get("promptTokenCount", 0),
+                "thoughts_tokens": usage.get("thoughtsTokenCount", 0),
+                "candidates_tokens": usage.get("candidatesTokenCount", 0),
+                "total_tokens": usage.get("totalTokenCount", 0),
+            }
+            stu_audio_duration = audio_duration_map.get(student_name)
+
             annotation_result = {
                 "student_name": student_name,
                 "final_grade_suggestion": final_grade,
                 "mistake_count": mistake_count,
                 "annotations": annotations,
-                "ink": "normal",  # Batch API 模式下默认为 normal（未运行 gatekeeper）
                 "_metadata": {
                     "model": model,
-                    "mode": "audio",
+                    "mode": "batch",
                     "batch_job": job_name,
                     "run_id": run_id,
                     "git_commit": get_git_commit(short=False),
                     "timestamp": datetime.now().isoformat(),
+                    "audio_duration_seconds": _round2(stu_audio_duration),
+                    "token_usage": stu_token_usage,
                     "source": "batch_api_audio",
                 }
             }
@@ -1137,7 +1211,11 @@ def cmd_run(args: argparse.Namespace) -> int:
                 prompt_path=_PROJECT_ROOT / "prompts" / "annotation" / "user_with_audio.md",
                 prompt_hash="batch_audio",
                 model=model,
-                extra={"mode": "audio"},
+                extra={
+                    "mode": "batch",
+                    "audio_duration_seconds": _round2(stu_audio_duration),
+                    "token_usage": stu_token_usage,
+                },
             )
 
             print(f"   {student_name}: {final_grade} ({mistake_count})")
@@ -1159,16 +1237,24 @@ def cmd_run(args: argparse.Namespace) -> int:
     run_end_time = time.time()
     total_processing_time = run_end_time - run_start_time
 
+    # 计算总音频时长（仅计算已上传音频的学生）
+    total_audio_duration = (
+        sum(audio_duration_map.get(s, 0) for s in students if s in audio_file_map)
+        if audio_duration_map else None
+    )
+
     manifest = {
         "archive_batch": archive_batch,
         "run_id": run_id,
         "model": model,
-        "mode": "audio",  # 标记为音频版
+        "mode": "batch",
         "job_name": job_name,
         "display_name": display_name,
         "input_file": uploaded_jsonl.name,
         "result_file": result_file_name,
         "final_state": final_state,
+        "audio_duration_seconds": _round2(total_audio_duration),
+        "total_time_seconds": round(total_processing_time, 2),
         "timing": {
             "started_at": run_started_at.isoformat(),
             "submitted_at": submitted_at.isoformat(),
@@ -1232,6 +1318,7 @@ def cmd_run(args: argparse.Namespace) -> int:
         grade_distribution=grade_distribution,
         total_tokens=total_tokens,
         manifest=manifest,
+        audio_duration_map=audio_duration_map,
     )
 
     return 0 if fail_count == 0 else 1
@@ -1251,6 +1338,7 @@ def _generate_batch_report(
     grade_distribution: Dict[str, int],
     total_tokens: Dict[str, int],
     manifest: Dict[str, Any],
+    audio_duration_map: Optional[Dict[str, float]] = None,
 ) -> None:
     """
     生成班级批处理报告 (音频版)
@@ -1303,11 +1391,14 @@ def _generate_batch_report(
             "total_tokens": usage.get("totalTokenCount", 0),
         }
 
+        stu_audio_duration = audio_duration_map.get(student_name) if audio_duration_map else None
+
         detail = {
             "student_name": student_name,
             "status": student_result.get("status", "unknown"),
             "grade": student_result.get("grade"),
             "mistake_count": student_result.get("mistake_count"),
+            "audio_duration_seconds": _round2(stu_audio_duration),
             "token_usage": token_usage,
         }
 
@@ -1321,6 +1412,7 @@ def _generate_batch_report(
         student_full_data[student_name] = {
             "annotations": annotations,
             "token_usage": token_usage,
+            "audio_duration_seconds": _round2(stu_audio_duration),
             "grade": student_result.get("grade"),
             "mistake_count": student_result.get("mistake_count"),
             "status": student_result.get("status", "unknown"),
@@ -1331,9 +1423,12 @@ def _generate_batch_report(
     report = {
         "batch_id": archive_batch,
         "model": model,
-        "mode": "audio",
+        "mode": "batch",
         "run_id": run_id,
         "generated_at": datetime.now().isoformat(),
+        # 关键指标
+        "audio_duration_seconds": manifest.get("audio_duration_seconds"),
+        "total_time_seconds": manifest.get("total_time_seconds"),
         # 时间信息
         "timing": manifest.get("timing", {}),
         # 统计
@@ -1380,8 +1475,9 @@ def _generate_batch_report(
             "_metadata": {
                 "batch_id": archive_batch,
                 "model": model,
-                "mode": "audio",
+                "mode": "batch",
                 "run_id": run_id,
+                "audio_duration_seconds": full_data.get("audio_duration_seconds"),
                 "token_usage": detail["token_usage"],
                 "generated_at": datetime.now().isoformat(),
                 "source": "batch_api_audio",

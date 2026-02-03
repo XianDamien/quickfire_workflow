@@ -34,9 +34,6 @@ class AnnotatorInput:
     force: bool = False
     audio_path: Optional[Path] = None
 
-    # 异常标记（来自 gatekeeper）
-    ink: str = "normal"  # "normal", "wrong_questionbank", "audio_anomaly"
-
     # 从文件加载的内容（延迟加载）
     question_bank_content: Optional[str] = None
     asr_text: Optional[str] = None
@@ -56,9 +53,6 @@ class AnnotatorOutput:
     final_grade: Optional[str] = "C"
     mistake_count: Optional[Dict[str, Any]] = field(default_factory=dict)
     annotations: List[Dict[str, Any]] = field(default_factory=list)
-
-    # 异常标记（来自 gatekeeper）
-    ink: str = "normal"  # "normal", "wrong_questionbank", "audio_anomaly"
 
     # Validation 结果（前置校验）
     validation: Optional[Dict[str, Any]] = None
@@ -81,7 +75,6 @@ class AnnotatorOutput:
             "final_grade_suggestion": self.final_grade,
             "mistake_count": self.mistake_count,
             "annotations": self.annotations,
-            "ink": self.ink,
             "run_id": self.run_id,
             "model": self.model,
             "response_time_ms": self.response_time_ms,
@@ -129,8 +122,7 @@ class BaseAnnotator(ABC):
         student_name: str,
         run_dir: Path,
         force: bool = False,
-        verbose: bool = False,
-        ink: str = "normal"
+        verbose: bool = False
     ) -> AnnotatorOutput:
         """
         便捷方法：处理单个 archive 学生
@@ -143,7 +135,6 @@ class BaseAnnotator(ABC):
             run_dir: 输出目录
             force: 是否强制重新处理
             verbose: 是否显示详细信息
-            ink: 异常标记（来自 gatekeeper）
 
         Returns:
             AnnotatorOutput 对象
@@ -167,16 +158,14 @@ class BaseAnnotator(ABC):
                 return AnnotatorOutput(
                     success=False,
                     error=f"未找到 ASR 文件: {qwen_asr_path}",
-                    student_name=student_name,
-                    ink=ink
+                    student_name=student_name
                 )
 
             if not timestamp_path.exists():
                 return AnnotatorOutput(
                     success=False,
                     error=f"未找到时间戳文件: {timestamp_path}",
-                    student_name=student_name,
-                    ink=ink
+                    student_name=student_name
                 )
 
             # 加载 metadata 和题库
@@ -190,8 +179,7 @@ class BaseAnnotator(ABC):
                 return AnnotatorOutput(
                     success=False,
                     error="未找到题库文件",
-                    student_name=student_name,
-                    ink=ink
+                    student_name=student_name
                 )
 
             # 创建输入
@@ -203,8 +191,7 @@ class BaseAnnotator(ABC):
                 asr_timestamp_path=timestamp_path,
                 run_id=run_dir.name,
                 verbose=verbose,
-                force=force,
-                ink=ink
+                force=force
             )
 
             # 预加载内容
@@ -230,6 +217,5 @@ class BaseAnnotator(ABC):
             return AnnotatorOutput(
                 success=False,
                 error=str(e),
-                student_name=student_name,
-                ink=ink
+                student_name=student_name
             )

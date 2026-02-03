@@ -294,16 +294,14 @@ def run_gatekeeper(
                 print(f"      建议: 检查题库选择是否正确（翻译方向或词汇内容）")
             elif result.issue_type == "AUDIO_ANOMALY":
                 print(f"      建议: 检查音频文件是否完整，是否包含老师声音")
-            print(f"      标记: ink={result.ink} (标注将继续执行)")
 
         # 始终返回 True，不再阻塞 pipeline
-        # ink 值将传递给 annotator 并包含在输出中
-        return True, result.ink
+        return True
 
     except Exception as e:
         print(f"  [✗] gatekeeper 失败: {e}")
-        # 失败时也返回 True（不阻塞），但标记为 audio_anomaly
-        return True, "audio_anomaly"
+        # 失败时也返回 True（不阻塞）
+        return True
 
 
 def run_timestamps(

@@ -62,6 +62,11 @@ AVAILABLE_QWEN_MODELS = [
     "qwen3-max",
 ]
 
+# 可用的 Qwen3-Omni 模型列表
+AVAILABLE_QWEN_OMNI_MODELS = [
+    "qwen-omni-flash",
+]
+
 # 模型最大输出 token 上限映射
 # - 键可以是完整模型名或前缀，按最长匹配原则
 # - 用于在初始化 annotator 时自动限制 max_output_tokens
@@ -70,6 +75,8 @@ MODEL_MAX_OUTPUT_TOKENS = {
     "qwen-max": 8192,
     "qwen-max-latest": 8192,
     "qwen3-max": 8192,
+    "qwen-omni-flash": 8192,
+    "qwen-omni": 8192,  # 前缀匹配
     "qwen": 8192,  # 默认 Qwen 系列
 
     # Gemini 3 系列（支持更大输出）
@@ -83,6 +90,14 @@ MODEL_MAX_OUTPUT_TOKENS = {
 
     # Gemini 默认
     "gemini-": 16384,
+}
+
+# Qwen3-Omni 文件限制配置
+QWEN_OMNI_LIMITS = {
+    "qwen-omni-flash": {
+        "max_file_size_mb": 100,
+        "max_duration_minutes": 20,
+    }
 }
 
 
