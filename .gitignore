@@ -95,6 +95,8 @@ scripts/.claude/
 # Data inputs/outputs (often contain user audio, transcripts, reports, etc.)
 backend_input/
 backend_output/
+archive_source/
+two_input/
 asr/
 asr_timestamp/
 questionbank/
