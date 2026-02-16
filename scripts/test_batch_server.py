@@ -66,7 +66,6 @@ def _fetch_result(server: str, job_id: str) -> dict:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="批处理服务端测试脚本")
-    parser.add_argument("--mode", required=True, choices=["asr", "audio"])
     parser.add_argument("--archive-batch", required=True)
     parser.add_argument("--students", help="学生列表（逗号分隔）")
     parser.add_argument("--model")
@@ -79,7 +78,7 @@ def main() -> int:
     args = parser.parse_args()
 
     payload = {
-        "mode": args.mode,
+        "exec_mode": "batch",
         "archive_batch": args.archive_batch,
         "students": _parse_students(args.students),
         "model": args.model,

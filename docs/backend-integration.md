@@ -318,32 +318,33 @@ python3 scripts/main.py --archive-batch Zoe51530_2025-12-16 --student Qihang
 python3 scripts/main.py --archive-batch Zoe51530_2025-12-16 --dry-run
 
 # 指定评分模型
-python3 scripts/main.py --archive-batch Zoe51530_2025-12-16 --annotator qwen-max
+python3 scripts/main.py --archive-batch Zoe51530_2025-12-16 --annotator gemini-2.5-pro
+
+# batch 模式
+python3 scripts/main.py --archive-batch Zoe51530_2025-12-16 --exec-mode batch
 ```
 
 ### 4.2 处理阶段
 
 ```
-audio → qwen_asr → gatekeeper → cards
-  ↓         ↓           ↓          ↓
-检查音频   ASR转写    质检门禁    LLM评分
+audio → qwen_asr → cards
+  ↓         ↓         ↓
+检查音频   ASR转写   LLM评分
 ```
 
 | 阶段 | 输出文件 | 说明 |
 |------|----------|------|
 | `audio` | - | 检查音频文件存在 |
 | `qwen_asr` | `2_qwen_asr.json` | Qwen3-ASR 转写 |
-| `gatekeeper` | - | ASR 质量检查（可选） |
 | `cards` | `4_llm_annotation.json` | LLM 评分注解 |
 
 ### 4.3 支持的评分模型
 
 | 模型 | 说明 |
 |------|------|
-| `gemini-3-pro-preview` | 默认，Google Gemini |
-| `gemini-2.5-pro` | Google Gemini |
-| `qwen-max` | 阿里云 Qwen |
-| `qwen3-max` | 阿里云 Qwen3 |
+| `gemini-3-pro-preview` | 默认，Google Gemini（音频直传） |
+| `gemini-2.5-pro` | Google Gemini（音频直传） |
+| `qwen3-omni-flash` | 阿里云 Qwen3 Omni（音频直传） |
 
 ---
 

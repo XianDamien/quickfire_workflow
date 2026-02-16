@@ -30,12 +30,41 @@ if str(_PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(_PROJECT_ROOT))
 
 AUDIO_PROMPT_TEMPLATE = "user_with_audio.md"
-DEFAULT_MODEL = "qwen-omni-flash"
+DEFAULT_MODEL = "qwen3-omni-flash"
+
+# 音频格式映射（统一定义）
+MIME_TO_FORMAT = {
+    "audio/mpeg": "mp3",
+    "audio/wav": "wav",
+    "audio/mp4": "mp4",
+    "audio/flac": "flac",
+    "audio/aac": "aac",
+    "audio/amr": "amr",
+    "audio/3gpp": "3gp"
+}
+
+EXT_TO_MIME = {
+    ".mp3": "audio/mpeg",
+    ".wav": "audio/wav",
+    ".m4a": "audio/mp4",
+    ".mp4": "audio/mp4",
+    ".flac": "audio/flac",
+    ".aac": "audio/aac",
+    ".amr": "audio/amr",
+    ".3gp": "audio/3gpp"
+}
 
 
 def _round2(value: Optional[float]) -> Optional[float]:
     """Round to 2 decimals, returning None if value is falsy."""
     return round(value, 2) if value else None
+
+
+def _format_time(ms: float) -> str:
+    """Format milliseconds to human-readable string."""
+    if ms < 1000:
+        return f"{ms:.0f}ms"
+    return f"{ms / 1000:.2f}s"
 
 
 class Qwen3OmniAnnotator(BaseAnnotator):
@@ -50,6 +79,7 @@ class Qwen3OmniAnnotator(BaseAnnotator):
         model: str = None,
         temperature: float = 0.2,
         max_output_tokens: Optional[int] = None,
+        enable_thinking: bool = False,
         **kwargs
     ) -> None:
         from .config import get_max_output_tokens
@@ -60,6 +90,7 @@ class Qwen3OmniAnnotator(BaseAnnotator):
         self.model = model
         self.name = model
         self.temperature = temperature
+        self.enable_thinking = enable_thinking
 
         # 文件限制 (Flash 模型)
         self.max_file_size = 100 * 1024 * 1024  # 100MB
@@ -79,13 +110,14 @@ class Qwen3OmniAnnotator(BaseAnnotator):
                 "未设置 DASHSCOPE_API_KEY 环境变量\n"
                 "请在 .env 文件中添加: DASHSCOPE_API_KEY=your_api_key"
             )
-
+        
         self.client = OpenAI(
             api_key=api_key,
             base_url="https://dashscope.aliyuncs.com/compatible-mode/v1"
         )
 
-        print(f"🔑 使用 Qwen3-Omni API (model={self.model})")
+        thinking_label = " +thinking" if self.enable_thinking else ""
+        print(f"🔑 使用 Qwen3-Omni API (model={self.model}{thinking_label})")
 
     def _validate_audio(self, audio_path: Path) -> Tuple[bool, Optional[str]]:
         """
@@ -121,21 +153,9 @@ class Qwen3OmniAnnotator(BaseAnnotator):
         编码音频为 base64
         Returns: (base64_string, mime_type)
         """
-        # 识别 MIME 类型
         ext = audio_path.suffix.lower()
-        mime_map = {
-            ".mp3": "audio/mpeg",
-            ".wav": "audio/wav",
-            ".m4a": "audio/mp4",
-            ".mp4": "audio/mp4",
-            ".flac": "audio/flac",
-            ".aac": "audio/aac",
-            ".amr": "audio/amr",
-            ".3gp": "audio/3gpp"
-        }
-        mime_type = mime_map.get(ext, "audio/mpeg")
+        mime_type = EXT_TO_MIME.get(ext, "audio/mpeg")
 
-        # 编码
         with open(audio_path, "rb") as f:
             audio_data = f.read()
         base64_audio = base64.b64encode(audio_data).decode("utf-8")
@@ -185,64 +205,84 @@ class Qwen3OmniAnnotator(BaseAnnotator):
         audio_base64: str,
         mime_type: str,
         verbose: bool = False
-    ) -> Tuple[str, float, Dict[str, int]]:
+    ) -> Tuple[str, float, Dict[str, int], Optional[str]]:
         """
         调用 Qwen3-Omni API（流式）
-        Returns: (response_text, response_time_ms, token_usage)
+        Returns: (response_text, response_time_ms, token_usage, thinking_text)
         """
-        # 构建消息
+        audio_format = MIME_TO_FORMAT.get(mime_type, "mp3")
+        data_uri = f"data:{mime_type};base64,{audio_base64}"
+
         messages = [
             {"role": "system", "content": system_instruction},
             {
                 "role": "user",
                 "content": [
                     {
-                        "type": "audio_url",
-                        "audio_url": {
-                            "url": f"data:{mime_type};base64,{audio_base64}"
-                        }
+                        "type": "input_audio",
+                        "input_audio": {"data": data_uri, "format": audio_format}
                     },
                     {"type": "text", "text": user_prompt}
                 ]
             }
         ]
 
-        # 调用 API
         start_time = time.time()
         collected_text = []
+        collected_thinking = []
         token_usage = {}
 
         try:
-            stream = self.client.chat.completions.create(
+            api_kwargs = dict(
                 model=self.model,
                 messages=messages,
                 temperature=self.temperature,
                 max_tokens=self.max_output_tokens,
+                modalities=["text"],
                 stream=True,
-                response_format={"type": "json_object"}
+                stream_options={"include_usage": True},
             )
 
-            # 处理流式响应
-            for chunk in stream:
-                if chunk.choices and chunk.choices[0].delta.content:
-                    collected_text.append(chunk.choices[0].delta.content)
+            if self.enable_thinking:
+                api_kwargs["extra_body"] = {"enable_thinking": True}
+            else:
+                api_kwargs["response_format"] = {"type": "json_object"}
 
-                # 提取 token 使用（在最后一个 chunk）
+            stream = self.client.chat.completions.create(**api_kwargs)
+
+            for chunk in stream:
+                if chunk.choices:
+                    delta = chunk.choices[0].delta
+                    if delta.content:
+                        collected_text.append(delta.content)
+                    # 思考模式下收集 reasoning_content
+                    if hasattr(delta, "reasoning_content") and delta.reasoning_content:
+                        collected_thinking.append(delta.reasoning_content)
+
                 if hasattr(chunk, 'usage') and chunk.usage:
                     token_usage = {
                         "prompt_tokens": chunk.usage.prompt_tokens or 0,
                         "completion_tokens": chunk.usage.completion_tokens or 0,
-                        "total_tokens": chunk.usage.total_tokens or 0
+                        "total_tokens": chunk.usage.total_tokens or 0,
                     }
+                    # 提取思考 token 明细
+                    if hasattr(chunk.usage, "completion_tokens_details") and chunk.usage.completion_tokens_details:
+                        details = chunk.usage.completion_tokens_details
+                        reasoning = getattr(details, "reasoning_tokens", None)
+                        if reasoning is not None:
+                            token_usage["reasoning_tokens"] = reasoning
 
             response_time_ms = (time.time() - start_time) * 1000
             response_text = "".join(collected_text)
+            thinking_text = "".join(collected_thinking) if collected_thinking else None
 
             if verbose:
                 print(f"🔍 API 响应时间: {response_time_ms:.0f}ms")
                 print(f"🔍 Token 使用: {token_usage}")
+                if thinking_text:
+                    print(f"🔍 思考内容长度: {len(thinking_text)} 字符")
 
-            return response_text, response_time_ms, token_usage
+            return response_text, response_time_ms, token_usage, thinking_text
 
         except Exception as e:
             raise ValueError(f"API 调用失败: {str(e)}")
@@ -281,6 +321,7 @@ class Qwen3OmniAnnotator(BaseAnnotator):
             "_metadata": {
                 "model": self.model,
                 "mode": "sync_streaming",
+                "enable_thinking": self.enable_thinking,
                 "response_time_ms": response_time_ms,
                 "token_usage": token_usage,
                 "audio_encode_time_seconds": round(audio_encode_time_seconds, 2),
@@ -322,13 +363,12 @@ class Qwen3OmniAnnotator(BaseAnnotator):
             f.write("\n")
 
     def annotate(self, input_data: AnnotatorInput) -> AnnotatorOutput:
-        from scripts.common.archive import project_root, student_dir, load_metadata
+        from scripts.common.archive import student_dir, load_metadata
         from scripts.common.runs import ensure_run_dir, write_run_manifest, new_run_id
         from scripts.common.hash import text_hash
         from scripts.contracts.cards import validate_cards, parse_api_response
 
         try:
-            root = project_root()
             stu_dir = student_dir(input_data.archive_batch, input_data.student_name)
 
             run_id = input_data.run_id or new_run_id()
@@ -379,7 +419,7 @@ class Qwen3OmniAnnotator(BaseAnnotator):
             audio_file_size = audio_path.stat().st_size
 
             # 调用 API（流式）
-            response_text, response_time_ms, token_usage = self._call_api(
+            response_text, response_time_ms, token_usage, thinking_text = self._call_api(
                 system_instruction,
                 full_prompt,
                 audio_base64,
@@ -389,6 +429,12 @@ class Qwen3OmniAnnotator(BaseAnnotator):
 
             # 计算总处理时间 = 音频编码时间 + API 响应时间
             total_time_seconds = audio_encode_time + response_time_ms / 1000
+
+            # 保存思考内容（如有）
+            if thinking_text:
+                thinking_path = run_dir / "thinking_content.txt"
+                with open(thinking_path, "w", encoding="utf-8") as f:
+                    f.write(thinking_text)
 
             # 解析和验证响应
             parsed = parse_api_response(response_text)
@@ -410,37 +456,46 @@ class Qwen3OmniAnnotator(BaseAnnotator):
             # 提取 validation 结果
             validation = parsed.get("validation", {"status": "PASS", "errors": []})
             validation_status = validation.get("status", "PASS")
-            validation_errors = validation.get("errors", [])
 
             annotations = parsed["annotations"]
             final_grade = parsed["final_grade_suggestion"]
             mistake_count = parsed["mistake_count"]
 
+            # 公共的保存参数
+            save_kwargs = dict(
+                run_dir=run_dir,
+                student_name=input_data.student_name,
+                system_instruction=system_instruction,
+                full_prompt=full_prompt,
+                prompt_hash=prompt_hash,
+                prompt_version=prompt_version,
+                run_id=run_id,
+                question_bank_filename=input_data.question_bank_path.name,
+                response_time_ms=response_time_ms,
+                token_usage=token_usage,
+                audio_encode_time_seconds=audio_encode_time,
+                audio_file_size_bytes=audio_file_size,
+                validation=validation,
+                audio_duration_seconds=audio_duration_seconds,
+                total_time_seconds=total_time_seconds,
+            )
+
+            manifest_extra = {
+                "timing": {
+                    "audio_encode_time_seconds": round(audio_encode_time, 2),
+                    "api_response_time_ms": round(response_time_ms, 2),
+                    "total_time_seconds": round(total_time_seconds, 2),
+                },
+                "audio_duration_seconds": _round2(audio_duration_seconds),
+                "audio_file_size_bytes": audio_file_size,
+                "token_usage": token_usage,
+                "validation": validation,
+            }
+
             # 如果 validation 失败，跳过 cards 校验和 grade 校验
             if validation_status == "FAIL":
-                print(f"  ⚠️  {input_data.student_name}: Validation FAIL - {validation_errors}")
-                # 保存结果（validation 失败时 annotations 为空，grade/mistake_count 为 null）
-                self._save_outputs(
-                    run_dir=run_dir,
-                    student_name=input_data.student_name,
-                    final_grade=None,
-                    mistake_count=None,
-                    annotations=[],
-                    system_instruction=system_instruction,
-                    full_prompt=full_prompt,
-                    prompt_hash=prompt_hash,
-                    prompt_version=prompt_version,
-                    run_id=run_id,
-                    question_bank_filename=input_data.question_bank_path.name,
-                    response_time_ms=response_time_ms,
-                    token_usage=token_usage,
-                    audio_encode_time_seconds=audio_encode_time,
-                    audio_file_size_bytes=audio_file_size,
-                    validation=validation,
-                    audio_duration_seconds=audio_duration_seconds,
-                    total_time_seconds=total_time_seconds,
-                )
-
+                print(f"  ⚠️  {input_data.student_name}: Validation FAIL - {validation.get('errors', [])}")
+                self._save_outputs(final_grade=None, mistake_count=None, annotations=[], **save_kwargs)
                 write_run_manifest(
                     run_dir=run_dir,
                     annotator_name=self.name,
@@ -450,21 +505,10 @@ class Qwen3OmniAnnotator(BaseAnnotator):
                     prompt_path=_PROJECT_ROOT / "prompts" / "annotation" / AUDIO_PROMPT_TEMPLATE,
                     prompt_hash=prompt_hash,
                     model=self.model,
-                    extra={
-                        "timing": {
-                            "audio_encode_time_seconds": round(audio_encode_time, 2),
-                            "api_response_time_ms": round(response_time_ms, 2),
-                            "total_time_seconds": round(total_time_seconds, 2),
-                        },
-                        "audio_duration_seconds": _round2(audio_duration_seconds),
-                        "audio_file_size_bytes": audio_file_size,
-                        "token_usage": token_usage,
-                        "validation": validation,
-                    },
+                    extra=manifest_extra,
                 )
-
                 return AnnotatorOutput(
-                    success=True,  # API 调用成功，但 validation 失败
+                    success=True,
                     student_name=input_data.student_name,
                     final_grade=None,
                     mistake_count=None,
@@ -498,27 +542,7 @@ class Qwen3OmniAnnotator(BaseAnnotator):
             if not final_grade or final_grade not in ["A", "B", "C"]:
                 raise ValueError(f"无效的评分等级: {final_grade}")
 
-            self._save_outputs(
-                run_dir=run_dir,
-                student_name=input_data.student_name,
-                final_grade=final_grade,
-                mistake_count=mistake_count,
-                annotations=annotations,
-                system_instruction=system_instruction,
-                full_prompt=full_prompt,
-                prompt_hash=prompt_hash,
-                prompt_version=prompt_version,
-                run_id=run_id,
-                question_bank_filename=input_data.question_bank_path.name,
-                response_time_ms=response_time_ms,
-                token_usage=token_usage,
-                audio_encode_time_seconds=audio_encode_time,
-                audio_file_size_bytes=audio_file_size,
-                validation=validation,
-                audio_duration_seconds=audio_duration_seconds,
-                total_time_seconds=total_time_seconds,
-            )
-
+            self._save_outputs(final_grade=final_grade, mistake_count=mistake_count, annotations=annotations, **save_kwargs)
             write_run_manifest(
                 run_dir=run_dir,
                 annotator_name=self.name,
@@ -528,32 +552,15 @@ class Qwen3OmniAnnotator(BaseAnnotator):
                 prompt_path=_PROJECT_ROOT / "prompts" / "annotation" / AUDIO_PROMPT_TEMPLATE,
                 prompt_hash=prompt_hash,
                 model=self.model,
-                extra={
-                    "timing": {
-                        "audio_encode_time_seconds": round(audio_encode_time, 2),
-                        "api_response_time_ms": round(response_time_ms, 2),
-                        "total_time_seconds": round(total_time_seconds, 2),
-                    },
-                    "audio_duration_seconds": _round2(audio_duration_seconds),
-                    "audio_file_size_bytes": audio_file_size,
-                    "token_usage": token_usage,
-                    "validation": validation,
-                },
+                extra=manifest_extra,
             )
 
-            if response_time_ms < 1000:
-                time_str = f"{response_time_ms:.0f}ms"
-            else:
-                time_str = f"{response_time_ms / 1000:.2f}s"
-
-            # Token 统计信息
             input_tokens = token_usage.get("prompt_tokens", 0)
             output_tokens = token_usage.get("completion_tokens", 0)
             total_tokens = token_usage.get("total_tokens", 0)
-
             token_str = f"📊 Token: ↑{input_tokens} ↓{output_tokens} ∑{total_tokens}"
 
-            print(f"  ✓ {input_data.student_name}: 已保存到 runs/{self.name}/{run_id}/ (⏱ {time_str}, {token_str})")
+            print(f"  ✓ {input_data.student_name}: 已保存到 runs/{self.name}/{run_id}/ (⏱ {_format_time(response_time_ms)}, {token_str})")
 
             return AnnotatorOutput(
                 success=True,

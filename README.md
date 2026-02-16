@@ -13,10 +13,10 @@ _audio.mp3 _asr.json            annotation.json
 
 **DAG Pipeline**: `audio → qwen_asr → cards`
 
-**Gatekeeper 独立工具**:
-- Gatekeeper 已从主流程移除，现在作为独立工具运行
-- 用于检测题库选择错误和音频异常
-- 不影响主流程评分，可按需运行
+**当前策略**:
+- 统一使用音频输入进行 LLM 评测
+- 先以 `sync` 模式进行 prompt 调试与模型对比
+- 统一入口为 `scripts/main.py`
 
 ## 快速开始
 
@@ -51,17 +51,15 @@ uv run python scripts/main.py --archive-batch Zoe51530_2025-12-16 --student Qiha
 # 预览模式
 uv run python scripts/main.py --archive-batch Zoe51530_2025-12-16 --dry-run
 
-# 指定评分模型
-uv run python scripts/main.py --archive-batch Zoe51530_2025-12-16 --annotator qwen-max
-
-# 同步音频评分（Gemini Audio）
-uv run python scripts/main.py --archive-batch Zoe51530_2025-12-16 --annotator gemini-audio
+# 指定评分模型（sync）
+uv run python scripts/main.py --archive-batch Zoe51530_2025-12-16 --annotator gemini-3-pro-preview --exec-mode sync
+uv run python scripts/main.py --archive-batch Zoe51530_2025-12-16 --annotator qwen3-omni-flash --exec-mode sync
 
 # 只运行 ASR 阶段
 uv run python scripts/main.py --archive-batch Zoe51530_2025-12-16 --only qwen_asr
 
-# 运行 Gatekeeper 质检（独立工具）
-uv run python scripts/gatekeeper_standalone.py --archive-batch Zoe51530_2025-12-16
+# Qwen3-Omni 兼容测试入口（内部转调 main.py）
+uv run python test_qwen_omni.py --archive-batch Zoe51530_2025-12-16 --student Qihang
 ```
 
 ## 批处理服务端（FastAPI）
@@ -71,7 +69,7 @@ uv run python scripts/gatekeeper_standalone.py --archive-batch Zoe51530_2025-12-
 ### 启动服务
 
 ```bash
-uv run python3 scripts/batch_server.py
+uv run python scripts/batch_server.py
 ```
 
 ### 提交任务
@@ -176,9 +174,7 @@ archive/{batch_id}/{Student}/
 | `scripts/main.py` | DAG 主入口 |
 | `scripts/asr/qwen.py` | Qwen3-ASR (自动分段长音频) |
 | `scripts/asr/funasr.py` | FunASR 时间戳 |
-| `scripts/annotators/` | LLM 评分器 (Gemini/Qwen) |
-| `scripts/gatekeeper/` | 异常检测（独立工具） |
-| `scripts/gatekeeper_standalone.py` | Gatekeeper 独立工具入口 |
+| `scripts/annotators/` | LLM 评分器 (Gemini/Qwen Omni) |
 | `scripts/common/` | 通用工具 |
 
 ## 支持的模型
@@ -186,8 +182,7 @@ archive/{batch_id}/{Student}/
 | 评分器 | 模型 | 输入方式 |
 |--------|------|---------|
 | Gemini Audio | `gemini-3-pro-preview` (默认), `gemini-2.5-pro`, `gemini-2.0-flash` | 音频直传 |
-| Qwen3-Omni | `qwen-omni-flash` | 音频直传 (OpenAI 兼容) |
-| Qwen Text | `qwen-max`, `qwen-max-latest`, `qwen3-max` | 仅文本 |
+| Qwen3-Omni | `qwen3-omni-flash` | 音频直传 (OpenAI 兼容) |
 
 ## 命令参数
 
@@ -196,23 +191,11 @@ archive/{batch_id}/{Student}/
 | `--archive-batch` | 批次 ID (必须) |
 | `--student` | 指定学生 |
 | `--annotator` | 评分模型 |
+| `--exec-mode` | 执行模式: `sync` / `batch` |
 | `--only` | 只运行指定阶段: `audio`, `qwen_asr`, `cards` |
 | `--until` | 运行到指定阶段为止 |
 | `--dry-run` | 预览模式 |
 | `--force` | 强制重新处理 |
-
-### Gatekeeper 独立工具参数
-
-```bash
-# 检查所有学生
-python3 scripts/gatekeeper_standalone.py --archive-batch Zoe51530_2025-12-16
-
-# 检查单个学生
-python3 scripts/gatekeeper_standalone.py --archive-batch Zoe51530_2025-12-16 --student Qihang
-
-# 显示详细信息
-python3 scripts/gatekeeper_standalone.py --archive-batch Zoe51530_2025-12-16 --verbose
-```
 
 ## 性能
 

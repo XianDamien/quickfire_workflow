@@ -37,7 +37,9 @@ STATUS_FAILED = "failed"
 
 
 class JobRequest(BaseModel):
-    mode: Literal["asr", "audio"] = Field(..., description="处理模式：asr/audio")
+    exec_mode: Optional[Literal["batch"]] = Field(default="batch", description="执行模式（当前仅支持 batch）")
+    # 兼容旧字段：收到 mode=asr/audio 时自动映射为 exec_mode=batch 并告警
+    mode: Optional[str] = Field(default=None, description="[已废弃] 旧字段，请改用 exec_mode")
     archive_batch: str = Field(..., description="Archive batch 名称")
     students: Optional[Union[List[str], str]] = Field(default=None, description="学生列表")
     model: Optional[str] = Field(default=None, description="模型名称")
@@ -123,11 +125,8 @@ def _extract_manifest_path(line: str) -> Optional[str]:
 
 
 def _build_command(job: Dict[str, Any]) -> List[str]:
-    mode = job["mode"]
     archive_batch = job["archive_batch"]
-
-    script_name = "gemini_batch.py" if mode == "asr" else "gemini_batch_audio.py"
-    script_path = _PROJECT_ROOT / "scripts" / script_name
+    script_path = _PROJECT_ROOT / "scripts" / "gemini_batch_audio.py"
 
     cmd = ["uv", "run", "python3", "-u", str(script_path), "run", "--archive-batch", archive_batch]
 
@@ -233,6 +232,15 @@ def _run_job(job_id: str) -> None:
 def create_job(payload: JobRequest) -> JobResponse:
     _ensure_jobs_root()
 
+    # 兼容旧字段 mode=asr/audio → exec_mode=batch
+    if payload.mode and payload.mode in ("asr", "audio"):
+        import warnings
+        warnings.warn(
+            f"⚠️ 字段 mode='{payload.mode}' 已废弃，请改用 exec_mode='batch'",
+            DeprecationWarning,
+            stacklevel=1,
+        )
+
     job_id = uuid.uuid4().hex
     job_dir = _job_dir(job_id)
     job_dir.mkdir(parents=True, exist_ok=True)
@@ -244,7 +252,7 @@ def create_job(payload: JobRequest) -> JobResponse:
 
     job = {
         "job_id": job_id,
-        "mode": payload.mode,
+        "exec_mode": "batch",
         "archive_batch": payload.archive_batch,
         "students": students,
         "model": payload.model,
@@ -348,7 +356,7 @@ def list_jobs(
                 {
                     "job_id": job.get("job_id"),
                     "status": job.get("status"),
-                    "mode": job.get("mode"),
+                    "exec_mode": job.get("exec_mode", job.get("mode", "batch")),
                     "archive_batch": job.get("archive_batch"),
                     "created_at": job.get("created_at"),
                     "started_at": job.get("started_at"),

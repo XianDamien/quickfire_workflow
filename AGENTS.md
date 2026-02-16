@@ -1,18 +1,19 @@
-<!-- OPENSPEC:START -->
-# OpenSpec Instructions
+## 项目定位
 
-These instructions are for AI assistants working in this project.
+本项目主要用于 AI 模块的实验性研发与验证。
 
-Always open `@/openspec/AGENTS.md` when the request:
-- Mentions planning or proposals (words like proposal, spec, change, plan)
-- Introduces new capabilities, breaking changes, architecture shifts, or big performance/security work
-- Sounds ambiguous and you need the authoritative spec before coding
+### 当前重点
+- 新增并验证需要 AI 模块支撑的业务能力。
+- 开发和迭代 agentic AI（智能体）工作流与工具。
+- 对不同模型进行系统化评估与对比。
 
-Use `@/openspec/AGENTS.md` to learn:
-- How to create and apply change proposals
-- Spec format and conventions
-- Project structure and guidelines
+### 评估维度
+- 处理时间（延迟、吞吐等）。
+- 成本（单次调用、单任务、单流程成本）。
+- 准确度与响应质量。
 
-Keep this managed block so 'openspec update' can refresh the instructions.
+### 标准测试集
+- 建立并维护标准测试集，确保跨模型、跨版本评估可复现、可比较。
 
-<!-- OPENSPEC:END -->
+### 后续方向
+- 视质量、成本、隐私和时延目标，探索本地大模型微调。

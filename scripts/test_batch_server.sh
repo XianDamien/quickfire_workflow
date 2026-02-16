@@ -5,14 +5,13 @@ set -e
 
 BASE_URL="${BASE_URL:-http://127.0.0.1:8000}"
 BATCH="${1:-Zoe61330_2025-12-15}"
-MODE="${2:-asr}"
 
 echo "=========================================="
 echo "  批处理服务端测试"
 echo "=========================================="
 echo "  服务端: $BASE_URL"
 echo "  批次: $BATCH"
-echo "  模式: $MODE"
+echo "  模式: batch"
 echo "=========================================="
 
 # 1. 创建任务
@@ -20,7 +19,7 @@ echo ""
 echo "1. 创建任务..."
 RESPONSE=$(curl -s -X POST "$BASE_URL/jobs" \
   -H 'Content-Type: application/json' \
-  -d "{\"mode\":\"$MODE\",\"archive_batch\":\"$BATCH\"}")
+  -d "{\"exec_mode\":\"batch\",\"archive_batch\":\"$BATCH\"}")
 
 JOB_ID=$(echo "$RESPONSE" | jq -r '.job_id')
 echo "   ✓ Job ID: $JOB_ID"

@@ -1,20 +1,23 @@
 #!/usr/bin/env python3
 """
-Quickfire 一键入口 - DAG 依赖驱动的批处理工具
+Quickfire 一键入口 - DAG 依赖驱动的评测工具
 
 DAG 节点与依赖:
-    audio → qwen_asr → timestamps → cards
+    audio → qwen_asr → cards
 
 Provider 约束:
     - qwen_asr (text) 阶段: 只能使用 Text provider (QwenASRProvider)
-    - timestamps 阶段: 只能使用 Timestamp provider (FunASRTimestampProvider)
+
+运行模式:
+    - sync (默认): 适合 prompt 调试和快速验证
+    - batch: 适合批量生产与成本优化（统一音频直传）
 
 用法:
     python3 scripts/main.py --archive-batch Zoe41900_2025-09-08 --target cards
     python3 scripts/main.py --archive-batch Zoe41900_2025-09-08 --student Oscar --target cards
     python3 scripts/main.py --archive-batch Zoe41900_2025-09-08 --only qwen_asr
-    python3 scripts/main.py --archive-batch Zoe41900_2025-09-08 --until timestamps
     python3 scripts/main.py --archive-batch Zoe41900_2025-09-08 --target cards --annotator gemini-3-pro-preview
+    python3 scripts/main.py --archive-batch Zoe41900_2025-09-08 --target cards --annotator qwen3-omni-flash
 """
 
 import argparse
@@ -38,8 +41,6 @@ from scripts.common.env import load_env
 load_env()
 
 # DAG 节点定义（顺序即依赖顺序）
-# 注意：timestamps 阶段暂时从流程移除，代码保留供后续对比测试
-# 注意：gatekeeper 已从主流程移除，可作为独立工具运行
 DAG_STAGES = ["audio", "qwen_asr", "cards"]
 
 
@@ -65,16 +66,10 @@ def check_stage_complete(student_dir: Path, stage: str) -> bool:
         return find_audio_file(student_dir) is not None
     elif stage == "qwen_asr":
         return (student_dir / "2_qwen_asr.json").exists()
-    elif stage == "gatekeeper":
-        # gatekeeper 已从主流程移除，但仍保留检查逻辑供独立使用
-        # 始终返回 False，每次都重新检查
-        return False
-    elif stage == "timestamps":
-        return (student_dir / "3_asr_timestamp.json").exists()
     elif stage == "cards":
         # cards 阶段：始终返回 False，每次都生成新的 run
         # 这样可以支持多次运行来对比不同模型/prompt 的效果
-        # 如果真的想跳过，使用 --only qwen_asr 或 --until timestamps
+        # 如果真的想跳过，使用 --only qwen_asr
         return False
     return False
 
@@ -118,23 +113,6 @@ def load_batch_metadata(archive_batch: str) -> Dict[str, Any]:
             return json.load(f)
     except Exception:
         return {}
-
-
-def get_student_oss_url(metadata: Dict[str, Any], student_name: str) -> Optional[str]:
-    """
-    从 metadata 中获取学生的 OSS URL
-
-    Args:
-        metadata: batch metadata
-        student_name: 学生名称
-
-    Returns:
-        OSS URL 或 None
-    """
-    for item in metadata.get('items', []):
-        if item.get('student') == student_name:
-            return item.get('oss_url')
-    return None
 
 
 def run_qwen_asr(
@@ -206,179 +184,6 @@ def run_qwen_asr(
         return False
 
 
-def run_gatekeeper(
-    archive_batch: str,
-    student_name: str,
-    force: bool = False,
-    dry_run: bool = False,
-    verbose: bool = False
-) -> tuple:
-    """
-    执行 gatekeeper 阶段
-
-    使用 Qwen Plus 模型检测题库选择错误和音频异常
-    输出: (success, ink_value) 元组
-    - success: 始终返回 True（gatekeeper 不再阻塞 pipeline）
-    - ink_value: 异常标记 ("normal", "wrong_questionbank", "audio_anomaly")
-
-    Args:
-        archive_batch: 批次名称
-        student_name: 学生名称
-        force: 是否强制重新处理（gatekeeper 始终执行）
-        dry_run: 是否只打印不执行
-        verbose: 是否显示详细信息
-
-    Returns:
-        (True, ink_value) - 始终成功，ink_value 用于传递给 annotator
-    """
-    student_dir = ARCHIVE_DIR / archive_batch / student_name
-
-    # 检查依赖文件
-    qwen_asr_path = student_dir / "2_qwen_asr.json"
-    if not qwen_asr_path.exists():
-        print(f"  [✗] 缺少 ASR 文件: {qwen_asr_path}")
-        return False, "audio_anomaly"
-
-    # 加载 metadata 获取题库
-    metadata = load_batch_metadata(archive_batch)
-    question_bank_path = resolve_question_bank(archive_batch, metadata)
-    if not question_bank_path:
-        print(f"  [✗] 未找到题库文件")
-        return False, "audio_anomaly"
-
-    if dry_run:
-        print(f"  [dry-run] gatekeeper 阶段")
-        print(f"    ASR 文件: {qwen_asr_path}")
-        print(f"    题库路径: {question_bank_path}")
-        print(f"    模型: qwen-plus")
-        return True, "normal"
-
-    print(f"  [执行] gatekeeper -> {student_name}")
-
-    try:
-        # 导入 gatekeeper
-        from scripts.gatekeeper import QwenPlusGatekeeper, GatekeeperInput
-
-        # 加载题库内容
-        with open(question_bank_path, "r", encoding="utf-8") as f:
-            question_bank_content = f.read()
-
-        # 加载 ASR 文本（仅保留文本，过滤元数据）
-        from scripts.common.asr import extract_qwen_asr_text
-        with open(qwen_asr_path, "r", encoding="utf-8") as f:
-            asr_data = json.load(f)
-        asr_text = extract_qwen_asr_text(asr_data)
-
-        # 创建输入
-        gatekeeper_input = GatekeeperInput(
-            archive_batch=archive_batch,
-            student_name=student_name,
-            question_bank_path=question_bank_path,
-            qwen_asr_path=qwen_asr_path,
-            verbose=verbose,
-            question_bank_content=question_bank_content,
-            asr_text=asr_text,
-        )
-
-        # 执行检查
-        gatekeeper = QwenPlusGatekeeper()
-        result = gatekeeper.check(gatekeeper_input)
-
-        # 显示结果
-        if result.is_pass():
-            print(f"  [✓] gatekeeper PASS - 质检通过 ({result.format_response_time()})")
-        else:
-            print(f"  [!] gatekeeper FAIL - {result.issue_type} ({result.format_response_time()})")
-            print(f"      问题类型: {result.issue_type}")
-            if result.issue_type == "WRONG_QUESTIONBANK":
-                print(f"      建议: 检查题库选择是否正确（翻译方向或词汇内容）")
-            elif result.issue_type == "AUDIO_ANOMALY":
-                print(f"      建议: 检查音频文件是否完整，是否包含老师声音")
-
-        # 始终返回 True，不再阻塞 pipeline
-        return True
-
-    except Exception as e:
-        print(f"  [✗] gatekeeper 失败: {e}")
-        # 失败时也返回 True（不阻塞）
-        return True
-
-
-def run_timestamps(
-    archive_batch: str,
-    student_name: str,
-    force: bool = False,
-    dry_run: bool = False
-) -> bool:
-    """
-    执行 timestamps 阶段
-
-    使用 Timestamp provider: FunASRTimestampProvider
-    输出: 3_asr_timestamp.json
-
-    Args:
-        archive_batch: 批次名称
-        student_name: 学生名称
-        force: 是否强制重新处理
-        dry_run: 是否只打印不执行
-
-    Returns:
-        True=成功, False=失败
-    """
-    student_dir = ARCHIVE_DIR / archive_batch / student_name
-
-    # 查找音频文件
-    audio_file = find_audio_file(student_dir)
-    if not audio_file:
-        print(f"  [✗] 缺少音频文件: {student_dir}/1_input_audio.*")
-        return False
-
-    # 加载 metadata 获取题库和 OSS URL
-    metadata = load_batch_metadata(archive_batch)
-    vocab_file = resolve_question_bank(archive_batch, metadata)
-    oss_url = get_student_oss_url(metadata, student_name)
-
-    # 输出路径
-    output_file = student_dir / "3_asr_timestamp.json"
-
-    if dry_run:
-        print(f"  [dry-run] timestamps 阶段")
-        print(f"    音频路径: {audio_file}")
-        print(f"    题库路径: {vocab_file or '(无)'}")
-        print(f"    OSS URL: {oss_url or '(无)'}")
-        print(f"    输出路径: {output_file}")
-        print(f"    Provider: FunASRTimestampProvider (Timestamp)")
-        return True
-
-    print(f"  [执行] timestamps -> {student_name}")
-
-    try:
-        # 直接调用 Timestamp provider
-        from scripts.asr.funasr import FunASRTimestampProvider
-
-        provider = FunASRTimestampProvider()
-        success = provider.transcribe_and_save(
-            audio_source=str(audio_file),
-            output_dir=student_dir,
-            student_name=student_name,
-            vocabulary_path=str(vocab_file) if vocab_file else None,
-            output_filename="3_asr_timestamp.json",
-            oss_url=oss_url,
-            force=force
-        )
-
-        if success:
-            print(f"  [✓] timestamps 完成 -> 3_asr_timestamp.json")
-            return True
-        else:
-            print(f"  [✗] timestamps 失败")
-            return False
-
-    except Exception as e:
-        print(f"  [✗] timestamps 失败: {e}")
-        return False
-
-
 def run_stage(stage: str, archive_batch: str, student_name: str,
               force: bool = False, annotator: str = None,
               dry_run: bool = False, annotator_kwargs: dict = None) -> tuple:
@@ -409,18 +214,6 @@ def run_stage(stage: str, archive_batch: str, student_name: str,
         # Text provider: QwenASRProvider
         success = run_qwen_asr(archive_batch, student_name, force, dry_run)
         return (success, None) if success else (False, "qwen_asr 失败")
-
-    elif stage == "gatekeeper":
-        # Gatekeeper 已从主流程移除
-        # 如果需要运行，请使用独立的 gatekeeper 工具
-        error_msg = "gatekeeper 已从主流程移除，请使用独立工具运行"
-        print(f"  [✗] {error_msg}")
-        return False, error_msg
-
-    elif stage == "timestamps":
-        # Timestamp provider: FunASRTimestampProvider
-        success = run_timestamps(archive_batch, student_name, force, dry_run)
-        return (success, None) if success else (False, "timestamps 失败")
 
     elif stage == "cards":
         return run_annotation(archive_batch, student_name, annotator, force, dry_run, annotator_kwargs)
@@ -494,7 +287,7 @@ def resolve_stages(target: Optional[str], only: Optional[str], until: Optional[s
 
     --target cards: 执行所有阶段直到 cards（包括）
     --only qwen_asr: 只执行 qwen_asr
-    --until timestamps: 执行到 timestamps 为止（包括）
+    --until qwen_asr: 执行到 qwen_asr 为止（包括）
     """
     if only:
         if only not in DAG_STAGES:
@@ -522,7 +315,7 @@ def resolve_stages(target: Optional[str], only: Optional[str], until: Optional[s
 
 def main():
     parser = argparse.ArgumentParser(
-        description='Quickfire 一键入口 - DAG 依赖驱动的批处理工具',
+        description='Quickfire 一键入口 - DAG 依赖驱动的评测工具',
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 示例用法:
@@ -535,11 +328,15 @@ def main():
   # 只执行某个阶段
   python3 scripts/main.py --archive-batch Zoe41900_2025-09-08 --only qwen_asr
 
-  # 执行到某个阶段
-  python3 scripts/main.py --archive-batch Zoe41900_2025-09-08 --until timestamps
-
-  # 指定 annotator
+  # 指定 annotator（音频模型）
   python3 scripts/main.py --archive-batch Zoe41900_2025-09-08 --annotator gemini-3-pro-preview
+  python3 scripts/main.py --archive-batch Zoe41900_2025-09-08 --annotator qwen3-omni-flash
+
+  # 明确使用 sync 模式（默认）
+  python3 scripts/main.py --archive-batch Zoe41900_2025-09-08 --exec-mode sync
+
+  # batch 模式（统一音频直传）
+  python3 scripts/main.py --archive-batch Zoe41900_2025-09-08 --exec-mode batch
 
   # 强制重新处理
   python3 scripts/main.py --archive-batch Zoe41900_2025-09-08 --force
@@ -614,17 +411,19 @@ DAG 阶段: audio → qwen_asr → cards
         help='继续处理其他学生即使某个学生失败（默认：严格失败模式）'
     )
 
-    # Batch API 模式
+    parser.add_argument(
+        '--exec-mode',
+        type=str,
+        default='sync',
+        choices=['sync', 'batch'],
+        help='执行模式（默认: sync）'
+    )
+
+    # --batch 是 --exec-mode batch 的简写
     parser.add_argument(
         '--batch',
         action='store_true',
-        help='使用 Gemini Batch API（ASR 文本版，50%% 成本节省）'
-    )
-
-    parser.add_argument(
-        '--batch-audio',
-        action='store_true',
-        help='使用 Gemini Batch API（音频版，最高准确率）'
+        help='使用 Batch API（等价于 --exec-mode batch）'
     )
 
     # Gemini 参数配置
@@ -652,6 +451,12 @@ DAG 阶段: audio → qwen_asr → cards
         help='HTTP 请求超时（毫秒，默认：600000 即 10 分钟，最小 10000，可通过环境变量 GEMINI_HTTP_TIMEOUT 设置）'
     )
 
+    parser.add_argument(
+        '--enable-thinking',
+        action='store_true',
+        help='启用 Qwen3-Omni 思考模式（仅对 qwen3-omni 系列生效）'
+    )
+
     args = parser.parse_args()
 
     # 检测 --target 是否是用户显式设置的
@@ -677,24 +482,23 @@ DAG 阶段: audio → qwen_asr → cards
         annotator_kwargs['retry_delay'] = args.retry_delay
     if args.http_timeout is not None:
         annotator_kwargs['http_timeout'] = args.http_timeout
+    if args.enable_thinking:
+        annotator_kwargs['enable_thinking'] = True
 
     # 确定运行模式
-    batch_mode = None
-    if args.batch:
-        batch_mode = "asr"
-    elif args.batch_audio:
-        batch_mode = "audio"
+    batch_mode = args.exec_mode == "batch" or args.batch
 
     print(f"=" * 60)
     print(f"Quickfire Pipeline")
     print(f"=" * 60)
     print(f"Archive: {args.archive_batch}")
     print(f"学生数: {len(students)}")
+    print(f"执行模式: {args.exec_mode}")
     if batch_mode:
         # Batch 模式：只执行前置阶段，然后统一 batch 处理
         pre_stages = [s for s in stages if s != "cards"]
         print(f"阶段: {' → '.join(pre_stages)} → [BATCH]")
-        print(f"Batch 模式: {'ASR 文本版' if batch_mode == 'asr' else '音频版'}")
+        print("Batch 模式: 统一音频直传")
     else:
         print(f"阶段: {' → '.join(stages)}")
     print(f"Annotator: {args.annotator}")
@@ -764,11 +568,8 @@ DAG 阶段: audio → qwen_asr → cards
         print(f"[Phase 2] 调用 Gemini Batch API")
         print(f"-" * 60)
 
-        # 动态导入对应的 batch 模块
-        if batch_mode == "asr":
-            from scripts.gemini_batch import cmd_run
-        else:
-            from scripts.gemini_batch_audio import cmd_run
+        # 统一音频直传 batch 实现
+        from scripts.gemini_batch_audio import cmd_run
 
         batch_args = argparse.Namespace(
             archive_batch=args.archive_batch,

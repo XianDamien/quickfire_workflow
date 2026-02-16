@@ -9,9 +9,6 @@ scripts/gemini_batch_audio.py - Gemini Batch API 音频版批量处理脚本
     uv run python scripts/gemini_batch_audio.py submit --archive-batch <name>
     uv run python scripts/gemini_batch_audio.py fetch --manifest <path>
     uv run python scripts/gemini_batch_audio.py run --archive-batch <name>
-
-对比基准:
-    uv run python scripts/gemini_batch.py run --archive-batch <name>  # ASR 版本
 """
 
 import argparse

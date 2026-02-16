@@ -21,9 +21,7 @@ scripts/annotators - Annotator 模块
     - gemini-3-pro-preview (默认，音频模式)
     - gemini-2.5-pro
     - gemini-2.0-flash
-    - gemini-audio (同步音频模式)
-    - qwen-omni-flash (Qwen3-Omni 音频模式)
-    - qwen-max
+    - qwen3-omni-flash (Qwen3-Omni 音频模式)
     - (预留) openai:gpt-4.1
 """
 
@@ -52,11 +50,10 @@ def get_annotator(name: str = None, **kwargs) -> BaseAnnotator:
 
     Args:
         name: annotator 名称，支持:
+            - gemini-3-pro-preview (默认)
             - gemini-2.5-pro
             - gemini-2.0-flash
-            - gemini (别名，默认使用 gemini-2.5-pro)
-            - qwen-max / qwen-max-latest / qwen3-max
-            - qwen:model-name
+            - qwen3-omni-flash
             - openai:model-name (预留)
         **kwargs: 传递给 annotator 构造函数的参数
 
@@ -69,10 +66,6 @@ def get_annotator(name: str = None, **kwargs) -> BaseAnnotator:
     # 使用默认值
     if name is None:
         name = DEFAULT_ANNOTATOR
-
-    if name == "gemini-audio":
-        from .gemini_audio import GeminiAudioAnnotator
-        return GeminiAudioAnnotator(name_override="gemini-audio", **kwargs)
 
     # 解析 provider:model 格式
     if ":" in name:
@@ -111,19 +104,15 @@ def get_annotator(name: str = None, **kwargs) -> BaseAnnotator:
 
     # Qwen 系列
     if provider == "qwen":
-        # 检查是否是 Qwen3-Omni 系列
+        # Qwen3-Omni 系列
         if "omni" in model:
             from .qwen_omni import Qwen3OmniAnnotator
             return Qwen3OmniAnnotator(model=model, **kwargs)
 
-        # 普通 Qwen 文本模型
-        from .qwen import QwenAnnotator
-
-        # 规范化模型名称
-        if model in ["qwen", "qwen-max"]:
-            model = "qwen-max"
-
-        return QwenAnnotator(model=model, **kwargs)
+        raise ValueError(
+            f"不支持的 Qwen 模型: {name}\n"
+            f"可用的 Qwen annotator: qwen3-omni-flash"
+        )
 
     # 检查注册表
     if name in _REGISTRY:
@@ -131,7 +120,7 @@ def get_annotator(name: str = None, **kwargs) -> BaseAnnotator:
 
     raise ValueError(
         f"不支持的 annotator: {name}\n"
-        f"可用的 annotator: gemini-2.5-pro, gemini-2.0-flash, gemini-audio"
+        f"可用的 annotator: gemini-3-pro-preview, gemini-2.5-pro, gemini-2.0-flash, qwen3-omni-flash"
     )
 
 
@@ -146,11 +135,7 @@ def list_annotators() -> list:
         "gemini-3-pro-preview",  # 默认
         "gemini-2.5-pro",
         "gemini-2.0-flash",
-        "gemini-audio",
-        "qwen-max",
-        "qwen-max-latest",
-        "qwen3-max",
-        "qwen-omni-flash",  # 新增
+        "qwen3-omni-flash",
     ]
     custom = list(_REGISTRY.keys())
     return builtin + custom

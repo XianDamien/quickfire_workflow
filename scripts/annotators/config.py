@@ -55,16 +55,9 @@ AVAILABLE_GEMINI_MODELS = [
     "gemini-2.0-flash-lite",
 ]
 
-# 可用的 Qwen 模型列表
-AVAILABLE_QWEN_MODELS = [
-    "qwen-max",
-    "qwen-max-latest",
-    "qwen3-max",
-]
-
 # 可用的 Qwen3-Omni 模型列表
-AVAILABLE_QWEN_OMNI_MODELS = [
-    "qwen-omni-flash",
+AVAILABLE_QWEN3_OMNI_MODELS = [
+    "qwen3-omni-flash",
 ]
 
 # 模型最大输出 token 上限映射
@@ -75,9 +68,11 @@ MODEL_MAX_OUTPUT_TOKENS = {
     "qwen-max": 8192,
     "qwen-max-latest": 8192,
     "qwen3-max": 8192,
-    "qwen-omni-flash": 8192,
-    "qwen-omni": 8192,  # 前缀匹配
     "qwen": 8192,  # 默认 Qwen 系列
+
+    # Qwen3-Omni 系列（最大输出: 16,384 Token）
+    "qwen3-omni-flash": 16384,
+    "qwen3-omni": 16384,  # 前缀匹配
 
     # Gemini 3 系列（支持更大输出）
     "gemini-3-": 64000,
@@ -93,10 +88,13 @@ MODEL_MAX_OUTPUT_TOKENS = {
 }
 
 # Qwen3-Omni 文件限制配置
-QWEN_OMNI_LIMITS = {
-    "qwen-omni-flash": {
+QWEN3_OMNI_LIMITS = {
+    "qwen3-omni-flash": {
         "max_file_size_mb": 100,
         "max_duration_minutes": 20,
+        "max_context_tokens": 65536,  # 最大上下文长度
+        "max_input_tokens": 49152,     # 最大输入限制（非思考模式）
+        "max_output_tokens": 16384,    # 最大输出限制
     }
 }
 
