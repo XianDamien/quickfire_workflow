@@ -1,77 +1,112 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
-为缺少 OSS URL 的学生上传音频到 OSS
+预处理 + OSS 上传工具
+
+Workflow:
+1) preprocess: 视频/音频 -> archive/{batch}/{student}/1_input_audio.mp3
+2) upload: 上传 1_input_audio.mp3 到阿里云 OSS，并更新 metadata.json
+3) run: preprocess + upload 串联执行
 """
 
-import os
+from __future__ import annotations
+
+import argparse
 import json
+import os
+import re
+import shutil
+import subprocess
+import sys
+from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-import oss2
+from typing import Dict, Iterable, List, Optional
+
 from dotenv import load_dotenv
 
-# 加载环境变量
-SCRIPT_DIR = Path(__file__).parent
-load_dotenv(SCRIPT_DIR / ".env")
 
-# OSS配置
+SCRIPT_DIR = Path(__file__).parent.resolve()
+PROJECT_ROOT = SCRIPT_DIR.parent
+ARCHIVE_DIR = PROJECT_ROOT / "archive"
+
+load_dotenv(SCRIPT_DIR / ".env")
+load_dotenv(PROJECT_ROOT / ".env")
+
 OSS_ACCESS_KEY_ID = os.getenv("OSS_ACCESS_KEY_ID")
 OSS_ACCESS_KEY_SECRET = os.getenv("OSS_ACCESS_KEY_SECRET")
 OSS_ENDPOINT = os.getenv("OSS_ENDPOINT", "").strip()
 OSS_BUCKET_NAME = os.getenv("OSS_BUCKET_NAME", "").strip()
 OSS_PUBLIC_BASE_URL = os.getenv("OSS_PUBLIC_BASE_URL", "").strip()
 
-# 项目路径
-PROJECT_ROOT = SCRIPT_DIR.parent
-ARCHIVE_DIR = PROJECT_ROOT / "archive"
+MEDIA_EXTS = {
+    ".mp4",
+    ".mov",
+    ".mkv",
+    ".avi",
+    ".webm",
+    ".m4a",
+    ".wav",
+    ".flac",
+    ".ogg",
+    ".aac",
+    ".mp3",
+}
+
+EXCLUDED_DIRS = {"reports", "_shared_context", "runs"}
 
 
-def upload_to_oss(local_path: Path, oss_key: str) -> str:
-    """上传文件到OSS，返回公开URL"""
-    auth = oss2.Auth(OSS_ACCESS_KEY_ID, OSS_ACCESS_KEY_SECRET)
-    bucket = oss2.Bucket(auth, OSS_ENDPOINT, OSS_BUCKET_NAME)
-
-    bucket.put_object_from_file(oss_key, str(local_path))
-
-    return f"{OSS_PUBLIC_BASE_URL}/{oss_key}"
+@dataclass
+class StudentMedia:
+    student: str
+    media_path: Path
 
 
-def create_or_update_metadata(batch_dir: Path, batch_id: str, student_name: str, oss_url: str, progress: str):
-    """创建或更新 metadata.json"""
+def now_iso() -> str:
+    return datetime.now().isoformat()
+
+
+def parse_students_arg(value: Optional[str]) -> Optional[List[str]]:
+    if not value:
+        return None
+    parts = [x.strip() for x in value.split(",")]
+    students = [x for x in parts if x]
+    return students or None
+
+
+def normalize_name(value: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "", value.lower())
+
+
+def parse_batch_id(batch_id: str) -> tuple[str, str]:
+    m = re.match(r"^([A-Za-z0-9]+)_(\d{4}-\d{2}-\d{2})$", batch_id)
+    if not m:
+        raise ValueError(f"batch_id 格式不合法: {batch_id}（应为 ClassCode_YYYY-MM-DD）")
+    return m.group(1), m.group(2)
+
+
+def read_metadata(batch_dir: Path) -> Dict:
     metadata_path = batch_dir / "metadata.json"
+    if not metadata_path.exists():
+        return {}
+    with open(metadata_path, "r", encoding="utf-8") as f:
+        return json.load(f)
 
-    # 解析 batch_id
-    parts = batch_id.split("_")
-    class_code = parts[0]
-    date = parts[1]
 
-    if metadata_path.exists():
-        # 更新已有 metadata
-        with open(metadata_path, 'r', encoding='utf-8') as f:
-            metadata = json.load(f)
+def write_metadata(batch_dir: Path, metadata: Dict) -> None:
+    metadata_path = batch_dir / "metadata.json"
+    metadata_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(metadata_path, "w", encoding="utf-8") as f:
+        json.dump(metadata, f, indent=2, ensure_ascii=False)
 
-        # 查找对应的 item
-        found = False
-        for item in metadata.get("items", []):
-            if item["student"] == student_name:
-                item["oss_url"] = oss_url
-                found = True
-                break
 
-        if not found:
-            # 添加新 item
-            file_id = f"{batch_id}_{progress}_{student_name}"
-            metadata.setdefault("items", []).append({
-                "file_id": file_id,
-                "student": student_name,
-                "local_path": f"archive/{batch_id}/{student_name}/1_input_audio.mp3",
-                "oss_url": oss_url
-            })
+def ensure_metadata_base(batch_id: str, batch_dir: Path, progress: Optional[str]) -> Dict:
+    class_code, date = parse_batch_id(batch_id)
+    metadata = read_metadata(batch_dir)
 
-        metadata["updated_at"] = datetime.now().isoformat()
-    else:
-        # 创建新 metadata
-        file_id = f"{batch_id}_{progress}_{student_name}"
+    if not metadata:
+        if not progress:
+            raise ValueError("metadata.json 不存在时，必须通过 --progress 指定课程进度")
         metadata = {
             "schema_version": 1,
             "dataset_id": batch_id,
@@ -79,85 +114,445 @@ def create_or_update_metadata(batch_dir: Path, batch_id: str, student_name: str,
             "date": date,
             "progress": progress,
             "question_bank_path": f"questionbank/{progress}.json",
-            "items": [{
-                "file_id": file_id,
-                "student": student_name,
-                "local_path": f"archive/{batch_id}/{student_name}/1_input_audio.mp3",
-                "oss_url": oss_url
-            }],
-            "created_at": datetime.now().isoformat(),
-            "updated_at": datetime.now().isoformat(),
-            "notes": "OSS URL added by upload_missing_audio_to_oss.py"
+            "items": [],
+            "created_at": now_iso(),
+            "updated_at": now_iso(),
+            "notes": "generated by upload_missing_audio_to_oss.py",
         }
+        return metadata
 
-    with open(metadata_path, 'w', encoding='utf-8') as f:
-        json.dump(metadata, f, indent=2, ensure_ascii=False)
-
-    return metadata_path
-
-
-def process_batch(batch_id: str, student_name: str, progress: str):
-    """处理单个批次的学生"""
-    batch_dir = ARCHIVE_DIR / batch_id
-    student_dir = batch_dir / student_name
-    audio_file = student_dir / "1_input_audio.mp3"
-
-    if not audio_file.exists():
-        print(f"  ❌ 音频文件不存在: {audio_file}")
-        return False
-
-    # 构造 file_id 和 OSS key
-    file_id = f"{batch_id}_{progress}_{student_name}"
-    oss_key = f"audio/{file_id}.mp3"
-
-    print(f"  上传: {oss_key}")
-
-    try:
-        oss_url = upload_to_oss(audio_file, oss_key)
-        print(f"  ✅ OSS URL: {oss_url}")
-
-        # 更新 metadata.json
-        metadata_path = create_or_update_metadata(batch_dir, batch_id, student_name, oss_url, progress)
-        print(f"  ✅ 已更新 metadata: {metadata_path}")
-
-        return True
-    except Exception as e:
-        print(f"  ❌ 上传失败: {e}")
-        return False
+    if progress:
+        metadata["progress"] = progress
+        metadata["question_bank_path"] = f"questionbank/{progress}.json"
+    metadata.setdefault("schema_version", 1)
+    metadata.setdefault("dataset_id", batch_id)
+    metadata.setdefault("class_code", class_code)
+    metadata.setdefault("date", date)
+    metadata.setdefault("items", [])
+    metadata.setdefault("created_at", now_iso())
+    metadata["updated_at"] = now_iso()
+    return metadata
 
 
-def main():
-    # 待处理的批次
-    batches = [
-        ("Zoe61330_2025-12-29", "Cici", "130-28-EC"),
-        ("Zoe61330_2025-12-29", "Lucy", "130-28-EC"),
-        ("Zoe61330_2025-12-29", "Apollo", "130-28-EC"),
-        ("Zoe61330_2025-12-30", "Apollo", "130-27-EC"),
-        ("Zoe61330_2025-12-30", "Jessie", "130-27-EC"),
-        ("Zoe61330_2025-12-30", "Noreen", "130-27-EC"),
-        ("Zoe61330_2025-12-30", "Cici", "130-27-EC"),
+def list_students_from_batch(batch_dir: Path, metadata: Dict) -> List[str]:
+    students: List[str] = []
+
+    for item in metadata.get("items", []):
+        name = str(item.get("student", "")).strip()
+        if name and name not in students:
+            students.append(name)
+
+    if students:
+        return students
+
+    if batch_dir.exists():
+        for item in sorted(batch_dir.iterdir()):
+            if item.is_dir() and item.name not in EXCLUDED_DIRS and not item.name.startswith("."):
+                students.append(item.name)
+    return students
+
+
+def collect_media_files(source_dir: Path) -> List[Path]:
+    files = []
+    for p in sorted(source_dir.iterdir()):
+        if p.is_file() and p.suffix.lower() in MEDIA_EXTS:
+            files.append(p)
+    return files
+
+
+def structured_student_from_filename(path: Path) -> Optional[str]:
+    stem = path.stem
+    m = re.match(r"^[A-Za-z0-9]+_\d{4}-\d{2}-\d{2}_[A-Za-z0-9-]+_(.+)$", stem)
+    if not m:
+        return None
+    student = m.group(1).strip()
+    return student or None
+
+
+def resolve_student_media(source_files: List[Path], students: Iterable[str]) -> tuple[List[StudentMedia], List[str]]:
+    normalized_to_files: Dict[str, List[Path]] = {}
+    for f in source_files:
+        key = normalize_name(f.stem)
+        normalized_to_files.setdefault(key, []).append(f)
+
+        structured = structured_student_from_filename(f)
+        if structured:
+            skey = normalize_name(structured)
+            normalized_to_files.setdefault(skey, []).append(f)
+
+    resolved: List[StudentMedia] = []
+    missing: List[str] = []
+
+    for student in students:
+        key = normalize_name(student)
+        candidates = normalized_to_files.get(key, [])
+        if not candidates:
+            candidates = [f for f in source_files if key and key in normalize_name(f.stem)]
+
+        if not candidates:
+            missing.append(student)
+            continue
+
+        chosen = sorted(set(candidates))[0]
+        resolved.append(StudentMedia(student=student, media_path=chosen))
+
+    return resolved, missing
+
+
+def ensure_oss_env() -> None:
+    missing = []
+    if not OSS_ACCESS_KEY_ID:
+        missing.append("OSS_ACCESS_KEY_ID")
+    if not OSS_ACCESS_KEY_SECRET:
+        missing.append("OSS_ACCESS_KEY_SECRET")
+    if not OSS_ENDPOINT:
+        missing.append("OSS_ENDPOINT")
+    if not OSS_BUCKET_NAME:
+        missing.append("OSS_BUCKET_NAME")
+    if not OSS_PUBLIC_BASE_URL:
+        missing.append("OSS_PUBLIC_BASE_URL")
+    if missing:
+        raise RuntimeError(f"缺少 OSS 配置: {', '.join(missing)}")
+
+
+def upload_to_oss(local_path: Path, oss_key: str) -> str:
+    import oss2
+
+    ensure_oss_env()
+    auth = oss2.Auth(OSS_ACCESS_KEY_ID, OSS_ACCESS_KEY_SECRET)
+    bucket = oss2.Bucket(auth, OSS_ENDPOINT, OSS_BUCKET_NAME)
+    bucket.put_object_from_file(oss_key, str(local_path))
+    return f"{OSS_PUBLIC_BASE_URL}/{oss_key}"
+
+
+def ffmpeg_convert_to_mp3(input_path: Path, output_path: Path, ffmpeg_bin: str, overwrite: bool) -> None:
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    cmd = [
+        ffmpeg_bin,
+        "-hide_banner",
+        "-loglevel",
+        "error",
+        "-y" if overwrite else "-n",
+        "-i",
+        str(input_path),
+        "-vn",
+        "-ac",
+        "1",
+        "-ar",
+        "16000",
+        "-codec:a",
+        "libmp3lame",
+        "-q:a",
+        "4",
+        str(output_path),
     ]
+    subprocess.run(cmd, check=True)
 
-    print("="*60)
-    print("上传缺失的音频文件到 OSS")
-    print("="*60)
+
+def update_metadata_item(
+    metadata: Dict,
+    batch_id: str,
+    student: str,
+    progress: str,
+    local_path: Optional[str] = None,
+    oss_url: Optional[str] = None,
+) -> None:
+    item = None
+    for candidate in metadata.get("items", []):
+        if candidate.get("student") == student:
+            item = candidate
+            break
+
+    if item is None:
+        item = {
+            "file_id": f"{batch_id}_{progress}_{student}",
+            "student": student,
+        }
+        metadata.setdefault("items", []).append(item)
+
+    if local_path:
+        item["local_path"] = local_path
+    if oss_url:
+        item["oss_url"] = oss_url
+    if "file_id" not in item:
+        item["file_id"] = f"{batch_id}_{progress}_{student}"
+
+
+def cmd_preprocess(args: argparse.Namespace) -> int:
+    batch_id = args.archive_batch
+    batch_dir = ARCHIVE_DIR / batch_id
+    source_dir = Path(args.source_dir).expanduser().resolve()
+
+    if not source_dir.exists():
+        print(f"❌ source_dir 不存在: {source_dir}")
+        return 1
+
+    ffmpeg_bin = args.ffmpeg_bin or shutil.which("ffmpeg")
+    if not ffmpeg_bin:
+        print("❌ 未找到 ffmpeg，请安装后重试（或通过 --ffmpeg-bin 指定路径）")
+        return 1
+
+    metadata = ensure_metadata_base(batch_id, batch_dir, args.progress)
+    progress = metadata.get("progress")
+    if not progress:
+        print("❌ 无法确定 progress，请通过 --progress 指定")
+        return 1
+
+    requested_students = parse_students_arg(args.students)
+    students = requested_students or list_students_from_batch(batch_dir, metadata)
+    if not students:
+        print("❌ 未找到学生列表，请通过 --students 指定")
+        return 1
+
+    source_files = collect_media_files(source_dir)
+    if not source_files:
+        print(f"❌ source_dir 下没有可处理媒体文件: {source_dir}")
+        return 1
+
+    mappings, missing = resolve_student_media(source_files, students)
+    if missing:
+        print("❌ 以下学生未匹配到媒体文件:")
+        for name in missing:
+            print(f"  - {name}")
+        return 1
+
+    print("=" * 60)
+    print("预处理: 视频/音频 -> 1_input_audio.mp3")
+    print("=" * 60)
+    print(f"batch: {batch_id}")
+    print(f"source: {source_dir}")
+    print(f"students: {len(mappings)}")
+    print("")
 
     success = 0
     failed = 0
 
-    for batch_id, student_name, progress in batches:
-        print(f"\n处理: {batch_id} / {student_name}")
-        if process_batch(batch_id, student_name, progress):
+    for m in mappings:
+        student_dir = batch_dir / m.student
+        output_audio = student_dir / "1_input_audio.mp3"
+        rel_local_path = f"archive/{batch_id}/{m.student}/1_input_audio.mp3"
+
+        print(f"[{m.student}]")
+        print(f"  source: {m.media_path.name}")
+        print(f"  target: {output_audio}")
+
+        if args.dry_run:
+            update_metadata_item(
+                metadata=metadata,
+                batch_id=batch_id,
+                student=m.student,
+                progress=progress,
+                local_path=rel_local_path,
+            )
+            print("  dry-run: 跳过转码")
             success += 1
-        else:
+            continue
+
+        try:
+            student_dir.mkdir(parents=True, exist_ok=True)
+            ffmpeg_convert_to_mp3(
+                input_path=m.media_path,
+                output_path=output_audio,
+                ffmpeg_bin=ffmpeg_bin,
+                overwrite=args.overwrite,
+            )
+            update_metadata_item(
+                metadata=metadata,
+                batch_id=batch_id,
+                student=m.student,
+                progress=progress,
+                local_path=rel_local_path,
+            )
+            print("  ✅ 转码完成")
+            success += 1
+        except Exception as e:
+            print(f"  ❌ 转码失败: {e}")
             failed += 1
 
-    print("\n" + "="*60)
-    print("完成统计")
-    print("="*60)
-    print(f"  成功: {success}")
-    print(f"  失败: {failed}")
+    metadata["updated_at"] = now_iso()
+    if not args.dry_run:
+        write_metadata(batch_dir, metadata)
+
+    print("")
+    print("=" * 60)
+    print("预处理完成")
+    print("=" * 60)
+    print(f"成功: {success}")
+    print(f"失败: {failed}")
+
+    return 0 if failed == 0 else 1
+
+
+def cmd_upload(args: argparse.Namespace) -> int:
+    batch_id = args.archive_batch
+    batch_dir = ARCHIVE_DIR / batch_id
+    metadata = ensure_metadata_base(batch_id, batch_dir, args.progress)
+    progress = metadata.get("progress")
+    if not progress:
+        print("❌ 无法确定 progress，请通过 --progress 指定")
+        return 1
+
+    requested_students = parse_students_arg(args.students)
+    students = requested_students or list_students_from_batch(batch_dir, metadata)
+    if not students:
+        print("❌ 未找到学生列表，请通过 --students 指定")
+        return 1
+
+    print("=" * 60)
+    print("上传音频到 OSS")
+    print("=" * 60)
+    print(f"batch: {batch_id}")
+    print(f"students: {len(students)}")
+    print("")
+
+    success = 0
+    failed = 0
+
+    for student in students:
+        student_dir = batch_dir / student
+        audio_file = student_dir / "1_input_audio.mp3"
+        rel_local_path = f"archive/{batch_id}/{student}/1_input_audio.mp3"
+
+        if not audio_file.exists():
+            print(f"[{student}] ❌ 缺少音频: {audio_file}")
+            failed += 1
+            continue
+
+        file_id = f"{batch_id}_{progress}_{student}"
+        oss_key = f"audio/{file_id}.mp3"
+        print(f"[{student}]")
+        print(f"  upload: {oss_key}")
+
+        if args.dry_run:
+            update_metadata_item(
+                metadata=metadata,
+                batch_id=batch_id,
+                student=student,
+                progress=progress,
+                local_path=rel_local_path,
+            )
+            print("  dry-run: 跳过上传")
+            success += 1
+            continue
+
+        try:
+            oss_url = upload_to_oss(audio_file, oss_key)
+            update_metadata_item(
+                metadata=metadata,
+                batch_id=batch_id,
+                student=student,
+                progress=progress,
+                local_path=rel_local_path,
+                oss_url=oss_url,
+            )
+            print(f"  ✅ OSS URL: {oss_url}")
+            success += 1
+        except Exception as e:
+            print(f"  ❌ 上传失败: {e}")
+            failed += 1
+
+    metadata["updated_at"] = now_iso()
+    if not args.dry_run:
+        write_metadata(batch_dir, metadata)
+
+    print("")
+    print("=" * 60)
+    print("上传完成")
+    print("=" * 60)
+    print(f"成功: {success}")
+    print(f"失败: {failed}")
+    return 0 if failed == 0 else 1
+
+
+def cmd_run(args: argparse.Namespace) -> int:
+    preprocess_args = argparse.Namespace(
+        archive_batch=args.archive_batch,
+        source_dir=args.source_dir,
+        progress=args.progress,
+        students=args.students,
+        dry_run=args.dry_run,
+        overwrite=args.overwrite,
+        ffmpeg_bin=args.ffmpeg_bin,
+    )
+    code = cmd_preprocess(preprocess_args)
+    if code != 0:
+        return code
+
+    if args.skip_upload:
+        print("已设置 --skip-upload，跳过 OSS 上传。")
+        return 0
+
+    upload_args = argparse.Namespace(
+        archive_batch=args.archive_batch,
+        progress=args.progress,
+        students=args.students,
+        dry_run=args.dry_run,
+    )
+    return cmd_upload(upload_args)
+
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(
+        description="Quickfire 预处理与 OSS 上传工具",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+示例:
+  # 仅预处理（视频/音频 -> 1_input_audio.mp3）
+  python scripts/upload_missing_audio_to_oss.py preprocess \
+    --archive-batch Zoe61330_2025-12-29 \
+    --source-dir /path/to/raw_media \
+    --progress 130-28-EC
+
+  # 仅上传（需要已有 1_input_audio.mp3）
+  python scripts/upload_missing_audio_to_oss.py upload \
+    --archive-batch Zoe61330_2025-12-29
+
+  # 一键串联（默认 preprocess + upload）
+  python scripts/upload_missing_audio_to_oss.py run \
+    --archive-batch Zoe61330_2025-12-29 \
+    --source-dir /path/to/raw_media \
+    --progress 130-28-EC
+""".strip(),
+    )
+
+    subparsers = parser.add_subparsers(dest="command", required=True)
+
+    preprocess = subparsers.add_parser("preprocess", help="视频/音频预处理为 1_input_audio.mp3")
+    preprocess.add_argument("--archive-batch", required=True, help="批次 ID，例如 Zoe61330_2025-12-29")
+    preprocess.add_argument("--source-dir", required=True, help="原始视频/音频目录")
+    preprocess.add_argument("--progress", help="课程进度（metadata 缺失时必填）")
+    preprocess.add_argument("--students", help="学生列表，逗号分隔")
+    preprocess.add_argument("--dry-run", action="store_true", help="预览模式，不执行转码")
+    preprocess.add_argument("--overwrite", action="store_true", help="覆盖已有 1_input_audio.mp3")
+    preprocess.add_argument("--ffmpeg-bin", help="ffmpeg 可执行文件路径")
+    preprocess.set_defaults(func=cmd_preprocess)
+
+    upload = subparsers.add_parser("upload", help="上传 1_input_audio.mp3 到 OSS 并更新 metadata")
+    upload.add_argument("--archive-batch", required=True, help="批次 ID，例如 Zoe61330_2025-12-29")
+    upload.add_argument("--progress", help="课程进度（metadata 缺失时必填）")
+    upload.add_argument("--students", help="学生列表，逗号分隔")
+    upload.add_argument("--dry-run", action="store_true", help="预览模式，不执行上传")
+    upload.set_defaults(func=cmd_upload)
+
+    run = subparsers.add_parser("run", help="串联执行 preprocess + upload")
+    run.add_argument("--archive-batch", required=True, help="批次 ID，例如 Zoe61330_2025-12-29")
+    run.add_argument("--source-dir", required=True, help="原始视频/音频目录")
+    run.add_argument("--progress", help="课程进度（metadata 缺失时必填）")
+    run.add_argument("--students", help="学生列表，逗号分隔")
+    run.add_argument("--dry-run", action="store_true", help="预览模式")
+    run.add_argument("--overwrite", action="store_true", help="覆盖已有 1_input_audio.mp3")
+    run.add_argument("--ffmpeg-bin", help="ffmpeg 可执行文件路径")
+    run.add_argument("--skip-upload", action="store_true", help="仅执行 preprocess，不上传 OSS")
+    run.set_defaults(func=cmd_run)
+
+    return parser
+
+
+def main() -> int:
+    parser = build_parser()
+    args = parser.parse_args()
+    return args.func(args)
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

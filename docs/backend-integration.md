@@ -8,9 +8,9 @@
 Quickfire 英语发音评测系统通过**文件系统接口**与后端对接。后端负责准备输入数据，系统处理后输出结构化评分结果。
 
 ```
-后端准备数据 → Quickfire 处理 → 后端获取结果
-     ↓               ↓                ↓
-  音频+题库     ASR → LLM评分      JSON结果
+后端准备数据 → 预处理（转码/重命名/OSS）→ Quickfire 处理 → 后端获取结果
+     ↓                       ↓                    ↓                ↓
+  视频/音频+题库      1_input_audio.mp3 + metadata   ASR + LLM      JSON结果
 ```
 
 ---
@@ -285,8 +285,7 @@ quickfire_workflow/
   "code": { "git_commit": "eb28926..." },
   "inputs": {
     "audio": "sha256:426e64e1...",
-    "qwen_asr": "sha256:613bfde7...",
-    "timestamps": "sha256:65525709..."
+    "qwen_asr": "sha256:613bfde7..."
   },
   "prompt": { "path": "prompts/annotation/user.md" }
 }
@@ -308,6 +307,12 @@ quickfire_workflow/
 ### 4.1 执行命令
 
 ```bash
+# 预处理 + 上传 OSS（建议先执行）
+python3 scripts/upload_missing_audio_to_oss.py run \
+  --archive-batch Zoe51530_2025-12-16 \
+  --source-dir /path/to/raw_media \
+  --progress 130-18-EC
+
 # 处理整个批次
 python3 scripts/main.py --archive-batch Zoe51530_2025-12-16
 
@@ -317,8 +322,9 @@ python3 scripts/main.py --archive-batch Zoe51530_2025-12-16 --student Qihang
 # 预览（不实际执行）
 python3 scripts/main.py --archive-batch Zoe51530_2025-12-16 --dry-run
 
-# 指定评分模型
-python3 scripts/main.py --archive-batch Zoe51530_2025-12-16 --annotator gemini-2.5-pro
+# 指定评分模型（sync）
+python3 scripts/main.py --archive-batch Zoe51530_2025-12-16 --annotator gemini-3-pro-preview --exec-mode sync
+python3 scripts/main.py --archive-batch Zoe51530_2025-12-16 --annotator qwen3-omni-flash --exec-mode sync
 
 # batch 模式
 python3 scripts/main.py --archive-batch Zoe51530_2025-12-16 --exec-mode batch
@@ -327,15 +333,16 @@ python3 scripts/main.py --archive-batch Zoe51530_2025-12-16 --exec-mode batch
 ### 4.2 处理阶段
 
 ```
-audio → qwen_asr → cards
-  ↓         ↓         ↓
-检查音频   ASR转写   LLM评分
+preprocess → audio → qwen_asr + audio_input → cards
+     ↓         ↓            ↓                   ↓
+转码/重命名/OSS  检查音频      ASR + 音频输入        LLM评分
 ```
 
 | 阶段 | 输出文件 | 说明 |
 |------|----------|------|
+| `preprocess` | `1_input_audio.mp3` + `metadata.json` | 视频转音频、重命名、可选上传 OSS |
 | `audio` | - | 检查音频文件存在 |
-| `qwen_asr` | `2_qwen_asr.json` | Qwen3-ASR 转写 |
+| `qwen_asr + audio_input` | `2_qwen_asr.json` | Qwen3-ASR 转写，同时 LLM 阶段读取音频文件 |
 | `cards` | `4_llm_annotation.json` | LLM 评分注解 |
 
 ### 4.3 支持的评分模型
@@ -380,7 +387,7 @@ metadata = {
     "class_code": class_code,
     "date": date,
     "progress": progress,
-    "question_bank_path": f"_shared_context/{progress}.json",
+    "question_bank_path": f"questionbank/{progress}.json",
     "items": [
         {
             "file_id": f"{batch_id}_{progress}_{s['name']}",

@@ -1,22 +1,22 @@
 # Quickfire 英语发音评测系统
 
-自动化学生英语发音作业评估系统：音频 → ASR 转写 → LLM 评分 → 结构化反馈。
+自动化学生英语发音作业评估系统：预处理 → ASR 转写 + 音频输入 → LLM 评分 → 结构化反馈。
 
 ## 系统架构
 
 ```
-学生音频 → Qwen ASR → LLM 评分 → 评分结果
-    ↓          ↓          ↓          ↓
-1_input    2_qwen     annotator  4_llm_
-_audio.mp3 _asr.json            annotation.json
+原始视频/音频 → 预处理(转码+重命名+OSS) → Qwen ASR + Audio Input → LLM 评分 → 评分结果
+      ↓                    ↓                   ↓                   ↓
+  source media      1_input_audio.mp3     2_qwen_asr.json    4_llm_annotation.json
 ```
 
 **DAG Pipeline**: `audio → qwen_asr → cards`
 
 **当前策略**:
+- 预处理阶段独立执行：`scripts/upload_missing_audio_to_oss.py`
 - 统一使用音频输入进行 LLM 评测
 - 先以 `sync` 模式进行 prompt 调试与模型对比
-- 统一入口为 `scripts/main.py`
+- 主流程入口为 `scripts/main.py`
 
 ## 快速开始
 
@@ -42,6 +42,18 @@ GEMINI_API_KEY=AIzaSy...      # Google Gemini API
 ### 运行
 
 ```bash
+# 预处理 + 上传 OSS（一键）
+uv run python scripts/upload_missing_audio_to_oss.py run \
+  --archive-batch Zoe51530_2025-12-16 \
+  --source-dir /path/to/raw_media \
+  --progress 130-18-EC
+
+# 仅预处理（视频转音频 + 重命名）
+uv run python scripts/upload_missing_audio_to_oss.py preprocess \
+  --archive-batch Zoe51530_2025-12-16 \
+  --source-dir /path/to/raw_media \
+  --progress 130-18-EC
+
 # 处理整个批次
 uv run python scripts/main.py --archive-batch Zoe51530_2025-12-16
 
@@ -78,7 +90,7 @@ uv run python scripts/batch_server.py
 curl -X POST http://127.0.0.1:8000/jobs \\
   -H 'Content-Type: application/json' \\
   -d '{
-    "mode": "asr",
+    "exec_mode": "batch",
     "archive_batch": "Zoe51530_2025-12-16",
     "students": ["Qihang"]
   }'
@@ -90,7 +102,7 @@ curl -X POST http://127.0.0.1:8000/jobs \\
 curl -X POST http://127.0.0.1:8000/jobs \\
   -H 'Content-Type: application/json' \\
   -d '{
-    "mode": "asr",
+    "exec_mode": "batch",
     "archive_batch": "Zoe51530_2025-12-16",
     "students": ["Qihang"],
     "proxy": "socks5://127.0.0.1:7890"
@@ -171,9 +183,9 @@ archive/{batch_id}/{Student}/
 
 | 模块 | 说明 |
 |------|------|
+| `scripts/upload_missing_audio_to_oss.py` | 预处理（视频转音频/重命名）+ OSS 上传 |
 | `scripts/main.py` | DAG 主入口 |
 | `scripts/asr/qwen.py` | Qwen3-ASR (自动分段长音频) |
-| `scripts/asr/funasr.py` | FunASR 时间戳 |
 | `scripts/annotators/` | LLM 评分器 (Gemini/Qwen Omni) |
 | `scripts/common/` | 通用工具 |
 
@@ -192,6 +204,7 @@ archive/{batch_id}/{Student}/
 | `--student` | 指定学生 |
 | `--annotator` | 评分模型 |
 | `--exec-mode` | 执行模式: `sync` / `batch` |
+| `--batch` | `--exec-mode batch` 的兼容简写 |
 | `--only` | 只运行指定阶段: `audio`, `qwen_asr`, `cards` |
 | `--until` | 运行到指定阶段为止 |
 | `--dry-run` | 预览模式 |
@@ -237,5 +250,5 @@ uv run python scripts/main.py --archive-batch TestBatch --dry-run
 
 ---
 
-**版本**: 2.0.0
-**更新**: 2026-01-06
+**版本**: 2.1.0
+**更新**: 2026-02-16
