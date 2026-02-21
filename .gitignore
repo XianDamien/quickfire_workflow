@@ -97,6 +97,7 @@ backend_input/
 backend_output/
 archive_source/
 two_input/
+two_output/
 asr/
 asr_timestamp/
 questionbank/
