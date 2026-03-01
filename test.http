@@ -1,0 +1,168 @@
+@baseUrl = https://8.159.139.145:7010/api/v1
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6InRlc3RAbGliaWFuLmNvbSIsInJvbGUiOiJBRE1JTiIsInVzZXJuYW1lIjoiICIsImV4cCI6MTc2NjQyNDc1M30.QPim0DNlx0XNw-uBgQPVrDSG9AVy7JpmKgfJJP3pGkY
+### 登录获取 Token
+POST https://8.159.139.145:7010/api/v1/auth/login
+Content-Type: application/json
+
+{
+    "email": "test@libian.com",
+    "password": "test123"
+}
+
+### 获取 annotation 配置
+GET {{baseUrl}}/config/content/annotation
+Authorization: Bearer {{token}}
+
+### 获取 system_instruction 配置
+GET {{baseUrl}}/config/content/system_instruction
+Authorization: Bearer {{token}}
+
+### 列出 annotation 的所有备份
+GET {{baseUrl}}/config/backups/annotation
+Authorization: Bearer {{token}}
+
+### 列出 system_instruction 的所有备份
+GET {{baseUrl}}/config/backups/system_instruction
+Authorization: Bearer {{token}}
+
+### 查看 annotation 审计日志
+GET {{baseUrl}}/config/audit/annotation
+Authorization: Bearer {{token}}
+
+### 查看 system_instruction 审计日志
+GET {{baseUrl}}/config/audit/system_instruction
+Authorization: Bearer {{token}}
+
+###############################################################################
+# ⚠️  以下是修改操作 - 执行前请先保存当前配置到本地！
+###############################################################################
+
+### [测试] 更新 annotation 配置
+# 步骤：1. 先运行"获取 annotation 配置" 并保存返回的 content
+#      2. 修改 content 内容
+#      3. 执行此请求
+#      4. 运行"查看 annotation 审计日志" 验证修改记录
+#      5. 如需恢复，运行"[恢复] 从备份恢复 annotation"
+POST {{baseUrl}}/config/update
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "file_key": "annotation",
+  "content": "# 输入数据
+
+### 1. `题库文件`
+```text
+{{ question_bank_json }}
+```
+
+### 2. `学生音频转录文本`
+这是包含老师声音和学生回答的混合文本。
+```text
+{{ student_asr_text }}
+```
+
+### 3. `带时间戳的音频转录文本`
+
+```text
+{{ student_asr_with_timestamp }}
+```
+
+
+# 处理指令
+1. 本次题库包含`question（问题）`和`expected_answer(答案)`,以及出现的顺序,老师录音就是直接按照顺序念题库，请遍历"题库"中的每一个词条。-----对于每个词条,在`学生音频转录文本`（只能从这个来源）中定位到对应的`question（问题）`文本和`expected_answer(答案)`文本。
+2. **提取** 位于`学生音频转录文本`当中，`question（问题）`和`expected_answer(答案)`之间的所有文本内容,作为`detected_answer(学生回答)`。
+3. **核心任务1**：检查`detected_answer(学生回答)`中是否至少有一个词的意思跟`expected_answer(答案)`中某个词的意思是相似的(充分利用你的泛化能力,不要太严格)，如果学生的回答与标准答案不相关/错误,请把issue_type标记为'MEANING_ERROR'；如果在"问题"和"答案"间没有找到任何实质性的回答文本,请将'expected_answer'输出为null, issue_type则为'NO_ANSWER';
+4. **核心任务2**: 根据`题库文件`、利用`带时间戳的音频转录文本`给出的词级别的时间戳，大概估算出每道题的问题出现的时间戳，注意只需要估算每个问题卡的`question（问题）`开始的时间点即可，输出为`card_timestamp`字段。
+
+
+
+# 输出格式要求
+- 输出必须是严格的、格式正确的 JSON 数组。
+- 数组中的每个对象都必须包含 `card_index`, `question(问题)`,`card_timestamp（问题时间戳）`， `detected_answer(学生回答)`, `expected_answer(答案)` 四个键。
+- 键和字符串值都必须使用双引号 `""`.
+- 注意 `detected_answer(学生回答)`必须来源于`学生音频转录文本`，不能来源于`带时间戳的音频转录文本`
+
+
+
+**输出示例:**
+```json
+{
+    "final_grade_suggestion": "B",
+    "mistake_count": {
+      "errors": 2
+    },
+    "annotations": [
+      {
+        "card_index": 1,
+        "card_timestamp":"00:17",
+        "question": "不",
+        "expected_answer": "not",
+        "related_student_utterance": {
+          "detected_text": null,
+          "issue_type":"NO_ANSWER"
+        }
+      },
+      {
+        "card_index": 2,
+        "card_timestamp":"00:19",
+        "question": "双倍的；双的",
+        "expected_answer": "double",
+        "related_student_utterance": {
+          "detected_text": "double",
+          "issue_type": null
+        }
+      },
+      {
+        "card_index": 3,
+        "card_timestamp":"00:23",
+        "question": "list，及物动词",
+        "expected_answer": "把……列成表；列举",
+        "related_student_utterance": {
+          "detected_text": "清单，目录。",
+          "issue_type": "MEANING_ERROR"
+        }
+      }
+    ]
+  }
+```
+"
+}
+
+### [测试] 更新 system_instruction 配置
+# 步骤：1. 先运行"获取 system_instruction 配置" 并保存返回的 content
+#      2. 修改 content 内容
+#      3. 执行此请求
+#      4. 运行"查看 system_instruction 审计日志" 验证修改记录
+#      5. 如需恢复，运行"[恢复] 从备份恢复 system_instruction"
+POST {{baseUrl}}/config/update
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "file_key": "system_instruction",
+  "content": "你是一个专业的英语口语教学AI助手。请严格按照提供的题库和学生转录进行评分。"
+}
+
+### [恢复] 从备份恢复 annotation
+# 使用方法：先运行"列出 annotation 的所有备份"，复制最新备份的完整路径到下面的 backup_path
+POST {{baseUrl}}/config/restore
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "file_key": "annotation",
+  "backup_path": "【从上面的备份列表中复制完整路径，例如：/path/to/data/llm/backups/annotation_backup_20251206_xxxxxx.txt】"
+}
+
+### [恢复] 从备份恢复 system_instruction
+# 使用方法：先运行"列出 system_instruction 的所有备份"，复制最新备份的完整路径到下面的 backup_path
+POST {{baseUrl}}/config/restore
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "file_key": "system_instruction",
+  "backup_path": "【从上面的备份列表中复制完整路径，例如：/path/to/data/llm/backups/system_instruction_backup_20251206_xxxxxx.txt】"
+}
+
