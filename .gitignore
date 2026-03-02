@@ -37,32 +37,99 @@ env/
 # Environment variables
 .env
 .env.local
+.env.*.local
+*.env
 
 # macOS
 .DS_Store
+.AppleDouble
+.LSOverride
 
 # API keys and secrets
 *.key
+*.pem
 credentials.json
+secrets.json
+config.local.*
 
 # Logs
 *.log
+logs/
 
 # Audio/video files
 *.wav
 *.mp3
 *.mp4
 *.m4a
+*.flac
+*.ogg
+*.mov
+audio/*.mp3
+audio/*.wav
+audio/*.m4a
+audio/*.flac
+audio/*.ogg
 
-# Data archives and large directories
-archive.zip
+# ASR results and generated files
+data/*_asr_raw.json
+data/caption_result.txt
+data/*_result.json
+data/*_output.txt
+
+# Archive and temporary files
 archive/
+archive.zip
 archive_reportjson.zip
 archive_source/
-products/
-questionbank/
+*.tmp
+*.temp
+.cache/
+
+# Question bank MP4 files
+1_input_mp4/
+
+# -----------------------------------------------------------------------------
+# Business / customer data & generated artifacts (avoid accidental leaks)
+# -----------------------------------------------------------------------------
+# Local tool settings / histories
+.claude/settings.local.json
+scripts/.claude/
+.serena/
+
+# Data inputs/outputs (often contain user audio, transcripts, reports, etc.)
+backend_input/
+backend_output/
 two_input/
 two_output/
+asr/
+asr_timestamp/
+questionbank/
+products/
+homework_submission/
 
-# Serena (removed)
-.serena/
+# Common large/sensitive artifacts
+*.xlsx
+*.zip
+*.7z
+*.rar
+
+# Common Python caches/reports
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.coverage
+coverage/
+htmlcov/
+
+# API client scratch files (often include tokens / real request payloads)
+*.http
+*.rest
+*.har
+
+# ==========================================
+# 敏感信息防护 (2026-02-03 added)
+# ==========================================
+docs/comparison_test/
+docs/**/test_*.md
+docs/**/*_EXECUTE*.md
+scripts/qwen_audio.py

@@ -20,13 +20,20 @@ Keep this managed block so 'openspec update' can refresh the instructions.
 # CLAUDE.md - 项目架构导航
 
 ## 项目概览
-**llm_api_queries**: 英语发音作业评测系统 | 阿里云 DashScope Qwen LLM | Python 3.12.12
+**quickfire_workflow**: 英语发音作业评测系统 | 阿里云 DashScope Qwen LLM + Google Gemini | Python 3.12.12
+
+本项目主要用于 AI 模块的实验性研发与验证：新增并验证 AI 业务能力、开发迭代 agentic 工作流、对不同模型进行系统化评估与对比。
 
 ## 模块索引
-- `scripts/` → 核心评测引擎（qwen3.py）及音频转写（captioner_qwen3.py）
-- `data/` → 题库（CSV）、ASR 转写结果（JSON/TXT）
+- `scripts/annotators/` → 模块化评测引擎（base.py 抽象基类、qwen_omni.py、gemini_audio.py）
+- `scripts/asr/` → ASR 转写模块（qwen.py、funasr.py）
+- `scripts/gatekeeper/` → ASR 质检模块（base.py、qwen_plus.py）
+- `scripts/common/` → 共享工具（env.py、naming.py、runs.py、asr.py、constants.py）
+- `scripts/contracts/` → 数据契约（asr_timestamp.py、cards.py）
+- `scripts/main.py` → 主入口
+- `scripts/nocodb_questionbank.py` → NocoDB 题库管理
 - `prompts/` → **Prompt 模板资产（受保护，禁止删除）**
-- `.claude/` → 子模块配置指南
+- `docs/` → 项目文档
 
 ## ⚠️ 受保护资产：prompts/ 目录
 **绝对禁止删除 `prompts/` 下的任何文本文件**，包括：
@@ -41,7 +48,8 @@ Keep this managed block so 'openspec update' can refresh the instructions.
 ## 宪法原则
 
 ### 1. 系统架构
-- **文本 + 多模态混合处理**: qwen3.py 用文本模式、captioner_qwen3.py 用多模态
+- **模块化 Annotator 模式**: `scripts/annotators/base.py` 定义抽象基类，各模型实现独立子类
+- **ASR + Gatekeeper 管道**: ASR 转写 → 质检校验 → 评测标注
 - **Prompt 模块化**: 系统提示 → 题库上下文 → ASR 数据（分离清晰）
 - **结构化输出**: JSON 格式评分报告（final_grade_suggestion/mistake_count/annotations）
 
@@ -51,14 +59,16 @@ Keep this managed block so 'openspec update' can refresh the instructions.
 
 ### 3. 代码约定
 - **语言**: 中文注释和日志
-- **API Key**: 环保变量 `DASHSCOPE_API_KEY`，禁止硬编码
+- **API Key**: 环境变量（`DASHSCOPE_API_KEY`、`GEMINI_API_KEY`），禁止硬编码
 - **文件路径**: 相对路径 + `file://` 前缀（多模态）
 - **错误处理**: 直接输出 API 响应便于调试
+- **DRY / KISS**: 不重复、保持简单
 
 ### 4. 支持的 LLM 模型
 - `qwen-plus` (默认、文本分析)
 - `qwen3-omni-30b-a3b-captioner` (音频处理)
 - `qwen3-max`、`qwen3-omni-flash` (可选)
+- `gemini-2.0-flash` / `gemini-2.5-flash` (音频直传标注)
 
 ### 5. 时间戳与说话人识别
 - ASR 时间戳单位: 毫秒（milliseconds）
@@ -66,11 +76,8 @@ Keep this managed block so 'openspec update' can refresh the instructions.
 
 ## 快速命令
 ```bash
-export DASHSCOPE_API_KEY="sk-xxxxx"
-python3 scripts/qwen3.py                    # 主评测
-python3 scripts/captioner_qwen3.py <audio>  # 音频转写
+python scripts/main.py  # 主入口
 ```
 
 ## 详细指南
-查看 `scripts/CLAUDE.md` 和 `data/CLAUDE.md` 获取模块级文档。
-- make it DRY(Don't Repeat Yourself), keep it simple stupid (KISS)
+查看 `scripts/README.md` 和 `docs/` 获取模块级文档。

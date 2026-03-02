@@ -1,0 +1,479 @@
+# 后端接口协议文档
+
+**版本**: v2.0
+**更新日期**: 2026-01-06
+
+## 概述
+
+Quickfire 英语发音评测系统通过**文件系统接口**与后端对接。后端负责准备输入数据，系统处理后输出结构化评分结果。
+
+```
+后端准备数据 → 预处理（转码/重命名/OSS）→ Quickfire 处理 → 后端获取结果
+     ↓                       ↓                    ↓                ↓
+  视频/音频+题库      1_input_audio.mp3 + metadata   ASR + LLM      JSON结果
+```
+
+---
+
+## 1. 接口模式
+
+### 1.1 输入/输出约定
+
+| 方向 | 格式 | 位置 |
+|------|------|------|
+| 后端 → 系统 | 音频文件 + JSON | `archive/{batch_id}/` |
+| 系统 → 后端 | JSON 评分结果 | `archive/{batch_id}/{student}/runs/*/4_llm_annotation.json` |
+
+### 1.2 批次标识 (batch_id)
+
+格式: `{ClassCode}_{Date}`
+
+示例:
+- `Zoe51530_2025-12-16`
+- `Niko60900_2025-10-12`
+
+---
+
+## 2. 后端需要提供的数据
+
+### 2.1 目录结构
+
+```
+quickfire_workflow/
+├── questionbank/
+│   └── {progress_id}.json                 # 必须：题库文件（全局共享）
+└── archive/{batch_id}/
+    ├── metadata.json                      # 必须：批次元数据
+    ├── {StudentName1}/
+    │   └── 1_input_audio.mp3              # 必须：学生音频
+    ├── {StudentName2}/
+    │   └── 1_input_audio.mp3
+    └── ...
+```
+
+### 2.2 metadata.json (必须)
+
+```json
+{
+  "schema_version": 1,
+  "dataset_id": "Zoe51530_2025-12-16",
+  "class_code": "Zoe51530",
+  "date": "2025-12-16",
+  "progress": "130-18-EC",
+  "question_bank_path": "questionbank/130-18-EC.json",
+  "items": [
+    {
+      "file_id": "Zoe51530_2025-12-16_130-18-EC_Qihang",
+      "student": "Qihang",
+      "local_path": "archive/Zoe51530_2025-12-16/Qihang/1_input_audio.mp3",
+      "oss_url": "https://quickfire-audio.oss-cn-shanghai.aliyuncs.com/..."
+    }
+  ],
+  "created_at": "2025-12-16T10:00:00Z",
+  "updated_at": "2025-12-16T10:00:00Z"
+}
+```
+
+**字段说明**:
+
+| 字段 | 类型 | 必须 | 说明 |
+|------|------|------|------|
+| `schema_version` | int | 是 | 固定为 `1` |
+| `dataset_id` | string | 是 | 批次唯一标识，与目录名一致 |
+| `class_code` | string | 是 | 班级代码 |
+| `date` | string | 是 | 日期 (YYYY-MM-DD) |
+| `progress` | string | 是 | 课程进度标识，对应题库文件名 |
+| `question_bank_path` | string | 是 | 题库文件相对路径 |
+| `items` | array | 是 | 学生列表 |
+| `items[].file_id` | string | 是 | 唯一文件标识 |
+| `items[].student` | string | 是 | 学生姓名（对应目录名） |
+| `items[].local_path` | string | 否 | 本地音频路径 |
+| `items[].oss_url` | string | 否 | OSS 音频 URL |
+
+### 2.3 题库文件 (必须)
+
+位置: `questionbank/{progress}.json` （项目根目录下，全局共享）
+
+```json
+[
+  {
+    "question": "celebrate",
+    "answer": "庆祝",
+    "hint": ""
+  },
+  {
+    "question": "cent, cent",
+    "answer": "一分钱，一美分",
+    "hint": ""
+  },
+  {
+    "question": "center",
+    "answer": "中心",
+    "hint": ""
+  }
+]
+```
+
+**字段说明**:
+
+| 字段 | 类型 | 必须 | 说明 |
+|------|------|------|------|
+| `question` | string | 是 | 英文题目（老师会念出） |
+| `answer` | string | 是 | 标准答案（中文） |
+| `hint` | string | 否 | 提示信息（可为空） |
+
+### 2.4 学生音频 (必须)
+
+位置: `archive/{batch_id}/{student}/1_input_audio.mp3`
+
+**支持格式**: MP3, MP4, WAV, M4A, FLAC, OGG
+
+**音频内容**: 学生听老师念题后的完整回答录音
+
+**时长限制**: 无限制（系统自动分段处理长音频）
+
+---
+
+## 3. 系统输出给后端的数据
+
+### 3.1 核心输出：评分结果
+
+位置: `archive/{batch_id}/{student}/runs/{annotator}/{run_id}/4_llm_annotation.json`
+
+```json
+{
+  "student_name": "Qihang",
+  "final_grade_suggestion": "A",
+  "mistake_count": {
+    "errors": 0
+  },
+  "annotations": [
+    {
+      "card_index": 1,
+      "card_timestamp": "00:01",
+      "question": "celebrate",
+      "expected_answer": "庆祝",
+      "related_student_utterance": {
+        "detected_text": "庆祝",
+        "issue_type": null
+      }
+    },
+    {
+      "card_index": 2,
+      "card_timestamp": "00:05",
+      "question": "cent",
+      "expected_answer": "一分钱，一美分",
+      "related_student_utterance": {
+        "detected_text": "一分钱，美分",
+        "issue_type": null
+      }
+    },
+    {
+      "card_index": 3,
+      "card_timestamp": "00:10",
+      "question": "center",
+      "expected_answer": "中心",
+      "related_student_utterance": {
+        "detected_text": "",
+        "issue_type": "NO_ANSWER"
+      }
+    }
+  ],
+  "_metadata": {
+    "model": "gemini-3-pro-preview",
+    "run_id": "20260106_002923_eb28926",
+    "git_commit": "eb28926",
+    "timestamp": "2026-01-06T09:35:45.691265",
+    "source": "batch_api"
+  }
+}
+```
+
+**字段说明**:
+
+| 字段 | 类型 | 说明 |
+|------|------|------|
+| `student_name` | string | 学生姓名 |
+| `final_grade_suggestion` | string | 最终成绩: `A` / `B` / `C` |
+| `mistake_count.errors` | int | 错误总数 |
+| `annotations` | array | 逐题评注列表 |
+| `annotations[].card_index` | int | 题目序号 (1-based) |
+| `annotations[].card_timestamp` | string | 题目出现时间 (MM:SS) |
+| `annotations[].question` | string | 题目内容 |
+| `annotations[].expected_answer` | string | 标准答案 |
+| `annotations[].related_student_utterance.detected_text` | string | 学生回答 |
+| `annotations[].related_student_utterance.issue_type` | string | 错误类型 |
+| `_metadata` | object | 处理元数据 |
+
+**错误类型 (issue_type)**:
+
+| 值 | 含义 |
+|------|------|
+| `null` | 正确 |
+| `NO_ANSWER` | 学生未作答 |
+| `MEANING_ERROR` | 答案意思错误 |
+
+**评分规则**:
+
+| 成绩 | 条件 |
+|------|------|
+| A | 错误数 = 0 |
+| B | 错误数 = 1-2 |
+| C | 错误数 >= 3 |
+
+### 3.2 中间产物（用于迭代优化）
+
+#### ASR 阶段
+
+| 文件 | 位置 | 说明 |
+|------|------|------|
+| ASR 转写 | `{student}/2_qwen_asr.json` | 转写结果 + token/时间统计 |
+| ASR Context | `{student}/2_qwen_asr_context.json` | ASR 系统提示 + 题库来源 |
+
+**`2_qwen_asr.json` 关键字段**:
+```json
+{
+  "output": { "choices": [{ "message": { "content": [{ "text": "转写文本..." }] } }] },
+  "usage": {
+    "input_tokens": 3407,
+    "output_tokens": 292,
+    "audio_tokens": 3325,
+    "seconds": 133
+  },
+  "qf_meta": {
+    "provider": "qwen3-asr",
+    "audio_path": "archive/.../1_input_audio.mp3",
+    "vocabulary_path": "questionbank/130-18-EC.json",
+    "created_at": "2026-01-05T14:01:56Z"
+  }
+}
+```
+
+**`2_qwen_asr_context.json` 关键字段**:
+```json
+{
+  "system_context": {
+    "text": "这里是中英混合的文本...",
+    "sha256": "480a5703...",
+    "source": "prompts/asr_context/system.md"
+  },
+  "hotwords": {
+    "vocabulary_path": "questionbank/130-18-EC.json",
+    "words": [],
+    "sha256": "e3b0c442..."
+  },
+  "provider": "qwen3-asr",
+  "model": "qwen3-asr-flash"
+}
+```
+
+#### LLM 评分阶段
+
+| 文件 | 位置 | 说明 |
+|------|------|------|
+| 评分结果 | `runs/{annotator}/{run_id}/4_llm_annotation.json` | 最终评分 + 元数据 |
+| 完整 Prompt | `runs/{annotator}/{run_id}/prompt_log.txt` | LLM 输入的完整提示词 |
+| 运行清单 | `runs/{annotator}/{run_id}/run_manifest.json` | 输入文件 hash + git commit |
+
+**`run_manifest.json` 结构**:
+```json
+{
+  "run_id": "20260106_002923_eb28926",
+  "annotator_name": "gemini-3-pro-preview",
+  "model": "gemini-3-pro-preview",
+  "created_at": "2026-01-06T09:57:45Z",
+  "code": { "git_commit": "eb28926..." },
+  "inputs": {
+    "audio": "sha256:426e64e1...",
+    "qwen_asr": "sha256:613bfde7..."
+  },
+  "prompt": { "path": "prompts/annotation/user.md" }
+}
+```
+
+#### 输入文件引用
+
+| 输入 | 位置 |
+|------|------|
+| 学生音频 | `archive/{batch_id}/{student}/1_input_audio.mp3` |
+| 题库 | `questionbank/{progress}.json` |
+| ASR Prompt | `prompts/asr_context/system.md` |
+| 评分 Prompt | `prompts/annotation/user.md` |
+
+---
+
+## 4. 处理流程
+
+### 4.1 执行命令
+
+```bash
+# 预处理 + 上传 OSS（建议先执行）
+python3 scripts/upload_missing_audio_to_oss.py run \
+  --archive-batch Zoe51530_2025-12-16 \
+  --source-dir /path/to/raw_media \
+  --progress 130-18-EC
+
+# 处理整个批次
+python3 scripts/main.py --archive-batch Zoe51530_2025-12-16
+
+# 处理单个学生
+python3 scripts/main.py --archive-batch Zoe51530_2025-12-16 --student Qihang
+
+# 预览（不实际执行）
+python3 scripts/main.py --archive-batch Zoe51530_2025-12-16 --dry-run
+
+# 指定评分模型（sync）
+python3 scripts/main.py --archive-batch Zoe51530_2025-12-16 --annotator gemini-3-pro-preview --exec-mode sync
+python3 scripts/main.py --archive-batch Zoe51530_2025-12-16 --annotator qwen3-omni-flash --exec-mode sync
+
+# batch 模式
+python3 scripts/main.py --archive-batch Zoe51530_2025-12-16 --exec-mode batch
+```
+
+### 4.2 处理阶段
+
+```
+preprocess → audio → qwen_asr + audio_input → cards
+     ↓         ↓            ↓                   ↓
+转码/重命名/OSS  检查音频      ASR + 音频输入        LLM评分
+```
+
+| 阶段 | 输出文件 | 说明 |
+|------|----------|------|
+| `preprocess` | `1_input_audio.mp3` + `metadata.json` | 视频转音频、重命名、可选上传 OSS |
+| `audio` | - | 检查音频文件存在 |
+| `qwen_asr + audio_input` | `2_qwen_asr.json` | Qwen3-ASR 转写，同时 LLM 阶段读取音频文件 |
+| `cards` | `4_llm_annotation.json` | LLM 评分注解 |
+
+### 4.3 支持的评分模型
+
+| 模型 | 说明 |
+|------|------|
+| `gemini-3-pro-preview` | 默认，Google Gemini（音频直传） |
+| `gemini-2.5-pro` | Google Gemini（音频直传） |
+| `qwen3-omni-flash` | 阿里云 Qwen3 Omni（音频直传） |
+
+---
+
+## 5. 集成示例
+
+### 5.1 后端准备数据流程
+
+```python
+# 1. 保存题库（全局共享，只需保存一次）
+question_bank = [
+    {"question": "celebrate", "answer": "庆祝", "hint": ""},
+    {"question": "cent", "answer": "一分钱", "hint": ""},
+]
+os.makedirs("questionbank", exist_ok=True)
+with open(f"questionbank/{progress}.json", "w") as f:
+    json.dump(question_bank, f, ensure_ascii=False, indent=2)
+
+# 2. 创建批次目录
+batch_id = f"{class_code}_{date}"
+batch_dir = f"archive/{batch_id}"
+os.makedirs(batch_dir, exist_ok=True)
+
+# 3. 保存学生音频
+for student in students:
+    student_dir = f"{batch_dir}/{student['name']}"
+    os.makedirs(student_dir, exist_ok=True)
+    # 下载/复制音频到 {student_dir}/1_input_audio.mp3
+
+# 4. 创建元数据
+metadata = {
+    "schema_version": 1,
+    "dataset_id": batch_id,
+    "class_code": class_code,
+    "date": date,
+    "progress": progress,
+    "question_bank_path": f"questionbank/{progress}.json",
+    "items": [
+        {
+            "file_id": f"{batch_id}_{progress}_{s['name']}",
+            "student": s["name"],
+            "local_path": f"archive/{batch_id}/{s['name']}/1_input_audio.mp3",
+        }
+        for s in students
+    ],
+    "created_at": datetime.now().isoformat(),
+    "updated_at": datetime.now().isoformat(),
+}
+with open(f"{batch_dir}/metadata.json", "w") as f:
+    json.dump(metadata, f, ensure_ascii=False, indent=2)
+```
+
+### 5.2 后端获取结果流程
+
+```python
+import json
+import glob
+
+def get_batch_results(batch_id: str) -> list:
+    """获取批次所有学生的评分结果"""
+    results = []
+
+    # 查找所有学生的最新评分结果
+    pattern = f"archive/{batch_id}/*/runs/*/*/4_llm_annotation.json"
+    for path in glob.glob(pattern):
+        with open(path) as f:
+            annotation = json.load(f)
+
+        results.append({
+            "student": annotation["student_name"],
+            "grade": annotation["final_grade_suggestion"],
+            "errors": annotation["mistake_count"]["errors"],
+            "details": annotation["annotations"],
+            "model": annotation["_metadata"]["model"],
+            "processed_at": annotation["_metadata"]["timestamp"],
+        })
+
+    return results
+
+# 使用示例
+results = get_batch_results("Zoe51530_2025-12-16")
+for r in results:
+    print(f"{r['student']}: {r['grade']} ({r['errors']} errors)")
+```
+
+---
+
+## 6. 性能参数
+
+| 指标 | 数值 |
+|------|------|
+| ASR 处理速度 | ~6-7 分钟/学生 |
+| LLM 评分速度 | ~2-3 分钟/学生 |
+| 支持音频时长 | 无限制（自动分段） |
+| 并行处理 | 支持 |
+| 重试次数 | 5 次 |
+| 重试间隔 | 5 秒 |
+
+---
+
+## 7. 错误处理
+
+### 7.1 常见错误
+
+| 错误 | 原因 | 解决方案 |
+|------|------|----------|
+| `metadata.json not found` | 缺少元数据文件 | 创建 metadata.json |
+| `question bank not found` | 题库文件路径错误 | 检查 question_bank_path |
+| `1_input_audio.mp3 not found` | 音频文件缺失 | 上传学生音频 |
+| `API rate limit` | API 请求过快 | 等待重试，系统自动处理 |
+
+### 7.2 重新处理
+
+```bash
+# 强制重新处理（覆盖已有结果）
+python3 scripts/main.py --archive-batch Zoe51530_2025-12-16 --force
+
+# 只重新运行 ASR
+python3 scripts/main.py --archive-batch Zoe51530_2025-12-16 --only qwen_asr --force
+```
+
+---
+
+## 8. 联系方式
+
+如有接口问题，请联系开发团队。

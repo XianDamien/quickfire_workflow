@@ -1,0 +1,196 @@
+====================================================================================================
+批次统计总结报告
+====================================================================================================
+生成时间: 2026-01-07 05:02:58
+
+## 总体统计
+----------------------------------------------------------------------------------------------------
+总批次数: 13
+总运行数: 43 (audio: 17, asr: 26)
+
+## 批次详情
+----------------------------------------------------------------------------------------------------
+
+### Abby61000_2025-11-05
+  Audio版本: 无
+  ASR版本 (1 次运行):
+    ✅ 20260106_003444_eb28926 | 3学生 | JOB_STATE_SUCCEEDED
+       Job: batches/csc4bxp5uxqimgjfpj3yukfbigfq79c784fb
+
+### Niko60900_2025-10-12
+  Audio版本 (3 次运行):
+    ❌ 20260107_000057_a87b818_audio | 5学生 | UNKNOWN
+       Job: batches/fmvtzvx6j4d9lf6b4qtytphwa3gw6izwbcg1
+    ❌ 20260107_000433_a87b818_audio | 5学生 | UNKNOWN
+       Job: batches/n2p1n7f5jcqissia0u94bnvtzyifmr2xfb51
+    🔄 20260107_005616_a87b818 | 5学生 | JOB_STATE_PENDING
+       Job: batches/5zmjl05fqu4tu4l7qlodxh2ud01fi04ypcer
+  ASR版本 (2 次运行):
+    ✅ 20260106_000907_eb28926 | 5学生 | JOB_STATE_SUCCEEDED
+       Job: batches/nz2iz9cziatiekxnyohrzvjjl6ja3ev3btkj
+    🔄 20260107_010932_a87b818 | 5学生 | JOB_STATE_PENDING
+       Job: batches/n4ssh04gmmt6xnsxh8k23x1b8vjhihdtev56
+
+### Niko60900_2025-11-12
+  Audio版本 (1 次运行):
+    🔄 20260107_005641_a87b818 | 1学生 | JOB_STATE_PENDING
+       Job: batches/vm5p8194imlrf0d1omevk0qbbjz439iheshk
+  ASR版本: 无
+
+### Niko60900_2025-12-15
+  Audio版本 (1 次运行):
+    🔄 20260107_005709_a87b818 | 5学生 | JOB_STATE_PENDING
+       Job: batches/95t4ztoaa7h3vgda0g01vvjac8o6ez2kegye
+  ASR版本 (4 次运行):
+    ✅ 20260106_002939_eb28926 | 5学生 | JOB_STATE_SUCCEEDED
+       Job: batches/dep8m3ydl8jp2wssz5d6n1l11kmtdk1xnsvh
+    ❌ 20260106_102301_eb28926 | 1学生 | UNKNOWN
+       Job: batches/ll2ti84my5qslktoegz7oe1aqttcy8f7sb8z
+    🔄 20260107_005756_a87b818 | 5学生 | JOB_STATE_PENDING
+       Job: batches/f9opg7r0zdz686u7on4at0j7e83wgup8ympt
+    🔄 20260107_010306_a87b818 | 5学生 | JOB_STATE_PENDING
+       Job: batches/5lrh17zj986jimvz8ng1wvn6i638s2ng1hpi
+
+### Zoe41900_2025-09-08
+  Audio版本: 无
+  ASR版本 (3 次运行):
+    ✅ 20260105_233648_05ea7bc | 1学生 | JOB_STATE_SUCCEEDED
+       Job: batches/221sk7nkpezwky5trluqcbc2uuov322cwvka
+    ✅ 20260105_233751_05ea7bc | 6学生 | JOB_STATE_SUCCEEDED
+       Job: batches/osb70bgy34vxi2lutzr2hcx43bm8c3q7z2vq
+    ✅ 20260106_002928_eb28926 | 6学生 | JOB_STATE_SUCCEEDED
+       Job: batches/9pce8shoy4a1i2b9cg7b3g7whdz9n76ya3b1
+
+### Zoe41900_2025-10-24
+  Audio版本: 无
+  ASR版本 (1 次运行):
+    ✅ 20260106_003436_eb28926 | 4学生 | JOB_STATE_SUCCEEDED
+       Job: batches/e285puyopgdho2x80beyl2bmkbn3oayt9qhv
+
+### Zoe41900_2025-11-20
+  Audio版本: 无
+  ASR版本 (1 次运行):
+    ✅ 20260106_003440_eb28926 | 4学生 | JOB_STATE_SUCCEEDED
+       Job: batches/z9hh9u5zbrdoxqf039cl3h3p8dwm1lsaazvb
+
+### Zoe51530_2025-09-08
+  Audio版本: 无
+  ASR版本 (1 次运行):
+    ✅ 20260106_003420_eb28926 | 6学生 | JOB_STATE_SUCCEEDED
+       Job: batches/bymsy2u5xe4sspn16rl45a2hucyuy4vm92dy
+
+### Zoe51530_2025-12-16
+  Audio版本 (2 次运行):
+    🔄 20260107_011419_a87b818 | 6学生 | JOB_STATE_PENDING
+       Job: batches/l1jvwm38badim7paawnw4raq4s98wfkr4zum
+    🔄 20260107_012858_a87b818 | 6学生 | JOB_STATE_PENDING
+       Job: batches/sta9340jhphcaeblbywaokqptnfwpeu705db
+  ASR版本 (4 次运行):
+    ✅ 20260106_002923_eb28926 | 6学生 | JOB_STATE_SUCCEEDED
+       Job: batches/y6og8isarohvhzfxhl5i31ffv6w4pw19le4c
+    ❌ 20260106_102903_eb28926 | 1学生 | UNKNOWN
+       Job: batches/akgaikgukzjbun4iizymju1ilg2rco33fg2s
+    🔄 20260107_011448_a87b818 | 6学生 | JOB_STATE_PENDING
+       Job: batches/86c7xcbe5g1ez12a2ianx44z8bi2uw2n76dg
+    🔄 20260107_012936_a87b818 | 6学生 | JOB_STATE_PENDING
+       Job: batches/fo8yfx2wwrukyt11a6ze62wpu2ad05rh1tfl
+
+### Zoe61330_2025-12-15
+  Audio版本 (6 次运行):
+    ❌ 20260106_110028_eb28926_audio | 5学生 | UNKNOWN
+       Job: batches/iua2hzj1nyhqeiifp19zjxpjy13punlza330
+    ❌ 20260106_110826_eb28926_audio | 5学生 | UNKNOWN
+       Job: batches/e1icqf21ao4zzk8hbg6u1vjl2lm87dre6lpt
+    ❌ 20260106_192906_a87b818_audio | 5学生 | UNKNOWN
+       Job: batches/jrz68mqepff52to0wnwi4qih5d494m5zg194
+    ❌ 20260106_200220_a87b818_audio | 5学生 | UNKNOWN
+       Job: batches/cutbiz2m4yf82qt82g30mq129wpgb3eavc3r
+    🔄 20260107_011333_a87b818 | 5学生 | JOB_STATE_PENDING
+       Job: batches/4cm33fgwy4fl2n29vn6zk0kmras4hv00agv0
+    🔄 20260107_012746_a87b818 | 5学生 | JOB_STATE_PENDING
+       Job: batches/hbr1h25myyisuph9f5obd88rififg1iw95rw
+  ASR版本 (5 次运行):
+    ✅ 20260106_002933_eb28926 | 5学生 | JOB_STATE_SUCCEEDED
+       Job: batches/j0vosk7d2firxmjy0683hzun9gx9neh9bxuc
+    ❌ 20260106_102048_eb28926 | 1学生 | UNKNOWN
+       Job: batches/ctykjay90rmmloq9w14f2yvtlvws2xoi2kga
+    ❌ 20260106_192833_a87b818 | 5学生 | UNKNOWN
+       Job: batches/2pta7e9ff5df7nfd6mdk0adsl0jy4dngdbj5
+    🔄 20260107_011404_a87b818 | 5学生 | JOB_STATE_PENDING
+       Job: batches/06yktkysnrbdfjxcafppskedf3s0z30c1jnt
+    🔄 20260107_012824_a87b818 | 5学生 | JOB_STATE_PENDING
+       Job: batches/z6axxqrmkqd71uwe7n1aofokd3gu0kmkqclk
+
+### Zoe61330_2025-12-16
+  Audio版本: 无
+  ASR版本 (2 次运行):
+    ✅ 20260106_003425_eb28926 | 5学生 | JOB_STATE_SUCCEEDED
+       Job: batches/4gbjje2d08km01to4owl8mlfawp918i1u8np
+    ❌ 20260106_102702_eb28926 | 1学生 | UNKNOWN
+       Job: batches/fgfxs9dd5d7eu5olebv1e4th46gcq4ntapwm
+
+### Zoe61330_2025-12-30
+  Audio版本 (2 次运行):
+    ❌ 20260106_182607_4213383_audio | 4学生 | UNKNOWN
+       Job: batches/nq7dar93ws8nnfgn7q490ldc2geseadi3o7v
+    ❌ 20260106_185147_66c8e6a_audio | 1学生 | UNKNOWN
+       Job: batches/rh20kurw87sqc09yqbg8nk7v8scttco4itce
+  ASR版本 (2 次运行):
+    ✅ 20260106_003430_eb28926 | 4学生 | JOB_STATE_SUCCEEDED
+       Job: batches/sfstbxvy77k1to0day0yv4krrlmd01kdrgtp
+    ❌ 20260106_102502_eb28926 | 1学生 | UNKNOWN
+       Job: batches/fqnn5eas1e9tqm7zl2y0q7l663hx3pbm23sc
+
+### Zoe70930_2025-11-14
+  Audio版本 (2 次运行):
+    ❌ 20260106_183607_4213383_audio | 2学生 | UNKNOWN
+       Job: batches/hinvdf4mnh5s97s88446qgycavmcdcxpmrya
+    ❌ 20260106_191608_ff06bb5_audio | 2学生 | UNKNOWN
+       Job: batches/p7frjwpsmlgvl5n7dikfvj6tw969gdu6kobz
+  ASR版本: 无
+
+## 最新提交的批次
+----------------------------------------------------------------------------------------------------
+🔄 Zoe51530_2025-12-16 | asr | 20260107_012936_a87b818 | 6学生 | JOB_STATE_PENDING
+🔄 Zoe51530_2025-12-16 | audio | 20260107_012858_a87b818 | 6学生 | JOB_STATE_PENDING
+🔄 Zoe61330_2025-12-15 | asr | 20260107_012824_a87b818 | 5学生 | JOB_STATE_PENDING
+🔄 Zoe61330_2025-12-15 | audio | 20260107_012746_a87b818 | 5学生 | JOB_STATE_PENDING
+🔄 Zoe51530_2025-12-16 | asr | 20260107_011448_a87b818 | 6学生 | JOB_STATE_PENDING
+🔄 Zoe51530_2025-12-16 | audio | 20260107_011419_a87b818 | 6学生 | JOB_STATE_PENDING
+🔄 Zoe61330_2025-12-15 | asr | 20260107_011404_a87b818 | 5学生 | JOB_STATE_PENDING
+🔄 Zoe61330_2025-12-15 | audio | 20260107_011333_a87b818 | 5学生 | JOB_STATE_PENDING
+🔄 Niko60900_2025-10-12 | asr | 20260107_010932_a87b818 | 5学生 | JOB_STATE_PENDING
+🔄 Niko60900_2025-12-15 | asr | 20260107_010306_a87b818 | 5学生 | JOB_STATE_PENDING
+
+## 待获取结果的批次 (PENDING)
+----------------------------------------------------------------------------------------------------
+🔄 Zoe51530_2025-12-16 | asr | 20260107_012936_a87b818
+   获取命令: uv run python scripts/gemini_batch.py fetch --manifest /Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe51530_2025-12-16/_batch_runs/20260107_012936_a87b818/batch_manifest.json
+🔄 Zoe51530_2025-12-16 | audio | 20260107_012858_a87b818
+   获取命令: uv run python scripts/gemini_batch_audio.py fetch --manifest /Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe51530_2025-12-16/_batch_runs/20260107_012858_a87b818.audio/batch_manifest.json
+🔄 Zoe61330_2025-12-15 | asr | 20260107_012824_a87b818
+   获取命令: uv run python scripts/gemini_batch.py fetch --manifest /Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe61330_2025-12-15/_batch_runs/20260107_012824_a87b818/batch_manifest.json
+🔄 Zoe61330_2025-12-15 | audio | 20260107_012746_a87b818
+   获取命令: uv run python scripts/gemini_batch_audio.py fetch --manifest /Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe61330_2025-12-15/_batch_runs/20260107_012746_a87b818.audio/batch_manifest.json
+🔄 Zoe51530_2025-12-16 | asr | 20260107_011448_a87b818
+   获取命令: uv run python scripts/gemini_batch.py fetch --manifest /Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe51530_2025-12-16/_batch_runs/20260107_011448_a87b818/batch_manifest.json
+🔄 Zoe51530_2025-12-16 | audio | 20260107_011419_a87b818
+   获取命令: uv run python scripts/gemini_batch_audio.py fetch --manifest /Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe51530_2025-12-16/_batch_runs/20260107_011419_a87b818.audio/batch_manifest.json
+🔄 Zoe61330_2025-12-15 | asr | 20260107_011404_a87b818
+   获取命令: uv run python scripts/gemini_batch.py fetch --manifest /Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe61330_2025-12-15/_batch_runs/20260107_011404_a87b818/batch_manifest.json
+🔄 Zoe61330_2025-12-15 | audio | 20260107_011333_a87b818
+   获取命令: uv run python scripts/gemini_batch_audio.py fetch --manifest /Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe61330_2025-12-15/_batch_runs/20260107_011333_a87b818.audio/batch_manifest.json
+🔄 Niko60900_2025-10-12 | asr | 20260107_010932_a87b818
+   获取命令: uv run python scripts/gemini_batch.py fetch --manifest /Users/damien/Desktop/Venture/quickfire_workflow/archive/Niko60900_2025-10-12/_batch_runs/20260107_010932_a87b818/batch_manifest.json
+🔄 Niko60900_2025-12-15 | asr | 20260107_010306_a87b818
+   获取命令: uv run python scripts/gemini_batch.py fetch --manifest /Users/damien/Desktop/Venture/quickfire_workflow/archive/Niko60900_2025-12-15/_batch_runs/20260107_010306_a87b818/batch_manifest.json
+🔄 Niko60900_2025-12-15 | asr | 20260107_005756_a87b818
+   获取命令: uv run python scripts/gemini_batch.py fetch --manifest /Users/damien/Desktop/Venture/quickfire_workflow/archive/Niko60900_2025-12-15/_batch_runs/20260107_005756_a87b818/batch_manifest.json
+🔄 Niko60900_2025-12-15 | audio | 20260107_005709_a87b818
+   获取命令: uv run python scripts/gemini_batch_audio.py fetch --manifest /Users/damien/Desktop/Venture/quickfire_workflow/archive/Niko60900_2025-12-15/_batch_runs/20260107_005709_a87b818.audio/batch_manifest.json
+🔄 Niko60900_2025-11-12 | audio | 20260107_005641_a87b818
+   获取命令: uv run python scripts/gemini_batch_audio.py fetch --manifest /Users/damien/Desktop/Venture/quickfire_workflow/archive/Niko60900_2025-11-12/_batch_runs/20260107_005641_a87b818.audio/batch_manifest.json
+🔄 Niko60900_2025-10-12 | audio | 20260107_005616_a87b818
+   获取命令: uv run python scripts/gemini_batch_audio.py fetch --manifest /Users/damien/Desktop/Venture/quickfire_workflow/archive/Niko60900_2025-10-12/_batch_runs/20260107_005616_a87b818.audio/batch_manifest.json
+
+====================================================================================================

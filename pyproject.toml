@@ -1,0 +1,19 @@
+[project]
+name = "quickfire-workflow"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.13"
+dependencies = [
+    "dashscope>=1.25.4",
+    "duckdb>=1.4.3",
+    "fastapi>=0.115.0",
+    "google-genai",
+    "httpx[socks]>=0.28.1",
+    "jinja2>=3.1.6",
+    "openai>=2.16.0",
+    "openpyxl>=3.1.5",
+    "oss2>=2.19.1",
+    "python-dotenv>=1.2.1",
+    "uvicorn>=0.30.0",
+    "xlsxwriter>=3.2.9",
+]
