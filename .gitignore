@@ -71,10 +71,9 @@ audio/*.flac
 audio/*.ogg
 
 # ASR results and generated files
-data/*_asr_raw.json
-data/caption_result.txt
-data/*_result.json
-data/*_output.txt
+data/*.json
+data/*.csv
+data/*.txt
 
 # Archive and temporary files
 archive/
