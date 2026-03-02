@@ -74,6 +74,12 @@ Keep this managed block so 'openspec update' can refresh the instructions.
 - ASR 时间戳单位: 毫秒（milliseconds）
 - 说话人标识: spk0/spk1 用于区分教师和学生
 
+### 6. 实验端与生产后端的关系
+- 本项目是**独立的实验端**，用于 prompt 调优、模型评估、工作流验证
+- 生产后端是独立部署的服务，两者的 prompt/配置需要**手动同步**
+- 当实验端验证通过某项改动后，需创建 Linear issue 通知后端团队同步更新
+- 例如：`prompts/asr_context/system.md` 的变更需后端在其 ASR 调用的 system message 中同步
+
 ## 快速命令
 ```bash
 python scripts/main.py  # 主入口
