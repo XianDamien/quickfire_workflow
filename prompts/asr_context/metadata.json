@@ -1,0 +1,9 @@
+{
+  "prompt_version": "1.1.0",
+  "description": "Qwen ASR system context: 中英混合文本转写提示",
+  "owner": "data-ops@lan",
+  "updated_at": "2026-01-05T19:53:53+08:00",
+  "tags": ["asr", "qwen3-asr-flash", "mixed-language", "zh-en"],
+  "notes": "v1.1: 新增老师念题目声音较小的识别提示\nv1.0: 初始版本，明确指示这是中英混合文本，要求准确转写并保留所有中英文内容。使用 2_qwen_asr_context.json 追踪每次转写使用的 context。",
+  "contact": ["pm@lan"]
+}

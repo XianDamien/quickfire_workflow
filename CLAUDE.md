@@ -25,7 +25,18 @@ Keep this managed block so 'openspec update' can refresh the instructions.
 ## 模块索引
 - `scripts/` → 核心评测引擎（qwen3.py）及音频转写（captioner_qwen3.py）
 - `data/` → 题库（CSV）、ASR 转写结果（JSON/TXT）
+- `prompts/` → **Prompt 模板资产（受保护，禁止删除）**
 - `.claude/` → 子模块配置指南
+
+## ⚠️ 受保护资产：prompts/ 目录
+**绝对禁止删除 `prompts/` 下的任何文本文件**，包括：
+- `prompts/annotation/system.md`、`user_with_audio.md` — annotation 主 prompt
+- `prompts/asr_context/system.md` — ASR 上下文 prompt
+- `prompts/asr_gatekeeper/system.md`、`user.md` — ASR 质检 prompt
+- `prompts/prompt_loader.py` — prompt 加载器（Python 源文件）
+- 各子目录的 `metadata.json` — prompt 版本元数据
+
+这些文件是评测系统的核心配置，丢失后系统无法正常运行。修改 prompt 时只能**编辑内容**，不得删除文件本身。归档旧版本请移至 `archived/` 子目录。
 
 ## 宪法原则
 
