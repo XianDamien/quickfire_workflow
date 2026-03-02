@@ -225,7 +225,7 @@ def call_api(model: str, messages: List[Dict], temperature: float = 0.1, thinkin
 
 def write_student_result(
     class_dir: Path, student_name: str, segs: Dict,
-    predictions: Dict[str, str], model: str
+    predictions: Dict[str, str], model: str, mode: str = "student"
 ) -> Tuple[int, int]:
     """写入单个学生的分类结果，返回 (total, correct)。"""
     out_path = class_dir / student_name / f"classification_{model}.json"
@@ -253,7 +253,7 @@ def write_student_result(
         "class": class_dir.name,
         "student": student_name,
         "model": model,
-        "mode": "student",
+        "mode": mode,
         "accuracy": round(accuracy, 4) if accuracy is not None else None,
         "correct": s_correct,
         "total": s_total,
@@ -336,7 +336,7 @@ def main() -> int:
                 out_path = class_dir / student_name / f"classification_{args.model}.json"
                 if out_path.exists() and not args.force:
                     continue
-                t, c = write_student_result(class_dir, student_name, segs, predictions, args.model)
+                t, c = write_student_result(class_dir, student_name, segs, predictions, args.model, mode="class")
                 grand_total += t
                 grand_correct += c
 
