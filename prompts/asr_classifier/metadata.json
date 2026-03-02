@@ -1,0 +1,23 @@
+{
+  "name": "asr_classifier",
+  "description": "ASR 片段类型分类器 system prompt（grammar vs vocabulary）",
+  "version": "1.2.0",
+  "created_at": "2026-03-02",
+  "changelog": [
+    {
+      "version": "1.0.0",
+      "date": "2026-03-02",
+      "note": "初始版本"
+    },
+    {
+      "version": "1.1.0",
+      "date": "2026-03-02",
+      "note": "优化：明确介词搭配/词形变化/代词辨析属于 grammar；增加核心判断原则（看教学目的而非表面形式）"
+    },
+    {
+      "version": "1.2.0",
+      "date": "2026-03-02",
+      "note": "优化：新增前缀规律（dis-/un-/im-）和词性完整转换链（nation→national→nationality）属于 grammar；增加具体 vocabulary 联想例句作为对照"
+    }
+  ]
+}

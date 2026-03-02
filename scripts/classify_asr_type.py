@@ -1,13 +1,20 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Classify ASR text into grammar/vocabulary using Qwen models.
+按班级批量分类 ASR 片段类型（grammar / vocabulary）。
 
-Input layout (default):
-  two_output/<class>/<student>/<video_stem>/2_qwen_asr.txt
+流程：
+  1. 每个班级发起一次 API 调用，把所有学生的转录文本按片段编号组合成一个 prompt
+  2. 模型返回每个片段的类型（{片段号: 类型}）
+  3. 每个学生生成独立的输出 JSON，包含转录路径、预测类型、ground truth 及正误
+  4. 与学生目录下的 metadata.json（已标注的答案）对比准确率
 
-Output per class:
-  two_output/<class>/classification_<model>.json
+目录结构：
+  two_output/<班级>/<学生>/<片段号>/2_qwen_asr.txt
+  two_output/<班级>/<学生>/metadata.json  ← ground truth（已标注的答案）
+
+输出：
+  two_output/<班级>/<学生>/classification_<model>.json  ← 每学生一份
 """
 
 import argparse
@@ -15,275 +22,348 @@ import json
 import os
 import re
 import sys
-import time
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Tuple
 
-# Ensure project root in path
-_SCRIPT_DIR = Path(__file__).parent.resolve()
-_PROJECT_ROOT = _SCRIPT_DIR.parent.resolve()
-if str(_PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(_PROJECT_ROOT))
+from openai import OpenAI
 
-import dashscope
+DEFAULT_MODEL = "qwen3.5-plus"
+DASHSCOPE_BASE_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1"
 
-from scripts.common.env import load_env
-from scripts.common.asr import load_qwen_asr_text
+# ---------------------------------------------------------------------------
+# .env 加载
+# ---------------------------------------------------------------------------
 
-
-SUPPORTED_MODELS = ["qwen3.5-plus", "qwen-long"]
-
-
-def iter_asr_items(
-    input_root: Path,
-    class_filter: Optional[str] = None,
-    student_filter: Optional[str] = None,
-) -> Dict[str, List[Dict[str, str]]]:
-    result: Dict[str, List[Dict[str, str]]] = {}
-
-    if not input_root.exists():
-        return result
-
-    for class_dir in sorted([p for p in input_root.iterdir() if p.is_dir() and not p.name.startswith(".")]):
-        if class_filter and class_filter.lower() not in class_dir.name.lower():
-            continue
-
-        items: List[Dict[str, str]] = []
-        for student_dir in sorted([p for p in class_dir.iterdir() if p.is_dir() and not p.name.startswith(".")]):
-            if student_filter and student_filter.lower() not in student_dir.name.lower():
-                continue
-
-            for video_dir in sorted([p for p in student_dir.iterdir() if p.is_dir() and not p.name.startswith(".")]):
-                asr_txt = video_dir / "2_qwen_asr.txt"
-                asr_json = video_dir / "2_qwen_asr.json"
-                if asr_txt.exists() or asr_json.exists():
-                    items.append(
-                        {
-                            "student": student_dir.name,
-                            "video": video_dir.name,
-                            "asr_txt": str(asr_txt) if asr_txt.exists() else "",
-                            "asr_json": str(asr_json) if asr_json.exists() else "",
-                        }
-                    )
-
-        if items:
-            result[class_dir.name] = items
-
-    return result
+def load_env(env_file: Optional[str] = None) -> None:
+    here = Path(__file__).parent.resolve()
+    candidates = [Path(env_file)] if env_file else []
+    for parent in [here, here.parent]:
+        candidates.append(parent / ".env")
+    for path in candidates:
+        if path.exists():
+            with open(path, encoding="utf-8") as f:
+                for line in f:
+                    line = line.strip()
+                    if not line or line.startswith("#") or "=" not in line:
+                        continue
+                    k, _, v = line.partition("=")
+                    k = k.strip()
+                    v = v.strip().strip('"').strip("'")
+                    if k and k not in os.environ:
+                        os.environ[k] = v
+            return
 
 
-def build_prompts(asr_text: str) -> List[Dict[str, str]]:
-    system = (
-        "你是口语快反课程的分类器。只需要判断类型：\n"
-        "- grammar: 知识/语法快反\n"
-        "- vocabulary: 单词快反\n"
-        "只输出 JSON，格式必须是：{\"type\":\"grammar\"} 或 {\"type\":\"vocabulary\"}。\n"
-        "不要输出其他字段、解释或多余文本。"
-    )
-    user = f"以下是学生转录文本，请判断类型：\n\n{asr_text}"
-    return [
-        {"role": "system", "content": system},
-        {"role": "user", "content": user},
-    ]
+# ---------------------------------------------------------------------------
+# 数据读取
+# ---------------------------------------------------------------------------
+
+def seg_sort_key(s: str) -> Tuple:
+    """统一排序键，避免 int 与 str 混比。"""
+    return (0, int(s)) if s.isdigit() else (1, s)
 
 
-def extract_response_text(response) -> str:
-    """
-    Extract text from dashscope response (message format).
-    Supports both object-style and dict-style.
-    """
-    output = getattr(response, "output", None)
-    if output is None and isinstance(response, dict):
-        output = response.get("output")
-
-    # text result_format
-    if output is not None:
-        if isinstance(output, dict):
-            text = output.get("text")
-            if isinstance(text, str) and text.strip():
-                return text.strip()
-        else:
-            text = getattr(output, "text", None)
-            if isinstance(text, str) and text.strip():
-                return text.strip()
-
-    choices = None
-    if isinstance(output, dict):
-        choices = output.get("choices")
-    else:
-        choices = getattr(output, "choices", None)
-
-    if choices:
-        choice = choices[0]
-        message = getattr(choice, "message", None) if not isinstance(choice, dict) else choice.get("message")
-        if message is None:
-            return ""
-        content = getattr(message, "content", None) if not isinstance(message, dict) else message.get("content")
-        if isinstance(content, list):
-            parts = []
-            for item in content:
-                if isinstance(item, dict) and "text" in item:
-                    parts.append(str(item["text"]))
-                elif isinstance(item, str):
-                    parts.append(item)
-            return "".join(parts).strip()
-        if isinstance(content, str):
-            return content.strip()
-    return ""
-
-
-def parse_type_from_text(text: str) -> Optional[str]:
-    if not text:
-        return None
-
-    # Try direct JSON
-    try:
-        data = json.loads(text)
-        if isinstance(data, dict):
-            t = data.get("type")
-            if t in ("grammar", "vocabulary"):
-                return t
-    except Exception:
-        pass
-
-    # Try to extract JSON object from text
-    match = re.search(r"\{.*?\}", text, re.DOTALL)
-    if match:
-        try:
-            data = json.loads(match.group(0))
-            if isinstance(data, dict):
-                t = data.get("type")
-                if t in ("grammar", "vocabulary"):
-                    return t
-        except Exception:
-            pass
-
-    lowered = text.lower()
-    if "grammar" in lowered and "vocabulary" not in lowered:
-        return "grammar"
-    if "vocabulary" in lowered and "grammar" not in lowered:
-        return "vocabulary"
+def find_asr_file(segment_dir: Path) -> Optional[Path]:
+    """返回 2_qwen_asr.txt 或 2_qwen_asr.json 的路径（优先 .txt）。"""
+    for name in ("2_qwen_asr.txt", "2_qwen_asr.json"):
+        p = segment_dir / name
+        if p.exists():
+            return p
     return None
 
 
-def load_asr_text(item: Dict[str, str]) -> str:
-    if item.get("asr_txt"):
-        with open(item["asr_txt"], "r", encoding="utf-8") as f:
-            return f.read().strip()
-    if item.get("asr_json"):
-        return load_qwen_asr_text(item["asr_json"])
-    return ""
+def read_asr_text(asr_path: Optional[Path]) -> str:
+    if asr_path is None:
+        return ""
+    try:
+        raw = asr_path.read_text(encoding="utf-8").strip()
+        if asr_path.suffix == ".json":
+            data = json.loads(raw)
+            if isinstance(data, dict):
+                return (data.get("text") or data.get("transcript") or "").strip()
+            if isinstance(data, list):
+                return " ".join(x.get("text", "") for x in data if isinstance(x, dict)).strip()
+        return raw
+    except Exception:
+        return ""
 
 
-def classify_text(model: str, asr_text: str, temperature: float = 0.2) -> Dict[str, str]:
-    messages = build_prompts(asr_text)
-    response = dashscope.Generation.call(
-        model=model,
-        messages=messages,
-        temperature=temperature,
-        result_format="text",
+def load_metadata(student_dir: Path) -> Dict[str, str]:
+    """返回 {片段号: 类型} —— 已标注的 ground truth。"""
+    f = student_dir / "metadata.json"
+    if not f.exists():
+        return {}
+    try:
+        data = json.loads(f.read_text(encoding="utf-8"))
+        return {
+            str(k): v["type"]
+            for k, v in data.get("segments", {}).items()
+            if isinstance(v, dict) and v.get("type") in ("grammar", "vocabulary")
+        }
+    except Exception:
+        return {}
+
+
+# ---------------------------------------------------------------------------
+# 收集班级数据
+# ---------------------------------------------------------------------------
+
+def collect_class_data(class_dir: Path, student_filter: Optional[str] = None):
+    """
+    返回：
+      student_data: {
+        student_name: {
+          seg: {asr_path: Path|None, asr_text: str, ground_truth: str}
+        }
+      }
+      segments_index: {seg: [(student_name, asr_text), ...]}  ← 用于构建 prompt
+    """
+    student_data: Dict[str, Dict] = {}
+    segments_index: Dict[str, List] = {}
+
+    for student_dir in sorted(p for p in class_dir.iterdir() if p.is_dir() and not p.name.startswith(".")):
+        if student_filter and student_filter.lower() not in student_dir.name.lower():
+            continue
+        metadata = load_metadata(student_dir)
+        if not metadata:
+            continue
+        student_segs = {}
+        for seg, truth in metadata.items():
+            asr_path = find_asr_file(student_dir / seg)
+            asr_text = read_asr_text(asr_path)
+            student_segs[seg] = {
+                "asr_path": asr_path,
+                "asr_text": asr_text,
+                "ground_truth": truth,
+            }
+            segments_index.setdefault(seg, []).append((student_dir.name, asr_text))
+        student_data[student_dir.name] = student_segs
+
+    return student_data, segments_index
+
+
+# ---------------------------------------------------------------------------
+# Prompt & API
+# ---------------------------------------------------------------------------
+
+def load_system_prompt() -> str:
+    """从 prompts/asr_classifier/system.md 加载，找不到则使用内嵌备用。"""
+    here = Path(__file__).parent.resolve()
+    prompt_path = here.parent / "prompts" / "asr_classifier" / "system.md"
+    if prompt_path.exists():
+        return prompt_path.read_text(encoding="utf-8").strip()
+    return (
+        "你是口语快反课程的智能分类器。快反课只有两种片段类型：grammar 和 vocabulary。"
+        '仅输出 JSON：{"片段号": "类型", ...}，不要输出其他内容。'
     )
-    status = getattr(response, "status_code", None)
-    if status is None and isinstance(response, dict):
-        status = response.get("status_code")
-    if status is not None and status != 200:
-        err_msg = getattr(response, "message", None)
-        if err_msg is None and isinstance(response, dict):
-            err_msg = response.get("message")
-        return {"type": "error", "error": str(err_msg) if err_msg else f"status_code={status}"}
-    text = extract_response_text(response)
-    label = parse_type_from_text(text)
-    if not label:
-        return {"type": "error", "raw": text}
-    return {"type": label}
+
+
+def build_messages_class(class_name: str, segments_index: Dict[str, List]) -> List[Dict]:
+    """班级模式：所有学生的文本合并，一次 API 调用。"""
+    lines = [f"以下是 {class_name} 的课堂片段转录：\n"]
+    for seg in sorted(segments_index.keys(), key=seg_sort_key):
+        lines.append(f"【片段 {seg}】")
+        for student_name, asr_text in segments_index[seg]:
+            text = asr_text or "（无转录文本）"
+            lines.append(f"学生 {student_name}：{text}")
+        lines.append("")
+    return [
+        {"role": "system", "content": load_system_prompt()},
+        {"role": "user", "content": "\n".join(lines)},
+    ]
+
+
+def build_messages_student(student_name: str, segs: Dict) -> List[Dict]:
+    """学生模式：单个学生的文本，一次 API 调用。"""
+    lines = [f"以下是 {student_name} 的课堂片段转录：\n"]
+    for seg in sorted(segs.keys(), key=seg_sort_key):
+        text = segs[seg]["asr_text"] or "（无转录文本）"
+        lines.append(f"【片段 {seg}】")
+        lines.append(text)
+        lines.append("")
+    return [
+        {"role": "system", "content": load_system_prompt()},
+        {"role": "user", "content": "\n".join(lines)},
+    ]
+
+
+def call_api(model: str, messages: List[Dict], temperature: float = 0.1, thinking: bool = False) -> Dict:
+    """
+    通过 OpenAI 兼容接口调用 DashScope（支持 Qwen3.5 系列多模态模型）。
+    返回 {predictions: {seg: type}} 或 {error: str}。
+    """
+    client = OpenAI(
+        api_key=os.environ.get("DASHSCOPE_API_KEY"),
+        base_url=DASHSCOPE_BASE_URL,
+    )
+    try:
+        response = client.chat.completions.create(
+            model=model,
+            messages=messages,
+            temperature=temperature,
+            extra_body={"enable_thinking": thinking},
+        )
+        content = response.choices[0].message.content
+    except Exception as e:
+        return {"error": str(e)}
+
+    raw = re.sub(r"^```(?:json)?\s*", "", content.strip())
+    raw = re.sub(r"\s*```$", "", raw)
+    try:
+        predictions = json.loads(raw)
+        if isinstance(predictions, dict):
+            valid = {str(k): v for k, v in predictions.items() if v in ("grammar", "vocabulary")}
+            return {"predictions": valid}
+    except Exception:
+        pass
+    return {"error": f"无法解析响应: {raw[:300]}"}
+
+
+# ---------------------------------------------------------------------------
+# 主流程
+# ---------------------------------------------------------------------------
+
+def write_student_result(
+    class_dir: Path, student_name: str, segs: Dict,
+    predictions: Dict[str, str], model: str, mode: str = "student"
+) -> Tuple[int, int]:
+    """写入单个学生的分类结果，返回 (total, correct)。"""
+    out_path = class_dir / student_name / f"classification_{model}.json"
+    seg_results = {}
+    s_total = s_correct = 0
+
+    for seg in sorted(segs.keys(), key=seg_sort_key):
+        entry = segs[seg]
+        predicted = predictions.get(seg)
+        ground_truth = entry["ground_truth"]
+        is_correct = predicted == ground_truth
+        asr_path = entry["asr_path"]
+        seg_results[seg] = {
+            "asr_path": str(asr_path) if asr_path else None,
+            "predicted": predicted,
+            "ground_truth": ground_truth,
+            "correct": is_correct,
+        }
+        s_total += 1
+        if is_correct:
+            s_correct += 1
+
+    accuracy = s_correct / s_total if s_total > 0 else None
+    out_path.write_text(json.dumps({
+        "class": class_dir.name,
+        "student": student_name,
+        "model": model,
+        "mode": mode,
+        "accuracy": round(accuracy, 4) if accuracy is not None else None,
+        "correct": s_correct,
+        "total": s_total,
+        "segments": seg_results,
+    }, ensure_ascii=False, indent=2), encoding="utf-8")
+
+    acc_str = f"{accuracy:.1%}" if accuracy is not None else "N/A"
+    marks = " ".join(
+        f"{seg}={'✓' if seg_results[seg]['correct'] else '✗'}"
+        for seg in sorted(seg_results.keys(), key=seg_sort_key)
+    )
+    print(f"  {student_name}: {acc_str} ({s_correct}/{s_total})  {marks}")
+    return s_total, s_correct
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Classify ASR text into grammar/vocabulary")
-    parser.add_argument("--input-root", default="two_output", help="Root directory with ASR outputs")
-    parser.add_argument("--class", dest="class_filter", help="Filter class name (substring match)")
-    parser.add_argument("--student", dest="student_filter", help="Filter student name (substring match)")
-    parser.add_argument("--model", action="append", help="Model name (can pass multiple). Default: qwen3.5-plus & qwen-long")
-    parser.add_argument("--force", action="store_true", help="Re-run even if output exists")
-    parser.add_argument("--sleep", type=float, default=0.0, help="Sleep seconds between API calls")
+    parser = argparse.ArgumentParser(description="分类 ASR 片段类型（grammar/vocabulary）并与 metadata 对比准确率")
+    parser.add_argument("--input-root", default="two_output")
+    parser.add_argument("--class", dest="class_filter", help="班级名称过滤（子串）")
+    parser.add_argument("--student", dest="student_filter", help="学生名称过滤（子串）")
+    parser.add_argument("--model", default=DEFAULT_MODEL)
+    parser.add_argument("--temperature", type=float, default=0.1)
+    parser.add_argument("--force", action="store_true", help="覆盖已有结果")
+    parser.add_argument(
+        "--mode", choices=["class", "student"], default="class",
+        help="class: 每班一次 API 调用（快，有跨学生干扰）；student: 每学生一次 API 调用（准，成本略高）",
+    )
     args = parser.parse_args()
 
     load_env()
-    # dashscope will read env internally, but set explicitly if present
-    if "DASHSCOPE_API_KEY" in os.environ:
-        dashscope.api_key = os.environ["DASHSCOPE_API_KEY"]
-
-    models = args.model or SUPPORTED_MODELS
-    for model in models:
-        if model not in SUPPORTED_MODELS:
-            print(f"⚠️  未在默认列表中的模型: {model}")
-
-    input_root = Path(args.input_root)
-    class_items = iter_asr_items(input_root, args.class_filter, args.student_filter)
-    if not class_items:
-        print(f"未找到可分类的 ASR 输出: {input_root}")
+    if not os.environ.get("DASHSCOPE_API_KEY"):
+        print("错误: 未找到 DASHSCOPE_API_KEY", file=sys.stderr)
         return 1
 
-    for class_name, items in class_items.items():
-        class_dir = input_root / class_name
-        class_dir.mkdir(parents=True, exist_ok=True)
+    input_root = Path(args.input_root).resolve()
+    if not input_root.exists():
+        print(f"错误: 目录不存在: {input_root}", file=sys.stderr)
+        return 1
 
-        for model in models:
-            output_path = class_dir / f"classification_{model}.json"
-            if output_path.exists() and not args.force:
-                print(f"[跳过] 已存在: {output_path}")
-                continue
+    class_dirs = sorted(p for p in input_root.iterdir() if p.is_dir() and not p.name.startswith("."))
+    if args.class_filter:
+        class_dirs = [p for p in class_dirs if args.class_filter.lower() in p.name.lower()]
+    if not class_dirs:
+        print("未找到班级目录")
+        return 1
 
-            results = []
-            print(f"\n[分类] 班级 {class_name} - 模型 {model} - 共 {len(items)} 个视频")
+    grand_total = grand_correct = 0
 
-            for idx, item in enumerate(items, 1):
-                asr_text = load_asr_text(item)
-                if not asr_text:
-                    results.append(
-                        {
-                            "student": item["student"],
-                            "video": item["video"],
-                            "type": "error",
-                            "error": "empty_asr",
-                        }
-                    )
+    for class_dir in class_dirs:
+        print(f"\n[班级] {class_dir.name}  模型: {args.model}  模式: {args.mode}")
+
+        student_data, segments_index = collect_class_data(class_dir, args.student_filter)
+        if not student_data:
+            print("  ⚠️  无有效学生数据，跳过")
+            continue
+
+        # ── 班级模式：一次 API 调用，所有学生共享预测结果 ──────────────────
+        if args.mode == "class":
+            all_segs = sorted(segments_index.keys(), key=seg_sort_key)
+            total_texts = sum(len(v) for v in segments_index.values())
+            print(f"  片段: {all_segs}  学生: {list(student_data.keys())}  共 {total_texts} 条")
+
+            if not args.force:
+                existing = [s for s in student_data
+                            if (class_dir / s / f"classification_{args.model}.json").exists()]
+                if len(existing) == len(student_data):
+                    print(f"  [跳过] 所有学生已有结果  (--force 重新运行)")
                     continue
 
-                print(f"  ({idx}/{len(items)}) {item['student']}/{item['video']}")
-                try:
-                    res = classify_text(model, asr_text)
-                    out = {
-                        "student": item["student"],
-                        "video": item["video"],
-                        "type": res.get("type", "error"),
-                    }
-                    if "raw" in res:
-                        out["raw"] = res["raw"]
-                    if "error" in res:
-                        out["error"] = res["error"]
-                    results.append(out)
-                except Exception as e:
-                    results.append(
-                        {
-                            "student": item["student"],
-                            "video": item["video"],
-                            "type": "error",
-                            "error": str(e),
-                        }
-                    )
+            messages = build_messages_class(class_dir.name, segments_index)
+            result = call_api(args.model, messages, temperature=args.temperature)
+            if "error" in result:
+                print(f"  ❌ API 错误: {result['error']}")
+                continue
 
-                if args.sleep and args.sleep > 0:
-                    time.sleep(args.sleep)
+            predictions = result["predictions"]
+            print(f"  模型预测: {predictions}")
 
-            payload = {
-                "class": class_name,
-                "model": model,
-                "items": results,
-            }
-            with open(output_path, "w", encoding="utf-8") as f:
-                json.dump(payload, f, ensure_ascii=False, indent=2)
-            print(f"✅ 输出: {output_path}")
+            for student_name, segs in student_data.items():
+                out_path = class_dir / student_name / f"classification_{args.model}.json"
+                if out_path.exists() and not args.force:
+                    continue
+                t, c = write_student_result(class_dir, student_name, segs, predictions, args.model, mode="class")
+                grand_total += t
+                grand_correct += c
+
+        # ── 学生模式：每个学生单独一次 API 调用 ────────────────────────────
+        else:
+            for student_name, segs in student_data.items():
+                out_path = class_dir / student_name / f"classification_{args.model}.json"
+                if out_path.exists() and not args.force:
+                    print(f"  [跳过] {student_name}  (--force 重新运行)")
+                    continue
+
+                seg_list = sorted(segs.keys(), key=seg_sort_key)
+                print(f"  {student_name}  片段: {seg_list}", end="  ", flush=True)
+
+                messages = build_messages_student(student_name, segs)
+                result = call_api(args.model, messages, temperature=args.temperature)
+                if "error" in result:
+                    print(f"❌ {result['error']}")
+                    continue
+
+                predictions = result["predictions"]
+                t, c = write_student_result(class_dir, student_name, segs, predictions, args.model)
+                grand_total += t
+                grand_correct += c
+
+    if grand_total > 0:
+        print(f"\n[汇总] 总准确率 {grand_correct/grand_total:.1%}  ({grand_correct}/{grand_total})")
 
     return 0
 
