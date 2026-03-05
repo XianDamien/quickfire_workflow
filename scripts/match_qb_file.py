@@ -5,16 +5,13 @@ match_qb_file.py - 三步法匹配 ASR 片段对应的具体题库文件
 
 流程（每个片段）：
   1. LLM 将 ASR 文本解析为结构化 [{question, answer}, ...] 列表
-     （快反课每道题答案出现两次：学生先答、教师录音再确认；取完整答案）
-  2. 用 Q/A 内容搜索题库：
-     - grammar / vocabulary 各自预建 {normalized_question → [文件名]} 索引
-     - 精确匹配提取的 question 字段，返回所有命中文件及匹配题数
-  3. 题目数量过滤：|file_entries - parsed_qa_count| ≤ tolerance
-     所有通过的候选交给 LLM 最终判断
+  2. 用 Q/A 内容搜索题库索引（精确匹配 question 字段）
+  3. 题目数量过滤 → 所有通过的候选交给 LLM
   4. LLM 通过 function calling 阅读候选内容，提交最终匹配
 
 输出：
-  two_output/<班级>/<学生>/qb_match_<model>.json
+  - 更新 metadata.json：写入 qb_file + 用量统计
+  - 详细结果：qb_match_<model>.json
 """
 
 import argparse
@@ -22,7 +19,9 @@ import json
 import os
 import re
 import sys
+import time
 from collections import defaultdict
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Optional
 
@@ -31,11 +30,11 @@ from openai import OpenAI
 
 DEFAULT_MODEL = "qwen3.5-plus"
 DASHSCOPE_BASE_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1"
-COUNT_TOLERANCE = 3   # 题目数量允许偏差
+COUNT_TOLERANCE = 3
 
 
 # ---------------------------------------------------------------------------
-# .env 加载
+# 工具函数
 # ---------------------------------------------------------------------------
 
 def load_env(env_file: Optional[str] = None) -> None:
@@ -57,10 +56,6 @@ def load_env(env_file: Optional[str] = None) -> None:
             return
 
 
-# ---------------------------------------------------------------------------
-# ASR 文本提取
-# ---------------------------------------------------------------------------
-
 def extract_asr_text(asr_path: Path) -> str:
     try:
         raw = asr_path.read_text(encoding="utf-8").strip()
@@ -78,15 +73,29 @@ def extract_asr_text(asr_path: Path) -> str:
         return ""
 
 
-# ---------------------------------------------------------------------------
-# 文本标准化（用于索引 key）
-# ---------------------------------------------------------------------------
-
 def normalize(text: str) -> str:
     """去掉首尾空白和末尾标点，英文小写。"""
     text = text.strip()
     text = re.sub(r"[\s？。，、\?,\.!！]+$", "", text).strip()
     return re.sub(r"[a-zA-Z]+", lambda m: m.group().lower(), text)
+
+
+def extract_usage(resp) -> dict:
+    """从 OpenAI 响应中提取 token 用量。"""
+    u = getattr(resp, "usage", None)
+    if not u:
+        return {"input_tokens": 0, "output_tokens": 0}
+    return {
+        "input_tokens": getattr(u, "prompt_tokens", 0) or getattr(u, "input_tokens", 0) or 0,
+        "output_tokens": getattr(u, "completion_tokens", 0) or getattr(u, "output_tokens", 0) or 0,
+    }
+
+
+def merge_usage(a: dict, b: dict) -> dict:
+    return {
+        "input_tokens": a.get("input_tokens", 0) + b.get("input_tokens", 0),
+        "output_tokens": a.get("output_tokens", 0) + b.get("output_tokens", 0),
+    }
 
 
 # ---------------------------------------------------------------------------
@@ -118,10 +127,12 @@ vocabulary 类型（词汇题）：
 - 输出仅返回 JSON 数组，不要包含其他文字"""
 
 
-def parse_asr_to_qa(client: OpenAI, model: str, asr_text: str, seg_type: str) -> list[dict]:
+def parse_asr_to_qa(
+    client: OpenAI, model: str, asr_text: str, seg_type: str
+) -> tuple[list[dict], dict]:
     """
-    调用 LLM 将 ASR 文本解析为 [{question, answer}, ...] 列表。
-    失败时返回空列表。
+    返回 (qa_pairs, usage) 。
+    usage = {"input_tokens": int, "output_tokens": int, "elapsed_s": float}
     """
     type_hint = (
         "（grammar 类型：中文提问 → 英文语法答案）"
@@ -130,6 +141,7 @@ def parse_asr_to_qa(client: OpenAI, model: str, asr_text: str, seg_type: str) ->
     )
     user_content = f"片段类型：{seg_type} {type_hint}\n\nASR 转录：\n{asr_text}"
 
+    t0 = time.monotonic()
     try:
         resp = client.chat.completions.create(
             model=model,
@@ -139,20 +151,26 @@ def parse_asr_to_qa(client: OpenAI, model: str, asr_text: str, seg_type: str) ->
             ],
             temperature=0.1,
         )
+        elapsed = time.monotonic() - t0
+        usage = {**extract_usage(resp), "elapsed_s": round(elapsed, 2)}
+
         raw = resp.choices[0].message.content or ""
         raw = re.sub(r"^```(?:json)?\s*", "", raw.strip())
         raw = re.sub(r"\s*```$", "", raw)
         parsed = json.loads(raw)
         if isinstance(parsed, list):
-            return [
+            qa = [
                 {"question": str(item.get("question", "")).strip(),
                  "answer": str(item.get("answer", "")).strip()}
                 for item in parsed
                 if isinstance(item, dict) and item.get("question")
             ]
+            return qa, usage
     except Exception as e:
+        elapsed = time.monotonic() - t0
         print(f"      [parse_asr_to_qa 失败] {e}", file=sys.stderr)
-    return []
+        return [], {"input_tokens": 0, "output_tokens": 0, "elapsed_s": round(elapsed, 2)}
+    return [], usage
 
 
 # ---------------------------------------------------------------------------
@@ -160,23 +178,13 @@ def parse_asr_to_qa(client: OpenAI, model: str, asr_text: str, seg_type: str) ->
 # ---------------------------------------------------------------------------
 
 class QuestionBankIndex:
-    """
-    预加载所有题库文件，构建 {normalized_question → [文件名]} 索引。
-    grammar 和 vocabulary 分别建索引。
-    """
-
     def __init__(self, qb_root: Path):
         self.grammar_dir = qb_root / "grammar"
         self.vocab_dir = qb_root / "vocabulary"
-
-        # {normalized_q → [filenames]}
         self._grammar_q_index: dict[str, list[str]] = defaultdict(list)
         self._vocab_q_index: dict[str, list[str]] = defaultdict(list)
-
-        # {filename → entries}
         self._grammar_entries: dict[str, list[dict]] = {}
         self._vocab_entries: dict[str, list[dict]] = {}
-
         self._build()
 
     def _build(self):
@@ -207,47 +215,30 @@ class QuestionBankIndex:
         print(f" {len(self._vocab_entries)} 个文件")
 
     def search_by_qa(self, qa_pairs: list[dict], seg_type: str) -> list[tuple[str, int]]:
-        """
-        用解析出的 Q/A 对搜索题库。
-        对每道题的 question 做精确匹配（normalized），
-        统计各文件命中次数，返回 [(filename, match_count)] 降序。
-        """
-        index = self._grammar_q_index if seg_type == "grammar" else self._vocab_q_index
+        idx = self._grammar_q_index if seg_type == "grammar" else self._vocab_q_index
         counts: dict[str, int] = defaultdict(int)
         for qa in qa_pairs:
             nq = normalize(qa.get("question", ""))
-            for fname in index.get(nq, []):
+            for fname in idx.get(nq, []):
                 counts[fname] += 1
         return sorted(counts.items(), key=lambda x: -x[1])
 
     def filter_by_count(
-        self,
-        candidates: list[tuple[str, int]],
-        n_qa: int,
-        seg_type: str,
-        tolerance: int = COUNT_TOLERANCE,
+        self, candidates: list[tuple[str, int]], n_qa: int,
+        seg_type: str, tolerance: int = COUNT_TOLERANCE,
     ) -> list[tuple[str, int]]:
-        """
-        保留 entries 数量与 n_qa 接近（±tolerance）的候选。
-        返回 [(filename, entry_count)] 按 match_count 原顺序。
-        """
         result = []
-        for fname, match_count in candidates:
-            n_entries = len(self._grammar_entries.get(fname, []) if seg_type == "grammar"
-                           else self._vocab_entries.get(fname, []))
-            if abs(n_entries - n_qa) <= tolerance:
-                result.append((fname, n_entries))
+        for fname, _match in candidates:
+            n = len(self._grammar_entries.get(fname, []) if seg_type == "grammar"
+                    else self._vocab_entries.get(fname, []))
+            if abs(n - n_qa) <= tolerance:
+                result.append((fname, n))
         return result
 
     def load_entries(self, filename: str, seg_type: str) -> list[dict]:
         if seg_type == "grammar":
             return self._grammar_entries.get(filename, [])
         return self._vocab_entries.get(filename, [])
-
-    def all_filenames(self, seg_type: str) -> list[str]:
-        if seg_type == "grammar":
-            return list(self._grammar_entries.keys())
-        return list(self._vocab_entries.keys())
 
 
 # ---------------------------------------------------------------------------
@@ -259,13 +250,13 @@ TOOLS = [
         "type": "function",
         "function": {
             "name": "read_qb_file",
-            "description": "读取指定题库文件的全部题目和答案，用于与已解析的 Q/A 对比确认",
+            "description": "读取指定题库文件的全部题目和答案",
             "parameters": {
                 "type": "object",
                 "properties": {
                     "filename": {
                         "type": "string",
-                        "description": "题库文件名（含 .json），例如 R024-5W基础知识.json"
+                        "description": "题库文件名（含 .json）"
                     }
                 },
                 "required": ["filename"]
@@ -276,12 +267,12 @@ TOOLS = [
         "type": "function",
         "function": {
             "name": "submit_answer",
-            "description": "提交最终匹配的题库文件名（确认后调用，只调用一次）",
+            "description": "提交最终匹配的题库文件名（只调用一次）",
             "parameters": {
                 "type": "object",
                 "properties": {
                     "qb_file": {"type": "string", "description": "最终匹配的题库文件名"},
-                    "reason": {"type": "string", "description": "一句话说明匹配依据"}
+                    "reason": {"type": "string", "description": "一句话匹配依据"}
                 },
                 "required": ["qb_file", "reason"]
             }
@@ -292,11 +283,11 @@ TOOLS = [
 _MATCH_SYSTEM = """你是快反课题库匹配专家。
 
 已知：
-- ASR 转录已被解析为结构化 Q/A 列表（每道题：question + answer）
+- ASR 转录已被解析为结构化 Q/A 列表
 - 候选题库文件已通过 Q/A 内容匹配和题目数量初步筛选
 
 你的任务：
-1. 查看候选列表（含各文件命中题数和总题数）
+1. 查看候选列表（含各文件题数）
 2. 调用 read_qb_file 查看最可能候选的完整题目
 3. 与解析出的 Q/A 列表对比，确认最佳匹配
 4. 调用 submit_answer 提交结果
@@ -305,18 +296,13 @@ _MATCH_SYSTEM = """你是快反课题库匹配专家。
 
 
 def agentic_match(
-    client: OpenAI,
-    model: str,
-    asr_text: str,
-    qa_pairs: list[dict],
-    candidates: list[tuple[str, int]],   # (filename, entry_count)
-    seg_type: str,
-    index: QuestionBankIndex,
-    max_turns: int = 8,
+    client: OpenAI, model: str, asr_text: str,
+    qa_pairs: list[dict], candidates: list[tuple[str, int]],
+    seg_type: str, index: QuestionBankIndex, max_turns: int = 8,
 ) -> dict:
     """
-    返回 {"qb_file": str, "reason": str, "tool_calls": int}
-    或   {"error": str}
+    返回 {"qb_file", "reason", "tool_calls", "usage": {input_tokens, output_tokens, elapsed_s}}
+    或 {"error", "usage"}
     """
     qa_text = "\n".join(
         f"  {i+1}. Q: {qa['question']}  →  A: {qa['answer']}"
@@ -326,7 +312,6 @@ def agentic_match(
         f"  {i+1}. {fname}（共 {n} 题）"
         for i, (fname, n) in enumerate(candidates)
     )
-
     user_content = f"""【已解析的 Q/A 列表（共 {len(qa_pairs)} 题）】
 {qa_text}
 
@@ -343,33 +328,34 @@ def agentic_match(
     ]
 
     tool_call_count = 0
+    total_usage = {"input_tokens": 0, "output_tokens": 0}
+    t0 = time.monotonic()
 
     for _ in range(max_turns):
         try:
             resp = client.chat.completions.create(
-                model=model,
-                messages=messages,
-                tools=TOOLS,
-                temperature=0.1,
+                model=model, messages=messages, tools=TOOLS, temperature=0.1,
             )
         except Exception as e:
-            return {"error": str(e)}
+            elapsed = time.monotonic() - t0
+            return {"error": str(e), "usage": {**total_usage, "elapsed_s": round(elapsed, 2)}}
 
+        total_usage = merge_usage(total_usage, extract_usage(resp))
         msg = resp.choices[0].message
+
         assistant_entry: dict = {"role": "assistant", "content": msg.content or ""}
         if msg.tool_calls:
             assistant_entry["tool_calls"] = [
-                {
-                    "id": tc.id,
-                    "type": "function",
-                    "function": {"name": tc.function.name, "arguments": tc.function.arguments},
-                }
+                {"id": tc.id, "type": "function",
+                 "function": {"name": tc.function.name, "arguments": tc.function.arguments}}
                 for tc in msg.tool_calls
             ]
         messages.append(assistant_entry)
 
         if not msg.tool_calls:
-            return {"error": "LLM 未调用工具就停止了"}
+            elapsed = time.monotonic() - t0
+            return {"error": "LLM 未调用工具就停止了",
+                    "usage": {**total_usage, "elapsed_s": round(elapsed, 2)}}
 
         for tc in msg.tool_calls:
             tool_call_count += 1
@@ -393,33 +379,86 @@ def agentic_match(
                 messages.append({"role": "tool", "tool_call_id": tc.id, "content": tool_result})
 
             elif fn == "submit_answer":
+                elapsed = time.monotonic() - t0
                 return {
                     "qb_file": args.get("qb_file", ""),
                     "reason": args.get("reason", ""),
                     "tool_calls": tool_call_count,
+                    "usage": {**total_usage, "elapsed_s": round(elapsed, 2)},
                 }
 
-    return {"error": f"超过最大轮次 ({max_turns})"}
+    elapsed = time.monotonic() - t0
+    return {"error": f"超过最大轮次 ({max_turns})",
+            "usage": {**total_usage, "elapsed_s": round(elapsed, 2)}}
 
 
 # ---------------------------------------------------------------------------
-# 元数据加载
+# 元数据读写
 # ---------------------------------------------------------------------------
 
-def load_metadata(student_dir: Path) -> dict:
-    """返回 {"2/2_qwen_asr.json": {"type": ..., "qb_file": ...}, ...}"""
+def load_metadata_raw(student_dir: Path) -> dict:
+    """原样读取 metadata.json。"""
     f = student_dir / "metadata.json"
     if not f.exists():
         return {}
     try:
-        data = json.loads(f.read_text(encoding="utf-8"))
-        gt = data.get("ground_truth", {})
-        return {
-            k: v for k, v in gt.items()
-            if isinstance(v, dict) and v.get("type") and v.get("qb_file")
-        }
+        return json.loads(f.read_text(encoding="utf-8"))
     except Exception:
         return {}
+
+
+def load_segments(raw_meta: dict) -> dict:
+    """
+    从原始 metadata 提取片段信息，返回统一结构：
+      {"<seg_key>": {"type": str, "qb_file": str | None}, ...}
+    """
+    # 新格式优先
+    gt = raw_meta.get("ground_truth", {})
+    if gt:
+        return {
+            k: {"type": v["type"], "qb_file": v.get("qb_file")}
+            for k, v in gt.items()
+            if isinstance(v, dict) and v.get("type")
+        }
+    # 旧格式
+    segs = raw_meta.get("segments", {})
+    return {
+        f"{k}/2_qwen_asr.json": {"type": v["type"], "qb_file": None}
+        for k, v in segs.items()
+        if isinstance(v, dict) and v.get("type")
+    }
+
+
+def update_metadata(student_dir: Path, raw_meta: dict, predictions: dict, model: str, total_usage: dict):
+    """
+    将预测结果写回 metadata.json。
+    predictions: {seg_key: {"predicted": str, ...}}
+    """
+    now_str = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+    if "ground_truth" in raw_meta:
+        # 新格式：更新 ground_truth 里的 qb_file
+        for seg_key, pred_info in predictions.items():
+            predicted = pred_info.get("predicted")
+            if predicted and seg_key in raw_meta["ground_truth"]:
+                raw_meta["ground_truth"][seg_key]["qb_file"] = predicted
+    else:
+        # 旧格式：更新 segments 里的 qb_file
+        for seg_key, pred_info in predictions.items():
+            predicted = pred_info.get("predicted")
+            if not predicted:
+                continue
+            seg_num = seg_key.split("/")[0]
+            if seg_num in raw_meta.get("segments", {}):
+                raw_meta["segments"][seg_num]["qb_file"] = predicted
+
+    # 记录匹配元信息
+    raw_meta["qb_matched_at"] = now_str
+    raw_meta["qb_matched_by"] = model
+    raw_meta["qb_match_usage"] = total_usage
+
+    meta_path = student_dir / "metadata.json"
+    meta_path.write_text(json.dumps(raw_meta, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
 def seg_key_to_num(seg_key: str) -> str:
@@ -473,8 +512,9 @@ def main() -> int:
             if args.student_filter and args.student_filter.lower() not in student_dir.name.lower():
                 continue
 
-            metadata = load_metadata(student_dir)
-            if not metadata:
+            raw_meta = load_metadata_raw(student_dir)
+            segments = load_segments(raw_meta)
+            if not segments:
                 continue
 
             out_path = student_dir / f"qb_match_{args.model}.json"
@@ -482,13 +522,16 @@ def main() -> int:
                 print(f"  [跳过] {class_dir.name}/{student_dir.name}  (用 --force 重新运行)")
                 continue
 
-            print(f"\n[学生] {class_dir.name}/{student_dir.name}  ({len(metadata)} 个片段)")
+            print(f"\n[学生] {class_dir.name}/{student_dir.name}  ({len(segments)} 个片段)")
             seg_results = {}
+            student_usage = {"input_tokens": 0, "output_tokens": 0, "elapsed_s": 0.0}
+            student_t0 = time.monotonic()
 
-            for seg_key, gt_info in sorted(metadata.items()):
+            for seg_key, gt_info in sorted(segments.items()):
                 seg_num = seg_key_to_num(seg_key)
                 seg_type = gt_info["type"]
-                gt_qb_file = gt_info["qb_file"]
+                gt_qb_file = gt_info.get("qb_file")
+                has_gt = gt_qb_file is not None
 
                 # 读取 ASR 文本
                 asr_path = None
@@ -506,7 +549,11 @@ def main() -> int:
                 print(f"    片段 {seg_num} [{seg_type}]:")
 
                 # Step 1: LLM 解析 ASR → Q/A 列表
-                qa_pairs = parse_asr_to_qa(client, args.model, asr_text, seg_type)
+                qa_pairs, parse_usage = parse_asr_to_qa(client, args.model, asr_text, seg_type)
+                student_usage["input_tokens"] += parse_usage.get("input_tokens", 0)
+                student_usage["output_tokens"] += parse_usage.get("output_tokens", 0)
+                student_usage["elapsed_s"] += parse_usage.get("elapsed_s", 0)
+
                 print(f"      解析出 {len(qa_pairs)} 道题: "
                       + str([qa["question"][:15] + "…" for qa in qa_pairs[:3]]))
 
@@ -514,25 +561,34 @@ def main() -> int:
                     print("      ❌ ASR 解析失败，跳过")
                     seg_results[seg_key] = {
                         "seg_type": seg_type, "predicted": None,
-                        "ground_truth": gt_qb_file, "correct": False,
+                        "ground_truth": gt_qb_file, "correct": None,
                         "error": "ASR 解析失败",
+                        "usage": parse_usage,
                     }
-                    grand_total += 1
+                    if has_gt:
+                        grand_total += 1
                     continue
 
                 # Step 2: Q/A 内容搜索题库
                 search_results = index.search_by_qa(qa_pairs, seg_type)
-                gt_match_count = next((n for f, n in search_results if f == gt_qb_file), 0)
-                print(f"      Q/A 搜索命中 {len(search_results)} 个文件  "
-                      f"(GT '{gt_qb_file}' 命中 {gt_match_count}/{len(qa_pairs)} 题)")
+                if has_gt:
+                    gt_match_count = next((n for f, n in search_results if f == gt_qb_file), 0)
+                    print(f"      Q/A 搜索命中 {len(search_results)} 个文件  "
+                          f"(GT '{gt_qb_file}' 命中 {gt_match_count}/{len(qa_pairs)} 题)")
+                else:
+                    gt_match_count = 0
+                    print(f"      Q/A 搜索命中 {len(search_results)} 个文件")
 
                 # Step 3: 题目数量过滤
                 filtered = index.filter_by_count(search_results, len(qa_pairs), seg_type, args.tolerance)
-                gt_in_filtered = any(f == gt_qb_file for f, _ in filtered)
-                print(f"      数量过滤（±{args.tolerance}）后: {len(filtered)} 个候选  "
-                      f"GT {'✓' if gt_in_filtered else '✗'}")
+                if has_gt:
+                    gt_in_filtered = any(f == gt_qb_file for f, _ in filtered)
+                    print(f"      数量过滤（±{args.tolerance}）后: {len(filtered)} 个候选  "
+                          f"GT {'✓' if gt_in_filtered else '✗'}")
+                else:
+                    gt_in_filtered = None
+                    print(f"      数量过滤（±{args.tolerance}）后: {len(filtered)} 个候选")
 
-                # Fallback：过滤后无候选 → 用搜索结果前5
                 if not filtered:
                     print("      ⚠ 无候选通过数量过滤，使用 Q/A 搜索前 5")
                     filtered = [
@@ -545,23 +601,38 @@ def main() -> int:
                     client, args.model, asr_text, qa_pairs,
                     filtered, seg_type, index,
                 )
+                match_usage = result.get("usage", {})
+                student_usage["input_tokens"] += match_usage.get("input_tokens", 0)
+                student_usage["output_tokens"] += match_usage.get("output_tokens", 0)
+                student_usage["elapsed_s"] += match_usage.get("elapsed_s", 0)
+
+                seg_usage = merge_usage(parse_usage, match_usage)
+                seg_usage["elapsed_s"] = round(
+                    parse_usage.get("elapsed_s", 0) + match_usage.get("elapsed_s", 0), 2
+                )
 
                 if "error" in result:
                     print(f"      ❌ {result['error']}")
                     seg_results[seg_key] = {
                         "seg_type": seg_type, "predicted": None,
-                        "ground_truth": gt_qb_file, "correct": False,
+                        "ground_truth": gt_qb_file, "correct": None,
                         "gt_in_filtered_candidates": gt_in_filtered,
                         "parsed_qa_count": len(qa_pairs),
                         "error": result["error"],
+                        "usage": seg_usage,
                     }
-                    grand_total += 1
+                    if has_gt:
+                        grand_total += 1
                     continue
 
                 predicted = result["qb_file"]
-                is_correct = predicted == gt_qb_file
-                print(f"      {'✓' if is_correct else '✗'} 预测: {predicted}  "
-                      f"[{result.get('tool_calls', 0)} 次工具调用]")
+                is_correct = (predicted == gt_qb_file) if has_gt else None
+                if has_gt:
+                    print(f"      {'✓' if is_correct else '✗'} 预测: {predicted}  "
+                          f"[{result.get('tool_calls', 0)} 次工具调用]")
+                else:
+                    print(f"      → 预测: {predicted}  "
+                          f"[{result.get('tool_calls', 0)} 次工具调用]")
                 print(f"        理由: {result.get('reason', '')[:80]}")
 
                 seg_results[seg_key] = {
@@ -571,36 +642,53 @@ def main() -> int:
                     "correct": is_correct,
                     "gt_in_filtered_candidates": gt_in_filtered,
                     "parsed_qa_count": len(qa_pairs),
-                    "gt_search_match_count": gt_match_count,
+                    "gt_search_match_count": gt_match_count if has_gt else None,
                     "reason": result.get("reason", ""),
                     "tool_calls": result.get("tool_calls", 0),
                     "parsed_qa": qa_pairs,
+                    "usage": seg_usage,
                 }
-                grand_total += 1
-                if is_correct:
-                    grand_correct += 1
+                if has_gt:
+                    grand_total += 1
+                    if is_correct:
+                        grand_correct += 1
 
-            # 写结果
-            correct = sum(1 for v in seg_results.values() if v.get("correct"))
-            total = len(seg_results)
-            accuracy = correct / total if total > 0 else None
+            # 汇总该学生用量
+            student_usage["elapsed_s"] = round(time.monotonic() - student_t0, 2)
+            total_tokens = student_usage["input_tokens"] + student_usage["output_tokens"]
+
+            # 更新 metadata.json
+            update_metadata(student_dir, raw_meta, seg_results, args.model, student_usage)
+
+            # 写详细结果
+            evaluated = [v for v in seg_results.values() if v.get("correct") is not None]
+            correct = sum(1 for v in evaluated if v["correct"])
+            total_eval = len(evaluated)
+            total_pred = len(seg_results)
+            accuracy = correct / total_eval if total_eval > 0 else None
             out_path.write_text(
                 json.dumps({
                     "class": class_dir.name, "student": student_dir.name,
                     "model": args.model,
                     "accuracy": round(accuracy, 4) if accuracy is not None else None,
-                    "correct": correct, "total": total,
+                    "evaluated": total_eval, "predicted": total_pred,
+                    "usage": student_usage,
                     "segments": seg_results,
                 }, ensure_ascii=False, indent=2),
                 encoding="utf-8",
             )
-            acc_str = f"{accuracy:.1%}" if accuracy is not None else "N/A"
-            print(f"  → 准确率 {acc_str} ({correct}/{total})  写入 {out_path.name}")
+            if total_eval > 0:
+                print(f"  → 准确率 {accuracy:.1%} ({correct}/{total_eval})  "
+                      f"tokens={total_tokens}  耗时={student_usage['elapsed_s']}s")
+            else:
+                print(f"  → 预测 {total_pred} 个片段  "
+                      f"tokens={total_tokens}  耗时={student_usage['elapsed_s']}s")
+            print(f"    metadata.json 已更新")
 
     if grand_total > 0:
         print(f"\n[汇总] qb_file 匹配准确率: {grand_correct/grand_total:.1%}  ({grand_correct}/{grand_total})")
     else:
-        print("\n[汇总] 无有效数据")
+        print("\n[汇总] 预测完成（无 GT 可评估）")
 
     return 0
 
