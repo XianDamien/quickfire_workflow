@@ -26,6 +26,7 @@ from pathlib import Path
 from typing import Optional
 
 from openai import OpenAI
+from pydantic import BaseModel, Field
 
 
 DEFAULT_MODEL = "qwen3.5-plus"
@@ -96,6 +97,28 @@ def merge_usage(a: dict, b: dict) -> dict:
         "input_tokens": a.get("input_tokens", 0) + b.get("input_tokens", 0),
         "output_tokens": a.get("output_tokens", 0) + b.get("output_tokens", 0),
     }
+
+
+# ---------------------------------------------------------------------------
+# Gemini 支持
+# ---------------------------------------------------------------------------
+
+from scripts.common.gemini import (
+    is_gemini_model,
+    create_gemini_client,
+    extract_gemini_usage,
+)
+
+
+# Pydantic 模型 — Gemini 结构化输出
+
+class QAPairModel(BaseModel):
+    question: str = Field(description="教师提问原文或原始单词")
+    answer: str = Field(description="标准答案或释义")
+
+
+class QAListModel(BaseModel):
+    items: list[QAPairModel] = Field(description="解析出的题目列表")
 
 
 # ---------------------------------------------------------------------------
@@ -393,6 +416,199 @@ def agentic_match(
 
 
 # ---------------------------------------------------------------------------
+# Gemini 版 Step 1：结构化 JSON 输出解析 ASR → Q/A
+# ---------------------------------------------------------------------------
+
+def parse_asr_to_qa_gemini(
+    client, model: str, asr_text: str, seg_type: str
+) -> tuple[list[dict], dict]:
+    """Gemini 版 ASR 解析，使用 response_json_schema 获取结构化输出。"""
+    type_hint = (
+        "（grammar 类型：中文提问 → 英文语法答案）"
+        if seg_type == "grammar"
+        else "（vocabulary 类型：英文单词 → 中文释义）"
+    )
+    prompt = f"""{_PARSE_SYSTEM}
+
+片段类型：{seg_type} {type_hint}
+
+ASR 转录：
+{asr_text}"""
+
+    t0 = time.monotonic()
+    try:
+        resp = client.models.generate_content(
+            model=model,
+            contents=[prompt],
+            config={
+                "response_mime_type": "application/json",
+                "response_json_schema": QAListModel.model_json_schema(),
+                "temperature": 0.1,
+            },
+        )
+        elapsed = time.monotonic() - t0
+        usage = {**extract_gemini_usage(resp), "elapsed_s": round(elapsed, 2)}
+
+        raw = resp.text or ""
+        parsed = json.loads(raw)
+        items = parsed.get("items", []) if isinstance(parsed, dict) else parsed
+        qa = [
+            {"question": str(item.get("question", "")).strip(),
+             "answer": str(item.get("answer", "")).strip()}
+            for item in items
+            if isinstance(item, dict) and item.get("question")
+        ]
+        return qa, usage
+    except Exception as e:
+        elapsed = time.monotonic() - t0
+        print(f"      [parse_asr_to_qa_gemini 失败] {e}", file=sys.stderr)
+        return [], {"input_tokens": 0, "output_tokens": 0, "elapsed_s": round(elapsed, 2)}
+
+
+# ---------------------------------------------------------------------------
+# Gemini 版 Step 3+4：多轮 function calling 匹配
+# ---------------------------------------------------------------------------
+
+def _gemini_tool_declarations():
+    """构建 Gemini function calling 工具声明。"""
+    from google.genai import types as gt
+    return [gt.Tool(function_declarations=[
+        gt.FunctionDeclaration(
+            name="read_qb_file",
+            description="读取指定题库文件的全部题目和答案",
+            parameters=gt.Schema(
+                type=gt.Type.OBJECT,
+                properties={
+                    "filename": gt.Schema(
+                        type=gt.Type.STRING,
+                        description="题库文件名（含 .json）",
+                    )
+                },
+                required=["filename"],
+            ),
+        ),
+        gt.FunctionDeclaration(
+            name="submit_answer",
+            description="提交最终匹配的题库文件名（只调用一次）",
+            parameters=gt.Schema(
+                type=gt.Type.OBJECT,
+                properties={
+                    "qb_file": gt.Schema(type=gt.Type.STRING, description="最终匹配的题库文件名"),
+                    "reason": gt.Schema(type=gt.Type.STRING, description="一句话匹配依据"),
+                },
+                required=["qb_file", "reason"],
+            ),
+        ),
+    ])]
+
+
+def match_gemini(
+    client, model: str, asr_text: str,
+    qa_pairs: list[dict], candidates: list[tuple[str, int]],
+    seg_type: str, index: QuestionBankIndex, max_turns: int = 8,
+) -> dict:
+    """
+    Gemini 版多轮 function calling 匹配。
+    LLM 可调用 read_qb_file 查看候选内容，最终调用 submit_answer 提交结果。
+    """
+    from google.genai import types as gt
+
+    qa_text = "\n".join(
+        f"  {i+1}. Q: {qa['question']}  →  A: {qa['answer']}"
+        for i, qa in enumerate(qa_pairs)
+    )
+    candidate_lines = "\n".join(
+        f"  {i+1}. {fname}（共 {n} 题）"
+        for i, (fname, n) in enumerate(candidates)
+    )
+    user_content = f"""【已解析的 Q/A 列表（共 {len(qa_pairs)} 题）】
+{qa_text}
+
+【片段类型】{seg_type}
+
+【候选题库文件（已通过 Q/A 内容匹配 + 题数过滤）】
+{candidate_lines}
+
+请通过工具调用确认并提交最匹配的题库文件。"""
+
+    tools = _gemini_tool_declarations()
+    contents = [
+        gt.Content(role="user", parts=[gt.Part.from_text(text=_MATCH_SYSTEM + "\n\n" + user_content)]),
+    ]
+
+    tool_call_count = 0
+    total_usage = {"input_tokens": 0, "output_tokens": 0}
+    t0 = time.monotonic()
+
+    for _ in range(max_turns):
+        try:
+            resp = client.models.generate_content(
+                model=model,
+                contents=contents,
+                config={"tools": tools, "temperature": 0.1},
+            )
+        except Exception as e:
+            elapsed = time.monotonic() - t0
+            return {"error": str(e), "usage": {**total_usage, "elapsed_s": round(elapsed, 2)}}
+
+        total_usage = merge_usage(total_usage, extract_gemini_usage(resp))
+        candidate_resp = resp.candidates[0] if resp.candidates else None
+        if not candidate_resp or not candidate_resp.content or not candidate_resp.content.parts:
+            elapsed = time.monotonic() - t0
+            return {"error": "Gemini 返回空响应",
+                    "usage": {**total_usage, "elapsed_s": round(elapsed, 2)}}
+
+        # 将模型响应追加到 contents
+        contents.append(candidate_resp.content)
+
+        # 处理 function calls
+        fn_parts = [p for p in candidate_resp.content.parts if p.function_call]
+        if not fn_parts:
+            elapsed = time.monotonic() - t0
+            return {"error": "LLM 未调用工具就停止了",
+                    "usage": {**total_usage, "elapsed_s": round(elapsed, 2)}}
+
+        tool_response_parts = []
+        for part in fn_parts:
+            tool_call_count += 1
+            fc = part.function_call
+            fn_name = fc.name
+            fn_args = dict(fc.args) if fc.args else {}
+
+            if fn_name == "read_qb_file":
+                filename = fn_args.get("filename", "")
+                entries = index.load_entries(filename, seg_type)
+                if entries:
+                    body = "\n".join(
+                        f"  Q: {e.get('question', '?')}  →  A: {e.get('answer', '?')}"
+                        for e in entries
+                    )
+                    tool_result = f"【{filename}】共 {len(entries)} 题：\n{body}"
+                else:
+                    tool_result = f"文件不存在或内容为空: {filename}"
+                tool_response_parts.append(
+                    gt.Part.from_function_response(name=fn_name, response={"result": tool_result})
+                )
+
+            elif fn_name == "submit_answer":
+                elapsed = time.monotonic() - t0
+                return {
+                    "qb_file": fn_args.get("qb_file", ""),
+                    "reason": fn_args.get("reason", ""),
+                    "tool_calls": tool_call_count,
+                    "usage": {**total_usage, "elapsed_s": round(elapsed, 2)},
+                }
+
+        # 将工具响应追加到 contents
+        if tool_response_parts:
+            contents.append(gt.Content(role="user", parts=tool_response_parts))
+
+    elapsed = time.monotonic() - t0
+    return {"error": f"超过最大轮次 ({max_turns})",
+            "usage": {**total_usage, "elapsed_s": round(elapsed, 2)}}
+
+
+# ---------------------------------------------------------------------------
 # 元数据读写
 # ---------------------------------------------------------------------------
 
@@ -482,9 +698,16 @@ def main() -> int:
     args = parser.parse_args()
 
     load_env()
-    if not os.environ.get("DASHSCOPE_API_KEY"):
-        print("错误: 未找到 DASHSCOPE_API_KEY", file=sys.stderr)
-        return 1
+
+    use_gemini = is_gemini_model(args.model)
+    if use_gemini:
+        if not os.environ.get("GEMINI_API_KEY"):
+            print("错误: 未找到 GEMINI_API_KEY", file=sys.stderr)
+            return 1
+    else:
+        if not os.environ.get("DASHSCOPE_API_KEY"):
+            print("错误: 未找到 DASHSCOPE_API_KEY", file=sys.stderr)
+            return 1
 
     input_root = Path(args.input_root).resolve()
     qb_root = Path(args.qb_root).resolve()
@@ -496,10 +719,15 @@ def main() -> int:
     print("[初始化] 构建题库索引...")
     index = QuestionBankIndex(qb_root)
 
-    client = OpenAI(
-        api_key=os.environ.get("DASHSCOPE_API_KEY"),
-        base_url=DASHSCOPE_BASE_URL,
-    )
+    if use_gemini:
+        gemini_client = create_gemini_client()
+        client = None
+    else:
+        client = OpenAI(
+            api_key=os.environ.get("DASHSCOPE_API_KEY"),
+            base_url=DASHSCOPE_BASE_URL,
+        )
+        gemini_client = None
 
     class_dirs = sorted(p for p in input_root.iterdir() if p.is_dir() and not p.name.startswith("."))
     if args.class_filter:
@@ -549,7 +777,12 @@ def main() -> int:
                 print(f"    片段 {seg_num} [{seg_type}]:")
 
                 # Step 1: LLM 解析 ASR → Q/A 列表
-                qa_pairs, parse_usage = parse_asr_to_qa(client, args.model, asr_text, seg_type)
+                if use_gemini:
+                    qa_pairs, parse_usage = parse_asr_to_qa_gemini(
+                        gemini_client, args.model, asr_text, seg_type
+                    )
+                else:
+                    qa_pairs, parse_usage = parse_asr_to_qa(client, args.model, asr_text, seg_type)
                 student_usage["input_tokens"] += parse_usage.get("input_tokens", 0)
                 student_usage["output_tokens"] += parse_usage.get("output_tokens", 0)
                 student_usage["elapsed_s"] += parse_usage.get("elapsed_s", 0)
@@ -597,10 +830,16 @@ def main() -> int:
                     ]
 
                 # Step 4: LLM 最终判断
-                result = agentic_match(
-                    client, args.model, asr_text, qa_pairs,
-                    filtered, seg_type, index,
-                )
+                if use_gemini:
+                    result = match_gemini(
+                        gemini_client, args.model, asr_text, qa_pairs,
+                        filtered, seg_type, index,
+                    )
+                else:
+                    result = agentic_match(
+                        client, args.model, asr_text, qa_pairs,
+                        filtered, seg_type, index,
+                    )
                 match_usage = result.get("usage", {})
                 student_usage["input_tokens"] += match_usage.get("input_tokens", 0)
                 student_usage["output_tokens"] += match_usage.get("output_tokens", 0)

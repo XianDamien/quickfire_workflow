@@ -26,9 +26,8 @@ from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
 from openai import OpenAI
-from pydantic import BaseModel, Field
 
-DEFAULT_MODEL = "gemini-3.1-flash-lite-preview"
+DEFAULT_MODEL = "qwen3.5-plus"
 DASHSCOPE_BASE_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1"
 VALID_TYPES = ("grammar", "vocabulary")
 
@@ -54,54 +53,6 @@ def load_env(env_file: Optional[str] = None) -> None:
                     if k and k not in os.environ:
                         os.environ[k] = v
             return
-
-
-# ---------------------------------------------------------------------------
-# Gemini 支持
-# ---------------------------------------------------------------------------
-
-from scripts.common.gemini import is_gemini_model, create_gemini_client
-
-
-class SegmentClassification(BaseModel):
-    """单个片段的分类结果。"""
-    segment_id: str = Field(description="片段编号")
-    type: str = Field(description="分类类型: grammar 或 vocabulary")
-
-
-class ClassificationResult(BaseModel):
-    """所有片段的分类结果。"""
-    segments: list[SegmentClassification] = Field(description="各片段分类结果列表")
-
-
-def call_api_gemini(
-    gemini_client, model: str, messages: list[dict], temperature: float = 0.1,
-) -> dict:
-    """通过 Gemini 官方 SDK 调用分类，使用结构化 JSON 输出。"""
-    # 合并 system + user 为单一 prompt（Gemini 不区分 role）
-    prompt = "\n\n".join(m["content"] for m in messages)
-    try:
-        resp = gemini_client.models.generate_content(
-            model=model,
-            contents=[prompt],
-            config={
-                "response_mime_type": "application/json",
-                "response_json_schema": ClassificationResult.model_json_schema(),
-                "temperature": temperature,
-            },
-        )
-        raw = resp.text or ""
-        parsed = json.loads(raw)
-        # 从结构化输出转换为 {seg_id: type} 格式
-        predictions = {}
-        for item in parsed.get("segments", []):
-            seg_id = str(item.get("segment_id", ""))
-            seg_type = item.get("type", "")
-            if seg_id and seg_type in VALID_TYPES:
-                predictions[seg_id] = seg_type
-        return {"predictions": predictions}
-    except Exception as e:
-        return {"error": str(e)}
 
 
 # ---------------------------------------------------------------------------
@@ -145,15 +96,6 @@ def load_metadata(student_dir: Path) -> Dict[str, str]:
         return {}
     try:
         data = json.loads(f.read_text(encoding="utf-8"))
-        # 新格式：ground_truth: {"2/2_qwen_asr.json": {"type": "grammar", ...}}
-        gt = data.get("ground_truth", {})
-        if gt:
-            return {
-                str(k).split("/")[0]: v["type"]
-                for k, v in gt.items()
-                if isinstance(v, dict) and v.get("type") in VALID_TYPES
-            }
-        # 旧格式：segments: {"2": {"type": "grammar"}}
         return {
             str(k): v["type"]
             for k, v in data.get("segments", {}).items()
@@ -320,17 +262,9 @@ def main() -> int:
     args = parser.parse_args()
 
     load_env()
-    use_gemini = is_gemini_model(args.model)
-    if use_gemini:
-        if not os.environ.get("GEMINI_API_KEY"):
-            print("错误: 未找到 GEMINI_API_KEY", file=sys.stderr)
-            return 1
-        gemini_client = create_gemini_client()
-    else:
-        if not os.environ.get("DASHSCOPE_API_KEY"):
-            print("错误: 未找到 DASHSCOPE_API_KEY", file=sys.stderr)
-            return 1
-        gemini_client = None
+    if not os.environ.get("DASHSCOPE_API_KEY"):
+        print("错误: 未找到 DASHSCOPE_API_KEY", file=sys.stderr)
+        return 1
 
     input_root = Path(args.input_root).resolve()
     if not input_root.exists():
@@ -364,10 +298,7 @@ def main() -> int:
             print(f"  {student_name}  片段: {seg_list}", end="  ", flush=True)
 
             messages = build_messages(student_name, segs)
-            if use_gemini:
-                result = call_api_gemini(gemini_client, args.model, messages, temperature=args.temperature)
-            else:
-                result = call_api(args.model, messages, temperature=args.temperature)
+            result = call_api(args.model, messages, temperature=args.temperature)
             if "error" in result:
                 print(f"❌ {result['error']}")
                 continue
