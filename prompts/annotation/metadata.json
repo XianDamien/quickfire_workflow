@@ -1,5 +1,5 @@
 {
-  "prompt_version": "2.0.0",
+  "prompt_version": "2.1.0",
   "description": "LLM annotation: 从音频直传提取学生回答+评分+时间戳定位（Gemini Audio API）",
   "owner": "data-ops@lan",
   "updated_at": "2026-01-22T16:00:00+08:00",
@@ -13,6 +13,11 @@
     "user_legacy_no_timestamp": "archived/user_no_timestamp.md"
   },
   "changelog": [
+    {
+      "version": "2.1.0",
+      "date": "2026-03-10",
+      "changes": "音频二次验证(ASR检测NO_ANSWER时回听音频确认), 扩展NO_TEACHER_AUDIO校验(整批>80% NO_ANSWER也判为音频异常), 音频干扰处理指引。"
+    },
     {
       "version": "2.0.0",
       "date": "2026-01-22",
