@@ -7,10 +7,10 @@ scripts/annotators/config.py - Annotator 配置
 ============================================================================
   项目模型规范
 ============================================================================
-  整个项目统一使用 Gemini 音频标注（模型为 Gemini 3 Pro Preview）。
+  整个项目统一使用 Gemini 音频标注（模型为 Gemini 3.1 Pro Preview）。
 
-  - Annotator 名称: gemini-3-pro-preview
-  - 模型名称: gemini-3-pro-preview
+  - Annotator 名称: gemini-3.1-pro-preview
+  - 模型名称: gemini-3.1-pro-preview
   - 原因: 该模型在音频理解和多语言标注任务上表现最优
   - 注意: 测试时可临时使用其他模型，但生产环境必须使用此模型
 ============================================================================
@@ -21,7 +21,7 @@ import os
 # ============================================================================
 # 默认 annotator 模型 (项目强制规范)
 # ============================================================================
-DEFAULT_ANNOTATOR = "gemini-3-pro-preview"
+DEFAULT_ANNOTATOR = "gemini-3.1-pro-preview"
 
 # 默认最大输出 token 数
 # - Gemini 3 系列支持更大的输出（文档示例为 64k out），cards 任务输出较长时需要提高上限。
@@ -38,8 +38,8 @@ DEFAULT_HTTP_TIMEOUT = int(os.getenv("GEMINI_HTTP_TIMEOUT", "600000"))  # 默认
 # 中转站配置
 # - 设置 GEMINI_RELAY_BASE_URL 和 GEMINI_RELAY_API_KEY 使用第三方中转站
 # - 不设置则使用官方 GEMINI_API_KEY
-GEMINI_RELAY_BASE_URL = os.getenv("GEMINI_RELAY_BASE_URL", None)
-GEMINI_RELAY_API_KEY = os.getenv("GEMINI_RELAY_API_KEY", None)
+GEMINI_RELAY_BASE_URL = os.getenv("GEMINI_RELAY_BASE_URL")
+GEMINI_RELAY_API_KEY = os.getenv("GEMINI_RELAY_API_KEY")
 
 # 重试配置
 DEFAULT_MAX_RETRIES = 5
@@ -47,6 +47,7 @@ DEFAULT_RETRY_DELAY = 5  # 秒
 
 # 可用的 Gemini 模型列表
 AVAILABLE_GEMINI_MODELS = [
+    "gemini-3.1-pro-preview",
     "gemini-3-pro-preview",
     "gemini-3-flash-preview",
     "gemini-2.5-pro",
@@ -74,7 +75,8 @@ MODEL_MAX_OUTPUT_TOKENS = {
     "qwen3-omni-flash": 16384,
     "qwen3-omni": 16384,  # 前缀匹配
 
-    # Gemini 3 系列（支持更大输出）
+    # Gemini 3.x 系列（支持更大输出）
+    "gemini-3.1-": 64000,
     "gemini-3-": 64000,
 
     # Gemini 2.5 系列
@@ -108,7 +110,7 @@ def get_max_output_tokens(model: str, default: int = None) -> int:
     示例:
         >>> get_max_output_tokens("qwen-max")
         8192
-        >>> get_max_output_tokens("gemini-3-pro-preview")
+        >>> get_max_output_tokens("gemini-3.1-pro-preview")
         64000
         >>> get_max_output_tokens("gemini-2.5-pro")
         16384
@@ -148,9 +150,4 @@ def clamp_max_output_tokens(model: str, requested: int) -> int:
     Returns:
         限制后的 max_output_tokens（不超过模型上限）
     """
-    model_max = get_max_output_tokens(model)
-
-    if requested > model_max:
-        return model_max
-
-    return requested
+    return min(requested, get_max_output_tokens(model))

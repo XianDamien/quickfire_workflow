@@ -29,7 +29,7 @@ from openai import OpenAI
 from pydantic import BaseModel, Field
 
 
-DEFAULT_MODEL = "qwen3.5-plus"
+DEFAULT_MODEL = "gemini-3.1-flash-lite-preview"
 DASHSCOPE_BASE_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1"
 COUNT_TOLERANCE = 3
 

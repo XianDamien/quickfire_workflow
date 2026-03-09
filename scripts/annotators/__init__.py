@@ -8,7 +8,7 @@ scripts/annotators - Annotator 模块
     from scripts.annotators import get_annotator
 
     # 获取默认 Gemini audio annotator
-    annotator = get_annotator("gemini-3-pro-preview")
+    annotator = get_annotator("gemini-3.1-pro-preview")
 
     # 处理单个学生
     result = annotator.run_archive_student(
@@ -18,16 +18,16 @@ scripts/annotators - Annotator 模块
     )
 
 支持的 annotator:
-    - gemini-3-pro-preview (默认，音频模式)
+    - gemini-3.1-pro-preview (默认，音频模式)
     - gemini-2.5-pro
     - gemini-2.0-flash
     - qwen3-omni-flash (Qwen3-Omni 音频模式)
     - (预留) openai:gpt-4.1
 """
 
-from typing import Dict, Type, Optional, Union
+from typing import Dict, Type
 from .base import BaseAnnotator, AnnotatorInput, AnnotatorOutput
-from .config import DEFAULT_ANNOTATOR, AVAILABLE_GEMINI_MODELS
+from .config import DEFAULT_ANNOTATOR
 
 # Annotator 注册表
 _REGISTRY: Dict[str, Type[BaseAnnotator]] = {}
@@ -50,7 +50,7 @@ def get_annotator(name: str = None, **kwargs) -> BaseAnnotator:
 
     Args:
         name: annotator 名称，支持:
-            - gemini-3-pro-preview (默认)
+            - gemini-3.1-pro-preview (默认)
             - gemini-2.5-pro
             - gemini-2.0-flash
             - qwen3-omni-flash
@@ -91,7 +91,7 @@ def get_annotator(name: str = None, **kwargs) -> BaseAnnotator:
 
         # 规范化模型名称
         if model in ["gemini", "gemini-pro"]:
-            model = "gemini-3-pro-preview"
+            model = DEFAULT_ANNOTATOR
 
         return GeminiAudioAnnotator(model=model, name_override=name, **kwargs)
 
@@ -120,7 +120,7 @@ def get_annotator(name: str = None, **kwargs) -> BaseAnnotator:
 
     raise ValueError(
         f"不支持的 annotator: {name}\n"
-        f"可用的 annotator: gemini-3-pro-preview, gemini-2.5-pro, gemini-2.0-flash, qwen3-omni-flash"
+        f"可用的 annotator: gemini-3.1-pro-preview, gemini-2.5-pro, gemini-2.0-flash, qwen3-omni-flash"
     )
 
 
@@ -132,7 +132,7 @@ def list_annotators() -> list:
         annotator 名称列表
     """
     builtin = [
-        "gemini-3-pro-preview",  # 默认
+        "gemini-3.1-pro-preview",  # 默认
         "gemini-2.5-pro",
         "gemini-2.0-flash",
         "qwen3-omni-flash",

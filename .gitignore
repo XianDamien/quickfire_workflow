@@ -132,3 +132,7 @@ docs/comparison_test/
 docs/**/test_*.md
 docs/**/*_EXECUTE*.md
 scripts/qwen_audio.py
+
+# Worktrees and backups
+.claude/worktrees/
+_backup_*/

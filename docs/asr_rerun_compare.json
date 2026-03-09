@@ -1,0 +1,612 @@
+[
+  {
+    "case": "Abby51900_2025-11-05/Benjamin",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Abby51900_2025-11-05/Benjamin/1_input_audio.mp3",
+    "old_text": "表二十七英翻中。kid kid 呃小孩。小孩。pupil 小学生，瞳孔。小学生或者瞳孔。baby 婴儿。婴儿。twin 双胞胎的，双胞胎之一。twin adjective 孪生的。双胞胎的，孪生的。leader 领袖。领导者，领袖。friend 朋友。朋友。classmate 同班同学。同班同学。",
+    "new_text": "二十七英翻中。kid kid呃小孩。小孩。pupil小学生瞳孔。小学生或者瞳孔。baby婴儿。婴儿。twin双胞胎的双胞胎之一。twin adjective孪生的。双胞胎的孪生的。leader领袖。领导者领袖。friend朋友。朋友。classmate同班同学。同班同学。",
+    "old_len": 149,
+    "new_len": 136,
+    "delta": -13,
+    "changed": true
+  },
+  {
+    "case": "Abby51900_2025-11-05/Dana",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Abby51900_2025-11-05/Dana/1_input_audio.mp3",
+    "old_text": "词表二十七英翻中。kid。小孩孩子。noun，小孩。pupil。小学生。noun，小学生，或者，瞳孔。baby。婴儿。noun，婴儿。twin。双胞胎之一。双胞胎之一。twin，adjective。孪生的。双胞胎的，孪生的。leader。领导者，领袖。noun，领导者，领袖。friend。noun，朋友。朋友。classmate。同班同学。noun，同班同学。",
+    "new_text": "词表二十七英翻中。kid，小孩孩子。noun，小孩。pupil，小学生。noun，小学生或者瞳孔。baby，婴儿。noun，婴儿。twin，双胞胎之一。双胞胎之一。twin，adjective。孪生的。双胞胎的，孪生的。leader，领导者，领袖。领导者，领袖。friend，noun，朋友。朋友。classmate，同班同学。noun，同班同学。",
+    "old_len": 181,
+    "new_len": 174,
+    "delta": -7,
+    "changed": false
+  },
+  {
+    "case": "Abby51900_2025-11-05/Jeffery",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Abby51900_2025-11-05/Jeffery/1_input_audio.mp3",
+    "old_text": "二十七英翻中。kid，小孩。now，小孩。pupil，小学生。now，小学生或者瞳孔。baby，婴儿。now，婴儿。twin，双胞胎之一。双胞胎之一。twin adjective，双胞胎的，孪生的。leader，领袖。now，领导者，领袖。friend，朋友。朋友。classmate，同班同学。",
+    "new_text": "二十七英翻中。kid，小孩。now，小孩。pupil，小学生。now，小学生或者瞳孔。baby，婴儿。now，婴儿。twin，双胞胎之一。双胞胎之一。twin，adjective，双胞胎的，孪生的。leader，领袖。now，领导者，领袖。friend，朋友。朋友。classmate，同班同学。",
+    "old_len": 148,
+    "new_len": 148,
+    "delta": 0,
+    "changed": false
+  },
+  {
+    "case": "Niko60900_2025-10-12/Beta",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Niko60900_2025-10-12/Beta/1_input_audio.mp3",
+    "old_text": "脚放下来，尊重老师姿势。老鼠。大象。老虎。狮子。狼。熊猫。猴子。",
+    "new_text": "脚放下来，尊重老师姿势。老鼠。大象。大象。Tiger。老虎。老虎。Lion。狮子。狮子。Wolf。狼。狼。Panda。熊猫。熊猫。Monkey。猴子。猴子。",
+    "old_len": 32,
+    "new_len": 78,
+    "delta": 46,
+    "changed": true
+  },
+  {
+    "case": "Niko60900_2025-10-12/Jean",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Niko60900_2025-10-12/Jean/1_input_audio.mp3",
+    "old_text": "一分钟。Mouse。老鼠。老鼠。Elephant。大象。大象。Tiger。老虎。老虎。Lion。狮子。狮子。Wolf。狼。狼。Panda。熊猫。熊猫。Monkey。猴子。猴子。",
+    "new_text": "一分钟。mouse。老鼠。老鼠。elephant。大象。大象。tiger。老虎。老虎。lion。狮子。狮子。wolf。狼。狼。panda。熊猫。熊猫。monkey。猴子。猴子。",
+    "old_len": 88,
+    "new_len": 88,
+    "delta": 0,
+    "changed": false
+  },
+  {
+    "case": "Niko60900_2025-10-12/Kyle",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Niko60900_2025-10-12/Kyle/1_input_audio.mp3",
+    "old_text": "十一英翻中。Mouse。老鼠。老鼠。Elephant。大象。大象。Tiger。老虎。老虎。Lion。狮子。狮子。Wolf。狼。狼。Panda。熊猫。熊猫。Monkey。猴子。猴子。",
+    "new_text": "十一，英翻中。Mouse。老鼠。老鼠。Elephant。大象。大象。Tiger。老虎。老虎。Lion。狮子。狮子。Wolf。狼。狼。Panda。熊猫。熊猫。Monkey。猴子。猴子。",
+    "old_len": 90,
+    "new_len": 91,
+    "delta": 1,
+    "changed": false
+  },
+  {
+    "case": "Niko60900_2025-10-12/Nemo",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Niko60900_2025-10-12/Nemo/1_input_audio.mp3",
+    "old_text": "表十一，英翻中。mouse 老鼠，老鼠。elephant 大象，大象。tiger 老虎，老虎。lion 狮子，狮子。wolf 狼，狼。panda 熊猫，熊猫。monkey 猴子，猴子。",
+    "new_text": "单词表十一，第一分钟。mouse。老鼠。老鼠。elephant。大象。大象。tiger。老虎。老虎。lion。狮子。狮子。wolf。狼。狼。panda。熊猫。熊猫。monkey。猴子。猴子。",
+    "old_len": 92,
+    "new_len": 95,
+    "delta": 3,
+    "changed": false
+  },
+  {
+    "case": "Niko60900_2025-10-12/Yiyi",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Niko60900_2025-10-12/Yiyi/1_input_audio.mp3",
+    "old_text": "单词表十一英翻中。Mouse老鼠。老鼠。Elephant大象。大象。Tiger老虎。老虎。Lion。狮子。狮子。Wolf狼。狼。Panda熊猫。熊猫。Monkey猴子。猴子。",
+    "new_text": "单词表十一英翻中。mouse老鼠。老鼠。elephant大象。大象。tiger老虎。老虎。lion狮子。狮子。wolf狼。狼。panda熊猫。熊猫。monkey猴子。猴子。",
+    "old_len": 87,
+    "new_len": 86,
+    "delta": -1,
+    "changed": false
+  },
+  {
+    "case": "Niko60900_2025-11-12/Nemo",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Niko60900_2025-11-12/Nemo/1_input_audio.mp3",
+    "old_text": "Teapot, T E A P O T. Teapot.床。Bed, B E D. Bed.桌子，餐桌。Table, T A B L E. Table. 诶，餐桌，书桌，桌子。Desk, D E S K. Desk. 椅子。Chair, C H A I R. Chair. 沙发。Sofa, S O F A. Sofa. 长椅，睡椅。Couch, C O U C H. Couch. 帐篷。Tent, T E N T. Tent.",
+    "new_text": "Teapot, T E A P O T. Teapot.床。Bed, B E D. Bed.桌子，餐桌。Table, T A B L E. Table.再中间，书桌，桌子。Desk, D E S K. Desk.椅子。Chair, C H A I R. Chair.沙发。Sofa, S O F A. Sofa.长椅，睡椅。Couch, C O U C H. Couch.帐篷。Tent, T E N T. Tent.",
+    "old_len": 215,
+    "new_len": 209,
+    "delta": -6,
+    "changed": false
+  },
+  {
+    "case": "Niko60900_2025-12-15/Beta",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Niko60900_2025-12-15/Beta/1_input_audio.mp3",
+    "old_text": "Housework. Housework. 整理收拾。Tidy. Tidy. 整洁的整齐的。Tidy. Tidy. 打扫清除。Sweep. 专门有个扫的感觉，是吧？Sweep. 洗。Wash. Wash. 清扫清洁。Clean. Clean. 干净的。Clean. Clean. 刷子。Brush. Brush. 刷，用刷刷。Brush.",
+    "new_text": "Housework. Housework. 整理收拾。Tidy. Tidy. 整洁的整齐的。Tidy. Tidy. 打扫清除。Sweep. 专门有个扫的感觉，是吧？Sweep. 洗。Wash. Wash. 清扫清洁。Clean. Clean. 干净的。Clean. Clean. 刷子。Brush. Brush. 刷，用刷刷。Brush.",
+    "old_len": 169,
+    "new_len": 169,
+    "delta": 0,
+    "changed": false
+  },
+  {
+    "case": "Niko60900_2025-12-15/Elsa",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Niko60900_2025-12-15/Elsa/1_input_audio.mp3",
+    "old_text": "做题视频。家务。Housework.整理收拾。tidy tidy整洁的整齐的。tidy tidy打扫清除。sweep专门有个扫的感觉。sweep洗。wash wash清扫清洁。clean clean干净的。clean clean刷子。brush brush刷。brush用刷子刷。brush brush。",
+    "new_text": "做题视频。家务。Housework.整理收拾。tidy tidy整洁的整齐的。tidy tidy打扫清除。sweep专门有个扫的感觉。sweep洗。wash wash清扫清洁。clean clean干净的。clean clean刷子。brush brush刷。brush用刷子刷。brush brush。",
+    "old_len": 152,
+    "new_len": 152,
+    "delta": 0,
+    "changed": false
+  },
+  {
+    "case": "Niko60900_2025-12-15/Jean",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Niko60900_2025-12-15/Jean/1_input_audio.mp3",
+    "old_text": "家务。Housework. Housework. 整理收拾。Tidy. Tidy. 整洁的，整齐的。Tidy. Tidy. 打扫清除。哎，对，专门有个扫的感觉是什么？Sweep. 洗。Wash. Wash. 清扫清洁。Clean. Clean. 干净的。Clean. Clean. 刷子。Brush. Brush. 刷，用刷子刷。Brush. Brush.",
+    "new_text": "家务。Housework. Housework.整理收拾。Tidy. Tidy.整洁的，整齐的。Tidy. Tidy.打扫清除。哎，对，专门有个扫的感觉是什么？sweep.洗。Wash. Wash.清扫清洁。Clean. Clean.干净的。Clean. Clean.刷子。Brush. Brush.刷，用刷子刷。Brush. Brush.",
+    "old_len": 178,
+    "new_len": 170,
+    "delta": -8,
+    "changed": false
+  },
+  {
+    "case": "Niko60900_2025-12-15/Nemo",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Niko60900_2025-12-15/Nemo/1_input_audio.mp3",
+    "old_text": "家。嗯。Housework, h o u s e w o r k. Housework. 整理收拾。Tidy, t i d y. Tidy. 整洁的，整齐的。Tidy, t i d y. Tidy. 打扫清除。Sweep, s w e e p. 专门有扫的那件事嘛。Sweep. 洗。Wash, w a s h. Wash. 清扫清洁。Clean, c l e a n. 干净的。Clean, c l e a n. Clean. 刷子。Brush, b r u s h. Brush, b r u s h. Brush.",
+    "new_text": "家。housework h o u s e w o r k housework 整理收拾。tidy t i d y tidy 整洁的整齐的。tidy t i d y tidy 打扫清除。所以 s w e e p 专门有扫的两个字嘛，所以洗。wash w a s h wash 清扫清洁。clean c l e a n 干净的。clean c l e a n clean 刷子。brush b r u s h brush 刷刷刷。brush b r u s h brush。",
+    "old_len": 260,
+    "new_len": 236,
+    "delta": -24,
+    "changed": true
+  },
+  {
+    "case": "Niko60900_2025-12-15/Zoe",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Niko60900_2025-12-15/Zoe/1_input_audio.mp3",
+    "old_text": "Housework. Housework. 整理收拾。Tidy. Tidy. 整洁的，整齐的。Tidy. Tidy. 打扫清除。专门有个扫的感觉是什么？Sweep. 洗。Wash. Wash. 清扫清洁。Clean. Clean. 干净的。Clean. Clean. 刷子。Brush. Brush. 刷，用刷子刷。Brush.",
+    "new_text": "Housework. Housework. 整理收拾。tidy. tidy. 整洁的，整齐的。tidy. tidy. 打扫清除。专门有个扫的感觉是什么？sweep. 洗。wash. wash. 清扫清洁。clean. clean. 干净的。clean. clean. 刷子。brush. brush. 刷，用刷子刷。brush.",
+    "old_len": 164,
+    "new_len": 164,
+    "delta": 0,
+    "changed": false
+  },
+  {
+    "case": "TestClass88888_2026-01-05/StudentP1",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/TestClass88888_2026-01-05/StudentP1/1_input_audio.mp3",
+    "old_text": "字表二十六英翻中。nephew nephew。侄子，外甥。侄子，外甥。wife wife。妻子。妻子。husband husband。丈夫。丈夫。people people。人们。人们。person person。人，是一个单数。guy guy。家伙。家伙。man man。男人。男人。人。woman woman。女人。女人。sir sir。先生，尊称。尊称。lady lady。女士，小姐，夫人。女士，小姐，夫人，尊称。gentleman gentleman。先生，绅士，也是尊称。先生，绅士，尊称。boy boy。男孩。男孩。girl 或者 girl girl。女孩。女孩。child child。儿童，小孩。儿童，小孩。children children。孩子们。孩子们。拜拜。",
+    "new_text": "字表二十六英翻中。nephew nephew。侄子外甥。侄子外甥。wife wife。妻子。妻子。husband husband。丈夫。丈夫。people people。人们。人们。person person。人，使用单数。guy guy。家伙。家伙。man man。男人。男人。人。woman woman。女人。女人。sir sir。先生，尊称。尊称。lady lady。女士小姐夫人。女士小姐夫人尊称。gentlemen gentlemen。先生绅士，也是尊称。先生绅士尊称。boy boy。男孩。男孩。girl 或者 girl girl。女孩。女孩。child child。儿童小孩。儿童小孩。children children。孩子们。孩子们。拜拜。",
+    "old_len": 342,
+    "new_len": 329,
+    "delta": -13,
+    "changed": true
+  },
+  {
+    "case": "TestClass99999_2026-01-05/StudentP0",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/TestClass99999_2026-01-05/StudentP0/1_input_audio.mp3",
+    "old_text": "Juice果汁。这声好小。Milk是牛奶。他刚刚说tea茶。Cola可乐。Coffee咖啡。Beer是啤酒。Lemonade是柠檬汁。Wine是那个葡萄葡萄酒。Meat是肉。Chicken是鸡肉或者是鸡翅。Beef是那个牛肉。Pork是猪肉。Lamb是那羔羊。羊肉。这个是那个海味产品产品。",
+    "new_text": "Juice果汁。这声好小。Milk是牛奶。他刚刚说tea茶。Cola可乐。Coffee咖啡。Beer是啤酒。Lemonade是柠檬汁。Wine是那个葡萄葡萄酒。Meat是肉。Chicken是鸡肉或者是鸡翅。Beef是那个牛肉。Pork是猪肉。Lamb是那羔羊。羊肉。这个是那个海味菜品产品。",
+    "old_len": 145,
+    "new_len": 145,
+    "delta": 0,
+    "changed": false
+  },
+  {
+    "case": "Zoe41900_2025-09-08/Cathy",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe41900_2025-09-08/Cathy/1_input_audio.mp3",
+    "old_text": "不。not。not。双倍的，双的。呃，double double。一半，半。half。half。角色，部分。part。part。形容词，两个的。呃，both both。代词，两者。both。both。副词，两者都。both。both。全部的。哦。all。代词，每，每个。each each。形容词，每个的，每一的。each。each。",
+    "new_text": "不。not。not。双倍的，双的。呃，double double。一半，半。half。half。角色，部分。part。part。形容词，两个的。呃，both both。代词，两者。both。both。副词，两者都。both。both。全部的。哦。all。代词，每，每个。each each。形容词，每个的，每一的。each。each。",
+    "old_len": 167,
+    "new_len": 167,
+    "delta": 0,
+    "changed": false
+  },
+  {
+    "case": "Zoe41900_2025-09-08/Frances Wang",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe41900_2025-09-08/Frances Wang/1_input_audio.mp3",
+    "old_text": "哦。not。not。双倍的，双的。double。double。嗯，一半，半。half。half。角色，部分。part。part。形容词，两个的。both。both。代词，两者。both。both。副词，两者都。both。both。全部的。all。all。all。代词，每，每个。each。each。形容词，每个的，每一的。each。each。",
+    "new_text": "哦。not。not。双倍的，双的。double。double。嗯，一半，半。half。half。角色，部分。part。part。形容词，两个的。both。both。代词，两者。both。both。副词，两者都。both。both。全部的。all。all。all。代词，每，每个。each。each。形容词，每个的，每一的。each。each。",
+    "old_len": 171,
+    "new_len": 171,
+    "delta": 0,
+    "changed": false
+  },
+  {
+    "case": "Zoe41900_2025-09-08/Lucy",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe41900_2025-09-08/Lucy/1_input_audio.mp3",
+    "old_text": "old。not。not。双倍的，双的。double。一半，半。half。half。角色，部分。party。part。形容词，两个的。both。both。代词，两者。both。both。副词，两者都。both。both。全部的。all。all。代词，每，每个。each。each。形容词，每个的，每一的。each。each。",
+    "new_text": "old。not。not。双倍的，双的。double。一半，half。half。角色，部分。party。part。形容词，两个的。both。both。代词，两者。both。both。副词，两者都。both。both。全部的。all。all。代词，每，每个。each。each。形容词，每个的，每一的。each。each。",
+    "old_len": 161,
+    "new_len": 159,
+    "delta": -2,
+    "changed": false
+  },
+  {
+    "case": "Zoe41900_2025-09-08/Oscar",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe41900_2025-09-08/Oscar/1_input_audio.mp3",
+    "old_text": "Not. Not. 双倍的，双的。一半，半。Half. 角色，部分。Part. Part. 形容词，两个的。Both. Both. 代词，两者。Both. Both. Both. 副词，两者都。Both. Both. 全部的。All. All. 代词，每，每个。Each. Each. 形容词，每个的，每一的。Each. Each.",
+    "new_text": "not。not。双倍的，双的。table。一半，半。half。角色，部分。part part。形容词，两个的。both。代词，两者。both both。both。副词，两者都。both。both。全部的。嗯，all。代词，每，每个。each each。形容词，每个的，每一的。each each。",
+    "old_len": 166,
+    "new_len": 148,
+    "delta": -18,
+    "changed": true
+  },
+  {
+    "case": "Zoe41900_2025-09-08/Rico",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe41900_2025-09-08/Rico/1_input_audio.mp3",
+    "old_text": "Not. Not. 双倍的，双的。Double. Double. 一半，半。Half. Half. 角色，部分。Part. Part. 形容词，两个的。Both. Both. 代词，两者。Both. Both. 副词，两者都。Both. Both. 全部的。Each. Each. 代词，每，每个。Each. Each. 形容词，每个的，每一的。Each. Each.",
+    "new_text": "Not. Not. 双倍的，双的。Double. Double. 一半，半。Half. Half. 角色，部分。Part. Part. 形容词，两个的。Both. Both. 代词，两者。Both. Both. 副词，两者都。Both. Both. 全部的。Each. Each. 代词，每，每个。Each. Each. 形容词，每个的，每一的。Each. Each.",
+    "old_len": 184,
+    "new_len": 184,
+    "delta": 0,
+    "changed": false
+  },
+  {
+    "case": "Zoe41900_2025-09-08/Yoyo",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe41900_2025-09-08/Yoyo/1_input_audio.mp3",
+    "old_text": "Not. Not. 双倍的，双的。Double. Double. 一半，半。Half. Half. 角色，部分。Part. Part. 形容词，两个的。Both. Both. 代词，两者。Both. Both. 副词，两者都。Both. Both. 全部的。All. All. 代词，每，每个。Each. Each. 形容词，每个的，每一的。Each. Each.",
+    "new_text": "Not. Not. 双倍的，双的。Double. Double. 一半，半。Half. Half. 角色，部分。Part. Part. 形容词，两个的。Both. Both. 代词，两者。Both. Both. 副词，两者都。Both. Both. 全部的。All. All. 代词，每，每个。Each. Each. 形容词，每个的，每一的。Each. Each.",
+    "old_len": 182,
+    "new_len": 182,
+    "delta": 0,
+    "changed": false
+  },
+  {
+    "case": "Zoe41900_2025-10-24/Lucy",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe41900_2025-10-24/Lucy/1_input_audio.mp3",
+    "old_text": "啊，看到一分钟我们就知道，等一会儿会看到英文，会在三秒钟之内说出中文。Vegetable。蔬菜。Fruit and vegetables are all good for our health.蔬菜。蔬菜。Potato. The potato is a vegetable, not a fruit.土豆。土豆。Tomato, 或者是 tomato. You would better heat up the tomato soup.西红柿。番茄。胡萝卜。Bean. Cocoa beans are used to make some kinds of drink.豆。豆。Pea. We have a bowl of very salty pea and ham soup.豌豆。豌豆。Peanut. He likes to eat peanut jam.花生。花生。",
+    "new_text": "啊，看到一分钟我们就知道，等一会会看到英文，会在三秒钟之内说出中文。Vegetable。蔬菜。Fruit and vegetables are all good for our health.蔬菜。蔬菜。Potato. The potato is a vegetable, not a fruit.土豆。土豆。Tomato, 或者是 tomato. You would better heat up the tomato soup.西红柿。番茄。胡萝卜。Bean. Cocoa beans are used to make some kinds of drink.豆。豆。Pea. We have a bowl of very salty pea and ham soup.豌豆。豌豆。Peanut. He likes to eat peanut jam.花生。花生。",
+    "old_len": 385,
+    "new_len": 384,
+    "delta": -1,
+    "changed": false
+  },
+  {
+    "case": "Zoe41900_2025-10-24/Oscar",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe41900_2025-10-24/Oscar/1_input_audio.mp3",
+    "old_text": "英翻中，啊，看到英翻中我们就知道，等一会儿会看到英文，会在三秒钟之内说出中文。Vegetable，蔬菜。Fruit and vegetables are all good for our health.蔬菜。Potato，土豆。The potato is a vegetable, not a fruit.土豆。Tomato，或者是 tomato，番茄。You would better heat up the tomato soup.番茄。Carrot，胡萝卜。Have some more carrots.胡萝卜。Bean，豆。Beans are used to make some kinds of drink.豆。Pea，we have a bowl of very salty pea and ham soup.豌豆。豌豆。Peanut，花生。He likes to eat peanut jam.花生。",
+    "new_text": "英翻中，啊，看到英翻中我们就知道，等一会儿会看到英文，会在三秒钟之内说出中文。Vegetable。蔬菜。Fruit and vegetables are all good for our health.蔬菜。Potato。土豆。The potato is a vegetable, not a fruit.土豆。Tomato，或者是tomato。番茄。You would better heat up the tomato soup.番茄。Carrot。胡萝卜。Have some more carrots.胡萝卜。Bean。豆。Beans are used to make some kinds of drink.豆。Pea。We have a bowl of very salty pea and ham soup.豌豆。豌豆。Peanut。花生。He likes to eat peanut jam.花生。",
+    "old_len": 407,
+    "new_len": 406,
+    "delta": -1,
+    "changed": false
+  },
+  {
+    "case": "Zoe41900_2025-10-24/Rico",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe41900_2025-10-24/Rico/1_input_audio.mp3",
+    "old_text": "英翻中，啊，看到英翻中我们就知道，等一会儿会看到英文，会在三秒钟之内说出中文。Vegetable。蔬菜。Fruit and vegetables are all good for our health.蔬菜。Potato. The potato is a vegetable, not a fruit.土豆。Tomato，或者是tomato。番茄。You would better heat up the tomato soup.番茄。Carrot.胡萝卜。Have some more carrots.胡萝卜。Bean.豆。Cocoa beans are used to make some kinds of drink.豆。Pea.豌豆。We have a bowl of very salty pea and ham soup.豌豆。Peanut.花生。He likes to eat peanut jam.花生。",
+    "new_text": "英翻中，啊，看到英翻中我们就知道，等一会儿会看到英文，会在三秒钟之内说出中文。Vegetable。蔬菜。Fruit and vegetables are all good for our health.蔬菜。Potato. The potato is a vegetable, not a fruit.土豆。Tomato，或者是tomato。番茄。You would better heat up the tomato soup.番茄。Carrot.胡萝卜。Have some more carrots.胡萝卜。Bean.豆。Cocoa beans are used to make some kinds of drink.豆。Pea.豌豆。We have a bowl of very salty pea and ham soup.豌豆。Peanut.花生。He likes to eat peanut jam.花生。",
+    "old_len": 410,
+    "new_len": 410,
+    "delta": 0,
+    "changed": false
+  },
+  {
+    "case": "Zoe41900_2025-10-24/You",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe41900_2025-10-24/You/1_input_audio.mp3",
+    "old_text": "单词表二，英翻中。啊，看到英翻中我们就知道，等一会儿会看到英文，会在三秒钟之内说出中文。vegetable，蔬菜。Fruit and vegetables are all good for our health. 蔬菜。potato，土豆。The potato is a vegetable, not a fruit. 土豆。tomato，或者是tomato。呃，西红柿。You would better eat a tomato soup. 番茄。carrot，胡胡萝卜。Have some more carrots. 胡萝卜。bean，豆。Beans are used to make some kinds of drink. 豆。pea，豌豆。We have a bowl of very salty pea and ham soup. 豌豆。peanut，坚果。Likes to eat peanut jam. 花生。",
+    "new_text": "单词表二，英翻中。啊，看到英翻中，我们就知道，等一会儿会看到英文，会在三秒钟之内说出中文。vegetable。蔬菜。Fruit and vegetables are all good for our health.蔬菜。potato。土豆。The potato is a vegetable, not a fruit.土豆。tomato，或者是tomato。呃，西红柿。You would better heat up the tomato soup.番茄。carrot。胡胡萝卜。Have some more carrots.胡萝卜。bean。豆。Beans are used to make some kinds of drink.豆。pea。豌豆。We have a bowl of very salty pea and ham soup.豌豆。peanut。坚果。Likes to eat peanut jam.花生。",
+    "old_len": 413,
+    "new_len": 413,
+    "delta": 0,
+    "changed": false
+  },
+  {
+    "case": "Zoe41900_2025-11-20/AL",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe41900_2025-11-20/AL/1_input_audio.mp3",
+    "old_text": "单词表三十八中翻英。地方、地点、场所。Place。Place。房间。Room。Room。卧室。Bedroom。Bedroom。厨房。Kitchen。Kitchen。浴室、卫生间。Bathroom。Bathroom。超市。Supermarket。Supermarket。学校。School。School。",
+    "new_text": "单词表三十八中翻英。地方、地点、场所。Place。Place。房间。Room。Room。卧室。Bedroom。Bedroom。厨房。Kitchen。Kitchen。浴室、卫生间。Bathroom。Bathroom。超市。Supermarket。Supermarket。学校。School。School。",
+    "old_len": 151,
+    "new_len": 151,
+    "delta": 0,
+    "changed": false
+  },
+  {
+    "case": "Zoe41900_2025-11-20/ANNA",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe41900_2025-11-20/ANNA/1_input_audio.mp3",
+    "old_text": "四秒三十八中翻英。地方、地点、场所。Place. Place.房间。Room. Room.卧室。Bedroom. Bedroom.厨房。Kitchen. Kitchen.浴室、卫生间。Bathroom. Bathroom.超市。Supermarket. Supermarket.学校。School. School.",
+    "new_text": "四表三十八中翻英。地方、地点、场所。Place. Place.房间。Room. Room.卧室。Bedroom. Bedroom.厨房。Kitchen. Kitchen.浴室、卫生间。Bathroom. Bathroom.超市。Supermarket. Supermarket.学校。School. School.",
+    "old_len": 157,
+    "new_len": 157,
+    "delta": 0,
+    "changed": false
+  },
+  {
+    "case": "Zoe41900_2025-11-20/Kevin",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe41900_2025-11-20/Kevin/1_input_audio.mp3",
+    "old_text": "单词表三十八中翻英。地方、地点、场所。Place. Place.房间。Room. Room.卧室。Bedroom. Bedroom. Bedroom.厨房。Kitchen. Kitchen.浴室、卫生间。Bathroom. Bathroom.超市。Supermarket. Supermarket.学校。School. School.",
+    "new_text": "单词表三十八中翻英。地方、地点、场所。Place. Place.房间。Room. Room.卧室。Bedroom. Bedroom. Bedroom.厨房。Kitchen. Kitchen.浴室、卫生间。Bathroom. Bathroom.超市。Supermarket. Supermarket.学校。School. School.",
+    "old_len": 167,
+    "new_len": 167,
+    "delta": 0,
+    "changed": false
+  },
+  {
+    "case": "Zoe41900_2025-11-20/sophia",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe41900_2025-11-20/sophia/1_input_audio.mp3",
+    "old_text": "单词表三十八中翻英。地方、地点、场所。Place. Place.房间。Room. Room.卧室。Bedroom. Bedroom. Bedroom.厨房。Kitchen. Kitchen.浴室、卫生间。Bathroom. Bathroom.超市。Supermarket. Supermarket.学校。School. School.",
+    "new_text": "单词表三十八中翻英。地方、地点、场所。Place. Place.房间。Room. Room.卧室。Bedroom. Bedroom. Bedroom.厨房。Kitchen. Kitchen.浴室、卫生间。Bathroom. Bathroom.超市。Supermarket. Supermarket.学校。School. School.",
+    "old_len": 167,
+    "new_len": 167,
+    "delta": 0,
+    "changed": false
+  },
+  {
+    "case": "Zoe51530_2025-09-08/Alvin",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe51530_2025-09-08/Alvin/1_input_audio.mp3",
+    "old_text": "simple，形容词，简单的。嗯。简单的，简易的，朴素的，简朴的。complete，形容词。完全的，完全的。完整的，完全的，彻底的。complete，及物动词。完成。完成。list，名词。目录。清单，目录，一览表。list，及物动词。清单，目录。把什么什么列成表，举例。assist，名词。帮助，助攻。assist，不及物动词。出席。参加，出席。assist，及物动词。帮助。帮助，促进。scientist，名词。科学家。科学家。tourist，名词。观光者。旅游者，观光者。case，名词。盒子。箱子，盒子，情况，状况。chase，及物动词。嗯。追捕，追求，雕刻，试图赢得。chase，不及物动词。追赶。奔跑，追赶。chase，名词。追捕。追捕，争取，狩猎。purchase，及物动词。购买。购买。purchase，名词。购买。购买，购买的物品。increase，行为动词。增加。增加，增大。increase，名词。增加。增加，增长。rise，不及物动词。上升。太阳、月亮等上升、上涨、起立、起床。rise，名词。上升。升高，升起。增长增长。Raise，及物动词。上升。抬高。提高。抬高，举起，提高，养育，提起话题。Surprise，及物动词。惊喜的。使惊奇，使诧异。Surprise，名词。惊喜。惊讶，令人吃惊的是。Exercise，名词。锻炼。锻炼，运动，体操，练习，习题。Exercise，不及物动词。练习。练习，锻炼。Praise，及物动词。嗯嗯嗯嗯，称赞。嗯嗯，赞扬表扬。Praise，名词。称赞表扬。赞扬表扬，妈你们别吵啦。Noise，名词。噪音。嘈杂声，喧闹声，噪音。",
+    "new_text": "simple，形容词，简单的。嗯。简单的，简易的，朴素的，简朴的。complete，形容词。完全的，完全的。完整的，完全的，彻底的。complete，及物动词，完成。完成。list，名词。目录。清单，目录，一览表。list，及物动词。清单，目录。把什么什么列成表，举例。assist，名词。帮助，助攻。assist，不及物动词。出席。参加，出席。assist，及物动词。帮助。帮助，促进。scientist，名词。科学家。科学家。tourist，名词。观光者。旅游者，观光者。case，名词。盒子。箱子，盒子，情况，状况。chase，及物动词。嗯。追捕，追求，雕刻，试图赢得。chase，不及物动词。追赶。奔跑，追赶。chase，名词。追捕。追捕，争取，狩猎。purchase，及物动词。购买。购买。purchase，名词。购买。购买，购买的物品。increase，行为动词。增加。增加，增大。increase，名词。增加。增加，增长。rise，不及物动词。上升。太阳、月亮等上升，上涨，起立，起床。rise，名词。上升。升高，升起，上涨，增长。raise。及物动词。上升。抬高，提高。抬高，举起，提高，养育，提起话题。surprise，及物动词。惊喜的。使惊奇，使诧异。surprise，名词。惊喜。惊讶，令人吃惊的是。exercise，名词。锻炼。锻炼，运动，体操，练习，习题。exercise，不及物动词。练习。练习，锻炼。praise，及物动词。嗯嗯嗯嗯，称赞，嗯嗯。赞扬，表扬。praise，名词。称赞，表扬。赞扬，表扬。妈，你们别吵啦。noise，名词。噪音。嘈杂声，喧闹声，噪音。",
+    "old_len": 692,
+    "new_len": 697,
+    "delta": 5,
+    "changed": false
+  },
+  {
+    "case": "Zoe51530_2025-09-08/Kevin",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe51530_2025-09-08/Kevin/1_input_audio.mp3",
+    "old_text": "形容词。嗯。简单的。简单的、简易的、朴素的、简朴的。complete，形容词。完整的。完整的、完全的、彻底的。complete，及物动词。完成。list，名词。清单。清单、目录、一览表。list，及物动词。把列把什么什么列成表，举例。assist，名词。助攻。帮助、助攻。assist，不及物动词。参加、出席。参加、出席。assist，及物动词。呃，帮助。促进。scientist，名词。科学家。科学家。tourist，名词。旅行者。旅游者、观光者。case，名词。箱子、盒子。箱子、盒子、情况、状况。chase，及物动词。追捕。追捕、追求、雕刻、试图赢得。chase，不及物动词。奔跑。奔跑、追赶。chase，名词。追捕。追捕、争取、狩猎。purchase，及物动词。购买。购买。purchase，名词。购买的物品。购买、购买的物品。increase，行为动词。增加增大。增加增大。increase，名词。增增长。增加增长。rise，不及物动词。上升。太阳、月亮等上升、上涨、起立、起床。rise，名词。呃，升升高。升高、升起、上涨、增长。raise。及物动词。抬高。抬高、举起、提高、养育、提起话题。surprise，及物动词。使惊奇。使惊奇，使诧异。surprise，名词。惊讶。惊讶，令人吃惊的是。exercise，名词。锻炼运动。锻炼、运动、体操、练习、习题。exercise，不及物动词。练习锻炼。练习锻炼。praise，及物动词。赞扬表扬。赞扬表扬。praise，名词。赞扬表扬称赞。赞扬表扬称赞。noise，名词。嘈杂声。嘈杂声、喧闹声、噪音。",
+    "new_text": "",
+    "old_len": 680,
+    "new_len": 0,
+    "delta": -680,
+    "changed": true
+  },
+  {
+    "case": "Zoe51530_2025-09-08/Lesson",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe51530_2025-09-08/Lesson/1_input_audio.mp3",
+    "old_text": "简单的。简单的、简易的、朴素的、简朴的。complete形容词完整的。完整的、完全的、彻底的。complete及物动词完成。完成。list名词清单、目录。清单、目录、一览表。list及物动词把什么什么列成表。把什么什么列成表，举例。assist名词帮助。帮助、助攻。assist不及物动词呃出席。参加、出席。assist及物动词帮助、促进。帮助、促进。scientist名词科学家。科学家。tourist名词观光者。旅游者、观光者。case名词盒子。箱子、盒子、情况、状况。chase及物动词追捕。追捕、追求、雕刻、试图赢得。chase不及物动词奔跑。奔跑、追赶。chase名词追捕。追捕、争取、狩猎。purchase及物动词购买。购买。purchase名词购买的物品。购买、购买的物品。increase行为动词增加、增大。增加、增大。increase名词增加、增长。增加、增长。rise不及物动词上升、上涨、起床、起立。太阳、月亮等上升、上涨、起立、起床。rise名词身高。升高、升起、上涨、增长。raise及物动词抬高。抬高、举起、提高、养育、提起话题。surprise及物动词使惊喜、使惊异。使惊奇、使诧异。surprise名词令人惊讶、哎呀、吃惊的事。令人吃惊的事。exercise名词练习。锻炼、运动、体操、练习、习题。exercise不及物动词锻炼。练习、锻炼。praise及物动词赞扬、表扬。赞扬、表扬。praise名词赞扬、称赞。赞扬、表扬、称赞。noise名词噪音。嘈杂声、喧闹声、噪音。",
+    "new_text": "简单的。简单的、简易的、朴素的、简朴的。complete形容词完整的。完整的、完全的、彻底的。complete及物动词完成。完成。list名词清单目录。清单目录一览表。list及物动词把什么什么列成表。把什么什么列成表举例。assist名词帮助。帮助助攻。assist不及物动词呃出席。参加出席。assist及物动词帮助促进。帮助促进。scientist名词科学家。科学家。tourist名词观光者。旅游者观光者。case名词盒子。箱子盒子情况状况。chase及物动词追捕。追捕追求雕刻试图赢得。chase不及物动词奔跑。奔跑追赶。chase名词追捕。追捕争取狩猎。purchase及物动词购买。购买。purchase名词购买的物品。购买购买的物品。increase行为动词增加增大。增加增大。increase名词增加增强。增加增长。rise不及物动词上升上涨起床起立。太阳月亮等上升上涨起立起床。rise名词身高。升高升起上涨增长。raise及物动词抬高。抬高举起提高养育提起话题。surprise及物动词使惊喜使惊异。使惊奇使诧异。surprise名词令人惊讶哎呀吃惊的事。令人吃惊的事。exercise名词练习。锻炼运动体操练习习题。exercise不及物动词锻炼。练习锻炼。praise及物动词赞扬表扬。赞扬表扬。praise名词赞扬称赞。赞扬表扬称赞。noise名词噪音。嘈杂声喧闹声噪音。",
+    "old_len": 653,
+    "new_len": 600,
+    "delta": -53,
+    "changed": true
+  },
+  {
+    "case": "Zoe51530_2025-09-08/Phoebe",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe51530_2025-09-08/Phoebe/1_input_audio.mp3",
+    "old_text": "simple形容词。简单的。简单的，简易的，朴素的，简朴的。complete形容词。完整的。完整的，完全的，彻底的。complete及物动词。完成。完成。list名词。清单。清单，目录，一览表。list及物动词。举例，列举。把什么什么列成表，举例。assist名词。参加。帮助。assist不及物动词。参加。参加，出席。assist及物动词。帮助。帮助，促进。scientist名词。科学家。科学家。tourist名词。旅行者。旅游者，观光者。case名词。盒子。箱子，盒子，情况，状况。chase及物动词。追捕。追捕，追求，雕刻，试图赢得。chase不及物动词。奔跑。奔跑，追赶。chase名词。追捕。追捕，争取，狩猎。purchase及物动词。购买。购买。purchase名词。购买。购买，购买的物品。increase行为动词。增加。增加，增大。increase名词。增加。增加，增长。rise不及物动词。太阳、月亮等上升、上涨、起立、起床。rise名词。上升，上涨。升高，升起，上涨，增长。raise及物动词。升，抬高。抬高，举起，提高，养育，提起话题。surprise及物动词。使惊奇。使惊奇，使诧异。surprise名词。惊讶。惊讶，令人吃惊的事。exercise名词。练习。锻炼，运动，体操，练习，习题。exercise不及物动词。练习。练习，锻炼。praise及物动词。赞扬。赞扬，表扬。praise名词。赞扬。赞扬，表扬，称赞。noise名词。噪音。嘈杂声，喧闹声，噪音。",
+    "new_text": "simple形容词。简单的。简单的，简易的，朴素的，简朴的。complete形容词。完整的。完整的，完全的，彻底的。complete及物动词。完成。完成。list名词。清单。清单，目录，一览表。list及物动词。举例，列举。把什么什么列成表，举例。assist名词。参加。帮助。assist不及物动词。参加。参加，出席。assist及物动词。帮助。帮助，促进。scientist名词。科学家。科学家。tourist名词。旅行者。旅游者，观光者。case名词。盒子。箱子，盒子，情况，状况。chase及物动词。追捕。追捕，追求，雕刻，试图赢得。chase不及物动词。奔跑。奔跑，追赶。chase名词。追捕。追捕，争取，狩猎。purchase及物动词。购买。购买。purchase名词。购买。购买，购买的物品。increase行为动词。增加。增加，增大。increase名词。增加。增加，增长。rise不及物动词。太阳、月亮等上升、上涨、起立、起床。rise名词。上升，上涨。升高，升起，上涨，增长。raise及物动词。升，抬高。抬高，举起，提高，养育，提起话题。surprise及物动词。使惊奇。使惊奇，使诧异。surprise名词。惊讶。惊讶，令人吃惊的事。exercise名词。练习。锻炼，运动，体操，练习，习题。exercise不及物动词。练习。练习，锻炼。praise及物动词。赞扬。赞扬，表扬。praise名词。赞扬。赞扬，表扬，称赞。noise名词。噪音。嘈杂声，喧闹声，噪音。",
+    "old_len": 644,
+    "new_len": 644,
+    "delta": 0,
+    "changed": false
+  },
+  {
+    "case": "Zoe51530_2025-09-08/Stefan",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe51530_2025-09-08/Stefan/1_input_audio.mp3",
+    "old_text": "simple，形容词。简单的。简单的，简易的，朴素的，简朴的。complete，形容词。完整的。完整的，完全的，彻底的。complete，及物动词。完成。完成。list，名词。清单。清单，目录，一览表。list，及物动词。呃，列举。把什么什么列成表，举例。assist，名词。帮助。帮助，助攻。assist，不及物动词。呃，参加。参加，出席。assist，及物动词。帮助。帮助，促进。scientist，名词。科学家。科学家。tourist，名词。旅游者。旅游者，观光者。case，名词。情况，箱子。箱子，盒子，情况，状况。chase，及物动词。追捕。追捕，追求，雕刻，试图赢得。chase，不及物动词。奔跑，追赶。chase，名词。追捕。追捕，争取，狩猎。purchase，及物动词。购买。购买。purchase，名词。购买。购买，购买的物品。increase，行为动词。增加。增加，增大。increase，名词。增加。增加，增长。rise，不及物动词。呃，太阳、月亮的上升。太阳、月亮等上升、上涨、起立、起床。rise，名词。身高。升高，升起，上涨，增长。raise，及物动词。呃，举起。抬高，举起，提高，养育，提起话题。surprise，及物动词。使惊奇。使惊奇，使诧异。surprise，名词。惊讶。惊讶，令人吃惊的事。exercise，名词。锻炼或者练习题。锻炼，运动，体操，练习，习题。exercise，不及物动词。练习。练习，锻炼。praise，及物动词。表扬。赞扬，表扬。praise，名词。表扬。赞扬，表扬，称赞。noise，名词。噪音。嘈杂声，喧闹声，噪音。",
+    "new_text": "simple，形容词。简单的。简单的、简易的、朴素的、简朴的。complete，形容词。完整的。完整的、完全的、彻底的。complete，及物动词。完成。完成。list，名词。清单。清单、目录、一览表。list，及物动词。呃，列举。把什么什么列成表，举例。assist，名词。帮助。帮助、助攻。assist，不及物动词。呃，参加。参加、出席。assist，及物动词。帮助。帮助、促进。scientist，名词。科学家。科学家。tourist，名词。旅游者。旅游者、观光者。case，名词。情况、箱子。箱子、盒子、情况、状况。chase，及物动词。追捕。追捕、追求、雕刻、试图赢得。chase，不及物动词。奔跑、追赶。chase，名词。追捕。追捕、争取、狩猎。purchase，及物动词。购买。购买。purchase，名词。购买。购买、购买的物品。increase，行为动词。增加。增加、增大。increase，名词。增加。增加、增长。rise，不及物动词。呃，太阳、月亮的上升。太阳、月亮等上升、上涨、起立、起床。rise，名词。身高。升高、升起、上涨、增长。raise，及物动词。呃，举起。抬高、举起、提高、养育、提起话题。surprise，及物动词。是惊奇。使惊奇、使诧异。surprise，名词。惊讶。惊讶、令人吃惊的是。exercise，名词。锻炼或者练习题。锻炼、运动、体操、练习、习题。exercise，不及物动词。练习。练习、锻炼。praise，及物动词。表扬。赞扬、表扬。praise，名词。表扬。赞扬、表扬、称赞。noise，名词。噪音。嘈杂声、喧闹声、噪音。",
+    "old_len": 689,
+    "new_len": 689,
+    "delta": 0,
+    "changed": false
+  },
+  {
+    "case": "Zoe51530_2025-09-08/Yiyi",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe51530_2025-09-08/Yiyi/1_input_audio.mp3",
+    "old_text": "简易的，简单的。简单的，简易的，朴素的，简朴的。complete，形容词。完整的，完全的，彻底的。完整的，完全的，彻底的。complete，及物动词。完成。完成。list，名词。清单，目录。清单，目录，一览表。list，及物动词。把什么什么列成表。把什么什么列成表，举例。assist，名词。帮助，助攻。帮助，助攻。assist，不及物动词。参加。参加，出席。assist，及物动词。帮助，促进。帮助，促进。scientist，名词。科学家。科学家。tourist，名词。旅游者，观光者。旅游者，观光者。case，名词。箱子，盒子。箱子，盒子，情况，状况。chase，及物动词。追捕，追求。追捕，追求，雕刻，试图赢得。chase，不及物动词。奔跑，追赶。奔跑，追赶。chase，名词。追捕，争取。追捕，争取，狩猎。purchase，及物动词。购买。购买。purchase，名词。购买的物品。购买，购买的物品。increase，行为动词。增加，增大。增加，增大。increase，名词。增加，增长。增加，增长。rise，不及物动词。上升，上涨。太阳、月亮等上升、上涨、起立、起床。rise，名词。升高，升起。升高，升起，上涨，增长。raise，及物动词。抬高，举起。抬高，举起，提高，养育，提起话题。surprise，及物动词。使惊奇。使惊奇，使诧异。surprise，名词。惊讶，令人吃惊的事。惊讶，令人吃惊的事。exercise。",
+    "new_text": "简易的简单的，简单的简易的朴素的简朴的。complete形容词，完整的完全的彻底的。完整的完全的彻底的。complete及物动词，完成。完成。list名词，清单目录。清单目录一览表。list及物动词，把什么什么列成表。把什么什么列成表举例。assist名词，帮助助攻。帮助助攻。assist不及物动词，参加。参加出席。assist及物动词，帮助促进帮助促进。scientist名词，科学家。科学家。tourist名词，旅游者观光者。旅游者观光者。case名词，箱子盒子。箱子盒子情况状况。chase及物动词，追捕追求。追捕追求雕刻试图赢得。chase不及物动词，奔跑追赶。奔跑追赶。chase名词，追捕争取。追捕争取狩猎。purchase及物动词，购买。购买。purchase名词，购买的物品。购买购买的物品。increase行为动词，增加增大。增加增大。increase名词，增加增长。增加增长。rise不及物动词，上升上涨。太阳月亮等上升上涨起立起床。rise名词，升高升起。升高升起上涨增长。raise及物动词，抬高举起。抬高举起提高养育提起话题。surprise及物动词，使惊奇。使惊奇使诧异。surprise名词，惊讶令人吃惊的事。惊讶令人吃惊的事。exercise名词，体操锻炼运动。锻炼运动体操练习习题。exercise不及物动词，练习锻炼。练习锻炼。praise及物动词，称赞表扬。赞扬表扬。praise名词，赞扬表扬。赞扬表扬称赞。noise名词，嘈杂声喧闹声。嘈杂声喧闹声噪音。",
+    "old_len": 616,
+    "new_len": 649,
+    "delta": 33,
+    "changed": true
+  },
+  {
+    "case": "Zoe51530_2025-12-16/Alvin",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe51530_2025-12-16/Alvin/1_input_audio.mp3",
+    "old_text": "十八，celebrate，提示撤了不吃了，准备干嘛？庆祝。cent，一分钱或者一美分。center，中心。century，世纪，一个世纪等于多久？一百年。certain，特定的，确定的。certainly，当然，当然也是一种确定。chain，提示缠绕的缠，链条或者是束缚。chair，椅子。challenge，提示采灵芝需要去山谷悬崖上采，所以challenge，有挑战。chance或者chance，机会。change，改变。changeable，改变的形容词，可改变的。channel，提示铲子的铲c h a n再加上一个n型拱形，铲出一个拱形。隧道、水渠、频道。character，提示刻入刻它，特点、特征、人物。charge有四个主要意思，一，the hotel will charge you twenty dollars for breakfast，这里的charge，收费、费用。第二，she is in charge of organizing the school event，这里in charge of，掌管。三，please charge your phone before we leave，这里的charge，充电。四，luofan suddenly charged at the monster，冲。",
+    "new_text": "十八，celebrate，提示撤了不吃了，准备干嘛？庆祝。cent，一分钱或者一美分。center，中心。century，世纪，一个世纪等于多久？一百年。certain，特定的，确定的。certainly，当然，当然也是一种确定。chain，提示缠绕的缠，链条或者是束缚。chair，椅子。challenge，提示采灵芝需要去山谷悬崖上采，所以challenge，有挑战。chance或者chance，机会。change，改变。changeable，改变的形容词，可改变的。channel，提示铲子的铲c h a n再加上一个n型拱形，铲出一个拱形。隧道、水渠、频道。character，提示刻入刻它，特点、特征、人物。charge有四个主要意思，一，the hotel will charge you twenty dollars for breakfast，这里的charge，收费、费用。第二，she is in charge of organizing the school event，这里in charge of，掌管。三，please charge your phone before we leave，这里的charge，充电。四，luofan suddenly charged at the monster，冲。",
+    "old_len": 565,
+    "new_len": 565,
+    "delta": 0,
+    "changed": false
+  },
+  {
+    "case": "Zoe51530_2025-12-16/Kevin",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe51530_2025-12-16/Kevin/1_input_audio.mp3",
+    "old_text": "十八，celebrate，提示撤了，不吃了，准备干嘛？庆祝。庆祝，cent，一分钱或者一美分，center，世纪，中心，century，世纪，一个世纪等于多久？一百年。certain，特定的，确定的，certainly，确定，当然，当然也是一种确定。chain，提示缠绕的缠，链，链条，或者是束缚，chair，椅子，challenge，提示采灵芝需要去山谷悬崖上采，所以challenge，有挑战。chance或者chance，机会，机会，change，改变，changeable，可改变，改变的形容词，可改变的。channel，提示铲子的铲c h a n再加上一个n型拱形，铲出一个拱形。频道，隧道，水渠，频道。character，提示刻入刻它，特点，特点，特征，人物。charge有四个主要意思，第一，the hotel will charge you twenty dollars for breakfast，这里的charge，收费，费用。第二，she is in charge of organizing the school event，这里in charge of，掌管。三，please charge your phone before we leave，这里的charge，充电。四，luofan suddenly charged at the monster，冲，冲。",
+    "new_text": "十八，celebrate，提示撤了，不吃了，准备干嘛？庆祝。庆祝，cent，一分钱或者一美分，center，世纪，中心，century，世纪，一个世纪等于多久？一百年。certain，特定的，确定的，certainly，确定，当然，当然也是一种确定。chain，提示缠绕的缠，链，链条，或者是束缚，chair，椅子，challenge，提示采灵芝需要去山谷悬崖上采，所以challenge，有挑战。chance或者chance，机会，机会，change，改变，changeable，可改变，改变的形容词，可改变的。channel，提示铲子的铲，c h a n再加上一个n型，拱形，铲出一个拱形。频道，隧道，水渠，频道。character，提示刻入刻它，特点，特点，特征，人物。charge有四个主要意思，第一，the hotel would charge you twenty dollars for breakfast，这里的charge，收费，费用。第二，she is in charge of organizing the school event，这里的in charge of，掌管。三，please charge your phone before we leave，这里的charge，充电。四，luo fan suddenly charged at the monster，冲。冲。",
+    "old_len": 594,
+    "new_len": 599,
+    "delta": 5,
+    "changed": false
+  },
+  {
+    "case": "Zoe51530_2025-12-16/Leson",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe51530_2025-12-16/Leson/1_input_audio.mp3",
+    "old_text": "庆祝，庆祝，庆祝。cent呃，几分钱。center呃，中心。century呃，世纪，一百年。certain呃，特定的。certainly呃，特定的。当然，当然也是一种确定。chain提示缠绕的缠。链条。链条或者是束缚。chair呃，椅子。椅子。challenging呃，挑战性的，挑战。有挑战。chance或者chance。呃，机会。change呃，改变。changeable呃，改变的形容词。channel提示铲子的铲c h a n再加上一个n型拱形。铲出隧道，隧道。隧道，水渠，频道。character提示克鲁克他。呃，特定的。charge有四个主要意思。一，the hotel will charge you twenty dollars for breakfast。这里的呃，费用。收费，费用。第二，she is in charge of organizing the school event。这里的in charge of。呃，掌管。三，please charge your phone before we leave。充电，充电。充电。四，luofan suddenly charged at the monster。冲，冲。",
+    "new_text": "庆祝，庆祝，庆祝。cent呃，几分钱？center呃，中心。century呃，世纪，一百年。certain呃，特定的。certainly呃，特定的。当然，当然也是一种确定。chain提示缠绕的缠。链条。链条或者是束缚。chair呃，椅子。椅子。challenging呃，挑战性的，挑战。有挑战。chance或者chance呃，机会。change呃，改变。changeable呃，改变的形容词。channel提示铲子的铲c h a n再加上一个n型拱形。铲出隧道，隧道。隧道，水渠，频道。character提示刻录刻它。呃，特定的。charge有四个主要意思。一，the hotel will charge you twenty dollars for breakfast。呃，费用。收费，费用。第二，she is in charge of organizing the school event。这里in charge of。呃，掌管。三，please charge your phone before we leave。充电，充电。充电。四，luofan suddenly charged at the monster。冲，冲。",
+    "old_len": 520,
+    "new_len": 515,
+    "delta": -5,
+    "changed": false
+  },
+  {
+    "case": "Zoe51530_2025-12-16/Phoebe",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe51530_2025-12-16/Phoebe/1_input_audio.mp3",
+    "old_text": "单词 basic 十八，celebrate 提示撤了不吃了，准备干嘛？庆祝。庆祝。cent 美分，一分钱或一美分。center 中心。中心。century 世纪。世纪，一个世纪等于多久？一百年。一百年。certain 特定的，确定的。certainly 当然。当然，当然也是一种确定。chain 提示缠绕的缠。链条。链条，或者是束缚。chair 椅子。椅子。challenge 提示采灵芝需要去山谷悬崖上采，所以。有挑战，有挑战，有挑战。chance 或者 chance 机会。机会。change 改变。改变。changeable 可改变。改变的形容词，可改变的。channel 提示铲子的铲 c h a n 再加上一个 n 形拱形，铲出一个拱形。隧道水渠。隧道、水渠、频道。character 提示刻入刻他。人物。特点、特征、人物。charge 有四个主要意思，第一，the hotel will charge you twenty dollars for breakfast，这里的 charge 收费。收费、费用。第二，she is in charge of organizing the school event，这里 in charge of。掌管。掌管。三，please charge your phone before we leave，这里的 charge 充电。充电。充电。四，luofan suddenly charged at the monster，冲冲。",
+    "new_text": "单词 basic 十八，celebrate 提示撤了不吃了，准备干嘛？庆祝。庆祝。cent 美分，一分钱或一美分。center 中心。中心。century 世纪。世纪，一个世纪等于多久？一百年。一百年。certain 特定的，确定的。certainly 当然。当然，当然也是一种确定。chain 提示缠绕的缠。链条。链条，或者是束缚。chair 椅子。椅子。challenge 提示采灵芝需要去山谷悬崖上采，所以。有挑战，有挑战，有挑战。chance 或者 chance 机会。机会。change 改变。改变。changeable 可改变。改变的形容词，可改变的。channel 提示铲子的铲 c h a n 再加上一个 n 形，拱形，铲出一个拱形。隧道水渠。隧道、水渠、频道。character 提示刻入刻他。人物。特点、特征、人物。charge 有四个主要意思，第一，the hotel will charge you twenty dollars for breakfast，这里的 charge 收费。收费、费用。第二，she is in charge of organizing the school event，这里 in charge of。掌管。掌管。三，please charge your phone before we leave，这里的 charge 充电。充电。充电。四，luofan suddenly charged at the monster，冲冲。",
+    "old_len": 640,
+    "new_len": 641,
+    "delta": 1,
+    "changed": false
+  },
+  {
+    "case": "Zoe51530_2025-12-16/Qihang",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe51530_2025-12-16/Qihang/1_input_audio.mp3",
+    "old_text": "初中单词 basic 十八，celebrate，提示撤了不吃了，准备干嘛？庆祝。庆祝。cent，美分，一分钱或者一美分。center，中心。中心。century，世纪。世纪，一个世纪等于多久？一百年。一百。certain，确定。特定的，确定的。certainly，当然。当然也是一种确定。chain，提示缠绕的缠。链子，链条，或者是束缚。chair，椅子。椅子。challenge，挑战。就是采灵芝需要去山谷悬崖上采，所以。有挑战。有挑战。chance 或者 chance，机会。机会。change，改变。改变。changeable，改变的形容词，可改变的。channel，提示铲子的铲 c h a n 再加上一个 n 型拱形，铲出一个拱形。隧道。隧道、水渠、频道。character，提示刻入刻它。特点。特点、特征、人物。charge 有四个主要意思，一。然后 tell what charge you twenty dollars for breakfast，这里的 charge。费用。收费、费用。第二，she is in charge of organizing the school event，这里 in charge of。掌控。掌管。三，please charge your phone before we leave，充电，这里的 charge。充电。四，luo fan suddenly charged at the monster，冲。冲。",
+    "new_text": "初中单词 basic 十八，celebrate，提示撤了，不吃了，准备干嘛？庆祝。庆祝。cent，美分，一分钱或者一美分。center，中心。中心。century，世纪。世纪，一个世纪等于多久？一百年。一百。certain，确定。特定的，确定的。certainly，当然，当然也是一种确定。chain，提示缠绕的缠。链子，链条，或者是束缚。chair，椅子。椅子。challenge，挑战。就是采灵芝需要去山谷悬崖上采，所以有挑战。有挑战。chance 或者 chance，机会。机会。change，改变。改变。changeable，改变的形容词，可改变的。可改变的。channel，提示铲子的铲 c h a n 再加上一个 n 型，拱形，铲出一个拱形。隧道。隧道、水渠、频道。character，提示刻入刻它。特点。特点、特征、人物。charge 有四个主要意思，一，然后 tell what charge you twenty dollars for breakfast，这里的 charge。费用。收费、费用。第二，she is in charge of organizing the school event，这里 in charge of。掌控。掌管。三，please charge your phone before we leave，充电。这里的 charge。充电。四，luofan suddenly charged at the monster，冲。冲。",
+    "old_len": 631,
+    "new_len": 636,
+    "delta": 5,
+    "changed": false
+  },
+  {
+    "case": "Zoe51530_2025-12-16/Yiyi",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe51530_2025-12-16/Yiyi/1_input_audio.mp3",
+    "old_text": "庆祝撤了，不吃了。庆祝庆祝，cent美分，一分钱或一美分。center中心中心，century是一世纪，一个世纪等于多久？一百年一百年。certain确确定的，特定的确定的，certainly当然当然当然也是一种确定。chain提示缠绕的缠，链条链条或者是束缚。chair椅子椅子，challenge挑战，采灵芝需要去山谷悬崖上采，所以challenge挑战有挑战。chance或者chance机会机会，change改变改变，changeable易变的改变的形容词，可改变的。channel提示铲子的铲c h a n再加上一个n型拱形，铲出一个拱形隧道、频道、水渠、水渠、频道。character提示刻入刻他，特征特点特征人物。charge有四个主要意思，一，the hotel will charge you twenty dollars for breakfast，这里的charge收费收费费用。第二，she is in charge of organizing the school event，这里in charge of掌管掌管。三，please charge your phone before we leave，充电充电。四，luofan suddenly charged at the monster，冲冲。",
+    "new_text": "庆祝撤了，不吃了。庆祝庆祝。cent美分，一分钱或一美分。center中心中心。century是一世纪，一个世纪等于多久？一百年一百年。certain确确定的，特定的确定的。certainly当然当然当然也是一种确定。chain提示缠绕的缠，链条链条或者是束缚。chair椅子椅子。challenge挑战，采灵芝需要去山谷悬崖上采，所以challenge挑战有挑战。chance或者chance机会机会。change改变改变。changeable易变的，改变的形容词，可改变的。channel提示铲子的铲c h a n再加上一个n型拱形，铲出一个拱形。隧道、频道、水渠、水渠、频道。character提示刻入刻他，特征特点特征人物。charge有四个主要意思，一，the hotel will charge you twenty dollars for breakfast，这里的charge收费收费费用。第二，she is in charge of organizing the school event，这里in charge of掌管掌管。三，please charge your phone before we leave，充电充电。四，luofan suddenly charged at the monster，冲冲。",
+    "old_len": 563,
+    "new_len": 565,
+    "delta": 2,
+    "changed": false
+  },
+  {
+    "case": "Zoe61330_2025-12-15/Allen",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe61330_2025-12-15/Allen/1_input_audio.mp3",
+    "old_text": "初中单词 basic 二十六，cry，哭和喊叫，哭和喊叫，culture，文化，提示，很多这个东西靠扯，文化是什么？文化，cup，杯子，茶杯，杯子，custom，提示，卡死他们，谁最喜欢干？海关，海关，而且这是他们的什么？习俗，习俗习惯，那么custom加上一样，customer是什么意思？顾客，坑死他们，顾客，顾客，当然不能这样了，cut，剪切，剪切，cute，可爱的，可爱的，cycle，循环，循环，dad，爸爸，爸爸，daily，每日的，每日的，damage，提示大面积，破坏，破坏，dance，跳舞，跳舞，联想一下confidence，功夫跳舞是什么？展示自信，展示自信，dancer，跳舞者，跳舞者，danger，危险的，危害，dangerous，危险的，危险。",
+    "new_text": "初中单词 basic 二十六，cry，哭和喊叫。哭和喊叫。culture，文化。提示，很多这个东西靠扯。文化是什么？文化。cup，杯子。茶杯，杯子。custom，提示，卡死他们，谁最喜欢干？海关。海关，而且这是他们的什么？习俗。习俗习惯。那么custom加上一样，customer是什么意思？顾客。坑死他们。顾客。顾客，当然不能这样了。cut，剪切。剪切。cute，可爱的。可爱的。cycle，循环。循环。dad，爸爸。爸爸。daily，每日的。每日的。damage，提示大面积。破坏。破坏。dance，跳舞。跳舞，联想一下confidence，功夫跳舞是什么？展示自信。展示自信。dancer，跳舞者。跳舞者。danger，危险的。危害。危害。dangerous，危险的。危险。",
+    "old_len": 337,
+    "new_len": 340,
+    "delta": 3,
+    "changed": false
+  },
+  {
+    "case": "Zoe61330_2025-12-15/Apollo",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe61330_2025-12-15/Apollo/1_input_audio.mp3",
+    "old_text": "初中单词 basic 二十六，cry。哭和喊叫。哭和喊叫。culture，提示，很多这个东西靠扯，指什么？国画。文化。cup。茶杯杯子。茶杯杯子。custom，提示，卡死他们，谁最喜欢干？海关。海关，而且这是他们的什么？习惯习俗。习俗习惯。那么custom加上一样，customer是什么意思？顾客。坑死他们。顾客。顾客，当然不能这样了。cut。剪切。剪切。cute。可爱的。可爱的。cycle。循环。循环。dad。爸爸。爸爸。daily。每日的日常的。每日的。damage，提示大面积。损坏。破坏。dance。跳舞。跳舞，联想一下confidence，功夫跳舞是什么？confidence。展示自信。dancer。跳舞者。跳舞者。danger。危险。危害。dangerous。危险的。危险的。",
+    "new_text": "初中单词 basic 二十六，cry。哭和喊叫。哭和喊叫。culture，提示，很多这个东西靠扯，指什么？国画。文化。cup。茶杯杯子。茶杯杯子。custom，提示，卡死他们，谁最喜欢干？海关。海关，而且这是他们的什么？习惯习俗。习俗习惯，那么custom加上一样，customer是什么意思？顾客。坑死他们。顾客。顾客，当然不能这样了。cut。剪切。剪切。cute。可爱的。可爱的。cycle。循环。循环。dad。爸爸。爸爸。daily。每日的日常的。每日的。damage，提示大面积。损坏。破坏。dance。跳舞。跳舞，联想一下confidence，功夫跳舞是什么？confidence。展示自信。dancer。跳舞者。跳舞者。danger。危险。危害。dangerous。危险的。危险的。",
+    "old_len": 347,
+    "new_len": 347,
+    "delta": 0,
+    "changed": false
+  },
+  {
+    "case": "Zoe61330_2025-12-15/Cici",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe61330_2025-12-15/Cici/1_input_audio.mp3",
+    "old_text": "Basic 二十六，cry。哭。哭和喊叫。culture，其实很多这个东西靠扯，是什么？文化。cup，茶杯杯子。custom，其实卡死他们，谁最喜欢干？海关。海关，而且这是他们的什么？责任。习俗习惯。那么custom加上e r customer是什么意思？坑死他们。顾客。顾客，当然不能这样啊。cut，剪切。cute。可爱的。可爱的。cycle。循环。dead。死了。daily。日常。每日的。damage，其实大年纪。破坏。破坏。dance。跳舞。跳舞，联想一下confidence，功夫跳舞是什么？展示自信。dancer。舞者。跳舞者。danger。危害。dangerous。危险的。",
+    "new_text": "Basic 二十六，cry。哭。哭和喊叫。culture，其实很多这个东西靠扯，是什么？文化。cup，茶杯杯子。custom，其实卡死他们，谁最喜欢干？海关。海关，而且这是他们的什么？责任。习俗习惯。那么custom加上e r customer是什么意思？坑死他们。顾客。顾客，当然不能这样啊。cut，剪切。cute。可爱的。可爱的。cycle。循环。dead。死了。daily。日常。每日的。damage，其实大年纪。破坏。破坏。dance。跳舞。跳舞，联想一下confidence，功夫跳舞是什么？展示自信。展示自信。dancer。舞者。跳舞者。danger。危害。dangerous。危险。危险的。",
+    "old_len": 294,
+    "new_len": 302,
+    "delta": 8,
+    "changed": false
+  },
+  {
+    "case": "Zoe61330_2025-12-15/Feifei",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe61330_2025-12-15/Feifei/1_input_audio.mp3",
+    "old_text": "初中单词 basic 二十六，cry。哭喊叫。哭和喊叫。culture，提示很多这个东西靠扯，是什么？文化。文化。cup。茶杯杯子。茶杯杯子。custom，提示卡死他们，谁最喜欢干？海关。海关，而且这是他们的什么？习惯习俗。习俗习惯。那么custom加上样，customer是什么意思？坑死他们。顾客。顾客，当然不能这样了。cut。剪切。剪切。cute。可爱的。可爱的。cycle。循环。循环。dad。爸爸。爸爸。daily。每日的。每日的。damage，提示大面积。破坏。破坏。dance。跳舞。跳舞，联想一下confidence，功夫跳舞是什么？展示自信。展示自信。dancer。跳舞者。跳舞者。danger。危害。危害。dangerous。危险的。危险的。",
+    "new_text": "初中单词 basic 二十六，cry。哭喊叫。哭和喊叫。culture，提示很多这个东西靠扯，指什么？文化。文化。cup。茶杯杯子。茶杯杯子。custom，提示卡死他们，谁最喜欢干？海关。海关，而且这是他们的什么？习惯习俗。习俗习惯。那么custom加上e r，customer是什么意思？坑死他们。顾客。顾客，当然不能这样了。cut。剪切。剪切。cute。可爱的。可爱的。cycle。循环。循环。dad。爸爸。爸爸。daily。每日的。每日的。damage，提示大面积。破坏。破坏。dance。跳舞。跳舞，联想一下confidence，功夫跳舞是什么？展示自信。展示自信。dancer。跳舞者。跳舞者。danger。危害。危害。dangerous。危险的。危险的。",
+    "old_len": 331,
+    "new_len": 333,
+    "delta": 2,
+    "changed": false
+  },
+  {
+    "case": "Zoe61330_2025-12-15/Jessie",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe61330_2025-12-15/Jessie/1_input_audio.mp3",
+    "old_text": "初中单词 basic 二十六，cry。哭喊叫。哭和喊叫。culture，提示，很多这个东西靠扯，是什么？文化。文化。cup。杯子。茶杯，杯子。custom，提示，卡死他们，谁最喜欢干？海关。海关，而且这是他们的什么？习俗习惯。那么custom加个e r，customer是什么意思？坑死他们。顾客。顾客，当然不能这样了。cut。剪裁。剪。cute。可爱的。可爱的。cycle。循环。循环。dad。爸爸。daily。日常的。日的。damage，提示，大面积。破坏。破坏。dance。跳舞。跳舞，联想一下confidence，功夫跳舞是什么？自信。展示自信。dancer。跳舞者。danger。呃，危害。dangerous。危险。危险的。",
+    "new_text": "初中单词 basic 二十六，cry。哭喊叫。哭和喊叫。culture，提示，很多这个东西靠扯，是什么？文化。文化。cup。杯子，茶杯，杯子。custom，提示，卡死他们，谁最喜欢干？海关。海关，而且这是他们的什么？习俗习惯。那么custom加个e啊，customer是什么意思？坑死他们。顾客。顾客，当然不能这样了。cut。剪裁，剪。cute。可爱的。可爱的。cycle。循环。循环。dad。爸爸。daily。日常的。日的。damage，提示大面积。破坏。破坏。dance。跳舞。跳舞，联想一下confidence，功夫跳舞是什么？自信。展示自信。dancer。跳舞者。danger。呃，危害。dangerous。危险。危险的。",
+    "old_len": 317,
+    "new_len": 315,
+    "delta": -2,
+    "changed": false
+  },
+  {
+    "case": "Zoe61330_2025-12-16/Allen",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe61330_2025-12-16/Allen/1_input_audio.mp3",
+    "old_text": "单词 basic 二十五，count，数数，数数，country，国家，乡下。国家还有一个特别喜欢考的意思，乡下，countryside，农村。农村，couple，提示开炮，谁经常互相开炮？夫妻。情侣，夫妻，courage，core，核心，age，年纪，上了年纪的心会怎么样？勇敢，有勇气。勇敢，有勇气，course，提示考死，上了大学你会发现期末要考几十次试，那是因为什么？course多你才会考死，那么course是什么？课程。课程或者是过程，cousin，你有一个长得非常磕碜的什么？表弟堂兄弟。cover，覆盖，覆盖或者是封面，crazy，疯狂的。疯狂的，cream，奶油，奶油，create，提示，把 it 和 ate 放到同一个单词需要什么？创造性。创造性就是 create，creative，有创造性的。有创造性的，cross，横穿穿过，穿过，verb，那么有一个 preposition，叫什么？across，across。crowd 提示可绕道，拥挤，拥挤，crowded，拥挤的，拥挤的。",
+    "new_text": "单词 basic 二十五，count，数数，数数，country。国家，乡下。国家还有一个特别喜欢考的意思，乡下，countryside。农村。农村，couple，提示开炮，谁经常互相开炮？夫妻。情侣，夫妻，courage，core，核心，age，年纪，上了年纪的心会怎么样？勇敢，有勇气。勇敢，有勇气，course，提示考死，上了大学你会发现期末要考几十次试，那是因为什么？course多你才会考死，那么course是什么？课程。课程或者是过程，cousin，你有一个长得非常磕碜的什么？表弟堂兄弟。cover，覆盖，覆盖或者是封面，crazy，疯狂的。疯狂的，cream，奶油，奶油，create，提示，把 it 和 ate 放到同一个单词需要什么？创造性。创造性就是 create，creative。有创造性的。有创造性的，cross，横穿穿过，穿过，verb，那么有一个 preposition 叫什么？across，across。crowd 提示可绕道，拥挤，拥挤，crowded，拥挤的。拥挤的。",
+    "old_len": 454,
+    "new_len": 454,
+    "delta": 0,
+    "changed": false
+  },
+  {
+    "case": "Zoe61330_2025-12-16/Apollo",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe61330_2025-12-16/Apollo/1_input_audio.mp3",
+    "old_text": "初中单词 basic 二十五，count。数数。数数。country。国家，乡下。国家还有一个特别喜欢考的意思，乡下。countryside。农村。农村。couple，提示开炮，谁经常互相开炮？情侣夫妻。情侣夫妻。courage，core，核心。age，年纪，上了年纪的心会怎么样？有勇气。勇敢，有勇气。course，提示考死，上了大学你会发现期末要考几十次试，那是因为什么？course多你才会考死，那么course是什么？过程，课程。课程，或者是过程。cousin，你有一个长得非常磕碜的什么？表弟。表弟，堂兄弟。cover。覆盖。覆盖，或者是封面。crazy。呃，疯狂的。疯狂的。cream。奶油。奶油。create，提示，把it和ate放到同一个单词需要什么？创造性。创造性就是create。creative。有创造性的。有创造性的。cross。呃，穿过。穿过。verb，那么有一个preposition叫什么？across。across。crowd，提示可绕道。拥挤。拥挤。crowded。拥挤的。拥挤的。",
+    "new_text": "初中单词 basic 二十五，count。数数。数数。country。国家，乡下。国家还有一个特别喜欢考的意思，乡下。countryside。农村。农村。couple，提示开炮，谁经常互相开炮？情侣夫妻。情侣夫妻。courage，core，核心。age，年纪，上了年纪的心会怎么样？有勇气。勇敢，有勇气。course，提示考死，上了大学你会发现期末要考几十次试，那是因为什么？course多你才会考死，那么course是什么？过程，课程。课程，或者是过程。cousin，你有一个长得非常磕碜的什么？表弟。表弟，堂兄弟。cover。覆盖。覆盖，或者是封面。crazy。呃，疯狂的。疯狂的。cream。奶油。奶油。create，提示，把 it 和 ate 放到同一个单词需要什么？创造性。创造性就是 create。creative。有创造性的。有创造性的。cross。呃，穿过。穿过。verb，那么有一个 preposition 叫什么？across。across。crowd，提示可绕道。拥挤。拥挤。crowded。拥挤的。拥挤的。",
+    "old_len": 458,
+    "new_len": 465,
+    "delta": 7,
+    "changed": false
+  },
+  {
+    "case": "Zoe61330_2025-12-16/Cici",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe61330_2025-12-16/Cici/1_input_audio.mp3",
+    "old_text": "数数。数数。country。城市。国家还有一个特别喜欢考的意思，乡下。countryside。农村。couple，提示开炮，谁经常互相开炮？亲密。情侣夫妻。courage，core，核心。age，年纪，上了年纪的心会怎么样？勇敢。勇敢有勇气。course，提示考死，上了大学你会发现期末要考几十次试，那是因为什么？course多你才会考死，那么course是什么？课程或者是过程。cousin，你有一个长得非常磕碜的什么？堂兄弟。表弟堂兄弟。cover。覆盖或者是封面。crazy。疯狂的。疯狂的。cream。奶油。create，提示把it和ate放到同一个单词需要什么？创造。创造性就是create。creative。有创造性的。cross。穿过。穿过。verb，那么有一个preposition叫什么？across。crowd，提示可绕道。拥挤。crowded。拥挤的。",
+    "new_text": "数数，数数，country，城市，国家还有一个特别喜欢考的意思，乡下，countryside，农村，couple，提示开炮，谁经常互相开炮？亲密，情侣夫妻，courage，core，核心，age，年纪，上了年纪的心会怎么样？勇敢，勇敢有勇气，course，提示考死，上了大学你会发现期末要考几十次试，那是因为什么？course多你才会考死，那么course是什么？课程或者是过程，cousin，你有一个长得非常磕碜的什么？堂兄弟，表弟，堂兄弟，cover，覆盖或者是封面，crazy，疯狂的，疯狂的，cream，奶油，create，提示把it和ate放到同一个单词需要什么？创造，创造性就是create，creative，有创造性的，cross，穿过，穿过，verb，那么有一个preposition叫什么？across，crowd，提示可绕道，拥挤，crowded，拥挤的。",
+    "old_len": 387,
+    "new_len": 388,
+    "delta": 1,
+    "changed": false
+  },
+  {
+    "case": "Zoe61330_2025-12-16/Jessie",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe61330_2025-12-16/Jessie/1_input_audio.mp3",
+    "old_text": "count。数数。数数。country。呃，国家。国家还有一个特别重要的意思，乡下。countryside。乡下农村。农村。couple，提示开炮，谁经常互相开炮？夫妻情侣。情侣夫妻。courage，core，核心。age，年纪，上了年纪的心会怎么样？勇敢。勇敢，有勇气。course，提示考死，上了大学你会发现期末要考几十次试，那是因为什么？course多你才会考死，那么course是什么？课程。课程，或者是过程。cousin，你有一个长得非常磕碜的什么？堂兄弟。表弟堂兄弟。cover。覆盖。覆盖，或者是封面。crazy。疯狂。疯狂的。cream。呃，奶油。create，提示，把eat和ate放到同一个单词需要什么？创造。创造性就是create。creative。有创造性的。有创造性。cross。穿过。穿过。那么有一个preposition叫什么？across。crowd，提示可绕道。拥挤。crowded。拥挤的。拥挤的。",
+    "new_text": "count。数数。数数。country。呃，国家。国家还有一个特别重要的意思，乡下。countryside。乡下农村。农村。couple，提示开炮，谁经常互相开炮？夫妻情侣。情侣夫妻。courage，core，核心。age，年纪，上了年纪的心会怎么样？勇敢。勇敢，有勇气。course，提示考死，上了大学你会发现期末要考几十次试，那是因为什么？course多你才会考死，那么course是什么？课程。课程，或者是过程。cousin，你有一个长得非常磕碜的什么？堂兄弟。表弟堂兄弟。cover。覆盖。覆盖，或者是封面。crazy。疯狂。疯狂的。cream。呃，奶油。create，提示把eat和ate放到同一个单词需要什么？创造。创造性就是create。creative。有创造性的。有创造性。cross。穿过。穿过。verb，那么有一个preposition叫什么？across。crowd，提示可绕道。拥挤。crowded。拥挤的。拥挤的。",
+    "old_len": 417,
+    "new_len": 421,
+    "delta": 4,
+    "changed": false
+  },
+  {
+    "case": "Zoe61330_2025-12-16/Lucy",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe61330_2025-12-16/Lucy/1_input_audio.mp3",
+    "old_text": "初中单词 basic 二十五，count。数数。数数，country。呃，国家。国家还有一个特别喜欢考的意思，乡下，countryside。乡村。农村，couple，提示开炮，谁经常互相开炮？情侣。情侣、夫妻，courage，core，核心，age，年纪，上了年纪的心会怎么样？更有勇气。勇敢，有勇气，course，提示考死，上了大学你会发现期末要考几十次试，那是因为什么？course多你才会考死，那么course是什么？课程。课程，或者是过程。cousin，你有一个长得非常磕碜的什么？堂弟。表弟、堂兄弟，cover。呃。覆盖，或者是封面，crazy。呃，疯狂。疯狂的，cream。奶油。奶油，create，提示，把 it 和 ate 放到同一个单词需要什么？创造性。创造性就是 create，creative。有创造性的。有创造性的，cross。呃，跨穿过。verb，那么有一个 preposition 叫什么？across。crowd，提示可绕道。呃，要拥拥挤。crowded 拥挤的。拥挤的。",
+    "new_text": "初中单词 basic 二十五，count。数数。数数，country。呃，国家。国家还有一个特别喜欢考的意思，乡下，countryside。乡村。农村，couple，提示开炮，谁经常互相开炮？情侣。情侣、夫妻，courage，core，核心，age，年纪，上了年纪的心会怎么样？更有勇气。勇敢，有勇气，course，提示考死，上了大学你会发现期末要考几十次试，那是因为什么？course多你才会考死，那么course是什么？课程。课程，或者是过程。cousin，你有一个长得非常磕碜的什么？堂弟。表弟、堂兄弟，cover。呃。覆盖，或者是封面，crazy。呃，疯狂。疯狂的，cream。奶油。奶油，create，提示，把 it 和 ate 放到同一个单词需要什么？创造性。创造性就是 create，creative。有创造性的。有创造性的，cross。呃，跨穿过。verb，那么有一个 preposition 叫什么？across。crowd，提示可绕道。呃，要拥拥挤。crowded 拥挤的。拥挤的。",
+    "old_len": 451,
+    "new_len": 451,
+    "delta": 0,
+    "changed": false
+  },
+  {
+    "case": "Zoe61330_2025-12-29/Allen",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe61330_2025-12-29/Allen/1_input_audio.mp3",
+    "old_text": "delay提示弟弟lay拖延。拖延。delicious美味的美味的deliver提示递礼物或者是弟弟的liver弟弟的肝，但只做肝移植，所以要快速的传送。传送投递。dentist等疼死他。牙科医生。deny抵赖。否定。departure地上趴着或者弟弟趴车想要干嘛？离开。离开。depend底盘的，车上的所有部件都什么底盘？依靠依赖。依赖。describe描述。人死的快不快？请帮我描述。描述。desert提示地色的。沙漠。沙漠。如果加上sugar，desert变dessert什么意思？甜品。甜品。deserve提示弟弟serve或者是抵这个屋子拿到很多钱，什么意思？应得值得。值得的。design提示弟弟sign签字。设计。设计。desire提示弟弟赛尔。desire渴望渴望。desk书书桌桌子。destroy破坏。破坏。detail弟弟的尾巴，什么出卖了他？细节。细节。",
+    "new_text": "delay提示弟弟赖。拖延。拖延。delicious。味道美味的。美味的。deliver提示递礼物或者是弟弟的liver，弟弟的肝，等着做肝移植，所以要快速的。传送。传送投递。dentist等疼死他。牙科医生。牙科医生。deny抵赖。否定。departure地上趴着或者弟弟趴车，想要干嘛？离开。离开。depend底盘的，车上的所有部件都什么底盘？依靠依赖。依赖。describe描述。人死的快不快？请帮我。描述。描述。desert提示地色的。沙漠。沙漠。如果加上sugar，desert变dessert什么意思？甜品。甜品。deserve提示弟弟serve或者是抵这个屋子拿到很多钱，什么意思？应得值得。值得的。design提示弟弟sign签字。设计。设计。desire提示弟弟赛尔。desire渴望渴望。desk书书桌桌子。destroy破坏。破坏。detail弟弟的尾巴，什么出卖了他？细节。细节。",
+    "old_len": 389,
+    "new_len": 402,
+    "delta": 13,
+    "changed": true
+  },
+  {
+    "case": "Zoe61330_2025-12-29/Apollo",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe61330_2025-12-29/Apollo/1_input_audio.mp3",
+    "old_text": "初中单词 basic 二十八，delay，提示，弟弟累了。拖延。拖延。delicious，美味。美味的。deliver，提示，递礼物，或者是弟弟的 liver，弟弟的肝，等着做肝移植，所以要快速的。传送。传送，投递。dentist，等疼死他。牙科医生。牙科医生。deny，抵赖。否定。否定。departure，地上趴着，或者弟弟趴车，想要干嘛？离开。离开。depend，底盘的，车上的所有部件都什么底盘？依赖。依赖。describe，敌人死的快不快？请帮我。描述。描述。desert，提示，地色的。沙漠。沙漠，如果加上 sugar，desert 变 dessert，什么意思？甜品。甜品。deserve，提示，弟弟 serve，或者是抵这个屋子拿到很多钱，什么意思？值得的。值得的。design，提示，弟弟 sign 签字。设计。设计。desire，提示，弟弟赛尔。渴望。渴望。渴望点赞，渴望。desk，桌子。桌子。destroy，破坏。破坏。detail，弟弟的尾巴，什么出卖了他？细节。细节。",
+    "new_text": "初中单词 basic 二十八，delay，提示，弟弟累了。拖延。拖延。delicious，美味。美味的。deliver，提示，递礼物，或者是弟弟的 liver，弟弟的肝，等着做肝移植，所以要快速的。传送。传送投递。dentist，等疼死他。牙科医生。牙科医生。deny，抵赖。否定。否定。departure，地上趴着，或者弟弟趴车，想要干嘛？离开。离开。depend，底盘的，车上的所有部件都什么底盘？依赖。依赖。describe，敌人死的快不快，请帮我。描述。描述。desert，提示，地色的。沙漠。沙漠，如果加上 sugar，desert 变 dessert，什么意思？甜品。甜品。deserve，提示，弟弟 serve，或者是抵这个屋子拿到很多钱，什么意思？值得的。值得的。design，提示，弟弟 sign 签字。设计。设计。desire，提示，弟弟赛尔。渴望。渴望。渴望点赞，渴望。desk，桌子。桌子。destroy，破坏。破坏。detail，弟弟的尾巴，什么出卖了他？细节。细节。",
+    "old_len": 448,
+    "new_len": 447,
+    "delta": -1,
+    "changed": false
+  },
+  {
+    "case": "Zoe61330_2025-12-29/Cici",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe61330_2025-12-29/Cici/1_input_audio.mp3",
+    "old_text": "Delay，提示弟弟累了。拖延。Delicious，美味的。Deliver，提示弟弟礼物，或者是弟弟的 liver，弟弟的肝，等着做肝移植，所以要快速的传送投递。Dentist，等疼死他。牙医。牙科医生。Deny，deny，否定。Departure，地上趴着，或者弟弟趴车，想要干嘛？离开。Depend，底盘的，车上的所有部件都是什么底盘？依赖。Describe，敌人死的快不快？请帮我。描述。描述。Desert，提示地色的。沙漠。沙漠，如果加上 sugar，desert 变 dessert，什么意思？甜品。Deserve，提示弟弟 serve，或者是弟这个屋子拿到很多钱，什么意思？值得的。Design，提示弟弟 sign 签字。设计。Desire，提示弟弟赛尔 desire。渴望点赞，渴望。Desk，桌子。桌子。Destroy，破坏。Detail，弟弟的尾巴，什么出卖了他？细节。细节。",
+    "new_text": "Delay提示弟弟累了。拖延。Delicious美味的。Deliver提示递礼物，或者是弟弟的liver，弟弟的肝，等着做肝移植，所以要快速的传送投递。Dentist等疼死他。牙医。牙科医生。Deny deny否定。Departure地上趴着，或者弟弟趴车，想要干嘛？离开。Depend底盘的，车上的所有部件都是什么底盘？依赖。Describe敌人死的快不快，请帮我。描述。描述。Desert提示地色的。沙漠。沙漠，如果加上sugar，desert变dessert什么意思？甜品。Deserve提示弟弟serve，或者是弟弟这个屋子拿到很多钱，什么意思？值得的。Design提示弟弟sign签字。设计。Desire提示弟弟赛尔desire。渴望点赞，渴望。Desk桌子。桌子。Destroy破坏。Detail弟弟的尾巴，什么出卖了他？细节。细节。",
+    "old_len": 397,
+    "new_len": 373,
+    "delta": -24,
+    "changed": true
+  },
+  {
+    "case": "Zoe61330_2025-12-29/Lucy",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe61330_2025-12-29/Lucy/1_input_audio.mp3",
+    "old_text": "二十五，count。数数。country。国家。国家还有一个特别喜欢考的意思，乡下。countryside。乡村。农村。couple，提示开炮，谁经常互相开炮？情侣。情侣、夫妻。courage，core，核心。age，年纪，上了年纪的心会怎么样？更加有勇气。勇敢，有勇气。course，提示考死，上了大学你会发现期末要考几十次试，那是因为什么？course多你才会考死，那么course是什么？呃，课程。课程或者是过程。cousin，你有一个长得非常磕碜的什么？堂弟表。表弟，堂兄弟。cover。嗯，覆盖。或者是封面。crazy。疯狂的。疯狂的。cream。呃，奶油。奶油。create，提示，把it和ate放到同一个单词需要什么？呃，创造性就是create。creative。有创造性的。有创造性的。cross。穿过。穿过。verb，那么有一个preposition叫什么？across。across。crowd，提示可绕道。拥挤。拥挤。crowded。拥挤的。拥挤的。",
+    "new_text": "二十五，count。数数。country。国家。国家还有一个特别喜欢考的意思，乡下。countryside。乡村。农村。couple，提示开炮，谁经常互相开炮？情侣。情侣、夫妻。courage，core，核心。age，年纪，上了年纪的心会怎么样？更加有勇气。勇敢、有勇气。course，提示，考死，上了大学你会发现期末要考几十次试，那是因为什么？course多，你才会考死，那么course是什么？呃，课程。课程或者是过程。cousin，你有一个长得非常磕碜的什么？堂弟表弟。表弟、堂兄弟。cover。嗯，覆盖。或者是封面。crazy。疯狂的。疯狂的。cream。呃，奶油。奶油。create，提示，把it和ate放到同一个单词需要什么？呃，创造性，就是create。creative。有创造性的。有创造性的。cross。穿过。穿过。verb，那么有一个preposition叫什么？across。across。crowd，提示可绕道。拥挤。拥挤。crowded。拥挤的。拥挤的。",
+    "old_len": 436,
+    "new_len": 440,
+    "delta": 4,
+    "changed": false
+  },
+  {
+    "case": "Zoe61330_2025-12-30/Allen",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe61330_2025-12-30/Allen/1_input_audio.mp3",
+    "old_text": "初中单词 basic 二十七，dare 提示，胆儿。敢，敢的。敢的，dark。黑暗。黑暗，date 提示，心里想的都是逮他或者是得他。日，什么？日期，约会。约会，daughter。女儿。女儿，day。天，一天。天，dead。死亡，死的。死的，形容词。形容词，deal。交易，分配。交易，分配，make a deal。dear。亲爱的。亲爱的，death。死亡。死亡，名词，debate 提示，打败他。辩论。辩论，decide。决定。决定，decision。决定，名词。决定的名词，decorate 提示，待客类的。装饰，装修。装修，因为你装修很好，客人一波一波来参观。deep。深的。深的，degree。温度。提示，地柜，地地柜，因为几件事情，一。温度太高。度数太高。温度太高，走不动了，跪。二，度数太高。度数太高，走路绊一脚跪了。三，学位找不到，学位达不到。学位得不到，跪求学位，所以 degree 三个意思，一。温度，度数。度数，度数。二，温度。温度，三，学位。学位。",
+    "new_text": "初中单词 basic 二十七，dare，提示，胆儿。敢，敢的。敢的，dark，黑暗。黑暗，date，提示，心里想的都是逮它或者是得它。日，什么？日期，约会。约会，daughter，女儿。女儿，day，天，一天。天，dead，死亡，死的。死的，形容词，形容词，deal，交易分配。交易分配，make a deal，dear，亲爱的。亲爱的，death，死亡。死亡，名词，debate，提示，打败他。辩论。辩论，decide，决定。决定，decision，决定，名词。决定的名词，decorate，提示，待客类的。装饰，装修。装修，因为你装修很好，客人一波一波来参观。deep，深的。深的，degree，提示，地柜，呃，地地柜，因为几件事情，一。温度太高，度数太高。温度太高，走不动了，跪。二，度数太高。度数太高，走路绊一脚跪了。三，学位，找不到，学位达不到。学位得不到，跪求学位，所以 degree 三个意思，一。温度，度数。度数，度数。二，温度。温度，三，学位。学位。",
+    "old_len": 436,
+    "new_len": 434,
+    "delta": -2,
+    "changed": false
+  },
+  {
+    "case": "Zoe61330_2025-12-30/Apollo",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe61330_2025-12-30/Apollo/1_input_audio.mp3",
+    "old_text": "初中单词 basic 二十七，dare，提示，胆儿。胆呃，敢的。敢的，dark。黑暗。黑暗，date，提示，心里想的都是逮他或者是得他，什么？约会。约会，daughter。女儿。女儿，day。天。天，dead。死的。死的，形容词，deal。交易。交易分配，你 make a deal，dear。亲爱的。亲爱的，death。死亡。死亡，名词，debate，提示，打败他。争论辩论。辩论，decide。决定。决定，decision。决定。决定的名词，decorate，提示，待客类的。装修。装修，因为你装修很好，客人一波一波来参观。deep。深的。深的，degree，提示，地柜，呃，地地柜，因为几件事情，一。温度高。温度太高走不动了，跪。二。度数太高。度数太高，走路绊一脚跪了。三。学位得不到。学位得不到。跪求学位。跪求学位，所以 degree 三个意思，一。度数。度数。二。温度。温度。三。学位。学位。",
+    "new_text": "初中单词 basic 二十七，dare，提示，胆儿。胆呃，敢的。敢的，dark。黑暗。黑暗，date，提示，心里想的都是逮他或者是得他，什么？约会。约会，daughter。女儿。女儿，day。天。天，dead。死的。死的，形容词，deal。交易。交易分配，你 make a deal，dear。亲爱的。亲爱的，death。死亡。死亡，名词，debate，提示，打败他。争论辩论。辩论，decide。决定。决定，decision。决定。决定的名词，decorate，提示，待客类的。装修。装修，因为你装修很好，客人一波一波来参观。deep。深的。深的，degree，提示，地柜啊，地地柜，因为几件事情，一。温度高。温度太高走不动了，跪。二。度数太高。度数太高，走路绊一脚跪了。三。学位得不到。学位得不到。跪求学位。跪求学位，所以 degree 三个意思，一。度数。度数。二。温度。温度。三。学位。学位。",
+    "old_len": 401,
+    "new_len": 400,
+    "delta": -1,
+    "changed": false
+  },
+  {
+    "case": "Zoe61330_2025-12-30/Cici",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe61330_2025-12-30/Cici/1_input_audio.mp3",
+    "old_text": "Dare，提示，胆儿。敢的，敢的。Dark，黑的，黑暗。Date，其实心里想的都是逮他或者是得他，是吗？嗯。约会。Daughter，女儿。女儿。Day，天。天。Dead，死了。死的，形容词。Deal，交易分配，可以make a deal。Dear，亲爱的。Death，死。死亡，名词。Debate，提示，打败他。辩论。Decide，决定。决定。Decision，决定的名词。Decorate，提示，待客类的。装修，因为装修很好，客人一波一波来参观。Deep，低的。深的。Degree，提示，地柜。啊，地地柜，因为几件事情，一，温度太高走不动了，跪。二，度数太高，走路绊一脚跪了。三，学位得不到，跪求学位，所以degree三个意思，一，学位，度数。二，温度。三，学位。学位。",
+    "new_text": "Dare，提示：胆儿。敢的，敢的。Dark，黑的，黑暗。Date，其实心里想的都是逮他或者是得他，什么？嗯，约会。Daughter，女儿。女儿。Day，天。天。Dead，死了。死的，形容词。Deal，交易分配，可以 make a deal。Dear，亲爱的。Death，死，死亡，名词。Debate，提示：打败他。辩论，辩论。Decide，决定。决定，decision。决定的名词。Decorate，提示：待客类的。装修，因为装修很好，客人一波一波来参观。Deep，低的，深的。Degree，提示：地柜，啊，地地柜，因为几件事情，一，温度太高走不动了，跪。二，度数太高，走路半夜就要跪了。三，穴位得不到，跪求穴位，所以 degree 三个意思，一，学位，度数，二，温度，三，穴位，穴位。",
+    "old_len": 336,
+    "new_len": 343,
+    "delta": 7,
+    "changed": false
+  },
+  {
+    "case": "Zoe61330_2025-12-30/Jessie",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe61330_2025-12-30/Jessie/1_input_audio.mp3",
+    "old_text": "单词basic二十七，dare提示胆儿，敢于。敢的，dark黑暗，黑暗，date提示心里想的都是逮他或者是得他，什么？日期约会。约会，daughter女儿女儿，day天天，dead死的形容词，deal交易。交易分配，你make a deal，dear亲爱的，亲爱的，death死，死亡名词，debate提示打败他。辩论，辩论，decide决定决定，decision决心。决定的名词，decorate提示待客类的。装饰，装修，因为你装修很好，客人一波一波来参观。deep深的，深的，degree提示地跪，啊，弟弟跪因为几件事情，一。温度太高走不动了，跪。二，学位太高。度数太高，走路半就要跪了。三，学位得不到，跪求学位，所以degree三个意思，一，温度，度数。二，学位，温度，三，学位。",
+    "new_text": "单词 basic 二十七，dare，提示，胆儿。敢于。敢的。dark，黑暗。黑暗。date，提示，心里想的都是逮它或者是得它，什么？日期约会。约会。daughter，女儿。女儿。day，天天。dead，死的，形容词。deal，交易。交易分配，你 make a deal。dear，亲爱的。亲爱的。death，死。死亡，名词。debate，提示，打败他。辩论。辩论。decide，决定。决定。decision，决心。决定的名词。decorate，提示，待客类的。装饰。装修，因为你装修很好，客人一波一波来参观。deep，深的。深的。degree，提示，地跪，啊，弟弟跪，因为几件事情，一，温度太高走不动了，跪。二，学位太高。度数太高，走路绊一脚跪了。三，学位得不到，跪求学位，所以 degree 三个意思，一，温度，度数。二，学位。温度。三，学位。",
+    "old_len": 343,
+    "new_len": 373,
+    "delta": 30,
+    "changed": true
+  },
+  {
+    "case": "Zoe61330_2025-12-30/Noreen",
+    "audio_path": "/Users/damien/Desktop/Venture/quickfire_workflow/archive/Zoe61330_2025-12-30/Noreen/1_input_audio.mp3",
+    "old_text": "二十八，delay提示弟弟累了。拖延。拖延。delicious美味的。美味的。deliver提示弟弟礼物或者是弟弟的liver，弟弟的肝，但这首单音词，所以要快速的。传送。传送，投递。dentist等疼死他。牙科医生。牙科医生。deny deny否定。否定。departure地上趴着或者弟弟趴车想干嘛？离开。离开。depend底盘的，车上的所有部件都是什么底盘？依赖。依赖。describe敌人死的快不快？请帮我。描述。描述。desert提示第四的。沙漠。沙漠。如果加上sugar，desert跟dessert什么意思？甜品。deserve提示弟弟serve或者是弟弟这个屋子拿到很多钱什么意思？值得的。值得。design提示弟弟sign签字。设计。设计。desire提示弟弟赛尔，desire渴望点赞渴望。desk桌子。destroy破坏。detail弟弟的尾巴，什么什么的它？细节。细节。",
+    "new_text": "二十八，delay提示弟弟累了。拖延拖延。delicious美味的美味的deliver提示弟弟物或者是弟弟的liver弟弟的肝，但这做肝移植所以要快速的。传送传送投递。dentist等疼死他。牙科医生牙科医生deny deny否定否定departure地上趴着或者弟弟趴车想要干嘛？离开离开depend底盘的车上的所有部件都是什么底盘？依赖依赖describe敌人死的快不快请帮我。描述描述desert提示第四的沙漠沙漠，如果加上sugar desert跟dessert什么意思？甜品deserve提示弟弟serve或者是弟弟这个屋子拿到很多钱什么意思？值得的design提示弟弟sign签字设计desire提示弟弟赛尔desire渴望点赞渴望desk桌子destroy破坏detail弟弟的尾巴什么什么的它？细节细节。",
+    "old_len": 397,
+    "new_len": 360,
+    "delta": -37,
+    "changed": true
+  }
+]

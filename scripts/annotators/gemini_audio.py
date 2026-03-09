@@ -19,6 +19,7 @@ from google import genai
 from google.genai import types
 
 from .base import BaseAnnotator, AnnotatorInput, AnnotatorOutput
+from .config import DEFAULT_ANNOTATOR
 
 # 统一加载环境变量（如果 main.py 已加载则跳过）
 from scripts.common.env import load_env, require_env
@@ -30,7 +31,7 @@ if str(_PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(_PROJECT_ROOT))
 
 AUDIO_PROMPT_TEMPLATE = "user_with_audio.md"
-DEFAULT_MODEL = "gemini-3-pro-preview"
+DEFAULT_MODEL = DEFAULT_ANNOTATOR  # 统一从 config.py 读取
 DEFAULT_TIMEOUT_MS = 300000
 
 
