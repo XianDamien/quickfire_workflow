@@ -1,5 +1,5 @@
 {
-  "prompt_version": "2.1.0",
+  "prompt_version": "2.2.0",
   "description": "LLM annotation: 从音频直传提取学生回答+评分+时间戳定位（Gemini Audio API）",
   "owner": "data-ops@lan",
   "updated_at": "2026-01-22T16:00:00+08:00",
@@ -13,6 +13,11 @@
     "user_legacy_no_timestamp": "archived/user_no_timestamp.md"
   },
   "changelog": [
+    {
+      "version": "2.2.0",
+      "date": "2026-03-13",
+      "changes": "强化NO_ANSWER判定逻辑：新增铁律规则（expected_answer出现两次=有回答，禁止判NO_ANSWER），标注步骤增加前置检查。"
+    },
     {
       "version": "2.1.0",
       "date": "2026-03-10",

@@ -46,7 +46,10 @@
 1. 本次题库包含`question（问题）`、`hint（提示，可能为空）`和`expected_answer(答案)`/`answer（答案）`,每个题库文件包含多个题目，`card_index(题目索引)`是老师录音念题目的顺序，每个题目一般的顺序为先念`question（问题）`，再念`hint（提示，可能为空）`，中间留空让学生回答，最后揭晓`expected_answer(答案)`/`answer（答案）`,在`学生音频转录文本`（只能从这个来源）中定位到对应的`question（问题）`文本和`expected_answer(答案)`文本，注意，学生可能在`question（问题）`和`expected_answer(答案)`/`answer（答案）`之间的任何时间说出我们需要的`detected_answer(学生回答)`。
 
 2. **提取** 位于`学生音频转录文本`当中，`question（问题）`和`expected_answer(答案)`之间的所有文本内容,作为`detected_answer(学生回答)`。
-3. **核心任务1**：检查`detected_answer(学生回答)`中是否至少有一个词的意思跟`expected_answer(答案)`中某个词的意思是相似的(充分利用你的泛化能力,不要太严格)，如果学生的回答与标准答案不相关/错误,请把issue_type标记为'MEANING_ERROR'；如果在"问题"和"答案"间没有找到任何实质性的回答文本,请将'expected_answer'输出为null, issue_type则为'NO_ANSWER';
+3. **核心任务1**：
+   - **前置检查（判 NO_ANSWER 之前必须执行）**：先统计该题 `expected_answer` 相关文本在 ASR 全文中出现的次数。如果出现了 ≥2 次，说明学生已经回答过（第1次是学生说的，第2次是老师公布的），**禁止判 NO_ANSWER**，应根据学生回答内容判断是正确还是 `MEANING_ERROR`。
+   - 检查`detected_answer(学生回答)`中是否至少有一个词的意思跟`expected_answer(答案)`中某个词的意思是相似的(充分利用你的泛化能力,不要太严格)，如果学生的回答与标准答案不相关/错误,请把issue_type标记为'MEANING_ERROR'；
+   - 只有在"问题"和"答案"间**完全没有找到任何学生发言**时，才能将 issue_type 设为 `NO_ANSWER`，并将 `detected_text` 输出为 null；
 4. **核心任务2**: 注意，学生转录有时会因为声音重叠等原因无法捕捉到学生的回答，请以asr和题库文件作为参照，直接读取整个输入的`作业音频` ，精确定位到每道题的`question（问题）`字段出现的时间戳。输出为 `card_timestamp` 字段（格式如 "00:17"），当无法确定时间戳时且确认学生有输出时，请返回估算值。
 
 
