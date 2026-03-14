@@ -1,7 +1,6 @@
-#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-match_qb_file.py - 两步法匹配 ASR 片段对应的具体题库文件
+match.py - 两步法匹配 ASR 片段对应的具体题库文件
 
 流程（每个片段，2 次 LLM 调用）：
   1. LLM 分类 + 解析合并调用：判断 grammar/vocabulary 并解析为 [{question, answer}, ...]
@@ -13,9 +12,7 @@ match_qb_file.py - 两步法匹配 ASR 片段对应的具体题库文件
   - 详细结果：qb_match_<model>.json
 """
 
-import argparse
 import json
-import os
 import re
 import sys
 import time
@@ -24,92 +21,36 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Optional
 
+# 路径 bootstrap（确保 shared 模块可被导入）
+_SCRIPTS_DIR = Path(__file__).resolve().parent
+for _p in [str(_SCRIPTS_DIR), str(_SCRIPTS_DIR.parents[3])]:
+    if _p not in sys.path:
+        sys.path.insert(0, _p)
+
 from openai import OpenAI
 from pydantic import BaseModel, Field
 
-
-DEFAULT_MODEL = "gemini-3.1-flash-lite-preview"
-DASHSCOPE_BASE_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1"
-COUNT_TOLERANCE = 3
-
-
-# ---------------------------------------------------------------------------
-# 工具函数
-# ---------------------------------------------------------------------------
-
-def load_env(env_file: Optional[str] = None) -> None:
-    here = Path(__file__).parent.resolve()
-    candidates = [Path(env_file)] if env_file else []
-    for parent in [here, here.parent]:
-        candidates.append(parent / ".env")
-    for path in candidates:
-        if path.exists():
-            with open(path, encoding="utf-8") as f:
-                for line in f:
-                    line = line.strip()
-                    if not line or line.startswith("#") or "=" not in line:
-                        continue
-                    k, _, v = line.partition("=")
-                    k, v = k.strip(), v.strip().strip('"').strip("'")
-                    if k and k not in os.environ:
-                        os.environ[k] = v
-            return
-
-
-def extract_asr_text(asr_path: Path) -> str:
-    try:
-        raw = asr_path.read_text(encoding="utf-8").strip()
-        if asr_path.suffix == ".json":
-            data = json.loads(raw)
-            if isinstance(data, dict):
-                choices = data.get("output", {}).get("choices", [])
-                if choices:
-                    content = choices[0].get("message", {}).get("content", [])
-                    if content and isinstance(content, list):
-                        return content[0].get("text", "").strip()
-                return (data.get("text") or data.get("transcript") or "").strip()
-        return raw
-    except Exception:
-        return ""
-
-
-def normalize(text: str) -> str:
-    """去掉首尾空白和末尾标点，英文小写。"""
-    text = text.strip()
-    text = re.sub(r"[\s？。，、\?,\.!！]+$", "", text).strip()
-    return re.sub(r"[a-zA-Z]+", lambda m: m.group().lower(), text)
-
-
-def extract_usage(resp) -> dict:
-    """从 OpenAI 响应中提取 token 用量。"""
-    u = getattr(resp, "usage", None)
-    if not u:
-        return {"input_tokens": 0, "output_tokens": 0}
-    return {
-        "input_tokens": getattr(u, "prompt_tokens", 0) or getattr(u, "input_tokens", 0) or 0,
-        "output_tokens": getattr(u, "completion_tokens", 0) or getattr(u, "output_tokens", 0) or 0,
-    }
-
-
-def merge_usage(a: dict, b: dict) -> dict:
-    return {
-        "input_tokens": a.get("input_tokens", 0) + b.get("input_tokens", 0),
-        "output_tokens": a.get("output_tokens", 0) + b.get("output_tokens", 0),
-    }
-
-
-# ---------------------------------------------------------------------------
-# Gemini 支持
-# ---------------------------------------------------------------------------
-
-from scripts.common.gemini import (
-    is_gemini_model,
-    create_gemini_client,
-    extract_gemini_usage,
+from shared import (  # noqa: E402
+    COUNT_TOLERANCE,
+    DASHSCOPE_BASE_URL,
+    _PROJECT_ROOT,
+    extract_usage,
+    iter_class_dirs,
+    iter_student_dirs,
+    load_metadata_raw,
+    load_segments,
+    merge_usage,
+    normalize,
+    read_asr_text,
+    seg_key_to_num,
+    setup_clients,
 )
+from scripts.common.gemini import extract_gemini_usage  # noqa: E402
 
 
+# ---------------------------------------------------------------------------
 # Pydantic 模型 — 结构化输出
+# ---------------------------------------------------------------------------
 
 class QAPairModel(BaseModel):
     question: str = Field(description="教师提问原文或原始单词")
@@ -230,6 +171,39 @@ def classify_and_parse(
     return "", [], usage
 
 
+def classify_and_parse_gemini(
+    client, model: str, asr_text: str,
+) -> tuple[str, list[dict], dict]:
+    """Gemini 版：分类 + 解析合并为 1 次调用，使用 response_json_schema。"""
+    prompt = f"""{_CLASSIFY_AND_PARSE_SYSTEM}
+
+ASR 转录：
+{asr_text}"""
+
+    t0 = time.monotonic()
+    try:
+        resp = client.models.generate_content(
+            model=model,
+            contents=[prompt],
+            config={
+                "response_mime_type": "application/json",
+                "response_json_schema": ClassifyAndParseResult.model_json_schema(),
+                "temperature": 0.1,
+            },
+        )
+        elapsed = time.monotonic() - t0
+        usage = {**extract_gemini_usage(resp), "elapsed_s": round(elapsed, 2)}
+
+        raw = resp.text or ""
+        parsed = json.loads(raw)
+        seg_type, qa = _parse_classify_and_parse_response(parsed)
+        return seg_type, qa, usage
+    except Exception as e:
+        elapsed = time.monotonic() - t0
+        print(f"      [classify_and_parse_gemini 失败] {e}", file=sys.stderr)
+        return "", [], {"input_tokens": 0, "output_tokens": 0, "elapsed_s": round(elapsed, 2)}
+
+
 # ---------------------------------------------------------------------------
 # Step 2：题库索引 + Q/A 搜索
 # ---------------------------------------------------------------------------
@@ -299,7 +273,7 @@ class QuestionBankIndex:
 
 
 # ---------------------------------------------------------------------------
-# Step 3+4：LLM 工具调用最终判断
+# Step 3+4：LLM 工具调用最终判断 — DashScope
 # ---------------------------------------------------------------------------
 
 TOOLS = [
@@ -358,8 +332,8 @@ def agentic_match(
     seg_type: str, index: QuestionBankIndex, max_turns: int = 8,
 ) -> dict:
     """
-    返回 {"qb_file", "reason", "tool_calls", "usage": {input_tokens, output_tokens, elapsed_s}}
-    或 {"error", "usage"}
+    DashScope 版多轮 function calling 匹配。
+    返回 {"qb_file", "reason", "tool_calls", "usage"} 或 {"error", "usage"}
     """
     qa_text = "\n".join(
         f"  {i+1}. Q: {qa['question']}  →  A: {qa['answer']}"
@@ -450,44 +424,7 @@ def agentic_match(
 
 
 # ---------------------------------------------------------------------------
-# Gemini 版 Step 1：分类 + 解析合并调用
-# ---------------------------------------------------------------------------
-
-def classify_and_parse_gemini(
-    client, model: str, asr_text: str,
-) -> tuple[str, list[dict], dict]:
-    """Gemini 版：分类 + 解析合并为 1 次调用，使用 response_json_schema。"""
-    prompt = f"""{_CLASSIFY_AND_PARSE_SYSTEM}
-
-ASR 转录：
-{asr_text}"""
-
-    t0 = time.monotonic()
-    try:
-        resp = client.models.generate_content(
-            model=model,
-            contents=[prompt],
-            config={
-                "response_mime_type": "application/json",
-                "response_json_schema": ClassifyAndParseResult.model_json_schema(),
-                "temperature": 0.1,
-            },
-        )
-        elapsed = time.monotonic() - t0
-        usage = {**extract_gemini_usage(resp), "elapsed_s": round(elapsed, 2)}
-
-        raw = resp.text or ""
-        parsed = json.loads(raw)
-        seg_type, qa = _parse_classify_and_parse_response(parsed)
-        return seg_type, qa, usage
-    except Exception as e:
-        elapsed = time.monotonic() - t0
-        print(f"      [classify_and_parse_gemini 失败] {e}", file=sys.stderr)
-        return "", [], {"input_tokens": 0, "output_tokens": 0, "elapsed_s": round(elapsed, 2)}
-
-
-# ---------------------------------------------------------------------------
-# Gemini 版 Step 3+4：多轮 function calling 匹配
+# Step 3+4：Gemini 版多轮 function calling 匹配
 # ---------------------------------------------------------------------------
 
 def _gemini_tool_declarations():
@@ -530,7 +467,6 @@ def match_gemini(
 ) -> dict:
     """
     Gemini 版多轮 function calling 匹配。
-    LLM 可调用 read_qb_file 查看候选内容，最终调用 submit_answer 提交结果。
     """
     from google.genai import types as gt
 
@@ -579,10 +515,8 @@ def match_gemini(
             return {"error": "Gemini 返回空响应",
                     "usage": {**total_usage, "elapsed_s": round(elapsed, 2)}}
 
-        # 将模型响应追加到 contents
         contents.append(candidate_resp.content)
 
-        # 处理 function calls
         fn_parts = [p for p in candidate_resp.content.parts if p.function_call]
         if not fn_parts:
             elapsed = time.monotonic() - t0
@@ -620,7 +554,6 @@ def match_gemini(
                     "usage": {**total_usage, "elapsed_s": round(elapsed, 2)},
                 }
 
-        # 将工具响应追加到 contents
         if tool_response_parts:
             contents.append(gt.Content(role="user", parts=tool_response_parts))
 
@@ -630,57 +563,19 @@ def match_gemini(
 
 
 # ---------------------------------------------------------------------------
-# 元数据读写
+# 元数据回写
 # ---------------------------------------------------------------------------
 
-def load_metadata_raw(student_dir: Path) -> dict:
-    """原样读取 metadata.json。"""
-    f = student_dir / "metadata.json"
-    if not f.exists():
-        return {}
-    try:
-        return json.loads(f.read_text(encoding="utf-8"))
-    except Exception:
-        return {}
-
-
-def load_segments(raw_meta: dict) -> dict:
-    """
-    从原始 metadata 提取片段信息，返回统一结构：
-      {"<seg_key>": {"type": str, "qb_file": str | None}, ...}
-    """
-    # 新格式优先
-    gt = raw_meta.get("ground_truth", {})
-    if gt:
-        return {
-            k: {"type": v["type"], "qb_file": v.get("qb_file")}
-            for k, v in gt.items()
-            if isinstance(v, dict) and v.get("type")
-        }
-    # 旧格式
-    segs = raw_meta.get("segments", {})
-    return {
-        f"{k}/2_qwen_asr.json": {"type": v["type"], "qb_file": None}
-        for k, v in segs.items()
-        if isinstance(v, dict) and v.get("type")
-    }
-
-
 def update_metadata(student_dir: Path, raw_meta: dict, predictions: dict, model: str, total_usage: dict):
-    """
-    将预测结果写回 metadata.json。
-    predictions: {seg_key: {"predicted": str, ...}}
-    """
+    """将预测结果写回 metadata.json。"""
     now_str = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
     if "ground_truth" in raw_meta:
-        # 新格式：更新 ground_truth 里的 qb_file
         for seg_key, pred_info in predictions.items():
             predicted = pred_info.get("predicted")
             if predicted and seg_key in raw_meta["ground_truth"]:
                 raw_meta["ground_truth"][seg_key]["qb_file"] = predicted
     else:
-        # 旧格式：更新 segments 里的 qb_file
         for seg_key, pred_info in predictions.items():
             predicted = pred_info.get("predicted")
             if not predicted:
@@ -689,7 +584,6 @@ def update_metadata(student_dir: Path, raw_meta: dict, predictions: dict, model:
             if seg_num in raw_meta.get("segments", {}):
                 raw_meta["segments"][seg_num]["qb_file"] = predicted
 
-    # 记录匹配元信息
     raw_meta["qb_matched_at"] = now_str
     raw_meta["qb_matched_by"] = model
     raw_meta["qb_match_usage"] = total_usage
@@ -698,37 +592,13 @@ def update_metadata(student_dir: Path, raw_meta: dict, predictions: dict, model:
     meta_path.write_text(json.dumps(raw_meta, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
-def seg_key_to_num(seg_key: str) -> str:
-    return seg_key.split("/")[0]
-
-
 # ---------------------------------------------------------------------------
-# 主流程
+# 子命令入口
 # ---------------------------------------------------------------------------
 
-def main() -> int:
-    parser = argparse.ArgumentParser(description="两步法匹配 ASR 片段对应的题库文件")
-    parser.add_argument("--input-root", default="two_output")
-    parser.add_argument("--qb-root", default="questionbank")
-    parser.add_argument("--class", dest="class_filter")
-    parser.add_argument("--student", dest="student_filter")
-    parser.add_argument("--model", default=DEFAULT_MODEL)
-    parser.add_argument("--tolerance", type=int, default=COUNT_TOLERANCE,
-                        help="题目数量过滤允许偏差（默认 ±3）")
-    parser.add_argument("--force", action="store_true")
-    args = parser.parse_args()
-
-    load_env()
-
-    use_gemini = is_gemini_model(args.model)
-    if use_gemini:
-        if not os.environ.get("GEMINI_API_KEY"):
-            print("错误: 未找到 GEMINI_API_KEY", file=sys.stderr)
-            return 1
-    else:
-        if not os.environ.get("DASHSCOPE_API_KEY"):
-            print("错误: 未找到 DASHSCOPE_API_KEY", file=sys.stderr)
-            return 1
+def run_match(args) -> int:
+    """匹配子命令主逻辑。"""
+    client, gemini_client, use_gemini = setup_clients(args.model)
 
     input_root = Path(args.input_root).resolve()
     qb_root = Path(args.qb_root).resolve()
@@ -740,27 +610,12 @@ def main() -> int:
     print("[初始化] 构建题库索引...")
     index = QuestionBankIndex(qb_root)
 
-    if use_gemini:
-        gemini_client = create_gemini_client()
-        client = None
-    else:
-        client = OpenAI(
-            api_key=os.environ.get("DASHSCOPE_API_KEY"),
-            base_url=DASHSCOPE_BASE_URL,
-        )
-        gemini_client = None
-
-    class_dirs = sorted(p for p in input_root.iterdir() if p.is_dir() and not p.name.startswith("."))
-    if args.class_filter:
-        class_dirs = [p for p in class_dirs if args.class_filter.lower() in p.name.lower()]
+    class_dirs = iter_class_dirs(input_root, args.class_filter)
 
     grand_total = grand_correct = 0
 
     for class_dir in class_dirs:
-        for student_dir in sorted(p for p in class_dir.iterdir() if p.is_dir() and not p.name.startswith(".")):
-            if args.student_filter and args.student_filter.lower() not in student_dir.name.lower():
-                continue
-
+        for student_dir in iter_student_dirs(class_dir, args.student_filter):
             raw_meta = load_metadata_raw(student_dir)
             segments = load_segments(raw_meta)
             if not segments:
@@ -790,7 +645,7 @@ def main() -> int:
                         asr_path = p
                         break
 
-                asr_text = extract_asr_text(asr_path) if asr_path else ""
+                asr_text = read_asr_text(asr_path) if asr_path else ""
                 if not asr_text:
                     print(f"    片段 {seg_num}: 无 ASR 文本，跳过")
                     continue
@@ -842,14 +697,15 @@ def main() -> int:
                     print(f"      Q/A 搜索命中 {len(search_results)} 个文件")
 
                 # Step 3: 题目数量过滤
-                filtered = index.filter_by_count(search_results, len(qa_pairs), seg_type, args.tolerance)
+                tolerance = getattr(args, 'tolerance', COUNT_TOLERANCE)
+                filtered = index.filter_by_count(search_results, len(qa_pairs), seg_type, tolerance)
                 if has_gt:
                     gt_in_filtered = any(f == gt_qb_file for f, _ in filtered)
-                    print(f"      数量过滤（±{args.tolerance}）后: {len(filtered)} 个候选  "
+                    print(f"      数量过滤（±{tolerance}）后: {len(filtered)} 个候选  "
                           f"GT {'✓' if gt_in_filtered else '✗'}")
                 else:
                     gt_in_filtered = None
-                    print(f"      数量过滤（±{args.tolerance}）后: {len(filtered)} 个候选")
+                    print(f"      数量过滤（±{tolerance}）后: {len(filtered)} 个候选")
 
                 if not filtered:
                     print("      ⚠ 无候选通过数量过滤，使用 Q/A 搜索前 5")
@@ -962,7 +818,3 @@ def main() -> int:
         print("\n[汇总] 预测完成（无 GT 可评估）")
 
     return 0
-
-
-if __name__ == "__main__":
-    raise SystemExit(main())
