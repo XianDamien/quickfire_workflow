@@ -25,13 +25,13 @@
   },
   {
     "card_index": 5,
-    "hint": "",
+    "hint": "老师说中文，你说英文。",
     "question": "你的英语非常好",
     "answer": "Your English is very good."
   },
   {
     "card_index": 6,
-    "hint": "",
+    "hint": "老师说中文，你说英文。",
     "question": "你说英文说的很好",
     "answer": "You speak English very well."
   },
@@ -43,7 +43,7 @@
   },
   {
     "card_index": 8,
-    "hint": "",
+    "hint": "老师说中文，你说英文。",
     "question": "Linda在考试中考的很好。",
     "answer": "Linda did very well in her exam."
   },
@@ -55,7 +55,7 @@
   },
   {
     "card_index": 10,
-    "hint": "",
+    "hint": "老师说中文，你说英文。",
     "question": "你昨天晚上睡的好吗？",
     "answer": "Did you sleep well last night？"
   },
@@ -67,13 +67,13 @@
   },
   {
     "card_index": 12,
-    "hint": "",
+    "hint": "老师说中文，你说英文。",
     "question": "聚会非常棒，我们都度过了很美好的时光",
     "answer": "The party was very good，we all had a good time."
   },
   {
     "card_index": 13,
-    "hint": "",
+    "hint": "老师说中文，你说英文。",
     "question": "你的父母怎么样？他们身体好吗？",
     "answer": "How are your parents？ Are they well？"
   }

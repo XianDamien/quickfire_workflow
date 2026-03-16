@@ -2,41 +2,17 @@
   {
     "card_index": 1,
     "hint": "",
-    "question": "as...as...我们称之为什么？",
-    "answer": "原级比较。"
-  },
-  {
-    "card_index": 2,
-    "hint": "",
-    "question": "中文意思是什么",
-    "answer": "和……一样"
-  },
-  {
-    "card_index": 3,
-    "hint": "",
-    "question": "两个as中间要放什么？",
-    "answer": "形容词或副词的原形。"
-  },
-  {
-    "card_index": 4,
-    "hint": "",
-    "question": "as...as...的否定是什么？",
-    "answer": "Not as...as..."
-  },
-  {
-    "card_index": 5,
-    "hint": "",
     "question": "翻译句子，我和你一样忙。",
     "answer": "I am as busy as you."
   },
   {
-    "card_index": 6,
+    "card_index": 2,
     "hint": "",
     "question": "把这句话改成否定句，我不如你忙。",
     "answer": "I am not as busy as you."
   },
   {
-    "card_index": 7,
+    "card_index": 3,
     "hint": "",
     "question": "这两个as可以简单理解为什么符号？",
     "answer": "两个等号"

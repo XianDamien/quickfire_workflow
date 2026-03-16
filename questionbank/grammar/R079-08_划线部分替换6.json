@@ -2,41 +2,53 @@
   {
     "card_index": 1,
     "hint": "",
+    "question": "等待叫wait什么？",
+    "answer": "wait for"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "关心，care什么？",
+    "answer": "care about"
+  },
+  {
+    "card_index": 3,
+    "hint": "将下列短语替换成对应的疑问词",
     "question": "every year",
     "answer": "how often"
   },
   {
-    "card_index": 2,
+    "card_index": 4,
     "hint": "",
     "question": "a little food",
     "answer": "what"
   },
   {
-    "card_index": 3,
+    "card_index": 5,
     "hint": "",
     "question": "a little food中的a little划线",
     "answer": "how much"
   },
   {
-    "card_index": 4,
+    "card_index": 6,
     "hint": "",
     "question": "at ten o'clock",
     "answer": "what time"
   },
   {
-    "card_index": 5,
+    "card_index": 7,
     "hint": "",
     "question": "at Christmas",
     "answer": "when"
   },
   {
-    "card_index": 6,
+    "card_index": 8,
     "hint": "",
     "question": "the red dress中的the red划线",
     "answer": "which"
   },
   {
-    "card_index": 7,
+    "card_index": 9,
     "hint": "",
     "question": "the red dress三个词划线",
     "answer": "what"

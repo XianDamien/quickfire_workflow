@@ -1,32 +1,32 @@
 [
   {
     "card_index": 1,
-    "hint": "",
-    "question": "变成How too big the dragon is！对不对？",
-    "answer": "不对"
+    "hint": "The dragon is too big.",
+    "question": "如果把这句话变成感叹句，变成 How too big the dragon is，对不对？",
+    "answer": "不对。"
   },
   {
     "card_index": 2,
     "hint": "",
     "question": "为什么不对？",
-    "answer": "因为原句中too已经有\"太怎么怎么样\"的意思。\n感叹句里面有how表示\"多么\"，他们俩放在一起是不通顺的"
+    "answer": "因为原句中too已经有'太怎么怎么样的'意思，感叹句里面有how表示'多么'，它们俩放在一起是不通顺的。"
   },
   {
     "card_index": 3,
     "hint": "",
-    "question": "请你把这个感叹句改正确，要怎么说？",
+    "question": "请你把这句感叹句改正确，要怎么说？",
     "answer": "How big the dragon is!"
   },
   {
     "card_index": 4,
     "hint": "",
-    "question": "总结，做感叹句时，当句子里面看到very too这种词，\n你要把他怎么样？",
-    "answer": "把他删掉"
+    "question": "总结，做感叹句时，当句子里面看到very、too这种词，你要把它怎么样？",
+    "answer": "把它删掉"
   },
   {
     "card_index": 5,
     "hint": "",
-    "question": "My son is very smart.变成感叹句，怎么变？",
+    "question": "My son is very smart. 变成感叹句怎么变？",
     "answer": "How smart my son is!"
   }
 ]

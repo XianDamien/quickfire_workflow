@@ -1,13 +1,13 @@
 [
   {
     "card_index": 1,
-    "hint": "",
+    "hint": "试题中问句是must I，我必须做什么什么吗？",
     "question": "如果答句是——你不要做……。英文怎么说？",
     "answer": "No, you needn't."
   },
   {
     "card_index": 2,
-    "hint": "",
+    "hint": "如果有人很客气地问你：Could I use your dictionary?",
     "question": "你想说可以借给他，你的回答是Yes, you can.还是Yes, you could.",
     "answer": "Yes, you can."
   },

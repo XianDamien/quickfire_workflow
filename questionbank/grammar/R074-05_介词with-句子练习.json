@@ -1,7 +1,7 @@
 [
   {
     "card_index": 1,
-    "hint": "",
+    "hint": "老师说中文，你说英文。",
     "question": "我和我的小狗一起玩。",
     "answer": "I play with my puppy."
   },
@@ -25,8 +25,8 @@
   },
   {
     "card_index": 5,
-    "hint": "",
-    "question": "你怎么回事? (一般是负面的情绪)",
+    "hint": "一般是负面的情绪",
+    "question": "你怎么回事?",
     "answer": "What's the matter with you?"
   },
   {

@@ -13,19 +13,19 @@
   },
   {
     "card_index": 3,
-    "hint": "",
+    "hint": "男的",
     "question": "他自己",
     "answer": "himself"
   },
   {
     "card_index": 4,
-    "hint": "",
+    "hint": "女的",
     "question": "她自己",
     "answer": "herself"
   },
   {
     "card_index": 5,
-    "hint": "",
+    "hint": "宝盖头的",
     "question": "它自己",
     "answer": "itself"
   },
@@ -43,19 +43,19 @@
   },
   {
     "card_index": 8,
-    "hint": "",
+    "hint": "男的",
     "question": "他们自己",
     "answer": "themselves"
   },
   {
     "card_index": 9,
-    "hint": "",
+    "hint": "女的",
     "question": "她们自己",
     "answer": "themselves"
   },
   {
     "card_index": 10,
-    "hint": "",
+    "hint": "宝盖头的",
     "question": "它们自己",
     "answer": "themselves"
   }

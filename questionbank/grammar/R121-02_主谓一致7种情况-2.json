@@ -1,7 +1,7 @@
 [
   {
     "card_index": 1,
-    "hint": "",
+    "hint": "有一些词由and连接，但作为整体出现，例如炸鱼薯条这个食物",
     "question": "翻译句子：炸鱼薯条是一个非常有名的菜。",
     "answer": "Fish and chips is a very famous dish."
   },
@@ -9,7 +9,7 @@
     "card_index": 2,
     "hint": "",
     "question": "还有3个常见的由and连接的词有什么？",
-    "answer": "第一个黄油面包，Butter and bread."
+    "answer": "第一个黄油面包，butter and bread。第二个针线，needle and thread。第三个刀叉，knife and fork。"
   },
   {
     "card_index": 3,

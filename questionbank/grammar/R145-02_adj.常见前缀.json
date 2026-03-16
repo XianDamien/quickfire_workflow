@@ -2,59 +2,71 @@
   {
     "card_index": 1,
     "hint": "",
+    "question": "等待叫wait什么？",
+    "answer": "wait for"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "关心，care什么？",
+    "answer": "care about"
+  },
+  {
+    "card_index": 3,
+    "hint": "说出下列形容词的中文意思。",
     "question": "possible",
     "answer": "可能的"
   },
   {
-    "card_index": 2,
+    "card_index": 4,
     "hint": "",
     "question": "impossible",
     "answer": "不可能的"
   },
   {
-    "card_index": 3,
+    "card_index": 5,
     "hint": "",
     "question": "dependent",
     "answer": "依赖的"
   },
   {
-    "card_index": 4,
+    "card_index": 6,
     "hint": "",
     "question": "independent",
     "answer": "独立的"
   },
   {
-    "card_index": 5,
+    "card_index": 7,
     "hint": "",
     "question": "happy",
     "answer": "快乐的"
   },
   {
-    "card_index": 6,
+    "card_index": 8,
     "hint": "",
     "question": "unhappy",
     "answer": "不快乐的"
   },
   {
-    "card_index": 7,
+    "card_index": 9,
     "hint": "",
     "question": "usual",
     "answer": "通常的"
   },
   {
-    "card_index": 8,
+    "card_index": 10,
     "hint": "",
     "question": "unusual",
     "answer": "不寻常的"
   },
   {
-    "card_index": 9,
+    "card_index": 11,
     "hint": "",
     "question": "honest",
     "answer": "诚实的"
   },
   {
-    "card_index": 10,
+    "card_index": 12,
     "hint": "",
     "question": "dishonest",
     "answer": "不诚实的"

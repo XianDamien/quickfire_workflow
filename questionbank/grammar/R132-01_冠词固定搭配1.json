@@ -2,36 +2,48 @@
   {
     "card_index": 1,
     "hint": "",
-    "question": "顺便一提",
-    "answer": "by the way"
+    "question": "等待叫wait什么？",
+    "answer": "wait for"
   },
   {
     "card_index": 2,
     "hint": "",
+    "question": "关心，care什么？",
+    "answer": "care about"
+  },
+  {
+    "card_index": 3,
+    "hint": "老师说中文，你说英文。",
+    "question": "顺便一提",
+    "answer": "by the way"
+  },
+  {
+    "card_index": 4,
+    "hint": "老师说中文，你说英文。",
     "question": "实际上",
     "answer": "in fact"
   },
   {
-    "card_index": 3,
-    "hint": "",
+    "card_index": 5,
+    "hint": "老师说中文，你说英文。",
     "question": "最后",
     "answer": "in the end"
   },
   {
-    "card_index": 4,
-    "hint": "",
+    "card_index": 6,
+    "hint": "老师说中文，你说英文。",
     "question": "入睡",
     "answer": "go to sleep"
   },
   {
-    "card_index": 5,
-    "hint": "",
+    "card_index": 7,
+    "hint": "老师说中文，你说英文。",
     "question": "匆忙",
     "answer": "in a hurry"
   },
   {
-    "card_index": 6,
-    "hint": "",
+    "card_index": 8,
+    "hint": "老师说中文，你说英文。",
     "question": "准时",
     "answer": "on time"
   }

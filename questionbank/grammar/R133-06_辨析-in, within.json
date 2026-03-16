@@ -13,13 +13,13 @@
   },
   {
     "card_index": 3,
-    "hint": "",
+    "hint": "下面来翻译句子，老师说英文，你说中文。",
     "question": "1.The train will arrive in three hours.",
     "answer": "火车将在3小时后到达。"
   },
   {
     "card_index": 4,
-    "hint": "",
+    "hint": "下面来翻译句子，老师说英文，你说中文。",
     "question": "2.The train will arrive within three hours.",
     "answer": "火车将在3小时内到达"
   }

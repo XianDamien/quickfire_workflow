@@ -2,47 +2,59 @@
   {
     "card_index": 1,
     "hint": "",
+    "question": "等待叫wait什么？",
+    "answer": "wait for"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "关心，care什么？",
+    "answer": "care about"
+  },
+  {
+    "card_index": 3,
+    "hint": "将下列短语替换成对应的疑问词",
     "question": "on foot",
     "answer": "how"
   },
   {
-    "card_index": 2,
+    "card_index": 4,
     "hint": "",
     "question": "played basketball",
     "answer": "did what"
   },
   {
-    "card_index": 3,
+    "card_index": 5,
     "hint": "",
     "question": "100 yuan",
     "answer": "how much"
   },
   {
-    "card_index": 4,
+    "card_index": 6,
     "hint": "",
     "question": "theirs",
     "answer": "whose"
   },
   {
-    "card_index": 5,
+    "card_index": 7,
     "hint": "",
     "question": "将the girl in yellow中的in yellow划线",
     "answer": "which"
   },
   {
-    "card_index": 6,
+    "card_index": 8,
     "hint": "",
     "question": "将some eggs中的some划线",
     "answer": "how many"
   },
   {
-    "card_index": 7,
+    "card_index": 9,
     "hint": "",
     "question": "1000 meters",
     "answer": "how long"
   },
   {
-    "card_index": 8,
+    "card_index": 10,
     "hint": "",
     "question": "with a pen",
     "answer": "how"

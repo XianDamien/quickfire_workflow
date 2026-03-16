@@ -51,18 +51,18 @@
     "card_index": 9,
     "hint": "",
     "question": "最底下的一层完成进行，有三个办公室，\n最中间的那个办公室是一个固定的词，是哪个词？",
-    "answer": "been"
+    "answer": "being"
   },
   {
     "card_index": 10,
     "hint": "",
-    "question": "been前面的负责人是谁？",
+    "question": "being前面的负责人是谁？",
     "answer": "Have"
   },
   {
     "card_index": 11,
     "hint": "",
-    "question": "been后面的负责人是谁？",
+    "question": "being后面的负责人是谁？",
     "answer": "cp."
   }
 ]

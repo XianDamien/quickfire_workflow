@@ -19,19 +19,19 @@
   },
   {
     "card_index": 4,
-    "hint": "",
+    "hint": "判断下列场景应该用from还是since。",
     "question": "我决定从下周开始减肥。",
     "answer": "From"
   },
   {
     "card_index": 5,
-    "hint": "",
+    "hint": "判断下列场景应该用from还是since。",
     "question": "这个烤鸭店，50年前就开店了。",
     "answer": "since"
   },
   {
     "card_index": 6,
-    "hint": "",
+    "hint": "判断下列场景应该用from还是since。",
     "question": "从现在开始，我要每天锻炼身体。",
     "answer": "From"
   }

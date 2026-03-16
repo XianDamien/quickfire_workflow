@@ -14,31 +14,25 @@
   {
     "card_index": 3,
     "hint": "",
-    "question": "There be句型的主角并不是be动词前面的there，那么there be句型的主角是谁？",
-    "answer": "是be动词后面的名词或be动词后面的黄头三人组"
+    "question": "There is a castle in the village.乡村里有一座城堡。这句话真正的主角是谁？",
+    "answer": "a castle，一座城堡。"
   },
   {
     "card_index": 4,
     "hint": "",
-    "question": "There is a castle in the village.乡村里有一座城堡。这句话真正的主角是谁？",
-    "answer": "a castle 一座城堡"
+    "question": "There be句型的be动词用哪个，是由什么决定的？",
+    "answer": "是由真正的主角决定的。"
   },
   {
     "card_index": 5,
     "hint": "",
-    "question": "There be句型的be动词用哪个，是由什么决定的？",
-    "answer": "是由真正的主角决定的"
+    "question": "如果there be句型中的主角是单数或不可数名词，be动词要用什么？",
+    "answer": "用is。"
   },
   {
     "card_index": 6,
     "hint": "",
-    "question": "如果there be句型中的主角是单数或不可数名词be动词要用什么？",
-    "answer": "用is。"
-  },
-  {
-    "card_index": 7,
-    "hint": "",
     "question": "如果there be句型中真正的主角是复数，那么be动词要用什么？",
-    "answer": "要用are"
+    "answer": "要用are。"
   }
 ]

@@ -1,31 +1,31 @@
 [
   {
     "card_index": 1,
-    "hint": "",
-    "question": "1. This cake is much more delicious than the one yesterday.",
+    "hint": "老师说英文，你翻译成中文。",
+    "question": "1. The cake is much more delicious than the one yesterday.",
     "answer": "这个蛋糕比昨天的好吃多了。"
   },
   {
     "card_index": 2,
-    "hint": "",
+    "hint": "老师说英文，你翻译成中文。",
     "question": "2. My toy car is much more fun to play with now that it has new wheels.",
     "answer": "我的玩具车加上新轮子玩起来更有趣。"
   },
   {
     "card_index": 3,
-    "hint": "",
+    "hint": "老师说英文，你翻译成中文。",
     "question": "3. The sun makes the day much more bright and happy.",
     "answer": "太阳让白天变得更明亮和愉快。"
   },
   {
     "card_index": 4,
-    "hint": "",
+    "hint": "老师说英文，你翻译成中文。",
     "question": "4. Wearing a raincoat makes you much more dry when it's raining.",
     "answer": "下雨时穿雨衣让你更干燥。"
   },
   {
     "card_index": 5,
-    "hint": "",
+    "hint": "老师说英文，你翻译成中文。",
     "question": "5. Adding colors makes the drawing much more beautiful.",
     "answer": "加颜色让画变得更漂亮。"
   }

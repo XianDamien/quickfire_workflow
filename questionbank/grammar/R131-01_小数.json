@@ -2,23 +2,29 @@
   {
     "card_index": 1,
     "hint": "",
+    "question": "小数点怎么读？",
+    "answer": "Point."
+  },
+  {
+    "card_index": 2,
+    "hint": "",
     "question": "数字0有哪两种读法？",
     "answer": "Zero或者字母O。"
   },
   {
-    "card_index": 2,
+    "card_index": 3,
     "hint": "",
     "question": "17.28",
     "answer": "Seventeen point two eight"
   },
   {
-    "card_index": 3,
+    "card_index": 4,
     "hint": "",
     "question": "136.019",
     "answer": "One hundred and thirty six Point zero one nine."
   },
   {
-    "card_index": 4,
+    "card_index": 5,
     "hint": "",
     "question": "0.8",
     "answer": "Zero point eight"

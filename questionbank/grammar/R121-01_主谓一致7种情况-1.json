@@ -1,7 +1,7 @@
 [
   {
     "card_index": 1,
-    "hint": "",
+    "hint": "当主语为第三人称单数或为不可数名词的时候",
     "question": "Verb或be verb要用单数还是复数？",
     "answer": "用单数"
   },
@@ -19,7 +19,7 @@
   },
   {
     "card_index": 4,
-    "hint": "",
+    "hint": "当集体名词表示的是集体中的一个个成员时",
     "question": "老大用单数还是复数？",
     "answer": "复数。"
   },
@@ -31,7 +31,7 @@
   },
   {
     "card_index": 6,
-    "hint": "",
+    "hint": "一些单复数同形的词，需要看句子含义",
     "question": "请听这个问题，There is,还是are a sheep in the yard?",
     "answer": "Is"
   },

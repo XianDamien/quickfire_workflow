@@ -1,7 +1,7 @@
 [
   {
     "card_index": 1,
-    "hint": "",
+    "hint": "老师说中文，你翻译成英文",
     "question": "在杯子里有一些牛奶。",
     "answer": "There is some milk in the cup."
   },
@@ -27,7 +27,7 @@
     "card_index": 5,
     "hint": "",
     "question": "在农场上有大量的羊。",
-    "answer": "There area lot of sheep on the farm."
+    "answer": "There are a lot of sheep on the farm."
   },
   {
     "card_index": 6,

@@ -13,19 +13,19 @@
   },
   {
     "card_index": 3,
-    "hint": "",
+    "hint": "男的",
     "question": "他的",
     "answer": "his"
   },
   {
     "card_index": 4,
-    "hint": "",
+    "hint": "女的",
     "question": "她的",
     "answer": "her"
   },
   {
     "card_index": 5,
-    "hint": "",
+    "hint": "宝盖头的",
     "question": "它的",
     "answer": "its"
   },
@@ -43,19 +43,19 @@
   },
   {
     "card_index": 8,
-    "hint": "",
+    "hint": "男的",
     "question": "他们的",
     "answer": "their"
   },
   {
     "card_index": 9,
-    "hint": "",
+    "hint": "女的",
     "question": "她们的",
     "answer": "their"
   },
   {
     "card_index": 10,
-    "hint": "",
+    "hint": "宝盖头的",
     "question": "它们的",
     "answer": "their"
   }

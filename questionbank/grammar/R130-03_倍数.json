@@ -31,14 +31,14 @@
   },
   {
     "card_index": 6,
-    "hint": "",
+    "hint": "倍数有两种表达方法，下面请按照老师的提示来造句。",
     "question": "1.这条狗是这只猫的3倍大。",
-    "answer": "The dog is three times as big as the cat."
+    "answer": "The dog is three times as big as the cat."
   },
   {
     "card_index": 7,
     "hint": "",
     "question": "2.这条狗的大小是这只猫的3倍",
-    "answer": "The dog is three times the size of the cat."
+    "answer": "The dog is three times the size of the cat."
   }
 ]

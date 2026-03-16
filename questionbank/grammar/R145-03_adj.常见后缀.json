@@ -2,107 +2,119 @@
   {
     "card_index": 1,
     "hint": "",
+    "question": "等待叫wait什么？",
+    "answer": "wait for"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "关心，care什么？",
+    "answer": "care about"
+  },
+  {
+    "card_index": 3,
+    "hint": "说出下列形容词的中文意思。",
     "question": "forgetful",
     "answer": "健忘的"
   },
   {
-    "card_index": 2,
+    "card_index": 4,
     "hint": "",
     "question": "beautiful",
     "answer": "美丽的"
   },
   {
-    "card_index": 3,
+    "card_index": 5,
     "hint": "",
     "question": "polluted",
     "answer": "污染的"
   },
   {
-    "card_index": 4,
+    "card_index": 6,
     "hint": "",
     "question": "pleased",
     "answer": "高兴的"
   },
   {
-    "card_index": 5,
+    "card_index": 7,
     "hint": "",
     "question": "exciting",
     "answer": "令人兴奋的"
   },
   {
-    "card_index": 6,
+    "card_index": 8,
     "hint": "",
     "question": "amazing",
     "answer": "令人惊奇的"
   },
   {
-    "card_index": 7,
+    "card_index": 9,
     "hint": "",
     "question": "expensive",
     "answer": "昂贵的"
   },
   {
-    "card_index": 8,
+    "card_index": 10,
     "hint": "",
     "question": "active",
     "answer": "活跃的"
   },
   {
-    "card_index": 9,
+    "card_index": 11,
     "hint": "",
     "question": "personal",
     "answer": "个人的"
   },
   {
-    "card_index": 10,
+    "card_index": 12,
     "hint": "",
     "question": "traditional",
     "answer": "传统的"
   },
   {
-    "card_index": 11,
+    "card_index": 13,
     "hint": "",
     "question": "lovely",
     "answer": "可爱的"
   },
   {
-    "card_index": 12,
+    "card_index": 14,
     "hint": "",
     "question": "friendly",
     "answer": "友好的"
   },
   {
-    "card_index": 13,
+    "card_index": 15,
     "hint": "",
     "question": "enjoyable",
     "answer": "令人愉快的"
   },
   {
-    "card_index": 14,
+    "card_index": 16,
     "hint": "",
     "question": "comfortable",
     "answer": "舒适的"
   },
   {
-    "card_index": 15,
+    "card_index": 17,
     "hint": "",
     "question": "rainy",
     "answer": "多雨的"
   },
   {
-    "card_index": 16,
+    "card_index": 18,
     "hint": "",
     "question": "healthy",
     "answer": "健康的"
   },
   {
-    "card_index": 17,
+    "card_index": 19,
     "hint": "",
     "question": "homeless",
     "answer": "无家可归的"
   },
   {
-    "card_index": 18,
+    "card_index": 20,
     "hint": "",
     "question": "hopeless",
     "answer": "无望的"

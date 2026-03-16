@@ -2,29 +2,41 @@
   {
     "card_index": 1,
     "hint": "",
+    "question": "等待叫wait什么？",
+    "answer": "Wait for"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "关心，care什么？",
+    "answer": "Care about"
+  },
+  {
+    "card_index": 3,
+    "hint": "老师说中文你说英文。",
     "question": "顺便说一句",
     "answer": "By the way"
   },
   {
-    "card_index": 2,
+    "card_index": 4,
     "hint": "",
     "question": "在休假",
     "answer": "On holiday"
   },
   {
-    "card_index": 3,
+    "card_index": 5,
     "hint": "",
     "question": "立刻",
     "answer": "At once"
   },
   {
-    "card_index": 4,
+    "card_index": 6,
     "hint": "",
     "question": "处于危险当中",
     "answer": "In danger"
   },
   {
-    "card_index": 5,
+    "card_index": 7,
     "hint": "",
     "question": "值日",
     "answer": "On duty"
