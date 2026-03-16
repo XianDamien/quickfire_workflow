@@ -1,0 +1,92 @@
+[
+  {
+    "card_index": 1,
+    "hint": "不亮的",
+    "question": "blind",
+    "answer": "盲的，瞎的"
+  },
+  {
+    "card_index": 2,
+    "hint": "不锁",
+    "question": "block",
+    "answer": "街区，大石头，挡住"
+  },
+  {
+    "card_index": 3,
+    "hint": "不辣的",
+    "question": "blood",
+    "answer": "血液"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "blow",
+    "answer": "吹"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "blue",
+    "answer": "蓝色"
+  },
+  {
+    "card_index": 6,
+    "hint": "薄的",
+    "question": "board",
+    "answer": "板"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "boat",
+    "answer": "船"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "body",
+    "answer": "身体"
+  },
+  {
+    "card_index": 9,
+    "hint": "煲药，爆油",
+    "question": "boil",
+    "answer": "沸腾"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "book",
+    "answer": "书"
+  },
+  {
+    "card_index": 11,
+    "hint": "剥，剥花生",
+    "question": "bored",
+    "answer": "无聊的，感到无聊的"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "boring",
+    "answer": "令人无聊的"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "born",
+    "answer": "出生"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "borrow",
+    "answer": "借"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "boss",
+    "answer": "老板"
+  }
+]

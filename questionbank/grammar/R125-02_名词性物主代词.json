@@ -1,0 +1,62 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "我的东西",
+    "answer": "mine"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "你的东西",
+    "answer": "yours"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "他的东西",
+    "answer": "his"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "她的东西",
+    "answer": "hers"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "它的东西",
+    "answer": "its"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "我们的东西",
+    "answer": "ours"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "你们的东西",
+    "answer": "yours"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "他们的东西",
+    "answer": "theirs"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "她们的东西",
+    "answer": "theirs"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "它们的东西",
+    "answer": "theirs"
+  }
+]

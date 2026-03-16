@@ -1,0 +1,116 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "在什么上方，高于，超过",
+    "answer": "above"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "在什么下面",
+    "answer": "under"
+  },
+  {
+    "card_index": 3,
+    "hint": "介词",
+    "question": "关于，大约",
+    "answer": "about"
+  },
+  {
+    "card_index": 4,
+    "hint": "副词",
+    "question": "大约",
+    "answer": "about"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "和",
+    "answer": "and"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "但是",
+    "answer": "but"
+  },
+  {
+    "card_index": 7,
+    "hint": "连词",
+    "question": "因此，所以",
+    "answer": "so"
+  },
+  {
+    "card_index": 8,
+    "hint": "副词",
+    "question": "如此",
+    "answer": "so"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "或者",
+    "answer": "or"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "因为",
+    "answer": "because"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "如果，假如",
+    "answer": "if"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "这，这个",
+    "answer": "this"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "那，那个",
+    "answer": "that"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "这些",
+    "answer": "these"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "那些",
+    "answer": "those"
+  },
+  {
+    "card_index": 16,
+    "hint": "代词",
+    "question": "其他，另一个",
+    "answer": "other"
+  },
+  {
+    "card_index": 17,
+    "hint": "形容词",
+    "question": "其他的",
+    "answer": "other"
+  },
+  {
+    "card_index": 18,
+    "hint": "代词",
+    "question": "另一个",
+    "answer": "another"
+  },
+  {
+    "card_index": 19,
+    "hint": "形容词",
+    "question": "另一的，再一个的",
+    "answer": "another"
+  }
+]

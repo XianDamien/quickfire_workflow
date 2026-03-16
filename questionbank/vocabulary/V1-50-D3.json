@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "问候，打招呼",
+    "answer": "greet"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "找到，查找，发现",
+    "answer": "find"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "尝试，试图",
+    "answer": "try"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "尝试，试图",
+    "answer": "try"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "吹",
+    "answer": "blow"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "欢迎",
+    "answer": "welcome"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "排队",
+    "answer": "line"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "行，排，列",
+    "answer": "line"
+  }
+]

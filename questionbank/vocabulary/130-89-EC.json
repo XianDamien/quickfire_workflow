@@ -1,0 +1,98 @@
+[
+  {
+    "card_index": 1,
+    "hint": "反复p它",
+    "question": "repeat",
+    "answer": "重复"
+  },
+  {
+    "card_index": 2,
+    "hint": "反复不来",
+    "question": "reply",
+    "answer": "回答"
+  },
+  {
+    "card_index": 3,
+    "hint": "一开始不来",
+    "question": "explain",
+    "answer": "解释"
+  },
+  {
+    "card_index": 4,
+    "hint": "反复播它",
+    "question": "report",
+    "answer": "报道"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "reporter",
+    "answer": "记者"
+  },
+  {
+    "card_index": 6,
+    "hint": "反复公共",
+    "question": "republic",
+    "answer": "共和国"
+  },
+  {
+    "card_index": 7,
+    "hint": "反复快呀",
+    "question": "require",
+    "answer": "要求，需求"
+  },
+  {
+    "card_index": 8,
+    "hint": "反复摄取，反复寻找",
+    "question": "research",
+    "answer": "研究"
+  },
+  {
+    "card_index": 9,
+    "hint": "反复搜死",
+    "question": "resource",
+    "answer": "资源"
+  },
+  {
+    "card_index": 10,
+    "hint": "反复失败给他",
+    "question": "respect",
+    "answer": "尊重"
+  },
+  {
+    "card_index": 11,
+    "hint": "反复死笨死",
+    "question": "response",
+    "answer": "反应，作答"
+  },
+  {
+    "card_index": 12,
+    "hint": "反复死帮死博",
+    "question": "responsible",
+    "answer": "负责任的"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "responsibility",
+    "answer": "责任，责任心"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "rest",
+    "answer": "休息，剩余"
+  },
+  {
+    "card_index": 15,
+    "hint": "反复死赚的",
+    "question": "restaurant",
+    "answer": "饭店"
+  },
+  {
+    "card_index": 16,
+    "hint": "反复揍他",
+    "question": "result",
+    "answer": "结果"
+  }
+]

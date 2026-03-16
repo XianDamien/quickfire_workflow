@@ -1,0 +1,116 @@
+[
+  {
+    "card_index": 1,
+    "hint": "副词",
+    "question": "确切的，准确的，恰好",
+    "answer": "exactly"
+  },
+  {
+    "card_index": 2,
+    "hint": "名词",
+    "question": "舞台，时期，步骤",
+    "answer": "stage"
+  },
+  {
+    "card_index": 3,
+    "hint": "名词",
+    "question": "村庄，乡村",
+    "answer": "village"
+  },
+  {
+    "card_index": 4,
+    "hint": "名词",
+    "question": "语言",
+    "answer": "language"
+  },
+  {
+    "card_index": 5,
+    "hint": "及物动词",
+    "question": "管理",
+    "answer": "manage"
+  },
+  {
+    "card_index": 6,
+    "hint": "不及物动词",
+    "question": "设法对付",
+    "answer": "manage"
+  },
+  {
+    "card_index": 7,
+    "hint": "名词",
+    "question": "信息，消息",
+    "answer": "message"
+  },
+  {
+    "card_index": 8,
+    "hint": "名词",
+    "question": "勇气，英勇",
+    "answer": "courage"
+  },
+  {
+    "card_index": 9,
+    "hint": "及物动词",
+    "question": "鼓励，支持",
+    "answer": "encourage"
+  },
+  {
+    "card_index": 10,
+    "hint": "名词",
+    "question": "优势，有利条件，好处",
+    "answer": "advantage"
+  },
+  {
+    "card_index": 11,
+    "hint": "及物动词",
+    "question": "达到，取得",
+    "answer": "achieve"
+  },
+  {
+    "card_index": 12,
+    "hint": "及物动词",
+    "question": "相信，认为",
+    "answer": "believe"
+  },
+  {
+    "card_index": 13,
+    "hint": "名词",
+    "question": "营地",
+    "answer": "camp"
+  },
+  {
+    "card_index": 14,
+    "hint": "不及物动词",
+    "question": "扎营",
+    "answer": "camp"
+  },
+  {
+    "card_index": 15,
+    "hint": "名词",
+    "question": "校园，场地",
+    "answer": "campus"
+  },
+  {
+    "card_index": 16,
+    "hint": "形容词",
+    "question": "校园的",
+    "answer": "campus"
+  },
+  {
+    "card_index": 17,
+    "hint": "名词",
+    "question": "邮票",
+    "answer": "stamp"
+  },
+  {
+    "card_index": 18,
+    "hint": "及物动词",
+    "question": "用脚踩踏",
+    "answer": "stamp"
+  },
+  {
+    "card_index": 19,
+    "hint": "名词",
+    "question": "例子，实例，榜样",
+    "answer": "example"
+  }
+]

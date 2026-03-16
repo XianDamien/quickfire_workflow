@@ -1,0 +1,62 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "老师说中文，你说英文。\n明晚",
+    "answer": "tomorrow evening"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "午餐之后",
+    "answer": "after lunch"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "下个月",
+    "answer": "next month"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "上周",
+    "answer": "last week"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "一周一次",
+    "answer": "once a week"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "五年前",
+    "answer": "five years ago"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "后天",
+    "answer": "the day after tomorrow"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "昨天七点",
+    "answer": "seven o'clock yesterday"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "通常",
+    "answer": "usually"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "去年",
+    "answer": "last year"
+  }
+]

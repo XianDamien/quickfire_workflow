@@ -1,0 +1,92 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "公园",
+    "answer": "park"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "海滩",
+    "answer": "beach"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "山谷",
+    "answer": "valley"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "田野",
+    "answer": "field"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "花园",
+    "answer": "garden"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "游泳池，水塘",
+    "answer": "pool"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "池塘",
+    "answer": "pond"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "动物园",
+    "answer": "zoo"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "广场，正方形",
+    "answer": "square"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "饭店，餐馆",
+    "answer": "restaurant"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "书店",
+    "answer": "bookstore"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "医院",
+    "answer": "hospital"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "宾馆，旅店",
+    "answer": "hotel"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "火车站，加油站",
+    "answer": "station"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "机场",
+    "answer": "airport"
+  }
+]

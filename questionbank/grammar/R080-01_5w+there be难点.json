@@ -1,0 +1,38 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "比如这个句子，There are many flowers in the garden，\n如果把many flowers划线了，划线的部分是什么？",
+    "answer": "是数量加东西。"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "那么你要替换成什么？",
+    "answer": "替换成what"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "如果句子变成there are five books on my desk，只把five划线，\n代表划线的部分是什么？",
+    "answer": "只是数量。"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "那么你要用什么来替换？",
+    "answer": "用how many来替换"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "最终的答案是什么？",
+    "answer": "What is in the garden?"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "There are five books on my desk，把five划线，\n最终的答案应该是什么？",
+    "answer": "How many books are there on your desk?"
+  }
+]

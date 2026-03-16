@@ -1,0 +1,104 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "somebody",
+    "answer": "某人"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "something",
+    "answer": "某事某物"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "sometimes",
+    "answer": "有时"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "son",
+    "answer": "儿子"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "song",
+    "answer": "歌曲"
+  },
+  {
+    "card_index": 6,
+    "hint": "副词",
+    "question": "soon",
+    "answer": "不久"
+  },
+  {
+    "card_index": 7,
+    "hint": "形容词",
+    "question": "sorry",
+    "answer": "对不起"
+  },
+  {
+    "card_index": 8,
+    "hint": "名词",
+    "question": "sound",
+    "answer": "声音"
+  },
+  {
+    "card_index": 9,
+    "hint": "动词",
+    "question": "sound",
+    "answer": "听起来"
+  },
+  {
+    "card_index": 10,
+    "hint": "素朴,清汤寡水",
+    "question": "soup",
+    "answer": "汤"
+  },
+  {
+    "card_index": 11,
+    "hint": "手泡",
+    "question": "soap",
+    "answer": "肥皂"
+  },
+  {
+    "card_index": 12,
+    "hint": "有s的看成蛇,南方蛇多",
+    "question": "south",
+    "answer": "南方"
+  },
+  {
+    "card_index": 13,
+    "hint": "死背诗,脑子一片空白",
+    "question": "space",
+    "answer": "空白,空间"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "spaceship",
+    "answer": "宇宙飞船"
+  },
+  {
+    "card_index": 15,
+    "hint": "死背,空出点时间来玩",
+    "question": "spare",
+    "answer": "空闲"
+  },
+  {
+    "card_index": 16,
+    "hint": "",
+    "question": "speak",
+    "answer": "说话"
+  },
+  {
+    "card_index": 17,
+    "hint": "四百首,唐诗四百首",
+    "question": "special",
+    "answer": "特别的"
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "quiet",
+    "answer": "安静的"
+  },
+  {
+    "card_index": 2,
+    "hint": "形容词",
+    "question": "loud",
+    "answer": "声音大的，吵闹的"
+  },
+  {
+    "card_index": 3,
+    "hint": "副词",
+    "question": "loud",
+    "answer": "大声的"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "bright",
+    "answer": "明亮的，鲜明的"
+  },
+  {
+    "card_index": 5,
+    "hint": "形容词",
+    "question": "dark",
+    "answer": "黑暗的，深色的"
+  },
+  {
+    "card_index": 6,
+    "hint": "名词",
+    "question": "dark",
+    "answer": "黑暗"
+  },
+  {
+    "card_index": 7,
+    "hint": "形容词",
+    "question": "clear",
+    "answer": "清楚的，晴朗的，清澈的"
+  },
+  {
+    "card_index": 8,
+    "hint": "行为动词",
+    "question": "clear",
+    "answer": "清理"
+  },
+  {
+    "card_index": 9,
+    "hint": "形容词",
+    "question": "enough",
+    "answer": "足够的，充足的"
+  },
+  {
+    "card_index": 10,
+    "hint": "副词",
+    "question": "enough",
+    "answer": "足够"
+  }
+]

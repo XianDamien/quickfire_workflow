@@ -1,0 +1,38 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "both",
+    "answer": "复数"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "either",
+    "answer": "单数"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "neither",
+    "answer": "单数"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "both...and",
+    "answer": "老大用复数"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "either...or",
+    "answer": "老大用什么，根据就近原则"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "neither...nor",
+    "answer": "老大用什么，根据就近原则"
+  }
+]

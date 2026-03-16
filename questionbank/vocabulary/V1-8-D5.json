@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "岛，岛屿",
+    "answer": "Island"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "山洞，洞穴",
+    "answer": "Cave"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "洞，洞穴或洞穴",
+    "answer": "Hole"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "星星。明星，恒星",
+    "answer": "Star"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "月亮，月球",
+    "answer": "Moon"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "太阳",
+    "answer": "Sun"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "日出",
+    "answer": "Sunrise"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "地球，土地",
+    "answer": "Earth"
+  }
+]

@@ -1,0 +1,104 @@
+[
+  {
+    "card_index": 1,
+    "hint": "提前喂它或提前it",
+    "question": "private",
+    "answer": "私人的,私有的"
+  },
+  {
+    "card_index": 2,
+    "hint": "牌子",
+    "question": "prize",
+    "answer": "奖品"
+  },
+  {
+    "card_index": 3,
+    "hint": "破包包。可能很有钱",
+    "question": "probable",
+    "answer": "可能的"
+  },
+  {
+    "card_index": 4,
+    "hint": "破包包里。可能有很多钱",
+    "question": "probably",
+    "answer": "可能"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "problem",
+    "answer": "问题"
+  },
+  {
+    "card_index": 6,
+    "hint": "pro前cess走,往前走,想象流水线",
+    "question": "process",
+    "answer": "处理,加工,过程"
+  },
+  {
+    "card_index": 7,
+    "hint": "破屌丝。去工厂制造",
+    "question": "produce",
+    "answer": "制造"
+  },
+  {
+    "card_index": 8,
+    "hint": "pro前面duct大哥大引导,向前引导,流水线上的产品不停的往前在引导",
+    "question": "product",
+    "answer": "产品"
+  },
+  {
+    "card_index": 9,
+    "hint": "fess fast说出真相,在前面说出真相的是什么?职业,只有职业的才知道真相",
+    "question": "profession",
+    "answer": "职业"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "professional",
+    "answer": "职业的"
+  },
+  {
+    "card_index": 11,
+    "hint": "在前面说出真相的人",
+    "question": "professor",
+    "answer": "教授"
+  },
+  {
+    "card_index": 12,
+    "hint": "gram写,提前写的是什么?",
+    "question": "program",
+    "answer": "项目,计划"
+  },
+  {
+    "card_index": 13,
+    "hint": "grass走,向前走是什么?",
+    "question": "progress",
+    "answer": "进步"
+  },
+  {
+    "card_index": 14,
+    "hint": "ject投掷喷射,jet,向前投掷,投屏",
+    "question": "project",
+    "answer": "作业,项目,工程"
+  },
+  {
+    "card_index": 15,
+    "hint": "普罗米修斯。他答应给人类火",
+    "question": "promise",
+    "answer": "答应,承诺"
+  },
+  {
+    "card_index": 16,
+    "hint": "nounce宣布",
+    "question": "pronounce",
+    "answer": "宣布,发音"
+  },
+  {
+    "card_index": 17,
+    "hint": "爬坡。爬坡要用合适的档位",
+    "question": "proper",
+    "answer": "合适的"
+  }
+]

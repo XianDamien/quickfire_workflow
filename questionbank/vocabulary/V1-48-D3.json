@@ -1,0 +1,62 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "等待，等候",
+    "answer": "wait"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "借",
+    "answer": "borrow"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "买",
+    "answer": "buy"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "卖，出售，售卖",
+    "answer": "sell"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "打破，弄坏",
+    "answer": "break"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "间歇，休息",
+    "answer": "break"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "飞，放风筝",
+    "answer": "fly"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "苍蝇",
+    "answer": "fly"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "落下，跌落",
+    "answer": "fall"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "秋天",
+    "answer": "fall"
+  }
+]

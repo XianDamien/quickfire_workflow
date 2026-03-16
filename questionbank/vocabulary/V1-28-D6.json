@@ -1,0 +1,92 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "job",
+    "answer": "工作职业"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "teacher",
+    "answer": "教师导师"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "student",
+    "answer": "学生"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "dancer",
+    "answer": "舞蹈家"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "singer",
+    "answer": "歌手"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "actor",
+    "answer": "男演员"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "actress",
+    "answer": "女演员"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "artist",
+    "answer": "艺术家"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "worker",
+    "answer": "工人劳动者"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "painter",
+    "answer": "画家"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "player",
+    "answer": "运动员"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "athlete",
+    "answer": "运动员"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "pilot",
+    "answer": "飞行员"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "farmer",
+    "answer": "农民农场主"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "doctor",
+    "answer": "医生博士"
+  }
+]

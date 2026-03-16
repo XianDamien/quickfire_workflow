@@ -1,0 +1,98 @@
+[
+  {
+    "card_index": 1,
+    "hint": "复数是人,单数是民族",
+    "question": "people",
+    "answer": "人，民族"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "per",
+    "answer": "每一个"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "percent",
+    "answer": "百分比"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "perfect",
+    "answer": "完美的"
+  },
+  {
+    "card_index": 5,
+    "hint": "泼妇们。verb",
+    "question": "perform",
+    "answer": "表演"
+  },
+  {
+    "card_index": 6,
+    "hint": "泼妇们死,上演一场场精彩的什么?这个时候是noun",
+    "question": "performance",
+    "answer": "表演"
+  },
+  {
+    "card_index": 7,
+    "hint": "不害怕死。不可能,perhaps是可能的意思",
+    "question": "perhaps",
+    "answer": "可能"
+  },
+  {
+    "card_index": 8,
+    "hint": "疲弱的。人在一些阶段,或者周期性的会感觉疲弱",
+    "question": "period",
+    "answer": "阶段，时期"
+  },
+  {
+    "card_index": 9,
+    "hint": "其实是people的单数",
+    "question": "person",
+    "answer": "人"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "personal",
+    "answer": "个人的"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "pet",
+    "answer": "宠物"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "phone",
+    "answer": "电话，打电话"
+  },
+  {
+    "card_index": 13,
+    "hint": "photograph的简称",
+    "question": "photo",
+    "answer": "照片"
+  },
+  {
+    "card_index": 14,
+    "hint": "非人可视。搞物理的人智商平均幺三三,世界所有职业最高,非人可视",
+    "question": "physics",
+    "answer": "物理学"
+  },
+  {
+    "card_index": 15,
+    "hint": "车迷死追的是什么学科?",
+    "question": "chemistry",
+    "answer": "化学"
+  },
+  {
+    "card_index": 16,
+    "hint": "",
+    "question": "physical",
+    "answer": "身体的，物理的"
+  }
+]

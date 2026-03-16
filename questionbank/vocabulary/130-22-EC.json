@@ -1,0 +1,92 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "coin",
+    "answer": "硬币"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "cold",
+    "answer": "冷的，感冒，伤风"
+  },
+  {
+    "card_index": 3,
+    "hint": "松鼠什么，冬天可来客它",
+    "question": "collect",
+    "answer": "收集"
+  },
+  {
+    "card_index": 4,
+    "hint": "客来可现，客人来了可以表现一下",
+    "question": "collection",
+    "answer": "收藏物"
+  },
+  {
+    "card_index": 5,
+    "hint": "靠励志，靠理智",
+    "question": "college",
+    "answer": "大学"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "color",
+    "answer": "颜色"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "come",
+    "answer": "来"
+  },
+  {
+    "card_index": 8,
+    "hint": "空腹太饱",
+    "question": "comfortable",
+    "answer": "舒服"
+  },
+  {
+    "card_index": 9,
+    "hint": "man，凑到一起怎么样的man",
+    "question": "common",
+    "answer": "普通"
+  },
+  {
+    "card_index": 10,
+    "hint": "man凑到一起吃饭为了什么",
+    "question": "communicate",
+    "answer": "交流"
+  },
+  {
+    "card_index": 11,
+    "hint": "在哪里看美女跳",
+    "question": "community",
+    "answer": "社区"
+  },
+  {
+    "card_index": 12,
+    "hint": "come来到一个锅里吃饭",
+    "question": "company",
+    "answer": "公司"
+  },
+  {
+    "card_index": 13,
+    "hint": "看牌",
+    "question": "compare",
+    "answer": "比较"
+  },
+  {
+    "card_index": 14,
+    "hint": "pet come来到一起干嘛",
+    "question": "competition",
+    "answer": "比赛，竞赛"
+  },
+  {
+    "card_index": 15,
+    "hint": "扛破烂，你会怎么样",
+    "question": "complain",
+    "answer": "抱怨"
+  }
+]

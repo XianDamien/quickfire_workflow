@@ -1,0 +1,98 @@
+[
+    {
+        "card_index": 1,
+        "hint": "名词",
+        "question": "ruler",
+        "answer": "尺子，统治者"
+    },
+    {
+        "card_index": 2,
+        "hint": "名词",
+        "question": "glue",
+        "answer": "胶水"
+    },
+    {
+        "card_index": 3,
+        "hint": "名词",
+        "question": "glue stick",
+        "answer": "胶棒"
+    },
+    {
+        "card_index": 4,
+        "hint": "名词",
+        "question": "tape",
+        "answer": "磁带，胶带"
+    },
+    {
+        "card_index": 5,
+        "hint": "名词",
+        "question": "calculator",
+        "answer": "计算器"
+    },
+    {
+        "card_index": 6,
+        "hint": "名词",
+        "question": "culture",
+        "answer": "文化"
+    },
+    {
+        "card_index": 7,
+        "hint": "名词",
+        "question": "project",
+        "answer": "项目"
+    },
+    {
+        "card_index": 8,
+        "hint": "名词",
+        "question": "lesson",
+        "answer": "课程或教训"
+    },
+    {
+        "card_index": 9,
+        "hint": "名词",
+        "question": "class",
+        "answer": "课程"
+    },
+    {
+        "card_index": 10,
+        "hint": "名词",
+        "question": "knowledge",
+        "answer": "知识"
+    },
+    {
+        "card_index": 11,
+        "hint": "名词",
+        "question": "subject",
+        "answer": "学科，主题，还有主角"
+    },
+    {
+        "card_index": 12,
+        "hint": "名词",
+        "question": "math",
+        "answer": "数学"
+    },
+    {
+        "card_index": 13,
+        "hint": "名词",
+        "question": "history",
+        "answer": "历史"
+    },
+    {
+        "card_index": 14,
+        "hint": "名词",
+        "question": "science",
+        "answer": "科学"
+    },
+    {
+        "card_index": 15,
+        "hint": "名词",
+        "question": "art",
+        "answer": "艺术"
+    },
+    {
+        "card_index": 16,
+        "hint": "名词",
+        "question": "language",
+        "answer": "语言"
+    }
+]

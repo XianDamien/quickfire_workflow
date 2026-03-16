@@ -1,0 +1,32 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "第一题，Birds can fly.negative",
+    "answer": "Birds can't fly."
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "第二题，You should go. question",
+    "answer": "Should you go?"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "第三题，We can't be friend. positive",
+    "answer": "We can be friend."
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "第四题，Will they have a nice day? positive",
+    "answer": "They will have a nice day."
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "第五题，Will the cat eat fish? negative",
+    "answer": "The cat will not eat fish."
+  }
+]

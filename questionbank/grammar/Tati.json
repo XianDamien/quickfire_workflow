@@ -1,0 +1,26 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "什么叫做间接引语？",
+    "answer": "转述别人说的话"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "1. She said, 'I will attend the meeting tomorrow.'\n她说:“我明天会参加会议。”",
+    "answer": "1. She said that she would attend the meeting the next day."
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "2. He said, 'I can't believe we won the game!'\n他说:“我不敢相信我们赢了比赛!”",
+    "answer": "2. He said that he couldn't believe they had won the game."
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "3. Tom said, 'I have never been to Paris before.'\n汤姆说:“我以前从未去过巴黎。”",
+    "answer": "4. Tom said that he had never been to Paris before."
+  }
+]

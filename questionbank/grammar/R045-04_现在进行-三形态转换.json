@@ -1,0 +1,26 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "现在进行，一定会有哪两位同学？",
+    "answer": "be verb 和 cp"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "所以现在进行的句子是蓝色句子还是红色句子？",
+    "answer": "蓝色句子"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "Michael is reading a book.变成否定句。",
+    "answer": "Michael isn't reading a book."
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "变成疑问句",
+    "answer": "Is Michael reading a book?"
+  }
+]

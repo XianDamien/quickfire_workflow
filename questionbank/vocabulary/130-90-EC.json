@@ -1,0 +1,92 @@
+[
+  {
+    "card_index": 1,
+    "hint": "反复累",
+    "question": "retired",
+    "answer": "退休"
+  },
+  {
+    "card_index": 2,
+    "hint": "反复疼",
+    "question": "return",
+    "answer": "归还，返回"
+  },
+  {
+    "card_index": 3,
+    "hint": "反复用",
+    "question": "reuse",
+    "answer": "再利用"
+  },
+  {
+    "card_index": 4,
+    "hint": "反复看",
+    "question": "review",
+    "answer": "复习"
+  },
+  {
+    "card_index": 5,
+    "hint": "反复我的",
+    "question": "reward",
+    "answer": "奖励"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "rice",
+    "answer": "米饭"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "rich",
+    "answer": "富有的"
+  },
+  {
+    "card_index": 8,
+    "hint": "锐利的东西",
+    "question": "rid",
+    "answer": "摆脱"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "ride",
+    "answer": "骑"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "right",
+    "answer": "正确的，右边的"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "ring",
+    "answer": "环，戒指，铃声"
+  },
+  {
+    "card_index": 12,
+    "hint": "想象成rice的米饭",
+    "question": "rise",
+    "answer": "上升"
+  },
+  {
+    "card_index": 13,
+    "hint": "若死磕",
+    "question": "risk",
+    "answer": "危险"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "river",
+    "answer": "江河"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "road",
+    "answer": "道路"
+  }
+]

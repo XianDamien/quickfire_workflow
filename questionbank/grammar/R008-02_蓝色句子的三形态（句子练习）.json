@@ -1,0 +1,74 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "The dog is black,negative",
+    "answer": "The dog is not black."
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "The dog is black,question",
+    "answer": "Is the dog black?"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "They are crazy,negative",
+    "answer": "They are not crazy."
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "They are crazy, question",
+    "answer": "Are they crazy?"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "I'm the spiderman我是蜘蛛侠,negative",
+    "answer": "I am not the spiderman."
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "I'm the spiderman,question",
+    "answer": "Am I the spiderman?"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "That woman is my mom ,negative",
+    "answer": "That woman is not my mom."
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "That woman is my mom ,question",
+    "answer": "Is that woman my mom?"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "We are friends ,negative",
+    "answer": "We are not friends."
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "We are friends,question",
+    "answer": "Are we friends?"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "I am a policeman ,negative",
+    "answer": "I am not a policeman."
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "I'm a policeman ,question",
+    "answer": "Am I a policeman?"
+  }
+]

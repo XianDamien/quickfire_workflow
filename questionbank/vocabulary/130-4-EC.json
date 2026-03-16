@@ -1,0 +1,110 @@
+[
+  {
+    "card_index": 1,
+    "hint": "二老",
+    "question": "allow",
+    "answer": "允许"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "almost",
+    "answer": "几乎"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "already",
+    "answer": "已经"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "although",
+    "answer": "虽然"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "though",
+    "answer": "虽然"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "altogether",
+    "answer": "总共"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "after",
+    "answer": "在...之后"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "afternoon",
+    "answer": "下午"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "again",
+    "answer": "再次"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "age",
+    "answer": "年龄"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "aged",
+    "answer": "上了年纪的"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "ago",
+    "answer": "以前"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "air",
+    "answer": "空气"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "airline",
+    "answer": "航空公司"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "airport",
+    "answer": "机场"
+  },
+  {
+    "card_index": 16,
+    "hint": "",
+    "question": "alarm",
+    "answer": "警报"
+  },
+  {
+    "card_index": 17,
+    "hint": "",
+    "question": "all",
+    "answer": "全部"
+  },
+  {
+    "card_index": 18,
+    "hint": "",
+    "question": "also",
+    "answer": "也"
+  }
+]

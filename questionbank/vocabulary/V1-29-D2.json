@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "nurse",
+    "answer": "护士"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "dentist",
+    "answer": "牙医"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "police",
+    "answer": "警察"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "inventor",
+    "answer": "发明家"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "businessman",
+    "answer": "商人"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "manager",
+    "answer": "经理"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "scientist",
+    "answer": "科学家"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "driver",
+    "answer": "驾驶员，司机"
+  }
+]

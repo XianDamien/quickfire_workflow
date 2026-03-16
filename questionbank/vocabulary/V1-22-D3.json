@@ -1,0 +1,50 @@
+[
+    {
+        "card_index": 1,
+        "hint": "名词",
+        "question": "尺子，统治者",
+        "answer": "ruler"
+    },
+    {
+        "card_index": 2,
+        "hint": "名词",
+        "question": "胶水",
+        "answer": "glue"
+    },
+    {
+        "card_index": 3,
+        "hint": "名词",
+        "question": "胶棒",
+        "answer": "glue stick"
+    },
+    {
+        "card_index": 4,
+        "hint": "名词",
+        "question": "磁带，胶带",
+        "answer": "tape"
+    },
+    {
+        "card_index": 5,
+        "hint": "名词",
+        "question": "计算器",
+        "answer": "calculator"
+    },
+    {
+        "card_index": 6,
+        "hint": "名词",
+        "question": "文化",
+        "answer": "culture"
+    },
+    {
+        "card_index": 7,
+        "hint": "名词",
+        "question": "项目",
+        "answer": "project"
+    },
+    {
+        "card_index": 8,
+        "hint": "名词",
+        "question": "课程或教训",
+        "answer": "lesson"
+    }
+]

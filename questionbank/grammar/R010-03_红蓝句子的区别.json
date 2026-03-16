@@ -1,0 +1,38 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "红色句子的主角和配角是一个人还是两个人？",
+    "answer": "是两个人"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "蓝色句子的主角和主角补充是一个人还是两个人？",
+    "answer": "是一个人"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "红色句子，I hug Tom，我和Tom是两个人吗？",
+    "answer": "是的"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "蓝色句子，I'm a boy I和a boy是什么关系？",
+    "answer": "A boy是对主角I的补充说明。"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "蓝色句子she is thin，她长得很瘦，Thin和she是什么关系？",
+    "answer": "Thin是对主角she的补充说明。"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "Jack is in the classroom. Jack在教室里面，In the classroom和Jack是什么关系？",
+    "answer": "In the classroom是对主角Jack的补充说明。"
+  }
+]

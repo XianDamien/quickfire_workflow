@@ -1,0 +1,32 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "有一个八字的口诀是什么？",
+    "answer": "前肯后否，前否后肯"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "应该是your mother works here, doesn't she? \n还是your mother works here, doesn't  your mother？",
+    "answer": "your mother works here, doesn't she?"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "为什么？",
+    "answer": "因为前半句已经出现了your mother，为了避免啰嗦，后面再出现的时候要用代词"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "把 there isn't any fish in the river变成反疑问句是什么？",
+    "answer": "There isn't any fish in the river, is there?"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "There be句型的反意疑问句需不需要保留真正的主角？",
+    "answer": "不需要"
+  }
+]

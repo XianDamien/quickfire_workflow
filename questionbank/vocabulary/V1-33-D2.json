@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "clothes",
+    "answer": "衣服"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "shirt",
+    "answer": "衬衫"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "blouse",
+    "answer": "女式衬衫"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "T-shirt",
+    "answer": "T恤衫"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "jacket",
+    "answer": "夹克"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "coat",
+    "answer": "大衣外套"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "vest",
+    "answer": "背心"
+  }
+]

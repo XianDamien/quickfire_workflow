@@ -1,0 +1,32 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "it和one有什么区别？",
+    "answer": "It指的是同一个物品，One指的是同类物品，但不是同一个"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "One指同类物品的时候，可以加S变成ones吗？",
+    "answer": "可以"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "翻译句子，\n我弄丢了我的英文书，你看见它了吗？",
+    "answer": "I lost my English book. Did you see it?"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "翻译句子，\n——我弄丢了我的铅笔。\n——不用担心，我可以给你买一支新的。",
+    "answer": "I lost my pencil.\nDon't worry, I will buy you a new one."
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "翻译句子，\n我不喜欢这些白色的碗，我会买那边那些红色的碗",
+    "answer": "I don't like these white bowls. I will buy the red ones over there."
+  }
+]

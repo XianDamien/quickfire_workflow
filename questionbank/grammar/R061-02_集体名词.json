@@ -1,0 +1,32 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "请说出4个集体名词",
+    "answer": "family，police，people，team，class"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "集体名词什么时候当复数？",
+    "answer": "说的是里面一个个成员的时候"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "那么它什么时候当单数？",
+    "answer": "作为一个整体时。"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "请问，【他的家庭是个大家庭】 怎么说？",
+    "answer": "His/Her family is large."
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "请问，【他全家都在看电视】 怎么说？",
+    "answer": "His/Her family are watching TV.这里，family就作为一个个成员，所以用复数。"
+  }
+]

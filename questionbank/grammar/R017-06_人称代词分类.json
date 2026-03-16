@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "如果给人称代词分类，有两种分类方式，第一种分类方式是什么？",
+    "answer": "按照第一人称、第二人称、第三人称来分类"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "第二种分类方式是什么？",
+    "answer": "按照单数和复数来分类"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "第一人称联想，手指向哪里？",
+    "answer": "手指向自己"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "第一人称有哪几个单词？",
+    "answer": "I we me us"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "第二人称想着手指向哪里？",
+    "answer": "手指向对方"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "第二人称有哪几个单词？",
+    "answer": "You这一个单词"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "第三人称想象手指向哪里？",
+    "answer": "手指向旁边"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "怎么样分辨一个词是不是第三人称呢？",
+    "answer": "除了第一人称和第二人称，剩下的都是第三人称"
+  }
+]

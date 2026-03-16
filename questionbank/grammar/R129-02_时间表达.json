@@ -1,0 +1,32 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "6点半。",
+    "answer": "Half past six."
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "7:15。",
+    "answer": "A quarter past seven."
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "5:45。",
+    "answer": "A quarter to six"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "一个半小时可以有两种说法。第一种是什么？",
+    "answer": "[An hour] and [a half]."
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "第二种说法是什么？",
+    "answer": "[One and half] hours"
+  }
+]

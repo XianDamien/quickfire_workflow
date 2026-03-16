@@ -1,0 +1,56 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "美丽的，漂亮的",
+    "answer": "beautiful"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "可爱的，聪明的",
+    "answer": "cute"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "丑陋的，难看的",
+    "answer": "ugly"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "年轻的，幼小的",
+    "answer": "young"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "古老的，年代久远的",
+    "answer": "old"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "宽的，宽阔的",
+    "answer": "wide"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "长的，长时间的",
+    "answer": "long"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "短的，矮的",
+    "answer": "short"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "高的，高大的",
+    "answer": "tall"
+  }
+]

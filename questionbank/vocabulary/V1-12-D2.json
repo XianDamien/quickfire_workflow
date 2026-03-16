@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "Penguin",
+    "answer": "企鹅"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "Swan",
+    "answer": "天鹅"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "Snake",
+    "answer": "蛇"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "Turtle",
+    "answer": "海龟"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "Frog",
+    "answer": "青蛙"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "Shark",
+    "answer": "鲨鱼"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "Dolphin",
+    "answer": "海豚"
+  }
+]

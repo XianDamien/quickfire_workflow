@@ -1,0 +1,80 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "等待叫wait，wait什么？",
+    "answer": "wait for"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "关心，care什么？",
+    "answer": "care about"
+  },
+  {
+    "card_index": 3,
+    "hint": "把单词变成复数快速反应，请说出下列单词变成复数以后是什么？要注意发音。",
+    "question": "bus",
+    "answer": "buses"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "girl",
+    "answer": "girls"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "cup",
+    "answer": "cups"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "watch",
+    "answer": "watches"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "brush",
+    "answer": "brushes"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "dog",
+    "answer": "dogs"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "tiger",
+    "answer": "tigers"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "box",
+    "answer": "boxes"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "desk",
+    "answer": "desks"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "pencil",
+    "answer": "pencils"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "class",
+    "answer": "classes"
+  }
+]

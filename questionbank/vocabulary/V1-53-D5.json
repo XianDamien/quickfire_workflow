@@ -1,0 +1,62 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "疲倦的，厌烦的",
+    "answer": "tired"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "忙碌的",
+    "answer": "busy"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "天生的，出生的",
+    "answer": "born"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "自己的",
+    "answer": "own"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "饥饿的",
+    "answer": "hungry"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "口渴的",
+    "answer": "thirsty"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "富的，有钱的",
+    "answer": "rich"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "贫穷的，可怜的",
+    "answer": "poor"
+  },
+  {
+    "card_index": 9,
+    "hint": "形容词",
+    "question": "正确的，恰当的",
+    "answer": "correct"
+  },
+  {
+    "card_index": 10,
+    "hint": "行为动词",
+    "question": "改正",
+    "answer": "correct"
+  }
+]

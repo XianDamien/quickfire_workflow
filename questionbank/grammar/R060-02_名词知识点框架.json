@@ -1,0 +1,26 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "名词分为哪两大类？",
+    "answer": "1.看得见碰的着的 2.看不见碰不着的（也就是抽象名词）"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "看得见碰的着的，举个例子",
+    "answer": "desk桌子"
+  },
+  {
+    "card_index": 3,
+    "hint": "看不见、碰不着的（抽象名词）",
+    "question": "举个例子",
+    "answer": "happiness 快乐"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "名词变复数有哪三大类？",
+    "answer": "普通+s,永远+s，复合+s"
+  }
+]

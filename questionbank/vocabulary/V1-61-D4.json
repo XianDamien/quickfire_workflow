@@ -1,0 +1,56 @@
+[
+  {
+    "card_index": 1,
+    "hint": "名词",
+    "question": "today",
+    "answer": "今日，今天"
+  },
+  {
+    "card_index": 2,
+    "hint": "副词",
+    "question": "today",
+    "answer": "今日，今天"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "now",
+    "answer": "现在，此刻"
+  },
+  {
+    "card_index": 4,
+    "hint": "名词",
+    "question": "tomorrow",
+    "answer": "明天，未来"
+  },
+  {
+    "card_index": 5,
+    "hint": "副词",
+    "question": "tomorrow",
+    "answer": "明天，未来"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "future",
+    "answer": "将来，未来"
+  },
+  {
+    "card_index": 7,
+    "hint": "形容词",
+    "question": "future",
+    "answer": "未来的"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "morning",
+    "answer": "早晨，黎明"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "afternoon",
+    "answer": "午后，下午"
+  }
+]

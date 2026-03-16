@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "身体",
+    "answer": "body"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "头，头部",
+    "answer": "head"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "脸",
+    "answer": "face"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "耳朵",
+    "answer": "ear"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "眼睛",
+    "answer": "eye"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "鼻子",
+    "answer": "nose"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "口，嘴",
+    "answer": "mouth"
+  }
+]

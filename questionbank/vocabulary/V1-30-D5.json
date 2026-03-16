@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "牙齿",
+    "answer": "tooth"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "舌头",
+    "answer": "tongue"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "脖子",
+    "answer": "neck"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "下巴",
+    "answer": "chin"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "肩膀肩部",
+    "answer": "shoulder"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "手臂",
+    "answer": "arm"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "手",
+    "answer": "hand"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "递；交",
+    "answer": "hand"
+  }
+]

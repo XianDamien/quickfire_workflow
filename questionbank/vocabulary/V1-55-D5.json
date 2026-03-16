@@ -1,0 +1,62 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "满的，饱的",
+    "answer": "full"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "慢的，缓慢的",
+    "answer": "slow"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "迅速的，快的",
+    "answer": "quick"
+  },
+  {
+    "card_index": 4,
+    "hint": "形容词",
+    "question": "快的，迅速的",
+    "answer": "fast"
+  },
+  {
+    "card_index": 5,
+    "hint": "副词",
+    "question": "迅速的，快的",
+    "answer": "fast"
+  },
+  {
+    "card_index": 6,
+    "hint": "行为动词",
+    "question": "原谅",
+    "answer": "excuse"
+  },
+  {
+    "card_index": 7,
+    "hint": "名词",
+    "question": "借口",
+    "answer": "excuse"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "享受，喜爱",
+    "answer": "enjoy"
+  },
+  {
+    "card_index": 9,
+    "hint": "名词",
+    "question": "愿望，祝福，祝愿",
+    "answer": "wish"
+  },
+  {
+    "card_index": 10,
+    "hint": "行为动词",
+    "question": "愿望，祝福，祝愿",
+    "answer": "wish"
+  }
+]

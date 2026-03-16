@@ -1,0 +1,32 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "as是什么意思？",
+    "answer": "作为"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "like是什么意思？",
+    "answer": "像"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "as和like有什么区别？",
+    "answer": "as类似于“=”。like是“像”，但两者不是一个东西"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "翻译句子：我的叔叔作为一个出租车司机谋生。",
+    "answer": "My uncle makes a living as a taxi driver."
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "翻译句子：她看上去像一个明星。",
+    "answer": "She looks like a star."
+  }
+]

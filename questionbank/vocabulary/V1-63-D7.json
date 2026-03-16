@@ -1,0 +1,122 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "八月",
+    "answer": "august"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "九月",
+    "answer": "september"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "十月",
+    "answer": "october"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "十一月",
+    "answer": "november"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "十二月",
+    "answer": "december"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "季节",
+    "answer": "season"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "春天，春季",
+    "answer": "spring"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "夏天，夏季",
+    "answer": "summer"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "秋天，秋季",
+    "answer": "autumn"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "冬天，冬季",
+    "answer": "winter"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "假日，假期，节日",
+    "answer": "holiday"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "节日",
+    "answer": "festival"
+  },
+  {
+    "card_index": 13,
+    "hint": "形容词",
+    "question": "早的",
+    "answer": "early"
+  },
+  {
+    "card_index": 14,
+    "hint": "副词",
+    "question": "提早，在早期",
+    "answer": "early"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "迟到的，晚的",
+    "answer": "late"
+  },
+  {
+    "card_index": 16,
+    "hint": "名词",
+    "question": "终点，结束，末尾",
+    "answer": "end"
+  },
+  {
+    "card_index": 17,
+    "hint": "动词",
+    "question": "结束",
+    "answer": "end"
+  },
+  {
+    "card_index": 18,
+    "hint": "",
+    "question": "持续",
+    "answer": "last"
+  },
+  {
+    "card_index": 19,
+    "hint": "形容词",
+    "question": "留在最后的，刚过去的",
+    "answer": "last"
+  },
+  {
+    "card_index": 20,
+    "hint": "",
+    "question": "接下来的，下次的",
+    "answer": "next"
+  }
+]

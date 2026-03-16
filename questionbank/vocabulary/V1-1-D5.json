@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "芒果",
+    "answer": "Mango"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "柠檬",
+    "answer": "Lemon"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "瓜，甜瓜",
+    "answer": "Melon"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "西瓜",
+    "answer": "Watermelon"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "草莓",
+    "answer": "Strawberry"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "樱桃",
+    "answer": "Cherry"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "桃子",
+    "answer": "Peach"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "菠萝",
+    "answer": "Pineapple"
+  }
+]

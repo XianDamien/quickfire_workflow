@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "1、between",
+    "answer": "两者之间"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "among",
+    "answer": "多者之间"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "in the middle of",
+    "answer": "在中间，两边距离相等"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "at和by，谁离得比较近",
+    "answer": "at"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "beside和by，谁离得近",
+    "answer": "by"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "near和beside，谁离得近",
+    "answer": "beside"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "by和near，谁离得近",
+    "answer": "by"
+  }
+]

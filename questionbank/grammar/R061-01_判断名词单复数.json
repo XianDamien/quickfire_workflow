@@ -1,0 +1,62 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "number 1 class",
+    "answer": "指一个班级整体时是单数，指班级中一个个成员时是复数"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "number 2 trousers",
+    "answer": "复数"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "number 3 team",
+    "answer": "指一个团队整体时是单数，指团队中一个个成员时是复数"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "number 4 chopsticks",
+    "answer": "复数"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "number 5 people",
+    "answer": "复数"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "number 6 police",
+    "answer": "复数"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "number 7 family",
+    "answer": "指一个家庭时是单数，指家庭中一个个成员时是复数"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "number 8 jeans",
+    "answer": "牛仔裤是复数"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "number 9 shorts",
+    "answer": "短裤是复数"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "number 10 scissors",
+    "answer": "剪刀是复数"
+  }
+]

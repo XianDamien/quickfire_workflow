@@ -1,0 +1,104 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "wall",
+    "answer": "墙"
+  },
+  {
+    "card_index": 2,
+    "hint": "瓦里头",
+    "question": "wallet",
+    "answer": "钱包"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "want",
+    "answer": "想，想要"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "war",
+    "answer": "战争"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "warm",
+    "answer": "暖和的"
+  },
+  {
+    "card_index": 6,
+    "hint": "汪汪",
+    "question": "warn",
+    "answer": "警告"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "wash",
+    "answer": "洗"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "waste",
+    "answer": "浪费"
+  },
+  {
+    "card_index": 9,
+    "hint": "verb",
+    "question": "watch",
+    "answer": "看"
+  },
+  {
+    "card_index": 10,
+    "hint": "noun",
+    "question": "watch",
+    "answer": "手表"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "water",
+    "answer": "水"
+  },
+  {
+    "card_index": 12,
+    "hint": "verb",
+    "question": "water",
+    "answer": "浇水"
+  },
+  {
+    "card_index": 13,
+    "hint": "挥舞",
+    "question": "wave",
+    "answer": "挥手，波浪"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "way",
+    "answer": "路，路线"
+  },
+  {
+    "card_index": 15,
+    "hint": "微壳",
+    "question": "weak",
+    "answer": "虚弱的"
+  },
+  {
+    "card_index": 16,
+    "hint": "water 加 earth，或者 health 也是财富",
+    "question": "wealth",
+    "answer": "财富"
+  },
+  {
+    "card_index": 17,
+    "hint": "为而",
+    "question": "wear",
+    "answer": "穿，穿衣服"
+  }
+]

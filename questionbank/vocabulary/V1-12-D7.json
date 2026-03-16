@@ -1,0 +1,92 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "企鹅",
+    "answer": "Penguin"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "天鹅",
+    "answer": "Swan"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "蛇",
+    "answer": "Snake"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "海龟",
+    "answer": "Turtle"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "青蛙",
+    "answer": "Frog"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "鲨鱼",
+    "answer": "Shark"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "海豚",
+    "answer": "Dolphin"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "鲸",
+    "answer": "Whale"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "蚂蚁",
+    "answer": "Ant"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "蜗牛",
+    "answer": "Snail"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "蜜蜂",
+    "answer": "Bee"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "蝴蝶",
+    "answer": "Butterfly"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "龙",
+    "answer": "Dragon"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "喂食，喂养",
+    "answer": "Feed"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "打猎",
+    "answer": "Hunt"
+  }
+]

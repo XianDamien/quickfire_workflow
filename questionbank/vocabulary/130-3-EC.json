@@ -1,0 +1,98 @@
+[
+  {
+    "card_index": 1,
+    "hint": "我翻开它",
+    "question": "affect",
+    "answer": "影响"
+  },
+  {
+    "card_index": 2,
+    "hint": "一翻开它",
+    "question": "effect",
+    "answer": "效果"
+  },
+  {
+    "card_index": 3,
+    "hint": "我付的",
+    "question": "afford",
+    "answer": "负担得起"
+  },
+  {
+    "card_index": 4,
+    "hint": "鹅肥的",
+    "question": "afraid",
+    "answer": "害怕"
+  },
+  {
+    "card_index": 5,
+    "hint": "干死它",
+    "question": "against",
+    "answer": "反对"
+  },
+  {
+    "card_index": 6,
+    "hint": "我鼓励",
+    "question": "agree",
+    "answer": "同意"
+  },
+  {
+    "card_index": 7,
+    "hint": "爱慕它",
+    "question": "aim",
+    "answer": "瞄准"
+  },
+  {
+    "card_index": 8,
+    "hint": "有一个头的地方",
+    "question": "ahead",
+    "answer": "前面"
+  },
+  {
+    "card_index": 9,
+    "hint": "空中港口",
+    "question": "airport",
+    "answer": "机场"
+  },
+  {
+    "card_index": 10,
+    "hint": "有生命的和无生命的",
+    "question": "living",
+    "answer": "有生命的"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "alive",
+    "answer": "活着的"
+  },
+  {
+    "card_index": 12,
+    "hint": "有one的",
+    "question": "alone",
+    "answer": "孤单"
+  },
+  {
+    "card_index": 13,
+    "hint": "long，长路沿着走",
+    "question": "along",
+    "answer": "沿着"
+  },
+  {
+    "card_index": 14,
+    "hint": "百分之一百",
+    "question": "always",
+    "answer": "总是"
+  },
+  {
+    "card_index": 15,
+    "hint": "鹅美景",
+    "question": "amazing",
+    "answer": "令人吃惊"
+  },
+  {
+    "card_index": 16,
+    "hint": "俺必胜",
+    "question": "ambition",
+    "answer": "野心"
+  }
+]

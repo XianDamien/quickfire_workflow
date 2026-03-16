@@ -1,0 +1,116 @@
+[
+    {
+        "card_index": 1,
+        "hint": "副词",
+        "question": "逐渐地，渐渐地",
+        "answer": "gradually"
+    },
+    {
+        "card_index": 2,
+        "hint": "名词",
+        "question": "蜂蜜，宝贝，甜蜜",
+        "answer": "honey"
+    },
+    {
+        "card_index": 3,
+        "hint": "形容词",
+        "question": "甘美的，蜂蜜似的",
+        "answer": "honey"
+    },
+    {
+        "card_index": 4,
+        "hint": "名词",
+        "question": "钱，钞票，财富，金钱",
+        "answer": "money"
+    },
+    {
+        "card_index": 5,
+        "hint": "名词",
+        "question": "钥匙，答案，关键，秘诀",
+        "answer": "key"
+    },
+    {
+        "card_index": 6,
+        "hint": "名词",
+        "question": "猴子，淘气鬼，小淘气",
+        "answer": "monkey"
+    },
+    {
+        "card_index": 7,
+        "hint": "及物动词",
+        "question": "服从，顺从，听从",
+        "answer": "obey"
+    },
+    {
+        "card_index": 8,
+        "hint": "名词",
+        "question": "调查、测量、测绘",
+        "answer": "survey"
+    },
+    {
+        "card_index": 9,
+        "hint": "名词",
+        "question": "眼睛",
+        "answer": "eye"
+    },
+    {
+        "card_index": 10,
+        "hint": "名词",
+        "question": "蓝色",
+        "answer": "blue"
+    },
+    {
+        "card_index": 11,
+        "hint": "形容词",
+        "question": "蓝色的，沮丧的，忧郁的",
+        "answer": "blue"
+    },
+    {
+        "card_index": 12,
+        "hint": "名词",
+        "question": "胶，胶水",
+        "answer": "glue"
+    },
+    {
+        "card_index": 13,
+        "hint": "形容词",
+        "question": "真的，真实的，忠诚的，准确的",
+        "answer": "true"
+    },
+    {
+        "card_index": 14,
+        "hint": "及物动词",
+        "question": "信任，相信",
+        "answer": "trust"
+    },
+    {
+        "card_index": 15,
+        "hint": "名词",
+        "question": "行列，队",
+        "answer": "queue"
+    },
+    {
+        "card_index": 16,
+        "hint": "不及物动词",
+        "question": "排队",
+        "answer": "queue"
+    },
+    {
+        "card_index": 17,
+        "hint": "不及物动词",
+        "question": "争吵，争论",
+        "answer": "argue"
+    },
+    {
+        "card_index": 18,
+        "hint": "及物动词",
+        "question": "争辩",
+        "answer": "argue"
+    },
+    {
+        "card_index": 19,
+        "hint": "行为动词",
+        "question": "使继续",
+        "answer": "continue"
+    }
+]

@@ -1,0 +1,242 @@
+[
+    {
+        "card_index": 1,
+        "hint": "行为动词",
+        "question": "meet",
+        "answer": "遇见，会面"
+    },
+    {
+        "card_index": 2,
+        "hint": "及物动词",
+        "question": "meet",
+        "answer": "满足，符合"
+    },
+    {
+        "card_index": 3,
+        "hint": "不及物动词",
+        "question": "meet",
+        "answer": "开会"
+    },
+    {
+        "card_index": 4,
+        "hint": "名词",
+        "question": "street",
+        "answer": "街，街道，道路"
+    },
+    {
+        "card_index": 5,
+        "hint": "形容词",
+        "question": "sweet",
+        "answer": "甜的，可爱的，悦耳的"
+    },
+    {
+        "card_index": 6,
+        "hint": "名词",
+        "question": "sweet",
+        "answer": "糖果"
+    },
+    {
+        "card_index": 7,
+        "hint": "名词",
+        "question": "ball",
+        "answer": "球，球状物，舞会"
+    },
+    {
+        "card_index": 8,
+        "hint": "行为动词",
+        "question": "call",
+        "answer": "叫，喊，打电话给"
+    },
+    {
+        "card_index": 9,
+        "hint": "及物动词",
+        "question": "call",
+        "answer": "拜访，召集，称呼"
+    },
+    {
+        "card_index": 10,
+        "hint": "不及物动词",
+        "question": "fall",
+        "answer": "落下，降落，跌倒"
+    },
+    {
+        "card_index": 11,
+        "hint": "名词",
+        "question": "hall",
+        "answer": "会堂，礼堂，大厅"
+    },
+    {
+        "card_index": 12,
+        "hint": "形容词",
+        "question": "small",
+        "answer": "形状、规模小的，数量、价值小的"
+    },
+    {
+        "card_index": 13,
+        "hint": "名词",
+        "question": "mall",
+        "answer": "商业街，购物中心"
+    },
+    {
+        "card_index": 14,
+        "hint": "名词",
+        "question": "wall",
+        "answer": "墙，墙壁，城墙"
+    },
+    {
+        "card_index": 15,
+        "hint": "形容词",
+        "question": "tall",
+        "answer": "高的"
+    },
+    {
+        "card_index": 16,
+        "hint": "名词",
+        "question": "challenge",
+        "answer": "挑战，具有挑战性的事物，怀疑，质疑"
+    },
+    {
+        "card_index": 17,
+        "hint": "名词",
+        "question": "door",
+        "answer": "门，门口，通道，途径"
+    },
+    {
+        "card_index": 18,
+        "hint": "名词",
+        "question": "floor",
+        "answer": "室内地面，地板，楼层"
+    },
+    {
+        "card_index": 19,
+        "hint": "形容词",
+        "question": "outdoor",
+        "answer": "户外的，室外的"
+    },
+    {
+        "card_index": 20,
+        "hint": "形容词",
+        "question": "poor",
+        "answer": "贫穷的，低劣的，可怜的"
+    },
+    {
+        "card_index": 21,
+        "hint": "介词",
+        "question": "between",
+        "answer": "在两者之间"
+    },
+    {
+        "card_index": 22,
+        "hint": "副词",
+        "question": "between",
+        "answer": "当中，中间"
+    },
+    {
+        "card_index": 23,
+        "hint": "形容词",
+        "question": "green",
+        "answer": "绿色的，不成熟的"
+    },
+    {
+        "card_index": 24,
+        "hint": "名词",
+        "question": "green",
+        "answer": "绿色"
+    },
+    {
+        "card_index": 25,
+        "hint": "名词",
+        "question": "screen",
+        "answer": "银幕，屏幕"
+    },
+    {
+        "card_index": 26,
+        "hint": "数词",
+        "question": "fifteen",
+        "answer": "十五"
+    },
+    {
+        "card_index": 27,
+        "hint": "名词",
+        "question": "teenager",
+        "answer": "青少年"
+    },
+    {
+        "card_index": 28,
+        "hint": "形容词",
+        "question": "teenager",
+        "answer": "青少年的"
+    },
+    {
+        "card_index": 29,
+        "hint": "名词",
+        "question": "queen",
+        "answer": "女王，王后"
+    },
+    {
+        "card_index": 30,
+        "hint": "名词",
+        "question": "name",
+        "answer": "姓名，名称"
+    },
+    {
+        "card_index": 31,
+        "hint": "及物动词",
+        "question": "name",
+        "answer": "命名，指定"
+    },
+    {
+        "card_index": 32,
+        "hint": "形容词",
+        "question": "same",
+        "answer": "相同的，同样的"
+    },
+    {
+        "card_index": 33,
+        "hint": "代词",
+        "question": "same",
+        "answer": "同样的人，同样的事物"
+    },
+    {
+        "card_index": 34,
+        "hint": "名词",
+        "question": "game",
+        "answer": "游戏，运动，比赛"
+    },
+    {
+        "card_index": 35,
+        "hint": "名词",
+        "question": "shame",
+        "answer": "羞愧，羞耻，令人惋惜的事，让人遗憾的事"
+    },
+    {
+        "card_index": 36,
+        "hint": "名词",
+        "question": "fame",
+        "answer": "名声，名望，声誉"
+    },
+    {
+        "card_index": 37,
+        "hint": "行为动词",
+        "question": "fry",
+        "answer": "油炸，油煎，油炒"
+    },
+    {
+        "card_index": 38,
+        "hint": "形容词",
+        "question": "fresh",
+        "answer": "新鲜的，新的"
+    },
+    {
+        "card_index": 39,
+        "hint": "名词",
+        "question": "front",
+        "answer": "前面，正面，前部，前线，前方"
+    },
+    {
+        "card_index": 40,
+        "hint": "形容词",
+        "question": "front",
+        "answer": "前面的，前部的"
+    }
+]

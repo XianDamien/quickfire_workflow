@@ -1,0 +1,26 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "some用在哪个形态？",
+    "answer": "Positive"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "any用在什么形态？",
+    "answer": "Negative和question"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "但是有一种情况在question的时候也要用some，是什么情况？",
+    "answer": "请求和邀请的时候，"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "some中文里叫一些，那么any中文中叫什么？",
+    "answer": "任何"
+  }
+]

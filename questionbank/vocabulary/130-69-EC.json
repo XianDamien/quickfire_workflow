@@ -1,0 +1,92 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "mouse",
+    "answer": "老鼠"
+  },
+  {
+    "card_index": 2,
+    "hint": "咬舌的",
+    "question": "mouth",
+    "answer": "嘴巴"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "move",
+    "answer": "移动"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "movie",
+    "answer": "电影"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "Mr",
+    "answer": "先生"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "Mrs",
+    "answer": "夫人"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "much",
+    "answer": "许多的，大量的"
+  },
+  {
+    "card_index": 8,
+    "hint": "口语",
+    "question": "mom",
+    "answer": "妈妈"
+  },
+  {
+    "card_index": 9,
+    "hint": "某些墓。博物馆会展出某些墓里边的东西",
+    "question": "museum",
+    "answer": "博物馆"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "mushroom",
+    "answer": "蘑菇"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "music",
+    "answer": "音乐"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "must",
+    "answer": "必须"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "myself",
+    "answer": "我自己"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "name",
+    "answer": "名字"
+  },
+  {
+    "card_index": 15,
+    "hint": "难容。容不下两个人",
+    "question": "narrow",
+    "answer": "狭窄的"
+  }
+]

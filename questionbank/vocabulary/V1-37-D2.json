@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "front",
+    "answer": "前面"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "ahead",
+    "answer": "在前面，向前"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "forward",
+    "answer": "向前的"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "forward",
+    "answer": "向前"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "between",
+    "answer": "在什么之间"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "beside",
+    "answer": "在什么旁边"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "central",
+    "answer": "中心的"
+  }
+]

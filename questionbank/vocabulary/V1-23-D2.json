@@ -1,0 +1,44 @@
+[
+    {
+        "card_index": 1,
+        "hint": "名词",
+        "question": "word",
+        "answer": "单词，话语"
+    },
+    {
+        "card_index": 2,
+        "hint": "动词",
+        "question": "count",
+        "answer": "数数，计算"
+    },
+    {
+        "card_index": 3,
+        "hint": "动词",
+        "question": "add",
+        "answer": "加，增加"
+    },
+    {
+        "card_index": 4,
+        "hint": "名词",
+        "question": "homework",
+        "answer": "家庭作业"
+    },
+    {
+        "card_index": 5,
+        "hint": "名词",
+        "question": "question",
+        "answer": "问题"
+    },
+    {
+        "card_index": 6,
+        "hint": "名词",
+        "question": "problem",
+        "answer": "困难"
+    },
+    {
+        "card_index": 7,
+        "hint": "名词",
+        "question": "mistake",
+        "answer": "错误"
+    }
+]

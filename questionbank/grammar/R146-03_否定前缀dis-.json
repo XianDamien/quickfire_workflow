@@ -1,0 +1,56 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "一个单词前面加了dis，意思有什么变化？",
+    "answer": "变成相反的意思"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "like",
+    "answer": "喜欢"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "dislike",
+    "answer": "不喜欢"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "appear",
+    "answer": "出现"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "disappear",
+    "answer": "消失"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "agree",
+    "answer": "同意"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "disagree",
+    "answer": "不同意"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "approve",
+    "answer": "同意"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "disapprove",
+    "answer": "不同意"
+  }
+]

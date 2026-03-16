@@ -1,0 +1,26 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "翻译句子：我们需要在这里等。",
+    "answer": "We need wait here."
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "你需要多少钱?",
+    "answer": "How much money do you need?"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "如果有一个need，need后面直接说了not，变成needn’t / need not ，这时候need是什么词性？为什么？",
+    "answer": "是modal，因为精神小伙可以自己说not"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "You don’t need to pay for the bill now.这时候need是什么词性？为什么？",
+    "answer": "是verb，因为verb需要灵魂do帮忙说not"
+  }
+]

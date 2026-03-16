@@ -1,0 +1,32 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "这礼物是给你的。",
+    "answer": "The present is for you."
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "这城镇因为古堡而闻名。",
+    "answer": "The town is famous for its old castle."
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "我在这里待了3小时之久。",
+    "answer": "I have been here for three hours."
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "我搭了前往北京的火车。",
+    "answer": "I took the train for Beijing."
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "对这女孩的年龄来说，她算是高的。",
+    "answer": "The girl is tall for her age."
+  }
+]

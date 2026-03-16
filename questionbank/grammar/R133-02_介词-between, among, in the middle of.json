@@ -1,0 +1,38 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "Between是什么意思？",
+    "answer": "在两者之间。"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "一定是在两者的正中间吗？",
+    "answer": "不一定。"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "Among是什么意思？",
+    "answer": "在多者之间。"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "是不是在多者的正中间？",
+    "answer": "不一定。"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "In the middle of是什么意思？",
+    "answer": "在正中间。"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "是在几者的正中间？",
+    "answer": "没有数量限制，几者的正中间都可以"
+  }
+]

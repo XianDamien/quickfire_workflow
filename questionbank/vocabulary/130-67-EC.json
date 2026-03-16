@@ -1,0 +1,92 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "middle",
+    "answer": "中间"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "might",
+    "answer": "可能"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "mile",
+    "answer": "英里"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "milk",
+    "answer": "牛奶"
+  },
+  {
+    "card_index": 5,
+    "hint": "两个意思",
+    "question": "mind",
+    "answer": "注意，精神"
+  },
+  {
+    "card_index": 6,
+    "hint": "两个意思，代词和名词",
+    "question": "mine",
+    "answer": "我的，矿"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "minus",
+    "answer": "负的，减去的"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "minute",
+    "answer": "分钟"
+  },
+  {
+    "card_index": 9,
+    "hint": "美若天仙的美若",
+    "question": "mirror",
+    "answer": "镜子"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "miss",
+    "answer": "失去，错过"
+  },
+  {
+    "card_index": 11,
+    "hint": "首字母大写",
+    "question": "Miss",
+    "answer": "小姐，女士"
+  },
+  {
+    "card_index": 12,
+    "hint": "miss 加上 take",
+    "question": "mistake",
+    "answer": "错误，弄错"
+  },
+  {
+    "card_index": 13,
+    "hint": "动词",
+    "question": "mix",
+    "answer": "混合"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "mixture",
+    "answer": "混合物"
+  },
+  {
+    "card_index": 15,
+    "hint": "某宝提供移动支付",
+    "question": "mobile",
+    "answer": "移动的"
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "几乘以几的那个乘,用英文有两种说法，分别是什么？",
+    "answer": "Times和multiplied by."
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "用英文说，2×8=16，用到times这个词。",
+    "answer": "Two times eight is sixteen."
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "还是2×8=16，用到multiplied by这个说法。",
+    "answer": "Two multiplied by eight is sixteen"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "除法也有两种说法。分别是什么？",
+    "answer": "Over和divided by."
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "用英文说，8÷2=4，用到over。",
+    "answer": "Eight over two is four."
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "还是8÷2=4用到divided by这种说法。",
+    "answer": "Eight divided by two Is four"
+  }
+]

@@ -1,0 +1,92 @@
+[
+  {
+    "card_index": 1,
+    "hint": "像鹅毛一样，像一座山一样",
+    "question": "amount",
+    "answer": "数量"
+  },
+  {
+    "card_index": 2,
+    "hint": "缪斯女神",
+    "question": "amusement",
+    "answer": "娱乐"
+  },
+  {
+    "card_index": 3,
+    "hint": "缪斯女神",
+    "question": "amusing",
+    "answer": "令人愉快的"
+  },
+  {
+    "card_index": 4,
+    "hint": "矮身的",
+    "question": "ancient",
+    "answer": "古代的"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "and",
+    "answer": "和"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "angrily",
+    "answer": "生气地"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "angry",
+    "answer": "生气的"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "animal",
+    "answer": "动物"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "another",
+    "answer": "另一个"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "answer",
+    "answer": "回答"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "ant",
+    "answer": "蚂蚁"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "any",
+    "answer": "任何"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "anybody",
+    "answer": "任何人"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "anyone",
+    "answer": "任何人"
+  },
+  {
+    "card_index": 15,
+    "hint": "三个或三个以上",
+    "question": "among",
+    "answer": "在...之间"
+  }
+]

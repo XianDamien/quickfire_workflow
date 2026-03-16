@@ -1,0 +1,68 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "adj. clause以什么开头？",
+    "answer": "链条/conjunction/连词"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "adj. clause的前面是什么？",
+    "answer": "一个名词"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "链条和名词的关系是什么？",
+    "answer": "链条等于名词"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "adj. clause的链条一共有5个分成三组，第一组有一个是什么？",
+    "answer": "that"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "第二组有两个分别是什么？",
+    "answer": "who和which"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "第三组也有两个分别是什么？",
+    "answer": "whose和whom"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "连词中who可以和什么绑在一起？",
+    "answer": "和人"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "which可以和谁绑在一起？",
+    "answer": "东西"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "who可以用什么替代？",
+    "answer": "that"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "which可以用什么替代？",
+    "answer": "that"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "whose可以用什么替代？",
+    "answer": "没有什么可以替代whose"
+  }
+]

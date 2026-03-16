@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "clever",
+    "answer": "聪明的"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "polite",
+    "answer": "有礼貌的，客气的"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "shy",
+    "answer": "羞怯的，腼腆的"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "brave",
+    "answer": "勇敢的"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "friendly",
+    "answer": "友好的"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "careful",
+    "answer": "小心的，仔细的"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "helpful",
+    "answer": "有帮助的，乐于助人的"
+  }
+]

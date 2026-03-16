@@ -1,0 +1,110 @@
+[
+  {
+    "card_index": 1,
+    "hint": "得绕开它，不能直接进攻",
+    "question": "direct",
+    "answer": "直接"
+  },
+  {
+    "card_index": 2,
+    "hint": "得绕开它，得听我的",
+    "question": "direct",
+    "answer": "指导"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "directly",
+    "answer": "直接地"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "director",
+    "answer": "导演"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "direction",
+    "answer": "方向"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "dirty",
+    "answer": "脏的"
+  },
+  {
+    "card_index": 7,
+    "hint": "dis 否定 able 可以，不可以的",
+    "question": "disabled",
+    "answer": "残疾的"
+  },
+  {
+    "card_index": 8,
+    "hint": "饿得我挺直，为什么？优点是瘦",
+    "question": "advantage",
+    "answer": "优点"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "disadvantage",
+    "answer": "缺点"
+  },
+  {
+    "card_index": 10,
+    "hint": "dis 否 appear 出现",
+    "question": "disappear",
+    "answer": "消失"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "disappointed",
+    "answer": "失望的"
+  },
+  {
+    "card_index": 12,
+    "hint": "弟弟杀死了他",
+    "question": "disaster",
+    "answer": "灾难"
+  },
+  {
+    "card_index": 13,
+    "hint": "dis 否 cover 盖，不盖",
+    "question": "discover",
+    "answer": "发现"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "discuss",
+    "answer": "讨论"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "discussion",
+    "answer": "讨论"
+  },
+  {
+    "card_index": 16,
+    "hint": "dis 不，ease 舒服简单，不舒服不简单",
+    "question": "disease",
+    "answer": "疾病"
+  },
+  {
+    "card_index": 17,
+    "hint": "",
+    "question": "dish",
+    "answer": "盘子"
+  },
+  {
+    "card_index": 18,
+    "hint": "",
+    "question": "dishonest",
+    "answer": "不诚实的"
+  }
+]

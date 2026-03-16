@@ -1,0 +1,56 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "center",
+    "answer": "中心"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "corner",
+    "answer": "角落、拐角、角"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "enter",
+    "answer": "进入"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "entry",
+    "answer": "进入、入口"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "far",
+    "answer": "遥远的"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "far",
+    "answer": "遥远的"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "near",
+    "answer": "在什么附近、接近"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "here",
+    "answer": "在这里"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "there",
+    "answer": "在那里"
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "原因理由的链条,除了because还有哪两个?",
+    "answer": "since和as"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "since除了理由链条同时还是什么链条?",
+    "answer": "时间链条"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "在时间链条中表示什么意思?",
+    "answer": "自从"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "as除了理由链条还是什么连词?",
+    "answer": "时间连词和方法连词"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "时间连词表示什么?",
+    "answer": "as同时"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "方法连词as表示什么?",
+    "answer": "按照。“按照火星造金字塔的方式，造地球的金字塔。”--as"
+  }
+]

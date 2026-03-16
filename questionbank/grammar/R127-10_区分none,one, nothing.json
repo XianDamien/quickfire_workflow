@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "None是什么意思？",
+    "answer": "没有人或没有物。着重强调数量为0。"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "No one是什么意思？",
+    "answer": "没有人。"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "Nothing什么意思？",
+    "answer": "什么都没有，指物品"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "如果我问你How many people are there in the room？\n你要回答none还是no one?",
+    "answer": "none ,数量为0"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "如果我问你whois in the room?谁在房间里?你要说none还是no one？",
+    "answer": "要说no one"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "为什么？",
+    "answer": "因为no one指的是没有人。"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "none no one和nothing哪一个后面可以加of?",
+    "answer": "none后面可以加of"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "翻译句子，他们当中没有一个是来自澳大利亚的。",
+    "answer": "None of them is from Australia."
+  }
+]

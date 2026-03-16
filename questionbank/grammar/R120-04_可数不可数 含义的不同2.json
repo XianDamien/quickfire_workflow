@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "exercise",
+    "answer": "表示练习题可数；锻炼不可数"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "experience",
+    "answer": "表示经历可数；经验不可数"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "hair",
+    "answer": "表示几根头发可数；头发这个概念不可数"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "work",
+    "answer": "表示作品可数；工作内容不可数"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "turkey",
+    "answer": "表示火鸡可数；火鸡肉不可数"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "room",
+    "answer": "表示房间可数；空间不可数"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "youth",
+    "answer": "表示青年人可数；青春不可数"
+  }
+]

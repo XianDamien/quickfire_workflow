@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "Before",
+    "answer": "之前"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "After",
+    "answer": "之后"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "for",
+    "answer": "持续一段时间"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "Within",
+    "answer": "在某段时间内，强调不能超出这个时间"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "During",
+    "answer": "在某段时间内"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "By",
+    "answer": "截止"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "Till或until",
+    "answer": "直到"
+  }
+]

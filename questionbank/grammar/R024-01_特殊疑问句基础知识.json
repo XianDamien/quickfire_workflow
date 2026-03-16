@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "可以用yes或者是no回答的叫什么句子，",
+    "answer": "叫一般疑问句，"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "不能用yes或者是no回答的叫什么句子，",
+    "answer": "叫特殊疑问句。"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "一般疑问句的英文是什么？",
+    "answer": "Yes or no question"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "特殊疑问句的英文是什么？",
+    "answer": "wh question"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "特殊疑问句是从什么句子变来的？",
+    "answer": "是从一般疑问句变来的。"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "也就是说，一个句子如果去掉了开头的when where这种wh开头的词，\n剩下的应该是一个什么句子？",
+    "answer": "剩下的是一般疑问句"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "When do you go to school？是一般疑问句还是特殊疑问句？",
+    "answer": "是特殊疑问句"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "Do you like milk？是一般疑问句还是特殊疑问句？",
+    "answer": "是一般疑问句"
+  }
+]

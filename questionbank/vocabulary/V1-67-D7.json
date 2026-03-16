@@ -1,0 +1,128 @@
+[
+  {
+    "card_index": 1,
+    "hint": "冠词",
+    "question": "一个，每一，任意",
+    "answer": "a"
+  },
+  {
+    "card_index": 2,
+    "hint": "冠词",
+    "question": "一个",
+    "answer": "an"
+  },
+  {
+    "card_index": 3,
+    "hint": "冠词",
+    "question": "这，那",
+    "answer": "the"
+  },
+  {
+    "card_index": 4,
+    "hint": "连词",
+    "question": "因为",
+    "answer": "as"
+  },
+  {
+    "card_index": 5,
+    "hint": "副词",
+    "question": "一样",
+    "answer": "as"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "给，对，为，因为",
+    "answer": "for"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "和什么一起，跟，用",
+    "answer": "with"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "没有，无",
+    "answer": "without"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "从哪里来，来自",
+    "answer": "from"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "向，朝，到，往",
+    "answer": "to"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "属于什么的",
+    "answer": "of"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "从某处落下，离开",
+    "answer": "off"
+  },
+  {
+    "card_index": 13,
+    "hint": "介词",
+    "question": "向外",
+    "answer": "out"
+  },
+  {
+    "card_index": 14,
+    "hint": "副词",
+    "question": "在外",
+    "answer": "out"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "在什么内，在什么期间",
+    "answer": "in"
+  },
+  {
+    "card_index": 16,
+    "hint": "",
+    "question": "进入什么里面",
+    "answer": "into"
+  },
+  {
+    "card_index": 17,
+    "hint": "",
+    "question": "在",
+    "answer": "at"
+  },
+  {
+    "card_index": 18,
+    "hint": "",
+    "question": "乘，骑，由",
+    "answer": "by"
+  },
+  {
+    "card_index": 19,
+    "hint": "",
+    "question": "在什么上面，在具体某个日期",
+    "answer": "on"
+  },
+  {
+    "card_index": 20,
+    "hint": "副词",
+    "question": "在那边",
+    "answer": "over"
+  },
+  {
+    "card_index": 21,
+    "hint": "介词",
+    "question": "在什么上面",
+    "answer": "over"
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "card_index": 1,
+    "hint": "名词",
+    "question": "声音",
+    "answer": "sound"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "看，瞧，看上去",
+    "answer": "look"
+  },
+  {
+    "card_index": 3,
+    "hint": "名词",
+    "question": "看，样子",
+    "answer": "look"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "感觉，觉得",
+    "answer": "feel"
+  },
+  {
+    "card_index": 5,
+    "hint": "行为动词",
+    "question": "触摸，联系，摸起来",
+    "answer": "touch"
+  },
+  {
+    "card_index": 6,
+    "hint": "名词",
+    "question": "联系",
+    "answer": "touch"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "吃起来，品尝",
+    "answer": "taste"
+  },
+  {
+    "card_index": 8,
+    "hint": "名词",
+    "question": "味道",
+    "answer": "taste"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "听到，听见",
+    "answer": "hear"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "闻味道，闻起来",
+    "answer": "smell"
+  }
+]

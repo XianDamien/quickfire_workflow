@@ -1,0 +1,122 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "beautiful",
+    "answer": "美丽的，漂亮的"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "cute",
+    "answer": "可爱的，聪明的"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "ugly",
+    "answer": "丑陋的，难看的"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "young",
+    "answer": "年轻的，幼小的"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "old",
+    "answer": "古老的，年代久远的"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "wide",
+    "answer": "宽的，宽阔的"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "long",
+    "answer": "长的，长时间的"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "short",
+    "answer": "短的，矮的"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "tall",
+    "answer": "高的，高大的"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "high",
+    "answer": "高的"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "large",
+    "answer": "大的，大量的"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "deep",
+    "answer": "深的"
+  },
+  {
+    "card_index": 13,
+    "hint": "形容词",
+    "question": "low",
+    "answer": "低的，矮的"
+  },
+  {
+    "card_index": 14,
+    "hint": "副词",
+    "question": "low",
+    "answer": "低"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "small",
+    "answer": "小的，少的"
+  },
+  {
+    "card_index": 16,
+    "hint": "",
+    "question": "big",
+    "answer": "大的"
+  },
+  {
+    "card_index": 17,
+    "hint": "",
+    "question": "heavy",
+    "answer": "沉重的，大量的"
+  },
+  {
+    "card_index": 18,
+    "hint": "",
+    "question": "thin",
+    "answer": "瘦的，薄的"
+  },
+  {
+    "card_index": 19,
+    "hint": "形容词",
+    "question": "fat",
+    "answer": "胖的"
+  },
+  {
+    "card_index": 20,
+    "hint": "名词",
+    "question": "fat",
+    "answer": "脂肪"
+  }
+]

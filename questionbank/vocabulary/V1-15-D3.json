@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "勺子",
+    "answer": "spoon"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "盘子、菜品、佳肴",
+    "answer": "dish"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "盘子",
+    "answer": "plate"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "碗",
+    "answer": "bowl"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "罐、锅",
+    "answer": "pot"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "杯子",
+    "answer": "cup"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "玻璃杯、玻璃",
+    "answer": "glass"
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "鱼，鱼肉",
+    "answer": "fish"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "钓鱼，捕鱼",
+    "answer": "fish"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "米，米饭",
+    "answer": "rice"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "饺子",
+    "answer": "dumpling"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "面条",
+    "answer": "noodle"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "三明治",
+    "answer": "sandwich"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "面包",
+    "answer": "bread"
+  }
+]

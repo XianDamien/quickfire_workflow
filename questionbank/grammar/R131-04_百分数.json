@@ -1,0 +1,32 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "百分号怎么读？",
+    "answer": "Percent."
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "无论是百分之几，Percent都会不会加上S？",
+    "answer": "不会。"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "12%。",
+    "answer": "Twelve percent."
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "3.99%",
+    "answer": "Three point nine nine percent."
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "150%",
+    "answer": "One hundred and fifty percent"
+  }
+]

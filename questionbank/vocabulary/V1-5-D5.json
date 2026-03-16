@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "小麦",
+    "answer": "wheat"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "巧克力",
+    "answer": "chocolate"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "爆米花",
+    "answer": "popcorn"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "果冻",
+    "answer": "jelly"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "糖果",
+    "answer": "candy"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "糖，食用糖",
+    "answer": "sugar"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "盐",
+    "answer": "salt"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "饼干，小点心",
+    "answer": "cookie"
+  }
+]

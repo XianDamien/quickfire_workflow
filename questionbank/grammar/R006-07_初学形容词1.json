@@ -1,0 +1,38 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "形容词的英文名是什么？",
+    "answer": "adjective"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "缩写是什么",
+    "answer": "小写adj加一点"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "头发的颜色是什么颜色？",
+    "answer": "黄色，yellow"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "形容词只能描写什么词？",
+    "answer": "名词 noun"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "形容词可以描写动词吗？",
+    "answer": "不可以"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "形容词可以让名词怎么样？",
+    "answer": "一更加清楚，二更加有趣"
+  }
+]

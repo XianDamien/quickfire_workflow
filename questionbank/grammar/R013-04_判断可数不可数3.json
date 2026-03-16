@@ -1,0 +1,74 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "advice",
+    "answer": "不可数"
+  },
+  {
+    "card_index": 2,
+    "hint": "另一个建议",
+    "question": "suggestion",
+    "answer": "可数"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "information",
+    "answer": "不可数"
+  },
+  {
+    "card_index": 4,
+    "hint": "酋长、首领，屋顶的酋长指信仰证据，是f后面直接加s的特殊情况",
+    "question": "chief",
+    "answer": "可数"
+  },
+  {
+    "card_index": 5,
+    "hint": "肉",
+    "question": "meat",
+    "answer": "不可数"
+  },
+  {
+    "card_index": 6,
+    "hint": "水果",
+    "question": "fruit",
+    "answer": "不可数"
+  },
+  {
+    "card_index": 7,
+    "hint": "抽象的食物中只有vegetable是可数的",
+    "question": "vegetable",
+    "answer": "可数"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "noodle",
+    "answer": "可数"
+  },
+  {
+    "card_index": 9,
+    "hint": "练习题的exercise",
+    "question": "exercise（练习题）",
+    "answer": "可数"
+  },
+  {
+    "card_index": 10,
+    "hint": "锻炼的exercise",
+    "question": "exercise（锻炼）",
+    "answer": "不可数"
+  },
+  {
+    "card_index": 11,
+    "hint": "经验的experience",
+    "question": "experience（经验）",
+    "answer": "不可数"
+  },
+  {
+    "card_index": 12,
+    "hint": "经历的experience",
+    "question": "experience（经历）",
+    "answer": "可数"
+  }
+]

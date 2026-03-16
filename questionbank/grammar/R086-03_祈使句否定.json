@@ -1,0 +1,38 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "第一种是直接在肯定句前面加上什么？",
+    "answer": "加上don't"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "举个例子。",
+    "answer": "Don't touch禁止触摸。"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "第二种是在肯定句前面加什么？",
+    "answer": "加never。"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "他的语气比don't要怎么样？",
+    "answer": "比don't要强烈。"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "第三种是什么？",
+    "answer": "no后面加上动名词或者是名词。"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "举个例子。",
+    "answer": "No parking禁止停车"
+  }
+]

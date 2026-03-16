@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "sweater",
+    "answer": "毛衣"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "jeans",
+    "answer": "牛仔裤、工装裤"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "shorts",
+    "answer": "短裤"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "trousers",
+    "answer": "裤子"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "pants",
+    "answer": "裤子"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "skirt",
+    "answer": "短裙"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "dress",
+    "answer": "连衣裙"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "dress",
+    "answer": "装扮、打扮"
+  }
+]

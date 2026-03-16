@@ -1,0 +1,92 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "red",
+    "answer": "红色，红色的"
+  },
+  {
+    "card_index": 2,
+    "hint": "反复丢失",
+    "question": "reduce",
+    "answer": "减少"
+  },
+  {
+    "card_index": 3,
+    "hint": "反复夫人死",
+    "question": "reference",
+    "answer": "参考"
+  },
+  {
+    "card_index": 4,
+    "hint": "反复赴死",
+    "question": "refuse",
+    "answer": "拒绝"
+  },
+  {
+    "card_index": 5,
+    "hint": "反复怪他",
+    "question": "regret",
+    "answer": "后悔"
+  },
+  {
+    "card_index": 6,
+    "hint": "反复过来或者反复固来",
+    "question": "regular",
+    "answer": "规则的，有规律的"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "relationship",
+    "answer": "关系"
+  },
+  {
+    "card_index": 8,
+    "hint": "反复累来替我",
+    "question": "relative",
+    "answer": "亲属"
+  },
+  {
+    "card_index": 9,
+    "hint": "反复拉个水儿",
+    "question": "relax",
+    "answer": "放松，轻松"
+  },
+  {
+    "card_index": 10,
+    "hint": "反复离世",
+    "question": "release",
+    "answer": "释放"
+  },
+  {
+    "card_index": 11,
+    "hint": "反复来",
+    "question": "rely",
+    "answer": "依赖"
+  },
+  {
+    "card_index": 12,
+    "hint": "反复卖",
+    "question": "remain",
+    "answer": "留下，剩下"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "remember",
+    "answer": "记得"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "remind",
+    "answer": "提醒"
+  },
+  {
+    "card_index": 15,
+    "hint": "反复赔",
+    "question": "repair",
+    "answer": "修理"
+  }
+]

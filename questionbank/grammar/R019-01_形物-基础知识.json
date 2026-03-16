@@ -1,0 +1,62 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "等待叫wait什么？",
+    "answer": "wait for"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "关心，care什么？",
+    "answer": "care about"
+  },
+  {
+    "card_index": 3,
+    "hint": "形容词性物主代词快速反应，请说出下面单词的形容词性物主代词是什么？",
+    "question": "我的",
+    "answer": "my"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "你的",
+    "answer": "your"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "男他的",
+    "answer": "his"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "女的她的",
+    "answer": "her"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "动物它的",
+    "answer": "its"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "我们的",
+    "answer": "our"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "你们的",
+    "answer": "your"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "他们的",
+    "answer": "their"
+  }
+]

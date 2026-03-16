@@ -1,0 +1,92 @@
+[
+  {
+    "card_index": 1,
+    "hint": "名词",
+    "question": "knife",
+    "answer": "小刀"
+  },
+  {
+    "card_index": 2,
+    "hint": "脑壳，敲敲脑壳",
+    "question": "knock",
+    "answer": "敲"
+  },
+  {
+    "card_index": 3,
+    "hint": "动词",
+    "question": "know",
+    "answer": "知道，了解"
+  },
+  {
+    "card_index": 4,
+    "hint": "脑里记",
+    "question": "knowledge",
+    "answer": "知识，学问"
+  },
+  {
+    "card_index": 5,
+    "hint": "名词",
+    "question": "lab",
+    "answer": "实验室"
+  },
+  {
+    "card_index": 6,
+    "hint": "名词",
+    "question": "lady",
+    "answer": "夫人"
+  },
+  {
+    "card_index": 7,
+    "hint": "名词",
+    "question": "lake",
+    "answer": "湖"
+  },
+  {
+    "card_index": 8,
+    "hint": "烂片，哪个公司没有烂片？台灯公司，皮克萨",
+    "question": "lamp",
+    "answer": "台灯"
+  },
+  {
+    "card_index": 9,
+    "hint": "名词",
+    "question": "land",
+    "answer": "陆地，土地"
+  },
+  {
+    "card_index": 10,
+    "hint": "干什么有很多烂规矩",
+    "question": "language",
+    "answer": "语言"
+  },
+  {
+    "card_index": 11,
+    "hint": "蓝灯",
+    "question": "lantern",
+    "answer": "灯笼"
+  },
+  {
+    "card_index": 12,
+    "hint": "形容词",
+    "question": "large",
+    "answer": "大的，巨大的"
+  },
+  {
+    "card_index": 13,
+    "hint": "形容词",
+    "question": "last",
+    "answer": "最后的，最近的"
+  },
+  {
+    "card_index": 14,
+    "hint": "形容词",
+    "question": "late",
+    "answer": "晚的，迟的"
+  },
+  {
+    "card_index": 15,
+    "hint": "形容词/副词",
+    "question": "later",
+    "answer": "晚些的"
+  }
+]

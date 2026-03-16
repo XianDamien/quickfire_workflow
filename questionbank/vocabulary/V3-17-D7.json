@@ -1,0 +1,320 @@
+[
+  {
+    "card_index": 1,
+    "hint": "行为动词",
+    "question": "进入，报名参加",
+    "answer": "enter"
+  },
+  {
+    "card_index": 2,
+    "hint": "名词",
+    "question": "租金",
+    "answer": "rent"
+  },
+  {
+    "card_index": 3,
+    "hint": "行为动词",
+    "question": "租借",
+    "answer": "rent"
+  },
+  {
+    "card_index": 4,
+    "hint": "及物动词",
+    "question": "出租，租用",
+    "answer": "rent"
+  },
+  {
+    "card_index": 5,
+    "hint": "及物动词",
+    "question": "发明，创造，捏造，虚构",
+    "answer": "invent"
+  },
+  {
+    "card_index": 6,
+    "hint": "名词",
+    "question": "才能，天才，天资",
+    "answer": "talent"
+  },
+  {
+    "card_index": 7,
+    "hint": "形容词",
+    "question": "缺席的，心不在焉的",
+    "answer": "absent"
+  },
+  {
+    "card_index": 8,
+    "hint": "及物动词",
+    "question": "使缺席",
+    "answer": "absent"
+  },
+  {
+    "card_index": 9,
+    "hint": "名词",
+    "question": "礼物，现在",
+    "answer": "present"
+  },
+  {
+    "card_index": 10,
+    "hint": "形容词",
+    "question": "出席的，现在的",
+    "answer": "present"
+  },
+  {
+    "card_index": 11,
+    "hint": "行为动词",
+    "question": "提出，赠送，呈现",
+    "answer": "present"
+  },
+  {
+    "card_index": 12,
+    "hint": "名词",
+    "question": "意外的事，事故",
+    "answer": "accident"
+  },
+  {
+    "card_index": 13,
+    "hint": "形容词",
+    "question": "确信的，有信心的，自信的",
+    "answer": "confident"
+  },
+  {
+    "card_index": 14,
+    "hint": "名词",
+    "question": "代理人，经纪人",
+    "answer": "agent"
+  },
+  {
+    "card_index": 15,
+    "hint": "形容词",
+    "question": "古代的，古老的",
+    "answer": "ancient"
+  },
+  {
+    "card_index": 16,
+    "hint": "形容词",
+    "question": "耐心的，忍耐的",
+    "answer": "patient"
+  },
+  {
+    "card_index": 17,
+    "hint": "名词",
+    "question": "病人",
+    "answer": "patient"
+  },
+  {
+    "card_index": 18,
+    "hint": "形容词",
+    "question": "便利的，方便的",
+    "answer": "convenient"
+  },
+  {
+    "card_index": 19,
+    "hint": "名词",
+    "question": "原料，要素，组成部分",
+    "answer": "ingredient"
+  },
+  {
+    "card_index": 20,
+    "hint": "形容词",
+    "question": "构成组成部分的",
+    "answer": "ingredient"
+  },
+  {
+    "card_index": 21,
+    "hint": "形容词",
+    "question": "最好的",
+    "answer": "best"
+  },
+  {
+    "card_index": 22,
+    "hint": "副词",
+    "question": "最好",
+    "answer": "best"
+  },
+  {
+    "card_index": 23,
+    "hint": "名词",
+    "question": "最佳，至善",
+    "answer": "best"
+  },
+  {
+    "card_index": 24,
+    "hint": "名词",
+    "question": "休息，剩余部分，其余的人或物",
+    "answer": "rest"
+  },
+  {
+    "card_index": 25,
+    "hint": "不及物动词",
+    "question": "休息",
+    "answer": "rest"
+  },
+  {
+    "card_index": 26,
+    "hint": "名词",
+    "question": "测验",
+    "answer": "test"
+  },
+  {
+    "card_index": 27,
+    "hint": "及物动词",
+    "question": "测验，考查，实验",
+    "answer": "test"
+  },
+  {
+    "card_index": 28,
+    "hint": "及物动词",
+    "question": "争辩，提出质疑",
+    "answer": "contest"
+  },
+  {
+    "card_index": 29,
+    "hint": "不及物动词",
+    "question": "竞争",
+    "answer": "contest"
+  },
+  {
+    "card_index": 30,
+    "hint": "名词",
+    "question": "竞赛，争夺",
+    "answer": "contest"
+  },
+  {
+    "card_index": 31,
+    "hint": "名词",
+    "question": "巢",
+    "answer": "nest"
+  },
+  {
+    "card_index": 32,
+    "hint": "及物动词",
+    "question": "为什么什么筑巢，嵌入",
+    "answer": "nest"
+  },
+  {
+    "card_index": 33,
+    "hint": "不及物动词",
+    "question": "筑巢，寻找鸟巢",
+    "answer": "nest"
+  },
+  {
+    "card_index": 34,
+    "hint": "名词",
+    "question": "西，西方",
+    "answer": "west"
+  },
+  {
+    "card_index": 35,
+    "hint": "副词或形容词",
+    "question": "在西部的",
+    "answer": "west"
+  },
+  {
+    "card_index": 36,
+    "hint": "及物动词",
+    "question": "投资，覆盖，耗费",
+    "answer": "invest"
+  },
+  {
+    "card_index": 37,
+    "hint": "不及物动词",
+    "question": "投资，入股",
+    "answer": "invest"
+  },
+  {
+    "card_index": 38,
+    "hint": "及物动词",
+    "question": "建议，暗示",
+    "answer": "suggest"
+  },
+  {
+    "card_index": 39,
+    "hint": "形容词",
+    "question": "诚实的，可靠的，正直的",
+    "answer": "honest"
+  },
+  {
+    "card_index": 40,
+    "hint": "形容词",
+    "question": "谦虚的，适度的",
+    "answer": "modest"
+  },
+  {
+    "card_index": 41,
+    "hint": "名词",
+    "question": "兴趣，利益，爱好，好处，利息",
+    "answer": "interest"
+  },
+  {
+    "card_index": 42,
+    "hint": "及物动词",
+    "question": "使有兴趣，引起什么什么注意",
+    "answer": "interest"
+  },
+  {
+    "card_index": 43,
+    "hint": "名词",
+    "question": "盘，碟，一道菜",
+    "answer": "dish"
+  },
+  {
+    "card_index": 44,
+    "hint": "名词",
+    "question": "鱼，鱼肉",
+    "answer": "fish"
+  },
+  {
+    "card_index": 45,
+    "hint": "不及物动词",
+    "question": "捕鱼，钓鱼",
+    "answer": "fish"
+  },
+  {
+    "card_index": 46,
+    "hint": "行为动词",
+    "question": "结束，完成",
+    "answer": "finish"
+  },
+  {
+    "card_index": 47,
+    "hint": "名词",
+    "question": "愿望，祝愿",
+    "answer": "wish"
+  },
+  {
+    "card_index": 48,
+    "hint": "行为动词",
+    "question": "想要",
+    "answer": "wish"
+  },
+  {
+    "card_index": 49,
+    "hint": "及物动词",
+    "question": "希望",
+    "answer": "wish"
+  },
+  {
+    "card_index": 50,
+    "hint": "名词",
+    "question": "废物，垃圾",
+    "answer": "rubbish"
+  },
+  {
+    "card_index": 51,
+    "hint": "行为动词",
+    "question": "享受，从什么什么中获得乐趣，品味",
+    "answer": "relish"
+  },
+  {
+    "card_index": 52,
+    "hint": "名词",
+    "question": "滋味，爱好，调味品",
+    "answer": "relish"
+  },
+  {
+    "card_index": 53,
+    "hint": "行为动词",
+    "question": "建立，确立，创办",
+    "answer": "establish"
+  }
+]

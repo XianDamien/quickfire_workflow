@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "行为动词的英文名叫什么？",
+    "answer": "Verb"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "它的缩写是什么？",
+    "answer": "小写v."
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "它头发的颜色是什么？",
+    "answer": "红色"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "行为动词可以扮演什么角色？",
+    "answer": "动作"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "行为动词可以扮演主角吗？",
+    "answer": "不可以"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "行为动词可以扮演配角吗？",
+    "answer": "不可以"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "小写的 v.可以扮演哪些角色？",
+    "answer": "只有大写V，只能扮演动作"
+  }
+]

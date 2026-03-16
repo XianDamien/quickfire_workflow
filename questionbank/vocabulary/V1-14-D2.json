@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "toy (名词)",
+    "answer": "玩具"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "doll (名词)",
+    "answer": "玩具娃娃"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "model (名词)",
+    "answer": "模型"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "robot (名词)",
+    "answer": "机器人"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "kite (名词)",
+    "answer": "风筝"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "balloon (名词)",
+    "answer": "气球"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "chess (名词)",
+    "answer": "国际象棋"
+  }
+]

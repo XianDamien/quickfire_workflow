@@ -1,0 +1,122 @@
+[
+  {
+    "card_index": 1,
+    "hint": "形容词",
+    "question": "有帮助的，有用的，有益的",
+    "answer": "helpful"
+  },
+  {
+    "card_index": 2,
+    "hint": "形容词",
+    "question": "谨慎的，小心的，仔细的",
+    "answer": "careful"
+  },
+  {
+    "card_index": 3,
+    "hint": "形容词",
+    "question": "多姿多彩的，富有趣味的",
+    "answer": "colorful"
+  },
+  {
+    "card_index": 4,
+    "hint": "形容词",
+    "question": "和平的，宁静的，安宁的",
+    "answer": "peaceful"
+  },
+  {
+    "card_index": 5,
+    "hint": "形容词",
+    "question": "成功的",
+    "answer": "successful"
+  },
+  {
+    "card_index": 6,
+    "hint": "形容词",
+    "question": "令人惊奇的，绝妙的，精彩的，使人愉快的",
+    "answer": "wonderful"
+  },
+  {
+    "card_index": 7,
+    "hint": "形容词",
+    "question": "糟糕的，讨厌的",
+    "answer": "awful"
+  },
+  {
+    "card_index": 8,
+    "hint": "名词",
+    "question": "艺术，美术，作品，文科，人文学科",
+    "answer": "art"
+  },
+  {
+    "card_index": 9,
+    "hint": "名词",
+    "question": "美术家，尤指画家，艺人",
+    "answer": "artist"
+  },
+  {
+    "card_index": 10,
+    "hint": "名词",
+    "question": "文章，论文，物品，条款",
+    "answer": "article"
+  },
+  {
+    "card_index": 11,
+    "hint": "行为动词",
+    "question": "开始，着手，开动",
+    "answer": "start"
+  },
+  {
+    "card_index": 12,
+    "hint": "不及物动词",
+    "question": "出发",
+    "answer": "start"
+  },
+  {
+    "card_index": 13,
+    "hint": "形容词",
+    "question": "聪明的，机敏的，灵巧的，伶俐的，整洁漂亮的",
+    "answer": "smart"
+  },
+  {
+    "card_index": 14,
+    "hint": "名词",
+    "question": "图，图表，航海图",
+    "answer": "chart"
+  },
+  {
+    "card_index": 15,
+    "hint": "名词",
+    "question": "部分，局部，角色，作用，机器的零件",
+    "answer": "part"
+  },
+  {
+    "card_index": 16,
+    "hint": "行为动词",
+    "question": "使分离，使分开",
+    "answer": "part"
+  },
+  {
+    "card_index": 17,
+    "hint": "行为动词",
+    "question": "同什么什么合作，做什么什么的搭档",
+    "answer": "partner"
+  },
+  {
+    "card_index": 18,
+    "hint": "名词",
+    "question": "政党，聚会，一组，一队",
+    "answer": "party"
+  },
+  {
+    "card_index": 19,
+    "hint": "形容词",
+    "question": "专指的，特殊的，挑剔的",
+    "answer": "particular"
+  },
+  {
+    "card_index": 20,
+    "hint": "名词",
+    "question": "详情，细节",
+    "answer": "particular"
+  }
+]

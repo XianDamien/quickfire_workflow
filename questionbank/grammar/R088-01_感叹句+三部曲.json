@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "感叹句是以什么单词开头的？",
+    "answer": "以what或者是how开头的。"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "什么时候会以what开头？",
+    "answer": "对一样东西感叹的时候"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "什么时候以how开头？",
+    "answer": "对形容词或副词感叹的时候"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "请背出这三步分别是什么。",
+    "answer": "第一步，找座位，第二步，回头看小兵，第三步，将军提前"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "第一步，找座位是什么意思？",
+    "answer": "先找到句子的老大，将军就坐在老大的正后方"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "第二步，回头看小兵是什么意思？",
+    "answer": "看将军后面的小兵是什么，如果小兵是一样东西，将军就用what，\n如果小兵是一种形容，将军就用how"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "第三步，将军提前需要注意什么？",
+    "answer": "需要带上小兵一起提前"
+  }
+]

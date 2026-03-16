@@ -1,0 +1,32 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "I'm washing my clothes. negative",
+    "answer": "I'm not washing my clothes."
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "第二题Look!They're playing games. question",
+    "answer": "Look! Are they playing games?"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "第三题She isn't watching TV now. question",
+    "answer": "Is she watching TV now?"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "第四题He isn't running at the moment.positive",
+    "answer": "He is running at the moment."
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "第五题Are the dogs running? negative",
+    "answer": "The dogs are not running."
+  }
+]

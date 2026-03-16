@@ -1,0 +1,38 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "有一个顺序口诀是什么？",
+    "answer": "单数你他我，复数一二三，道歉我为先"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "单数你他我，是什么意思？",
+    "answer": "当人称为单数时，排列顺序是先说你，再说她，最后说我"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "记忆技巧是什么？",
+    "answer": "对“你”表示尊重，排在最前，“我”出于礼貌排在最后，\n那么“他”就排在中间"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "复数一二三，是什么意思？",
+    "answer": "当人称为复数时 ，排列顺序是先说我们，再说你们，最后说他们"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "翻译句子： 我、你、他、都18岁。",
+    "answer": "You, he and I are 18."
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "翻译句子： 你们、我们、他们都来自中国。",
+    "answer": "We, you and they are from China."
+  }
+]

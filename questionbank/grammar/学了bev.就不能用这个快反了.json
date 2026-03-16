@@ -1,0 +1,26 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "他头发的颜色是什么颜色？",
+    "answer": "黄色"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "他在班级里的职位是什么？",
+    "answer": "班长noun"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "可以扮演什么角色？",
+    "answer": "主角和配角"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "noun 可以扮演动作吗？",
+    "answer": "不可以"
+  }
+]

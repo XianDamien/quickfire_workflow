@@ -1,0 +1,122 @@
+[
+  {
+    "card_index": 1,
+    "hint": "名词",
+    "question": "距离，路程，距离遥远，时间久远",
+    "answer": "distance"
+  },
+  {
+    "card_index": 2,
+    "hint": "名词",
+    "question": "情况，例子",
+    "answer": "instance"
+  },
+  {
+    "card_index": 3,
+    "hint": "名词",
+    "question": "重要，重大",
+    "answer": "importance"
+  },
+  {
+    "card_index": 4,
+    "hint": "及物动词",
+    "question": "使兴奋，使激动",
+    "answer": "excite"
+  },
+  {
+    "card_index": 5,
+    "hint": "形容词",
+    "question": "特别受喜爱的",
+    "answer": "favourite"
+  },
+  {
+    "card_index": 6,
+    "hint": "名词",
+    "question": "特别喜爱的人或物",
+    "answer": "favourite"
+  },
+  {
+    "card_index": 7,
+    "hint": "形容词",
+    "question": "有礼貌的，客气的",
+    "answer": "polite"
+  },
+  {
+    "card_index": 8,
+    "hint": "及物动词",
+    "question": "邀请",
+    "answer": "invite"
+  },
+  {
+    "card_index": 9,
+    "hint": "副词",
+    "question": "完全地，十分，相当，很",
+    "answer": "quite"
+  },
+  {
+    "card_index": 10,
+    "hint": "情为动词",
+    "question": "写新书、文章等，写信",
+    "answer": "write"
+  },
+  {
+    "card_index": 11,
+    "hint": "形容词",
+    "question": "对。对面的，反面的，相反的",
+    "answer": "opposite"
+  },
+  {
+    "card_index": 12,
+    "hint": "介词",
+    "question": "在什么什么的对面",
+    "answer": "opposite"
+  },
+  {
+    "card_index": 13,
+    "hint": "形容词",
+    "question": "白色的",
+    "answer": "white"
+  },
+  {
+    "card_index": 14,
+    "hint": "名词",
+    "question": "白色",
+    "answer": "white"
+  },
+  {
+    "card_index": 15,
+    "hint": "行为动词",
+    "question": "使变凉，冷却",
+    "answer": "cool"
+  },
+  {
+    "card_index": 16,
+    "hint": "形容词",
+    "question": "凉的，凉快的，冷静的，顶好的，绝妙的",
+    "answer": "cool"
+  },
+  {
+    "card_index": 17,
+    "hint": "名词",
+    "question": "傻瓜，笨人",
+    "answer": "fool"
+  },
+  {
+    "card_index": 18,
+    "hint": "及物动词",
+    "question": "愚弄，欺骗",
+    "answer": "fool"
+  },
+  {
+    "card_index": 19,
+    "hint": "名词",
+    "question": "水坑，水池，游泳池",
+    "answer": "pool"
+  },
+  {
+    "card_index": 20,
+    "hint": "名词",
+    "question": "学校",
+    "answer": "school"
+  }
+]

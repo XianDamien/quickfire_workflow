@@ -1,0 +1,38 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "大多数可数名词从单数变成复数要怎么变？",
+    "answer": "加s"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "以【烧香吃素】（也就是sh x ch s结尾的可数名词）从单数变成复数要怎么变？",
+    "answer": "加es"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "元音字母有哪五个？",
+    "answer": "aeiou"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "元音字母加y结尾的单词怎么变复数？",
+    "answer": "直接加s"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "辅音字母加y结尾的单词怎么变复数？",
+    "answer": "把y去掉，加ies"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "变形金刚这组单词变成复数有没有什么规律？",
+    "answer": "没有规律，见到一个背一个。"
+  }
+]

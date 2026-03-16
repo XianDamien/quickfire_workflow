@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "The mango ice cream is pretty good.",
+    "question": "Mango",
+    "answer": "芒果"
+  },
+  {
+    "card_index": 2,
+    "hint": "I like oranges more than lemons.",
+    "question": "Lemon",
+    "answer": "柠檬"
+  },
+  {
+    "card_index": 3,
+    "hint": "Would you like some melon?",
+    "question": "Melon",
+    "answer": "瓜，甜瓜"
+  },
+  {
+    "card_index": 4,
+    "hint": "I love watermelons.",
+    "question": "Watermelon",
+    "answer": "西瓜"
+  },
+  {
+    "card_index": 5,
+    "hint": "We have different pies such as apple, cherry, and strawberry pies.",
+    "question": "Strawberry",
+    "answer": "草莓"
+  },
+  {
+    "card_index": 6,
+    "hint": "Next, put a cherry in the middle.",
+    "question": "Cherry",
+    "answer": "樱桃"
+  },
+  {
+    "card_index": 7,
+    "hint": "Would you like to try our new pineapple pie or peach pie?",
+    "question": "Peach",
+    "answer": "桃子"
+  },
+  {
+    "card_index": 8,
+    "hint": "Tom likes to eat pineapples every very much.",
+    "question": "Pineapple",
+    "answer": "菠萝"
+  }
+]

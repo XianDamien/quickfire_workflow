@@ -1,0 +1,140 @@
+[
+  {
+    "card_index": 1,
+    "hint": "1~100基数词快速反应，每个停顿两秒。",
+    "question": "seven",
+    "answer": "7"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "twelve",
+    "answer": "12"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "twenty-three",
+    "answer": "23"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "thirty-four",
+    "answer": "34"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "forty-five",
+    "answer": "45"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "fifty-six",
+    "answer": "56"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "sixty-seven",
+    "answer": "67"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "seventy-eight",
+    "answer": "78"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "eighty-nine",
+    "answer": "89"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "ninety-one",
+    "answer": "91"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "two hundred",
+    "answer": "200"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "5",
+    "answer": "five"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "6",
+    "answer": "six"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "14",
+    "answer": "fourteen"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "15",
+    "answer": "fifteen"
+  },
+  {
+    "card_index": 16,
+    "hint": "",
+    "question": "21",
+    "answer": "twenty-one"
+  },
+  {
+    "card_index": 17,
+    "hint": "",
+    "question": "33",
+    "answer": "thirty-three"
+  },
+  {
+    "card_index": 18,
+    "hint": "",
+    "question": "42",
+    "answer": "forty-two"
+  },
+  {
+    "card_index": 19,
+    "hint": "",
+    "question": "56",
+    "answer": "fifty-six"
+  },
+  {
+    "card_index": 20,
+    "hint": "",
+    "question": "68",
+    "answer": "sixty-eight"
+  },
+  {
+    "card_index": 21,
+    "hint": "",
+    "question": "74",
+    "answer": "seventy-four"
+  },
+  {
+    "card_index": 22,
+    "hint": "",
+    "question": "89",
+    "answer": "eighty-nine"
+  },
+  {
+    "card_index": 23,
+    "hint": "",
+    "question": "300",
+    "answer": "three hundred"
+  }
+]

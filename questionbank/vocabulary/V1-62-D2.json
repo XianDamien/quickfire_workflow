@@ -1,0 +1,62 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "evening",
+    "answer": "晚上，傍晚"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "year",
+    "answer": "年"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "birthday",
+    "answer": "生日"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "week",
+    "answer": "星期，周"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "weekend",
+    "answer": "周末"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "monday",
+    "answer": "星期一"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "tuesday",
+    "answer": "星期二"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "wednesday",
+    "answer": "星期三"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "thursday",
+    "answer": "星期四"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "friday",
+    "answer": "星期五"
+  }
+]

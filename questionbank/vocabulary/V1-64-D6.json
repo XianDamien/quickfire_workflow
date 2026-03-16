@@ -1,0 +1,62 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "then",
+    "answer": "接下来，然后，那时"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "soon",
+    "answer": "不久，很快"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "during",
+    "answer": "在什么期间"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "ago",
+    "answer": "以前"
+  },
+  {
+    "card_index": 5,
+    "hint": "介词",
+    "question": "before",
+    "answer": "在什么之前"
+  },
+  {
+    "card_index": 6,
+    "hint": "连词",
+    "question": "before",
+    "answer": "在什么之前"
+  },
+  {
+    "card_index": 7,
+    "hint": "副词",
+    "question": "before",
+    "answer": "以前"
+  },
+  {
+    "card_index": 8,
+    "hint": "介词",
+    "question": "after",
+    "answer": "在什么之后"
+  },
+  {
+    "card_index": 9,
+    "hint": "连词",
+    "question": "after",
+    "answer": "在什么之后"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "just",
+    "answer": "仅仅，恰好，只是"
+  }
+]

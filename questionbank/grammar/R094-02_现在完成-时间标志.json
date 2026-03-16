@@ -1,0 +1,68 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "现在完成这个时态有5个常见的标志，它们分别是什么？",
+    "answer": "Already， yet， since加时间点，for加时间段，次数"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "Already什么意思？",
+    "answer": "已经"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "翻译句子，I have already paid for the meal.",
+    "answer": "我已经为这顿饭付钱了。"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "Yet是什么意思？",
+    "answer": "还没有。"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "翻译句子I haven't finished my homework yet.",
+    "answer": "我还没有做完作业。"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "Since加时间是什么意思？",
+    "answer": "自从某个时间开始"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "翻译句子，I have studied at Venture since I was four years old.",
+    "answer": "自从我4岁开始，就在文策学习了。"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "For加一段时间是什么意思？",
+    "answer": "为期多久"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "翻译句子I have been in Shanghai for ten years.",
+    "answer": "我已经在上海有10年了"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "Since和for有什么区别？",
+    "answer": "Since加时间点，For加时间段"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "翻译句子I have told you three times.",
+    "answer": "我已经告诉你3次了"
+  }
+]

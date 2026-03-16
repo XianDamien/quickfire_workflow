@@ -1,0 +1,74 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "充足的点心",
+    "answer": "plenty of snacks"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "大量的小孩",
+    "answer": "a lot of children or a lot of kids"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "很多蔬菜",
+    "answer": "many vegetables"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "很多信息",
+    "answer": "much information"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "一些黄金",
+    "answer": "some gold"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "一点点建议，不可数",
+    "answer": "a little advice"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "一点点建议，可数",
+    "answer": "a few suggestions"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "少量的肉",
+    "answer": "a bit of meat"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "少量的苹果",
+    "answer": "several apples"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "几乎没钱",
+    "answer": "little money"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "几乎没有鱼",
+    "answer": "few fish  fish单复数同行"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "所有的量词所描写的名词后面一定有什么?",
+    "answer": "s"
+  }
+]

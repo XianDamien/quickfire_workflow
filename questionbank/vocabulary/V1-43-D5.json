@@ -1,0 +1,62 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "卡通片，动画片，漫画",
+    "answer": "cartoon"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "音乐",
+    "answer": "music"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "歌，歌曲",
+    "answer": "song"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "魔法",
+    "answer": "magic"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "有魔力的，神奇的",
+    "answer": "magic"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "玩笑，笑话",
+    "answer": "joke"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "开玩笑",
+    "answer": "joke"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "游戏，运动，比赛",
+    "answer": "game"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "比赛",
+    "answer": "match"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "旅行",
+    "answer": "trip"
+  }
+]

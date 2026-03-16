@@ -1,0 +1,98 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "1.below",
+    "answer": "比一样东西低"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "2.above",
+    "answer": "比一样东西高"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "3. over 静止的",
+    "answer": "在一样东西正上方"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "4.under静止的",
+    "answer": "在一样东西正下方"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "5.over动起来的",
+    "answer": "经过一样东西的正上方"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "6.under动起来的",
+    "answer": "经过一样东西的正下方"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "7.in front of",
+    "answer": "在一样东西的前面"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "8.in the front of",
+    "answer": "在一样东西肚子里的前面"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "9.behind",
+    "answer": "在一样东西的后面"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "10.on the left of",
+    "answer": "在一样东西左边"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "11. on the right of",
+    "answer": "在一样东西的右边"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "12.between A and B",
+    "answer": "在A和B中间"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "13.in the middle of",
+    "answer": "在一样东西中间"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "14.near",
+    "answer": "在旁边，但不一定紧紧贴着"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "15.by",
+    "answer": "在旁边，紧贴着"
+  },
+  {
+    "card_index": 16,
+    "hint": "",
+    "question": "16. at",
+    "answer": "就在这个点"
+  }
+]

@@ -1,0 +1,92 @@
+[
+  {
+    "card_index": 1,
+    "hint": "体内炸,十三到十九",
+    "question": "teenager",
+    "answer": "年轻人"
+  },
+  {
+    "card_index": 2,
+    "hint": "tele远距离传输,phone声音,远距离传输声音",
+    "question": "telephone",
+    "answer": "电话,打电话"
+  },
+  {
+    "card_index": 3,
+    "hint": "tele远距离,vision视觉,远距离传输视觉",
+    "question": "television",
+    "answer": "电视"
+  },
+  {
+    "card_index": 4,
+    "hint": "动词",
+    "question": "tell",
+    "answer": "告诉"
+  },
+  {
+    "card_index": 5,
+    "hint": "瘫不起,温度太高,瘫在地上起不来",
+    "question": "temperature",
+    "answer": "温度"
+  },
+  {
+    "card_index": 6,
+    "hint": "探破,探破红尘,去寺庙出家",
+    "question": "temple",
+    "answer": "寺庙"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "tennis",
+    "answer": "网球"
+  },
+  {
+    "card_index": 8,
+    "hint": "特木,这个人特别木讷,一个学期交不到朋友",
+    "question": "term",
+    "answer": "学期"
+  },
+  {
+    "card_index": 9,
+    "hint": "瘫弱爆",
+    "question": "terrible",
+    "answer": "可怕的,糟糕的"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "test",
+    "answer": "测试,考察,试验"
+  },
+  {
+    "card_index": 11,
+    "hint": "头开始疼,看课文头开始疼",
+    "question": "text",
+    "answer": "课文"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "than",
+    "answer": "比"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "thank",
+    "answer": "感谢"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "thankful",
+    "answer": "感谢的"
+  },
+  {
+    "card_index": 15,
+    "hint": "形容词,代词,连词",
+    "question": "that",
+    "answer": "那个"
+  }
+]

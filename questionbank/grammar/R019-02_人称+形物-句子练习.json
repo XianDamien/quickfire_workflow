@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "人称代词和物主代词应用快速反应，请说出下面句子的英文。",
+    "question": "我喜欢我的工作。",
+    "answer": "I like my job."
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "我们喜欢我们的工作。",
+    "answer": "We like our jobs."
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "你喜欢你的工作。",
+    "answer": "You like your job."
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "男的他喜欢他的工作。",
+    "answer": "He likes his job."
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "女的她喜欢她的工作。",
+    "answer": "She likes her job."
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "动物它喜欢它的工作。",
+    "answer": "It likes its job."
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "你们喜欢你们的工作。",
+    "answer": "You like your jobs."
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "他们喜欢他们的工作。",
+    "answer": "They like their jobs."
+  }
+]

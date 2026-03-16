@@ -1,0 +1,32 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "它一共有四个，分别是哪四个？",
+    "answer": "this, that, these, those"
+  },
+  {
+    "card_index": 2,
+    "hint": "下面请根据描述说出对应的指示代词。",
+    "question": "指近的单数用哪一个？",
+    "answer": "this"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "指远的复数",
+    "answer": "those"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "指近的复数",
+    "answer": "these"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "指远的单数",
+    "answer": "that"
+  }
+]

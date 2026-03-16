@@ -1,0 +1,38 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "sometimes",
+    "answer": "有时，现在简单"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "eight o'clock yesterday evening",
+    "answer": "昨天晚上八点，过去进行"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "listen",
+    "answer": "听，现在进行"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "at this time yesterday",
+    "answer": "昨天这个时候，过去进行"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "just now",
+    "answer": "刚才，过去简单"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "tomorrow morning",
+    "answer": "明天早上，将来简单"
+  }
+]

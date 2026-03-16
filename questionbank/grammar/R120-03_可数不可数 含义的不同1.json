@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "glass",
+    "answer": "表示玻璃杯可数，表示玻璃不可数"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "fish",
+    "answer": "表示鱼、鱼类 可数；鱼肉不可数"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "chicken",
+    "answer": "表示小鸡可数；鸡肉不可数"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "time",
+    "answer": "表示几次、几倍、时代可数；时间不可数"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "orange",
+    "answer": "表示橘子可数；橙汁、橘色不可数"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "light",
+    "answer": "表示电灯可数；灯光、光线不可数"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "paper",
+    "answer": "表示报纸、试卷可数；纸张不可数"
+  }
+]

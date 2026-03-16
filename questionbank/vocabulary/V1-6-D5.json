@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "美味可口的当中那一种",
+    "answer": "Tasty"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "美味可口最随意的说法",
+    "answer": "Yummy"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "甜的",
+    "answer": "Sweet"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "甜食糖果",
+    "answer": "Sweet"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "辣的",
+    "answer": "Spicy"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "酸的",
+    "answer": "Sour"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "苦的",
+    "answer": "Bitter"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "一餐饭，一顿饭",
+    "answer": "Meal"
+  }
+]

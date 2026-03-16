@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "蛋糕",
+    "answer": "cake"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "披萨饼",
+    "answer": "pizza"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "馅饼，派",
+    "answer": "pie"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "薄煎饼，煎饼",
+    "answer": "pancake"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "汉堡包",
+    "answer": "hamburger"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "寿司",
+    "answer": "sushi"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "火锅",
+    "answer": "hot pot"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "热狗",
+    "answer": "hot dog"
+  }
+]

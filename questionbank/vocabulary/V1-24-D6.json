@@ -1,0 +1,110 @@
+[
+  {
+    "card_index": 1,
+    "hint": "动词",
+    "question": "copy verb",
+    "answer": "复制复印的动作"
+  },
+  {
+    "card_index": 2,
+    "hint": "名词",
+    "question": "copy noun",
+    "answer": "复印本，复制品"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "copyright",
+    "answer": "版权"
+  },
+  {
+    "card_index": 4,
+    "hint": "动词",
+    "question": "mark verb",
+    "answer": "标记"
+  },
+  {
+    "card_index": 5,
+    "hint": "名词",
+    "question": "mark noun",
+    "answer": "分数"
+  },
+  {
+    "card_index": 6,
+    "hint": "动词",
+    "question": "teach verb",
+    "answer": "教"
+  },
+  {
+    "card_index": 7,
+    "hint": "动词",
+    "question": "study verb",
+    "answer": "背诵，听讲"
+  },
+  {
+    "card_index": 8,
+    "hint": "动词",
+    "question": "learn verb",
+    "answer": "学习，特指所有学东西"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "think",
+    "answer": "想"
+  },
+  {
+    "card_index": 10,
+    "hint": "动词",
+    "question": "know",
+    "answer": "知道"
+  },
+  {
+    "card_index": 11,
+    "hint": "动词",
+    "question": "understand verb",
+    "answer": "理解，懂"
+  },
+  {
+    "card_index": 12,
+    "hint": "动词",
+    "question": "answer verb",
+    "answer": "回答问题"
+  },
+  {
+    "card_index": 13,
+    "hint": "名词",
+    "question": "answer noun",
+    "answer": "答案"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "reply",
+    "answer": "回复"
+  },
+  {
+    "card_index": 15,
+    "hint": "名词",
+    "question": "prize",
+    "answer": "奖品"
+  },
+  {
+    "card_index": 16,
+    "hint": "",
+    "question": "price",
+    "answer": "价格"
+  },
+  {
+    "card_index": 17,
+    "hint": "动词",
+    "question": "point verb",
+    "answer": "手指指，戳"
+  },
+  {
+    "card_index": 18,
+    "hint": "名词",
+    "question": "point noun",
+    "answer": "得分、分数，论点、道理"
+  }
+]

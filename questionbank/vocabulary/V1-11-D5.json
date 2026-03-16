@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "狐狸",
+    "answer": "Fox"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "熊",
+    "answer": "Bear"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "忍受",
+    "answer": "Bear"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "鹿",
+    "answer": "Deer"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "考拉，无尾熊",
+    "answer": "Koala"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "袋鼠",
+    "answer": "Kangaroo"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "长颈鹿",
+    "answer": "Giraffe"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "斑马",
+    "answer": "Zebra"
+  }
+]

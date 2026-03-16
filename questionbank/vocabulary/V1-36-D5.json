@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "top",
+    "question": "顶端、上边、上面",
+    "answer": "top"
+  },
+  {
+    "card_index": 2,
+    "hint": "top",
+    "question": "最高的、顶部的",
+    "answer": "top"
+  },
+  {
+    "card_index": 3,
+    "hint": "upwards",
+    "question": "向上",
+    "answer": "upwards"
+  },
+  {
+    "card_index": 4,
+    "hint": "upstairs",
+    "question": "在楼上",
+    "answer": "upstairs"
+  },
+  {
+    "card_index": 5,
+    "hint": "upstairs",
+    "question": "楼上",
+    "answer": "upstairs"
+  },
+  {
+    "card_index": 6,
+    "hint": "down",
+    "question": "在下面，向下",
+    "answer": "down"
+  },
+  {
+    "card_index": 7,
+    "hint": "down",
+    "question": "朝着什么向下",
+    "answer": "down"
+  },
+  {
+    "card_index": 8,
+    "hint": "behind",
+    "question": "在什么后面",
+    "answer": "behind"
+  }
+]

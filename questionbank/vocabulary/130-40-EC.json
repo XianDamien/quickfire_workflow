@@ -1,0 +1,104 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "female",
+    "answer": "女性的"
+  },
+  {
+    "card_index": 2,
+    "hint": "封死",
+    "question": "fence",
+    "answer": "栅栏"
+  },
+  {
+    "card_index": 3,
+    "hint": "飞跃",
+    "question": "ferry",
+    "answer": "渡船，渡口"
+  },
+  {
+    "card_index": 4,
+    "hint": "fista，节假日吃的肥死",
+    "question": "festival",
+    "answer": "节假日"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "fever",
+    "answer": "发烧"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "few",
+    "answer": "几乎没有"
+  },
+  {
+    "card_index": 7,
+    "hint": "还有领域的意思，抽象的领域，比如数学领域",
+    "question": "field",
+    "answer": "田地，场地，领域"
+  },
+  {
+    "card_index": 8,
+    "hint": "爸爸爱打架，妈妈怎么样？妈妈有本事",
+    "question": "fight",
+    "answer": "打架"
+  },
+  {
+    "card_index": 9,
+    "hint": "妈妈有本事",
+    "question": "might",
+    "answer": "有能力，可能"
+  },
+  {
+    "card_index": 10,
+    "hint": "肥哥",
+    "question": "figure",
+    "answer": "人形，数字，图片"
+  },
+  {
+    "card_index": 11,
+    "hint": "肥哥，它的verb有什么意思？",
+    "question": "figure",
+    "answer": "计算"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "fill",
+    "answer": "装填"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "film",
+    "answer": "电影"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "final",
+    "answer": "最后的"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "finally",
+    "answer": "最终地"
+  },
+  {
+    "card_index": 16,
+    "hint": "",
+    "question": "find",
+    "answer": "找到"
+  },
+  {
+    "card_index": 17,
+    "hint": "",
+    "question": "fine",
+    "answer": "好的，好吧"
+  }
+]

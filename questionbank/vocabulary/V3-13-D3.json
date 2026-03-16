@@ -1,0 +1,182 @@
+[
+  {
+    "card_index": 1,
+    "hint": "行为动词",
+    "question": "洗脸或者手，洗澡，冲刷",
+    "answer": "wash"
+  },
+  {
+    "card_index": 2,
+    "hint": "名词",
+    "question": "洗，洗涤",
+    "answer": "wash"
+  },
+  {
+    "card_index": 3,
+    "hint": "名词",
+    "question": "闪光，转瞬间",
+    "answer": "flash"
+  },
+  {
+    "card_index": 4,
+    "hint": "名词",
+    "question": "垃圾，废物",
+    "answer": "trash"
+  },
+  {
+    "card_index": 5,
+    "hint": "行为动词",
+    "question": "丢弃，修剪树枝",
+    "answer": "trash"
+  },
+  {
+    "card_index": 6,
+    "hint": "名词",
+    "question": "标记，符号，迹象，征兆",
+    "answer": "sign"
+  },
+  {
+    "card_index": 7,
+    "hint": "行为动词",
+    "question": "签名，署名",
+    "answer": "sign"
+  },
+  {
+    "card_index": 8,
+    "hint": "不及物动词",
+    "question": "做手势",
+    "answer": "sign"
+  },
+  {
+    "card_index": 9,
+    "hint": "及物动词",
+    "question": "设计",
+    "answer": "design"
+  },
+  {
+    "card_index": 10,
+    "hint": "名词",
+    "question": "意图，打算，设计，构思",
+    "answer": "design"
+  },
+  {
+    "card_index": 11,
+    "hint": "形容词",
+    "question": "外国的，外来的，外交的",
+    "answer": "foreign"
+  },
+  {
+    "card_index": 12,
+    "hint": "形容词",
+    "question": "少数的，几乎没有的",
+    "answer": "few"
+  },
+  {
+    "card_index": 13,
+    "hint": "代词",
+    "question": "不多少数",
+    "answer": "few"
+  },
+  {
+    "card_index": 14,
+    "hint": "名词",
+    "question": "观察，视野，意见，风景",
+    "answer": "view"
+  },
+  {
+    "card_index": 15,
+    "hint": "及物动词",
+    "question": "观察，考虑，查看",
+    "answer": "view"
+  },
+  {
+    "card_index": 16,
+    "hint": "及物动词",
+    "question": "检查，复习，回顾",
+    "answer": "review"
+  },
+  {
+    "card_index": 17,
+    "hint": "名词",
+    "question": "回顾，复习",
+    "answer": "review"
+  },
+  {
+    "card_index": 18,
+    "hint": "名词",
+    "question": "接见，会见，面谈，面试",
+    "answer": "interview"
+  },
+  {
+    "card_index": 19,
+    "hint": "及物动词",
+    "question": "面试，会见，采访",
+    "answer": "interview"
+  },
+  {
+    "card_index": 20,
+    "hint": "及物动词",
+    "question": "咀嚼，嚼碎，深思",
+    "answer": "chew"
+  },
+  {
+    "card_index": 21,
+    "hint": "名词",
+    "question": "咀嚼，咀嚼物",
+    "answer": "chew"
+  },
+  {
+    "card_index": 22,
+    "hint": "名词",
+    "question": "动物，兽，牲畜",
+    "answer": "animal"
+  },
+  {
+    "card_index": 23,
+    "hint": "形容词",
+    "question": "正常的，一般的",
+    "answer": "normal"
+  },
+  {
+    "card_index": 24,
+    "hint": "名词",
+    "question": "正常",
+    "answer": "normal"
+  },
+  {
+    "card_index": 25,
+    "hint": "形容词",
+    "question": "单独的，独自的，只有，仅仅",
+    "answer": "single"
+  },
+  {
+    "card_index": 26,
+    "hint": "副词",
+    "question": "单独的，独自的",
+    "answer": "single"
+  },
+  {
+    "card_index": 27,
+    "hint": "名词",
+    "question": "电话",
+    "answer": "phone"
+  },
+  {
+    "card_index": 28,
+    "hint": "行为动词",
+    "question": "给什么什么打电话",
+    "answer": "phone"
+  },
+  {
+    "card_index": 29,
+    "hint": "连词",
+    "question": "虽然，尽管",
+    "answer": "though"
+  },
+  {
+    "card_index": 30,
+    "hint": "副词",
+    "question": "可是，不过，然而",
+    "answer": "though"
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "一些照片",
+    "answer": "some photos"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "大量的故事",
+    "answer": "a lot of stories"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "很多钱",
+    "answer": "much money"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "几乎没有可乐",
+    "answer": "little coke"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "很多肉",
+    "answer": "much meat"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "几乎没有巧克力",
+    "answer": "little chocolate"
+  }
+]

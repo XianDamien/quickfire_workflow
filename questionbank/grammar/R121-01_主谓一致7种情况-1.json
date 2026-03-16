@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "Verb或be verb要用单数还是复数？",
+    "answer": "用单数"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "翻译句子，杯子里面的水非常冷。",
+    "answer": "The water in the glass is very cold."
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "翻译句子，那只猫喜欢牛奶。",
+    "answer": "The cat likes milk."
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "老大用单数还是复数？",
+    "answer": "复数。"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "当集体名词表示的是一个整体的时候，老大用单数还是复数？",
+    "answer": "单数"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "请听这个问题，There is,还是are a sheep in the yard?",
+    "answer": "Is"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "第二个句子，There is还是 there are some sheep in the yard.",
+    "answer": "There are"
+  }
+]

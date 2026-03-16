@@ -1,0 +1,38 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "很多狗",
+    "answer": "many dogs"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "几乎没有苹果",
+    "answer": "few apples"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "一些水",
+    "answer": "some water"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "很多果汁",
+    "answer": "much juice"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "一些猫",
+    "answer": "some cats"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "一点点牛奶",
+    "answer": "a little milk"
+  }
+]

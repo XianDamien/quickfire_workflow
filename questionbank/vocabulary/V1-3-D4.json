@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "She likes to drink red wine at supper.",
+    "question": "Wine",
+    "answer": "酒，葡萄酒"
+  },
+  {
+    "card_index": 2,
+    "hint": "She gave some meat to the cat.",
+    "question": "Meat",
+    "answer": "肉，肉类"
+  },
+  {
+    "card_index": 3,
+    "hint": "There was fried chicken for dinner.",
+    "question": "Chicken",
+    "answer": "鸡，鸡肉"
+  },
+  {
+    "card_index": 4,
+    "hint": "We sold out all the beef.",
+    "question": "Beef",
+    "answer": "牛肉"
+  },
+  {
+    "card_index": 5,
+    "hint": "This pork is not very fresh.",
+    "question": "Pork",
+    "answer": "猪肉"
+  },
+  {
+    "card_index": 6,
+    "hint": "They had roast lamb for lunch.",
+    "question": "Lamb",
+    "answer": "羊羔肉，羔羊"
+  },
+  {
+    "card_index": 7,
+    "hint": "People like to have mutton in winter.",
+    "question": "Mutton",
+    "answer": "羊肉"
+  },
+  {
+    "card_index": 8,
+    "hint": "Our restaurant is famous for its seafood.",
+    "question": "Seafood",
+    "answer": "海鲜，海产品"
+  }
+]

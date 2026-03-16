@@ -1,0 +1,122 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "gate",
+    "answer": "大门，门口"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "stair",
+    "answer": "楼梯"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "wall",
+    "answer": "墙"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "palace",
+    "answer": "宫殿"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "tower",
+    "answer": "塔，发射塔"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "bridge",
+    "answer": "桥"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "street",
+    "answer": "大街，街道"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "road",
+    "answer": "路，道路"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "crossing",
+    "answer": "人行横道，十字路口"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "somewhere",
+    "answer": "某处"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "somewhere",
+    "answer": "在某处，到某处"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "reach",
+    "answer": "到达，伸手够到"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "arrive",
+    "answer": "到达"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "ball",
+    "answer": "球"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "basketball",
+    "answer": "篮球"
+  },
+  {
+    "card_index": 16,
+    "hint": "",
+    "question": "baseball",
+    "answer": "棒球"
+  },
+  {
+    "card_index": 17,
+    "hint": "",
+    "question": "football",
+    "answer": "足球"
+  },
+  {
+    "card_index": 18,
+    "hint": "",
+    "question": "volleyball",
+    "answer": "排球"
+  },
+  {
+    "card_index": 19,
+    "hint": "",
+    "question": "tennis",
+    "answer": "网球"
+  },
+  {
+    "card_index": 20,
+    "hint": "",
+    "question": "table tennis",
+    "answer": "乒乓球"
+  }
+]

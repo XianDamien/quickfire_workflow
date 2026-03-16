@@ -1,0 +1,92 @@
+[
+  {
+    "card_index": 1,
+    "hint": "Fruit and vegetables are all good for our health.",
+    "question": "Vegetable",
+    "answer": "蔬菜"
+  },
+  {
+    "card_index": 2,
+    "hint": "The potato is a vegetable, not a fruit.",
+    "question": "Potato",
+    "answer": "土豆"
+  },
+  {
+    "card_index": 3,
+    "hint": "You would better heat up the tomato soup.",
+    "question": "Tomato",
+    "answer": "番茄"
+  },
+  {
+    "card_index": 4,
+    "hint": "Have some more carrots.",
+    "question": "Carrot",
+    "answer": "胡萝卜"
+  },
+  {
+    "card_index": 5,
+    "hint": "Cocoa beans are used to make some kinds of drink.",
+    "question": "Bean",
+    "answer": "豆"
+  },
+  {
+    "card_index": 6,
+    "hint": "We have a bowl of very salty pea and ham soup.",
+    "question": "Pea",
+    "answer": "豌豆"
+  },
+  {
+    "card_index": 7,
+    "hint": "He likes to eat peanut jam.",
+    "question": "Peanut",
+    "answer": "花生"
+  },
+  {
+    "card_index": 8,
+    "hint": "I like the moon cakes with nuts in them.",
+    "question": "Nut",
+    "answer": "坚果，干果"
+  },
+  {
+    "card_index": 9,
+    "hint": "I like to eat cucumber sandwiches.",
+    "question": "Cucumber",
+    "answer": "黄瓜"
+  },
+  {
+    "card_index": 10,
+    "hint": "I don't like the flavor of onion.",
+    "question": "Onion",
+    "answer": "洋葱"
+  },
+  {
+    "card_index": 11,
+    "hint": "I hate eating cabbages.",
+    "question": "Cabbage",
+    "answer": "卷心菜"
+  },
+  {
+    "card_index": 12,
+    "hint": "Water is a wholesome drink. (noun)",
+    "question": "Drink",
+    "answer": "饮料，酒"
+  },
+  {
+    "card_index": 13,
+    "hint": "It is harmful to your health to drink too much. (verb)",
+    "question": "Drink",
+    "answer": "喝，喝酒"
+  },
+  {
+    "card_index": 14,
+    "hint": "We cannot exist without air, food or water.",
+    "question": "Water",
+    "answer": "水"
+  },
+  {
+    "card_index": 15,
+    "hint": "You can water the flowers every three days. (verb)",
+    "question": "Water",
+    "answer": "浇水"
+  }
+]

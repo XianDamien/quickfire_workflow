@@ -1,0 +1,62 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "在白天",
+    "answer": "at day"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "准时",
+    "answer": "on time"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "在度假",
+    "answer": "on holiday"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "玩得开心",
+    "answer": "have fun"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "在家",
+    "answer": "at home"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "日日夜夜",
+    "answer": "day and night"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "回家",
+    "answer": "go home"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "看电视",
+    "answer": "watch TV"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "最后",
+    "answer": "at last"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "去睡觉",
+    "answer": "go to bed"
+  }
+]

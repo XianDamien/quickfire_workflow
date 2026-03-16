@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "可以分成三步，第一步是什么？",
+    "answer": "把原来的句子变成它相反的意思。"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "第二步是什么？",
+    "answer": "在第一步的基础上，把句子变成疑问句"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "第三步是把第二步的句子截取一段，只保留什么呢？",
+    "answer": "只需要保留提问的同学和句子的主角"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "第一步，把you like swimming变成什么？",
+    "answer": "变成You don't like swimming."
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "第二步，把You don't like swimming变成什么？",
+    "answer": "Don't you like swimming？"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "第三步，把Don't you like swimming？\n保留简短的一部分，保留什么？",
+    "answer": "Don't you？"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "所以完整的反意问句应该是什么？",
+    "answer": "You like swimming, don't you?"
+  }
+]

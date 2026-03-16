@@ -1,0 +1,68 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "主角怎么说？",
+    "answer": "Subject"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "动作怎么说？",
+    "answer": "Verb"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "配角怎么说？",
+    "answer": "Object"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "谁要画圈？",
+    "answer": "Verb"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "谁要第一个找？",
+    "answer": "Verb"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "动作前面是什么？",
+    "answer": "主角subject"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "动作后面是什么？",
+    "answer": "配角object"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "动作是谁做的？",
+    "answer": "主角subject"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "I like dogs.谁是object？",
+    "answer": "dogs"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "The black cat drinks milk谁是subject？",
+    "answer": "The black cat.这只黑猫"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "Two big birds fly.谁是verb？",
+    "answer": "fly"
+  }
+]

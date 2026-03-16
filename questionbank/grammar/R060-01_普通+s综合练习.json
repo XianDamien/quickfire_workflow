@@ -1,0 +1,68 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "o结尾，有生命",
+    "answer": "加es"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "ly结尾",
+    "answer": "去y，加ies"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "ey结尾",
+    "answer": "直接加s"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "f结尾",
+    "answer": "去f，加ves"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "字母音/z/结尾",
+    "answer": "加es"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "fe结尾",
+    "answer": "去fe，加ves"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "字母音/ks/结尾",
+    "answer": "其实还是s结尾，所以加es"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "o结尾，没有生命",
+    "answer": "直接加s"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "sheep",
+    "answer": "不变"
+  },
+  {
+    "card_index": 10,
+    "hint": "鹿",
+    "question": "deer",
+    "answer": "不变"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "fish",
+    "answer": "不变"
+  }
+]

@@ -1,0 +1,98 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "smoke",
+    "answer": "不可数"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "apple",
+    "answer": "可数"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "sunlight",
+    "answer": "不可数"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "banana",
+    "answer": "可数"
+  },
+  {
+    "card_index": 5,
+    "hint": "玻璃",
+    "question": "glass",
+    "answer": "不可数"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "avocado",
+    "answer": "可数"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "durian",
+    "answer": "可数"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "meat",
+    "answer": "不可数"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "beef",
+    "answer": "不可数"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "information",
+    "answer": "不可数"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "English",
+    "answer": "不可数"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "chicken",
+    "answer": "不可数"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "music",
+    "answer": "不可数"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "orange",
+    "answer": "可数"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "orange juice",
+    "answer": "不可数"
+  },
+  {
+    "card_index": 16,
+    "hint": "",
+    "question": "fruit",
+    "answer": "不可数"
+  }
+]

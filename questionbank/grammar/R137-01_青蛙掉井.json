@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "青蛙（掉）到了井底",
+    "answer": "（drop-dropped）"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "想出个（计划）",
+    "answer": "（plan-planned）"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "把狗子叫住（聊天）",
+    "answer": "（chat-chatted）"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "聊得正高兴，突然跪下来（求）斑点狗",
+    "answer": "（beg-begged）"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "把他（拉）上来",
+    "answer": "（drag-dragged）"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "他（装备）上绳子",
+    "answer": "（equip-equipped）"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "（一步一步）出井",
+    "answer": "（step-stepped）"
+  }
+]

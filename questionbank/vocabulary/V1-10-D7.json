@@ -1,0 +1,92 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "鹦鹉",
+    "answer": "Parrot"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "母鸡",
+    "answer": "Hen"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "小鸡",
+    "answer": "Chick"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "鸭子",
+    "answer": "Duck"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "鹅",
+    "answer": "Goose"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "猫",
+    "answer": "Cat"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "狗",
+    "answer": "Dog"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "猪",
+    "answer": "Pig"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "母牛",
+    "answer": "Cow"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "马",
+    "answer": "Horse"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "羊，绵羊",
+    "answer": "Sheep"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "公牛",
+    "answer": "Ox"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "山羊",
+    "answer": "Goat"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "驴，驴子",
+    "answer": "Donkey"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "兔子",
+    "answer": "Rabbit"
+  }
+]

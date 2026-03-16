@@ -1,0 +1,68 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "小写n加一点的中文名是什么？",
+    "answer": "名词"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "头发是什么颜色？",
+    "answer": "黄色"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "英文名叫什么？",
+    "answer": "noun"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "noun可以扮演什么角色？",
+    "answer": "subject主角，object配角,subject complement主角补充"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "小写的v加一点中文名是什么？",
+    "answer": "行为动词"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "头发是什么颜色？",
+    "answer": "红色"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "英文名叫什么？",
+    "answer": "verb"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "verb可以扮演什么角色？",
+    "answer": "只能扮演大V 动作"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "beverb的中文名是什么？",
+    "answer": "be动词"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "头发是什么颜色？",
+    "answer": "蓝色"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "be verb可以扮演什么角色？",
+    "answer": "大写的be v"
+  }
+]

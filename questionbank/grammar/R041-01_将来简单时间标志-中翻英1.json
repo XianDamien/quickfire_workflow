@@ -1,0 +1,56 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "明天",
+    "answer": "tomorrow"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "明天晚上",
+    "answer": "tomorrow evening"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "明天六点钟",
+    "answer": "six o'clock tomorrow"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "后天",
+    "answer": "the day after tomorrow"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "明天上午",
+    "answer": "tomorrow morning"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "十分钟之后",
+    "answer": "In ten minutes"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "一小时之后",
+    "answer": "In one hour/in an hour"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "两周以后",
+    "answer": "In two weeks"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "一个月以后",
+    "answer": "In a month"
+  }
+]

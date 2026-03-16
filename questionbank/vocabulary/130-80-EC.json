@@ -1,0 +1,92 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "plan",
+    "answer": "计划"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "plane",
+    "answer": "飞机"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "planet",
+    "answer": "行星"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "plant",
+    "answer": "种植,植物"
+  },
+  {
+    "card_index": 5,
+    "hint": "破烂似的壳",
+    "question": "plastic",
+    "answer": "塑料"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "plate",
+    "answer": "盘子"
+  },
+  {
+    "card_index": 7,
+    "hint": "破烂的佛",
+    "question": "platform",
+    "answer": "平台,讲台,月台"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "play",
+    "answer": "玩"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "player",
+    "answer": "玩家,运动员"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "playground",
+    "answer": "操场,运动场"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "pleasant",
+    "answer": "令人愉快的"
+  },
+  {
+    "card_index": 12,
+    "hint": "动词",
+    "question": "please",
+    "answer": "请"
+  },
+  {
+    "card_index": 13,
+    "hint": "形容词",
+    "question": "pleased",
+    "answer": "感到愉快的"
+  },
+  {
+    "card_index": 14,
+    "hint": "名词",
+    "question": "pleasure",
+    "answer": "愉快"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "plenty",
+    "answer": "大量"
+  }
+]

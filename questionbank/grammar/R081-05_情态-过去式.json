@@ -1,0 +1,38 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "can过去式",
+    "answer": "could"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "shall过去式",
+    "answer": "should"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "will过去式",
+    "answer": "would"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "may过去式",
+    "answer": "might"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "must过去式",
+    "answer": "没有,但是可以用have to来代替。"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "need过去式",
+    "answer": "need做情态时没有过去式。"
+  }
+]

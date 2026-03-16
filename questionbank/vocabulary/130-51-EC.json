@@ -1,0 +1,98 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "hide",
+    "answer": "躲起来"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "high",
+    "answer": "高的"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "hill",
+    "answer": "小山"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "himself",
+    "answer": "他自己"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "history",
+    "answer": "历史"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "historic",
+    "answer": "历史性的"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "historical",
+    "answer": "历史学的"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "hit",
+    "answer": "打"
+  },
+  {
+    "card_index": 9,
+    "hint": "hobby",
+    "question": "hobby",
+    "answer": "爱好"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "hold",
+    "answer": "拿住，保持"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "hole",
+    "answer": "洞"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "holiday",
+    "answer": "假期"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "home",
+    "answer": "家"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "homeless",
+    "answer": "无家可归的"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "hometown",
+    "answer": "故乡，家乡"
+  },
+  {
+    "card_index": 16,
+    "hint": "",
+    "question": "homework",
+    "answer": "作业"
+  }
+]

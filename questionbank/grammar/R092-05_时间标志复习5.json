@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "老师说中文，你说英文。\n六点钟之后",
+    "answer": "after six o'clock"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "有时候",
+    "answer": "sometimes"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "昨天晚上八点钟",
+    "answer": "eight o'clock yesterday evening"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "听",
+    "answer": "listen"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "明晚",
+    "answer": "tomorrow evening"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "昨天的这个时候",
+    "answer": "at this time yesterday"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "刚刚",
+    "answer": "just now"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "明天早上",
+    "answer": "tomorrow morning"
+  }
+]

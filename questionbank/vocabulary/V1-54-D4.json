@@ -1,0 +1,62 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "special",
+    "answer": "特殊的，特别的"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "dangerous",
+    "answer": "危险的，不安全的"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "safe",
+    "answer": "安全的"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "different",
+    "answer": "不同的"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "same",
+    "answer": "相同的，同样的"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "real",
+    "answer": "真的，真实的"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "cheap",
+    "answer": "便宜的"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "expensive",
+    "answer": "昂贵的"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "primary",
+    "answer": "小学的，初等的"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "noisy",
+    "answer": "嘈杂的，喧嚣的"
+  }
+]

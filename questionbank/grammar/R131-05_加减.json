@@ -1,0 +1,38 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "加号有两个说法，分别是什么？",
+    "answer": "Plus和and。"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "哪一个后面be动词是需要用are的？",
+    "answer": "And"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "2+8=10，怎么说？用plus这个词",
+    "answer": "Two plus eight is ten."
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "还是2+8=10换成用and怎么说？",
+    "answer": "Two and eight are ten."
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "减号怎么说?",
+    "answer": "minus"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "用英文说出8-2=6。",
+    "answer": "Eight minus two is six"
+  }
+]

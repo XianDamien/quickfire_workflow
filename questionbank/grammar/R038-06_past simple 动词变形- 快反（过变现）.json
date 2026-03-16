@@ -1,0 +1,68 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "did 现在是",
+    "answer": "do"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "was 现在是",
+    "answer": "is或者am"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "ate现在是",
+    "answer": "eat"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "had现在是",
+    "answer": "have"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "flew现在是",
+    "answer": "fly"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "made现在是",
+    "answer": "make"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "were现在是",
+    "answer": "are"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "played现在是",
+    "answer": "play"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "helped现在是",
+    "answer": "help"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "said现在是",
+    "answer": "say"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "saw现在是",
+    "answer": "see"
+  }
+]

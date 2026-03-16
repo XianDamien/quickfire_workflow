@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "direction",
+    "answer": "方向"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "left",
+    "answer": "左边的"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "left",
+    "answer": "在左边"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "right",
+    "answer": "右边的，正确的"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "right",
+    "answer": "在右边，恰当的"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "north",
+    "answer": "北，北方"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "bottom",
+    "answer": "底部"
+  }
+]

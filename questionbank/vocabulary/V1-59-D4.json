@@ -1,0 +1,62 @@
+[
+  {
+    "card_index": 1,
+    "hint": "行为动词",
+    "question": "close",
+    "answer": "关闭，关"
+  },
+  {
+    "card_index": 2,
+    "hint": "形容词",
+    "question": "open",
+    "answer": "开着的"
+  },
+  {
+    "card_index": 3,
+    "hint": "行为动词",
+    "question": "open",
+    "answer": "打开"
+  },
+  {
+    "card_index": 4,
+    "hint": "形容词",
+    "question": "dry",
+    "answer": "干燥的，干的"
+  },
+  {
+    "card_index": 5,
+    "hint": "行为动词",
+    "question": "dry",
+    "answer": "变干"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "wet",
+    "answer": "湿的，潮湿的"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "round",
+    "answer": "圆的"
+  },
+  {
+    "card_index": 8,
+    "hint": "形容词",
+    "question": "straight",
+    "answer": "笔直的"
+  },
+  {
+    "card_index": 9,
+    "hint": "副词",
+    "question": "straight",
+    "answer": "笔直地"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "curly",
+    "answer": "卷轴的，卷毛的"
+  }
+]

@@ -1,0 +1,50 @@
+[
+    {
+        "card_index": 1,
+        "hint": "名词",
+        "question": "课程",
+        "answer": "class"
+    },
+    {
+        "card_index": 2,
+        "hint": "名词",
+        "question": "知识",
+        "answer": "knowledge"
+    },
+    {
+        "card_index": 3,
+        "hint": "名词",
+        "question": "学科、主题，还有主角",
+        "answer": "subject"
+    },
+    {
+        "card_index": 4,
+        "hint": "名词",
+        "question": "数学",
+        "answer": "math"
+    },
+    {
+        "card_index": 5,
+        "hint": "名词",
+        "question": "历史",
+        "answer": "history"
+    },
+    {
+        "card_index": 6,
+        "hint": "名词",
+        "question": "科学",
+        "answer": "science"
+    },
+    {
+        "card_index": 7,
+        "hint": "名词",
+        "question": "艺术",
+        "answer": "art"
+    },
+    {
+        "card_index": 8,
+        "hint": "名词",
+        "question": "语言",
+        "answer": "language"
+    }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "状语从句中有三个连词是有多个意思的，它们是哪三个连词？",
+    "answer": "since、as、while"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "since有哪两种链条？",
+    "answer": "时间since和原因理由since"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "as有哪3个as？",
+    "answer": "时间as、原因理由as和方法as"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "while有哪两种while？",
+    "answer": "时间while和让步while"
+  }
+]

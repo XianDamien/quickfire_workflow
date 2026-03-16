@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "发明",
+    "answer": "invention"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "电视机",
+    "answer": "television"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "电脑",
+    "answer": "computer"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "互联网，网络",
+    "answer": "internet"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "网络的地址，网址，网站",
+    "answer": "website"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "收音机，广播",
+    "answer": "radio"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "手机，电话",
+    "answer": "phone"
+  }
+]

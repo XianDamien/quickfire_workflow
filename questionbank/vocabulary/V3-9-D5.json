@@ -1,0 +1,152 @@
+[
+  {
+    "card_index": 1,
+    "hint": "名词",
+    "question": "轮子，车轮",
+    "answer": "wheel"
+  },
+  {
+    "card_index": 2,
+    "hint": "名词",
+    "question": "速度",
+    "answer": "speed"
+  },
+  {
+    "card_index": 3,
+    "hint": "不及物动词",
+    "question": "迅速前进，急行",
+    "answer": "speed"
+  },
+  {
+    "card_index": 4,
+    "hint": "及物动词",
+    "question": "需要，必需",
+    "answer": "need"
+  },
+  {
+    "card_index": 5,
+    "hint": "情态",
+    "question": "需要，必须",
+    "answer": "need"
+  },
+  {
+    "card_index": 6,
+    "hint": "名词",
+    "question": "必须，需要；需要的事物",
+    "answer": "need"
+  },
+  {
+    "card_index": 7,
+    "hint": "及物动词",
+    "question": "喂养,饲养",
+    "answer": "feed"
+  },
+  {
+    "card_index": 8,
+    "hint": "不及物动词",
+    "question": "进食",
+    "answer": "feed"
+  },
+  {
+    "card_index": 9,
+    "hint": "名词",
+    "question": "种子",
+    "answer": "seed"
+  },
+  {
+    "card_index": 10,
+    "hint": "行为动词",
+    "question": "继任，继承",
+    "answer": "succeed"
+  },
+  {
+    "card_index": 11,
+    "hint": "不及物动词",
+    "question": "成功，获得成功",
+    "answer": "succeed"
+  },
+  {
+    "card_index": 12,
+    "hint": "及物动词",
+    "question": "放置，安放；树立",
+    "answer": "set"
+  },
+  {
+    "card_index": 13,
+    "hint": "不及物动词",
+    "question": "（日、月等）落，下沉",
+    "answer": "set"
+  },
+  {
+    "card_index": 14,
+    "hint": "名词",
+    "question": "一套，一副",
+    "answer": "set"
+  },
+  {
+    "card_index": 15,
+    "hint": "及物动词",
+    "question": "得到，获得；（去）拿来",
+    "answer": "get"
+  },
+  {
+    "card_index": 16,
+    "hint": "不及物动词",
+    "question": "到达",
+    "answer": "get"
+  },
+  {
+    "card_index": 17,
+    "hint": "行为动词",
+    "question": "变成",
+    "answer": "get"
+  },
+  {
+    "card_index": 18,
+    "hint": "及物动词",
+    "question": "让，允许",
+    "answer": "let"
+  },
+  {
+    "card_index": 19,
+    "hint": "名词",
+    "question": "网；因特网",
+    "answer": "net"
+  },
+  {
+    "card_index": 20,
+    "hint": "名词",
+    "question": "宠物",
+    "answer": "pet"
+  },
+  {
+    "card_index": 21,
+    "hint": "形容词",
+    "question": "潮湿的；下雨的，多雨的",
+    "answer": "wet"
+  },
+  {
+    "card_index": 22,
+    "hint": "副词",
+    "question": "尚未，仍未",
+    "answer": "yet"
+  },
+  {
+    "card_index": 23,
+    "hint": "连词",
+    "question": "然而，可是，却",
+    "answer": "yet"
+  },
+  {
+    "card_index": 24,
+    "hint": "名词",
+    "question": "日常饮食；规定饮食",
+    "answer": "diet"
+  },
+  {
+    "card_index": 25,
+    "hint": "及物动词",
+    "question": "（使）节制饮食",
+    "answer": "diet"
+  }
+]

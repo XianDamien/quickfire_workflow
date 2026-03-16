@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "休息一下",
+    "answer": "have a rest"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "尝试一下",
+    "answer": "have a try"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "大量的",
+    "answer": "a lot of"
+  },
+  {
+    "card_index": 4,
+    "hint": "可数的，一点点",
+    "question": "一点点（可数）",
+    "answer": "a few"
+  },
+  {
+    "card_index": 5,
+    "hint": "不可数的一点点",
+    "question": "一点点（不可数）",
+    "answer": "a little"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "去散步",
+    "answer": "go for a walk"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "感冒",
+    "answer": "have a cold"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "头痛",
+    "answer": "have a headache"
+  }
+]

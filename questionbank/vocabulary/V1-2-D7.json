@@ -1,0 +1,92 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "蔬菜",
+    "answer": "vegetables"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "土豆马铃薯",
+    "answer": "potato"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "番茄西红柿",
+    "answer": "tomato"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "胡萝卜",
+    "answer": "carrot"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "豆",
+    "answer": "bean"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "豌豆",
+    "answer": "pea"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "花生",
+    "answer": "peanut"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "干果坚果",
+    "answer": "nut"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "黄瓜",
+    "answer": "cucumber"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "洋葱",
+    "answer": "onion"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "卷心菜",
+    "answer": "cabbage"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "饮料，酒",
+    "answer": "drink"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "喝，或者喝酒",
+    "answer": "drink"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "水",
+    "answer": "water"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "浇水",
+    "answer": "water"
+  }
+]

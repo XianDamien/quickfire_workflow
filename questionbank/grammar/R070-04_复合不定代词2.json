@@ -1,0 +1,38 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "第一题nobody know还是 nobody knows the answer。",
+    "answer": "knows，因为nobody是三单，"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "第二题someone know还是someone knows the answer。",
+    "answer": "knows，因为someone是三单，"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "第三题everything is good or everything are good？",
+    "answer": "Is good因为 everything是三单"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "第四题，everybody is happy还是everybody are happy？",
+    "answer": "Everybody is happy，因为everybody是三单。"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "I don't have something to eat，or I don't have anything to eat。",
+    "answer": "Anything，因为是否定，所以要用any，它的用法和没加尾巴一样。"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "Can I have something to eat or anything to eat?",
+    "answer": "Something，因为是请求要用some用法和没加尾巴前一样。"
+  }
+]

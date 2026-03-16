@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "I have a car.这是什么颜色的句子？",
+    "answer": "红色句子"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "把它变成否定句是什么？",
+    "answer": "I don't have a car."
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "把它变成疑问句是什么？",
+    "answer": "Do I have a car?"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "I will have a car. 这是什么颜色的句子？",
+    "answer": "红色句子"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "把它变成否定句，是红老大的灵魂去说不，还是精神小伙去说不？",
+    "answer": "精神小伙"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "为什么不是灵魂去说不了呢？",
+    "answer": "因为当句子里面有精神小伙的时候，说不和提问都是他抢着做的"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "I will draw a picture for you.变成否定句",
+    "answer": "I will not draw a picture for you."
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "I will be a lawyer in the future.变成否定句",
+    "answer": "I will not be a lawyer in the future."
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "both指的是什么？",
+    "answer": "两个打包都选"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "Either或者either指的是什么？",
+    "answer": "两个选一个"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "neither或者是neither指的是什么？",
+    "answer": "两个都不选"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "every指的是什么？",
+    "answer": "好几个每个都选"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "all指的是什么？",
+    "answer": "好几个打包在一起，一起选"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "any指什么？",
+    "answer": "好几个里边选一个"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "none指什么？",
+    "answer": "有好几个，但一个都不选。"
+  }
+]

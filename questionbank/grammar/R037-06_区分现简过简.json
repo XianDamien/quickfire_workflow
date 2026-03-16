@@ -1,0 +1,38 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "区分现在简单和过去简单的方法一是什么？",
+    "answer": "有频率副词出现，是现在简单"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "频率副词是什么意思？",
+    "answer": "表示多久做一次某件事的那些副词"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "区分现在简单和过去简单的方法二是什么？",
+    "answer": "看老大是现在的样子还是小时候的样子"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "am小时候的样子是什么？",
+    "answer": "was"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "is小时候的样子是什么？",
+    "answer": "was"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "are小时候的样子是什么？",
+    "answer": "were"
+  }
+]

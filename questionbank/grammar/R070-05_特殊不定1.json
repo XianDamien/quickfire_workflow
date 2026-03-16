@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "两个里选一个，用什么？",
+    "answer": "either或either"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "好几个里一个都不选，用什么？",
+    "answer": "none"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "好几个里选一个用什么？",
+    "answer": "any"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "两个都不选，用什么？",
+    "answer": "Neither和neither"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "好几个打包都选用什么？",
+    "answer": "all"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "好几个每个都选用什么？",
+    "answer": "Every"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "两个打包都选用什么？",
+    "answer": "Both"
+  }
+]

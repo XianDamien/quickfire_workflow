@@ -1,0 +1,98 @@
+[
+  {
+    "card_index": 1,
+    "hint": "在下面划线,它是个verb",
+    "question": "underline",
+    "answer": "划线"
+  },
+  {
+    "card_index": 2,
+    "hint": "带下划线的,adjective",
+    "question": "underlined",
+    "answer": "带下划线的"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "understand",
+    "answer": "理解"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "unfair",
+    "answer": "不公平"
+  },
+  {
+    "card_index": 5,
+    "hint": "难忘的,不能忘记的",
+    "question": "unforgettable",
+    "answer": "难忘的"
+  },
+  {
+    "card_index": 6,
+    "hint": "什么意思?健忘的",
+    "question": "forgetful",
+    "answer": "健忘的"
+  },
+  {
+    "card_index": 7,
+    "hint": "佛祖不爱他",
+    "question": "unfortunately",
+    "answer": "不幸的"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "unhappy",
+    "answer": "不开心的"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "unhealthy",
+    "answer": "不健康的"
+  },
+  {
+    "card_index": 10,
+    "hint": "uni什么意思?单一的,form什么意思?形式,所以单一的形式",
+    "question": "uniform",
+    "answer": "制服"
+  },
+  {
+    "card_index": 11,
+    "hint": "uni什么意思?单一的,所以unit,单元,是不可拆分的最小部分",
+    "question": "unit",
+    "answer": "单元"
+  },
+  {
+    "card_index": 12,
+    "hint": "使单一,联合,本来松散的很多东西,变成单一的,那不就联合嘛",
+    "question": "united",
+    "answer": "联合"
+  },
+  {
+    "card_index": 13,
+    "hint": "还有个大学,靠理智,靠励志,college",
+    "question": "university",
+    "answer": "大学"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "unless",
+    "answer": "除非"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "until",
+    "answer": "直到"
+  },
+  {
+    "card_index": 16,
+    "hint": "",
+    "question": "unusual",
+    "answer": "不寻常的"
+  }
+]

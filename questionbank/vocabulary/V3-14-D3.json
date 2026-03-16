@@ -1,0 +1,170 @@
+[
+  {
+    "card_index": 1,
+    "hint": "行为动词",
+    "question": "读，阅读",
+    "answer": "read"
+  },
+  {
+    "card_index": 2,
+    "hint": "及物动词",
+    "question": "理解，领会，读懂，标明，写着",
+    "answer": "read"
+  },
+  {
+    "card_index": 3,
+    "hint": "行为动词",
+    "question": "领导，带领，领先，胜过，导致，造成",
+    "answer": "lead"
+  },
+  {
+    "card_index": 4,
+    "hint": "名词",
+    "question": "头，领导，首脑，头脑，脑筋",
+    "answer": "head"
+  },
+  {
+    "card_index": 5,
+    "hint": "不及物动词",
+    "question": "朝什么什么前进",
+    "answer": "head"
+  },
+  {
+    "card_index": 6,
+    "hint": "形容词",
+    "question": "死的，无生命的",
+    "answer": "dead"
+  },
+  {
+    "card_index": 7,
+    "hint": "副词",
+    "question": "代替，更换",
+    "answer": "instead"
+  },
+  {
+    "card_index": 8,
+    "hint": "及物动词",
+    "question": "遗失，损失，消失方向",
+    "answer": "lose"
+  },
+  {
+    "card_index": 9,
+    "hint": "行为动词",
+    "question": "输掉",
+    "answer": "lose"
+  },
+  {
+    "card_index": 10,
+    "hint": "行为动词",
+    "question": "关闭，结束",
+    "answer": "close"
+  },
+  {
+    "card_index": 11,
+    "hint": "名词",
+    "question": "结束，终止",
+    "answer": "close"
+  },
+  {
+    "card_index": 12,
+    "hint": "形容词",
+    "question": "近的，亲密的，紧密的",
+    "answer": "close"
+  },
+  {
+    "card_index": 13,
+    "hint": "副词",
+    "question": "接近的，差点儿，近处",
+    "answer": "close"
+  },
+  {
+    "card_index": 14,
+    "hint": "及物动词",
+    "question": "认为，猜想，料想，假如",
+    "answer": "suppose"
+  },
+  {
+    "card_index": 15,
+    "hint": "行为动词",
+    "question": "挑选，选择，愿意",
+    "answer": "choose"
+  },
+  {
+    "card_index": 16,
+    "hint": "名词",
+    "question": "意图，目的",
+    "answer": "purpose"
+  },
+  {
+    "card_index": 17,
+    "hint": "名词",
+    "question": "词，一则新闻，命令",
+    "answer": "word"
+  },
+  {
+    "card_index": 18,
+    "hint": "及物动词",
+    "question": "命令，指挥，订购",
+    "answer": "order"
+  },
+  {
+    "card_index": 19,
+    "hint": "名词",
+    "question": "命令，指挥，订购，顺序",
+    "answer": "order"
+  },
+  {
+    "card_index": 20,
+    "hint": "名词",
+    "question": "边界，边境，边缘",
+    "answer": "border"
+  },
+  {
+    "card_index": 21,
+    "hint": "不及物动词",
+    "question": "近似，毗邻",
+    "answer": "border"
+  },
+  {
+    "card_index": 22,
+    "hint": "及物动词",
+    "question": "与什么什么接壤，加边语",
+    "answer": "border"
+  },
+  {
+    "card_index": 23,
+    "hint": "名词",
+    "question": "记录，唱片",
+    "answer": "record"
+  },
+  {
+    "card_index": 24,
+    "hint": "及物动词",
+    "question": "记录，录制",
+    "answer": "record"
+  },
+  {
+    "card_index": 25,
+    "hint": "及物动词",
+    "question": "买得起，负担得起，抽得出时间，提供，给予",
+    "answer": "afford"
+  },
+  {
+    "card_index": 26,
+    "hint": "副词",
+    "question": "根据，按照",
+    "answer": "according"
+  },
+  {
+    "card_index": 27,
+    "hint": "形容词",
+    "question": "一致的，相应，和谐的",
+    "answer": "according"
+  },
+  {
+    "card_index": 28,
+    "hint": "名词",
+    "question": "民族，人，人们，人民",
+    "answer": "people"
+  }
+]

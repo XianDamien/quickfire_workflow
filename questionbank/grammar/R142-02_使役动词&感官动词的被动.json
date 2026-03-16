@@ -1,0 +1,68 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "你和朋友在公交车上并排坐着，看到一位老爷爷，于是你做了什么事？",
+    "answer": "四个字：帮友让座--“自己不让，帮朋友让座”"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "那么“帮”指的是哪一个单词？",
+    "answer": "help"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "“有”哪个单词？",
+    "answer": "have"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "“让”哪个单词？",
+    "answer": "let"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "“做”哪个单词？",
+    "answer": "make"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "造句：“帮我开门。”",
+    "answer": "Help me open the door."
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "造句：“让我看电视。”",
+    "answer": "Let me watch TV."
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "使役动词后面有什么特点？",
+    "answer": "不定式的to要去掉，看上去就像有两个verb一样。"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "变成被动语态，带有“帮友让座”和“感官动词”的句子，会把哪个词还原回来？",
+    "answer": "to"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "1.He makes us laugh all the time.",
+    "answer": "We are made to laugh all the time."
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "2.I hear John sing in the room.",
+    "answer": "John is heard to sing in the room."
+  }
+]

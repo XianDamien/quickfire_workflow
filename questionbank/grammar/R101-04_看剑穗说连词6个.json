@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "一把主剑最多隐藏几种剑穗？",
+    "answer": "9种"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "每种剑穗都有一个专门的连词，请问时间的专有连词是什么？",
+    "answer": "when"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "地点的专门连词是什么？",
+    "answer": "where"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "条件的专门连词是什么？",
+    "answer": "if"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "原因理由的专门连词是什么？",
+    "answer": "because"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "目的的专门连词是什么？",
+    "answer": "so that目的比较奇怪，连词也比较奇怪"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "方法的专门连词是什么？",
+    "answer": "as"
+  }
+]

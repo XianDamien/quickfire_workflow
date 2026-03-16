@@ -1,0 +1,62 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "off",
+    "answer": "从某处落下，离开"
+  },
+  {
+    "card_index": 2,
+    "hint": "介词",
+    "question": "out",
+    "answer": "向外"
+  },
+  {
+    "card_index": 3,
+    "hint": "副词",
+    "question": "out",
+    "answer": "在外"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "in",
+    "answer": "在什么内，在什么期间"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "into",
+    "answer": "进入什么里面"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "at",
+    "answer": "在"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "by",
+    "answer": "乘，骑，由"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "on",
+    "answer": "在什么上面，在具体某个日期"
+  },
+  {
+    "card_index": 9,
+    "hint": "副词",
+    "question": "over",
+    "answer": "在那边"
+  },
+  {
+    "card_index": 10,
+    "hint": "介词",
+    "question": "over",
+    "answer": "在什么上面"
+  }
+]

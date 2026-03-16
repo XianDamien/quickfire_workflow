@@ -1,0 +1,134 @@
+[
+  {
+    "card_index": 1,
+    "hint": "行为动词",
+    "question": "wake",
+    "answer": "醒来，叫醒"
+  },
+  {
+    "card_index": 2,
+    "hint": "不及物动词",
+    "question": "awake",
+    "answer": "醒来"
+  },
+  {
+    "card_index": 3,
+    "hint": "及物动词",
+    "question": "awake",
+    "answer": "唤醒"
+  },
+  {
+    "card_index": 4,
+    "hint": "形容词",
+    "question": "awake",
+    "answer": "醒着的"
+  },
+  {
+    "card_index": 5,
+    "hint": "及物动词",
+    "question": "bake",
+    "answer": "烘烤"
+  },
+  {
+    "card_index": 6,
+    "hint": "及物动词",
+    "question": "take",
+    "answer": "拿、走、乘坐、吃喝、服用"
+  },
+  {
+    "card_index": 7,
+    "hint": "行为动词",
+    "question": "take",
+    "answer": "花费"
+  },
+  {
+    "card_index": 8,
+    "hint": "及物动词",
+    "question": "mistake",
+    "answer": "误解、弄错"
+  },
+  {
+    "card_index": 9,
+    "hint": "名词",
+    "question": "mistake",
+    "answer": "错误、失误"
+  },
+  {
+    "card_index": 10,
+    "hint": "行为动词",
+    "question": "quake",
+    "answer": "震动、颤抖"
+  },
+  {
+    "card_index": 11,
+    "hint": "名词",
+    "question": "quake",
+    "answer": "震动、地震"
+  },
+  {
+    "card_index": 12,
+    "hint": "及物动词",
+    "question": "make",
+    "answer": "做、制造、使、使得、赚得"
+  },
+  {
+    "card_index": 13,
+    "hint": "行为动词",
+    "question": "shake",
+    "answer": "摇动、抖动"
+  },
+  {
+    "card_index": 14,
+    "hint": "名词",
+    "question": "shake",
+    "answer": "摇动、奶昔"
+  },
+  {
+    "card_index": 15,
+    "hint": "名词",
+    "question": "snake",
+    "answer": "蛇"
+  },
+  {
+    "card_index": 16,
+    "hint": "名词",
+    "question": "lake",
+    "answer": "湖、湖泊"
+  },
+  {
+    "card_index": 17,
+    "hint": "名词",
+    "question": "tree",
+    "answer": "树木"
+  },
+  {
+    "card_index": 18,
+    "hint": "行为动词",
+    "question": "agree",
+    "answer": "同意，赞同"
+  },
+  {
+    "card_index": 19,
+    "hint": "不及物动词",
+    "question": "flee",
+    "answer": "逃走，消失，逃避，飞逝"
+  },
+  {
+    "card_index": 20,
+    "hint": "及物动词",
+    "question": "flee",
+    "answer": "逃离"
+  },
+  {
+    "card_index": 21,
+    "hint": "形容词",
+    "question": "free",
+    "answer": "自由的，随意的，不受拘束的，免费的，空闲的，不忙的"
+  },
+  {
+    "card_index": 22,
+    "hint": "名词",
+    "question": "knee",
+    "answer": "膝，膝盖，膝部"
+  }
+]

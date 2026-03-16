@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "木板",
+    "answer": "board"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "上飞机上船",
+    "answer": "board"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "架子",
+    "answer": "shelf"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "书架",
+    "answer": "bookshelf"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "衣橱；衣柜",
+    "answer": "wardrobe"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "抽屉",
+    "answer": "drawer"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "笼子",
+    "answer": "cage"
+  }
+]

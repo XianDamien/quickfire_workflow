@@ -1,0 +1,92 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "方向",
+    "answer": "direction"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "左边的",
+    "answer": "left"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "在左边",
+    "answer": "left"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "右边的，正确的",
+    "answer": "right"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "在右边，恰当的",
+    "answer": "right"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "北，北方",
+    "answer": "north"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "底部",
+    "answer": "bottom"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "顶端，上边，上面",
+    "answer": "top"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "最高的，顶部的",
+    "answer": "top"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "向上",
+    "answer": "upwards"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "在楼上",
+    "answer": "upstairs"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "楼上",
+    "answer": "upstairs"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "在下面，向下",
+    "answer": "down"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "朝着什么向下",
+    "answer": "down"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "在什么后面",
+    "answer": "behind"
+  }
+]

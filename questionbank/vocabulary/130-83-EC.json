@@ -1,0 +1,92 @@
+[
+  {
+    "card_index": 1,
+    "hint": "不让射死",
+    "question": "precious",
+    "answer": "宝贵的,珍贵的"
+  },
+  {
+    "card_index": 2,
+    "hint": "pre前面,dict说。提前说",
+    "question": "predict",
+    "answer": "预言"
+  },
+  {
+    "card_index": 3,
+    "hint": "pre前面,fer负,提前付钱",
+    "question": "prefer",
+    "answer": "宁愿,更喜欢"
+  },
+  {
+    "card_index": 4,
+    "hint": "pre前面,pair排,提前排。准备开会",
+    "question": "prepare",
+    "answer": "准备"
+  },
+  {
+    "card_index": 5,
+    "hint": "pre前面,sent送,提前送",
+    "question": "present",
+    "answer": "礼物"
+  },
+  {
+    "card_index": 6,
+    "hint": "pre前面,sit想成sit,坐在前面的人",
+    "question": "president",
+    "answer": "董事长,总统"
+  },
+  {
+    "card_index": 7,
+    "hint": "扑来死。把炸弹压在身下",
+    "question": "press",
+    "answer": "按,压"
+  },
+  {
+    "card_index": 8,
+    "hint": "提前探他",
+    "question": "pretend",
+    "answer": "假装,装作"
+  },
+  {
+    "card_index": 9,
+    "hint": "前面阶段的太阳",
+    "question": "pretty",
+    "answer": "漂亮的,相当的"
+  },
+  {
+    "card_index": 10,
+    "hint": "提前问他。提前问可以预防过敏",
+    "question": "prevent",
+    "answer": "预防"
+  },
+  {
+    "card_index": 11,
+    "hint": "普通的rice",
+    "question": "price",
+    "answer": "价格"
+  },
+  {
+    "card_index": 12,
+    "hint": "派来的,前面的",
+    "question": "pride",
+    "answer": "自豪,骄傲"
+  },
+  {
+    "card_index": 13,
+    "hint": "primary school",
+    "question": "primary",
+    "answer": "基本的,初级的"
+  },
+  {
+    "card_index": 14,
+    "hint": "批量的,int印它",
+    "question": "print",
+    "answer": "印刷"
+  },
+  {
+    "card_index": 15,
+    "hint": "骗儿子,或者是先去什么做儿子",
+    "question": "prison",
+    "answer": "监狱"
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "august",
+    "answer": "八月"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "september",
+    "answer": "九月"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "october",
+    "answer": "十月"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "november",
+    "answer": "十一月"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "december",
+    "answer": "十二月"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "season",
+    "answer": "季节"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "spring",
+    "answer": "春天，春季"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "summer",
+    "answer": "夏天，夏季"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "autumn",
+    "answer": "秋天，秋季"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "winter",
+    "answer": "冬天，冬季"
+  }
+]

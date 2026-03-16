@@ -1,0 +1,38 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "最早的特殊疑问词，也就是三颗星的将军是哪两个词？",
+    "answer": "What和how"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "两颗星的中校有六个单词，分别是什么？",
+    "answer": "When where who why whose which"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "其中。Who是什么意思？",
+    "answer": "谁"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "which是什么意思？哪一个",
+    "answer": "哪一个"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "翻译句子，这是谁的连衣裙？",
+    "answer": "Whose dress is this？"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "翻译句子，你想看哪一部电影?",
+    "answer": "Which film do you want to see?"
+  }
+]

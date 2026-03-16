@@ -1,0 +1,38 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "请问从句中可以省略的是什么词性？",
+    "answer": "连词或者说链条conjunction都可以"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "请问可以省略的最主要的连词是什么？",
+    "answer": "that"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "其他可以省略的连词跟that有什么关系？",
+    "answer": "可以被that代替"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "三种从句中谁最有可能出现省略？",
+    "answer": "adj. clause"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "谁完全没可能省略？",
+    "answer": "adv. clause"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "noun clause的12个链条中只有谁可以省略？",
+    "answer": "that"
+  }
+]

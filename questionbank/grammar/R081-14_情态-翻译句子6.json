@@ -1,0 +1,38 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "我们现在走好吗？",
+    "answer": "Shall we go now?"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "我帮你打点行装好吗？",
+    "answer": "Shall I help you pack your things?"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "shall 常常和什么连用？",
+    "answer": "shall I 和shall we"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "把你的玩具都收起来好不好？",
+    "answer": "Will you pick up all your toys?"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "明天你要不要和我一起去学校?",
+    "answer": "Will you go to school with me tomorrow？"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "will常常和什么连用？",
+    "answer": "will you"
+  }
+]

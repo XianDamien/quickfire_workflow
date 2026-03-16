@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "pet (名词)",
+    "answer": "宠物"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "nest (名词)",
+    "answer": "鸟巢"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "plant (名词)",
+    "answer": "植物"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "plant (动词)",
+    "answer": "种植"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "seed (名词)",
+    "answer": "种子"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "flower (名词)",
+    "answer": "花"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "rose (名词)",
+    "answer": "玫瑰"
+  }
+]

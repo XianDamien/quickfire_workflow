@@ -1,0 +1,92 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "Mouse",
+    "answer": "老鼠"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "Elephant",
+    "answer": "大象"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "Tiger",
+    "answer": "老虎"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "Lion",
+    "answer": "狮子"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "Wolf",
+    "answer": "狼"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "Panda",
+    "answer": "熊猫"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "Monkey",
+    "answer": "猴子"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "Fox",
+    "answer": "狐狸"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "Bear (noun)",
+    "answer": "熊"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "Bear (verb)",
+    "answer": "忍受"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "Deer",
+    "answer": "鹿"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "Koala",
+    "answer": "考拉"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "Kangaroo",
+    "answer": "袋鼠"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "Giraffe",
+    "answer": "长颈鹿"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "Zebra",
+    "answer": "斑马"
+  }
+]

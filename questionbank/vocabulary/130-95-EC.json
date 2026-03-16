@@ -1,0 +1,98 @@
+[
+  {
+    "card_index": 1,
+    "hint": "是你爷",
+    "question": "senior",
+    "answer": "年长的，高级的"
+  },
+  {
+    "card_index": 2,
+    "hint": "丧失",
+    "question": "sense",
+    "answer": "感觉，意识"
+  },
+  {
+    "card_index": 3,
+    "hint": "塞藤子，noun",
+    "question": "sentence",
+    "answer": "句子"
+  },
+  {
+    "card_index": 4,
+    "hint": "塞藤子，verb",
+    "question": "sentence",
+    "answer": "判决"
+  },
+  {
+    "card_index": 5,
+    "hint": "四人饿死",
+    "question": "serious",
+    "answer": "严重的，严肃的"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "seriously",
+    "answer": "严重地，严肃地"
+  },
+  {
+    "card_index": 7,
+    "hint": "特色什么？",
+    "question": "serve",
+    "answer": "服务"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "service",
+    "answer": "服务"
+  },
+  {
+    "card_index": 9,
+    "hint": "晒它",
+    "question": "set",
+    "answer": "放置，一套装备"
+  },
+  {
+    "card_index": 10,
+    "hint": "set all",
+    "question": "settle",
+    "answer": "定居，解决"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "several",
+    "answer": "几个"
+  },
+  {
+    "card_index": 12,
+    "hint": "说客",
+    "question": "shake",
+    "answer": "震动，摇晃，动摇"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "shall",
+    "answer": "将要"
+  },
+  {
+    "card_index": 14,
+    "hint": "谢幕",
+    "question": "shame",
+    "answer": "羞愧"
+  },
+  {
+    "card_index": 15,
+    "hint": "斜坡",
+    "question": "shape",
+    "answer": "形状"
+  },
+  {
+    "card_index": 16,
+    "hint": "晒儿",
+    "question": "share",
+    "answer": "分享"
+  }
+]

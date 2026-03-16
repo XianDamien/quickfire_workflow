@@ -1,0 +1,38 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "1. 你更喜欢披萨还是面条？",
+    "answer": "Do you prefer pizza or pasta?"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "2. 你最喜欢的季节是夏天还是冬天？",
+    "answer": "Is your favorite season summer or winter?"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "3. 你想要茶还是咖啡？",
+    "answer": "Would you like tea or coffee？"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "4.你喜欢哪种运动，足球、篮球还是网球?",
+    "answer": "Which sport do you like, soccer, basketball, or tennis?"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "5.Anna喜欢哪座城市，北京，上海，还是昆明？",
+    "answer": "Which city does Anna like, Beijing, Shanghai or Kunming?"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "6.你喜欢哪双鞋子，黄色的那双，蓝色的那双，还是紫色的那双？",
+    "answer": "Which pair of shoes do you like, the yellow pair, the blue pair, or the purple pair?"
+  }
+]

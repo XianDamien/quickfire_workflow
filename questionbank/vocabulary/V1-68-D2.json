@@ -1,0 +1,62 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "above",
+    "answer": "在什么上方，高于，超过"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "under",
+    "answer": "在什么下面"
+  },
+  {
+    "card_index": 3,
+    "hint": "介词",
+    "question": "about",
+    "answer": "关于，大约"
+  },
+  {
+    "card_index": 4,
+    "hint": "副词",
+    "question": "about",
+    "answer": "大约"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "and",
+    "answer": "和"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "but",
+    "answer": "但是"
+  },
+  {
+    "card_index": 7,
+    "hint": "连词",
+    "question": "so",
+    "answer": "因此，所以"
+  },
+  {
+    "card_index": 8,
+    "hint": "副词",
+    "question": "so",
+    "answer": "如此"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "or",
+    "answer": "或者"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "because",
+    "answer": "因为"
+  }
+]

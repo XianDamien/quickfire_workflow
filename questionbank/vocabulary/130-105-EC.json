@@ -1,0 +1,92 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "supper",
+    "answer": "晚饭"
+  },
+  {
+    "card_index": 2,
+    "hint": "上坡推",
+    "question": "support",
+    "answer": "支持"
+  },
+  {
+    "card_index": 3,
+    "hint": "死掉的pose,法医根据死掉的pose推测怎么死的",
+    "question": "suppose",
+    "answer": "推测"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "sure",
+    "answer": "确定,肯定"
+  },
+  {
+    "card_index": 5,
+    "hint": "sur表示上面",
+    "question": "surface",
+    "answer": "表面,脸上"
+  },
+  {
+    "card_index": 6,
+    "hint": "名词和动词",
+    "question": "surprise",
+    "answer": "惊奇,惊讶"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "surprised",
+    "answer": "感到惊讶的"
+  },
+  {
+    "card_index": 8,
+    "hint": "三维,教育部门会调查青少年的三维",
+    "question": "survey",
+    "answer": "调查"
+  },
+  {
+    "card_index": 9,
+    "hint": "survive我",
+    "question": "survive",
+    "answer": "幸存,活下来"
+  },
+  {
+    "card_index": 10,
+    "hint": "是为仆",
+    "question": "sweep",
+    "answer": "打扫"
+  },
+  {
+    "card_index": 11,
+    "hint": "sweet他",
+    "question": "sweet",
+    "answer": "甜食"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "swim",
+    "answer": "游泳"
+  },
+  {
+    "card_index": 13,
+    "hint": "神婆,神婆在有的地方扮演神的象征",
+    "question": "symbol",
+    "answer": "象征"
+  },
+  {
+    "card_index": 14,
+    "hint": "谁是头目?在这个系统中谁是头目",
+    "question": "system",
+    "answer": "体系,系统"
+  },
+  {
+    "card_index": 15,
+    "hint": "我跟了贼神",
+    "question": "organization",
+    "answer": "组织"
+  }
+]

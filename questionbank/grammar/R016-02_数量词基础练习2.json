@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "一碗牛奶怎么说",
+    "answer": "a bowl of milk"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "一碗米饭怎么说",
+    "answer": "a bowl of rice"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "一双鞋子怎么说",
+    "answer": "a pair of shoes"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "为什么shoe要加s变成复数呢？",
+    "answer": "因为一双鞋子指的是两只鞋子，所以要变成复数"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "一双筷子怎么说",
+    "answer": "A pair of chopsticks"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "为什么筷子要变成复数？",
+    "answer": "因为一双筷子指的是两根筷子"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "一箱鸡蛋怎么说",
+    "answer": "a box of eggs"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "一袋糖果怎么说",
+    "answer": "a bag of candies"
+  }
+]

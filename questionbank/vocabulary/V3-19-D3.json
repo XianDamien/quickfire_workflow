@@ -1,0 +1,128 @@
+[
+  {
+    "card_index": 1,
+    "hint": "及物动词",
+    "question": "盼望、期待、料想",
+    "answer": "expect"
+  },
+  {
+    "card_index": 2,
+    "hint": "名词",
+    "question": "昆虫",
+    "answer": "insect"
+  },
+  {
+    "card_index": 3,
+    "hint": "不及物动词",
+    "question": "设计、投射",
+    "answer": "project"
+  },
+  {
+    "card_index": 4,
+    "hint": "及物动词",
+    "question": "设计、计划、发射",
+    "answer": "project"
+  },
+  {
+    "card_index": 5,
+    "hint": "名词",
+    "question": "工程、计划",
+    "answer": "project"
+  },
+  {
+    "card_index": 6,
+    "hint": "及物动词",
+    "question": "保护、防卫、警戒",
+    "answer": "protect"
+  },
+  {
+    "card_index": 7,
+    "hint": "形容词",
+    "question": "极好的、完美的",
+    "answer": "perfect"
+  },
+  {
+    "card_index": 8,
+    "hint": "名词",
+    "question": "物体、目的、目标",
+    "answer": "object"
+  },
+  {
+    "card_index": 9,
+    "hint": "名词",
+    "question": "主题、题目、科目、学科",
+    "answer": "subject"
+  },
+  {
+    "card_index": 10,
+    "hint": "行为动词",
+    "question": "扮演角色",
+    "answer": "act"
+  },
+  {
+    "card_index": 11,
+    "hint": "不及物动词",
+    "question": "行动、做事",
+    "answer": "act"
+  },
+  {
+    "card_index": 12,
+    "hint": "名词",
+    "question": "表演、行为",
+    "answer": "act"
+  },
+  {
+    "card_index": 13,
+    "hint": "名词",
+    "question": "男演员",
+    "answer": "actor"
+  },
+  {
+    "card_index": 14,
+    "hint": "名词",
+    "question": "具体的行为、作为、行动",
+    "answer": "action"
+  },
+  {
+    "card_index": 15,
+    "hint": "形容词",
+    "question": "积极的、主动的、活跃的",
+    "answer": "active"
+  },
+  {
+    "card_index": 16,
+    "hint": "名词",
+    "question": "为达到一定目的的活动、活跃",
+    "answer": "activity"
+  },
+  {
+    "card_index": 17,
+    "hint": "副词",
+    "question": "实际上、事实上",
+    "answer": "actually"
+  },
+  {
+    "card_index": 18,
+    "hint": "名词",
+    "question": "事实、真相",
+    "answer": "fact"
+  },
+  {
+    "card_index": 19,
+    "hint": "及物动词",
+    "question": "吸引、招引",
+    "answer": "attract"
+  },
+  {
+    "card_index": 20,
+    "hint": "名词",
+    "question": "性格、角色、特点",
+    "answer": "character"
+  },
+  {
+    "card_index": 21,
+    "hint": "及物动词",
+    "question": "使具有特征",
+    "answer": "character"
+  }
+]

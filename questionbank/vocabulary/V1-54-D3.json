@@ -1,0 +1,62 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "错误的",
+    "answer": "wrong"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "健康的，强壮的",
+    "answer": "healthy"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "生病的，不舒服的",
+    "answer": "ill"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "有病的，不适的",
+    "answer": "sick"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "出名的，著名的",
+    "answer": "famous"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "相当，十分",
+    "answer": "quite"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "好，熟练的",
+    "answer": "well"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "更好的",
+    "answer": "better"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "最好的",
+    "answer": "best"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "伟大的，极好的",
+    "answer": "great"
+  }
+]

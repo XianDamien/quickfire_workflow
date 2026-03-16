@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "News",
+    "answer": "新闻"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "Newspaper",
+    "answer": "报纸"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "Picture",
+    "answer": "照片"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "Photo",
+    "answer": "照片"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "Card",
+    "answer": "卡牌"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "Postcard",
+    "answer": "明信片"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "Stamp",
+    "answer": "邮票"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "Map",
+    "answer": "地图"
+  }
+]

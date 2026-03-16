@@ -1,0 +1,32 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "什么情况下单数变成复数要加s？",
+    "answer": "大多数单词都是加s变复数"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "什么情况下加es变复数？",
+    "answer": "当单词以sh x ch s结尾的时候"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "以y结尾的单词什么时候直接加s变成复数？",
+    "answer": "元音字母加y结尾的单词"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "以y结尾的单词什么时候把y去掉加ies变成复数？",
+    "answer": "辅音字母加y结尾的单词"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "aeiou是元音还是元音字母？",
+    "answer": "元音字母"
+  }
+]

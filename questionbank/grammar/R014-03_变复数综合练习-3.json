@@ -1,0 +1,56 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "一，以字母ly结尾",
+    "answer": "把字母y去掉，加ies"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "二，以字母ey结尾",
+    "answer": "直接+s"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "三，字母音/z/结尾",
+    "answer": "加es"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "四，以字母音/s/结尾",
+    "answer": "加es"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "五，以字母音/ks/结尾",
+    "answer": "加es"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "六，以字母sh结尾",
+    "answer": "加es"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "七，以字母音/sh/结尾",
+    "answer": "加es"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "八，以字母ch结尾",
+    "answer": "加es"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "九，以字母ay结尾",
+    "answer": "加s"
+  }
+]

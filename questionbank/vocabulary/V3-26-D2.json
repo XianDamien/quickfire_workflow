@@ -1,0 +1,140 @@
+[
+  {
+    "card_index": 1,
+    "hint": "行为动词",
+    "question": "seek",
+    "answer": "寻找，探究"
+  },
+  {
+    "card_index": 2,
+    "hint": "名词",
+    "question": "cheek",
+    "answer": "脸颊，脸蛋"
+  },
+  {
+    "card_index": 3,
+    "hint": "系动词",
+    "question": "seem",
+    "answer": "好像，似乎，看来"
+  },
+  {
+    "card_index": 4,
+    "hint": "行为动词",
+    "question": "buy",
+    "answer": "买"
+  },
+  {
+    "card_index": 5,
+    "hint": "名词",
+    "question": "guy",
+    "answer": "家伙，人，伙计们"
+  },
+  {
+    "card_index": 6,
+    "hint": "名词",
+    "question": "noodle",
+    "answer": "面条"
+  },
+  {
+    "card_index": 7,
+    "hint": "名词",
+    "question": "needle",
+    "answer": "针，指针"
+  },
+  {
+    "card_index": 8,
+    "hint": "及物动词",
+    "question": "needle",
+    "answer": "用针缝，刺激，激怒"
+  },
+  {
+    "card_index": 9,
+    "hint": "形容词",
+    "question": "middle",
+    "answer": "中间的，中部的"
+  },
+  {
+    "card_index": 10,
+    "hint": "名词",
+    "question": "middle",
+    "answer": "中部，中间"
+  },
+  {
+    "card_index": 11,
+    "hint": "名词",
+    "question": "riddle",
+    "answer": "谜语"
+  },
+  {
+    "card_index": 12,
+    "hint": "及物动词",
+    "question": "burn",
+    "answer": "使燃烧，烧掉"
+  },
+  {
+    "card_index": 13,
+    "hint": "不及物动词",
+    "question": "burn",
+    "answer": "燃烧，烧焦"
+  },
+  {
+    "card_index": 14,
+    "hint": "行为动词",
+    "question": "turn",
+    "answer": "转身，使旋转，转弯"
+  },
+  {
+    "card_index": 15,
+    "hint": "及物动词",
+    "question": "turn",
+    "answer": "转动某物，使改变性质、品质、状况等"
+  },
+  {
+    "card_index": 16,
+    "hint": "名词",
+    "question": "turn",
+    "answer": "转动、旋转、轮流、轮班"
+  },
+  {
+    "card_index": 17,
+    "hint": "及物动词",
+    "question": "return",
+    "answer": "归还，报答"
+  },
+  {
+    "card_index": 18,
+    "hint": "不及物动词",
+    "question": "return",
+    "answer": "返回，归来"
+  },
+  {
+    "card_index": 19,
+    "hint": "名词",
+    "question": "return",
+    "answer": "回来，归还"
+  },
+  {
+    "card_index": 20,
+    "hint": "名词",
+    "question": "circle",
+    "answer": "圈"
+  },
+  {
+    "card_index": 21,
+    "hint": "及物动词",
+    "question": "circle",
+    "answer": "围绕，圈出"
+  },
+  {
+    "card_index": 22,
+    "hint": "不及物动词",
+    "question": "circle",
+    "answer": "在空中盘旋"
+  },
+  {
+    "card_index": 23,
+    "hint": "及物动词",
+    "question": "recycle",
+    "answer": "回收利用，再利用"
+  }
+]

@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "最基本的故事需要几个角色？",
+    "answer": "三个"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "分别是哪三个？",
+    "answer": "主角，动作，配角"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "主角的英文名叫什么？",
+    "answer": "Subject"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "缩写是什么？",
+    "answer": "大写S"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "动作的英文名叫什么？",
+    "answer": "Verb"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "缩写是什么？",
+    "answer": "大写V"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "配角的英文名叫什么？",
+    "answer": "Object"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "缩写是什么？",
+    "answer": "大写的O"
+  }
+]

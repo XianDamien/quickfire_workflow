@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "1倍怎么说？",
+    "answer": "ONCE"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "2倍。",
+    "answer": "Twice."
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "3倍",
+    "answer": "three times"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "5倍",
+    "answer": "five times"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "50倍",
+    "answer": "fifty times"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "1.这条狗是这只猫的3倍大。",
+    "answer": "The dog is three times as big as the cat."
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "2.这条狗的大小是这只猫的3倍",
+    "answer": "The dog is three times the size of the cat."
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "可以省略的最主要的连词是哪个？",
+    "answer": "that"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "其他可以省略的连词跟that有什么关系？",
+    "answer": "都可以被that代替"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "那些可以被that代替的连词有哪些？",
+    "answer": "who、which、when、where、whom"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "这些连词其实就是所有的adj. clause专属连词，但是要去掉一个，请问去掉哪一个？",
+    "answer": "whose"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "为什么只有whose能去掉？",
+    "answer": "因为它是形容词性，而别的是名词"
+  }
+]

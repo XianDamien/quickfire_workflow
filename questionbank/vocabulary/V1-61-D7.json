@@ -1,0 +1,122 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "时间，一段时间",
+    "answer": "time"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "时钟，钟表",
+    "answer": "clock"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "分钟，片刻",
+    "answer": "minute"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "小时，钟头",
+    "answer": "hour"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "白天，一天，时代",
+    "answer": "day"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "夜晚，晚上",
+    "answer": "night"
+  },
+  {
+    "card_index": 7,
+    "hint": "形容词",
+    "question": "过去的",
+    "answer": "past"
+  },
+  {
+    "card_index": 8,
+    "hint": "副词",
+    "question": "过",
+    "answer": "past"
+  },
+  {
+    "card_index": 9,
+    "hint": "介词",
+    "question": "越过，晚于",
+    "answer": "past"
+  },
+  {
+    "card_index": 10,
+    "hint": "名词",
+    "question": "昨天",
+    "answer": "yesterday"
+  },
+  {
+    "card_index": 11,
+    "hint": "副词",
+    "question": "昨天",
+    "answer": "yesterday"
+  },
+  {
+    "card_index": 12,
+    "hint": "名词",
+    "question": "今日，今天",
+    "answer": "today"
+  },
+  {
+    "card_index": 13,
+    "hint": "副词",
+    "question": "今日，今天",
+    "answer": "today"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "现在，此刻",
+    "answer": "now"
+  },
+  {
+    "card_index": 15,
+    "hint": "名词",
+    "question": "明天，未来",
+    "answer": "tomorrow"
+  },
+  {
+    "card_index": 16,
+    "hint": "副词",
+    "question": "明天，未来",
+    "answer": "tomorrow"
+  },
+  {
+    "card_index": 17,
+    "hint": "",
+    "question": "将来，未来",
+    "answer": "future"
+  },
+  {
+    "card_index": 18,
+    "hint": "形容词",
+    "question": "未来的",
+    "answer": "future"
+  },
+  {
+    "card_index": 19,
+    "hint": "",
+    "question": "早晨，黎明",
+    "answer": "morning"
+  },
+  {
+    "card_index": 20,
+    "hint": "",
+    "question": "午后，下午",
+    "answer": "afternoon"
+  }
+]

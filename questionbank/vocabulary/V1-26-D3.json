@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "侄子；外甥",
+    "answer": "nephew"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "妻子",
+    "answer": "wife"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "丈夫",
+    "answer": "husband"
+  },
+  {
+    "card_index": 4,
+    "hint": "复数",
+    "question": "人们",
+    "answer": "people"
+  },
+  {
+    "card_index": 5,
+    "hint": "单数",
+    "question": "人",
+    "answer": "person"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "家伙；男人",
+    "answer": "guy"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "人；男人",
+    "answer": "man"
+  }
+]

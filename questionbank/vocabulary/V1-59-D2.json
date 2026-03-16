@@ -1,0 +1,56 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "thick",
+    "answer": "厚的，密集的，粗的"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "strong",
+    "answer": "强壮的，有力的，强烈的"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "weak",
+    "answer": "弱的，软弱的"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "soft",
+    "answer": "柔软的"
+  },
+  {
+    "card_index": 5,
+    "hint": "形容词",
+    "question": "hard",
+    "answer": "硬的，难的"
+  },
+  {
+    "card_index": 6,
+    "hint": "副词",
+    "question": "hard",
+    "answer": "努力地，猛烈地"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "dirty",
+    "answer": "肮脏的"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "new",
+    "answer": "新的"
+  },
+  {
+    "card_index": 9,
+    "hint": "形容词",
+    "question": "close",
+    "answer": "近的，亲密的"
+  }
+]

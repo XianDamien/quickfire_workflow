@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "名词",
+    "question": "kid",
+    "answer": "小孩"
+  },
+  {
+    "card_index": 2,
+    "hint": "名词",
+    "question": "pupil",
+    "answer": "小学生或者瞳孔"
+  },
+  {
+    "card_index": 3,
+    "hint": "名词",
+    "question": "baby",
+    "answer": "婴儿"
+  },
+  {
+    "card_index": 4,
+    "hint": "名词",
+    "question": "twin",
+    "answer": "双胞胎之一"
+  },
+  {
+    "card_index": 5,
+    "hint": "形容词",
+    "question": "twin",
+    "answer": "双胞胎的，孪生的"
+  },
+  {
+    "card_index": 6,
+    "hint": "名词",
+    "question": "leader",
+    "answer": "领导者，领袖"
+  },
+  {
+    "card_index": 7,
+    "hint": "名词",
+    "question": "friend",
+    "answer": "朋友"
+  },
+  {
+    "card_index": 8,
+    "hint": "名词",
+    "question": "classmate",
+    "answer": "同班同学"
+  }
+]

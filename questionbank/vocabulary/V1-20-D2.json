@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "名词",
+    "question": "list",
+    "answer": "列表清单"
+  },
+  {
+    "card_index": 2,
+    "hint": "名词",
+    "question": "plan",
+    "answer": "计划"
+  },
+  {
+    "card_index": 3,
+    "hint": "动词",
+    "question": "plan",
+    "answer": "定计划"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "menu",
+    "answer": "菜单"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "sign",
+    "answer": "标牌标志"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "email",
+    "answer": "电子信件，电子邮件"
+  },
+  {
+    "card_index": 7,
+    "hint": "动词",
+    "question": "email",
+    "answer": "发邮件"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "address",
+    "answer": "地址"
+  }
+]

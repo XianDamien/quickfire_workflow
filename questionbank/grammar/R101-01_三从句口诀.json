@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "定语从句的口诀是什么？",
+    "answer": "名同"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "什么叫名同？",
+    "answer": "先行词和连词都是名词而且相同可以互换"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "名词从句的口诀是什么？",
+    "answer": "动配"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "什么叫动配？",
+    "answer": "先行词是动词并且从句是整句的配角"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "状语从句的口诀是什么？",
+    "answer": "名不同动不配，前面站着两姐妹。"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "“名不同”指虽然先行词是名词，但是与谁不同不可替换？",
+    "answer": "与连词不同"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "“动不配”指的是虽然先行词是动词但是谁不是配角?",
+    "answer": "从句不是配角"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "“前面站着两姐妹”指什么?",
+    "answer": "先行词是adj.或adv."
+  }
+]

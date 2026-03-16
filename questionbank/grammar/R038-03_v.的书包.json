@@ -1,0 +1,26 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "行为动词什么时候会背上s的书包？",
+    "answer": "当主角是第三人称单数的时候。"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "行为动词什么时候会背上ed书包？",
+    "answer": "当句子的时态是过去简单的时候。"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "行为动词会不会同时背S书包和ED书包？",
+    "answer": "不会，他一次只能背一个书包。"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "行为动词的S书包只出现在哪个时态中？",
+    "answer": "只出现在现在简单这个时态中"
+  }
+]

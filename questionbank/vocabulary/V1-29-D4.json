@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "Engineer",
+    "answer": "工程师"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "Cook",
+    "answer": "烹饪做饭"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "Cook",
+    "answer": "厨师"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "Salesman",
+    "answer": "推销员、售货员"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "Waiter",
+    "answer": "服务员、侍者"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "Accountant",
+    "answer": "会计"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "Architect",
+    "answer": "建筑师"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "Astronaut",
+    "answer": "宇航员"
+  }
+]

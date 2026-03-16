@@ -1,0 +1,56 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "所有格加's的规律是什么？",
+    "answer": "结尾没有s就加's"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "请举一个例子",
+    "answer": "狗子的玩具，the dog's toy"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "那如果结尾本来就有s怎么加？",
+    "answer": "只加一撇"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "请举个例子",
+    "answer": "教师节，Teachers' Day"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "这个规律跟什么很像？",
+    "answer": "形容词性物主代词变名词性物主代词，也是结尾有s不加，没有s就加s。"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "比如your没有s就变成什么？",
+    "answer": "yours"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "her没有s就变成什么？",
+    "answer": "hers"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "但是his本来就有s，那就变成什么？",
+    "answer": "还是his"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "its本来也有s，变成什么？",
+    "answer": "还是its"
+  }
+]

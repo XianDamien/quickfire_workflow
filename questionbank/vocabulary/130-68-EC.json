@@ -1,0 +1,98 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "model",
+    "answer": "模型，模特"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "modern",
+    "answer": "现代的"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "moment",
+    "answer": "片刻，瞬间"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "money",
+    "answer": "钱，货币"
+  },
+  {
+    "card_index": 5,
+    "hint": "模拟头",
+    "question": "monitor",
+    "answer": "监视器，班长"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "monkey",
+    "answer": "猴子"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "month",
+    "answer": "月份"
+  },
+  {
+    "card_index": 8,
+    "hint": "跟 moon 有关",
+    "question": "mood",
+    "answer": "心情"
+  },
+  {
+    "card_index": 9,
+    "hint": "主要是月球，如果是文学中的月亮，一般叫 luna",
+    "question": "moon",
+    "answer": "月亮，月球"
+  },
+  {
+    "card_index": 10,
+    "hint": "moon主要是月球，文学中的月亮一般叫什么？",
+    "question": "文学中的月亮",
+    "answer": "luna"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "more",
+    "answer": "更多"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "morning",
+    "answer": "早上"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "most",
+    "answer": "最多的"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "mother",
+    "answer": "母亲"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "motorcycle",
+    "answer": "摩托车"
+  },
+  {
+    "card_index": 16,
+    "hint": "茫茫的像地毯一样一片",
+    "question": "mountain",
+    "answer": "山脉"
+  }
+]

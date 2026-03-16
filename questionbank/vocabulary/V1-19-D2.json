@@ -1,0 +1,38 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "telephone",
+    "answer": "电话"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "camera",
+    "answer": "照相机"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "fan",
+    "answer": "电扇，粉丝"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "bath",
+    "answer": "洗澡，浴盆"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "seat",
+    "answer": "座位"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "story",
+    "answer": "故事"
+  }
+]

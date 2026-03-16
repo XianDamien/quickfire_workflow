@@ -1,0 +1,122 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "share",
+    "answer": "分享"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "post",
+    "answer": "邮递，邮寄，张贴"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "post",
+    "answer": "邮件，邮政"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "send",
+    "answer": "发送，寄，派遣"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "mail",
+    "answer": "邮寄"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "miss",
+    "answer": "想念，错过"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "mind",
+    "answer": "介意"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "mind",
+    "answer": "意见，头脑，思维"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "mean",
+    "answer": "意思是"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "give",
+    "answer": "给予，赠送"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "shut",
+    "answer": "关门"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "pick",
+    "answer": "摘，捡起，拿起"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "happen",
+    "answer": "发生，碰巧"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "kiss",
+    "answer": "吻"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "kiss",
+    "answer": "吻"
+  },
+  {
+    "card_index": 16,
+    "hint": "",
+    "question": "waste",
+    "answer": "浪费"
+  },
+  {
+    "card_index": 17,
+    "hint": "",
+    "question": "save",
+    "answer": "拯救，节约"
+  },
+  {
+    "card_index": 18,
+    "hint": "",
+    "question": "join",
+    "answer": "参加，加入"
+  },
+  {
+    "card_index": 19,
+    "hint": "",
+    "question": "leave",
+    "answer": "离开，留下"
+  },
+  {
+    "card_index": 20,
+    "hint": "",
+    "question": "meet",
+    "answer": "遇见，相遇"
+  }
+]

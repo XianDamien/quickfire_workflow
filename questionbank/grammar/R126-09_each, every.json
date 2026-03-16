@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "Each和every谁的范围更大？",
+    "answer": "Each的范围更大"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "Each表示什么？",
+    "answer": "两个或者是两个以上的选项，每一个都选。"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "Every是什么意思？",
+    "answer": "表示3个或3个以上的选项，每一个都选"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "如果一个老师有3个学生，他想说每一个学生都是聪明的，\n可以怎么说？",
+    "answer": "Every student is smart.或者 Each student is smart."
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "如果一个老师有两个学生，他想表达每一个学生都是聪明的，\n就只能用哪种说法?",
+    "answer": "只能用Each student is smart."
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "如果说一条马路的每一边都种了树木，可以怎么说？",
+    "answer": "Each side of the road has trees."
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "可不可以说every side of the road?",
+    "answer": "不可以"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "为什么？",
+    "answer": "因为马路只有2条边，Every用在3者及3者以上"
+  }
+]

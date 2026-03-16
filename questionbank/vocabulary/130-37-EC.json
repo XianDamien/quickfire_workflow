@@ -1,0 +1,110 @@
+[
+  {
+    "card_index": 1,
+    "hint": "x加change，你会在飞机场上看到",
+    "question": "exchange",
+    "answer": "交换，兑换"
+  },
+  {
+    "card_index": 2,
+    "hint": "一可赛车就怎么样",
+    "question": "excited",
+    "answer": "感到兴奋"
+  },
+  {
+    "card_index": 3,
+    "hint": "一可赛艇就怎么样",
+    "question": "exciting",
+    "answer": "令人兴奋"
+  },
+  {
+    "card_index": 4,
+    "hint": "第一个意思，excuse me",
+    "question": "excuse",
+    "answer": "原谅"
+  },
+  {
+    "card_index": 5,
+    "hint": "第二个意思，啊为什么不做作业，有个思考是",
+    "question": "excuse",
+    "answer": "借口"
+  },
+  {
+    "card_index": 6,
+    "hint": "可数的意思是什么？",
+    "question": "exercise",
+    "answer": "练习题"
+  },
+  {
+    "card_index": 7,
+    "hint": "不可数指的是什么？",
+    "question": "exercise",
+    "answer": "锻炼"
+  },
+  {
+    "card_index": 8,
+    "hint": "挨个比谁行，挨个谁比行",
+    "question": "exhibition",
+    "answer": "展览"
+  },
+  {
+    "card_index": 9,
+    "hint": "一个贼似的，贼没有存在感",
+    "question": "exist",
+    "answer": "存在"
+  },
+  {
+    "card_index": 10,
+    "hint": "ex加上it",
+    "question": "exit",
+    "answer": "出口"
+  },
+  {
+    "card_index": 11,
+    "hint": "一个是派给他，你会怎么样？期待别人做好",
+    "question": "expect",
+    "answer": "期待"
+  },
+  {
+    "card_index": 12,
+    "hint": "一看是奔驰",
+    "question": "expensive",
+    "answer": "昂贵的"
+  },
+  {
+    "card_index": 13,
+    "hint": "两个意思，可数的是什么？",
+    "question": "experience",
+    "answer": "经历"
+  },
+  {
+    "card_index": 14,
+    "hint": "不可数的是什么？",
+    "question": "experience",
+    "answer": "经验"
+  },
+  {
+    "card_index": 15,
+    "hint": "x出去，per每一个，每一个结果都要出来的是什么？ment是名词的标志",
+    "question": "experiment",
+    "answer": "实验"
+  },
+  {
+    "card_index": 16,
+    "hint": "一看识破他",
+    "question": "expert",
+    "answer": "专家"
+  },
+  {
+    "card_index": 17,
+    "hint": "plain是简单的，白的，比如plain white纯白，plain to see容易得出，great plain大平原，所以plain用简单的东西说出来叫什么？",
+    "question": "explain",
+    "answer": "解释，说明"
+  },
+  {
+    "card_index": 18,
+    "hint": "一个石不漏，提示月球探索车在月球上一个石头都不漏的扫描，所以explore是什么？",
+    "question": "explore",
+    "answer": "探索"
+  }
+]

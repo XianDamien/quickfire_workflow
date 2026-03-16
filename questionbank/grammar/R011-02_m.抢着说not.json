@@ -1,0 +1,32 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "第一题，一句negative的句子如果只有行为动词，应该由谁来说not？",
+    "answer": "do，也就是helping verb"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "第二题，一句negative的句子如果只有be动词，应该由谁来说not？",
+    "answer": "be动词"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "第三题，negative的句子有没有可能既有行为动词又有be动词？",
+    "answer": "不可能"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "第四题，一个negative的句子如果又有行为动词又有modal应该由谁来说not？",
+    "answer": "modal"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "第五题，negative的句子如果又有be动词又有modal应该由谁来说not？",
+    "answer": "modal"
+  }
+]

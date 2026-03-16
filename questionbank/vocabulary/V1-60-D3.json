@@ -1,0 +1,68 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "天气",
+    "answer": "weather"
+  },
+  {
+    "card_index": 2,
+    "hint": "形容词",
+    "question": "寒冷的",
+    "answer": "cold"
+  },
+  {
+    "card_index": 3,
+    "hint": "名词",
+    "question": "感冒",
+    "answer": "cold"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "凉爽的，冷静的",
+    "answer": "cool"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "热的，辣的",
+    "answer": "hot"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "温暖的，热情的",
+    "answer": "warm"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "阳光充足的，晴朗的",
+    "answer": "sunny"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "多风的，风大的",
+    "answer": "windy"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "多云的",
+    "answer": "cloudy"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "多雪的，下雪的",
+    "answer": "snowy"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "下雨的，多雨的",
+    "answer": "rainy"
+  }
+]

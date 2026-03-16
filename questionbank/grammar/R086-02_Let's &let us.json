@@ -1,0 +1,32 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "Let's ，let us ，let me，后面都要跟老大的什么？",
+    "answer": "原形。"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "Let's play together。有没有包含和你对话的那个人？",
+    "answer": "有包含，是邀请对方一起的意思。"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "可以想象是一个什么场景？",
+    "answer": "邀请同学一起玩"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "Let us play together，有没有邀请和你对话的那个人？",
+    "answer": "没有邀请。"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "可以想象是一个什么场景？",
+    "answer": "学生向老师请求出去玩，但没有邀请老师一起玩的意思"
+  }
+]

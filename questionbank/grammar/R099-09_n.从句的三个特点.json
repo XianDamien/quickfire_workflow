@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "名词从句有三个特点，第一个特点是什么？",
+    "answer": "从句都是positive"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "请问positive的最大特点是什么？",
+    "answer": "主角在动作前面"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "第二个特点是什么？",
+    "answer": "除了that都要翻译链条"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "请问adj. clause要不要翻译链条?",
+    "answer": "不用"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "noun clause第3个特点是什么?",
+    "answer": "noun clause有三种角色"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "如果你自己是noun clause，看到前面是verb，你是什么noun clause？",
+    "answer": "配角noun clause"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "如果看到前面是be verb,你是什么noun clause",
+    "answer": "主角补充noun clause或者SC noun clause"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "如果什么都没看到,你是什么noun clause?",
+    "answer": "主角noun clause或者S noun clause"
+  }
+]

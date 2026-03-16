@@ -1,0 +1,242 @@
+[
+  {
+    "card_index": 1,
+    "hint": "及物动词",
+    "question": "盼望、期待、料想",
+    "answer": "expect"
+  },
+  {
+    "card_index": 2,
+    "hint": "名词",
+    "question": "昆虫",
+    "answer": "insect"
+  },
+  {
+    "card_index": 3,
+    "hint": "不及物动词",
+    "question": "设计、投射",
+    "answer": "project"
+  },
+  {
+    "card_index": 4,
+    "hint": "及物动词",
+    "question": "设计、计划、发射",
+    "answer": "project"
+  },
+  {
+    "card_index": 5,
+    "hint": "名词",
+    "question": "工程、计划",
+    "answer": "project"
+  },
+  {
+    "card_index": 6,
+    "hint": "及物动词",
+    "question": "保护、防卫、警戒",
+    "answer": "protect"
+  },
+  {
+    "card_index": 7,
+    "hint": "形容词",
+    "question": "极好的、完美的",
+    "answer": "perfect"
+  },
+  {
+    "card_index": 8,
+    "hint": "名词",
+    "question": "物体、目的、目标",
+    "answer": "object"
+  },
+  {
+    "card_index": 9,
+    "hint": "名词",
+    "question": "主题、题目、科目、学科",
+    "answer": "subject"
+  },
+  {
+    "card_index": 10,
+    "hint": "行为动词",
+    "question": "扮演角色",
+    "answer": "act"
+  },
+  {
+    "card_index": 11,
+    "hint": "不及物动词",
+    "question": "行动、做事",
+    "answer": "act"
+  },
+  {
+    "card_index": 12,
+    "hint": "名词",
+    "question": "表演、行为",
+    "answer": "act"
+  },
+  {
+    "card_index": 13,
+    "hint": "名词",
+    "question": "男演员",
+    "answer": "actor"
+  },
+  {
+    "card_index": 14,
+    "hint": "名词",
+    "question": "具体的行为、作为、行动",
+    "answer": "action"
+  },
+  {
+    "card_index": 15,
+    "hint": "形容词",
+    "question": "积极的，主动的，活跃的",
+    "answer": "active"
+  },
+  {
+    "card_index": 16,
+    "hint": "名词",
+    "question": "为达到一定目的的活动，活跃",
+    "answer": "activity"
+  },
+  {
+    "card_index": 17,
+    "hint": "副词",
+    "question": "实际上，事实上",
+    "answer": "actually"
+  },
+  {
+    "card_index": 18,
+    "hint": "名词",
+    "question": "事实，真相",
+    "answer": "fact"
+  },
+  {
+    "card_index": 19,
+    "hint": "及物动词",
+    "question": "吸引，招引",
+    "answer": "attract"
+  },
+  {
+    "card_index": 20,
+    "hint": "名词",
+    "question": "性格，角色，特点",
+    "answer": "character"
+  },
+  {
+    "card_index": 21,
+    "hint": "及物动词",
+    "question": "使具有特征",
+    "answer": "character"
+  },
+  {
+    "card_index": 22,
+    "hint": "副词",
+    "question": "确切的，准确的，恰好",
+    "answer": "exactly"
+  },
+  {
+    "card_index": 23,
+    "hint": "名词",
+    "question": "舞台，时期，步骤",
+    "answer": "stage"
+  },
+  {
+    "card_index": 24,
+    "hint": "名词",
+    "question": "村庄，乡村",
+    "answer": "village"
+  },
+  {
+    "card_index": 25,
+    "hint": "名词",
+    "question": "语言",
+    "answer": "language"
+  },
+  {
+    "card_index": 26,
+    "hint": "及物动词",
+    "question": "管理",
+    "answer": "manage"
+  },
+  {
+    "card_index": 27,
+    "hint": "不及物动词",
+    "question": "设法对付",
+    "answer": "manage"
+  },
+  {
+    "card_index": 28,
+    "hint": "名词",
+    "question": "信息，消息",
+    "answer": "message"
+  },
+  {
+    "card_index": 29,
+    "hint": "名词",
+    "question": "勇气，英勇",
+    "answer": "courage"
+  },
+  {
+    "card_index": 30,
+    "hint": "及物动词",
+    "question": "鼓励，支持",
+    "answer": "encourage"
+  },
+  {
+    "card_index": 31,
+    "hint": "名词",
+    "question": "优势，有利条件，好处",
+    "answer": "advantage"
+  },
+  {
+    "card_index": 32,
+    "hint": "及物动词",
+    "question": "达到，取得",
+    "answer": "achieve"
+  },
+  {
+    "card_index": 33,
+    "hint": "及物动词",
+    "question": "相信，认为",
+    "answer": "believe"
+  },
+  {
+    "card_index": 34,
+    "hint": "名词",
+    "question": "营地",
+    "answer": "camp"
+  },
+  {
+    "card_index": 35,
+    "hint": "不及物动词",
+    "question": "扎营",
+    "answer": "camp"
+  },
+  {
+    "card_index": 36,
+    "hint": "名词",
+    "question": "校园，场地",
+    "answer": "campus"
+  },
+  {
+    "card_index": 37,
+    "hint": "形容词",
+    "question": "校园的",
+    "answer": "campus"
+  },
+  {
+    "card_index": 38,
+    "hint": "名词",
+    "question": "邮票",
+    "answer": "stamp"
+  },
+  {
+    "card_index": 39,
+    "hint": "及物动词",
+    "question": "用脚踩踏",
+    "answer": "stamp"
+  },
+  {
+    "card_index": 40,
+    "hint": "名词",
+    "question": "例子，实例，榜样",
+    "answer": "example"
+  }
+]

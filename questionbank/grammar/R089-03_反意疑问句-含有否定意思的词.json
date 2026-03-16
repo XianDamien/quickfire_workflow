@@ -1,0 +1,26 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "I never drink coffee.",
+    "answer": "I never drink coffee, do I?"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "There is little water in my bottle.",
+    "answer": "There is little water in my bottle, is there?"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "There is nobody in the room.",
+    "answer": "There is nobody in the room, is there?"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "I hardly go to school on weekends.",
+    "answer": "I hardly go to school on weekends, do I?"
+  }
+]

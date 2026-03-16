@@ -1,0 +1,32 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "请说出Tom捕鼠器的故事",
+    "answer": "Tom考虑制造个捕鼠器来抓Jerry，于是他忙于制造，忙于，然后忙着忙着他就习惯于，习惯于，做了十五个钟头，最终完成了捕鼠器。故事从考虑到完成一共4个verb，大家说出大概意思就好。"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "下面请说出英文：考虑做某事",
+    "answer": "consider doing sth."
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "忙于做某事",
+    "answer": "be busy doing sth."
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "习惯于做某事",
+    "answer": "be/get used to doing sth."
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "完成某事",
+    "answer": "finish doing sth."
+  }
+]

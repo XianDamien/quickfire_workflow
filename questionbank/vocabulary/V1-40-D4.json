@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "home",
+    "answer": "家乡"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "home",
+    "answer": "在家"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "house",
+    "answer": "房屋，住宅"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "apartment",
+    "answer": "公寓"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "floor",
+    "answer": "楼层，地板"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "basement",
+    "answer": "地下室，地窖"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "window",
+    "answer": "窗户"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "door",
+    "answer": "门"
+  }
+]

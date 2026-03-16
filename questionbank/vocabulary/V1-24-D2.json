@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "动词",
+    "question": "copy verb",
+    "answer": "复制复印"
+  },
+  {
+    "card_index": 2,
+    "hint": "名词",
+    "question": "copy noun",
+    "answer": "复印本，复制品"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "copyright",
+    "answer": "版权"
+  },
+  {
+    "card_index": 4,
+    "hint": "动词",
+    "question": "mark verb",
+    "answer": "标记"
+  },
+  {
+    "card_index": 5,
+    "hint": "名词",
+    "question": "mark noun",
+    "answer": "分数"
+  },
+  {
+    "card_index": 6,
+    "hint": "动词",
+    "question": "teach",
+    "answer": "教"
+  },
+  {
+    "card_index": 7,
+    "hint": "动词",
+    "question": "study verb",
+    "answer": "背诵，听讲"
+  },
+  {
+    "card_index": 8,
+    "hint": "动词",
+    "question": "learn verb",
+    "answer": "学习"
+  }
+]

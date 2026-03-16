@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "简单句有哪两种？",
+    "answer": "SVO和S BeV SC"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "而复杂句实际上就是由什么组合起来的？",
+    "answer": "由简单句组合起来的。"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "用什么东西把简单句连接在一起？",
+    "answer": "链条。"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "链条有哪两种？",
+    "answer": "并列链条和镶嵌链条。"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "并列链条连在一起的复杂句叫什么？",
+    "answer": "并列句。"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "镶嵌链条连在一起的复杂句叫什么？",
+    "answer": "从句。"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "最有名的并列链条是什么？",
+    "answer": "and"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "最有名的镶嵌链条是什么？",
+    "answer": "that"
+  }
+]

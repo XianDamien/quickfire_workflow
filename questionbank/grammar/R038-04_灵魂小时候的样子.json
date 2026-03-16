@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "行为动词的灵魂是哪个单词？",
+    "answer": "Do"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "Do小时候的样子是什么？",
+    "answer": "Did"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "Do背上s书包以后是什么样子？",
+    "answer": "Does"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "Michael walked in the park.变成否定句是什么？",
+    "answer": "Michael didn't walk in the park."
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "变成疑问句是什么？",
+    "answer": "Did Michael walk in the park?"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "Michael walked in the park.如果给walked划线，要替换成什么？",
+    "answer": "did what"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "为什么这样替换？",
+    "answer": "划线部分是“做了一件事”，替换的就应该是“做了什么”"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "Michael walked in the park.如果给walked划线，最终答案是什么？",
+    "answer": "What did Michael do in the park?"
+  }
+]

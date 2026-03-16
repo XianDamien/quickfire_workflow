@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "We",
+    "answer": "第一人称复数"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "the doctor",
+    "answer": "第三人称单数"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "two women",
+    "answer": "第三人称复数"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "it",
+    "answer": "第三人称单数"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "his father",
+    "answer": "第三人称单数"
+  },
+  {
+    "card_index": 6,
+    "hint": "是一个人，Simon",
+    "question": "Simon",
+    "answer": "第三人称单数"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "You",
+    "answer": "第二人称单数或者是第二人称复数"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "everyone",
+    "answer": "第三人称单数"
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "我认为做作业很容易。",
+    "answer": "I think it easy to do my homework."
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "轮到你唱歌了。",
+    "answer": "It’s your turn to sing a song."
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "做作业花了我一整天的时间。",
+    "answer": "It took me a whole day to do my homework."
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "喝牛奶对我来说很重要",
+    "answer": "It is important for me to drink milk."
+  }
+]

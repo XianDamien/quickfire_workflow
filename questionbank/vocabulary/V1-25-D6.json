@@ -1,0 +1,92 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "family",
+    "answer": "家庭"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "relative",
+    "answer": "亲戚"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "parent",
+    "answer": "父亲母亲"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "mother",
+    "answer": "母亲"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "father",
+    "answer": "父亲"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "grandmother",
+    "answer": "祖母"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "grandfather",
+    "answer": "祖父"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "aunt或者aunt",
+    "answer": "阿姨"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "uncle",
+    "answer": "叔叔"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "daughter",
+    "answer": "女儿"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "son",
+    "answer": "儿子"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "sister",
+    "answer": "姐妹"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "brother",
+    "answer": "兄弟"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "cousin",
+    "answer": "堂兄弟"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "niece",
+    "answer": "侄女"
+  }
+]

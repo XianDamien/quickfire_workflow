@@ -1,0 +1,38 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "From是什么意思？",
+    "answer": "从某个时间开始。"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "since是什么意思？",
+    "answer": "自从"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "from和since有什么区别？",
+    "answer": "From可以加任何时间，Since只能加过去的时间"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "我决定从下周开始减肥。",
+    "answer": "From"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "这个烤鸭店，50年前就开店了。",
+    "answer": "since"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "从现在开始，我要每天锻炼身体。",
+    "answer": "From"
+  }
+]

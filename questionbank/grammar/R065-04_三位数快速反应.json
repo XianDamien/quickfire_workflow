@@ -1,0 +1,62 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "342",
+    "answer": "three hundred and forty-two"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "718",
+    "answer": "seven hundred and eighteen"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "506",
+    "answer": "five hundred and six"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "129",
+    "answer": "one hundred and twenty-nine"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "874",
+    "answer": "eight hundred and seventy-four"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "253",
+    "answer": "two hundred and fifty-three"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "691",
+    "answer": "six hundred and ninety-one"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "437",
+    "answer": "four hundred and thirty-seven"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "605",
+    "answer": "six hundred and five"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "198",
+    "answer": "one hundred and ninety-eight"
+  }
+]

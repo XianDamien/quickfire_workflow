@@ -1,0 +1,92 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "clothes",
+    "answer": "衣服"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "shirt",
+    "answer": "衬衫"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "blouse",
+    "answer": "女式衬衫"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "T-shirt",
+    "answer": "T恤衫"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "jacket",
+    "answer": "夹克"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "coat",
+    "answer": "大衣，外套"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "vest",
+    "answer": "背心"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "sweater",
+    "answer": "毛衣"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "jeans",
+    "answer": "牛仔裤，工装裤"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "shorts",
+    "answer": "短裤"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "trousers",
+    "answer": "裤子"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "pants",
+    "answer": "裤子"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "skirt",
+    "answer": "短裙"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "dress",
+    "answer": "连衣裙"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "dress",
+    "answer": "装扮，打扮"
+  }
+]

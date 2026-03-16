@@ -1,0 +1,92 @@
+[
+  {
+    "card_index": 1,
+    "hint": "马吃呢",
+    "question": "machine",
+    "answer": "机器"
+  },
+  {
+    "card_index": 2,
+    "hint": "形容词",
+    "question": "mad",
+    "answer": "发疯的"
+  },
+  {
+    "card_index": 3,
+    "hint": "买个金",
+    "question": "magazine",
+    "answer": "杂志"
+  },
+  {
+    "card_index": 4,
+    "hint": "买这课",
+    "question": "magic",
+    "answer": "魔法"
+  },
+  {
+    "card_index": 5,
+    "hint": "名词",
+    "question": "mail",
+    "answer": "邮件"
+  },
+  {
+    "card_index": 6,
+    "hint": "命",
+    "question": "main",
+    "answer": "主要的"
+  },
+  {
+    "card_index": 7,
+    "hint": "副词",
+    "question": "mainly",
+    "answer": "主要地"
+  },
+  {
+    "card_index": 8,
+    "hint": "没劲儿",
+    "question": "major",
+    "answer": "主修课，主要的"
+  },
+  {
+    "card_index": 9,
+    "hint": "动词",
+    "question": "make",
+    "answer": "制造"
+  },
+  {
+    "card_index": 10,
+    "hint": "名词/形容词",
+    "question": "male",
+    "answer": "男性"
+  },
+  {
+    "card_index": 11,
+    "hint": "妈妈妹妹male都在里边",
+    "question": "mall",
+    "answer": "商场，大型商场"
+  },
+  {
+    "card_index": 12,
+    "hint": "名词",
+    "question": "man",
+    "answer": "男人，人"
+  },
+  {
+    "card_index": 13,
+    "hint": "man上了age可以管理",
+    "question": "manage",
+    "answer": "管理"
+  },
+  {
+    "card_index": 14,
+    "hint": "名词",
+    "question": "manager",
+    "answer": "管理者"
+  },
+  {
+    "card_index": 15,
+    "hint": "man啊man都到哪里去了",
+    "question": "manner",
+    "answer": "礼貌，方法"
+  }
+]

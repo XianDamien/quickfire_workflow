@@ -1,0 +1,38 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "英文班级有哪两种颜色的队伍？",
+    "answer": "有红色队伍和蓝色队伍。"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "红色队伍是谁带队的？",
+    "answer": "是行为动词带队的"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "蓝色队伍是谁带队的？",
+    "answer": "是be动词带队的。"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "蓝色队伍的常见角色是什么？",
+    "answer": "S  BeV  SC"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "红色队伍的常见角色是什么？",
+    "answer": "S V O"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "BeV和O会不会同时出现？",
+    "answer": "不会"
+  }
+]

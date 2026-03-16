@@ -1,0 +1,38 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "在一样东西肚子里的前面",
+    "answer": "in the front of"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "在一样东西肚子里的后面",
+    "answer": "at the back of"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "在一样东西的后面",
+    "answer": "behind"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "在一样东西的左边",
+    "answer": "on the left of"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "在一样东西的右边",
+    "answer": "on the right of"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "在一样东西的前面",
+    "answer": "in front of"
+  }
+]

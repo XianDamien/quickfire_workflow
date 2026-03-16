@@ -1,0 +1,164 @@
+[
+  {
+    "card_index": 1,
+    "hint": "名词",
+    "question": "mind",
+    "answer": "思维，头脑"
+  },
+  {
+    "card_index": 2,
+    "hint": "行为动词",
+    "question": "mind",
+    "answer": "介意"
+  },
+  {
+    "card_index": 3,
+    "hint": "形容词",
+    "question": "kind",
+    "answer": "友好的，仁慈的"
+  },
+  {
+    "card_index": 4,
+    "hint": "名词",
+    "question": "kind",
+    "answer": "种类，类型，种"
+  },
+  {
+    "card_index": 5,
+    "hint": "名词",
+    "question": "wind",
+    "answer": "风"
+  },
+  {
+    "card_index": 6,
+    "hint": "及物动词",
+    "question": "appreciate",
+    "answer": "欣赏，赏识，感激"
+  },
+  {
+    "card_index": 7,
+    "hint": "及物动词",
+    "question": "operate",
+    "answer": "操作"
+  },
+  {
+    "card_index": 8,
+    "hint": "不及物动词",
+    "question": "operate",
+    "answer": "操作"
+  },
+  {
+    "card_index": 9,
+    "hint": "行为动词",
+    "question": "communicate",
+    "answer": "交流信息，分享想法，感情"
+  },
+  {
+    "card_index": 10,
+    "hint": "及物动词",
+    "question": "communicate",
+    "answer": "传染疾病"
+  },
+  {
+    "card_index": 11,
+    "hint": "不及物动词",
+    "question": "communicate",
+    "answer": "相通"
+  },
+  {
+    "card_index": 12,
+    "hint": "及物动词",
+    "question": "create",
+    "answer": "创造，创建，创作，造成，引起"
+  },
+  {
+    "card_index": 13,
+    "hint": "名词",
+    "question": "date",
+    "answer": "日期，约会"
+  },
+  {
+    "card_index": 14,
+    "hint": "及物动词",
+    "question": "date",
+    "answer": "写上日期和什么什么约会"
+  },
+  {
+    "card_index": 15,
+    "hint": "行为动词",
+    "question": "donate",
+    "answer": "捐赠，捐献"
+  },
+  {
+    "card_index": 16,
+    "hint": "行为动词",
+    "question": "educate",
+    "answer": "教育，培养，训练"
+  },
+  {
+    "card_index": 17,
+    "hint": "形容词",
+    "question": "fortunate",
+    "answer": "幸运的，侥幸的"
+  },
+  {
+    "card_index": 18,
+    "hint": "形容词",
+    "question": "late",
+    "answer": "迟的，晚的，末期的，晚期的，近来的，最近的"
+  },
+  {
+    "card_index": 19,
+    "hint": "副词",
+    "question": "late",
+    "answer": "迟，晚"
+  },
+  {
+    "card_index": 20,
+    "hint": "行为动词",
+    "question": "hate",
+    "answer": "憎恨，怨恨，不喜欢"
+  },
+  {
+    "card_index": 21,
+    "hint": "及物动词",
+    "question": "frustrate",
+    "answer": "挫败，击败，使沮丧，使灰心"
+  },
+  {
+    "card_index": 22,
+    "hint": "行为动词",
+    "question": "graduate",
+    "answer": "毕业"
+  },
+  {
+    "card_index": 23,
+    "hint": "名词",
+    "question": "graduate",
+    "answer": "大学毕业生"
+  },
+  {
+    "card_index": 24,
+    "hint": "不及物动词",
+    "question": "skate",
+    "answer": "滑冰"
+  },
+  {
+    "card_index": 25,
+    "hint": "名词",
+    "question": "state",
+    "answer": "政府，州，邦，国家，状态，状况"
+  },
+  {
+    "card_index": 26,
+    "hint": "行为动词",
+    "question": "state",
+    "answer": "陈述，声明"
+  },
+  {
+    "card_index": 27,
+    "hint": "形容词",
+    "question": "separate",
+    "answer": "分开的，分离的，个别的，单独的"
+  }
+]

@@ -1,0 +1,92 @@
+[
+  {
+    "card_index": 1,
+    "hint": "一开始不惹事，一开始不表达",
+    "question": "express",
+    "answer": "表达"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "extra",
+    "answer": "特别的，额外的"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "eye",
+    "answer": "眼睛"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "fable",
+    "answer": "寓言"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "face",
+    "answer": "脸"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "fact",
+    "answer": "事实"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "factory",
+    "answer": "工厂"
+  },
+  {
+    "card_index": 8,
+    "hint": "废了",
+    "question": "fail",
+    "answer": "失败"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "fair",
+    "answer": "公平的；市集"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "fall",
+    "answer": "落下"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "family",
+    "answer": "家庭"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "familiar",
+    "answer": "熟悉的"
+  },
+  {
+    "card_index": 13,
+    "hint": "费摩斯",
+    "question": "famous",
+    "answer": "著名的"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "fan",
+    "answer": "扇子，风扇"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "fantastic",
+    "answer": "极好的，美妙的"
+  }
+]

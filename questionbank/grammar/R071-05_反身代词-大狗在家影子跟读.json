@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "独自靠自己",
+    "question": "When the clever big dog stay at home by itself.",
+    "answer": "by itself，独自靠自己"
+  },
+  {
+    "card_index": 2,
+    "hint": "毫不客气",
+    "question": "It makes itself at home.",
+    "answer": "make itself at home，毫不客气"
+  },
+  {
+    "card_index": 3,
+    "hint": "随便吃东西。如果是helps itself to the pizza，就是随便吃披萨",
+    "question": "It helps itself to the food at home.",
+    "answer": "helps itself to the food，随便吃东西"
+  },
+  {
+    "card_index": 4,
+    "hint": "teaches itself 自学，dress itself 自己穿衣服",
+    "question": "It teaches itself how to dress itself.",
+    "answer": "teaches itself 自学，dress itself 自己穿衣服"
+  },
+  {
+    "card_index": 5,
+    "hint": "照顾自己，等于take care of itself",
+    "question": "and look after itself.",
+    "answer": "look after itself，照顾自己"
+  },
+  {
+    "card_index": 6,
+    "hint": "自言自语",
+    "question": "It usually says to itself.",
+    "answer": "say to itself，自言自语"
+  },
+  {
+    "card_index": 7,
+    "hint": "自娱自乐",
+    "question": "It enjoys itself.",
+    "answer": "enjoy itself，自娱自乐"
+  },
+  {
+    "card_index": 8,
+    "hint": "迷失自己",
+    "question": "And loses itself in freedom.",
+    "answer": "lose itself，迷失自己"
+  }
+]

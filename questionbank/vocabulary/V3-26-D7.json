@@ -1,0 +1,284 @@
+[
+  {
+    "card_index": 1,
+    "hint": "行为动词",
+    "question": "寻找，探究",
+    "answer": "seek"
+  },
+  {
+    "card_index": 2,
+    "hint": "名词",
+    "question": "脸颊，脸蛋",
+    "answer": "cheek"
+  },
+  {
+    "card_index": 3,
+    "hint": "系动词",
+    "question": "好像，似乎，看来",
+    "answer": "seem"
+  },
+  {
+    "card_index": 4,
+    "hint": "行为动词",
+    "question": "买",
+    "answer": "buy"
+  },
+  {
+    "card_index": 5,
+    "hint": "名词",
+    "question": "家伙，人，伙计们",
+    "answer": "guy"
+  },
+  {
+    "card_index": 6,
+    "hint": "名词",
+    "question": "面条",
+    "answer": "noodle"
+  },
+  {
+    "card_index": 7,
+    "hint": "名词",
+    "question": "针，指针",
+    "answer": "needle"
+  },
+  {
+    "card_index": 8,
+    "hint": "及物动词",
+    "question": "用针缝，刺激，激怒",
+    "answer": "needle"
+  },
+  {
+    "card_index": 9,
+    "hint": "形容词",
+    "question": "中间的，中部的",
+    "answer": "middle"
+  },
+  {
+    "card_index": 10,
+    "hint": "名词",
+    "question": "中部，中间",
+    "answer": "middle"
+  },
+  {
+    "card_index": 11,
+    "hint": "名词",
+    "question": "谜语",
+    "answer": "riddle"
+  },
+  {
+    "card_index": 12,
+    "hint": "及物动词",
+    "question": "使燃烧，烧掉",
+    "answer": "burn"
+  },
+  {
+    "card_index": 13,
+    "hint": "不及物动词",
+    "question": "燃烧，烧焦",
+    "answer": "burn"
+  },
+  {
+    "card_index": 14,
+    "hint": "行为动词",
+    "question": "转身，使旋转，转弯",
+    "answer": "turn"
+  },
+  {
+    "card_index": 15,
+    "hint": "及物动词",
+    "question": "转动某物，使改变性质、品质、状况等",
+    "answer": "turn"
+  },
+  {
+    "card_index": 16,
+    "hint": "名词",
+    "question": "转动、旋转、轮流、轮班",
+    "answer": "turn"
+  },
+  {
+    "card_index": 17,
+    "hint": "及物动词",
+    "question": "归还，报答",
+    "answer": "return"
+  },
+  {
+    "card_index": 18,
+    "hint": "不及物动词",
+    "question": "返回，归来",
+    "answer": "return"
+  },
+  {
+    "card_index": 19,
+    "hint": "名词",
+    "question": "回来，归还",
+    "answer": "return"
+  },
+  {
+    "card_index": 20,
+    "hint": "名词",
+    "question": "圈",
+    "answer": "circle"
+  },
+  {
+    "card_index": 21,
+    "hint": "及物动词",
+    "question": "围绕，圈出",
+    "answer": "circle"
+  },
+  {
+    "card_index": 22,
+    "hint": "不及物动词",
+    "question": "在空中盘旋",
+    "answer": "circle"
+  },
+  {
+    "card_index": 23,
+    "hint": "及物动词",
+    "question": "回收利用，再利用",
+    "answer": "recycle"
+  },
+  {
+    "card_index": 24,
+    "hint": "名词",
+    "question": "目标",
+    "answer": "aim"
+  },
+  {
+    "card_index": 25,
+    "hint": "及物动词",
+    "question": "瞄准，针对",
+    "answer": "aim"
+  },
+  {
+    "card_index": 26,
+    "hint": "不及物动词",
+    "question": "瞄准，致力",
+    "answer": "aim"
+  },
+  {
+    "card_index": 27,
+    "hint": "名词或者是行为动词",
+    "question": "游泳",
+    "answer": "swim"
+  },
+  {
+    "card_index": 28,
+    "hint": "及物动词",
+    "question": "限制，限定",
+    "answer": "limit"
+  },
+  {
+    "card_index": 29,
+    "hint": "名词",
+    "question": "界限，限度",
+    "answer": "limit"
+  },
+  {
+    "card_index": 30,
+    "hint": "名词",
+    "question": "受害者，受骗者，牺牲品",
+    "answer": "victim"
+  },
+  {
+    "card_index": 31,
+    "hint": "名词",
+    "question": "时间，时刻，时代，时期，次数，倍数",
+    "answer": "time"
+  },
+  {
+    "card_index": 32,
+    "hint": "不及物动词",
+    "question": "攀登，爬",
+    "answer": "climb"
+  },
+  {
+    "card_index": 33,
+    "hint": "不及物动词",
+    "question": "升高",
+    "answer": "climb"
+  },
+  {
+    "card_index": 34,
+    "hint": "名词",
+    "question": "攀登高升",
+    "answer": "climb"
+  },
+  {
+    "card_index": 35,
+    "hint": "名词",
+    "question": "后果，结果，成果，成绩",
+    "answer": "result"
+  },
+  {
+    "card_index": 36,
+    "hint": "不及物动词",
+    "question": "因什么什么产生，由什么什么造成",
+    "answer": "result"
+  },
+  {
+    "card_index": 37,
+    "hint": "形容词",
+    "question": "成年的，成熟的",
+    "answer": "adult"
+  },
+  {
+    "card_index": 38,
+    "hint": "名词",
+    "question": "成年人",
+    "answer": "adult"
+  },
+  {
+    "card_index": 39,
+    "hint": "形容词",
+    "question": "不容易的，困难的，不易满足的",
+    "answer": "difficult"
+  },
+  {
+    "card_index": 40,
+    "hint": "名词",
+    "question": "科学，理科的一门学科",
+    "answer": "science"
+  },
+  {
+    "card_index": 41,
+    "hint": "名词",
+    "question": "经验，经历",
+    "answer": "experience"
+  },
+  {
+    "card_index": 42,
+    "hint": "及物动词",
+    "question": "经历，体验，感受",
+    "answer": "experience"
+  },
+  {
+    "card_index": 43,
+    "hint": "名词",
+    "question": "沉默，无声状态",
+    "answer": "silence"
+  },
+  {
+    "card_index": 44,
+    "hint": "及物动词",
+    "question": "使沉默，使安静，消除噪音",
+    "answer": "silence"
+  },
+  {
+    "card_index": 45,
+    "hint": "及物动词",
+    "question": "使产生，引起",
+    "answer": "cause"
+  },
+  {
+    "card_index": 46,
+    "hint": "名词",
+    "question": "原因，起因",
+    "answer": "cause"
+  },
+  {
+    "card_index": 47,
+    "hint": "连词",
+    "question": "因为",
+    "answer": "because"
+  }
+]

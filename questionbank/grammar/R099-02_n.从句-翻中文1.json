@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "I don't know that he's a thief.",
+    "answer": "我不知道他是个小偷。"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "I don't know who ate this.",
+    "answer": "我不知道谁吃了这个。"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "I don’t know which one you like.",
+    "answer": "我不知道你喜欢哪一个。"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "I don’t know when he comes.",
+    "answer": "我不知道他什么时候来。"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "I don't know where he lives.",
+    "answer": "我不知道他住哪里。"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "I don’t know whose pencil this is.",
+    "answer": "我不知道这是谁的铅笔。"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "I don't know whom you like.",
+    "answer": "我不知道你喜欢谁。"
+  }
+]

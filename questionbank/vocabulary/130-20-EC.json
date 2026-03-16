@@ -1,0 +1,104 @@
+[
+  {
+    "card_index": 1,
+    "hint": "哥白尼，为了坚持真理什么被处死？",
+    "question": "choose",
+    "answer": "选择"
+  },
+  {
+    "card_index": 2,
+    "hint": "哥白尼追求真理，什么被烤死？",
+    "question": "cause",
+    "answer": "导致；原因"
+  },
+  {
+    "card_index": 3,
+    "hint": "choose的名词",
+    "question": "choice",
+    "answer": "选择"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "chopsticks",
+    "answer": "筷子"
+  },
+  {
+    "card_index": 5,
+    "hint": "多做什么会变丑啊？家务",
+    "question": "choir",
+    "answer": "合唱团，唱诗班"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "Christmas",
+    "answer": "圣诞节"
+  },
+  {
+    "card_index": 7,
+    "hint": "车迟国的哪里发生了孙悟空与三大仙斗法？",
+    "question": "church",
+    "answer": "教堂"
+  },
+  {
+    "card_index": 8,
+    "hint": "什么地方吸烟吸泥？",
+    "question": "cinema",
+    "answer": "电影院"
+  },
+  {
+    "card_index": 9,
+    "hint": "和cinema的区别：theatre指剧院、戏院，电影院都属于theatre",
+    "question": "theatre",
+    "answer": "剧院，戏院"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "circle",
+    "answer": "圆圈"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "citizen",
+    "answer": "公民，市民"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "city",
+    "answer": "城市"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "class",
+    "answer": "班级，等级"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "classmate",
+    "answer": "同班同学"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "classroom",
+    "answer": "教室"
+  },
+  {
+    "card_index": 16,
+    "hint": "指的是没有污垢",
+    "question": "clean",
+    "answer": "干净"
+  },
+  {
+    "card_index": 17,
+    "hint": "指的是没有阻挡",
+    "question": "clear",
+    "answer": "清晰"
+  }
+]

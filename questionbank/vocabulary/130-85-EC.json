@@ -1,0 +1,98 @@
+[
+  {
+    "card_index": 1,
+    "hint": "爬坡力需要什么?适当的、恰当的档位或者车",
+    "question": "properly",
+    "answer": "适当地,恰当地"
+  },
+  {
+    "card_index": 2,
+    "hint": "前坦克车。坦克车在前面就是保护步兵的",
+    "question": "protect",
+    "answer": "保护"
+  },
+  {
+    "card_index": 3,
+    "hint": "播劳的",
+    "question": "proud",
+    "answer": "自豪的"
+  },
+  {
+    "card_index": 4,
+    "hint": "派来的也是自豪",
+    "question": "pride",
+    "answer": "自豪"
+  },
+  {
+    "card_index": 5,
+    "hint": "不入伍需要什么?证明你身体不好,刚刚考上大学,家里只有你能照顾,不然就要去入伍",
+    "question": "prove",
+    "answer": "证明"
+  },
+  {
+    "card_index": 6,
+    "hint": "在所有的话之前说的是什么?",
+    "question": "proverb",
+    "answer": "格言"
+  },
+  {
+    "card_index": 7,
+    "hint": "跑外地前要干嘛?提供充足的油,其实就是give的高级版",
+    "question": "provide",
+    "answer": "提供"
+  },
+  {
+    "card_index": 8,
+    "hint": "帕布莱克。公共场合去叫卖",
+    "question": "public",
+    "answer": "公共的"
+  },
+  {
+    "card_index": 9,
+    "hint": "跑步离世。出版在报刊上",
+    "question": "publish",
+    "answer": "出版"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "pull",
+    "answer": "拉"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "push",
+    "answer": "推"
+  },
+  {
+    "card_index": 12,
+    "hint": "婆婆。婆婆喜欢紫色",
+    "question": "purple",
+    "answer": "紫色的"
+  },
+  {
+    "card_index": 13,
+    "hint": "婆婆的事儿。都是有目的的,比如performance都是有目的的,都是在表演",
+    "question": "purpose",
+    "answer": "目的"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "put",
+    "answer": "放"
+  },
+  {
+    "card_index": 15,
+    "hint": "快来提",
+    "question": "quality",
+    "answer": "质量"
+  },
+  {
+    "card_index": 16,
+    "hint": "扣他",
+    "question": "quarter",
+    "answer": "四分之一"
+  }
+]

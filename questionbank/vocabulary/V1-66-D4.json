@@ -1,0 +1,68 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "than",
+    "answer": "比"
+  },
+  {
+    "card_index": 2,
+    "hint": "形容词",
+    "question": "any",
+    "answer": "任何的"
+  },
+  {
+    "card_index": 3,
+    "hint": "代词",
+    "question": "any",
+    "answer": "任何，任一，一些"
+  },
+  {
+    "card_index": 4,
+    "hint": "代词",
+    "question": "some",
+    "answer": "一些，若干"
+  },
+  {
+    "card_index": 5,
+    "hint": "形容词",
+    "question": "some",
+    "answer": "一些，若干"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "every",
+    "answer": "每个的，每一的"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "few",
+    "answer": "很少的，几乎没有的"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "little",
+    "answer": "极少量的，年幼的，幼小的"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "many",
+    "answer": "多的，许多的"
+  },
+  {
+    "card_index": 10,
+    "hint": "形容词",
+    "question": "more",
+    "answer": "更多的"
+  },
+  {
+    "card_index": 11,
+    "hint": "副词",
+    "question": "more",
+    "answer": "更多，更加"
+  }
+]

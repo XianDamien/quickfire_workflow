@@ -1,0 +1,32 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "is not可以缩写成什么？",
+    "answer": "isn't"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "are not可以缩写成什么？",
+    "answer": "aren't"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "am not可以缩写成什么？",
+    "answer": "不能缩写"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "The big dog is not happy. 这句话又可以怎么说？",
+    "answer": "The big dog isn't happy."
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "They are not friends. 这句话又可以怎么说？",
+    "answer": "They aren't friends."
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "我和我的小狗一起玩。",
+    "answer": "I play with my puppy."
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "我看见一间有红色屋顶的房子。",
+    "answer": "I saw a house with a red roof."
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "我身上只有一点点钱。",
+    "answer": "I have only a little money with me."
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "他用斧头砍下了那棵树。",
+    "answer": "He cut down the tree with an ax."
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "你怎么回事? (一般是负面的情绪)",
+    "answer": "What's the matter with you?"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "语言随时间成长和改变",
+    "answer": "Languages grow and change with time."
+  }
+]

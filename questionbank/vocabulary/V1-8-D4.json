@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "We can go to the island by boat.",
+    "question": "Island",
+    "answer": "岛屿"
+  },
+  {
+    "card_index": 2,
+    "hint": "I want to visit the Mogao Caves.",
+    "question": "Cave",
+    "answer": "洞穴"
+  },
+  {
+    "card_index": 3,
+    "hint": "There is a hole in the ice.",
+    "question": "Hole",
+    "answer": "洞"
+  },
+  {
+    "card_index": 4,
+    "hint": "Many stars are invisible without a telescope.",
+    "question": "Star",
+    "answer": "星星，恒星"
+  },
+  {
+    "card_index": 5,
+    "hint": "The moon goes round the earth.",
+    "question": "Moon",
+    "answer": "月亮，月球"
+  },
+  {
+    "card_index": 6,
+    "hint": "The sun rises in the east.",
+    "question": "Sun",
+    "answer": "太阳"
+  },
+  {
+    "card_index": 7,
+    "hint": "You can go to the top of the tower to see the sunrise.",
+    "question": "Sunrise",
+    "answer": "日出"
+  },
+  {
+    "card_index": 8,
+    "hint": "We live on the earth.",
+    "question": "Earth",
+    "answer": "地球，土地"
+  }
+]

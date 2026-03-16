@@ -1,0 +1,56 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "分子为什么数，分母为什么数?",
+    "answer": "分子为基数，分母为序数。"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "如果分子是大于1的，那么分母要加一个什么字母？",
+    "answer": "S"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "三分之一",
+    "answer": "One third."
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "五分之一",
+    "answer": "One fifth."
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "三分之二",
+    "answer": "Two thirds."
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "七分之四",
+    "answer": "Four sevenths"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "十一分之五",
+    "answer": "Five elevenths."
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "3又1/3",
+    "answer": "Three and one third."
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "7又4/9",
+    "answer": "Seven and four ninths"
+  }
+]

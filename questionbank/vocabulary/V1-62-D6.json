@@ -1,0 +1,122 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "evening",
+    "answer": "晚上，傍晚"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "year",
+    "answer": "年"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "birthday",
+    "answer": "生日"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "week",
+    "answer": "星期，周"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "weekend",
+    "answer": "周末"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "monday",
+    "answer": "星期一"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "tuesday",
+    "answer": "星期二"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "wednesday",
+    "answer": "星期三"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "thursday",
+    "answer": "星期四"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "friday",
+    "answer": "星期五"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "saturday",
+    "answer": "星期六"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "sunday",
+    "answer": "星期日，礼拜天"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "month",
+    "answer": "月，月份"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "january",
+    "answer": "一月"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "february",
+    "answer": "二月"
+  },
+  {
+    "card_index": 16,
+    "hint": "",
+    "question": "march",
+    "answer": "三月"
+  },
+  {
+    "card_index": 17,
+    "hint": "",
+    "question": "april",
+    "answer": "四月"
+  },
+  {
+    "card_index": 18,
+    "hint": "",
+    "question": "may",
+    "answer": "五月"
+  },
+  {
+    "card_index": 19,
+    "hint": "",
+    "question": "june",
+    "answer": "六月"
+  },
+  {
+    "card_index": 20,
+    "hint": "",
+    "question": "july",
+    "answer": "七月"
+  }
+]

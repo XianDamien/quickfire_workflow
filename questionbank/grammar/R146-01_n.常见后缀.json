@@ -1,0 +1,110 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "worker",
+    "answer": "工人"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "doctor",
+    "answer": "医生"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "actress",
+    "answer": "女演员"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "importance",
+    "answer": "重要性"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "difference",
+    "answer": "差异"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "reference",
+    "answer": "参考"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "action",
+    "answer": "行动"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "decision",
+    "answer": "决定"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "information",
+    "answer": "信息"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "reality",
+    "answer": "现实"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "activity",
+    "answer": "活动"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "movement",
+    "answer": "运动"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "development",
+    "answer": "发展"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "happiness",
+    "answer": "幸福"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "darkness",
+    "answer": "黑暗"
+  },
+  {
+    "card_index": 16,
+    "hint": "",
+    "question": "length",
+    "answer": "长度"
+  },
+  {
+    "card_index": 17,
+    "hint": "",
+    "question": "health",
+    "answer": "健康"
+  },
+  {
+    "card_index": 18,
+    "hint": "",
+    "question": "death",
+    "answer": "死亡"
+  }
+]

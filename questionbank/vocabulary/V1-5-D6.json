@@ -1,0 +1,92 @@
+[
+  {
+    "card_index": 1,
+    "hint": "What's your favorite food?",
+    "question": "Food",
+    "answer": "食物"
+  },
+  {
+    "card_index": 2,
+    "hint": "The snack of that place tastes good.",
+    "question": "Snack",
+    "answer": "小吃"
+  },
+  {
+    "card_index": 3,
+    "hint": "Without a chicken, there's no egg.",
+    "question": "Egg",
+    "answer": "蛋，鸡蛋"
+  },
+  {
+    "card_index": 4,
+    "hint": "You haven't finished your salad.",
+    "question": "Salad",
+    "answer": "色拉"
+  },
+  {
+    "card_index": 5,
+    "hint": "The soup needs to be salted.",
+    "question": "Soup",
+    "answer": "汤，羹"
+  },
+  {
+    "card_index": 6,
+    "hint": "My favorite food is French fry.",
+    "question": "French fry",
+    "answer": "炸薯条"
+  },
+  {
+    "card_index": 7,
+    "hint": "Bread is made of flour.",
+    "question": "Flour",
+    "answer": "面粉"
+  },
+  {
+    "card_index": 8,
+    "hint": "The farmer grows a lot of wheat.",
+    "question": "Wheat",
+    "answer": "小麦"
+  },
+  {
+    "card_index": 9,
+    "hint": "Never eat chocolate before dinner.",
+    "question": "Chocolate",
+    "answer": "巧克力"
+  },
+  {
+    "card_index": 10,
+    "hint": "I'm eating popcorn.",
+    "question": "Popcorn",
+    "answer": "爆米花"
+  },
+  {
+    "card_index": 11,
+    "hint": "This apple jelly tastes very delicious.",
+    "question": "Jelly",
+    "answer": "果冻"
+  },
+  {
+    "card_index": 12,
+    "hint": "She eats too much candy.",
+    "question": "Candy",
+    "answer": "糖果"
+  },
+  {
+    "card_index": 13,
+    "hint": "I bought him a packet of sugar.",
+    "question": "Sugar",
+    "answer": "糖，食用糖"
+  },
+  {
+    "card_index": 14,
+    "hint": "Cook the beans with a piece of salt pork.",
+    "question": "Salt",
+    "answer": "盐"
+  },
+  {
+    "card_index": 15,
+    "hint": "She has eaten a pack of chocolate cookies.",
+    "question": "Cookie",
+    "answer": "饼干，小点心"
+  }
+]

@@ -1,0 +1,116 @@
+[
+  {
+    "card_index": 1,
+    "hint": "被动听，主动听是什么？",
+    "question": "hear",
+    "answer": "听见"
+  },
+  {
+    "card_index": 2,
+    "hint": "被动听hear，主动听是什么？",
+    "question": "主动听",
+    "answer": "listen"
+  },
+  {
+    "card_index": 3,
+    "hint": "see是被动看见，主动看是什么？",
+    "question": "主动看",
+    "answer": "watch"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "heart",
+    "answer": "心脏"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "heat",
+    "answer": "加热"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "heavily",
+    "answer": "沉重地"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "heavy",
+    "answer": "沉重的"
+  },
+  {
+    "card_index": 8,
+    "hint": "名词",
+    "question": "height",
+    "answer": "高度"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "hello",
+    "answer": "你好"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "help",
+    "answer": "帮助"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "helpful",
+    "answer": "有帮助的"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "helpless",
+    "answer": "没有帮助的或无助的"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "here",
+    "answer": "这里"
+  },
+  {
+    "card_index": 14,
+    "hint": "和 hero 一样加 es 结尾的还有哪两个？",
+    "question": "hero",
+    "answer": "英雄"
+  },
+  {
+    "card_index": 15,
+    "hint": "和hero一样加es结尾的还有哪两个？",
+    "question": "和hero一样加es结尾的(1)",
+    "answer": "potato"
+  },
+  {
+    "card_index": 16,
+    "hint": "和hero一样加es结尾的还有哪两个？",
+    "question": "和hero一样加es结尾的(2)",
+    "answer": "tomato"
+  },
+  {
+    "card_index": 17,
+    "hint": "",
+    "question": "hers",
+    "answer": "她的"
+  },
+  {
+    "card_index": 18,
+    "hint": "",
+    "question": "herself",
+    "answer": "他自己"
+  },
+  {
+    "card_index": 19,
+    "hint": "还是忐忑，或者 he sit ate 坐着吃。犹豫是哪个？",
+    "question": "hesitate",
+    "answer": "犹豫"
+  }
+]

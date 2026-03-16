@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "我们经常说定语描写谁，状语描写谁，那么描写是什么意思呢？\n比如说A描写B是什么意思？",
+    "answer": "就是说，A的出现让B拥有了更多的细节。"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "举一个例子。",
+    "answer": "例如smart dog， smart这个词的出现，让dog拥有了更多的细节。"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "小写的adj. adv.是词性还是成分？",
+    "answer": "是词性"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "大写的ADJ,ADV是词性还是成分？",
+    "answer": "是成分。"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "大写的ADJ是什么意思？",
+    "answer": "定语"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "大写的ADV是什么意思？",
+    "answer": "状语。"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "ADJ的箭头是向左的还是向右的？",
+    "answer": "只能向右"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "ADV的箭头是向左的还是向右的？",
+    "answer": "都有可能"
+  }
+]

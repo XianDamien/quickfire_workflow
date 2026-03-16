@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "名词",
+    "question": "锁",
+    "answer": "lock"
+  },
+  {
+    "card_index": 2,
+    "hint": "动词",
+    "question": "上锁，锁上",
+    "answer": "lock"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "面具，口罩",
+    "answer": "mask"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "轮子",
+    "answer": "wheel"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "剪刀",
+    "answer": "scissors"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "伞",
+    "answer": "umbrella"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "扫帚",
+    "answer": "broom"
+  }
+]

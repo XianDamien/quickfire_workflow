@@ -1,0 +1,32 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "成为，转弯",
+    "answer": "turn"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "整理，制造，使，让",
+    "answer": "make"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "获得，变得，收到",
+    "answer": "get"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "走，去",
+    "answer": "go"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "来，来到",
+    "answer": "come"
+  }
+]

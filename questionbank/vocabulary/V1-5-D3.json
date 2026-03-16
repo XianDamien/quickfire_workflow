@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "食物",
+    "answer": "food"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "小吃",
+    "answer": "snack"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "蛋",
+    "answer": "egg"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "色拉",
+    "answer": "salad"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "汤，羹",
+    "answer": "soup"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "炸薯条，或炸薯条",
+    "answer": "French-fry"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "面粉",
+    "answer": "flour"
+  }
+]

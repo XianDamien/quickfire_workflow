@@ -1,0 +1,92 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "汁，果汁",
+    "answer": "juice"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "牛奶",
+    "answer": "milk"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "茶",
+    "answer": "tea"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "可乐",
+    "answer": "cola"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "咖啡",
+    "answer": "coffee"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "啤酒",
+    "answer": "beer"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "柠檬水",
+    "answer": "lemonade"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "酒，葡萄酒",
+    "answer": "wine"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "肉，所有的肉类",
+    "answer": "meat"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "鸡肉",
+    "answer": "chicken"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "牛肉",
+    "answer": "beef"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "猪肉",
+    "answer": "pork"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "羊羔肉，羔羊",
+    "answer": "lamb"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "羊肉",
+    "answer": "mutton"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "海产品，海鲜，海味",
+    "answer": "seafood"
+  }
+]

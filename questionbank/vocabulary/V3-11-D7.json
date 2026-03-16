@@ -1,0 +1,230 @@
+[
+  {
+    "card_index": 1,
+    "hint": "名词",
+    "question": "生物学",
+    "answer": "biology"
+  },
+  {
+    "card_index": 2,
+    "hint": "名词",
+    "question": "精力、活力、能量",
+    "answer": "energy"
+  },
+  {
+    "card_index": 3,
+    "hint": "名词",
+    "question": "战略、策略",
+    "answer": "strategy"
+  },
+  {
+    "card_index": 4,
+    "hint": "行为动词",
+    "question": "翻译",
+    "answer": "translate"
+  },
+  {
+    "card_index": 5,
+    "hint": "名词",
+    "question": "运输",
+    "answer": "transport"
+  },
+  {
+    "card_index": 6,
+    "hint": "行为动词",
+    "question": "运输、传播",
+    "answer": "transport"
+  },
+  {
+    "card_index": 7,
+    "hint": "行为动词",
+    "question": "变换、改变、改观",
+    "answer": "transform"
+  },
+  {
+    "card_index": 8,
+    "hint": "名词",
+    "question": "传真机、传真",
+    "answer": "fax"
+  },
+  {
+    "card_index": 9,
+    "hint": "行为动词",
+    "question": "放松、休息",
+    "answer": "relax"
+  },
+  {
+    "card_index": 10,
+    "hint": "行为动词",
+    "question": "欺骗、哄骗、愚弄",
+    "answer": "hoax"
+  },
+  {
+    "card_index": 11,
+    "hint": "名词",
+    "question": "春季、泉、弹簧",
+    "answer": "spring"
+  },
+  {
+    "card_index": 12,
+    "hint": "行为动词",
+    "question": "洒、洒",
+    "answer": "sprinkle"
+  },
+  {
+    "card_index": 13,
+    "hint": "名词",
+    "question": "少量散布的屑状物",
+    "answer": "sprinkle"
+  },
+  {
+    "card_index": 14,
+    "hint": "及物动词",
+    "question": "展开、打开、张开、伸开",
+    "answer": "spread"
+  },
+  {
+    "card_index": 15,
+    "hint": "行为动词",
+    "question": "扩散、蔓延",
+    "answer": "spread"
+  },
+  {
+    "card_index": 16,
+    "hint": "名词",
+    "question": "平衡、天平",
+    "answer": "balance"
+  },
+  {
+    "card_index": 17,
+    "hint": "行为动词",
+    "question": "权衡、平衡",
+    "answer": "balance"
+  },
+  {
+    "card_index": 18,
+    "hint": "名词",
+    "question": "机会、可能性、巧合、偶然",
+    "answer": "chance"
+  },
+  {
+    "card_index": 19,
+    "hint": "名词",
+    "question": "距离、路程、距离遥远、时间久远",
+    "answer": "distance"
+  },
+  {
+    "card_index": 20,
+    "hint": "名词",
+    "question": "情况、例子",
+    "answer": "instance"
+  },
+  {
+    "card_index": 21,
+    "hint": "名词",
+    "question": "重要、重大",
+    "answer": "importance"
+  },
+  {
+    "card_index": 22,
+    "hint": "及物动词",
+    "question": "使兴奋、使激动",
+    "answer": "excite"
+  },
+  {
+    "card_index": 23,
+    "hint": "形容词",
+    "question": "特别受喜爱的",
+    "answer": "favourite"
+  },
+  {
+    "card_index": 24,
+    "hint": "名词",
+    "question": "特别喜爱的人或物",
+    "answer": "favourite"
+  },
+  {
+    "card_index": 25,
+    "hint": "形容词",
+    "question": "有礼貌的，客气的",
+    "answer": "polite"
+  },
+  {
+    "card_index": 26,
+    "hint": "及物动词",
+    "question": "邀请",
+    "answer": "invite"
+  },
+  {
+    "card_index": 27,
+    "hint": "副词",
+    "question": "完全的，十分，相当，很",
+    "answer": "quite"
+  },
+  {
+    "card_index": 28,
+    "hint": "行为动词",
+    "question": "写新书、文章等，写信",
+    "answer": "write"
+  },
+  {
+    "card_index": 29,
+    "hint": "形容词",
+    "question": "对面的，反面的，相反的",
+    "answer": "opposite"
+  },
+  {
+    "card_index": 30,
+    "hint": "介词",
+    "question": "在什么什么的对面",
+    "answer": "opposite"
+  },
+  {
+    "card_index": 31,
+    "hint": "形容词",
+    "question": "白色的",
+    "answer": "white"
+  },
+  {
+    "card_index": 32,
+    "hint": "名词",
+    "question": "白色",
+    "answer": "white"
+  },
+  {
+    "card_index": 33,
+    "hint": "行为动词",
+    "question": "使变凉，冷却",
+    "answer": "cool"
+  },
+  {
+    "card_index": 34,
+    "hint": "形容词",
+    "question": "凉的，凉快的，冷静的，顶好的，绝妙的",
+    "answer": "cool"
+  },
+  {
+    "card_index": 35,
+    "hint": "名词",
+    "question": "傻瓜，笨人",
+    "answer": "fool"
+  },
+  {
+    "card_index": 36,
+    "hint": "及物动词",
+    "question": "愚弄，欺骗",
+    "answer": "fool"
+  },
+  {
+    "card_index": 37,
+    "hint": "名词",
+    "question": "水坑，水池，游泳池",
+    "answer": "pool"
+  },
+  {
+    "card_index": 38,
+    "hint": "名词",
+    "question": "学校",
+    "answer": "school"
+  }
+]

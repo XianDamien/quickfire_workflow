@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "关心",
+    "answer": "care"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "小心",
+    "answer": "care"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "记，记住",
+    "answer": "remember"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "忘记",
+    "answer": "forget"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "摇动，晃动，震动",
+    "answer": "shake"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "摆放，餐桌，太阳落下去",
+    "answer": "set"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "一套，一系列",
+    "answer": "set"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "担心，着急",
+    "answer": "worry"
+  }
+]

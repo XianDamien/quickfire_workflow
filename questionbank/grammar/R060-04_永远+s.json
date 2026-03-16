@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "有一些东西是由两个东西组成的，例如剪刀、裤子",
+    "question": "这些词是可数名词还是不可数名词？",
+    "answer": "是可数名词"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "他们有什么特征？",
+    "answer": "是对称的"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "他们是按照单数算还是按照复数算？",
+    "answer": "复数"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "翻译句子，这些剪刀非常重",
+    "answer": "These scissors are very heavy."
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "为什么be动词用are？",
+    "answer": "因为这些对称的东西都当成复数"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "翻译句子，有一把剪刀在桌子上",
+    "answer": "One pair of scissors is on the table."
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "为什么be动词用is？",
+    "answer": "因为当永远是复数的名词前面加上量词的时候，Be动词的单复数要看量词"
+  }
+]

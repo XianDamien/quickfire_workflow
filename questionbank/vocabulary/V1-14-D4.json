@@ -1,0 +1,56 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "Piano (名词)",
+    "answer": "钢琴"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "Violin (名词)",
+    "answer": "小提琴"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "Guitar (名词)",
+    "answer": "吉他"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "Drum (名词)",
+    "answer": "鼓"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "Horn (名词)",
+    "answer": "角，号角"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "Chopstick (名词)",
+    "answer": "筷子"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "Fork (名词)",
+    "answer": "叉子"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "Knife (名词)",
+    "answer": "刀"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "Bye bye",
+    "answer": "拜拜"
+  }
+]

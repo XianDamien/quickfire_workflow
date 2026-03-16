@@ -1,0 +1,62 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "分享",
+    "answer": "share"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "邮递，邮寄，张贴",
+    "answer": "post"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "邮件，邮政",
+    "answer": "post"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "发送，寄，派遣",
+    "answer": "send"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "邮寄",
+    "answer": "mail"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "想念，错过",
+    "answer": "miss"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "介意",
+    "answer": "mind"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "意见，头脑，思维",
+    "answer": "mind"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "意思是",
+    "answer": "mean"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "给予，赠送",
+    "answer": "give"
+  }
+]

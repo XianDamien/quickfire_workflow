@@ -1,0 +1,74 @@
+[
+  {
+    "card_index": 1,
+    "hint": "整点用o'clock表示",
+    "question": "那么，五点钟怎么说？",
+    "answer": "five o'clock"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "七点钟怎么说？",
+    "answer": "seven o'clock"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "十一点钟怎么说？",
+    "answer": "eleven o'clock"
+  },
+  {
+    "card_index": 4,
+    "hint": "第一种直接读",
+    "question": "8:20怎么说？",
+    "answer": "eight twenty"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "11:05怎么说？",
+    "answer": "eleven o five"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "7:15怎么说？",
+    "answer": "seven fifteen"
+  },
+  {
+    "card_index": 7,
+    "hint": "第二种，几点过几分用past",
+    "question": "8:20怎么说？",
+    "answer": "Twenty past eight"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "11:05怎么说？",
+    "answer": "Five past eleven"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "7:15怎么说？",
+    "answer": "fifteen past seven"
+  },
+  {
+    "card_index": 10,
+    "hint": "第三种，差几分到几点，用to",
+    "question": "8:50也就是差十分钟到九点，怎么说？",
+    "answer": "Ten to nine"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "11:45也就是差十五分钟到十二点怎么说？",
+    "answer": "Fifteen to twelve"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "9:55也就是差五分钟到十点怎么说？",
+    "answer": "five to ten"
+  }
+]

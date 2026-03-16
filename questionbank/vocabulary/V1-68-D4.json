@@ -1,0 +1,56 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "if",
+    "answer": "如果，假如"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "this",
+    "answer": "这，这个"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "that",
+    "answer": "那，那个"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "these",
+    "answer": "这些"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "those",
+    "answer": "那些"
+  },
+  {
+    "card_index": 6,
+    "hint": "代词",
+    "question": "other",
+    "answer": "其他，另一个"
+  },
+  {
+    "card_index": 7,
+    "hint": "形容词",
+    "question": "other",
+    "answer": "其他的"
+  },
+  {
+    "card_index": 8,
+    "hint": "代词",
+    "question": "another",
+    "answer": "另一个"
+  },
+  {
+    "card_index": 9,
+    "hint": "形容词",
+    "question": "another",
+    "answer": "另一的，再一个的"
+  }
+]

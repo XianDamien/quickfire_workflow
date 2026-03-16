@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "行为动词的坏毛病快速反应。",
+    "question": "行为动词的第一个坏毛病是什么？",
+    "answer": "不合群"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "不合群是什么意思？",
+    "answer": "一个句子里不能有两个verb"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "行为动词的第二个坏毛病是什么？",
+    "answer": "胆小"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "胆小是什么意思？",
+    "answer": "verb不敢自己说not，不敢自己跑到前面去提问。"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "行为动词的第三个坏毛病是什么？",
+    "answer": "爱捣乱"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "爱捣乱是什么意思？",
+    "answer": "看到主角是第三人称单数，自己要加s书包。"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "行为动词的第四个坏毛病是什么？",
+    "answer": "懒惰"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "懒惰是什么意思？",
+    "answer": "碰到灵魂动词do捣乱的s书包就扔给灵魂动词do来背。"
+  }
+]

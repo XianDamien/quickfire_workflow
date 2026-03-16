@@ -1,0 +1,92 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "大自然，自然界",
+    "answer": "Nature"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "行星",
+    "answer": "Planet"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "太空，空间",
+    "answer": "Space"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "天空",
+    "answer": "Sky"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "陆地",
+    "answer": "Land"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "着陆，登陆",
+    "answer": "Land"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "海，海洋",
+    "answer": "Sea"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "贝壳",
+    "answer": "Shell"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "河",
+    "answer": "River"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "湖",
+    "answer": "Lake"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "山，山脉",
+    "answer": "Mountain"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "山，小山",
+    "answer": "Hill"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "草，草地，草坪",
+    "answer": "Grass"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "地面，土壤",
+    "answer": "Ground"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "沙漠",
+    "answer": "Desert"
+  }
+]

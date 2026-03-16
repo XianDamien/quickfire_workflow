@@ -1,0 +1,122 @@
+[
+    {
+        "card_index": 1,
+        "hint": "介词",
+        "question": "在两者之间",
+        "answer": "between"
+    },
+    {
+        "card_index": 2,
+        "hint": "副词",
+        "question": "当中，中间",
+        "answer": "between"
+    },
+    {
+        "card_index": 3,
+        "hint": "形容词",
+        "question": "绿色的，不成熟的",
+        "answer": "green"
+    },
+    {
+        "card_index": 4,
+        "hint": "名词",
+        "question": "绿色",
+        "answer": "green"
+    },
+    {
+        "card_index": 5,
+        "hint": "名词",
+        "question": "银幕，屏幕",
+        "answer": "screen"
+    },
+    {
+        "card_index": 6,
+        "hint": "数词",
+        "question": "十五",
+        "answer": "fifteen"
+    },
+    {
+        "card_index": 7,
+        "hint": "名词",
+        "question": "青少年",
+        "answer": "teenager"
+    },
+    {
+        "card_index": 8,
+        "hint": "形容词",
+        "question": "青少年的",
+        "answer": "teenager"
+    },
+    {
+        "card_index": 9,
+        "hint": "名词",
+        "question": "女王，王后",
+        "answer": "queen"
+    },
+    {
+        "card_index": 10,
+        "hint": "名词",
+        "question": "姓名，名称",
+        "answer": "name"
+    },
+    {
+        "card_index": 11,
+        "hint": "及物动词",
+        "question": "命名，指定",
+        "answer": "name"
+    },
+    {
+        "card_index": 12,
+        "hint": "形容词",
+        "question": "相同的，同样的",
+        "answer": "same"
+    },
+    {
+        "card_index": 13,
+        "hint": "代词",
+        "question": "同样的人，同样的事物",
+        "answer": "same"
+    },
+    {
+        "card_index": 14,
+        "hint": "名词",
+        "question": "游戏，运动，比赛",
+        "answer": "game"
+    },
+    {
+        "card_index": 15,
+        "hint": "名词",
+        "question": "羞愧，羞耻，令人惋惜的事，让人遗憾的是",
+        "answer": "shame"
+    },
+    {
+        "card_index": 16,
+        "hint": "名词",
+        "question": "名声、名望、声誉",
+        "answer": "fame"
+    },
+    {
+        "card_index": 17,
+        "hint": "行为动词",
+        "question": "油炸、油煎、油炒",
+        "answer": "fry"
+    },
+    {
+        "card_index": 18,
+        "hint": "形容词",
+        "question": "新鲜的，新的",
+        "answer": "fresh"
+    },
+    {
+        "card_index": 19,
+        "hint": "名词",
+        "question": "前面，正面，前部，前线，前方",
+        "answer": "front"
+    },
+    {
+        "card_index": 20,
+        "hint": "形容词",
+        "question": "前面的，前部的",
+        "answer": "front"
+    }
+]

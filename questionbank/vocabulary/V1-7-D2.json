@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "Many poets and artists have drawn their inspiration from nature.",
+    "question": "Nature",
+    "answer": "自然，大自然"
+  },
+  {
+    "card_index": 2,
+    "hint": "Jupiter is the biggest planet around the sun.",
+    "question": "Planet",
+    "answer": "行星"
+  },
+  {
+    "card_index": 3,
+    "hint": "You can travel into space in the future.",
+    "question": "Space",
+    "answer": "太空，空间"
+  },
+  {
+    "card_index": 4,
+    "hint": "Blue is the color of sky and the sea.",
+    "question": "Sky",
+    "answer": "天空"
+  },
+  {
+    "card_index": 5,
+    "hint": "We are glad to be on land again.",
+    "question": "Land (noun)",
+    "answer": "土地，陆地"
+  },
+  {
+    "card_index": 6,
+    "hint": "The ship landed safely in the end.",
+    "question": "Land (verb)",
+    "answer": "着陆，登陆"
+  },
+  {
+    "card_index": 7,
+    "hint": "We can swim in the sea.",
+    "question": "Sea",
+    "answer": "海，海洋"
+  }
+]

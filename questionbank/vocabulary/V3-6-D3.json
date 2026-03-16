@@ -1,0 +1,122 @@
+[
+    {
+        "card_index": 1,
+        "hint": "行为动词",
+        "question": "遇见，会面",
+        "answer": "meet"
+    },
+    {
+        "card_index": 2,
+        "hint": "及物动词",
+        "question": "满足，符合",
+        "answer": "meet"
+    },
+    {
+        "card_index": 3,
+        "hint": "不及物动词",
+        "question": "开会",
+        "answer": "meet"
+    },
+    {
+        "card_index": 4,
+        "hint": "名词",
+        "question": "街，街道，道路",
+        "answer": "street"
+    },
+    {
+        "card_index": 5,
+        "hint": "形容词",
+        "question": "甜的，可爱的，悦耳的",
+        "answer": "sweet"
+    },
+    {
+        "card_index": 6,
+        "hint": "名词",
+        "question": "糖果",
+        "answer": "sweet"
+    },
+    {
+        "card_index": 7,
+        "hint": "名词",
+        "question": "球，球状物，舞会",
+        "answer": "ball"
+    },
+    {
+        "card_index": 8,
+        "hint": "行为动词",
+        "question": "叫，喊，打电话给",
+        "answer": "call"
+    },
+    {
+        "card_index": 9,
+        "hint": "及物动词",
+        "question": "拜访，召集，称呼",
+        "answer": "call"
+    },
+    {
+        "card_index": 10,
+        "hint": "不及物动词",
+        "question": "落，下降，落，跌倒",
+        "answer": "fall"
+    },
+    {
+        "card_index": 11,
+        "hint": "名词",
+        "question": "会堂，礼堂，大厅",
+        "answer": "hall"
+    },
+    {
+        "card_index": 12,
+        "hint": "形容词",
+        "question": "形状、规模小的，数量、价值小的",
+        "answer": "small"
+    },
+    {
+        "card_index": 13,
+        "hint": "名词",
+        "question": "商业街，购物中心",
+        "answer": "mall"
+    },
+    {
+        "card_index": 14,
+        "hint": "名词",
+        "question": "墙，墙壁，城墙",
+        "answer": "wall"
+    },
+    {
+        "card_index": 15,
+        "hint": "形容词",
+        "question": "高的",
+        "answer": "tall"
+    },
+    {
+        "card_index": 16,
+        "hint": "名词",
+        "question": "挑战，具有挑战性的事物，怀疑，质疑",
+        "answer": "challenge"
+    },
+    {
+        "card_index": 17,
+        "hint": "名词",
+        "question": "门，门口，通道，途径",
+        "answer": "door"
+    },
+    {
+        "card_index": 18,
+        "hint": "名词",
+        "question": "室内地面，地板，楼层",
+        "answer": "floor"
+    },
+    {
+        "card_index": 19,
+        "hint": "形容词",
+        "question": "户外的，室外的",
+        "answer": "outdoor"
+    },
+    {
+        "card_index": 20,
+        "hint": "形容词",
+        "question": "贫穷的，低劣的，可怜的",
+        "answer": "poor"
+    }
+]

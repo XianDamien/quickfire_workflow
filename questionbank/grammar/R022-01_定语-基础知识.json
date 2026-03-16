@@ -1,0 +1,56 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "形容词描写离自己近的名词还是描写离自己远的名词？",
+    "answer": "描写离自己近的名词"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "形容词描写自己前面的名词，还是描写自己后面的名词？",
+    "answer": "形容词描写自己后面的名词"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "形容词什么时候能扮演主角补充呢？",
+    "answer": "当形容词出现在be动词后面的时候"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "请你举一个例子。",
+    "answer": "例如Tom is happy. happy扮演主角补充"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "形容词什么时候可以扮演大写的ADJ，也就是定语呢？",
+    "answer": "当形容词后面有名词可描写的时候。"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "I am a happy girl.这句话里面的happy扮演主角补充还是定语?",
+    "answer": "扮演定语"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "为什么？",
+    "answer": "因为happy后面有名词girl"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "为什么Tom is happy.这句话里面的happy不能扮演定语?",
+    "answer": "因为happy后面没有名词可以描写"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "主角补充和定语，谁是句子里必不可少的成分？",
+    "answer": "主角补充。"
+  }
+]

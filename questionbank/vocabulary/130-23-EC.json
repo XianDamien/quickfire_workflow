@@ -1,0 +1,92 @@
+[
+  {
+    "card_index": 1,
+    "hint": "看破了它，什么看破了它？mission complete就是任务完成",
+    "question": "complete",
+    "answer": "完全"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "completely",
+    "answer": "完全地"
+  },
+  {
+    "card_index": 3,
+    "hint": "come一起过来，put放，把所有的功能放到一起的东西是什么",
+    "question": "computer",
+    "answer": "电脑"
+  },
+  {
+    "card_index": 4,
+    "hint": "come是聚集到一起，c表示声音，所以concert声音聚集到一起是什么",
+    "question": "concert",
+    "answer": "音乐会"
+  },
+  {
+    "card_index": 5,
+    "hint": "come是一起，close就是关，大家聚集到一起开闭幕式，必定有什么",
+    "question": "conclusion",
+    "answer": "结论，结局，总结"
+  },
+  {
+    "card_index": 6,
+    "hint": "看地形，看的是什么",
+    "question": "condition",
+    "answer": "环境，条件"
+  },
+  {
+    "card_index": 7,
+    "hint": "咖啡人士，咖啡人士同时干嘛",
+    "question": "conference",
+    "answer": "开会，会议"
+  },
+  {
+    "card_index": 8,
+    "hint": "用中国功夫来dance跳舞，展示了什么",
+    "question": "confidence",
+    "answer": "自信"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "confident",
+    "answer": "自信的"
+  },
+  {
+    "card_index": 10,
+    "hint": "孔夫子。疑惑，有疑惑找孔夫子，或者可以这样记，康复又死，明明康复了又死了，医生很疑惑",
+    "question": "confuse",
+    "answer": "疑惑"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "congratulation",
+    "answer": "祝贺"
+  },
+  {
+    "card_index": 12,
+    "hint": "come一起，nect就是net，网在一起代表什么意思",
+    "question": "connect",
+    "answer": "连接"
+  },
+  {
+    "card_index": 13,
+    "hint": "看谁的，看谁的电影需要什么",
+    "question": "consider",
+    "answer": "考虑"
+  },
+  {
+    "card_index": 14,
+    "hint": "康熙似的，康熙有五十五个孩子，所以能怎么样？组成一个班级",
+    "question": "consist",
+    "answer": "组成"
+  },
+  {
+    "card_index": 15,
+    "hint": "看他跟他，这是看他act，看他表演",
+    "question": "contact",
+    "answer": "联系"
+  }
+]

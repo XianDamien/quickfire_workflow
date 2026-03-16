@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "对划线部分提问的题目是要我们根据划线部分选择相应的5W，并且造出特殊疑问句，你要假设划线的部分是已知信息还是未知信息？",
+    "answer": "假设它是未知信息。"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "如果你不能立刻说出答案，有一个什么方法可以帮助你做对",
+    "answer": "三部曲的方法"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "三部曲的第一步是什么？",
+    "answer": "替换"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "第二步是什么？",
+    "answer": "变一般疑问句"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "第三步是什么？",
+    "answer": "5W提前。"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "变一般疑问句可能会用几种情况。",
+    "answer": "三种情况"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "分别是哪三种情况？",
+    "answer": "蓝句子，红句子，还有有情态的句子"
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "对划线部分提问。除了可以替换成what who where when why，还有how，还可以替换成什么？",
+    "answer": "Do what"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "Do what是什么意思？",
+    "answer": "是做什么的意思"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "在什么情况下，划线部分要替换成do what呢？",
+    "answer": "当划线部分是“做某件事”这个意思的时候，或者是当划线部分有行为动词的时候。"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "Do what 的 do是行为动词还是灵魂？",
+    "answer": "是行为动词"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "所以当主语是第三人称单数的时候，Do what会变形成什么？",
+    "answer": "Does what"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "当划线的部分是主角的时候，只需要几步就可以完成了？",
+    "answer": "一步"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "只需要哪一步？",
+    "answer": "只需要第一步替换"
+  }
+]

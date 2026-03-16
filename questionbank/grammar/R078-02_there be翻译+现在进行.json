@@ -1,0 +1,26 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "1. 院子里有一只狗在玩耍。",
+    "answer": "There is a dog playing in the yard."
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "2. 公园里有孩子们在跑步。",
+    "answer": "There are children running in the park."
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "3. 天空中有一只鸟在飞翔。",
+    "answer": "There is a bird flying in the sky."
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "4. 教室里有学生在学习。",
+    "answer": "There are students studying in the classroom."
+  }
+]

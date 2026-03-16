@@ -1,0 +1,20 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "前三个是什么？",
+    "answer": "lovely  可爱的；lively  活泼的；friendly  友好的"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "后三个是什么？",
+    "answer": "silly  傻的；lonely  孤单的；smelly  臭的"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "最后两个是什么？",
+    "answer": "early早的; only唯一的"
+  }
+]

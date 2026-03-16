@@ -1,0 +1,110 @@
+[
+  {
+    "card_index": 1,
+    "hint": "川普",
+    "question": "trouble",
+    "answer": "问题麻烦"
+  },
+  {
+    "card_index": 2,
+    "hint": "超热死,裤子长裤,jeans是紧死,牛仔裤",
+    "question": "trousers",
+    "answer": "裤子长裤"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "truck",
+    "answer": "卡车"
+  },
+  {
+    "card_index": 4,
+    "hint": "抓死他,信任,相信他,所有的事情都抓着他做",
+    "question": "trust",
+    "answer": "信任"
+  },
+  {
+    "card_index": 5,
+    "hint": "处死,哥白尼系列",
+    "question": "truth",
+    "answer": "真理"
+  },
+  {
+    "card_index": 6,
+    "hint": "choose选择,还有cause导致被烤死",
+    "question": "choose",
+    "answer": "选择"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "try",
+    "answer": "试着"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "turkey",
+    "answer": "火鸡"
+  },
+  {
+    "card_index": 9,
+    "hint": "腾,翻转旋转,死亡翻滚",
+    "question": "turn",
+    "answer": "翻转旋转"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "twice",
+    "answer": "两倍"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "twin",
+    "answer": "双胞胎之一"
+  },
+  {
+    "card_index": 12,
+    "hint": "twin双胞胎之一，那么一对双胞胎呢",
+    "question": "一对双胞胎",
+    "answer": "twins"
+  },
+  {
+    "card_index": 13,
+    "hint": "type A type B type C",
+    "question": "type",
+    "answer": "种类"
+  },
+  {
+    "card_index": 14,
+    "hint": "verb",
+    "question": "type",
+    "answer": "打字"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "umbrella",
+    "answer": "伞"
+  },
+  {
+    "card_index": 16,
+    "hint": "",
+    "question": "uncle",
+    "answer": "叔叔"
+  },
+  {
+    "card_index": 17,
+    "hint": "介词也有adv",
+    "question": "under",
+    "answer": "在...下面"
+  },
+  {
+    "card_index": 18,
+    "hint": "地下的,在美国有个特别的意思,地铁",
+    "question": "underground",
+    "answer": "地下的、地铁"
+  }
+]

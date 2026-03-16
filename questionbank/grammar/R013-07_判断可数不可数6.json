@@ -1,0 +1,56 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "money钱",
+    "answer": "不可数"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "foot脚",
+    "answer": "可数"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "information信息",
+    "answer": "不可数"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "toy玩具",
+    "answer": "可数"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "weather天气",
+    "answer": "不可数"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "music音乐",
+    "answer": "不可数"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "shop商店",
+    "answer": "可数"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "meat肉",
+    "answer": "不可数"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "tea茶",
+    "answer": "不可数"
+  }
+]

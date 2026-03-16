@@ -1,0 +1,56 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "uniform",
+    "answer": "制服"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "suit",
+    "answer": "西装套装"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "shoe",
+    "answer": "鞋"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "boot",
+    "answer": "靴子"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "sock",
+    "answer": "短袜"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "stocking",
+    "answer": "长袜，长筒袜"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "tie",
+    "answer": "领带"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "tie",
+    "answer": "系"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "sunglasses",
+    "answer": "太阳镜"
+  }
+]

@@ -1,0 +1,92 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "nation",
+    "answer": "民族，国家"
+  },
+  {
+    "card_index": 2,
+    "hint": "形容词",
+    "question": "national",
+    "answer": "国家的"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "nationality",
+    "answer": "国籍"
+  },
+  {
+    "card_index": 4,
+    "hint": "内地物",
+    "question": "native",
+    "answer": "本地的，本国的"
+  },
+  {
+    "card_index": 5,
+    "hint": "难吃肉",
+    "question": "natural",
+    "answer": "自然的"
+  },
+  {
+    "card_index": 6,
+    "hint": "难吃",
+    "question": "nature",
+    "answer": "自然"
+  },
+  {
+    "card_index": 7,
+    "hint": "闹踢",
+    "question": "naughty",
+    "answer": "淘气的，顽皮的"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "near",
+    "answer": "近的，附近的"
+  },
+  {
+    "card_index": 9,
+    "hint": "形容词和副词",
+    "question": "nearby",
+    "answer": "附近的"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "nearly",
+    "answer": "几乎，将近"
+  },
+  {
+    "card_index": 11,
+    "hint": "奶奶是色弱",
+    "question": "necessary",
+    "answer": "必须的，必要的"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "need",
+    "answer": "需要"
+  },
+  {
+    "card_index": 13,
+    "hint": "那边",
+    "question": "neighbor",
+    "answer": "邻居"
+  },
+  {
+    "card_index": 14,
+    "hint": "那边 hood 的",
+    "question": "neighborhood",
+    "answer": "街区，街坊"
+  },
+  {
+    "card_index": 15,
+    "hint": "两个都不选，注意是两个",
+    "question": "neither",
+    "answer": "两个都不"
+  }
+]

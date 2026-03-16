@@ -1,0 +1,68 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "高的",
+    "answer": "high"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "大的，大量的",
+    "answer": "large"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "深的",
+    "answer": "deep"
+  },
+  {
+    "card_index": 4,
+    "hint": "形容词",
+    "question": "低的，矮的",
+    "answer": "low"
+  },
+  {
+    "card_index": 5,
+    "hint": "副词",
+    "question": "低",
+    "answer": "low"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "小的，少的",
+    "answer": "small"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "大的",
+    "answer": "big"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "沉重的，大量的",
+    "answer": "heavy"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "瘦的，薄的",
+    "answer": "thin"
+  },
+  {
+    "card_index": 10,
+    "hint": "形容词",
+    "question": "胖的",
+    "answer": "fat"
+  },
+  {
+    "card_index": 11,
+    "hint": "名词",
+    "question": "脂肪",
+    "answer": "fat"
+  }
+]

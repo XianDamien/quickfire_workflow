@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "写句子遇到困难，看什么？",
+    "answer": "看指示牌"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "时间指示牌+ed，在提醒什么？",
+    "answer": "提醒时间负责人，到了过去，要加ed书包"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "时间指示牌+s，在提醒什么？",
+    "answer": "提醒时间负责人，到了现在，要注意三单的s书包"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "时间指示牌+will，在提醒什么？",
+    "answer": "提醒时间负责人，到了将来，要在自己前面加will"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "状态指示牌+ing，在提醒什么？",
+    "answer": "提醒进行层的状态负责人，在进行层，记得加ing书包"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "CP同学的中文名是什么？",
+    "answer": "进行分词"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "进行分词强调的是什么？",
+    "answer": "强调的是【正在】做一件事的状态"
+  }
+]

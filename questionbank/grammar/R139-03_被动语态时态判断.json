@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "请问被动的结构是什么？",
+    "answer": "am is are+pp."
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "被动的时态转换和什么是一样的？",
+    "answer": "和蓝色句子一样，只要根据时态大厦规则就可以了"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "The thief will be caught by the police.",
+    "answer": "将来简单"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "The cake had been eaten by the boy.",
+    "answer": "过去完成"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "Mom, your car was broken.",
+    "answer": "过去简单"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "Jack would be choosen as our monitor.",
+    "answer": "过去将来简单"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "The milk will have been drunk by the cat.",
+    "answer": "将来完成"
+  }
+]

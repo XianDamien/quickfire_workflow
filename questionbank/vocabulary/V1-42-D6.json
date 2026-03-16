@@ -1,0 +1,122 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "badminton",
+    "answer": "羽毛球"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "sport",
+    "answer": "体育运动"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "exercise",
+    "answer": "运动，锻炼，练习"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "exercise",
+    "answer": "运动，锻炼，练习"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "walk",
+    "answer": "走路，步行"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "walk",
+    "answer": "走路，步行"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "jump",
+    "answer": "跳，跳跃"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "jump",
+    "answer": "跳，跳跃"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "run",
+    "answer": "跑，奔跑"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "swim",
+    "answer": "游泳"
+  },
+   {
+    "card_index": 11,
+    "hint": "",
+    "question": "hike",
+    "answer": "远足，徒步旅行"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "row",
+    "answer": "划船"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "ride",
+    "answer": "骑"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "climb",
+    "answer": "爬，攀登"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "ski",
+    "answer": "滑雪"
+  },
+  {
+    "card_index": 16,
+    "hint": "",
+    "question": "skate",
+    "answer": "溜冰，滑冰"
+  },
+  {
+    "card_index": 17,
+    "hint": "",
+    "question": "skate",
+    "answer": "冰鞋"
+  },
+  {
+    "card_index": 18,
+    "hint": "",
+    "question": "camp",
+    "answer": "露营"
+  },
+  {
+    "card_index": 19,
+    "hint": "",
+    "question": "camp",
+    "answer": "营地"
+  },
+  {
+    "card_index": 20,
+    "hint": "",
+    "question": "picnic",
+    "answer": "野餐"
+  }
+]

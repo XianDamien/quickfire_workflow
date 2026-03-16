@@ -1,0 +1,254 @@
+[
+  {
+    "card_index": 1,
+    "hint": "名词",
+    "question": "address",
+    "answer": "地址，演说，讲话"
+  },
+  {
+    "card_index": 2,
+    "hint": "名词",
+    "question": "chess",
+    "answer": "国际象棋"
+  },
+  {
+    "card_index": 3,
+    "hint": "行为动词",
+    "question": "dress",
+    "answer": "给什么什么穿衣服"
+  },
+  {
+    "card_index": 4,
+    "hint": "名词",
+    "question": "dress",
+    "answer": "连衣裙"
+  },
+  {
+    "card_index": 5,
+    "hint": "及物动词",
+    "question": "press",
+    "answer": "按，压"
+  },
+  {
+    "card_index": 6,
+    "hint": "名词",
+    "question": "press",
+    "answer": "新闻界，压，印刷机"
+  },
+  {
+    "card_index": 7,
+    "hint": "及物动词",
+    "question": "express",
+    "answer": "表示，表达，表现"
+  },
+  {
+    "card_index": 8,
+    "hint": "及物动词",
+    "question": "impress",
+    "answer": "给什么什么以深刻的印象，使铭记"
+  },
+  {
+    "card_index": 9,
+    "hint": "名词",
+    "question": "mess",
+    "answer": "杂乱，不整洁，麻烦，混乱"
+  },
+  {
+    "card_index": 10,
+    "hint": "连词",
+    "question": "unless",
+    "answer": "除非，如果不"
+  },
+  {
+    "card_index": 11,
+    "hint": "名词",
+    "question": "success",
+    "answer": "成功，成功的人"
+  },
+  {
+    "card_index": 12,
+    "hint": "名词",
+    "question": "progress",
+    "answer": "前进，进步，进展"
+  },
+  {
+    "card_index": 13,
+    "hint": "形容词",
+    "question": "aggressive",
+    "answer": "进攻性的，好斗的，有进攻性"
+  },
+  {
+    "card_index": 14,
+    "hint": "名词",
+    "question": "business",
+    "answer": "商业，生意"
+  },
+  {
+    "card_index": 15,
+    "hint": "形容词",
+    "question": "homeless",
+    "answer": "无家可归的"
+  },
+  {
+    "card_index": 16,
+    "hint": "名词",
+    "question": "illness",
+    "answer": "疾病"
+  },
+  {
+    "card_index": 17,
+    "hint": "名词",
+    "question": "dream",
+    "answer": "梦，梦想"
+  },
+  {
+    "card_index": 18,
+    "hint": "行为动词",
+    "question": "dream",
+    "answer": "做梦，希望，梦想"
+  },
+  {
+    "card_index": 19,
+    "hint": "名词",
+    "question": "team",
+    "answer": "队，组"
+  },
+  {
+    "card_index": 20,
+    "hint": "形容词",
+    "question": "welcome",
+    "answer": "受欢迎的，可以随意使用的"
+  },
+  {
+    "card_index": 21,
+    "hint": "及物动词或者是名词",
+    "question": "welcome",
+    "answer": "欢迎"
+  },
+  {
+    "card_index": 22,
+    "hint": "不及物动词",
+    "question": "come",
+    "answer": "来，来啦，达到，发生"
+  },
+  {
+    "card_index": 23,
+    "hint": "系动词",
+    "question": "become",
+    "answer": "变得，成为"
+  },
+  {
+    "card_index": 24,
+    "hint": "名词",
+    "question": "home",
+    "answer": "家，家乡"
+  },
+  {
+    "card_index": 25,
+    "hint": "副词",
+    "question": "home",
+    "answer": "在家，回家，到家"
+  },
+  {
+    "card_index": 26,
+    "hint": "及物动词",
+    "question": "mean",
+    "answer": "意指，意思是，打算，意欲"
+  },
+  {
+    "card_index": 27,
+    "hint": "形容词",
+    "question": "clean",
+    "answer": "清洁的，干净的"
+  },
+  {
+    "card_index": 28,
+    "hint": "行为动词",
+    "question": "clean",
+    "answer": "把什么什么打扫干净"
+  },
+  {
+    "card_index": 29,
+    "hint": "名词",
+    "question": "ocean",
+    "answer": "海洋，大海"
+  },
+  {
+    "card_index": 30,
+    "hint": "不及物动词",
+    "question": "sit",
+    "answer": "坐"
+  },
+  {
+    "card_index": 31,
+    "hint": "及物动词",
+    "question": "sit",
+    "answer": "使就座"
+  },
+  {
+    "card_index": 32,
+    "hint": "及物动词",
+    "question": "hit",
+    "answer": "打击，碰撞"
+  },
+  {
+    "card_index": 33,
+    "hint": "名词",
+    "question": "hit",
+    "answer": "击中"
+  },
+  {
+    "card_index": 34,
+    "hint": "副词",
+    "question": "bit",
+    "answer": "有点，一些"
+  },
+  {
+    "card_index": 35,
+    "hint": "名词",
+    "question": "bit",
+    "answer": "一点儿，一小块"
+  },
+  {
+    "card_index": 36,
+    "hint": "名词",
+    "question": "habit",
+    "answer": "习惯，习性"
+  },
+  {
+    "card_index": 37,
+    "hint": "及物动词",
+    "question": "suit",
+    "answer": "适合，中什么什么的意"
+  },
+  {
+    "card_index": 38,
+    "hint": "名词",
+    "question": "suit",
+    "answer": "一套衣服"
+  },
+  {
+    "card_index": 39,
+    "hint": "及物动词",
+    "question": "visit",
+    "answer": "访问、拜访、参观、游览"
+  },
+  {
+    "card_index": 40,
+    "hint": "名词",
+    "question": "visit",
+    "answer": "访问、探望"
+  },
+  {
+    "card_index": 41,
+    "hint": "情为动词",
+    "question": "wait",
+    "answer": "等，等待，等候"
+  },
+  {
+    "card_index": 42,
+    "hint": "名词",
+    "question": "wait",
+    "answer": "等候的时间"
+  }
+]

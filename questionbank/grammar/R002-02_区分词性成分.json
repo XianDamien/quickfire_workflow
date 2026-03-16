@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "同学可以变吗？",
+    "answer": "不可以"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "角色可以变吗？",
+    "answer": "可以"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "同学用大写还是小写？",
+    "answer": "小写"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "角色用大写还是小写？",
+    "answer": "大写的"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "同学是词性还是成分？",
+    "answer": "词性"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "角色是成分还是词性？",
+    "answer": "成分"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "noun是词性还是成分？",
+    "answer": "词性"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "subject是词性还是成分？",
+    "answer": "成分"
+  }
+]

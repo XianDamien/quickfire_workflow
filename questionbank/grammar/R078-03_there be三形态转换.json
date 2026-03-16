@@ -1,0 +1,38 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "变成否定句：",
+    "answer": "There isn't a cat sleeping on the mat."
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "变成疑问句：",
+    "answer": "Is there a cat sleeping on the mat?"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "变成否定句：",
+    "answer": "There aren't any kids playing in the park."
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "变成疑问句：",
+    "answer": "Are there any kids playing in the park?"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "变成否定句：",
+    "answer": "There isn't a bird singing in the tree."
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "变成疑问句：",
+    "answer": "Is there a bird singing in the tree?"
+  }
+]

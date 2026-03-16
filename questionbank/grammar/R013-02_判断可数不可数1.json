@@ -1,0 +1,116 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "coffee",
+    "answer": "不可数"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "tree",
+    "answer": "可数"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "woman",
+    "answer": "可数"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "water",
+    "answer": "不可数"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "beer",
+    "answer": "不可数"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "leaf",
+    "answer": "可数"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "rice",
+    "answer": "不可数"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "sheep",
+    "answer": "可数"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "hair",
+    "answer": "不可数"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "sand",
+    "answer": "不可数"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "honey",
+    "answer": "不可数"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "paper",
+    "answer": "不可数"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "tooth",
+    "answer": "可数"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "cup",
+    "answer": "可数"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "chocolate",
+    "answer": "不可数"
+  },
+  {
+    "card_index": 16,
+    "hint": "",
+    "question": "rain",
+    "answer": "不可数"
+  },
+  {
+    "card_index": 17,
+    "hint": "",
+    "question": "weather",
+    "answer": "不可数"
+  },
+  {
+    "card_index": 18,
+    "hint": "",
+    "question": "meat",
+    "answer": "不可数"
+  },
+  {
+    "card_index": 19,
+    "hint": "",
+    "question": "bread",
+    "answer": "不可数"
+  }
+]

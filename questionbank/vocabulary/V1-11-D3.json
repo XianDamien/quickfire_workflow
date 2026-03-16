@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "老鼠",
+    "answer": "Mouse"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "大象",
+    "answer": "Elephant"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "老虎",
+    "answer": "Tiger"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "狮子",
+    "answer": "Lion"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "狼",
+    "answer": "Wolf"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "熊猫",
+    "answer": "Panda"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "猴子",
+    "answer": "Monkey"
+  }
+]

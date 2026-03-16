@@ -1,0 +1,128 @@
+[
+    {
+        "card_index": 1,
+        "hint": "及物动词",
+        "question": "study",
+        "answer": "学习研究"
+    },
+    {
+        "card_index": 2,
+        "hint": "名词",
+        "question": "study",
+        "answer": "学习研究书房"
+    },
+    {
+        "card_index": 3,
+        "hint": "副词",
+        "question": "already",
+        "answer": "已经"
+    },
+    {
+        "card_index": 4,
+        "hint": "名词",
+        "question": "body",
+        "answer": "身体躯体团体尸体"
+    },
+    {
+        "card_index": 5,
+        "hint": "形容词",
+        "question": "cloudy",
+        "answer": "多云的阴天的浑浊的不透明的"
+    },
+    {
+        "card_index": 6,
+        "hint": "形容词",
+        "question": "windy",
+        "answer": "多风的"
+    },
+    {
+        "card_index": 7,
+        "hint": "形容词",
+        "question": "sandy",
+        "answer": "沙地的多沙的含沙的"
+    },
+    {
+        "card_index": 8,
+        "hint": "名词",
+        "question": "comedy",
+        "answer": "喜剧喜剧性"
+    },
+    {
+        "card_index": 9,
+        "hint": "形容词",
+        "question": "trendy",
+        "answer": "时髦的流行的"
+    },
+    {
+        "card_index": 10,
+        "hint": "名词",
+        "question": "trendy",
+        "answer": "追求时髦者时髦人物"
+    },
+    {
+        "card_index": 11,
+        "hint": "形容词",
+        "question": "old",
+        "answer": "老的，古老的，陈旧的，旧的"
+    },
+    {
+        "card_index": 12,
+        "hint": "形容词",
+        "question": "cold",
+        "answer": "冷的，冷淡的"
+    },
+    {
+        "card_index": 13,
+        "hint": "名词",
+        "question": "cold",
+        "answer": "冷，感冒"
+    },
+    {
+        "card_index": 14,
+        "hint": "行为动词",
+        "question": "hold",
+        "answer": "保持"
+    },
+    {
+        "card_index": 15,
+        "hint": "及物动词",
+        "question": "hold",
+        "answer": "拿着，抓住，举行，容纳"
+    },
+    {
+        "card_index": 16,
+        "hint": "名词",
+        "question": "gold",
+        "answer": "金"
+    },
+    {
+        "card_index": 17,
+        "hint": "形容词",
+        "question": "gold",
+        "answer": "精致的"
+    },
+    {
+        "card_index": 18,
+        "hint": "及物动词",
+        "question": "fold",
+        "answer": "折叠，折起来"
+    },
+    {
+        "card_index": 19,
+        "hint": "不及物动词",
+        "question": "belong",
+        "answer": "属于"
+    },
+    {
+        "card_index": 20,
+        "hint": "介词",
+        "question": "along",
+        "answer": "沿着"
+    },
+    {
+        "card_index": 21,
+        "hint": "副词",
+        "question": "along",
+        "answer": "往前，向前，一起"
+    }
+]

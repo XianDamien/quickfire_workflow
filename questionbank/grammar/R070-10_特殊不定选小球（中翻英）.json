@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "二选一用什么？",
+    "answer": "either either"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "多选零用什么？",
+    "answer": "none"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "多选一用什么？",
+    "answer": "any"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "二选零用什么？",
+    "answer": "neither"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "有好几个打包都选用什么？",
+    "answer": "all"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "有好几个每个都选用什么？",
+    "answer": "every"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "有两个打包一起都选用什么？",
+    "answer": "both"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "有两个每个各自都选用什么？",
+    "answer": "each"
+  }
+]

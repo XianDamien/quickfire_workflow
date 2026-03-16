@@ -1,0 +1,92 @@
+[
+  {
+    "card_index": 1,
+    "hint": "破客。破客请猪肉,贵客请牛肉",
+    "question": "pork",
+    "answer": "猪肉"
+  },
+  {
+    "card_index": 2,
+    "hint": "破鞋跳舞",
+    "question": "positive",
+    "answer": "积极的,乐观的"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "possible",
+    "answer": "可能的"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "possibly",
+    "answer": "可能地"
+  },
+  {
+    "card_index": 5,
+    "hint": "古罗马的post又可以把马系在那儿,又可以寄信,又可以贴告示,所以是现在邮局的前身",
+    "question": "post",
+    "answer": "邮政,邮件"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "postcard",
+    "answer": "明信片"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "poster",
+    "answer": "海报"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "postman",
+    "answer": "邮递员"
+  },
+  {
+    "card_index": 9,
+    "hint": "泡塔",
+    "question": "pot",
+    "answer": "锅,壶,罐"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "potato",
+    "answer": "马铃薯,土豆"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "pound",
+    "answer": "磅,英镑"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "power",
+    "answer": "动力,电力"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "powerful",
+    "answer": "强大的"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "practice",
+    "answer": "练习,实践"
+  },
+  {
+    "card_index": 15,
+    "hint": "布莱斯",
+    "question": "praise",
+    "answer": "表扬"
+  }
+]

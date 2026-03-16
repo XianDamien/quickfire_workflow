@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "I like the moon cakes with nuts in them.",
+    "question": "Nut",
+    "answer": "坚果，干果"
+  },
+  {
+    "card_index": 2,
+    "hint": "I like to eat cucumber sandwiches.",
+    "question": "Cucumber",
+    "answer": "黄瓜"
+  },
+  {
+    "card_index": 3,
+    "hint": "I don't like the flavor of onion.",
+    "question": "Onion",
+    "answer": "洋葱"
+  },
+  {
+    "card_index": 4,
+    "hint": "I hate eating cabbages.",
+    "question": "Cabbage",
+    "answer": "卷心菜"
+  },
+  {
+    "card_index": 5,
+    "hint": "Water is a wholesome drink. (noun)",
+    "question": "Drink",
+    "answer": "饮料，酒"
+  },
+  {
+    "card_index": 6,
+    "hint": "It is harmful to your health to drink too much. (verb)",
+    "question": "Drink",
+    "answer": "喝，喝酒"
+  },
+  {
+    "card_index": 7,
+    "hint": "We cannot exist without air, food or water.",
+    "question": "Water",
+    "answer": "水"
+  },
+  {
+    "card_index": 8,
+    "hint": "You can water the flowers every three days. (verb)",
+    "question": "Water",
+    "answer": "浇水"
+  }
+]

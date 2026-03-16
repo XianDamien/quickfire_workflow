@@ -1,0 +1,38 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "如何判断一个句子的时态是过去简单还是现在完成？",
+    "answer": "看说话的人想要强调的是动作还是状态"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "如果强调的是过去的一个动作，是什么时态？",
+    "answer": "过去简单"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "如果强调的是现在的状态，是什么时态？",
+    "answer": "现在完成"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "如果小明说我吃了5个苹果是什么时态？",
+    "answer": "过去简单"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "如果小明说，我已经吃了5个苹果了。是什么时态？",
+    "answer": "现在完成"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "什么会过去，但是什么会一直跟着你。",
+    "answer": "动作会过去，但是状态会一直跟着你"
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "在几岁的时候",
+    "answer": "At the age of"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "在早上、在下午、在晚上",
+    "answer": "In the morning、 in the afternoon、 in the evening"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "在去一个地方的路上",
+    "answer": "On the way to"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "在左边在右边",
+    "answer": "On the left on the right"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "在中间",
+    "answer": "In the middle of"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "在过去",
+    "answer": "In the past"
+  }
+]

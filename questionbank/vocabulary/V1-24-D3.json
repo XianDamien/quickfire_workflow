@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "复制抄写",
+    "answer": "copy"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "副本复印件",
+    "answer": "copy"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "版权",
+    "answer": "copyright"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "标记",
+    "answer": "mark"
+  },
+  {
+    "card_index": 5,
+    "hint": "名词",
+    "question": "分数",
+    "answer": "mark"
+  },
+  {
+    "card_index": 6,
+    "hint": "动词",
+    "question": "教",
+    "answer": "teach"
+  },
+  {
+    "card_index": 7,
+    "hint": "动词",
+    "question": "学习（特指背诵听讲类的学习）",
+    "answer": "study"
+  },
+  {
+    "card_index": 8,
+    "hint": "动词",
+    "question": "学习（特指所有的吸收知识吸收能力）",
+    "answer": "learn"
+  }
+]

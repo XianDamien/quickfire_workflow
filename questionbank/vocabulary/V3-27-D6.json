@@ -1,0 +1,230 @@
+[
+    {
+        "card_index": 1,
+        "hint": "及物动词",
+        "question": "use",
+        "answer": "用，使用"
+    },
+    {
+        "card_index": 2,
+        "hint": "名词",
+        "question": "use",
+        "answer": "用途，功能"
+    },
+    {
+        "card_index": 3,
+        "hint": "行为动词",
+        "question": "refuse",
+        "answer": "拒绝，谢绝不接受"
+    },
+    {
+        "card_index": 4,
+        "hint": "及物动词",
+        "question": "excuse",
+        "answer": "为什么什么辩解，原谅过失等，使某人免除责任规定处罚"
+    },
+    {
+        "card_index": 5,
+        "hint": "名词",
+        "question": "excuse",
+        "answer": "借口，辩解的理由"
+    },
+    {
+        "card_index": 6,
+        "hint": "形容词",
+        "question": "cute",
+        "answer": "可爱的，漂亮的，机灵的"
+    },
+    {
+        "card_index": 7,
+        "hint": "及物动词",
+        "question": "pollute",
+        "answer": "污染，弄脏"
+    },
+    {
+        "card_index": 8,
+        "hint": "及物动词",
+        "question": "route",
+        "answer": "按某路线发送"
+    },
+    {
+        "card_index": 9,
+        "hint": "名词",
+        "question": "route",
+        "answer": "路线，航线，通道"
+    },
+    {
+        "card_index": 10,
+        "hint": "名词",
+        "question": "model",
+        "answer": "模型、式样、模范"
+    },
+    {
+        "card_index": 11,
+        "hint": "形容词",
+        "question": "modern",
+        "answer": "现代的、近代的、新式的、时髦的"
+    },
+    {
+        "card_index": 12,
+        "hint": "形容词",
+        "question": "possible",
+        "answer": "可能的，也许会发生的"
+    },
+    {
+        "card_index": 13,
+        "hint": "形容词",
+        "question": "terrible",
+        "answer": "可怕的、恐怖的、极坏的"
+    },
+    {
+        "card_index": 14,
+        "hint": "名词",
+        "question": "solution",
+        "answer": "解决方案、溶液、溶解、解答"
+    },
+    {
+        "card_index": 15,
+        "hint": "名词",
+        "question": "resolution",
+        "answer": "解决、决心、坚决、分辨率"
+    },
+    {
+        "card_index": 16,
+        "hint": "形容词",
+        "question": "casual",
+        "answer": "随便的、非正式的、临时的、偶然的"
+    },
+    {
+        "card_index": 17,
+        "hint": "名词",
+        "question": "casual",
+        "answer": "便装、临时工人、待命士兵"
+    },
+    {
+        "card_index": 18,
+        "hint": "形容词",
+        "question": "usual",
+        "answer": "通常的、惯例的、平常的"
+    },
+    {
+        "card_index": 19,
+        "hint": "形容词",
+        "question": "unusual",
+        "answer": "不平常的，与众不同的，独特的"
+    },
+    {
+        "card_index": 20,
+        "hint": "副词",
+        "question": "gradually",
+        "answer": "逐渐地，渐渐地"
+    },
+    {
+        "card_index": 21,
+        "hint": "名词",
+        "question": "honey",
+        "answer": "蜂蜜，宝贝，甜蜜"
+    },
+    {
+        "card_index": 22,
+        "hint": "形容词",
+        "question": "honey",
+        "answer": "甘美的，蜂蜜似的"
+    },
+    {
+        "card_index": 23,
+        "hint": "名词",
+        "question": "money",
+        "answer": "钱，钞票，财富，金钱"
+    },
+    {
+        "card_index": 24,
+        "hint": "名词",
+        "question": "key",
+        "answer": "钥匙，答案，关键，秘诀"
+    },
+    {
+        "card_index": 25,
+        "hint": "名词",
+        "question": "monkey",
+        "answer": "猴子，淘气鬼，小淘气"
+    },
+    {
+        "card_index": 26,
+        "hint": "及物动词",
+        "question": "obey",
+        "answer": "服从，顺从，听从"
+    },
+    {
+        "card_index": 27,
+        "hint": "名词",
+        "question": "survey",
+        "answer": "调查、测量、测绘"
+    },
+    {
+        "card_index": 28,
+        "hint": "名词",
+        "question": "eye",
+        "answer": "眼睛"
+    },
+    {
+        "card_index": 29,
+        "hint": "名词",
+        "question": "blue",
+        "answer": "蓝色"
+    },
+    {
+        "card_index": 30,
+        "hint": "形容词",
+        "question": "blue",
+        "answer": "蓝色的，沮丧的，忧郁的"
+    },
+    {
+        "card_index": 31,
+        "hint": "名词",
+        "question": "glue",
+        "answer": "胶，胶水"
+    },
+    {
+        "card_index": 32,
+        "hint": "形容词",
+        "question": "true",
+        "answer": "真的，真实的，忠诚的，准确的"
+    },
+    {
+        "card_index": 33,
+        "hint": "及物动词",
+        "question": "trust",
+        "answer": "信任，相信"
+    },
+    {
+        "card_index": 34,
+        "hint": "名词",
+        "question": "queue",
+        "answer": "行列，队"
+    },
+    {
+        "card_index": 35,
+        "hint": "不及物动词",
+        "question": "queue",
+        "answer": "排队"
+    },
+    {
+        "card_index": 36,
+        "hint": "不及物动词",
+        "question": "argue",
+        "answer": "争吵，争论"
+    },
+    {
+        "card_index": 37,
+        "hint": "及物动词",
+        "question": "argue",
+        "answer": "争辩"
+    },
+    {
+        "card_index": 38,
+        "hint": "行为动词",
+        "question": "continue",
+        "answer": "使继续"
+    }
+]

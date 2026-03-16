@@ -1,0 +1,230 @@
+[
+  {
+    "card_index": 1,
+    "hint": "名词",
+    "question": "drum",
+    "answer": "鼓，桶"
+  },
+  {
+    "card_index": 2,
+    "hint": "名词",
+    "question": "trumpet",
+    "answer": "喇叭，喇叭声"
+  },
+  {
+    "card_index": 3,
+    "hint": "名词",
+    "question": "umbrella",
+    "answer": "伞，雨伞"
+  },
+  {
+    "card_index": 4,
+    "hint": "名词",
+    "question": "autumn",
+    "answer": "秋季"
+  },
+  {
+    "card_index": 5,
+    "hint": "名词",
+    "question": "humour",
+    "answer": "幽默，诙谐"
+  },
+  {
+    "card_index": 6,
+    "hint": "名词",
+    "question": "human",
+    "answer": "人，人类"
+  },
+  {
+    "card_index": 7,
+    "hint": "形容词",
+    "question": "human",
+    "answer": "人的，人类的"
+  },
+  {
+    "card_index": 8,
+    "hint": "形容词",
+    "question": "humid",
+    "answer": "潮湿的"
+  },
+  {
+    "card_index": 9,
+    "hint": "形容词",
+    "question": "medium",
+    "answer": "中等的，适中的"
+  },
+  {
+    "card_index": 10,
+    "hint": "不及物动词",
+    "question": "jump",
+    "answer": "跳，跃"
+  },
+  {
+    "card_index": 11,
+    "hint": "名词",
+    "question": "jump",
+    "answer": "跳，跳跃，大幅度上涨"
+  },
+  {
+    "card_index": 12,
+    "hint": "名词",
+    "question": "dumpling",
+    "answer": "饺子，一切有馅儿的面团"
+  },
+  {
+    "card_index": 13,
+    "hint": "名词",
+    "question": "pumpkin",
+    "answer": "南瓜"
+  },
+  {
+    "card_index": 14,
+    "hint": "行为动词",
+    "question": "bump",
+    "answer": "碰撞，颠簸而行"
+  },
+  {
+    "card_index": 15,
+    "hint": "名词",
+    "question": "thumb",
+    "answer": "拇指"
+  },
+  {
+    "card_index": 16,
+    "hint": "形容词",
+    "question": "angry",
+    "answer": "愤怒的，生气的"
+  },
+  {
+    "card_index": 17,
+    "hint": "形容词",
+    "question": "strange",
+    "answer": "陌生的，不熟悉的，奇异的，特别的"
+  },
+  {
+    "card_index": 18,
+    "hint": "及物动词",
+    "question": "hang",
+    "answer": "绞死，吊死，悬挂，吊着"
+  },
+  {
+    "card_index": 19,
+    "hint": "名词",
+    "question": "danger",
+    "answer": "危险"
+  },
+  {
+    "card_index": 20,
+    "hint": "名词",
+    "question": "change",
+    "answer": "变化，零钱"
+  },
+  {
+    "card_index": 21,
+    "hint": "行为动词",
+    "question": "change",
+    "answer": "改变，变化"
+  },
+  {
+    "card_index": 22,
+    "hint": "及物动词",
+    "question": "change",
+    "answer": "更换，兑换"
+  },
+  {
+    "card_index": 23,
+    "hint": "名词",
+    "question": "exchange",
+    "answer": "调换，互换，兑换，意见等的交流"
+  },
+  {
+    "card_index": 24,
+    "hint": "及物动词",
+    "question": "exchange",
+    "answer": "调换，互换，兑换，交流"
+  },
+  {
+    "card_index": 25,
+    "hint": "名词",
+    "question": "meal",
+    "answer": "一餐，一顿饭"
+  },
+  {
+    "card_index": 26,
+    "hint": "不及物动词",
+    "question": "deal",
+    "answer": "处理，应付"
+  },
+  {
+    "card_index": 27,
+    "hint": "名词",
+    "question": "deal",
+    "answer": "大量，很多，协议，交易"
+  },
+  {
+    "card_index": 28,
+    "hint": "形容词",
+    "question": "real",
+    "answer": "真的，真正的，实际的，现实的"
+  },
+  {
+    "card_index": 29,
+    "hint": "行为动词",
+    "question": "reveal",
+    "answer": "揭示，揭露"
+  },
+  {
+    "card_index": 30,
+    "hint": "名词",
+    "question": "health",
+    "answer": "健康"
+  },
+  {
+    "card_index": 31,
+    "hint": "及物动词",
+    "question": "realize",
+    "answer": "认识到，领会，实现"
+  },
+  {
+    "card_index": 32,
+    "hint": "形容词",
+    "question": "realistic",
+    "answer": "现实的，注重实际的"
+  },
+  {
+    "card_index": 33,
+    "hint": "形容词",
+    "question": "different",
+    "answer": "不同的，相异的"
+  },
+  {
+    "card_index": 34,
+    "hint": "名词",
+    "question": "difference",
+    "answer": "差别，差异"
+  },
+  {
+    "card_index": 35,
+    "hint": "形容词",
+    "question": "indifferent",
+    "answer": "漠不关心的，无关紧要的"
+  },
+  {
+    "card_index": 36,
+    "hint": "及物动词",
+    "question": "offer",
+    "answer": "提供，提供，开价"
+  },
+  {
+    "card_index": 37,
+    "hint": "名词",
+    "question": "offer",
+    "answer": "提供，提出，开价"
+  },
+  {
+    "card_index": 38,
+    "hint": "及物动词",
+    "question": "prefer",
+    "answer": "宁愿要，更喜欢"
+  }
+]

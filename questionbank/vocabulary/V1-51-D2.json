@@ -1,0 +1,62 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "can",
+    "answer": "能，会"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "could",
+    "answer": "能够，可以"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "may",
+    "answer": "可以，能够，也许，祝愿"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "might",
+    "answer": "可能，可以"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "must",
+    "answer": "必须，一定"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "should",
+    "answer": "应当，应该"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "shall",
+    "answer": "将要"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "will",
+    "answer": "将，会，要"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "would",
+    "answer": "将，愿意"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "sound",
+    "answer": "听起来，发音"
+  }
+]

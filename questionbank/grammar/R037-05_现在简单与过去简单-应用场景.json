@@ -1,0 +1,32 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "现在简单这个时态，是所有时态中唯一一个有两个运用场景的，这两个场景是什么？",
+    "answer": "一件现在的事情和习惯做的事情"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "一件现在的事情，举个例子",
+    "answer": "I am a student.我现在是学生。（不代表我过去和将来还是学生）"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "习惯做的事情，举个例子",
+    "answer": "The earth goes around the sun. 地球绕着太阳转。（每一天都如此。）"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "过去简单这个时态，运用场景是什么？",
+    "answer": "一件过去的事情"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "举个例子",
+    "answer": "我昨天看了一集动画片"
+  }
+]

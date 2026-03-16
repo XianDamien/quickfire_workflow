@@ -1,0 +1,104 @@
+[
+  {
+    "card_index": 1,
+    "hint": "腐烂的，浮捞的",
+    "question": "flood",
+    "answer": "洪水"
+  },
+  {
+    "card_index": 2,
+    "hint": "second floor",
+    "question": "floor",
+    "answer": "层，地面"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "flower",
+    "answer": "花"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "flu",
+    "answer": "流感"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "fly",
+    "answer": "飞行；苍蝇"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "focus",
+    "answer": "集中"
+  },
+  {
+    "card_index": 7,
+    "hint": "先联想folk，folk是什么？",
+    "question": "fork",
+    "answer": "叉子"
+  },
+  {
+    "card_index": 8,
+    "hint": "先联想fork，fork是什么？叉子，那么用粪叉的folk的人是谁？",
+    "question": "folk",
+    "answer": "乡下的，民间的"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "follow",
+    "answer": "跟随"
+  },
+  {
+    "card_index": 10,
+    "hint": "answer the following questions",
+    "question": "following",
+    "answer": "下列的，紧随其后的"
+  },
+  {
+    "card_index": 11,
+    "hint": "be fond of",
+    "question": "fond",
+    "answer": "喜欢"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "food",
+    "answer": "食品"
+  },
+  {
+    "card_index": 13,
+    "hint": "f o o l，verb是什么？",
+    "question": "fool (1)",
+    "answer": "愚弄"
+  },
+  {
+    "card_index": 14,
+    "hint": "noun是什么？",
+    "question": "fool (2)",
+    "answer": "傻子"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "foolish",
+    "answer": "愚蠢的"
+  },
+  {
+    "card_index": 16,
+    "hint": "",
+    "question": "foot",
+    "answer": "脚"
+  },
+  {
+    "card_index": 17,
+    "hint": "",
+    "question": "football",
+    "answer": "足球"
+  }
+]

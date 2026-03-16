@@ -1,0 +1,92 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "tomorrow",
+    "answer": "明天"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "tonight",
+    "answer": "今晚"
+  },
+  {
+    "card_index": 3,
+    "hint": "t o o,也,adv",
+    "question": "too",
+    "answer": "也"
+  },
+  {
+    "card_index": 4,
+    "hint": "图",
+    "question": "tool",
+    "answer": "工具"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "tooth",
+    "answer": "牙齿"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "toothache",
+    "answer": "牙痛"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "top",
+    "answer": "顶部"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "topic",
+    "answer": "题目话题"
+  },
+  {
+    "card_index": 9,
+    "hint": "统统",
+    "question": "total",
+    "answer": "总计总共"
+  },
+  {
+    "card_index": 10,
+    "hint": "他气",
+    "question": "touch",
+    "answer": "触摸"
+  },
+  {
+    "card_index": 11,
+    "hint": "图儿",
+    "question": "tour",
+    "answer": "旅游参观"
+  },
+  {
+    "card_index": 12,
+    "hint": "tourist,他",
+    "question": "tourist",
+    "answer": "游客旅行者"
+  },
+  {
+    "card_index": 13,
+    "hint": "兔耳朵,朝向总是朝向有声音的地方",
+    "question": "toward",
+    "answer": "朝向"
+  },
+  {
+    "card_index": 14,
+    "hint": "塔卧,托塔李天王塔",
+    "question": "tower",
+    "answer": "塔"
+  },
+  {
+    "card_index": 15,
+    "hint": "倘,镇上小城镇,去小城镇躺平",
+    "question": "town",
+    "answer": "镇上小城镇"
+  }
+]

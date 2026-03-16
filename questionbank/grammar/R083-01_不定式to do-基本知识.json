@@ -1,0 +1,32 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "I want to cry.这句话里面有两个行为动词，但是语法上却是正确的。\n这句话里面to cry是一个什么语法现象？",
+    "answer": "是不定式"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "不定式，我们为了方便，简称它为什么？",
+    "answer": "to do"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "这里面的do指的是do这个单词，还是代指所有的行为动词？",
+    "answer": "代指所有的行为动词"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "To do在句子里面,伪装成了哪一位同学？",
+    "answer": "伪装成了名词，也就是班长"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "句子里面只要看到to，他就是假头套一号吗？",
+    "answer": "不是的，必须是verb前面的to才是假头套一号，\n否则他只是一个普通的介词"
+  }
+]

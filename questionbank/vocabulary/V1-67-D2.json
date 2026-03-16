@@ -1,0 +1,68 @@
+[
+  {
+    "card_index": 1,
+    "hint": "冠词",
+    "question": "a",
+    "answer": "一个，每一，任意"
+  },
+  {
+    "card_index": 2,
+    "hint": "冠词",
+    "question": "an",
+    "answer": "一个"
+  },
+  {
+    "card_index": 3,
+    "hint": "冠词",
+    "question": "the",
+    "answer": "这，那"
+  },
+  {
+    "card_index": 4,
+    "hint": "连词",
+    "question": "as",
+    "answer": "因为"
+  },
+  {
+    "card_index": 5,
+    "hint": "副词",
+    "question": "as",
+    "answer": "一样"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "for",
+    "answer": "给，对，为，因为"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "with",
+    "answer": "和什么一起，跟，用"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "without",
+    "answer": "没有，无"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "from",
+    "answer": "从哪里来，来自"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "to",
+    "answer": "向，朝，到，往"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "of",
+    "answer": "属于什么的"
+  }
+]

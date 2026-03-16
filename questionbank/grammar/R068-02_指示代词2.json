@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "指示代词this是什么意思？",
+    "answer": "这个"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "that是什么意思？",
+    "answer": "那个"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "these是什么意思？",
+    "answer": "这些"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "those是什么意思？",
+    "answer": "那些"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "翻译句子，这支笔在我的桌子上",
+    "answer": "This pen is on my desk."
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "那本书在你的桌子上",
+    "answer": "That book is on your desk."
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "这些铅笔在盒子里",
+    "answer": "These pencils are in the box."
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "那些剪刀是蓝色的",
+    "answer": "Those scissors are blue."
+  }
+]

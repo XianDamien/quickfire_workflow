@@ -1,0 +1,92 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "sister",
+    "answer": "姐妹"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "sit",
+    "answer": "坐"
+  },
+  {
+    "card_index": 3,
+    "hint": "死猪为生",
+    "question": "situation",
+    "answer": "形势，情况"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "size",
+    "answer": "尺寸，大小"
+  },
+  {
+    "card_index": 5,
+    "hint": "sky 加 ate",
+    "question": "skate",
+    "answer": "溜冰，滑板"
+  },
+  {
+    "card_index": 6,
+    "hint": "蛇加 kill",
+    "question": "skill",
+    "answer": "技能，技巧"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "skin",
+    "answer": "皮肤"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "skirt",
+    "answer": "女裙"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "sky",
+    "answer": "天空"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "sleep",
+    "answer": "睡觉"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "slow",
+    "answer": "缓慢的"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "slowly",
+    "answer": "缓慢地"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "small",
+    "answer": "小的"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "smart",
+    "answer": "聪明的"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "smell",
+    "answer": "闻，臭味"
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "Tom的书",
+    "answer": "Tom's book"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "孩子们的玩具",
+    "answer": "Children's toys"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "丽丽的车",
+    "answer": "Lily's car"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "学生们的新老师",
+    "answer": "Students' new teacher"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "船的名字",
+    "answer": "the name of the ship"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "书的封面",
+    "answer": "The cover of the book"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "房间的门",
+    "answer": "The door of the room"
+  }
+]

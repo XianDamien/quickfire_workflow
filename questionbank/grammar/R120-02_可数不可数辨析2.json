@@ -1,0 +1,62 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "sandwich - 三明治",
+    "answer": "可数"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "gold - 黄金",
+    "answer": "不可数"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "weather - 天气",
+    "answer": "不可数"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "sheep - 羊",
+    "answer": "可数"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "butter - 黄油",
+    "answer": "不可数"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "star - 星星",
+    "answer": "可数"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "fun - 娱乐，乐趣",
+    "answer": "不可数"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "traffic - 交通",
+    "answer": "不可数"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "ice - 冰",
+    "answer": "不可数"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "grass - 草",
+    "answer": "不可数"
+  }
+]

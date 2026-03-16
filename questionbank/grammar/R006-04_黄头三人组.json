@@ -1,0 +1,20 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "黄头三人组由哪三人组成？",
+    "answer": "一article冠词二adjective形容词三Noun名词"
+  },
+  {
+    "card_index": 2,
+    "hint": "举个例子，a fat dog",
+    "question": "他们中谁是必不可少的？",
+    "answer": "noun名词"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "他们一起能扮演哪些角色？",
+    "answer": "一 主角subject二 配角object三  主角补充subject Complement。"
+  }
+]

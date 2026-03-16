@@ -1,0 +1,62 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "like教了哪两个词性",
+    "answer": "verb和preposition"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "unlike后面要加什么词性",
+    "answer": "noun组成介词短语"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "She is little unlike her father.等于Unlike her father, she is little.那么请问，unlike her father 叫什么名字",
+    "answer": "介词短语"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "为什么这个介词短语，有时候可以在句子前，也可以在句子后",
+    "answer": "因为介词短语可以做ADV"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "as和like意思有什么区别",
+    "answer": "as是等于，like是像"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "beside是什么意思",
+    "answer": "在什么什么旁边，比by远，比near近"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "besides是什么意思",
+    "answer": "除了，包含自身"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "except是什么意思",
+    "answer": "除了，不包含自身"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "比如，大家都及格了，只有我不及格，用except me还是besides me",
+    "answer": "except me"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "except for是用在同种族还是不同种族",
+    "answer": "不同种族"
+  }
+]

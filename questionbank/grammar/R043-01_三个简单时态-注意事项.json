@@ -1,0 +1,32 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "现在简单这个时态需要注意什么？",
+    "answer": "当主语是第三人称单数的时候，verb要背上捣乱的书包。"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "过去简单这个时态需要注意什么？",
+    "answer": "Verb和be verb要变成小时候的样子。"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "将来简单这个时态需要注意什么？",
+    "answer": "句子里面有will，而且will后面的verb和be verb都用原形。"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "verb的s小书包适用于所有的时态吗？",
+    "answer": "不是的，只是适用于现在简单这个时态。"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "所以，在过去简单和将来简单这两个时态中，需不需要考虑第三人称单数的问题呢？",
+    "answer": "不需要考虑。"
+  }
+]

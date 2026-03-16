@@ -1,0 +1,92 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "international",
+    "answer": "国际的"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "intercontinental",
+    "answer": "洲际的"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "internet",
+    "answer": "互联网"
+  },
+  {
+    "card_index": 4,
+    "hint": "两方或几方之间互相看",
+    "question": "interview",
+    "answer": "采访，面试"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "into",
+    "answer": "到...里面"
+  },
+  {
+    "card_index": 6,
+    "hint": "因车丢失。介绍，给你介绍辆新车",
+    "question": "introduce",
+    "answer": "介绍"
+  },
+  {
+    "card_index": 7,
+    "hint": "英文的",
+    "question": "invent",
+    "answer": "发明，创造"
+  },
+  {
+    "card_index": 8,
+    "hint": "因为神",
+    "question": "invention",
+    "answer": "发明，创造"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "inventor",
+    "answer": "发明家"
+  },
+  {
+    "card_index": 10,
+    "hint": "因为试题给他。这就属于泄题，需要",
+    "question": "investigate",
+    "answer": "调查"
+  },
+  {
+    "card_index": 11,
+    "hint": "因为太想，所以",
+    "question": "invitation",
+    "answer": "邀请"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "invite",
+    "answer": "邀请"
+  },
+  {
+    "card_index": 13,
+    "hint": "爱人。铁，老铁",
+    "question": "iron",
+    "answer": "铁"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "island",
+    "answer": "岛"
+  },
+  {
+    "card_index": 15,
+    "hint": "想象成 ATM，你可以取出钱来买什么？东西，或者取钱的时候有很多什么？条款",
+    "question": "item",
+    "answer": "东西，条款"
+  }
+]

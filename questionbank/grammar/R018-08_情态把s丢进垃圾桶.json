@@ -1,0 +1,56 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "情态有哪几个？",
+    "answer": "can, should, must, will"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "情态同学的外号是什么？",
+    "answer": "精神小伙。"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "情态同学的口头禅是什么？",
+    "answer": "我来，我来。"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "如果情态同学碰到verb在捣乱，他会做什么？",
+    "answer": "情态同学就会把s丢进垃圾桶里。"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "情态同学只有在positive的句子中这样做吗？",
+    "answer": "不是的，无论是在positive、negative还是在question的句子中，情态同学都会这样做。"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "She swims in the pool。她在池子里游泳变成她可以在池子里游泳。",
+    "answer": "She can swim in the pool."
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "She can swim in the pool，她可以在池子里游泳变成否定句她不可以在池子里游泳。",
+    "answer": "She can not swim in the pool."
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "She can swim in the pool，她可以在池子里游泳变成疑问句，她可以在池子里游泳吗？",
+    "answer": "Can she swim in the pool?"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "当modal和verb同时出现的时候，提问和说not都交给谁来做？",
+    "answer": "都交给modal来做。"
+  }
+]

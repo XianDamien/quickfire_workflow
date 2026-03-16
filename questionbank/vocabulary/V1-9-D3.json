@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "气体、汽油",
+    "answer": "Gas"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "火",
+    "answer": "Fire"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "冰块、冰",
+    "answer": "Ice"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "雪",
+    "answer": "Snow"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "下雪",
+    "answer": "Snow"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "雨",
+    "answer": "Rain"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "下雨",
+    "answer": "Rain"
+  }
+]

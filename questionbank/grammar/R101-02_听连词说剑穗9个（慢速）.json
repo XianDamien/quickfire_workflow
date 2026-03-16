@@ -1,0 +1,56 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "as",
+    "answer": "方法状语"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "when",
+    "answer": "时间状语"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "if",
+    "answer": "条件状语"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "so that",
+    "answer": "目的状语"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "so...that",
+    "answer": "结果状语"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "although",
+    "answer": "让步状语"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "bigger than",
+    "answer": "比较状语"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "where",
+    "answer": "地点状语"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "because",
+    "answer": "原因状语"
+  }
+]

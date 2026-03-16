@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "一个同学现在的样子，在英文语法书中叫什么？",
+    "answer": "叫原形"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "一个同学小时候的样子，在英文语法书中叫什么？",
+    "answer": "叫过去式"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "蓝头发老大的过去式只有was和were，红头发老大的过去式要稍微复杂些。可以简单理解为红头发老大变成小时候，就是在身上加了什么小书包？",
+    "answer": "加上ed小书包"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "多数情况是加上一个ed小书包，如果一个单词已经是以E结尾的呢？",
+    "answer": "那就加上d，变成它小时候的样子。"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "举个例子。",
+    "answer": "dance变成danced"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "像play这种以元音字母加Y结尾的行为动词，怎么变小时候的样子?",
+    "answer": "直接加ed"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "像study这种以辅音字母加Y结尾的行为动词，怎么变成小时候的样子?",
+    "answer": "把y变成i加ed"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "最后一种变成小时候的样子的情况是什么？",
+    "answer": "是变形金刚，不规则变化"
+  }
+]

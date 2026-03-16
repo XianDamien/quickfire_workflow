@@ -1,0 +1,32 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "There is ... some还是any milk in the cup？",
+    "answer": "some 因为是 positive"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "第二题，There isn't some还是any milk in the cup？",
+    "answer": "any 因为是negative."
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "第三题，Is there some 还是any milk in the cup？",
+    "answer": "any 因为是question"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "Can I have some or any milk?",
+    "answer": "这里是请求，所以虽然他是question，但请求和邀请要用some。"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "第五题，Do you like some or any milk？",
+    "answer": "选some，因为这里是邀请，邀请和请求要用some"
+  }
+]

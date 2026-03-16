@@ -1,0 +1,32 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "红色句子变疑问句，是谁跑到句子前面去提问？",
+    "answer": "是灵魂do"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "I drink coffee.我喝咖啡,变成疑问句。",
+    "answer": "Do I drink coffee?"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "I eat a hamburger.变成疑问句",
+    "answer": "Do I eat a hamburger?"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "I run.变成疑问句",
+    "answer": "Do I run?"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "I beat a ghost.变成疑问句",
+    "answer": "Do I beat a ghost?"
+  }
+]

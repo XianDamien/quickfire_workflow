@@ -1,0 +1,254 @@
+[
+  {
+    "card_index": 1,
+    "hint": "名词",
+    "question": "rice",
+    "answer": "稻，米，米饭"
+  },
+  {
+    "card_index": 2,
+    "hint": "名词",
+    "question": "price",
+    "answer": "价格，价钱，代价"
+  },
+  {
+    "card_index": 3,
+    "hint": "副词",
+    "question": "twice",
+    "answer": "两次，两倍"
+  },
+  {
+    "card_index": 4,
+    "hint": "名词",
+    "question": "advice",
+    "answer": "劝告，忠告，建议"
+  },
+  {
+    "card_index": 5,
+    "hint": "及物动词",
+    "question": "advise",
+    "answer": "劝告，忠告，建议"
+  },
+  {
+    "card_index": 6,
+    "hint": "行为动词",
+    "question": "notice",
+    "answer": "注意到，观察到"
+  },
+  {
+    "card_index": 7,
+    "hint": "名词",
+    "question": "notice",
+    "answer": "通告，布告，注意，留意，通知"
+  },
+  {
+    "card_index": 8,
+    "hint": "名词",
+    "question": "voice",
+    "answer": "说话声，嗓音"
+  },
+  {
+    "card_index": 9,
+    "hint": "名词",
+    "question": "office",
+    "answer": "办公室，部，局"
+  },
+  {
+    "card_index": 10,
+    "hint": "名词",
+    "question": "police",
+    "answer": "警察，警方"
+  },
+  {
+    "card_index": 11,
+    "hint": "名词",
+    "question": "practice",
+    "answer": "反复做的练习，训练"
+  },
+  {
+    "card_index": 12,
+    "hint": "行为动词",
+    "question": "practice",
+    "answer": "练习"
+  },
+  {
+    "card_index": 13,
+    "hint": "行为动词",
+    "question": "serve",
+    "answer": "为什么什么服务，招待，伺候"
+  },
+  {
+    "card_index": 14,
+    "hint": "名词",
+    "question": "service",
+    "answer": "服务"
+  },
+  {
+    "card_index": 15,
+    "hint": "名词",
+    "question": "dictionary",
+    "answer": "词典，字典"
+  },
+  {
+    "card_index": 16,
+    "hint": "名词",
+    "question": "library",
+    "answer": "图书馆"
+  },
+  {
+    "card_index": 17,
+    "hint": "名词",
+    "question": "vocabulary",
+    "answer": "词汇，词汇量"
+  },
+  {
+    "card_index": 18,
+    "hint": "形容词",
+    "question": "necessary",
+    "answer": "必须的，必要的，必然的"
+  },
+  {
+    "card_index": 19,
+    "hint": "形容词",
+    "question": "primary",
+    "answer": "最初的，主要的，初等的"
+  },
+  {
+    "card_index": 20,
+    "hint": "形容词",
+    "question": "scary",
+    "answer": "可怕的，吓人的"
+  },
+  {
+    "card_index": 21,
+    "hint": "名词",
+    "question": "guide",
+    "answer": "向导，导游，指南"
+  },
+  {
+    "card_index": 22,
+    "hint": "及物动词",
+    "question": "guide",
+    "answer": "指引，指导"
+  },
+  {
+    "card_index": 23,
+    "hint": "名词",
+    "question": "outside",
+    "answer": "外部，外面，外界"
+  },
+  {
+    "card_index": 24,
+    "hint": "副词",
+    "question": "outside",
+    "answer": "向外面，在外面"
+  },
+  {
+    "card_index": 25,
+    "hint": "形容词",
+    "question": "wide",
+    "answer": "宽阔的，广泛的"
+  },
+  {
+    "card_index": 26,
+    "hint": "副词",
+    "question": "wide",
+    "answer": "充分的，完全的"
+  },
+  {
+    "card_index": 27,
+    "hint": "形容词或副词",
+    "question": "worldwide",
+    "answer": "世界性的"
+  },
+  {
+    "card_index": 28,
+    "hint": "介词",
+    "question": "beside",
+    "answer": "在什么什么旁边"
+  },
+  {
+    "card_index": 29,
+    "hint": "介词",
+    "question": "besides",
+    "answer": "除什么什么之外还有"
+  },
+  {
+    "card_index": 30,
+    "hint": "副词",
+    "question": "besides",
+    "answer": "而且还有"
+  },
+  {
+    "card_index": 31,
+    "hint": "行为动词",
+    "question": "decide",
+    "answer": "决定，裁定"
+  },
+  {
+    "card_index": 32,
+    "hint": "及物动词",
+    "question": "decide",
+    "answer": "使决定，使下决心"
+  },
+  {
+    "card_index": 33,
+    "hint": "名词",
+    "question": "decision",
+    "answer": "决定，判断，果断"
+  },
+  {
+    "card_index": 34,
+    "hint": "行为动词",
+    "question": "divide",
+    "answer": "把什么什么分成"
+  },
+  {
+    "card_index": 35,
+    "hint": "及物动词",
+    "question": "provide",
+    "answer": "提供，供给"
+  },
+  {
+    "card_index": 36,
+    "hint": "行为动词",
+    "question": "ride",
+    "answer": "骑"
+  },
+  {
+    "card_index": 37,
+    "hint": "不及物动词",
+    "question": "ride",
+    "answer": "乘车"
+  },
+  {
+    "card_index": 38,
+    "hint": "名词",
+    "question": "ride",
+    "answer": "旅行，骑马旅行"
+  },
+  {
+    "card_index": 39,
+    "hint": "名词",
+    "question": "pride",
+    "answer": "自尊心，自豪感，骄傲"
+  },
+  {
+    "card_index": 40,
+    "hint": "形容词",
+    "question": "proud",
+    "answer": "骄傲的，骄傲自大的，自豪的"
+  },
+  {
+    "card_index": 41,
+    "hint": "名词",
+    "question": "district",
+    "answer": "区，地区"
+  },
+  {
+    "card_index": 42,
+    "hint": "名词",
+    "question": "fiction",
+    "answer": "小说"
+  }
+]

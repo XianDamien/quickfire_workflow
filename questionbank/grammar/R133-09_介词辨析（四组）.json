@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "from和since都是从一个时间出发的感觉，区别是from是从哪里出发",
+    "answer": "从任何时间出发都可以"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "since从哪里出发",
+    "answer": "since只能从过去出发"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "第二，in和within的区别是，in加一段时间表示什么意思",
+    "answer": "这段时间后"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "within加一段时间表示什么意思",
+    "answer": "这段时间内"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "第三组，for和during都是一段时间的感觉，区别是，for强调什么",
+    "answer": "强调一整段时间，为期"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "during强调什么",
+    "answer": "强调一段时间里边的一段时间"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "第四组，by和until都有一种截止时间的感觉，区别是，by是什么感觉",
+    "answer": "一件事情没发生，必须在截止前发生"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "而until是什么感觉",
+    "answer": "一件事情本来就持续在发生，必须在截止的时候结束"
+  }
+]

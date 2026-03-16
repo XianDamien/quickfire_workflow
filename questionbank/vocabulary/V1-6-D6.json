@@ -1,0 +1,104 @@
+[
+  {
+    "card_index": 1,
+    "hint": "Will you have some ice cream?",
+    "question": "Ice cream",
+    "answer": "冰激凌"
+  },
+  {
+    "card_index": 2,
+    "hint": "He seldom eats breakfast.",
+    "question": "Breakfast",
+    "answer": "早餐"
+  },
+  {
+    "card_index": 3,
+    "hint": "We had a wonderful lunch.",
+    "question": "Lunch",
+    "answer": "午餐"
+  },
+  {
+    "card_index": 4,
+    "hint": "It's time for dinner.",
+    "question": "Dinner",
+    "answer": "晚餐"
+  },
+  {
+    "card_index": 5,
+    "hint": "What time do you have supper?",
+    "question": "Supper",
+    "answer": "晚餐"
+  },
+  {
+    "card_index": 6,
+    "hint": "Do you always eat lunch at school?",
+    "question": "Eat",
+    "answer": "吃"
+  },
+  {
+    "card_index": 7,
+    "hint": "We will heat some water to wash clothes.",
+    "question": "Heat",
+    "answer": "加热"
+  },
+  {
+    "card_index": 8,
+    "hint": "I can't walk about in this heat.",
+    "question": "Heat",
+    "answer": "高温"
+  },
+  {
+    "card_index": 9,
+    "hint": "What a delicious meal!",
+    "question": "Delicious",
+    "answer": "美味的，可口的"
+  },
+  {
+    "card_index": 10,
+    "hint": "I ate some tasty food.",
+    "question": "Tasty",
+    "answer": "美味的，可口的"
+  },
+  {
+    "card_index": 11,
+    "hint": "This cake is really yummy.",
+    "question": "Yummy",
+    "answer": "美味的，可口的"
+  },
+  {
+    "card_index": 12,
+    "hint": "Don't eat so much sweet food.",
+    "question": "Sweet",
+    "answer": "甜的"
+  },
+  {
+    "card_index": 13,
+    "hint": "I like sweets.",
+    "question": "Sweet",
+    "answer": "糖果"
+  },
+  {
+    "card_index": 14,
+    "hint": "Sichuan province is famous for its hot and spicy food.",
+    "question": "Spicy",
+    "answer": "辣的"
+  },
+  {
+    "card_index": 15,
+    "hint": "Lemons have a sour taste.",
+    "question": "Sour",
+    "answer": "酸的"
+  },
+  {
+    "card_index": 16,
+    "hint": "The medicine has a bitter taste.",
+    "question": "Bitter",
+    "answer": "苦的"
+  },
+  {
+    "card_index": 17,
+    "hint": "At night, we will work together to make a fire and cook a meal.",
+    "question": "Meal",
+    "answer": "餐，饭"
+  }
+]

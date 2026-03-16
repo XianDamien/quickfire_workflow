@@ -1,0 +1,26 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "时态是哪两个词的结合？",
+    "answer": "时间和状态"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "时间有哪三种？",
+    "answer": "过去，现在，将来"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "状态有哪三种？",
+    "answer": "简单，进行，完成"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "所以它们加起来一共有几种情况？",
+    "answer": "三乘以三，九种"
+  }
+]

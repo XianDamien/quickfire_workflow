@@ -1,0 +1,26 @@
+[
+  {
+    "card_index": 1,
+    "hint": "英文中年份的读法，把它分成两位数加两位数来读，比如1995年拆分成19和95来读",
+    "question": "所以1995年怎么说？",
+    "answer": "Nineteen ninety five"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "2023年怎么说",
+    "answer": "twenty twenty three"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "1881年怎么说",
+    "answer": "eighteen eighty one"
+  },
+  {
+    "card_index": 4,
+    "hint": "遇到数字零，可以把它读成字母O",
+    "question": "所以1709年可以怎么说？",
+    "answer": "Seventeen O nine"
+  }
+]

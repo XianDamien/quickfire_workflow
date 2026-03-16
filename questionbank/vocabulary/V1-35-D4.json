@@ -1,0 +1,62 @@
+[
+    {
+        "card_index": 1,
+        "hint": "",
+        "question": "boat",
+        "answer": "小船"
+    },
+    {
+        "card_index": 2,
+        "hint": "",
+        "question": "ferry",
+        "answer": "渡船、渡口"
+    },
+    {
+        "card_index": 3,
+        "hint": "",
+        "question": "plane",
+        "answer": "飞机"
+    },
+    {
+        "card_index": 4,
+        "hint": "",
+        "question": "transportation",
+        "answer": "运输"
+    },
+    {
+        "card_index": 5,
+        "hint": "",
+        "question": "fare",
+        "answer": "车费、路费"
+    },
+    {
+        "card_index": 6,
+        "hint": "",
+        "question": "accident",
+        "answer": "事故、意外"
+    },
+    {
+        "card_index": 7,
+        "hint": "",
+        "question": "hurry",
+        "answer": "匆忙"
+    },
+    {
+        "card_index": 8,
+        "hint": "",
+        "question": "hurry",
+        "answer": "赶快、赶紧"
+    },
+    {
+        "card_index": 9,
+        "hint": "",
+        "question": "traffic",
+        "answer": "交通"
+    },
+    {
+        "card_index": 10,
+        "hint": "",
+        "question": "cross",
+        "answer": "穿过马路等，渡过河，交叉"
+    }
+]

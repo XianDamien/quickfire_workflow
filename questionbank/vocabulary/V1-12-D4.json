@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "Whale",
+    "answer": "鲸"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "Ant",
+    "answer": "蚂蚁"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "Snail",
+    "answer": "蜗牛"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "Bee",
+    "answer": "蜜蜂"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "Butterfly",
+    "answer": "蝴蝶"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "Dragon",
+    "answer": "龙"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "Feed",
+    "answer": "喂"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "Hunt",
+    "answer": "捕猎，搜捕"
+  }
+]

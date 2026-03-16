@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "艺术家",
+    "answer": "artist"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "工人劳动者",
+    "answer": "worker"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "画家",
+    "answer": "painter"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "运动员",
+    "answer": "player"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "运动员",
+    "answer": "athlete"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "飞行员",
+    "answer": "pilot"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "农民农场主",
+    "answer": "farmer"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "医生博士",
+    "answer": "doctor"
+  }
+]

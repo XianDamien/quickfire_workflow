@@ -1,0 +1,116 @@
+[
+    {
+        "card_index": 1,
+        "hint": "及物动词",
+        "question": "用，使用",
+        "answer": "use"
+    },
+    {
+        "card_index": 2,
+        "hint": "名词",
+        "question": "用途，功能",
+        "answer": "use"
+    },
+    {
+        "card_index": 3,
+        "hint": "行为动词",
+        "question": "拒绝，谢绝不接受",
+        "answer": "refuse"
+    },
+    {
+        "card_index": 4,
+        "hint": "及物动词",
+        "question": "为什么什么辩解，原谅过失等，使某人免除责任规定处罚",
+        "answer": "excuse"
+    },
+    {
+        "card_index": 5,
+        "hint": "名词",
+        "question": "借口，辩解的理由",
+        "answer": "excuse"
+    },
+    {
+        "card_index": 6,
+        "hint": "形容词",
+        "question": "可爱的，漂亮的，机灵的",
+        "answer": "cute"
+    },
+    {
+        "card_index": 7,
+        "hint": "及物动词",
+        "question": "污染，弄脏",
+        "answer": "pollute"
+    },
+    {
+        "card_index": 8,
+        "hint": "及物动词",
+        "question": "按某路线发送",
+        "answer": "route"
+    },
+    {
+        "card_index": 9,
+        "hint": "名词",
+        "question": "路线，航线，通道",
+        "answer": "route"
+    },
+    {
+        "card_index": 10,
+        "hint": "名词",
+        "question": "模型、式样、模范",
+        "answer": "model"
+    },
+    {
+        "card_index": 11,
+        "hint": "形容词",
+        "question": "现代的、近代的、新式的、时髦的",
+        "answer": "modern"
+    },
+    {
+        "card_index": 12,
+        "hint": "形容词",
+        "question": "可能的，也许会发生的",
+        "answer": "possible"
+    },
+    {
+        "card_index": 13,
+        "hint": "形容词",
+        "question": "可怕的、恐怖的、极坏的",
+        "answer": "terrible"
+    },
+    {
+        "card_index": 14,
+        "hint": "名词",
+        "question": "解决方案、溶液、溶解、解答",
+        "answer": "solution"
+    },
+    {
+        "card_index": 15,
+        "hint": "名词",
+        "question": "解决、决心、坚决、分辨率",
+        "answer": "resolution"
+    },
+    {
+        "card_index": 16,
+        "hint": "形容词",
+        "question": "随便的、非正式的、临时的、偶然的",
+        "answer": "casual"
+    },
+    {
+        "card_index": 17,
+        "hint": "名词",
+        "question": "便装、临时工人、待命士兵",
+        "answer": "casual"
+    },
+    {
+        "card_index": 18,
+        "hint": "形容词",
+        "question": "通常的、惯例的、平常的",
+        "answer": "usual"
+    },
+    {
+        "card_index": 19,
+        "hint": "形容词",
+        "question": "不平常的，与众不同的，独特的",
+        "answer": "unusual"
+    }
+]

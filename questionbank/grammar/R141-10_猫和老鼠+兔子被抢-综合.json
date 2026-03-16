@@ -1,0 +1,80 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "stop",
+    "answer": "故事4"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "suggest",
+    "answer": "故事3"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "remember",
+    "answer": "故事4"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "look forward to",
+    "answer": "故事2"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "try",
+    "answer": "故事4"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "advise",
+    "answer": "没有故事"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "consider",
+    "answer": "故事1"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "uesd to",
+    "answer": "没有故事"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "be used to",
+    "answer": "故事1+doing"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "forget",
+    "answer": "故事4"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "go on",
+    "answer": "故事4"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "ask",
+    "answer": "没有故事"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "decide",
+    "answer": "没有故事"
+  }
+]

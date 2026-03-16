@@ -1,0 +1,62 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "holiday",
+    "answer": "假日，假期，节日"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "festival",
+    "answer": "节日"
+  },
+  {
+    "card_index": 3,
+    "hint": "形容词",
+    "question": "early",
+    "answer": "早的"
+  },
+  {
+    "card_index": 4,
+    "hint": "副词",
+    "question": "early",
+    "answer": "提早，在早期"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "late",
+    "answer": "迟到的，晚的"
+  },
+  {
+    "card_index": 6,
+    "hint": "名词",
+    "question": "end",
+    "answer": "终点，结束，末尾"
+  },
+  {
+    "card_index": 7,
+    "hint": "动词",
+    "question": "end",
+    "answer": "结束"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "last",
+    "answer": "持续"
+  },
+  {
+    "card_index": 9,
+    "hint": "形容词",
+    "question": "last",
+    "answer": "留在最后的，刚过去的"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "next",
+    "answer": "接下来的，下次的"
+  }
+]

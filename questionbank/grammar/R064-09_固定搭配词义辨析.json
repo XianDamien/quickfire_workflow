@@ -1,0 +1,62 @@
+[
+  {
+    "card_index": 1,
+    "hint": "有一些短语加上冠词和不加冠词，意思是非常不一样的。现在老师说英文，请你说出中文的意思。",
+    "question": "in the bed",
+    "answer": "在床上"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "in bed",
+    "answer": "卧病在床"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "in the front of",
+    "answer": "在里面的前面"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "in front of",
+    "answer": "在外面的前面"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "on the earth",
+    "answer": "在地球上"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "on earth",
+    "answer": "究竟"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "in the hospital",
+    "answer": "在医院里"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "in hospital",
+    "answer": "住院"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "at the table",
+    "answer": "在桌子旁"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "at table",
+    "answer": "在吃饭"
+  }
+]

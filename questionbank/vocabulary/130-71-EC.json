@@ -1,0 +1,98 @@
+[
+  {
+    "card_index": 1,
+    "hint": "那我死。它的词源叫 nerve",
+    "question": "nervous",
+    "answer": "紧张的"
+  },
+  {
+    "card_index": 2,
+    "hint": "讷物，木讷还是开悟",
+    "question": "nerve",
+    "answer": "神经"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "net",
+    "answer": "网"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "network",
+    "answer": "网络，人际关系网"
+  },
+  {
+    "card_index": 5,
+    "hint": "发生概率零",
+    "question": "never",
+    "answer": "绝不"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "new",
+    "answer": "新的"
+  },
+  {
+    "card_index": 7,
+    "hint": "后面跟单数，新闻啊学科啊都是单数",
+    "question": "news",
+    "answer": "新闻"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "newspaper",
+    "answer": "报纸"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "next",
+    "answer": "下一个"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "nice",
+    "answer": "棒的，好的"
+  },
+  {
+    "card_index": 11,
+    "hint": "特指天黑那段时间，主打自然现象，而 evening 指人类活动，吃完晚饭准备睡觉的时间",
+    "question": "night",
+    "answer": "夜间"
+  },
+  {
+    "card_index": 12,
+    "hint": "这种身体加后缀的复合不定代词都是用单数",
+    "question": "nobody",
+    "answer": "没有人"
+  },
+  {
+    "card_index": 13,
+    "hint": "闹孩子",
+    "question": "noise",
+    "answer": "声音"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "noisy",
+    "answer": "吵闹的"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "none",
+    "answer": "没有任何东西，没有人"
+  },
+  {
+    "card_index": 16,
+    "hint": "一般用 noodles",
+    "question": "noodle",
+    "answer": "面条"
+  }
+]

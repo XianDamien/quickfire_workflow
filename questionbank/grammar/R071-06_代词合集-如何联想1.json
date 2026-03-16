@@ -1,0 +1,26 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "第一题 听到指示代词我们怎么联想？",
+    "answer": "手指指来指去，举个例子 this"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "第二题 不定代词怎么联想？",
+    "answer": "不确定指谁，举个例子 some"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "第三题 复合不定代词怎么联想？",
+    "answer": "不定代词加个尾巴，举个例子 somebody"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "第四题 特殊不定代词怎么联想？",
+    "answer": "选小球，举个例子 两个打包都选both。"
+  }
+]

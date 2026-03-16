@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "Cannot可以缩写成什么？",
+    "answer": "Can't"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "Should not可以缩写成什么？",
+    "answer": "Shouldn't"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "Must not可以缩写成什么？",
+    "answer": "Mustn't"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "will not可以缩写成什么？",
+    "answer": "Won't"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "在蓝色句子里面，如果出现了情态同学，Am,is are都要变成什么样子？",
+    "answer": "都要变成be"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "有没有will am, Will is, will are?",
+    "answer": "没有"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "它们都会变成什么?",
+    "answer": "都会变成will be"
+  }
+]

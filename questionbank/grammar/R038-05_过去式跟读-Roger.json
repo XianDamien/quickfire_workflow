@@ -1,0 +1,284 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "be",
+    "answer": "was were"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "become",
+    "answer": "became"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "begin",
+    "answer": "began"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "break",
+    "answer": "broke"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "come",
+    "answer": "came"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "do",
+    "answer": "did"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "drive",
+    "answer": "drove"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "dream",
+    "answer": "dreamed"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "eat",
+    "answer": "ate"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "feel",
+    "answer": "felt"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "find",
+    "answer": "found"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "get",
+    "answer": "got"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "give",
+    "answer": "gave"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "go",
+    "answer": "went"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "have",
+    "answer": "had"
+  },
+  {
+    "card_index": 16,
+    "hint": "",
+    "question": "hear",
+    "answer": "heard"
+  },
+  {
+    "card_index": 17,
+    "hint": "",
+    "question": "know",
+    "answer": "knew"
+  },
+  {
+    "card_index": 18,
+    "hint": "",
+    "question": "leave",
+    "answer": "left"
+  },
+  {
+    "card_index": 19,
+    "hint": "",
+    "question": "loose",
+    "answer": "lost"
+  },
+  {
+    "card_index": 20,
+    "hint": "",
+    "question": "make",
+    "answer": "made"
+  },
+  {
+    "card_index": 21,
+    "hint": "",
+    "question": "say",
+    "answer": "said"
+  },
+  {
+    "card_index": 22,
+    "hint": "",
+    "question": "see",
+    "answer": "saw"
+  },
+  {
+    "card_index": 23,
+    "hint": "",
+    "question": "sell",
+    "answer": "sold"
+  },
+  {
+    "card_index": 24,
+    "hint": "",
+    "question": "sleep",
+    "answer": "slept"
+  },
+  {
+    "card_index": 25,
+    "hint": "",
+    "question": "keep",
+    "answer": "kept"
+  },
+  {
+    "card_index": 26,
+    "hint": "",
+    "question": "sit",
+    "answer": "sat"
+  },
+  {
+    "card_index": 27,
+    "hint": "",
+    "question": "stand",
+    "answer": "stood"
+  },
+  {
+    "card_index": 28,
+    "hint": "",
+    "question": "bring",
+    "answer": "brought"
+  },
+  {
+    "card_index": 29,
+    "hint": "",
+    "question": "catch",
+    "answer": "cought"
+  },
+  {
+    "card_index": 30,
+    "hint": "",
+    "question": "buy",
+    "answer": "bought"
+  },
+  {
+    "card_index": 31,
+    "hint": "",
+    "question": "draw",
+    "answer": "drew"
+  },
+  {
+    "card_index": 32,
+    "hint": "",
+    "question": "run",
+    "answer": "ran"
+  },
+  {
+    "card_index": 33,
+    "hint": "",
+    "question": "swim",
+    "answer": "swam"
+  },
+  {
+    "card_index": 34,
+    "hint": "",
+    "question": "build",
+    "answer": "built"
+  },
+  {
+    "card_index": 35,
+    "hint": "",
+    "question": "put",
+    "answer": "put"
+  },
+  {
+    "card_index": 36,
+    "hint": "",
+    "question": "fly",
+    "answer": "flew"
+  },
+  {
+    "card_index": 37,
+    "hint": "",
+    "question": "meet",
+    "answer": "met"
+  },
+  {
+    "card_index": 38,
+    "hint": "",
+    "question": "read",
+    "answer": "read"
+  },
+  {
+    "card_index": 39,
+    "hint": "",
+    "question": "sing",
+    "answer": "sang"
+  },
+  {
+    "card_index": 40,
+    "hint": "",
+    "question": "stop",
+    "answer": "stopped"
+  },
+  {
+    "card_index": 41,
+    "hint": "",
+    "question": "forget",
+    "answer": "forgot"
+  },
+  {
+    "card_index": 42,
+    "hint": "",
+    "question": "speak",
+    "answer": "spoke"
+  },
+  {
+    "card_index": 43,
+    "hint": "",
+    "question": "spend",
+    "answer": "spent"
+  },
+  {
+    "card_index": 44,
+    "hint": "",
+    "question": "take",
+    "answer": "took"
+  },
+  {
+    "card_index": 45,
+    "hint": "",
+    "question": "tell",
+    "answer": "told"
+  },
+  {
+    "card_index": 46,
+    "hint": "",
+    "question": "think",
+    "answer": "thought"
+  },
+  {
+    "card_index": 47,
+    "hint": "",
+    "question": "write",
+    "answer": "wrote"
+  }
+]

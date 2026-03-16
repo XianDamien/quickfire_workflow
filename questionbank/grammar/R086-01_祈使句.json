@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "简单地理解，什么样的句子是祈使句？",
+    "answer": "省略了主角且向别人提要求的句子"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "翻译句子。小心点儿。",
+    "answer": "Be careful!"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "请坐",
+    "answer": "Sit down please!"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "安静",
+    "answer": "Be quiet!"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "饭前要洗手。",
+    "answer": "Wash hands before meal!"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "让我们再尝试一次吧",
+    "answer": "Let us try again!"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "咱们走",
+    "answer": "Let's go!"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "咱们来踢足球吧",
+    "answer": "Let's play football!"
+  }
+]

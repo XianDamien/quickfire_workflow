@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "maybe连着写是什么词性？",
+    "answer": "副词"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "may be分开写是什么词性？",
+    "answer": "may是情态，be是be动词"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "Grey可能今天下午来。",
+    "answer": "Maybe Grey will come this afternoon."
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "那些钥匙可能在你的口袋里。",
+    "answer": "The keys may be in your pocket."
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "我必须成为医生吗？",
+    "answer": "Must I be a doctor?"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "不，不需要。",
+    "answer": "No, you needn’t."
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "must提问的否定回答是什么？",
+    "answer": "是needn't"
+  }
+]

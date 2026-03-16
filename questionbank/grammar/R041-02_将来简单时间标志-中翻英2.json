@@ -1,0 +1,56 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "下周",
+    "answer": "next week"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "下个月",
+    "answer": "next month"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "午饭之后",
+    "answer": "After lunch"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "五点钟之后",
+    "answer": "After five o'clock"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "明年冬天",
+    "answer": "Next winter"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "暑假之后",
+    "answer": "After summer holiday"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "圣诞节之后",
+    "answer": "After Christmas"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "下个周末",
+    "answer": "Next weekend"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "明年",
+    "answer": "next year"
+  }
+]

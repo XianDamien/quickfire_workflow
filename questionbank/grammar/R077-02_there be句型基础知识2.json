@@ -1,0 +1,62 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "There be句型的三形态转换和什么句子的方法是一样的？",
+    "answer": "和蓝色句子的三形态转换方法是一样的"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "在there be句型中，从肯定句变成否定句，或者从肯定句变成疑问句的时候，\nSome要变成哪个词？",
+    "answer": "变成any"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "There are some apples on the table.变成否定句是什么？",
+    "answer": "There aren't any apples on the table."
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "There are some apples on the table.变成疑问句是什么？",
+    "answer": "Are there any apples on the table?"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "There be句型的就近原则是什么意思？",
+    "answer": "当主角是由and连接起来的几样东西时，be动词选择用哪个，\n就看离be动词最近的那个是单数还是复数"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "在桌子上有两个苹果，一个梨子，怎么说？",
+    "answer": "There are two apples and one pear on the table."
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "桌子上有一个苹果和两个梨子，怎么说？",
+    "answer": "There is one apple and two pears on the table."
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "翻译句子:在墙上有一些地图吗？",
+    "answer": "Are there any maps on the wall?"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "翻译:是的，有一张",
+    "answer": "Yes, there is one."
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "在你刚才的答句中，省略了一部分内容，如果完整地说应该是什么？",
+    "answer": "Yes, there is one map on the wall."
+  }
+]

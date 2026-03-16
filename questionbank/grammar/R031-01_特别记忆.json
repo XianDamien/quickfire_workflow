@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "在白天怎么说？",
+    "answer": "at day"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "在夜里怎么说?",
+    "answer": "at night"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "在早上怎么说？",
+    "answer": "in the morning"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "在下午怎么说？",
+    "answer": "in the afternoon"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "在晚上怎么说?",
+    "answer": "in the evening"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "night和evening有什么区别？",
+    "answer": "night指的是夜晚睡觉的时间，evening指的是傍晚，大概是吃晚饭的时间。"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "在周末有哪两种说法？",
+    "answer": "on the weekend / at the weekend"
+  }
+]

@@ -1,0 +1,38 @@
+[
+    {
+        "card_index": 1,
+        "hint": "",
+        "question": "cough",
+        "answer": "咳嗽"
+    },
+    {
+        "card_index": 2,
+        "hint": "",
+        "question": "toothache",
+        "answer": "牙疼"
+    },
+    {
+        "card_index": 3,
+        "hint": "",
+        "question": "stomachache",
+        "answer": "肚子痛胃痛"
+    },
+    {
+        "card_index": 4,
+        "hint": "",
+        "question": "headache",
+        "answer": "头疼"
+    },
+    {
+        "card_index": 5,
+        "hint": "",
+        "question": "medicine",
+        "answer": "医学药物"
+    },
+    {
+        "card_index": 6,
+        "hint": "",
+        "question": "pill",
+        "answer": "药片"
+    }
+]

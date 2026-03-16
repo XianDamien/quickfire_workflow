@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "便条笔记还有钞票，还记得钞票有哪些吗？dollar，buck，mola，green",
+    "question": "note",
+    "answer": "便条笔记，钞票"
+  },
+  {
+    "card_index": 2,
+    "hint": "verb",
+    "question": "note",
+    "answer": "记录注意"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "pen",
+    "answer": "钢笔"
+  },
+  {
+    "card_index": 4,
+    "hint": "钢笔需要的墨水",
+    "question": "ink",
+    "answer": "墨水"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "pencil",
+    "answer": "铅笔"
+  },
+  {
+    "card_index": 6,
+    "hint": "擦除者",
+    "question": "eraser",
+    "answer": "橡皮"
+  },
+  {
+    "card_index": 7,
+    "hint": "尖锐者",
+    "question": "sharpener",
+    "answer": "卷笔刀"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "crayon",
+    "answer": "蜡笔"
+  }
+]

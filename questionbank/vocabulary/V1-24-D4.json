@@ -1,0 +1,62 @@
+[
+  {
+    "card_index": 1,
+    "hint": "动词",
+    "question": "think",
+    "answer": "想"
+  },
+  {
+    "card_index": 2,
+    "hint": "动词",
+    "question": "know",
+    "answer": "知道"
+  },
+  {
+    "card_index": 3,
+    "hint": "动词",
+    "question": "understand",
+    "answer": "理解，懂"
+  },
+  {
+    "card_index": 4,
+    "hint": "动词",
+    "question": "answer verb",
+    "answer": "回答问题"
+  },
+  {
+    "card_index": 5,
+    "hint": "名词",
+    "question": "answer noun",
+    "answer": "答案"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "reply",
+    "answer": "回复"
+  },
+  {
+    "card_index": 7,
+    "hint": "名词",
+    "question": "prize",
+    "answer": "奖品"
+  },
+  {
+    "card_index": 8,
+    "hint": "名词",
+    "question": "price",
+    "answer": "价格"
+  },
+  {
+    "card_index": 9,
+    "hint": "动词",
+    "question": "point verb",
+    "answer": "手指指，戳"
+  },
+  {
+    "card_index": 10,
+    "hint": "名词",
+    "question": "point noun",
+    "answer": "得分、分数，论点、道理"
+  }
+]

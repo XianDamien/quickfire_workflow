@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "干果、坚果",
+    "answer": "nut"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "黄瓜",
+    "answer": "cucumber"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "洋葱",
+    "answer": "onion"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "卷心菜",
+    "answer": "cabbage"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "饮料、酒",
+    "answer": "drink"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "喝，或者喝酒",
+    "answer": "drink"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "水",
+    "answer": "water"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "浇水",
+    "answer": "water"
+  }
+]

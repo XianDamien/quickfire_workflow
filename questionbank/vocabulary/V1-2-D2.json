@@ -1,0 +1,44 @@
+ [
+  {
+    "card_index": 1,
+    "hint": "Fruit and vegetables are all good for our health.",
+    "question": "Vegetable",
+    "answer": "蔬菜"
+  },
+  {
+    "card_index": 2,
+    "hint": "The potato is a vegetable, not a fruit.",
+    "question": "Potato",
+    "answer": "土豆"
+  },
+  {
+    "card_index": 3,
+    "hint": "You would better heat up the tomato soup.",
+    "question": "Tomato",
+    "answer": "番茄"
+  },
+  {
+    "card_index": 4,
+    "hint": "Have some more carrots.",
+    "question": "Carrot",
+    "answer": "胡萝卜"
+  },
+  {
+    "card_index": 5,
+    "hint": "Cocoa beans are used to make some kinds of drink.",
+    "question": "Bean",
+    "answer": "豆"
+  },
+  {
+    "card_index": 6,
+    "hint": "We have a bowl of very salty pea and ham soup.",
+    "question": "Pea",
+    "answer": "豌豆"
+  },
+  {
+    "card_index": 7,
+    "hint": "He likes to eat peanut jam.",
+    "question": "Peanut",
+    "answer": "花生"
+  }
+]

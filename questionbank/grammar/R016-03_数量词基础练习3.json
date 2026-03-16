@@ -1,0 +1,38 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "一罐可乐怎么说",
+    "answer": "a can of coke"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "一罐蜂蜜怎么说",
+    "answer": "a jar of honey"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "为什么都是罐这个词，但是一个用can，一个用jar呢？",
+    "answer": "我们不能机械地对应中文和英文，要在脑海里想容器的样子"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "一条巧克力怎么说",
+    "answer": "a bar of chocolate"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "一篮子面包怎么说",
+    "answer": "a basket of bread"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "为什么bread没有变成breads？",
+    "answer": "因为面包是不可数名词，没有breads这个单词。"
+  }
+]

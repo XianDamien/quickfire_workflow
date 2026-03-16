@@ -1,0 +1,104 @@
+[
+  {
+    "card_index": 1,
+    "hint": "敌坦克车",
+    "question": "detect",
+    "answer": "侦查"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "detective",
+    "answer": "侦探"
+  },
+  {
+    "card_index": 3,
+    "hint": "d y楼破，需要什么？",
+    "question": "develop",
+    "answer": "发展"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "development",
+    "answer": "发展"
+  },
+  {
+    "card_index": 5,
+    "hint": "大唠嗑",
+    "question": "dialogue",
+    "answer": "对话"
+  },
+  {
+    "card_index": 6,
+    "hint": "the subscriber you dialed is busy now",
+    "question": "dial",
+    "answer": "拨打"
+  },
+  {
+    "card_index": 7,
+    "hint": "带而累，把它写成什么？",
+    "question": "diary",
+    "answer": "日记"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "dairy",
+    "answer": "乳制品"
+  },
+  {
+    "card_index": 9,
+    "hint": "dic说，tion名词，a r y名词，把说的全部用名词形式记录下来是什么？",
+    "question": "dictionary",
+    "answer": "字典"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "die",
+    "answer": "死"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "diet",
+    "answer": "饮食"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "difference",
+    "answer": "不同"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "different",
+    "answer": "不同的"
+  },
+  {
+    "card_index": 14,
+    "hint": "是地府扣他，那要出来就怎么样？",
+    "question": "difficult",
+    "answer": "困难的"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "difficulty",
+    "answer": "困难"
+  },
+  {
+    "card_index": 16,
+    "hint": "地瓜",
+    "question": "dig",
+    "answer": "挖"
+  },
+  {
+    "card_index": 17,
+    "hint": "",
+    "question": "dinner",
+    "answer": "晚餐"
+  }
+]

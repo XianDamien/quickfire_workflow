@@ -1,0 +1,62 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "not",
+    "answer": "不"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "double",
+    "answer": "双倍的，双的"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "half",
+    "answer": "一半，半"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "part",
+    "answer": "角色，部分"
+  },
+  {
+    "card_index": 5,
+    "hint": "形容词",
+    "question": "both",
+    "answer": "两个的"
+  },
+  {
+    "card_index": 6,
+    "hint": "代词",
+    "question": "both",
+    "answer": "两者"
+  },
+  {
+    "card_index": 7,
+    "hint": "副词",
+    "question": "both",
+    "answer": "两者都"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "all",
+    "answer": "全部的"
+  },
+  {
+    "card_index": 9,
+    "hint": "代词",
+    "question": "each",
+    "answer": "每，每个"
+  },
+  {
+    "card_index": 10,
+    "hint": "形容词",
+    "question": "each",
+    "answer": "每个的，每一的"
+  }
+]

@@ -1,0 +1,80 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "1、像电梯一样直下或斜着下",
+    "answer": "down"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "2、经过正上",
+    "answer": "over"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "3、沿着",
+    "answer": "along"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "4、从旁边经过",
+    "answer": "past"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "5、进去",
+    "answer": "into"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "6、从平台下去",
+    "answer": "off"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "7、从里边穿过，穿透",
+    "answer": "through"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "8、放上平台",
+    "answer": "on"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "9、表面横穿，形成一个十字架",
+    "answer": "across"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "10、出来",
+    "answer": "out of"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "11、像电梯一样直上或者斜着上",
+    "answer": "up"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "12、经过正下",
+    "answer": "under"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "13、各种绕来绕去",
+    "answer": "round或者around"
+  }
+]

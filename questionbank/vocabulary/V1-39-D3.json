@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "公园",
+    "answer": "Park"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "海滩",
+    "answer": "Beach"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "山谷",
+    "answer": "Valley"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "田野",
+    "answer": "Field"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "花园",
+    "answer": "Garden"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "游泳池，水塘",
+    "answer": "Pool"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "池塘",
+    "answer": "Pond"
+  }
+]

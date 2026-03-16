@@ -1,0 +1,110 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "复制抄写",
+    "answer": "copy"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "副本复印件",
+    "answer": "copy"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "版权",
+    "answer": "copyright"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "标记",
+    "answer": "mark"
+  },
+  {
+    "card_index": 5,
+    "hint": "名词",
+    "question": "分数",
+    "answer": "mark"
+  },
+  {
+    "card_index": 6,
+    "hint": "动词",
+    "question": "教",
+    "answer": "teach"
+  },
+  {
+    "card_index": 7,
+    "hint": "动词",
+    "question": "学习（特指背诵听讲类的学习）",
+    "answer": "study"
+  },
+  {
+    "card_index": 8,
+    "hint": "动词",
+    "question": "学习（特指所有的吸收知识吸收能力）",
+    "answer": "learn"
+  },
+  {
+    "card_index": 9,
+    "hint": "动词",
+    "question": "想思考",
+    "answer": "think"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "知道认识懂得",
+    "answer": "know"
+  },
+  {
+    "card_index": 11,
+    "hint": "动词",
+    "question": "理解",
+    "answer": "understand"
+  },
+  {
+    "card_index": 12,
+    "hint": "动词",
+    "question": "回答接电话",
+    "answer": "answer"
+  },
+  {
+    "card_index": 13,
+    "hint": "名词",
+    "question": "答案",
+    "answer": "answer"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "回答回复收到请回复",
+    "answer": "reply"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "奖品奖金",
+    "answer": "prize"
+  },
+  {
+    "card_index": 16,
+    "hint": "",
+    "question": "价格",
+    "answer": "price"
+  },
+  {
+    "card_index": 17,
+    "hint": "",
+    "question": "手指指指点点",
+    "answer": "point"
+  },
+  {
+    "card_index": 18,
+    "hint": "",
+    "question": "得到几个分数，或者是你有一个论点，有一个道理",
+    "answer": "point"
+  }
+]

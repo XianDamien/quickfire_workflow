@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "手指",
+    "answer": "finger"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "手腕",
+    "answer": "wrist"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "腿",
+    "answer": "leg"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "膝盖",
+    "answer": "knee"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "踝，踝关节",
+    "answer": "ankle"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "脚",
+    "answer": "foot"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "脚趾，足尖",
+    "answer": "toe"
+  }
+]

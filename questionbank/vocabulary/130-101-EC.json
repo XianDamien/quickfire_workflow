@@ -1,0 +1,92 @@
+[
+  {
+    "card_index": 1,
+    "hint": "演讲专注于情感的传输,说服你。lecture专注于知识的传输",
+    "question": "speech",
+    "answer": "演讲"
+  },
+  {
+    "card_index": 2,
+    "hint": "死比他",
+    "question": "speed",
+    "answer": "速度"
+  },
+  {
+    "card_index": 3,
+    "hint": "死病的,得了死病花费很大",
+    "question": "spend",
+    "answer": "花费"
+  },
+  {
+    "card_index": 4,
+    "hint": "死必列他,死了都要把敌人列了,壮士断腕的精神",
+    "question": "spirit",
+    "answer": "精神"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "spoon",
+    "answer": "勺子,调羹"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "sport",
+    "answer": "体育锻炼"
+  },
+  {
+    "card_index": 7,
+    "hint": "四处播的",
+    "question": "spread",
+    "answer": "传播"
+  },
+  {
+    "card_index": 8,
+    "hint": "spr发芽的意思",
+    "question": "spring",
+    "answer": "春天"
+  },
+  {
+    "card_index": 9,
+    "hint": "死贵啊,人民广场的房子死贵",
+    "question": "square",
+    "answer": "广场"
+  },
+  {
+    "card_index": 10,
+    "hint": "士大夫,皇帝的职员是士大夫",
+    "question": "staff",
+    "answer": "员工,职员"
+  },
+  {
+    "card_index": 11,
+    "hint": "是台阶,是特技",
+    "question": "stage",
+    "answer": "舞台"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "stamp",
+    "answer": "邮票"
+  },
+  {
+    "card_index": 13,
+    "hint": "死等他",
+    "question": "stand",
+    "answer": "站立"
+  },
+  {
+    "card_index": 14,
+    "hint": "矗立在那边的都是我们的标准",
+    "question": "standard",
+    "answer": "标准"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "star",
+    "answer": "星星,恒星"
+  }
+]

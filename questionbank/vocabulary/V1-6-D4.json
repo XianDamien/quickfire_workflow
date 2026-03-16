@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "I ate some tasty food.",
+    "question": "Tasty",
+    "answer": "美味的，可口的"
+  },
+  {
+    "card_index": 2,
+    "hint": "This cake is really yummy.",
+    "question": "Yummy",
+    "answer": "美味的，可口的"
+  },
+  {
+    "card_index": 3,
+    "hint": "Don't eat so much sweet food.",
+    "question": "Sweet",
+    "answer": "甜的"
+  },
+  {
+    "card_index": 4,
+    "hint": "I like sweets.",
+    "question": "Sweet",
+    "answer": "糖果"
+  },
+  {
+    "card_index": 5,
+    "hint": "Sichuan province is famous for its hot and spicy food.",
+    "question": "Spicy",
+    "answer": "辣的"
+  },
+  {
+    "card_index": 6,
+    "hint": "Lemons have a sour taste.",
+    "question": "Sour",
+    "answer": "酸的"
+  },
+  {
+    "card_index": 7,
+    "hint": "The medicine has a bitter taste.",
+    "question": "Bitter",
+    "answer": "苦的"
+  },
+  {
+    "card_index": 8,
+    "hint": "At night, we will work together to make a fire and cook a meal.",
+    "question": "Meal",
+    "answer": "餐，饭"
+  }
+]

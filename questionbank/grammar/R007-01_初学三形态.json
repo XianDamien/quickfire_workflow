@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "句子有哪三种形态？",
+    "answer": "肯定句、否定句、疑问句。"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "肯定句的英文是",
+    "answer": "positive"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "否定句的英文是",
+    "answer": "negative"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "疑问句的英文是",
+    "answer": "question"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "否定句的标志是哪一个英文单词？",
+    "answer": "not"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "疑问句的标志是哪一个标点符号",
+    "answer": "问号"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "I hate milk.我讨厌牛奶。这句话是否定句吗？",
+    "answer": "不是，因为句子里没有not"
+  }
+]

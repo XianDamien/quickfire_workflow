@@ -1,0 +1,26 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "There is a cat in the house.房子里有一只猫。变成过去简单。",
+    "answer": "There was a cat in the house."
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "There are three apples on the table.桌子上有三个苹果。变成过去简单。",
+    "answer": "There were three apples on the table."
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "There is a red car in the parking lot.停车场里有一辆红色的汽车。变成将来简单。",
+    "answer": "There will be a red car in the parking lot."
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "There are five kinds of flowers in the garden.花园里有五种花。变成将来简单。",
+    "answer": "There will be five kinds of flowers in the garden."
+  }
+]

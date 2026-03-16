@@ -1,0 +1,62 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "hit",
+    "answer": "打，击"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "goal",
+    "answer": "目标，球门，得分"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "hobby",
+    "answer": "业余爱好"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "idea",
+    "answer": "主意，想法，意见"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "move",
+    "answer": "搬家，移动"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "play",
+    "answer": "玩耍，参加比赛，运动，演奏，弹奏"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "let",
+    "answer": "允许，让"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "cut",
+    "answer": "砍倒，砍断，切，割"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "act",
+    "answer": "行动，表现，表演"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "put",
+    "answer": "放"
+  }
+]

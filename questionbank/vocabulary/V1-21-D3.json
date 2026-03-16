@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "黑板",
+    "answer": "blackboard"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "书包",
+    "answer": "schoolbag"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "纸",
+    "answer": "paper"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "书",
+    "answer": "book"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "笔记本",
+    "answer": "notebook"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "字典",
+    "answer": "dictionary"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "故事书",
+    "answer": "storybook"
+  }
+]

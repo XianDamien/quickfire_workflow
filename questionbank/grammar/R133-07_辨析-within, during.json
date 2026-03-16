@@ -1,0 +1,26 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "Within侧重强调什么？",
+    "answer": "侧重强调超过这段时间就不行。"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "During侧重强调什么？",
+    "answer": "侧重强调在这段时间里就可以"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "场景1 你可以在2023年期间用这张卡。",
+    "answer": "During."
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "场景2 超过2023年，你就不能用这张卡了。",
+    "answer": "Within"
+  }
+]

@@ -1,0 +1,86 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "whatever",
+    "answer": "无论什么"
+  },
+  {
+    "card_index": 2,
+    "hint": "两件事情用 when 强调什么？以一件事情为背景，另一件事情和它相交",
+    "question": "when",
+    "answer": "什么时候"
+  },
+  {
+    "card_index": 3,
+    "hint": "它强调什么？两个持续性的事情同时发生，所以 when 和 while 的选择有一个口诀叫什么？when 后可长短，while 只可长，若为长长，while 连接",
+    "question": "while",
+    "answer": "正当...时，当...时"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "whenever",
+    "answer": "任何时候"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "where",
+    "answer": "在哪里"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "which",
+    "answer": "哪一个"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "white",
+    "answer": "白色，白色的"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "who",
+    "answer": "谁"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "whole",
+    "answer": "整个的"
+  },
+  {
+    "card_index": 10,
+    "hint": "who 的宾格",
+    "question": "whom",
+    "answer": "谁"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "whose",
+    "answer": "谁的"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "why",
+    "answer": "为什么"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "wide",
+    "answer": "宽的"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "widely",
+    "answer": "广泛地"
+  }
+]

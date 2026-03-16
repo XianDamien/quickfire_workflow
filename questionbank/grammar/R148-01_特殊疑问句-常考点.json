@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "how long",
+    "answer": "多长时间/多长距离"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "how far",
+    "answer": "多远"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "How soon",
+    "answer": "多久以后"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "How much/how many",
+    "answer": "数量多少"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "How many times",
+    "answer": "多少次"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "How often",
+    "answer": "多久一次"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "询问别人对事情的看法，可以用哪两个固定搭配？",
+    "answer": "what do you think of和how do you like"
+  }
+]

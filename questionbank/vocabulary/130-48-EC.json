@@ -1,0 +1,98 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "guess",
+    "answer": "猜测"
+  },
+  {
+    "card_index": 2,
+    "hint": "总有几个该死的什么",
+    "question": "guest",
+    "answer": "客人"
+  },
+  {
+    "card_index": 3,
+    "hint": "不是盖的，或者是贵的",
+    "question": "guide",
+    "answer": "导游，向导"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "guitar",
+    "answer": "吉他"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "gun",
+    "answer": "枪炮"
+  },
+  {
+    "card_index": 6,
+    "hint": "考试都考完了还背它",
+    "question": "habit",
+    "answer": "习惯"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "hair",
+    "answer": "头发"
+  },
+  {
+    "card_index": 8,
+    "hint": "half 或者 half",
+    "question": "half",
+    "answer": "一半"
+  },
+  {
+    "card_index": 9,
+    "hint": "土豪的豪，一般会把什么装的比较好？",
+    "question": "hall",
+    "answer": "大厅"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "hamburger",
+    "answer": "汉堡包"
+  },
+  {
+    "card_index": 11,
+    "hint": "noun 什么意思？",
+    "question": "hand",
+    "answer": "手"
+  },
+  {
+    "card_index": 12,
+    "hint": "verb 什么意思？",
+    "question": "hand",
+    "answer": "传递，交付"
+  },
+  {
+    "card_index": 13,
+    "hint": "h a n g 有哪两种意思？悬挂和上吊，悬挂怎么变？hang hung hung。上吊怎么变？hang hanged hanged，多出来的 e d 把它想象成什么？舌头",
+    "question": "hang",
+    "answer": "悬挂，上吊"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "happen",
+    "answer": "发生"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "happily",
+    "answer": "幸福地"
+  },
+  {
+    "card_index": 16,
+    "hint": "",
+    "question": "happiness",
+    "answer": "幸福快乐"
+  }
+]

@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "第一题 Something is wrong with your TV.",
+    "answer": "Something is wrong with your TV, isn’t it?"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "第二题   Somebody wants to see you.",
+    "answer": "Somebody wants to see you, doesn’t he?"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "第三题   This is a beautiful cat.",
+    "answer": "This is a beautiful cat, isn’t it?"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "第四题   Those aren’t your books.",
+    "answer": "Those aren’t your books, are they?"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "单数的东西用什么代替，",
+    "answer": "it"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "复数的东西用什么代替。",
+    "answer": "they"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "单数的人用什么代替，",
+    "answer": "he"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "复数的人用什么代替。",
+    "answer": "they"
+  }
+]

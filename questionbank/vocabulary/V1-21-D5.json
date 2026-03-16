@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "便条、笔记、钞票、纸币",
+    "answer": "note"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "记笔记",
+    "answer": "note"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "钢笔",
+    "answer": "pen"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "墨水",
+    "answer": "ink"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "铅笔",
+    "answer": "pencil"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "橡皮",
+    "answer": "eraser"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "卷笔刀",
+    "answer": "sharpener"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "蜡笔",
+    "answer": "crayon"
+  }
+]

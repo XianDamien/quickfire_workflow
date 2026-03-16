@@ -1,0 +1,56 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "所以说明他们的使用范围是确定的还是不确定的？",
+    "answer": "是确定的"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "翻译句子，我有两只猫，一只是黑色的，另一只是白色的。",
+    "answer": "I have two cats. One cat is black. The other cat is white."
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "One... the other...这样的句式,有一种几选几的感觉?",
+    "answer": "二选一的感觉。"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "二选一又可以分成哪两种情况？",
+    "answer": "可以是两个里面选一个，也可以是两个部分中选一个部分"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "用中文举一个二选一的例子。",
+    "answer": "我有两只猫，一只是黑色的，另外一只是白色的。"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "用中文举，两个部分选一个部分的例子。",
+    "answer": "我有4只猫，一只是黑色的，剩下的3只是白色的"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "翻译句子，老师说中文，你说英文。\n1.我有两把伞，一把是大的，另外一把是小的。",
+    "answer": "I have two umbrellas. One umbrella is big. The other umbrella  is small."
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "2.我有10把椅子，2把椅子是好用的，剩下的8把椅子是坏掉的。",
+    "answer": "I have ten chairs. Two Chairs are useful. The other eight chairs are broken."
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "3.昨天我喝掉了一些牛奶，剩下的牛奶现在变质了",
+    "answer": "I drank some milk yesterday. The other milk left is bad now."
+  }
+]

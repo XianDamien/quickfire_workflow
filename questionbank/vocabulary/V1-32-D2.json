@@ -1,0 +1,32 @@
+[
+    {
+        "card_index": 1,
+        "hint": "",
+        "question": "wing",
+        "answer": "翅膀"
+    },
+    {
+        "card_index": 2,
+        "hint": "",
+        "question": "fur",
+        "answer": "皮毛皮"
+    },
+    {
+        "card_index": 3,
+        "hint": "",
+        "question": "flu",
+        "answer": "流感"
+    },
+    {
+        "card_index": 4,
+        "hint": "",
+        "question": "pain",
+        "answer": "痛苦疼痛"
+    },
+    {
+        "card_index": 5,
+        "hint": "",
+        "question": "fever",
+        "answer": "发烧发热"
+    }
+]

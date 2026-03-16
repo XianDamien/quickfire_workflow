@@ -1,0 +1,56 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "请举两个数词的例子",
+    "answer": "数词就是one two three"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "请举两个量词的例子",
+    "answer": "plenty of several many much"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "请举两个数量词的例子",
+    "answer": "a bottle of a piece of two cups of"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "数量词有四个特点，第一，数量词可以描写可数名词还是不可数名词",
+    "answer": "都可以。"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "是不是所有数量词都可以加S",
+    "answer": "是的。"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "two bottles milks对不对",
+    "answer": "不对。"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "为什么",
+    "answer": "bottle可数可以加s milk不可数不能加s。"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "two boxes of egg对不对",
+    "answer": "不对"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "为什么",
+    "answer": "因为box和egg都可数，都要加s。"
+  }
+]

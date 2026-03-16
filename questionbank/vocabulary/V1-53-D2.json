@@ -1,0 +1,62 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "funny",
+    "answer": "有趣的，滑稽的"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "glad",
+    "answer": "高兴的，乐意的"
+  },
+  {
+    "card_index": 3,
+    "hint": "副词",
+    "question": "sure",
+    "answer": "确信，当然"
+  },
+  {
+    "card_index": 4,
+    "hint": "形容词",
+    "question": "sure",
+    "answer": "确信的，有把握的"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "sad",
+    "answer": "伤心的，难过的"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "ready",
+    "answer": "准备好的，完好的"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "afraid",
+    "answer": "害怕的"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "angry",
+    "answer": "生气的，发怒的"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "upset",
+    "answer": "沮丧的，心烦意乱的"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "sleepy",
+    "answer": "困倦的，瞌睡的"
+  }
+]

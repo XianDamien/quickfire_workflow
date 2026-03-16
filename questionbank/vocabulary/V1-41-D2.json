@@ -1,0 +1,68 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "gate",
+    "answer": "大门，门口"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "stair",
+    "answer": "楼梯"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "wall",
+    "answer": "墙"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "palace",
+    "answer": "宫殿"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "tower",
+    "answer": "塔，发射塔"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "bridge",
+    "answer": "桥"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "street",
+    "answer": "大街，街道"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "road",
+    "answer": "路，道路"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "crossing",
+    "answer": "人行横道，十字路口"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "somewhere",
+    "answer": "某处"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "somewhere",
+    "answer": "在某处，到某处"
+  }
+]

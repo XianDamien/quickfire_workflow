@@ -1,0 +1,104 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "butterfly",
+    "answer": "蝴蝶"
+  },
+  {
+    "card_index": 2,
+    "hint": "请和底部bottom区别，一个是button，一个是bottom",
+    "question": "button",
+    "answer": "纽扣"
+  },
+  {
+    "card_index": 3,
+    "hint": "有一个同义词purchase，比较高级的",
+    "question": "buy",
+    "answer": "购买"
+  },
+  {
+    "card_index": 4,
+    "hint": "介词",
+    "question": "by",
+    "answer": "靠"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "bye",
+    "answer": "再见"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "cabbage",
+    "answer": "卷心菜"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "cafe",
+    "answer": "咖啡馆，小餐馆"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "cake",
+    "answer": "蛋糕"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "call",
+    "answer": "打电话，呼叫"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "calm",
+    "answer": "冷静的"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "camera",
+    "answer": "照相机"
+  },
+  {
+    "card_index": 12,
+    "hint": "看瀑布",
+    "question": "camp",
+    "answer": "露营"
+  },
+  {
+    "card_index": 13,
+    "hint": "看博士，去哪里看？",
+    "question": "campus",
+    "answer": "校园"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "can",
+    "answer": "可以"
+  },
+  {
+    "card_index": 15,
+    "hint": "购物节上要砍手",
+    "question": "cancel",
+    "answer": "取消"
+  },
+  {
+    "card_index": 16,
+    "hint": "和帽子cap有关，有三个主要意思",
+    "question": "capital",
+    "answer": "首都，大写字母，资本"
+  },
+  {
+    "card_index": 17,
+    "hint": "开不停，砍不停",
+    "question": "captain",
+    "answer": "队长，船长"
+  }
+]

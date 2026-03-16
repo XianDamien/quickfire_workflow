@@ -1,0 +1,170 @@
+[
+  {
+    "card_index": 1,
+    "hint": "形容词",
+    "question": "simple",
+    "answer": "简单的、简易的、朴素的、简朴的"
+  },
+  {
+    "card_index": 2,
+    "hint": "形容词",
+    "question": "complete",
+    "answer": "完整的、完全的、彻底的"
+  },
+  {
+    "card_index": 3,
+    "hint": "及物动词",
+    "question": "complete",
+    "answer": "完成"
+  },
+  {
+    "card_index": 4,
+    "hint": "名词",
+    "question": "list",
+    "answer": "清单、目录、一览表"
+  },
+  {
+    "card_index": 5,
+    "hint": "及物动词",
+    "question": "list",
+    "answer": "把什么什么列成表，举例"
+  },
+  {
+    "card_index": 6,
+    "hint": "名词",
+    "question": "assist",
+    "answer": "帮助、助攻"
+  },
+  {
+    "card_index": 7,
+    "hint": "不及物动词",
+    "question": "assist",
+    "answer": "参加、出席"
+  },
+  {
+    "card_index": 8,
+    "hint": "及物动词",
+    "question": "assist",
+    "answer": "帮助、促进"
+  },
+  {
+    "card_index": 9,
+    "hint": "名词",
+    "question": "scientist",
+    "answer": "科学家"
+  },
+  {
+    "card_index": 10,
+    "hint": "名词",
+    "question": "tourist",
+    "answer": "旅游者、观光者"
+  },
+  {
+    "card_index": 11,
+    "hint": "名词",
+    "question": "case",
+    "answer": "箱子、盒子、情况、状况"
+  },
+  {
+    "card_index": 12,
+    "hint": "及物动词",
+    "question": "chase",
+    "answer": "追捕、追求、雕刻、试图赢得"
+  },
+  {
+    "card_index": 13,
+    "hint": "不及物动词",
+    "question": "chase",
+    "answer": "奔跑、追赶"
+  },
+  {
+    "card_index": 14,
+    "hint": "名词",
+    "question": "chase",
+    "answer": "追捕、争取、狩猎"
+  },
+  {
+    "card_index": 15,
+    "hint": "及物动词",
+    "question": "purchase",
+    "answer": "购买"
+  },
+  {
+    "card_index": 16,
+    "hint": "名词",
+    "question": "purchase",
+    "answer": "购买、购买的物品"
+  },
+  {
+    "card_index": 17,
+    "hint": "行为动词",
+    "question": "increase",
+    "answer": "增加、增大"
+  },
+  {
+    "card_index": 18,
+    "hint": "名词",
+    "question": "increase",
+    "answer": "增加、增长"
+  },
+  {
+    "card_index": 19,
+    "hint": "不及物动词",
+    "question": "rise",
+    "answer": "太阳、月亮等上升、上涨、起立、起床"
+  },
+  {
+    "card_index": 20,
+    "hint": "名词",
+    "question": "rise",
+    "answer": "升高、升起、上涨、增长"
+  },
+  {
+    "card_index": 21,
+    "hint": "及物动词",
+    "question": "raise",
+    "answer": "抬高，举起，提高，养育，提起话题"
+  },
+  {
+    "card_index": 22,
+    "hint": "及物动词",
+    "question": "surprise",
+    "answer": "使惊奇，使诧异"
+  },
+  {
+    "card_index": 23,
+    "hint": "名词",
+    "question": "surprise",
+    "answer": "惊讶，令人吃惊的是"
+  },
+  {
+    "card_index": 24,
+    "hint": "名词",
+    "question": "exercise",
+    "answer": "锻炼，运动，体操，练习，习题"
+  },
+  {
+    "card_index": 25,
+    "hint": "不及物动词",
+    "question": "exercise",
+    "answer": "练习，锻炼"
+  },
+  {
+    "card_index": 26,
+    "hint": "及物动词",
+    "question": "praise",
+    "answer": "赞扬，表扬"
+  },
+  {
+    "card_index": 27,
+    "hint": "名词",
+    "question": "praise",
+    "answer": "赞扬，表扬，称赞"
+  },
+  {
+    "card_index": 28,
+    "hint": "名词",
+    "question": "noise",
+    "answer": "嘈杂声，喧闹声，噪音"
+  }
+]

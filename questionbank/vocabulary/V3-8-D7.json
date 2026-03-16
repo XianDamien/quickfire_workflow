@@ -1,0 +1,272 @@
+[
+  {
+    "card_index": 1,
+    "hint": "名词",
+    "question": "路、道路、方式、方法",
+    "answer": "way"
+  },
+  {
+    "card_index": 2,
+    "hint": "副词",
+    "question": "离开、相聚、不在上班、上学等",
+    "answer": "away"
+  },
+  {
+    "card_index": 3,
+    "hint": "名词",
+    "question": "一日、一天、白昼、日间",
+    "answer": "day"
+  },
+  {
+    "card_index": 4,
+    "hint": "及物动词",
+    "question": "陈列、展示、表现",
+    "answer": "display"
+  },
+  {
+    "card_index": 5,
+    "hint": "名词",
+    "question": "陈列、展示、表演",
+    "answer": "display"
+  },
+  {
+    "card_index": 6,
+    "hint": "名词",
+    "question": "随笔、散文",
+    "answer": "essay"
+  },
+  {
+    "card_index": 7,
+    "hint": "名词",
+    "question": "灰色",
+    "answer": "gray"
+  },
+  {
+    "card_index": 8,
+    "hint": "形容词",
+    "question": "灰色的",
+    "answer": "gray"
+  },
+  {
+    "card_index": 9,
+    "hint": "及物动词",
+    "question": "放置",
+    "answer": "lay"
+  },
+  {
+    "card_index": 10,
+    "hint": "行为动词",
+    "question": "下蛋",
+    "answer": "lay"
+  },
+  {
+    "card_index": 11,
+    "hint": "情态",
+    "question": "可以、可能",
+    "answer": "may"
+  },
+  {
+    "card_index": 12,
+    "hint": "名词",
+    "question": "报酬、薪水",
+    "answer": "pay"
+  },
+  {
+    "card_index": 13,
+    "hint": "行为动词",
+    "question": "付款，给什么什么以报酬",
+    "answer": "pay"
+  },
+  {
+    "card_index": 14,
+    "hint": "行为动词",
+    "question": "玩耍、弹奏、演奏、扮演",
+    "answer": "play"
+  },
+  {
+    "card_index": 15,
+    "hint": "名词",
+    "question": "剧本、戏剧",
+    "answer": "play"
+  },
+  {
+    "card_index": 16,
+    "hint": "行为动词",
+    "question": "说、讲",
+    "answer": "say"
+  },
+  {
+    "card_index": 17,
+    "hint": "不及物动词",
+    "question": "停留、保持下去",
+    "answer": "stay"
+  },
+  {
+    "card_index": 18,
+    "hint": "行为动词",
+    "question": "维持",
+    "answer": "stay"
+  },
+  {
+    "card_index": 19,
+    "hint": "名词",
+    "question": "逗留、停留",
+    "answer": "stay"
+  },
+  {
+    "card_index": 20,
+    "hint": "名词",
+    "question": "蚂蚁",
+    "answer": "ant"
+  },
+  {
+    "card_index": 21,
+    "hint": "名词",
+    "question": "助手、助理",
+    "answer": "assistant"
+  },
+  {
+    "card_index": 22,
+    "hint": "名词",
+    "question": "植物、工厂、车间",
+    "answer": "plant"
+  },
+  {
+    "card_index": 23,
+    "hint": "及物动词",
+    "question": "种植、栽培",
+    "answer": "plant"
+  },
+  {
+    "card_index": 24,
+    "hint": "形容词",
+    "question": "令人愉快的、惬意的",
+    "answer": "pleasant"
+  },
+  {
+    "card_index": 25,
+    "hint": "及物动词",
+    "question": "要、想要、需要、应该",
+    "answer": "want"
+  },
+  {
+    "card_index": 26,
+    "hint": "形容词",
+    "question": "公平的、公道的、浅色的、晴朗的",
+    "answer": "fair"
+  },
+  {
+    "card_index": 27,
+    "hint": "名词",
+    "question": "头发",
+    "answer": "hair"
+  },
+  {
+    "card_index": 28,
+    "hint": "名词",
+    "question": "一双、一对",
+    "answer": "pair"
+  },
+  {
+    "card_index": 29,
+    "hint": "及物动词",
+    "question": "修理、修补、补救、纠正",
+    "answer": "repair"
+  },
+  {
+    "card_index": 30,
+    "hint": "名词",
+    "question": "修理，修补",
+    "answer": "repair"
+  },
+  {
+    "card_index": 31,
+    "hint": "形容词",
+    "question": "弄坏了的",
+    "answer": "broken"
+  },
+  {
+    "card_index": 32,
+    "hint": "行为动词",
+    "question": "打破，打断",
+    "answer": "broken"
+  },
+  {
+    "card_index": 33,
+    "hint": "名词",
+    "question": "玩笑，笑话",
+    "answer": "joke"
+  },
+  {
+    "card_index": 34,
+    "hint": "不及物动词",
+    "question": "开玩笑",
+    "answer": "joke"
+  },
+  {
+    "card_index": 35,
+    "hint": "名词",
+    "question": "烟，吸烟",
+    "answer": "smoke"
+  },
+  {
+    "card_index": 36,
+    "hint": "行为动词",
+    "question": "吸烟",
+    "answer": "smoke"
+  },
+  {
+    "card_index": 37,
+    "hint": "形容词",
+    "question": "口语的，口头的，口头讲的",
+    "answer": "spoken"
+  },
+  {
+    "card_index": 38,
+    "hint": "行为动词",
+    "question": "说，讲，谈",
+    "answer": "spoken"
+  },
+  {
+    "card_index": 39,
+    "hint": "及物动词",
+    "question": "切割，剪，削减",
+    "answer": "cut"
+  },
+  {
+    "card_index": 40,
+    "hint": "名词",
+    "question": "伤口，裁剪",
+    "answer": "cut"
+  },
+  {
+    "card_index": 41,
+    "hint": "行为动词",
+    "question": "关上，关闭",
+    "answer": "shut"
+  },
+  {
+    "card_index": 42,
+    "hint": "连词",
+    "question": "但是，可是",
+    "answer": "but"
+  },
+  {
+    "card_index": 43,
+    "hint": "副词",
+    "question": "只，仅仅",
+    "answer": "but"
+  },
+  {
+    "card_index": 44,
+    "hint": "介词",
+    "question": "除什么什么以外",
+    "answer": "but"
+  },
+  {
+    "card_index": 45,
+    "hint": "及物动词",
+    "question": "放，摆",
+    "answer": "put"
+  }
+]

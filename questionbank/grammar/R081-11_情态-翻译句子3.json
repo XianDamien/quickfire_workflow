@@ -1,0 +1,56 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "翻译句子：我有可能要一颗糖果吗？",
+    "answer": "May I have one candy please?"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "我们可能哪里也去不成。",
+    "answer": "We might not go anywhere."
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "might和may在语气上，有什么区别？",
+    "answer": "might在语气上更加客气委婉"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "我可能明年回来。",
+    "answer": "I may be back next year."
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "Mike说过他明天可能来。",
+    "answer": "Mike said he might come tomorrow."
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "这句话里的might表示过去式还是委婉的语气？",
+    "answer": "过去式"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "这可能不是个好的建议。",
+    "answer": "It may not be a great suggestion."
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "没有允许你禁止进入该区域。",
+    "answer": "You may not enter the area without permission."
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "may not和mustn't有什么区别？",
+    "answer": "may not是比较客气的“禁止”；mustn't是严厉的“禁止”"
+  }
+]

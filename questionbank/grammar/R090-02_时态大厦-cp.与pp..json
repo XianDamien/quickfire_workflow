@@ -1,0 +1,86 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "完成状态的负责人中文名是什么？",
+    "answer": "完成分词"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "英文名是什么？",
+    "answer": "perfect participle"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "进行状态的负责人中文名是什么？",
+    "answer": "进行分词"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "英文名是什么？",
+    "answer": "continuous participle"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "一个verb加上了ing，书包一定是cp.吗？",
+    "answer": "不一定"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "还有可能是谁？",
+    "answer": "动名词假班长"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "那么他们怎么区分呢？",
+    "answer": "看看前面有没有be动词"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "有be动词的就是谁？",
+    "answer": "cp.进行分词"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "没有be动词的就是谁？",
+    "answer": "动名词"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "verb加上了ed书包一定是pp.吗？",
+    "answer": "不一定"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "还有可能是谁？",
+    "answer": "行为动词的过去式"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "那两者怎么区分？",
+    "answer": "看看前面有没有have"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "有have的是什么？",
+    "answer": "pp."
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "没有have的是什么？",
+    "answer": "行为动词的过去式"
+  }
+]

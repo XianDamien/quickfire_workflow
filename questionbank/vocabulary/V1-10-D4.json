@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "Pig",
+    "answer": "猪"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "Cow",
+    "answer": "母牛"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "Horse",
+    "answer": "马"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "Sheep",
+    "answer": "羊，绵羊"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "Ox",
+    "answer": "公牛"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "Goat",
+    "answer": "山羊"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "Donkey",
+    "answer": "驴"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "Rabbit",
+    "answer": "兔子"
+  }
+]

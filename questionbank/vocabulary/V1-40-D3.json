@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "银行",
+    "answer": "bank"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "电影院，电影",
+    "answer": "cinema"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "剧场，剧院",
+    "answer": "theatre"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "音乐会",
+    "answer": "concert"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "舞台",
+    "answer": "stage"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "厕所，洗手间",
+    "answer": "toilet"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "建筑",
+    "answer": "building"
+  }
+]

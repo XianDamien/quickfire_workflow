@@ -1,0 +1,80 @@
+[
+  {
+    "card_index": 1,
+    "hint": "我哥nice。他什么都帮我安排好了",
+    "question": "organize",
+    "answer": "安排"
+  },
+  {
+    "card_index": 2,
+    "hint": "我哥乃贼神,他控制着什么?",
+    "question": "organization",
+    "answer": "团体，组织"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "other",
+    "answer": "其他的"
+  },
+  {
+    "card_index": 4,
+    "hint": "应当等于should",
+    "question": "ought to",
+    "answer": "应当"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "ourselves",
+    "answer": "我们自己"
+  },
+  {
+    "card_index": 6,
+    "hint": "adv",
+    "question": "out",
+    "answer": "向外"
+  },
+  {
+    "card_index": 7,
+    "hint": "adj",
+    "question": "outdoor",
+    "answer": "室外的"
+  },
+  {
+    "card_index": 8,
+    "hint": "noun",
+    "question": "outing",
+    "answer": "短途旅行，远足"
+  },
+  {
+    "card_index": 9,
+    "hint": "preposition和adverb",
+    "question": "outside",
+    "answer": "在...外面"
+  },
+  {
+    "card_index": 10,
+    "hint": "oven,所有的东西all都是温的",
+    "question": "oven",
+    "answer": "烤箱"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "over",
+    "answer": "在...正上方，横跨"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "own",
+    "answer": "拥有"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "owner",
+    "answer": "拥有者"
+  }
+]

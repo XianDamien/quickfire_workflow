@@ -1,0 +1,56 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "常见的有哪4种情况？",
+    "answer": "时间、距离、天体、地点"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "今天的报纸",
+    "answer": "today’s newspaper"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "一小时的努力",
+    "answer": "one hour’s efforts"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "三小时的努力",
+    "answer": "three hours’ efforts"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "两公里的距离",
+    "answer": "two kilometers’ distance"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "三小时的步行距离",
+    "answer": "three hours’ walk"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "地球的表面",
+    "answer": "the Earth’s surface"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "太阳的温度",
+    "answer": "the Sun’s temperature"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "北京最好的公园",
+    "answer": "Beijing’s best park"
+  }
+]

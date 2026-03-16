@@ -1,0 +1,38 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "动物的它认识你。",
+    "answer": "It knows you."
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "你认识我。",
+    "answer": "You know me."
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "我认识男的他。",
+    "answer": "I know him."
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "女的她认识动物的它。",
+    "answer": "She knows it."
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "我们认识他们。",
+    "answer": "We know them."
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "他们认识你们。",
+    "answer": "They know you."
+  }
+]

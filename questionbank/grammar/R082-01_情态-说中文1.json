@@ -1,0 +1,38 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "may not",
+    "answer": "可能不"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "should not",
+    "answer": "不应该"
+  },
+  {
+    "card_index": 3,
+    "hint": "也就是couldn't",
+    "question": "could not",
+    "answer": "不可以"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "mustn't",
+    "answer": "必须不"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "need not",
+    "answer": "不需要"
+  },
+  {
+    "card_index": 6,
+    "hint": "也就是won't",
+    "question": "will not",
+    "answer": "将不会"
+  }
+]

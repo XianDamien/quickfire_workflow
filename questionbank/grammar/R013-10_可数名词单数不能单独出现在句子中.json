@@ -1,0 +1,26 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "在英文中，可数名词的单数可不可以单独出现在句子中？",
+    "answer": "不可以"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "那要怎么样改呢？",
+    "answer": "要么在可数名词单数前面加冠词，要么把可数名词的单数变成复数。"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "I like dog这句话对不对？",
+    "answer": "不对"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "要怎么改呢？",
+    "answer": "要么在dog前面加上冠词，要么把dog变成复数dogs"
+  }
+]

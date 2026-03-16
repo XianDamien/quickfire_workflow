@@ -1,0 +1,134 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "weather",
+    "answer": "天气"
+  },
+  {
+    "card_index": 2,
+    "hint": "形容词",
+    "question": "cold",
+    "answer": "寒冷的"
+  },
+  {
+    "card_index": 3,
+    "hint": "名词",
+    "question": "cold",
+    "answer": "感冒"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "cool",
+    "answer": "凉爽的，冷静的"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "hot",
+    "answer": "热的，辣的"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "warm",
+    "answer": "温暖的，热情的"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "sunny",
+    "answer": "阳光充足的，晴朗的"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "windy",
+    "answer": "多风的，风大的"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "cloudy",
+    "answer": "多云的"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "snowy",
+    "answer": "多雪的，下雪的"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "rainy",
+    "answer": "下雨的，多雨的"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "colour",
+    "answer": "颜色"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "red",
+    "answer": "红的，红色的"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "green",
+    "answer": "绿色的"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "yellow",
+    "answer": "黄色的"
+  },
+  {
+    "card_index": 16,
+    "hint": "",
+    "question": "blue",
+    "answer": "蓝色的"
+  },
+  {
+    "card_index": 17,
+    "hint": "",
+    "question": "black",
+    "answer": "黑色的"
+  },
+  {
+    "card_index": 18,
+    "hint": "",
+    "question": "white",
+    "answer": "白色的"
+  },
+  {
+    "card_index": 19,
+    "hint": "",
+    "question": "grey",
+    "answer": "灰色的"
+  },
+  {
+    "card_index": 20,
+    "hint": "",
+    "question": "brown",
+    "answer": "棕色的"
+  },
+  {
+    "card_index": 21,
+    "hint": "",
+    "question": "pink",
+    "answer": "粉色的"
+  },
+  {
+    "card_index": 22,
+    "hint": "",
+    "question": "purple",
+    "answer": "紫色的"
+  }
+]

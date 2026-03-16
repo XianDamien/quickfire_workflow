@@ -1,0 +1,38 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "在英文中有两种说法，我们学的是先说什么？",
+    "answer": "先说月和日，最后再说年。"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "其中日是用基数词还是序数词？",
+    "answer": "序数词"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "年和月用基数词还是序数词？",
+    "answer": "用基数词"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "1998年8月17日怎么说？",
+    "answer": "August the seventeenth, nineteen ninety eight."
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "2021年1月5日怎么说？",
+    "answer": "January the fifth, twenty twenty one."
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "2023年7月26日怎么说？",
+    "answer": "July the twenty sixth, twenty twenty three."
+  }
+]

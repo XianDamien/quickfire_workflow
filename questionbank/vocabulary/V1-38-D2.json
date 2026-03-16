@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "place",
+    "answer": "地方、地点、场所"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "room",
+    "answer": "房间"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "bedroom",
+    "answer": "卧室"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "kitchen",
+    "answer": "厨房"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "bathroom",
+    "answer": "浴室、卫生间"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "supermarket",
+    "answer": "超市"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "school",
+    "answer": "学校"
+  }
+]

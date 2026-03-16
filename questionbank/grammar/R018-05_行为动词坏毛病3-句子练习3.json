@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "我喜欢男的他。",
+    "answer": "I like him."
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "你喜欢女的她。",
+    "answer": "You like her."
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "男的他喜欢女的她。",
+    "answer": "He likes her."
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "女的她喜欢他们。",
+    "answer": "She likes them."
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "动物的她喜欢它们。",
+    "answer": "It likes them."
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "我们喜欢他们。",
+    "answer": "We like them."
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "你们喜欢我。",
+    "answer": "You like me."
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "他们喜欢我们。",
+    "answer": "They like us."
+  }
+]

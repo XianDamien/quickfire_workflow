@@ -1,0 +1,38 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "总而言之",
+    "answer": "In a word"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "一种",
+    "answer": "a kind of"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "突然",
+    "answer": "all of a sudden"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "立刻",
+    "answer": "In a moment"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "半个小时",
+    "answer": "Half an hour"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "许多",
+    "answer": "A number of"
+  }
+]

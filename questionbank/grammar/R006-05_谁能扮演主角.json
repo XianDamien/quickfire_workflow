@@ -1,0 +1,26 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "能扮演主角的第一个是什么？",
+    "answer": "noun举个例子 dog"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "第二个是什么？",
+    "answer": "article加noun 举个例子 a dog"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "第三个是什么？",
+    "answer": "article加adjective加noun 举个例子 a fat dog"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "第四个是什么？",
+    "answer": "adjective加noun，简单。举个例子 fat dogs，这里要用复数。"
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "food食物",
+    "answer": "不可数"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "desk书桌",
+    "answer": "可数"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "fruit水果",
+    "answer": "不可数"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "tiger老虎",
+    "answer": "可数"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "time时间",
+    "answer": "不可数"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "hour小时",
+    "answer": "可数"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "cup杯子",
+    "answer": "可数"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "bread面包",
+    "answer": "不可数"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "dog狗",
+    "answer": "可数"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "watch手表",
+    "answer": "可数"
+  }
+]

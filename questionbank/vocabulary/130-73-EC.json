@@ -1,0 +1,98 @@
+[
+  {
+    "card_index": 1,
+    "hint": "我不嫁给他。object有两个主要意思,反对和物品。由物品又衍生出三个意思,一。物品本身,二。宾语,也就是我们说的配角,因为宾语也是个东西,三。客观的,因为所有物体都是客观的",
+    "question": "object",
+    "answer": "反对，物品"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "serve",
+    "answer": "服务"
+  },
+  {
+    "card_index": 3,
+    "hint": "我不服务",
+    "question": "observe",
+    "answer": "观察"
+  },
+  {
+    "card_index": 4,
+    "hint": "我肯培训",
+    "question": "occupation",
+    "answer": "职业"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "ocean",
+    "answer": "海洋"
+  },
+  {
+    "card_index": 6,
+    "hint": "介词",
+    "question": "of",
+    "answer": "的"
+  },
+  {
+    "card_index": 7,
+    "hint": "preposition或者adv",
+    "question": "off",
+    "answer": "离开一个表面"
+  },
+  {
+    "card_index": 8,
+    "hint": "verb或者noun",
+    "question": "offer",
+    "answer": "提供"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "office",
+    "answer": "办公室"
+  },
+  {
+    "card_index": 10,
+    "hint": "坐在办公室的人",
+    "question": "officer",
+    "answer": "官员"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "official",
+    "answer": "官方的，正式的"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "often",
+    "answer": "经常，常常"
+  },
+  {
+    "card_index": 13,
+    "hint": "熬油",
+    "question": "oil",
+    "answer": "油"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "old",
+    "answer": "老的"
+  },
+  {
+    "card_index": 15,
+    "hint": "Olympic games",
+    "question": "olympic",
+    "answer": "奥林匹克"
+  },
+  {
+    "card_index": 16,
+    "hint": "贴着一个东西的感觉,preposition,adverb,adjective",
+    "question": "on",
+    "answer": "在...上"
+  }
+]

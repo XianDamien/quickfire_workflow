@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "We caught three little fishes.",
+    "question": "Fish",
+    "answer": "鱼，鱼肉"
+  },
+  {
+    "card_index": 2,
+    "hint": "Every morning he goes out early to fish.",
+    "question": "Fish",
+    "answer": "捕鱼，钓鱼"
+  },
+  {
+    "card_index": 3,
+    "hint": "Rice is measured more easily than flour.",
+    "question": "Rice",
+    "answer": "米，米饭"
+  },
+  {
+    "card_index": 4,
+    "hint": "Dumplings are a traditional Chinese food.",
+    "question": "Dumpling",
+    "answer": "饺子"
+  },
+  {
+    "card_index": 5,
+    "hint": "I usually have noodles for breakfast.",
+    "question": "Noodle",
+    "answer": "面条"
+  },
+  {
+    "card_index": 6,
+    "hint": "This sandwich has no taste.",
+    "question": "Sandwich",
+    "answer": "三明治"
+  },
+  {
+    "card_index": 7,
+    "hint": "He spread some butter on his bread.",
+    "question": "Bread",
+    "answer": "面包"
+  }
+]

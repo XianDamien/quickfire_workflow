@@ -1,0 +1,56 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "幸运的，碰巧的",
+    "answer": "lucky"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "讨厌，不喜欢",
+    "answer": "hate"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "简单的",
+    "answer": "easy"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "困难的",
+    "answer": "difficult"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "重要的",
+    "answer": "important"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "奇怪的，陌生的",
+    "answer": "strange"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "自豪的",
+    "answer": "proud"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "最喜欢的，最喜爱的",
+    "answer": "favorite"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "令人感兴趣的，有趣的",
+    "answer": "interesting"
+  }
+]

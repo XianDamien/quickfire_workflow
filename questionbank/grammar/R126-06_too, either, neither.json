@@ -1,0 +1,32 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "如果你想表达你也喜欢牛奶，要怎么说呢？",
+    "answer": "I like milk too."
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "你想表达我也不喜欢牛奶，可以怎么说?",
+    "answer": "I don't like milk, either."
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "如果把这句话变成简短的回答，可以怎么说?",
+    "answer": "Me, neither."
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "Neither,可以简单理解为是由哪两个词组成的？",
+    "answer": "Not和either"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "既然neither里面已经含有否定的意思，\n那一个句子里面会不会又有not，又有neither？",
+    "answer": "不会"
+  }
+]

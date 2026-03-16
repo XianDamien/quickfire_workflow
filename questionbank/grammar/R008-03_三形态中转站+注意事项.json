@@ -1,0 +1,56 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "在现阶段，如果我们遇到了否定句和疑问句互相转换的题目，可以直接转换吗？",
+    "answer": "不可以"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "要先把否定句或疑问句变成什么再转换",
+    "answer": "先变成肯定句，再转换"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "所以否定句、肯定句和疑问句中,谁是中转站？",
+    "answer": "肯定句是中转站"
+  },
+  {
+    "card_index": 4,
+    "hint": "例如这句话。Is my friend from Beijing？我的朋友来自北京吗？",
+    "question": "如果变成否定句，可不可以直接在is后面加not？",
+    "answer": "不可以"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "那么要先把这句话变成什么？",
+    "answer": "先变成肯定句"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "然后再把肯定句变成什么就正确了？",
+    "answer": "再把肯定句变成否定句"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "在做三形态转换的题目时，要注意首字母要怎么样",
+    "answer": "要大写"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "变成疑问句后,标点要怎么样？",
+    "answer": "变成问号"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "我I这个单词永远要怎么样？",
+    "answer": "永远要大写"
+  }
+]

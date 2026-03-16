@@ -1,0 +1,98 @@
+[
+  {
+    "card_index": 1,
+    "hint": "杀的是犯人的",
+    "question": "satisfied",
+    "answer": "满意的，满足的"
+  },
+  {
+    "card_index": 2,
+    "hint": "杀的是犯营",
+    "question": "satisfying",
+    "answer": "令人满意的"
+  },
+  {
+    "card_index": 3,
+    "hint": "寿司",
+    "question": "sauce",
+    "answer": "酱汁"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "save",
+    "answer": "救，节约"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "say",
+    "answer": "说，讲"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "saying",
+    "answer": "谚语"
+  },
+  {
+    "card_index": 7,
+    "hint": "是该做",
+    "question": "schedule",
+    "answer": "工作表，安排时间"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "school",
+    "answer": "学校"
+  },
+  {
+    "card_index": 9,
+    "hint": "赛恩师，什么要赛恩师？",
+    "question": "science",
+    "answer": "科学"
+  },
+  {
+    "card_index": 10,
+    "hint": "赛恩师的",
+    "question": "scientist",
+    "answer": "科学家"
+  },
+  {
+    "card_index": 11,
+    "hint": "死扣死高",
+    "question": "score",
+    "answer": "分数"
+  },
+  {
+    "card_index": 12,
+    "hint": "死贵",
+    "question": "screen",
+    "answer": "屏幕"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "sea",
+    "answer": "海，海洋"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "seafood",
+    "answer": "海鲜"
+  },
+  {
+    "card_index": 15,
+    "hint": "摄取",
+    "question": "search",
+    "answer": "寻找"
+  },
+  {
+    "card_index": 16,
+    "hint": "反复摄取呢",
+    "question": "research",
+    "answer": "研究"
+  }
+]

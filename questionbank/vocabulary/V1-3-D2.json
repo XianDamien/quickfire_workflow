@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "Would you like some tomato juice?",
+    "question": "Juice",
+    "answer": "汁，果汁"
+  },
+  {
+    "card_index": 2,
+    "hint": "She soaked bread in milk.",
+    "question": "Milk",
+    "answer": "牛奶"
+  },
+  {
+    "card_index": 3,
+    "hint": "She added sugar to her tea.",
+    "question": "Tea",
+    "answer": "茶"
+  },
+  {
+    "card_index": 4,
+    "hint": "I drank too much cola last night.",
+    "question": "Cola",
+    "answer": "可乐"
+  },
+  {
+    "card_index": 5,
+    "hint": "He put some sugar into his coffee.",
+    "question": "Coffee",
+    "answer": "咖啡"
+  },
+  {
+    "card_index": 6,
+    "hint": "Do you have beer?",
+    "question": "Beer",
+    "answer": "啤酒"
+  },
+  {
+    "card_index": 7,
+    "hint": "She filled my glass with lemonade.",
+    "question": "Lemonade",
+    "answer": "柠檬水"
+  }
+]

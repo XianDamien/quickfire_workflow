@@ -1,0 +1,260 @@
+[
+    {
+        "card_index": 1,
+        "hint": "及物动词",
+        "question": "学习研究",
+        "answer": "Study"
+    },
+    {
+        "card_index": 2,
+        "hint": "名词",
+        "question": "学习研究书房",
+        "answer": "Study"
+    },
+    {
+        "card_index": 3,
+        "hint": "副词",
+        "question": "已经",
+        "answer": "Already"
+    },
+    {
+        "card_index": 4,
+        "hint": "名词",
+        "question": "身体，躯体，团体，尸体",
+        "answer": "Body"
+    },
+    {
+        "card_index": 5,
+        "hint": "形容词",
+        "question": "多云的，阴天的，浑浊的，不透明的",
+        "answer": "Cloudy"
+    },
+    {
+        "card_index": 6,
+        "hint": "形容词",
+        "question": "多风的",
+        "answer": "Windy"
+    },
+    {
+        "card_index": 7,
+        "hint": "形容词",
+        "question": "沙地的，多沙的，含沙的",
+        "answer": "Sandy"
+    },
+    {
+        "card_index": 8,
+        "hint": "名词",
+        "question": "喜剧，喜剧性",
+        "answer": "Comedy"
+    },
+    {
+        "card_index": 9,
+        "hint": "形容词",
+        "question": "时髦的，流行的",
+        "answer": "Trendy"
+    },
+    {
+        "card_index": 10,
+        "hint": "名词",
+        "question": "追求时髦者，时髦人物",
+        "answer": "Trendy"
+    },
+    {
+        "card_index": 11,
+        "hint": "形容词",
+        "question": "老的，古老的，陈旧的，旧的",
+        "answer": "Old"
+    },
+    {
+        "card_index": 12,
+        "hint": "形容词",
+        "question": "冷的，冷淡的",
+        "answer": "cold"
+    },
+    {
+        "card_index": 13,
+        "hint": "名词",
+        "question": "冷，感冒",
+        "answer": "cold"
+    },
+    {
+        "card_index": 14,
+        "hint": "行为动词",
+        "question": "保持",
+        "answer": "hold"
+    },
+    {
+        "card_index": 15,
+        "hint": "及物动词",
+        "question": "拿着，抓住，举行，容纳",
+        "answer": "hold"
+    },
+    {
+        "card_index": 16,
+        "hint": "名词",
+        "question": "金",
+        "answer": "gold"
+    },
+    {
+        "card_index": 17,
+        "hint": "形容词",
+        "question": "精致的",
+        "answer": "gold"
+    },
+    {
+        "card_index": 18,
+        "hint": "及物动词",
+        "question": "折叠，折起来",
+        "answer": "hold"
+    },
+    {
+        "card_index": 19,
+        "hint": "不及物动词",
+        "question": "属于",
+        "answer": "belong"
+    },
+    {
+        "card_index": 20,
+        "hint": "介词",
+        "question": "沿着",
+        "answer": "along"
+    },
+    {
+        "card_index": 21,
+        "hint": "副词",
+        "question": "往前，向前，一起",
+        "answer": "along"
+    },
+    {
+        "card_index": 22,
+        "hint": "形容词",
+        "question": "错误的，不合适的，有毛病的",
+        "answer": "wrong"
+    },
+    {
+        "card_index": 23,
+        "hint": "名词",
+        "question": "不公正，坏事",
+        "answer": "wrong"
+    },
+    {
+        "card_index": 24,
+        "hint": "名词",
+        "question": "小船，小艇",
+        "answer": "boat"
+    },
+    {
+        "card_index": 25,
+        "hint": "名词",
+        "question": "外套，大衣",
+        "answer": "coat"
+    },
+    {
+        "card_index": 26,
+        "hint": "名词",
+        "question": "咽喉",
+        "answer": "throat"
+    },
+    {
+        "card_index": 27,
+        "hint": "名词",
+        "question": "班级，班，课，阶级",
+        "answer": "class"
+    },
+    {
+        "card_index": 28,
+        "hint": "名词",
+        "question": "玻璃，玻璃杯，眼镜",
+        "answer": "glass"
+    },
+    {
+        "card_index": 29,
+        "hint": "名词",
+        "question": "草，草地",
+        "answer": "grass"
+    },
+    {
+        "card_index": 30,
+        "hint": "行为动词",
+        "question": "经过，通过",
+        "answer": "pass"
+    },
+    {
+        "card_index": 31,
+        "hint": "不及物动词",
+        "question": "过去，流逝",
+        "answer": "pass"
+    },
+    {
+        "card_index": 32,
+        "hint": "及物动词",
+        "question": "使窘迫，使局促不安，使困难",
+        "answer": "embarrass"
+    },
+    {
+        "card_index": 33,
+        "hint": "代词或者是副词",
+        "question": "大量，许多，很，非常",
+        "answer": "lot"
+    },
+    {
+        "card_index": 34,
+        "hint": "形容词",
+        "question": "热的，走红的，辣的",
+        "answer": "hot"
+    },
+    {
+        "card_index": 35,
+        "hint": "名词",
+        "question": "斑点，污点，地点，处所",
+        "answer": "spot"
+    },
+    {
+        "card_index": 36,
+        "hint": "名词",
+        "question": "飞行员",
+        "answer": "pilot"
+    },
+    {
+        "card_index": 37,
+        "hint": "名词",
+        "question": "小时，时间",
+        "answer": "hour"
+    },
+    {
+        "card_index": 38,
+        "hint": "形容词",
+        "question": "酸的，尖酸刻薄的，馊的",
+        "answer": "sour"
+    },
+    {
+        "card_index": 39,
+        "hint": "名词",
+        "question": "旅行，观光",
+        "answer": "tour"
+    },
+    {
+        "card_index": 40,
+        "hint": "行为动词",
+        "question": "游览，观光",
+        "answer": "tour"
+    },
+    {
+        "card_index": 41,
+        "hint": "及物动词",
+        "question": "灌，注，倒",
+        "answer": "pour"
+    },
+    {
+        "card_index": 42,
+        "hint": "不及物动词",
+        "question": "倾泻，倾盆而下",
+        "answer": "pour"
+    },
+    {
+        "card_index": 43,
+        "hint": "名词",
+        "question": "课程，过程",
+        "answer": "course"
+    }
+]

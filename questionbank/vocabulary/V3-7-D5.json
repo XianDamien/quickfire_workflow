@@ -1,0 +1,134 @@
+[
+  {
+    "card_index": 1,
+    "hint": "行为动词",
+    "question": "看得见，理解，领会",
+    "answer": "see"
+  },
+  {
+    "card_index": 2,
+    "hint": "及物动词",
+    "question": "观看，查看",
+    "answer": "see"
+  },
+  {
+    "card_index": 3,
+    "hint": "形容词",
+    "question": "充满的，完全的，充分的",
+    "answer": "full"
+  },
+  {
+    "card_index": 4,
+    "hint": "行为动词",
+    "question": "拉，拖，牵",
+    "answer": "pull"
+  },
+  {
+    "card_index": 5,
+    "hint": "名词",
+    "question": "拉，拖，牵，拉力",
+    "answer": "pull"
+  },
+  {
+    "card_index": 6,
+    "hint": "形容词",
+    "question": "呆滞的，迟钝的，暗的",
+    "answer": "dull"
+  },
+  {
+    "card_index": 7,
+    "hint": "名词",
+    "question": "河，海，湖，岸，堤，银行",
+    "answer": "bank"
+  },
+  {
+    "card_index": 8,
+    "hint": "形容词",
+    "question": "空白的",
+    "answer": "blank"
+  },
+  {
+    "card_index": 9,
+    "hint": "名词",
+    "question": "空白处",
+    "answer": "blank"
+  },
+  {
+    "card_index": 10,
+    "hint": "名词",
+    "question": "等级，阶级，排，列",
+    "answer": "rank"
+  },
+  {
+    "card_index": 11,
+    "hint": "行为动词",
+    "question": "排列，分等级",
+    "answer": "rank"
+  },
+  {
+    "card_index": 12,
+    "hint": "及物动词",
+    "question": "感谢，道谢",
+    "answer": "thank"
+  },
+  {
+    "card_index": 13,
+    "hint": "名词",
+    "question": "感谢，谢意",
+    "answer": "thank"
+  },
+  {
+    "card_index": 14,
+    "hint": "及物动词",
+    "question": "有，吃，喝，使，令，进行，从事",
+    "answer": "have"
+  },
+  {
+    "card_index": 15,
+    "hint": "形容词",
+    "question": "勇敢的，有勇气的，英勇的",
+    "answer": "brave"
+  },
+  {
+    "card_index": 16,
+    "hint": "及物动词",
+    "question": "拯救，节省，省下",
+    "answer": "save"
+  },
+  {
+    "card_index": 17,
+    "hint": "行为动词",
+    "question": "储蓄，积攒",
+    "answer": "save"
+  },
+  {
+    "card_index": 18,
+    "hint": "名词",
+    "question": "电，光，声波，海浪，挥手",
+    "answer": "wave"
+  },
+  {
+    "card_index": 19,
+    "hint": "行为动词",
+    "question": "左右摇晃，摆动，挥手",
+    "answer": "wave"
+  },
+  {
+    "card_index": 20,
+    "hint": "及物动词",
+    "question": "使固定，安装，修理，确定",
+    "answer": "fix"
+  },
+  {
+    "card_index": 21,
+    "hint": "行为动词",
+    "question": "安排",
+    "answer": "fix"
+  },
+  {
+    "card_index": 22,
+    "hint": "行为动词",
+    "question": "使混合，搅和",
+    "answer": "mix"
+  }
+]

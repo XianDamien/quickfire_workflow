@@ -1,0 +1,74 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "very",
+    "answer": "adverb"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "people",
+    "answer": "noun"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "fast",
+    "answer": "adverb"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "are",
+    "answer": "beVerb"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "week",
+    "answer": "noun"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "am",
+    "answer": "beVerb"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "city",
+    "answer": "noun"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "should",
+    "answer": "modal"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "time",
+    "answer": "noun"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "now",
+    "answer": "adverb"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "so",
+    "answer": "adverb"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "an",
+    "answer": "article"
+  }
+]

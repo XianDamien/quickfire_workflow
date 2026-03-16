@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "第一组，大和小。",
+    "answer": "Big small."
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "第二组,长和短。",
+    "answer": "Long short."
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "第三组，高和低。",
+    "answer": "High low."
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "第四组，轻和重",
+    "answer": "Light heavy"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "5.大小; 规模",
+    "answer": "size"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "6.长度",
+    "answer": "length"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "7.高度",
+    "answer": "height"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "8.重量",
+    "answer": "weight"
+  }
+]

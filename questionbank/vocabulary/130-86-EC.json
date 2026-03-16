@@ -1,0 +1,98 @@
+[
+  {
+    "card_index": 1,
+    "hint": "困",
+    "question": "queen",
+    "answer": "皇后"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "question",
+    "answer": "问题"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "quick",
+    "answer": "快的"
+  },
+  {
+    "card_index": 4,
+    "hint": "快递",
+    "question": "quickly",
+    "answer": "快地"
+  },
+  {
+    "card_index": 5,
+    "hint": "快饿他",
+    "question": "quiet",
+    "answer": "安静的"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "quietly",
+    "answer": "安静地"
+  },
+  {
+    "card_index": 7,
+    "hint": "酷爱他",
+    "question": "quite",
+    "answer": "十分"
+  },
+  {
+    "card_index": 8,
+    "hint": "窥视",
+    "question": "quiz",
+    "answer": "小测验"
+  },
+  {
+    "card_index": 9,
+    "hint": "瑞士，原先是克罗马农人",
+    "question": "race",
+    "answer": "人种，赛跑"
+  },
+  {
+    "card_index": 10,
+    "hint": "乱丢",
+    "question": "radio",
+    "answer": "收音机"
+  },
+  {
+    "card_index": 11,
+    "hint": "rail是铁路的两根铁轨，来自法语",
+    "question": "railway",
+    "answer": "铁路"
+  },
+  {
+    "card_index": 12,
+    "hint": "雨声",
+    "question": "rain",
+    "answer": "雨，下雨"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "rainy",
+    "answer": "下雨的"
+  },
+  {
+    "card_index": 14,
+    "hint": "若爱子",
+    "question": "raise",
+    "answer": "抚养，举起"
+  },
+  {
+    "card_index": 15,
+    "hint": "联想rice，吃的多会怎么样",
+    "question": "rise",
+    "answer": "上升"
+  },
+  {
+    "card_index": 16,
+    "hint": "让梨",
+    "question": "rarely",
+    "answer": "罕见的"
+  }
+]

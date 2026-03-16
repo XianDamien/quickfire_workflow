@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "zoo",
+    "question": "动物园",
+    "answer": "zoo"
+  },
+  {
+    "card_index": 2,
+    "hint": "square",
+    "question": "广场正方形",
+    "answer": "square"
+  },
+  {
+    "card_index": 3,
+    "hint": "restaurant",
+    "question": "饭店餐馆",
+    "answer": "restaurant"
+  },
+  {
+    "card_index": 4,
+    "hint": "bookstore",
+    "question": "书店",
+    "answer": "bookstore"
+  },
+  {
+    "card_index": 5,
+    "hint": "hospital",
+    "question": "医院",
+    "answer": "hospital"
+  },
+  {
+    "card_index": 6,
+    "hint": "hotel",
+    "question": "宾馆旅店",
+    "answer": "hotel"
+  },
+  {
+    "card_index": 7,
+    "hint": "station",
+    "question": "火车站加油站",
+    "answer": "station"
+  },
+  {
+    "card_index": 8,
+    "hint": "airport",
+    "question": "机场",
+    "answer": "airport"
+  }
+]

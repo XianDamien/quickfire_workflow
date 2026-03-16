@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "Rainbow",
+    "answer": "彩虹"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "Wind",
+    "answer": "风"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "Cloud",
+    "answer": "云"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "Air",
+    "answer": "空气"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "Animal",
+    "answer": "动物"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "Mammal",
+    "answer": "哺乳动物"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "Insect",
+    "answer": "昆虫"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "Bird",
+    "answer": "鸟"
+  }
+]

@@ -1,0 +1,98 @@
+[
+  {
+    "card_index": 1,
+    "hint": "没兜。一拿到奖牌就没兜了，是挂脖子上",
+    "question": "medal",
+    "answer": "奖牌"
+  },
+  {
+    "card_index": 2,
+    "hint": "都埋在地下，还给你抠出来，埋地抠",
+    "question": "medical",
+    "answer": "医学的，医疗的"
+  },
+  {
+    "card_index": 3,
+    "hint": "埋地深，埋在地下很深的地方",
+    "question": "medicine",
+    "answer": "药，中药"
+  },
+  {
+    "card_index": 4,
+    "hint": "m e d 和 m i d 都是中间的意思",
+    "question": "medium",
+    "answer": "中间的，中等的"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "meet",
+    "answer": "见面，会面"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "meeting",
+    "answer": "会议"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "member",
+    "answer": "成员，会员"
+  },
+  {
+    "card_index": 8,
+    "hint": "一个 man 的末日。会有很多回忆",
+    "question": "memory",
+    "answer": "记忆，回忆"
+  },
+  {
+    "card_index": 9,
+    "hint": "门生。老师总是提及自己的门生",
+    "question": "mention",
+    "answer": "提及"
+  },
+  {
+    "card_index": 10,
+    "hint": "美女，给一下菜单",
+    "question": "menu",
+    "answer": "菜单"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "manner",
+    "answer": "礼貌"
+  },
+  {
+    "card_index": 12,
+    "hint": "只要没死就有什么？",
+    "question": "mess",
+    "answer": "混乱"
+  },
+  {
+    "card_index": 13,
+    "hint": "没四 G，没手机",
+    "question": "message",
+    "answer": "消息"
+  },
+  {
+    "card_index": 14,
+    "hint": "卖，偷。或者是无头金属骑士",
+    "question": "metal",
+    "answer": "金属"
+  },
+  {
+    "card_index": 15,
+    "hint": "没事的，我有什么？",
+    "question": "method",
+    "answer": "办法"
+  },
+  {
+    "card_index": 16,
+    "hint": "一米等于南极到北极长度的两千万分之一",
+    "question": "meter",
+    "answer": "米"
+  }
+]

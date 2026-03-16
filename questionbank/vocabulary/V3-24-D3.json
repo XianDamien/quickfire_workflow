@@ -1,0 +1,122 @@
+[
+  {
+    "card_index": 1,
+    "hint": "行为动词",
+    "question": "唱歌唱",
+    "answer": "sing"
+  },
+  {
+    "card_index": 2,
+    "hint": "形容词",
+    "question": "令人惊奇的，惊人的，了不起的",
+    "answer": "amazing"
+  },
+  {
+    "card_index": 3,
+    "hint": "及物动词",
+    "question": "拿来，带来，引起，导致",
+    "answer": "bring"
+  },
+  {
+    "card_index": 4,
+    "hint": "介词",
+    "question": "在什么什么期间，在什么什么时候",
+    "answer": "during"
+  },
+  {
+    "card_index": 5,
+    "hint": "行为动词",
+    "question": "使摇荡，使摇摆",
+    "answer": "swing"
+  },
+  {
+    "card_index": 6,
+    "hint": "名词",
+    "question": "交叉口，十字路口，人行横道",
+    "answer": "crossing"
+  },
+  {
+    "card_index": 7,
+    "hint": "及物动词",
+    "question": "探讨，讨论，商讨",
+    "answer": "discuss"
+  },
+  {
+    "card_index": 8,
+    "hint": "形容词",
+    "question": "厌恶的，厌烦的",
+    "answer": "disgusted"
+  },
+  {
+    "card_index": 9,
+    "hint": "形容词",
+    "question": "令人厌恶的",
+    "answer": "disgusting"
+  },
+  {
+    "card_index": 10,
+    "hint": "名词",
+    "question": "病，疾病",
+    "answer": "disease"
+  },
+  {
+    "card_index": 11,
+    "hint": "名词",
+    "question": "实验，试验",
+    "answer": "experiment"
+  },
+  {
+    "card_index": 12,
+    "hint": "不及物动词",
+    "question": "进行实验",
+    "answer": "experiment"
+  },
+  {
+    "card_index": 13,
+    "hint": "名词",
+    "question": "器械、器具、乐器",
+    "answer": "instrument"
+  },
+  {
+    "card_index": 14,
+    "hint": "及物动词",
+    "question": "说到、提及",
+    "answer": "mention"
+  },
+  {
+    "card_index": 15,
+    "hint": "名词",
+    "question": "片刻、瞬间",
+    "answer": "moment"
+  },
+  {
+    "card_index": 16,
+    "hint": "名词",
+    "question": "环境、周围状况",
+    "answer": "environment"
+  },
+  {
+    "card_index": 17,
+    "hint": "名词",
+    "question": "装备、设备",
+    "answer": "equipment"
+  },
+  {
+    "card_index": 18,
+    "hint": "名词",
+    "question": "声明、陈述",
+    "answer": "statement"
+  },
+  {
+    "card_index": 19,
+    "hint": "名词",
+    "question": "末端、尽头、结束",
+    "answer": "end"
+  },
+  {
+    "card_index": 20,
+    "hint": "行为动词",
+    "question": "结束、终止",
+    "answer": "end"
+  }
+]

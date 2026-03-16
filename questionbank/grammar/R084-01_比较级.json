@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "只有什么词才有比较级和最高级？",
+    "answer": "只有形容词和副词才有比较级和最高级。"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "比较级用于几者之间？",
+    "answer": "两者之间"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "比较级有两个标志，分别是什么？",
+    "answer": "第一个是ER，第二个是than。"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "ER可以理解为什么？",
+    "answer": "可以理解为——更加。"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "Tom更加高，怎么说？",
+    "answer": "Tom is taller."
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "Than，可以理解为什么?",
+    "answer": "可以理解为——比。"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "Tom 比 Nick高，怎么说？",
+    "answer": "Tom is taller than Nick."
+  }
+]

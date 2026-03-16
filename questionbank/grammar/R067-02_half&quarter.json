@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "30分钟怎么说",
+    "answer": "half"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "15分钟怎么说",
+    "answer": "quarter"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "所以六点半怎么说",
+    "answer": "Half past six"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "七点半怎么说",
+    "answer": "Half past seven"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "八点半怎么说",
+    "answer": "Half past eight"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "06:15怎么说",
+    "answer": "A quarter past six"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "05:45，也就是差15分钟到六点，怎么说",
+    "answer": "a quarter to six"
+  }
+]

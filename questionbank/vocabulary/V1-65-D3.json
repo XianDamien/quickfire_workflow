@@ -1,0 +1,62 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "数，数字",
+    "answer": "number"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "一百",
+    "answer": "hundred"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "千",
+    "answer": "thousand"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "总是，一直",
+    "answer": "always"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "绝不，从不",
+    "answer": "never"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "有时",
+    "answer": "sometimes"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "一次",
+    "answer": "once"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "两次，两回",
+    "answer": "twice"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "差不多，几乎",
+    "answer": "almost"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "又，再一次",
+    "answer": "again"
+  }
+]

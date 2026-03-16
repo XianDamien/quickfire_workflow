@@ -1,0 +1,32 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "请问区分noun clause和adjective clause最快的方法是看什么?",
+    "answer": "看先行词"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "先行词是什么的时候是adj. clause?",
+    "answer": "是noun的时候"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "如果先行词是verb,那么从句是什么clause?",
+    "answer": "noun clause"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "如果先行词是be verb,从句是什么clause?",
+    "answer": "noun clause"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "如果先行词什么都没有是什么clause?",
+    "answer": "是noun clause"
+  }
+]

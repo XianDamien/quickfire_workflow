@@ -1,0 +1,38 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "在杯子里有一些牛奶。",
+    "answer": "There is some milk in the cup."
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "在房间里有一大盒巧克力。",
+    "answer": "There is a large box of chocolate in the room."
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "一年有365天。",
+    "answer": "There are 365 days in a year."
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "在200年前，这个小村庄里面有一座漂亮的城堡。",
+    "answer": "There was a beautiful castle in this small village 200 years ago."
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "在农场上有大量的羊。",
+    "answer": "There area lot of sheep on the farm."
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "在桌子上有两碗面条。",
+    "answer": "There are two bowls of noodles on the table."
+  }
+]

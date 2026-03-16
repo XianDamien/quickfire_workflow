@@ -1,0 +1,68 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "在地板上,怎么说?",
+    "answer": "on the floor"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "在一楼,怎么说？",
+    "answer": "on the first floor"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "在二楼,怎么说？",
+    "answer": "on the second floor"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "请问street指的仅仅是一条马路，还是包含两边的房屋？",
+    "answer": "包含两边的房屋"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "所以在大街上怎么说？",
+    "answer": "in the street"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "road和way这两个词,指的仅仅是一条马路，还是包含两边的房屋？",
+    "answer": "仅指马路"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "所以在路上，怎么说？",
+    "answer": "on the road/ on the way"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "In the tree和on the tree有什么区别？",
+    "answer": "in the tree指的是停留在树上，而不是从树上长出来的东西。on the tree指的是从树上长出来的。"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "鸟在树上是用哪一个？",
+    "answer": "in the tree"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "梨子长在树上是用哪一个？",
+    "answer": "on the tree"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "有什么记忆技巧吗？",
+    "answer": "树上结的水果圆圆的，有点像on的字母o"
+  }
+]

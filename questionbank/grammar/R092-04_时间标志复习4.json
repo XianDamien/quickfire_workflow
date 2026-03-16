@@ -1,0 +1,62 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "老师说中文，你说英文。\n下周一",
+    "answer": "next Monday"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "一个月后",
+    "answer": "in a month"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "三点钟之后",
+    "answer": "after three o'clock"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "暑假之后",
+    "answer": "after summer holiday"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "看",
+    "answer": "look"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "早上八点钟之后",
+    "answer": "after eight o'clock in the morning"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "上个月",
+    "answer": "last month"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "几乎不",
+    "answer": "hardly"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "昨天晚上七点钟",
+    "answer": "seven o'clock yesterday evening"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "晚上七点钟之后",
+    "answer": "after seven o'clock in the evening"
+  }
+]

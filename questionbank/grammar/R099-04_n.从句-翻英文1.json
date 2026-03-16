@@ -1,0 +1,26 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "我不知道他是个小偷。",
+    "answer": "I don't know that he's a thief."
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "我不知道谁吃了这个。",
+    "answer": "I don't know who ate this."
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "我不知道你喜欢哪一个。",
+    "answer": "I don’t know which one you like."
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "我不知道他什么时候来。",
+    "answer": "I don’t know when he comes."
+  }
+]

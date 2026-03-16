@@ -1,0 +1,92 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "run",
+    "answer": "跑"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "rush",
+    "answer": "冲"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "sad",
+    "answer": "悲伤的"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "sadly",
+    "answer": "悲伤地"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "safe",
+    "answer": "安全的，保险箱"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "safely",
+    "answer": "安全地"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "safety",
+    "answer": "安全"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "salad",
+    "answer": "沙拉"
+  },
+  {
+    "card_index": 9,
+    "hint": "洒热泪",
+    "question": "salary",
+    "answer": "工资，薪水"
+  },
+  {
+    "card_index": 10,
+    "hint": "谁要？",
+    "question": "sale",
+    "answer": "卖，打折出售"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "salt",
+    "answer": "盐"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "salty",
+    "answer": "含盐的，咸的"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "same",
+    "answer": "同样的"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "sand",
+    "answer": "沙"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "sandwich",
+    "answer": "三明治"
+  }
+]

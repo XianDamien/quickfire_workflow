@@ -1,0 +1,26 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "第一，The thief steals my phone.变被动",
+    "answer": "My phone is stolen by the thief."
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "二，I ate the apple.",
+    "answer": "The apple was eaten by me. 请注意主动句是过去被动句也要用过去"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "三，I have broken the plate.",
+    "answer": "The plate has been broken by me."
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "最后一个，They will build a hotel.",
+    "answer": "A hotel will be built by them."
+  }
+]

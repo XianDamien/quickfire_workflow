@@ -1,0 +1,80 @@
+[
+    {
+        "card_index": 1,
+        "hint": "",
+        "question": "hair",
+        "answer": "头发"
+    },
+    {
+        "card_index": 2,
+        "hint": "",
+        "question": "tail",
+        "answer": "尾巴"
+    },
+    {
+        "card_index": 3,
+        "hint": "",
+        "question": "wing",
+        "answer": "翅膀"
+    },
+    {
+        "card_index": 4,
+        "hint": "",
+        "question": "fur",
+        "answer": "皮毛皮"
+    },
+    {
+        "card_index": 5,
+        "hint": "",
+        "question": "flu",
+        "answer": "流感"
+    },
+    {
+        "card_index": 6,
+        "hint": "",
+        "question": "pain",
+        "answer": "痛苦疼痛"
+    },
+    {
+        "card_index": 7,
+        "hint": "",
+        "question": "fever",
+        "answer": "发烧发热"
+    },
+    {
+        "card_index": 8,
+        "hint": "",
+        "question": "cough",
+        "answer": "咳嗽"
+    },
+    {
+        "card_index": 9,
+        "hint": "",
+        "question": "toothache",
+        "answer": "牙疼"
+    },
+    {
+        "card_index": 10,
+        "hint": "",
+        "question": "stomachache",
+        "answer": "肚子痛胃痛"
+    },
+    {
+        "card_index": 11,
+        "hint": "",
+        "question": "headache",
+        "answer": "头疼"
+    },
+    {
+        "card_index": 12,
+        "hint": "",
+        "question": "medicine",
+        "answer": "医学药物"
+    },
+    {
+        "card_index": 13,
+        "hint": "",
+        "question": "pill",
+        "answer": "药片"
+    }
+]

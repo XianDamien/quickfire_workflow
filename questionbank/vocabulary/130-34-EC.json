@@ -1,0 +1,98 @@
+[
+  {
+    "card_index": 1,
+    "hint": "伊拉克缺什么？",
+    "question": "electric",
+    "answer": "电的"
+  },
+  {
+    "card_index": 2,
+    "hint": "伊拉克又缺什么？还是电",
+    "question": "electricity",
+    "answer": "电"
+  },
+  {
+    "card_index": 3,
+    "hint": "饿了么到来，是什么？生活的",
+    "question": "elementary",
+    "answer": "基本的，简单的"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "elephant",
+    "answer": "大象"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "else",
+    "answer": "别的，其他的"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "email",
+    "answer": "电子邮件"
+  },
+  {
+    "card_index": 7,
+    "hint": "硬的棍子打屁股会导致",
+    "question": "embarrassed",
+    "answer": "尴尬的，窘迫的"
+  },
+  {
+    "card_index": 8,
+    "hint": "衣帽间进水，或者是衣帽浸湿，遇到了什么？",
+    "question": "emergency",
+    "answer": "紧急情况"
+  },
+  {
+    "card_index": 9,
+    "hint": "俺不惹，俺怕惹。因为他会斩了你",
+    "question": "emperor",
+    "answer": "皇帝"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "empty",
+    "answer": "空的"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "enable",
+    "answer": "使能够"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "encourage",
+    "answer": "鼓励"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "end",
+    "answer": "结束，末尾"
+  },
+  {
+    "card_index": 14,
+    "hint": "爱你命",
+    "question": "enemy",
+    "answer": "敌人"
+  },
+  {
+    "card_index": 15,
+    "hint": "抵死快不？",
+    "question": "describe",
+    "answer": "描述"
+  },
+  {
+    "card_index": 16,
+    "hint": "俺能挤",
+    "question": "energy",
+    "answer": "能量"
+  }
+]

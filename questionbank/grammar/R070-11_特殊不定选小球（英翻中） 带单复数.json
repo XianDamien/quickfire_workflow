@@ -1,0 +1,98 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "both指的是什么？",
+    "answer": "两个打包都选"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "both用单数还是复数？",
+    "answer": "复数"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "each指什么？",
+    "answer": "两个各自都选"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "each用单数还是复数？",
+    "answer": "单数"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "either指的是什么？",
+    "answer": "二选一"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "either用单数还是复数？",
+    "answer": "单数"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "neither和neither指的是什么？",
+    "answer": "二选零"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "neither/neither用单数还是复数？",
+    "answer": "单数"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "every指的是什么？",
+    "answer": "多个每个各自都选"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "every用单数还是复数？",
+    "answer": "单数"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "all指的是什么？",
+    "answer": "多个打包都选"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "all用单数还是复数？",
+    "answer": "复数"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "any指的是什么？",
+    "answer": "多选一"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "所以any用单数还是复数？",
+    "answer": "单数"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "none指什么？",
+    "answer": "好几个都不选或多选零"
+  },
+  {
+    "card_index": 16,
+    "hint": "",
+    "question": "none用单数还是复数？",
+    "answer": "单数，所以只有both和all这两个打包的用复数。"
+  }
+]

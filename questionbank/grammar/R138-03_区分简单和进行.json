@@ -1,0 +1,56 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "我们在看时间标志的时候，一个时间表示进行还是表示简单，看的是什么？",
+    "answer": "时间是不是精确"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "那么精确的标准又是什么呢？",
+    "answer": "假设我们穿越或者瞬移到那个时间，是否100%能看得到他说的那件事。"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "soon",
+    "answer": "将来简单"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "at this time yesterday",
+    "answer": "过去进行"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "since",
+    "answer": "现在完成"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "yet",
+    "answer": "现在完成"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "in two hours",
+    "answer": "将来简单"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "for two hours",
+    "answer": "现在完成"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "in the past two hours",
+    "answer": "现在完成"
+  }
+]

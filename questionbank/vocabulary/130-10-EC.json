@@ -1,0 +1,92 @@
+[
+  {
+    "card_index": 1,
+    "hint": "拔头",
+    "question": "battle",
+    "answer": "战斗"
+  },
+  {
+    "card_index": 2,
+    "hint": "巴特类，要帮他",
+    "question": "battery",
+    "answer": "电池"
+  },
+  {
+    "card_index": 3,
+    "hint": "这个地方太美了，必去",
+    "question": "beach",
+    "answer": "海滩"
+  },
+  {
+    "card_index": 4,
+    "hint": "be verb",
+    "question": "be",
+    "answer": "是"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "bear",
+    "answer": "熊"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "beautiful",
+    "answer": "美丽的"
+  },
+  {
+    "card_index": 7,
+    "hint": "必他",
+    "question": "beat",
+    "answer": "打击"
+  },
+  {
+    "card_index": 8,
+    "hint": "副词",
+    "question": "beautifully",
+    "answer": "美丽地"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "beauty",
+    "answer": "美丽，美人"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "because",
+    "answer": "因为"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "bed",
+    "answer": "床"
+  },
+  {
+    "card_index": 12,
+    "hint": "它属于什么词性？be verb",
+    "question": "become",
+    "answer": "变成"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "bedroom",
+    "answer": "卧室"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "before",
+    "answer": "在...之前"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "begin",
+    "answer": "开始"
+  }
+]

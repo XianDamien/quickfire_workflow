@@ -1,0 +1,62 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "普通加S有几种情况？",
+    "answer": "有七种情况。"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "前两种情况是什么？",
+    "answer": "是直接加S和以烧香吃素结尾加ES。"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "第三种情况是什么？",
+    "answer": "当辅音字母加Y结尾时，把Y去掉加ies。当元音字母加Y结尾时，后面直接加S"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "第四种情况是什么？",
+    "answer": "变形金刚，也就是不规则变化。"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "第五种情况，当一个单词以O结尾的时候。怎么变复数？",
+    "answer": "如果他是有生命的，是加ES。如果是没有生命的，是直接加S"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "当一个单词是以F或者是fe结尾的时候，要怎么变成复数？",
+    "answer": "要把F或者是fe去掉，变成ves。读作/z/。"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "举个例子。",
+    "answer": "例如叶子leaf变成复数是leaves"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "其中有三个单词和动物有关是什么？",
+    "answer": "Sheep羊  fish鱼  deer鹿"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "还有三个单词和人有关是什么？",
+    "answer": "Japanese日本人  Chinese中国人  British英国人"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "需要特别注意American美国人和German德国人是要怎么变？",
+    "answer": "复数是直接加S变成Americans Germans"
+  }
+]

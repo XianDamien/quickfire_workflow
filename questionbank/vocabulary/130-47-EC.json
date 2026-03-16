@@ -1,0 +1,98 @@
+[
+  {
+    "card_index": 1,
+    "hint": "它的比较级和最高级分别是什么？better, best",
+    "question": "good",
+    "answer": "良好"
+  },
+  {
+    "card_index": 2,
+    "hint": "给我馒头",
+    "question": "government",
+    "answer": "政府"
+  },
+  {
+    "card_index": 3,
+    "hint": "government 里边的 govern，管我",
+    "question": "govern",
+    "answer": "统治，管理"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "grade",
+    "answer": "等级，年级，分数"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "graduate",
+    "answer": "毕业"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "grandma",
+    "answer": "奶奶"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "grandpa",
+    "answer": "爷爷或外公"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "grape",
+    "answer": "葡萄"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "grass",
+    "answer": "草，草场"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "great",
+    "answer": "伟大的，好极了的"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "green",
+    "answer": "绿色"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "greenhouse",
+    "answer": "温室"
+  },
+  {
+    "card_index": 13,
+    "hint": "g r e e t",
+    "question": "greet",
+    "answer": "问候"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "ground",
+    "answer": "地面"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "group",
+    "answer": "组"
+  },
+  {
+    "card_index": 16,
+    "hint": "",
+    "question": "grow",
+    "answer": "生长，发育"
+  }
+]

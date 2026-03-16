@@ -1,0 +1,38 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "现在需要你造句，变成你是一名医生还是一名护士，应该怎么说？",
+    "answer": "Are you a doctor or a nurse？"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "在他的基础上变成——你喜欢篮球还是足球？应该怎么说",
+    "answer": "Do you like basketball or football？"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "先写一个特殊疑问句，后面再加什么？",
+    "answer": "加选项"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "前半部分的特殊疑问句和后半部分的选项中间要用什么符号分开？",
+    "answer": "逗号"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "请翻译这句话，你想要哪一个苹果？",
+    "answer": "Which Apple do you want？"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "请翻译句子，你想要哪一个苹果？红色的，绿色的还是黄色的那个？",
+    "answer": "Which apple do you want, the red one the green one or the yellow one?"
+  }
+]

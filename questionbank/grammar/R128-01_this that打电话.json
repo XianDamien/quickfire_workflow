@@ -1,0 +1,26 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "打电话的时候称自己用this还是that？",
+    "answer": "用this。"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "称对方用哪个词?",
+    "answer": "That"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "翻译句子。场景是打电话——你好，我是Linda。",
+    "answer": "Hello, this is Linda."
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "翻译句子——你好，请问你是谁？",
+    "answer": "Hello, who's that?"
+  }
+]

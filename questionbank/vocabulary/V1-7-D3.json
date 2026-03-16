@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "大自然，自然界",
+    "answer": "Nature"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "行星",
+    "answer": "Planet"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "太空，空间",
+    "answer": "Space"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "天空",
+    "answer": "Sky"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "陆地",
+    "answer": "Land"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "着陆，登陆",
+    "answer": "Land"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "海，海洋",
+    "answer": "Sea"
+  }
+]

@@ -1,0 +1,20 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "all",
+    "answer": "如果all后面跟的是可数名词,老大用复数"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "any",
+    "answer": "老大用单数"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "none",
+    "answer": "老大用单复数都行。用单数更常见。"
+  }
+]

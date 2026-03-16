@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "在条件状语中客观恩基也就是客观的Enki喜欢用哪个连词？",
+    "answer": "if"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "中文意思是什么？",
+    "answer": "如果"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "慈祥恩基喜欢用哪个连词？",
+    "answer": "as long as"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "中文意思是什么？",
+    "answer": "只要"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "凶恩基喜欢用哪个连词？",
+    "answer": "unless"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "中文意思是什么?",
+    "answer": "除非"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "unless和if有什么关系?",
+    "answer": "unless就是negative，if也就是if not"
+  }
+]

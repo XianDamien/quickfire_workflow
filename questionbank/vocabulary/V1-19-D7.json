@@ -1,0 +1,86 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "电话",
+    "answer": "telephone/phone"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "照相机",
+    "answer": "camera"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "风扇/粉丝",
+    "answer": "fan/fans"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "洗澡/浴盆",
+    "answer": "bath"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "座位",
+    "answer": "seat"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "故事/小说",
+    "answer": "story"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "消息/新闻",
+    "answer": "news"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "报纸",
+    "answer": "newspaper"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "图画/照片",
+    "answer": "picture"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "单单的照片",
+    "answer": "photo"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "卡片/纸牌",
+    "answer": "card"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "明信片",
+    "answer": "postcard"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "邮票",
+    "answer": "stamp"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "地图",
+    "answer": "map"
+  }
+]

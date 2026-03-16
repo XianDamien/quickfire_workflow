@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "Tom做了捕鼠器，并且做了发财梦，现在转到Jerry那边，请说出Jerry的故事",
+    "answer": "Tom做了捕鼠器，Jerry不介意，介意，他甚至还挺喜欢这个捕鼠器的，喜欢，为什么？因为他练习了几下就可以避免陷阱，练习，避免，那么对他来说这个就是每天的免费奶酪。所以他还建议让Tom保持每天抓他的习惯，建议。"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "接下来请你说出这几个verb的英文：介意做某事",
+    "answer": "mind doing sth."
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "练习做某事",
+    "answer": "practise doing sth."
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "避免做某事",
+    "answer": "avoid doing sth."
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "喜欢做某事",
+    "answer": "enjoy doing sth."
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "建议做某事",
+    "answer": "suggest doing sth."
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "保持做某事",
+    "answer": "keep doing sth."
+  }
+]

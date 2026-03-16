@@ -1,0 +1,62 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "建筑，建造",
+    "answer": "build"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "打电话，称呼",
+    "answer": "call"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "收集",
+    "answer": "collect"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "偷",
+    "answer": "steal"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "发光，照耀",
+    "answer": "shine"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "帮助",
+    "answer": "help"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "绘画",
+    "answer": "draw"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "画，绘，在什么上刷油漆",
+    "answer": "paint"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "颜料，油漆",
+    "answer": "paint"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "读",
+    "answer": "read"
+  }
+]

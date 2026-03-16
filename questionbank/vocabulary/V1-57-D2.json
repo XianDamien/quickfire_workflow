@@ -1,0 +1,38 @@
+[
+  {
+    "card_index": 1,
+    "hint": "形容词",
+    "question": "kind",
+    "answer": "亲切的，和蔼的"
+  },
+  {
+    "card_index": 2,
+    "hint": "名词",
+    "question": "kind",
+    "answer": "种类，性质"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "useful",
+    "answer": "有用的"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "able",
+    "answer": "能，能干的"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "hard-working",
+    "answer": "努力工作的"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "lazy",
+    "answer": "懒惰的，懒散的"
+  }
+]

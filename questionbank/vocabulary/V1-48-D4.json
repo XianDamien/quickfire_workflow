@@ -1,0 +1,62 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "want",
+    "answer": "要，想要"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "choose",
+    "answer": "选择"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "lose",
+    "answer": "失去，丢失"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "stop",
+    "answer": "停下，停止"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "stop",
+    "answer": "停止，公共汽车站"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "finish",
+    "answer": "结束，完成"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "start",
+    "answer": "开始，启动，发生"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "begin",
+    "answer": "开始"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "believe",
+    "answer": "相信"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "lie",
+    "answer": "说谎，躺"
+  }
+]

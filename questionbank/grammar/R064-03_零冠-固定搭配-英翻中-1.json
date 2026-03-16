@@ -1,0 +1,62 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "in time",
+    "answer": "及时"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "go to town",
+    "answer": "进城"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "go to college",
+    "answer": "上大学"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "go to sleep",
+    "answer": "入睡"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "on time",
+    "answer": "准时"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "in danger",
+    "answer": "处于危险中"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "at play",
+    "answer": "在玩"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "in fact",
+    "answer": "实际上"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "at work",
+    "answer": "在工作"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "in class",
+    "answer": "在上课"
+  }
+]

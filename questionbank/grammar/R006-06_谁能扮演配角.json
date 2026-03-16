@@ -1,0 +1,26 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "谁来扮演配角？第一个?",
+    "answer": "noun 举个例子 Egg"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "第二个",
+    "answer": "article加noun 举个例子，an egg"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "第三个",
+    "answer": "article加adjective加noun举个例子，a yummy egg"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "第四个",
+    "answer": "adjective加noun。yummy eggs 此处eggs要用复数。"
+  }
+]

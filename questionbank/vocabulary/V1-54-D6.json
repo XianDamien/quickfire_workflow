@@ -1,0 +1,122 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "wrong",
+    "answer": "错误的"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "healthy",
+    "answer": "健康的，强壮的"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "ill",
+    "answer": "生病的，不舒服的"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "sick",
+    "answer": "有病的，不适的"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "famous",
+    "answer": "出名的，著名的"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "quite",
+    "answer": "相当，十分"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "well",
+    "answer": "好，熟练的"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "better",
+    "answer": "更好的"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "best",
+    "answer": "最好的"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "great",
+    "answer": "伟大的，极好的"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "special",
+    "answer": "特殊的，特别的"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "dangerous",
+    "answer": "危险的，不安全的"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "safe",
+    "answer": "安全的"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "different",
+    "answer": "不同的"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "same",
+    "answer": "相同的，同样的"
+  },
+  {
+    "card_index": 16,
+    "hint": "",
+    "question": "real",
+    "answer": "真的，真实的"
+  },
+  {
+    "card_index": 17,
+    "hint": "",
+    "question": "cheap",
+    "answer": "便宜的"
+  },
+  {
+    "card_index": 18,
+    "hint": "",
+    "question": "expensive",
+    "answer": "昂贵的"
+  },
+  {
+    "card_index": 19,
+    "hint": "",
+    "question": "primary",
+    "answer": "小学的，初等的"
+  },
+  {
+    "card_index": 20,
+    "hint": "",
+    "question": "noisy",
+    "answer": "嘈杂的，喧嚣的"
+  }
+]

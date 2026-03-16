@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "简单状态代表什么？",
+    "answer": "一次性动作"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "进行状态代表什么？",
+    "answer": "正在做动作的状态"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "完成状态代表什么？",
+    "answer": "完成某件事的状态"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "把时间加上来，\n过去简单代表什么？",
+    "answer": "过去一次性动作"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "现在完成代表什么？",
+    "answer": "到现在为止已经完成的动作"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "在九种时态中，只有一个时态。\n他的运用场景有两个，是哪一个时态？",
+    "answer": "现在简单"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "现在简单可以用于哪两个场景？",
+    "answer": "现在的一个状态，或者是一种长期的习惯"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "所以现在简单的时态尺你要怎么画？",
+    "answer": "点加一条线。这条线要贯穿过去、现在和将来"
+  }
+]

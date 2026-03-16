@@ -1,0 +1,266 @@
+[
+  {
+    "card_index": 1,
+    "hint": "行为动词",
+    "question": "wake",
+    "answer": "醒来，叫醒"
+  },
+  {
+    "card_index": 2,
+    "hint": "不及物动词",
+    "question": "awake",
+    "answer": "醒来"
+  },
+  {
+    "card_index": 3,
+    "hint": "及物动词",
+    "question": "awake",
+    "answer": "唤醒"
+  },
+  {
+    "card_index": 4,
+    "hint": "形容词",
+    "question": "awake",
+    "answer": "醒着的"
+  },
+  {
+    "card_index": 5,
+    "hint": "及物动词",
+    "question": "bake",
+    "answer": "烘烤"
+  },
+  {
+    "card_index": 6,
+    "hint": "及物动词",
+    "question": "take",
+    "answer": "拿、走、乘坐、吃喝、服用"
+  },
+  {
+    "card_index": 7,
+    "hint": "行为动词",
+    "question": "take",
+    "answer": "花费"
+  },
+  {
+    "card_index": 8,
+    "hint": "及物动词",
+    "question": "mistake",
+    "answer": "误解、弄错"
+  },
+  {
+    "card_index": 9,
+    "hint": "名词",
+    "question": "mistake",
+    "answer": "错误、失误"
+  },
+  {
+    "card_index": 10,
+    "hint": "行为动词",
+    "question": "quake",
+    "answer": "震动、颤抖"
+  },
+  {
+    "card_index": 11,
+    "hint": "名词",
+    "question": "quake",
+    "answer": "震动、地震"
+  },
+  {
+    "card_index": 12,
+    "hint": "及物动词",
+    "question": "make",
+    "answer": "做、制造、使、使得、赚得"
+  },
+  {
+    "card_index": 13,
+    "hint": "行为动词",
+    "question": "shake",
+    "answer": "摇动、抖动"
+  },
+  {
+    "card_index": 14,
+    "hint": "名词",
+    "question": "shake",
+    "answer": "摇动、奶昔"
+  },
+  {
+    "card_index": 15,
+    "hint": "名词",
+    "question": "snake",
+    "answer": "蛇"
+  },
+  {
+    "card_index": 16,
+    "hint": "名词",
+    "question": "lake",
+    "answer": "湖、湖泊"
+  },
+  {
+    "card_index": 17,
+    "hint": "名词",
+    "question": "tree",
+    "answer": "树木"
+  },
+  {
+    "card_index": 18,
+    "hint": "行为动词",
+    "question": "agree",
+    "answer": "同意，赞同"
+  },
+  {
+    "card_index": 19,
+    "hint": "不及物动词",
+    "question": "flee",
+    "answer": "逃走，消失，逃避，飞逝"
+  },
+  {
+    "card_index": 20,
+    "hint": "及物动词",
+    "question": "flee",
+    "answer": "逃离"
+  },
+  {
+    "card_index": 21,
+    "hint": "形容词",
+    "question": "free",
+    "answer": "自由的，随意的，不受拘束的，免费的，空闲的，不忙的"
+  },
+  {
+    "card_index": 22,
+    "hint": "名词",
+    "question": "knee",
+    "answer": "膝，膝盖，膝部"
+  },
+  {
+    "card_index": 23,
+    "hint": "行为动词",
+    "question": "see",
+    "answer": "看得见，理解，领会"
+  },
+  {
+    "card_index": 24,
+    "hint": "及物动词",
+    "question": "see",
+    "answer": "观看，查看"
+  },
+  {
+    "card_index": 25,
+    "hint": "形容词",
+    "question": "full",
+    "answer": "充满的，完全的，充分的"
+  },
+  {
+    "card_index": 26,
+    "hint": "行为动词",
+    "question": "pull",
+    "answer": "拉，拖，牵"
+  },
+  {
+    "card_index": 27,
+    "hint": "名词",
+    "question": "pull",
+    "answer": "拉，拖，牵，拉力"
+  },
+  {
+    "card_index": 28,
+    "hint": "形容词",
+    "question": "dull",
+    "answer": "呆滞的，迟钝的，暗的"
+  },
+  {
+    "card_index": 29,
+    "hint": "名词",
+    "question": "bank",
+    "answer": "河、海、湖、岸、堤、银行"
+  },
+  {
+    "card_index": 30,
+    "hint": "形容词",
+    "question": "blank",
+    "answer": "空白的"
+  },
+  {
+    "card_index": 31,
+    "hint": "名词",
+    "question": "blank",
+    "answer": "空白处"
+  },
+  {
+    "card_index": 32,
+    "hint": "名词",
+    "question": "rank",
+    "answer": "等级、阶级、排列"
+  },
+  {
+    "card_index": 33,
+    "hint": "行为动词",
+    "question": "rank",
+    "answer": "排列，分等级"
+  },
+  {
+    "card_index": 34,
+    "hint": "及物动词",
+    "question": "thank",
+    "answer": "感谢，道谢"
+  },
+  {
+    "card_index": 35,
+    "hint": "名词",
+    "question": "thank",
+    "answer": "感谢谢意"
+  },
+  {
+    "card_index": 36,
+    "hint": "及物动词",
+    "question": "have",
+    "answer": "有，吃，喝，使，令，进行，从事"
+  },
+  {
+    "card_index": 37,
+    "hint": "形容词",
+    "question": "brave",
+    "answer": "勇敢的，有勇气的，英勇的"
+  },
+  {
+    "card_index": 38,
+    "hint": "及物动词",
+    "question": "save",
+    "answer": "拯救，节省，省下"
+  },
+  {
+    "card_index": 39,
+    "hint": "行为动词",
+    "question": "save",
+    "answer": "储蓄，积攒"
+  },
+  {
+    "card_index": 40,
+    "hint": "名词",
+    "question": "wave",
+    "answer": "电光声波，海浪挥手"
+  },
+  {
+    "card_index": 41,
+    "hint": "行为动词",
+    "question": "wave",
+    "answer": "左右摇晃摆动挥手"
+  },
+  {
+    "card_index": 42,
+    "hint": "及物动词",
+    "question": "fix",
+    "answer": "使固定、安装、修理、确定"
+  },
+  {
+    "card_index": 43,
+    "hint": "行为动词",
+    "question": "fix",
+    "answer": "安排"
+  },
+  {
+    "card_index": 44,
+    "hint": "行为动词",
+    "question": "mix",
+    "answer": "使混合，搅和"
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "write",
+    "answer": "写"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "spell",
+    "answer": "拼写，读写"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "ask",
+    "answer": "问，要求"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "dream",
+    "answer": "梦见，做梦"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "dream",
+    "answer": "梦想，梦"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "hope",
+    "answer": "希望"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "hope",
+    "answer": "希望"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "sleep",
+    "answer": "睡觉"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "sleep",
+    "answer": "睡觉"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "wake",
+    "answer": "醒，叫醒"
+  }
+]

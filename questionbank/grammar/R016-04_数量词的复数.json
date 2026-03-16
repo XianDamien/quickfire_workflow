@@ -1,0 +1,56 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "一瓶牛奶怎么说",
+    "answer": "a bottle of milk"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "两瓶牛奶怎么说",
+    "answer": "two bottles of milk"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "为什么milk没有变成复数？",
+    "answer": "因为milk是不可数名词，没有复数"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "一杯水怎么说",
+    "answer": "a glass of water"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "两杯水怎么说",
+    "answer": "two glasses of water"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "一双鞋怎么说",
+    "answer": "a pair of shoes"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "三双鞋怎么说",
+    "answer": "three pairs of shoes"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "一箱鸡蛋怎么说",
+    "answer": "a box of eggs"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "10箱鸡蛋怎么说",
+    "answer": "Ten boxes of eggs"
+  }
+]

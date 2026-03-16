@@ -1,0 +1,26 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "关于某国人变复数，有一个口诀是什么？",
+    "answer": "中日不变，英法变，美德S加后面"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "中日不变，是什么意思？",
+    "answer": "Japanese和Chinese的复数还是Japanese和Chinese"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "英法变，是什么意思？",
+    "answer": "Englishman，Frenchman变复数，字母a变e"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "美德S加后面，是什么意思？",
+    "answer": "American, German变复数，在后面直接加s变成Americans, Germans"
+  }
+]

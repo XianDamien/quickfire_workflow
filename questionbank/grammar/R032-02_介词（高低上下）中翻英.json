@@ -1,0 +1,26 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "比一样东西低",
+    "answer": "below"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "比一样东西高",
+    "answer": "above"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "在一样东西正下方",
+    "answer": "under"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "在一样东西正上方",
+    "answer": "over"
+  }
+]

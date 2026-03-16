@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "She is cold变成negative",
+    "answer": "She is not cold."
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "We are cold变成negative",
+    "answer": "We are not cold."
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "The cat is cute 变成negative",
+    "answer": "The cat is not cute."
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "Lisa is beautiful变成negative",
+    "answer": "Lisa isn't beautiful."
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "We are students变成negative",
+    "answer": "We aren't students."
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "They are happy变成negative",
+    "answer": "They aren't happy."
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "I'm ten years old变成negative",
+    "answer": "I'm not ten years old."
+  }
+]

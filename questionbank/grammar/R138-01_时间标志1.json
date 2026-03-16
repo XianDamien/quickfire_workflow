@@ -1,0 +1,32 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "then",
+    "answer": "当时"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "just now",
+    "answer": "刚才"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "once upon a time",
+    "answer": "从前"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "long long ago",
+    "answer": "很久很久以前"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "the other day",
+    "answer": "不久前 的一天"
+  }
+]

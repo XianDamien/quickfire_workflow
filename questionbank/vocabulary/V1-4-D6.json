@@ -1,0 +1,92 @@
+[
+  {
+    "card_index": 1,
+    "hint": "We caught three little fishes.",
+    "question": "Fish",
+    "answer": "鱼，鱼肉"
+  },
+  {
+    "card_index": 2,
+    "hint": "Every morning he goes out early to fish.",
+    "question": "Fish",
+    "answer": "捕鱼，钓鱼"
+  },
+  {
+    "card_index": 3,
+    "hint": "Rice is measured more easily than flour.",
+    "question": "Rice",
+    "answer": "米，米饭"
+  },
+  {
+    "card_index": 4,
+    "hint": "Dumplings are a traditional Chinese food.",
+    "question": "Dumpling",
+    "answer": "饺子"
+  },
+  {
+    "card_index": 5,
+    "hint": "I usually have noodles for breakfast.",
+    "question": "Noodle",
+    "answer": "面条"
+  },
+  {
+    "card_index": 6,
+    "hint": "This sandwich has no taste.",
+    "question": "Sandwich",
+    "answer": "三明治"
+  },
+  {
+    "card_index": 7,
+    "hint": "He spread some butter on his bread.",
+    "question": "Bread",
+    "answer": "面包"
+  },
+  {
+    "card_index": 8,
+    "hint": "He has eaten up the whole cake.",
+    "question": "Cake",
+    "answer": "蛋糕"
+  },
+  {
+    "card_index": 9,
+    "hint": "Do you like eating pizza?",
+    "question": "Pizza",
+    "answer": "披萨饼"
+  },
+  {
+    "card_index": 10,
+    "hint": "Would you like a pie?",
+    "question": "Pie",
+    "answer": "馅饼，派"
+  },
+  {
+    "card_index": 11,
+    "hint": "I would like to put some strawberries on the pancake.",
+    "question": "Pancake",
+    "answer": "煎饼，薄饼"
+  },
+  {
+    "card_index": 12,
+    "hint": "She ordered a hamburger and some French fries.",
+    "question": "Hamburger",
+    "answer": "汉堡包"
+  },
+  {
+    "card_index": 13,
+    "hint": "The restaurant is famous for its delicious sushi.",
+    "question": "Sushi",
+    "answer": "寿司"
+  },
+  {
+    "card_index": 14,
+    "hint": "Absolutely, hot pot is my favorite food.",
+    "question": "Hot pot",
+    "answer": "火锅"
+  },
+  {
+    "card_index": 15,
+    "hint": "She bought a hot dog from a stand on the street corner.",
+    "question": "Hot dog",
+    "answer": "热狗"
+  }
+]

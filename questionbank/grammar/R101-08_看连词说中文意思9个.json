@@ -1,0 +1,62 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "as",
+    "answer": "按照"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "if",
+    "answer": "如果"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "so that",
+    "answer": "为了"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "so...that",
+    "answer": "如此以至于"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "although",
+    "answer": "尽管"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "bigger than",
+    "answer": "比什么什么更大"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "because",
+    "answer": "因为"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "so that如果翻译成“为了”，那么中文要放在前半句还是后半句？",
+    "answer": "要放前半句。比如“为了吃饭，他必须工作。”“为了”放前面。"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "so that如果翻译成“以便”，要放在前半句还是后半句？",
+    "answer": "后半句。“快点吃饭以便出去玩。”“以便”放在后面。"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "so that从句在英文中始终是放在前面还是后面的？",
+    "answer": "始终放在后面"
+  }
+]

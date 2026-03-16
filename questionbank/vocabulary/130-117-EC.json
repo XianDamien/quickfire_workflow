@@ -1,0 +1,104 @@
+[
+  {
+    "card_index": 1,
+    "hint": "它有 eat，靠天吃饭，有 eat 的就是天气，w h 的就是是否",
+    "question": "weather",
+    "answer": "天气"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "web",
+    "answer": "网，网状物"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "website",
+    "answer": "网站，网址"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "week",
+    "answer": "星期"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "weekday",
+    "answer": "工作日"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "weekend",
+    "answer": "周末"
+  },
+  {
+    "card_index": 7,
+    "hint": "verb",
+    "question": "weigh",
+    "answer": "称重"
+  },
+  {
+    "card_index": 8,
+    "hint": "noun",
+    "question": "weight",
+    "answer": "重量"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "welcome",
+    "answer": "欢迎，受欢迎的"
+  },
+  {
+    "card_index": 10,
+    "hint": "adj",
+    "question": "well",
+    "answer": "身体好的"
+  },
+  {
+    "card_index": 11,
+    "hint": "adv",
+    "question": "well",
+    "answer": "好，好吧"
+  },
+  {
+    "card_index": 12,
+    "hint": "noun",
+    "question": "well",
+    "answer": "井"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "west",
+    "answer": "西，西部"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "western",
+    "answer": "西方的"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "wet",
+    "answer": "湿的"
+  },
+  {
+    "card_index": 16,
+    "hint": "",
+    "question": "whale",
+    "answer": "鲸"
+  },
+  {
+    "card_index": 17,
+    "hint": "",
+    "question": "what",
+    "answer": "什么"
+  }
+]

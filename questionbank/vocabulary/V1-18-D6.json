@@ -1,0 +1,80 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "bottle",
+    "answer": "瓶子"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "tin",
+    "answer": "罐头"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "invention",
+    "answer": "发明"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "machine",
+    "answer": "机器"
+  },
+  {
+    "card_index": 5,
+    "hint": "名词",
+    "question": "lift",
+    "answer": "电梯"
+  },
+  {
+    "card_index": 6,
+    "hint": "行为动词",
+    "question": "lift",
+    "answer": "举起，拎起，拿起"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "fridge",
+    "answer": "冰箱"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "television",
+    "answer": "电视机"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "computer",
+    "answer": "电脑"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "internet",
+    "answer": "互联网，网络"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "website",
+    "answer": "网络的地址，网址，网站"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "radio",
+    "answer": "收音机，广播"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "phone",
+    "answer": "手机，电话"
+  }
+]

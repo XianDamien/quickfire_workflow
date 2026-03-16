@@ -1,0 +1,62 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "老师说中文，你说英文。\n明天七点",
+    "answer": "seven o'clock tomorrow"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "圣诞节之后",
+    "answer": "after Christmas"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "明年",
+    "answer": "next year"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "现在",
+    "answer": "now"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "从不",
+    "answer": "never"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "明年夏天",
+    "answer": "next summer"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "暑假之后",
+    "answer": "after summer holiday"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "昨晚",
+    "answer": "last night"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "几乎不",
+    "answer": "hardly"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "两周后",
+    "answer": "in two weeks"
+  }
+]

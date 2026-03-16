@@ -1,0 +1,92 @@
+[
+  {
+    "card_index": 1,
+    "hint": "名词",
+    "question": "freedom",
+    "answer": "自由"
+  },
+  {
+    "card_index": 2,
+    "hint": "废纸或者妃子",
+    "question": "freeze",
+    "answer": "结冰，冻结"
+  },
+  {
+    "card_index": 3,
+    "hint": "主动加进行",
+    "question": "freezing",
+    "answer": "结冰的"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "fresh",
+    "answer": "新鲜的"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "fridge",
+    "answer": "冰箱"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "fried",
+    "answer": "油煎的"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "friend",
+    "answer": "朋友"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "friendly",
+    "answer": "友好地"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "friendship",
+    "answer": "友谊"
+  },
+  {
+    "card_index": 10,
+    "hint": "腹外腾，verb",
+    "question": "frighten",
+    "answer": "害怕，使害怕"
+  },
+  {
+    "card_index": 11,
+    "hint": "被动加完成",
+    "question": "frightened",
+    "answer": "感到害怕的"
+  },
+  {
+    "card_index": 12,
+    "hint": "主动加进行，一个吓人的鬼是 a frightening ghost",
+    "question": "frightening",
+    "answer": "令人害怕的"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "from",
+    "answer": "从这里开始"
+  },
+  {
+    "card_index": 14,
+    "hint": "一条冷冻的鱼是 a frozen fish 还是 a freezing fish？a frozen fish",
+    "question": "frozen",
+    "answer": "被冰冻的"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "fruit",
+    "answer": "水果"
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "拿，取，乘坐",
+    "answer": "take"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "花费，成本，为",
+    "answer": "cost"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "付款，交款，给予",
+    "answer": "pay"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "花时间等，度过",
+    "answer": "spend"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "拿，携带，搬运",
+    "answer": "carry"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "开车，驾驶",
+    "answer": "drive"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "拿住，握住，举行，承受",
+    "answer": "hold"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "挖",
+    "answer": "dig"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "悬挂，吊",
+    "answer": "hang"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "装满，填满，填",
+    "answer": "fill"
+  }
+]

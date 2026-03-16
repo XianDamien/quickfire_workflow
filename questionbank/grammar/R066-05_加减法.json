@@ -1,0 +1,32 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "加号怎么说",
+    "answer": "plus"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "减号怎么说",
+    "answer": "minus"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "等于怎么说",
+    "answer": "is或者是equals"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "翻译句子，一加一等于二",
+    "answer": "One plus one is two.或One plus one equals two."
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "翻译句子，十减一等于九",
+    "answer": "Ten minus one is nine.或Ten minus one equals nine."
+  }
+]

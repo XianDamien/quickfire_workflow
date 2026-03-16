@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "瓶子",
+    "answer": "bottle"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "罐头",
+    "answer": "tin"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "发明",
+    "answer": "invention"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "机器",
+    "answer": "machine"
+  },
+  {
+    "card_index": 5,
+    "hint": "名词",
+    "question": "电梯",
+    "answer": "lift"
+  },
+  {
+    "card_index": 6,
+    "hint": "行为动词",
+    "question": "举起，拎起，拿起",
+    "answer": "lift"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "冰箱",
+    "answer": "fridge"
+  }
+]

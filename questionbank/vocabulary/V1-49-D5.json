@@ -1,0 +1,62 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "关门",
+    "answer": "shut"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "摘，捡起，拿起",
+    "answer": "pick"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "发生，碰巧",
+    "answer": "happen"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "吻",
+    "answer": "kiss"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "吻",
+    "answer": "kiss"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "浪费",
+    "answer": "waste"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "拯救，节约",
+    "answer": "save"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "参加，加入",
+    "answer": "join"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "离开，留下",
+    "answer": "leave"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "遇见，相遇",
+    "answer": "meet"
+  }
+]

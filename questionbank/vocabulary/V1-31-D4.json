@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "heart",
+    "answer": "心脏，心，心形"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "stomach",
+    "answer": "胃，肚子"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "back",
+    "answer": "后背，后面"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "back",
+    "answer": "向后的，回原处"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "skin",
+    "answer": "皮肤，外皮"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "bone",
+    "answer": "骨，骨骼"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "blood",
+    "answer": "血液"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "beard",
+    "answer": "胡须"
+  }
+]

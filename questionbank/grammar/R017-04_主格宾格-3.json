@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "I的宾格是什么？",
+    "answer": "me"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "you的主格是什么？",
+    "answer": "you"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "He的宾格是什么？",
+    "answer": "him"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "her的主格是什么？",
+    "answer": "she"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "it的宾格是什么？",
+    "answer": "it"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "We的宾格是什么？",
+    "answer": "us"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "you的主格是什么？",
+    "answer": "you"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "them的主格是什么？",
+    "answer": "they"
+  }
+]

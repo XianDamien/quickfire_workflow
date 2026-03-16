@@ -1,0 +1,56 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "以no-开头的复合不定代词，比如nobody, nothing。\n它本身就含有肯定还是否定的意义？",
+    "answer": "否定的意义"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "用两种方式翻译——我什么都没吃",
+    "answer": "I ate nothing.或I didn't eat anything."
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "如果我说I didn't eat nothing对不对？",
+    "answer": "不对"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "为什么？",
+    "answer": "因为nothing里面已经含有否定的意义了，不需要do再说一次not。"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "翻译句子。没有人知道答案。",
+    "answer": "Nobody knows the answer"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "为什么行为动词know后面要背上小书包呢？",
+    "answer": "因为nobody当做第三人称单数来用。"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "是只有nobody当做3单，还是其他的复合不定代词也当做3单？",
+    "answer": "其他的复合不定代词也当做三单使用"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "翻译句子，我的作业没有出现任何的毛病",
+    "answer": "There is nothing wrong with my homework."
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "为什么wrong这个定语要放在nothing的后面呢？",
+    "answer": "当复合不定代词被定语修饰的时候，定语在复合不定代词的后面。"
+  }
+]

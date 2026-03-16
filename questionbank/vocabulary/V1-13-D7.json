@@ -1,0 +1,98 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "宠物",
+    "answer": "pet"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "鸟巢",
+    "answer": "nest"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "植物",
+    "answer": "plant"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "种植",
+    "answer": "plant"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "种子",
+    "answer": "seed"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "花朵",
+    "answer": "flower"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "玫瑰",
+    "answer": "rose"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "庄稼，农作物",
+    "answer": "crop"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "木棍，枝条",
+    "answer": "stick"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "粘贴",
+    "answer": "stick"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "森林",
+    "answer": "forest"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "竹子",
+    "answer": "bamboo"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "叶子",
+    "answer": "leaf"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "树木",
+    "answer": "tree"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "种植，生长",
+    "answer": "grow"
+  },
+  {
+    "card_index": 16,
+    "hint": "",
+    "question": "拜拜",
+    "answer": "bye"
+  }
+]

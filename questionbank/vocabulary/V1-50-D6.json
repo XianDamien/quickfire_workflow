@@ -1,0 +1,98 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "greet",
+    "answer": "问候，打招呼"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "find",
+    "answer": "找到，查找，发现"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "try",
+    "answer": "尝试，试图"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "try",
+    "answer": "尝试，试图"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "blow",
+    "answer": "吹"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "welcome",
+    "answer": "欢迎"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "line",
+    "answer": "排队"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "line",
+    "answer": "行，排，列"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "care",
+    "answer": "关心"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "care",
+    "answer": "小心"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "remember",
+    "answer": "记，记住"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "forget",
+    "answer": "忘记"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "shake",
+    "answer": "摇动，晃动，震动"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "set",
+    "answer": "摆放，餐桌，太阳落下去"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "set",
+    "answer": "一套，一系列"
+  },
+  {
+    "card_index": 16,
+    "hint": "",
+    "question": "worry",
+    "answer": "担心，着急"
+  }
+]

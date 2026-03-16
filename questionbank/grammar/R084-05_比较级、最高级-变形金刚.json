@@ -1,0 +1,38 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "good/well",
+    "answer": "better best"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "bad/ill",
+    "answer": "worse worst"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "many/much",
+    "answer": "more most"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "little",
+    "answer": "less least"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "old",
+    "answer": "older/oldest\n或elder/eldest"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "far",
+    "answer": "farther/farthest或further/furthest"
+  }
+]

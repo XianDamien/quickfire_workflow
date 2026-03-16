@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "What's your favorite food?",
+    "question": "Food",
+    "answer": "食物"
+  },
+  {
+    "card_index": 2,
+    "hint": "The snack of that place tastes good.",
+    "question": "Snack",
+    "answer": "小吃"
+  },
+  {
+    "card_index": 3,
+    "hint": "Without a chicken, there's no egg.",
+    "question": "Egg",
+    "answer": "蛋，鸡蛋"
+  },
+  {
+    "card_index": 4,
+    "hint": "You haven't finished your salad.",
+    "question": "Salad",
+    "answer": "色拉"
+  },
+  {
+    "card_index": 5,
+    "hint": "The soup needs to be salted.",
+    "question": "Soup",
+    "answer": "汤，羹"
+  },
+  {
+    "card_index": 6,
+    "hint": "My favorite food is French fry.",
+    "question": "French fry",
+    "answer": "炸薯条"
+  },
+  {
+    "card_index": 7,
+    "hint": "Bread is made of flour.",
+    "question": "Flour",
+    "answer": "面粉"
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "故事开始，他只能",
+    "answer": "我们一起想象这个画面，他只能试着输密码，try"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "然后输了两下又停下了",
+    "answer": "stop"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "因为他忘记密码了",
+    "answer": "forget"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "想着想着又记起来了",
+    "answer": "remember"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "然后又继续按",
+    "answer": "go on"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "按完发现密码对了还挺高兴，转而一想又后悔了，后悔",
+    "answer": "regret"
+  }
+]

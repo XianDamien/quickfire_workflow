@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "What a dust!",
+    "question": "Dust (noun)",
+    "answer": "灰尘"
+  },
+  {
+    "card_index": 2,
+    "hint": "Dust your hat.",
+    "question": "Dust (verb)",
+    "answer": "掸去或者拂去"
+  },
+  {
+    "card_index": 3,
+    "hint": "My coat is covered with mud.",
+    "question": "Mud",
+    "answer": "泥"
+  },
+  {
+    "card_index": 4,
+    "hint": "We went for a walk along the sand.",
+    "question": "Sand",
+    "answer": "沙子或者沙滩"
+  },
+  {
+    "card_index": 5,
+    "hint": "She picked up the stone and threw it into the river.",
+    "question": "Stone",
+    "answer": "石头，石子儿"
+  },
+  {
+    "card_index": 6,
+    "hint": "The country is rich in oil and coal.",
+    "question": "Coal",
+    "answer": "煤"
+  },
+  {
+    "card_index": 7,
+    "hint": "I'd like some oil for cooking vegetables.",
+    "question": "Oil",
+    "answer": "食用油或者是石油"
+  }
+]

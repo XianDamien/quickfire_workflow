@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "汁，果汁",
+    "answer": "Juice"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "牛奶",
+    "answer": "Milk"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "茶",
+    "answer": "Tea"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "可乐",
+    "answer": "Cola"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "咖啡",
+    "answer": "Coffee"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "啤酒",
+    "answer": "Beer"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "柠檬水",
+    "answer": "Lemonade"
+  }
+]

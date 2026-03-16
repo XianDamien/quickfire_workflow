@@ -1,0 +1,92 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "手指",
+    "answer": "finger"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "手腕",
+    "answer": "wrist"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "腿",
+    "answer": "leg"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "膝盖",
+    "answer": "knee"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "踝，踝关节",
+    "answer": "ankle"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "脚",
+    "answer": "foot"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "脚趾，足尖",
+    "answer": "toe"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "心脏，心，心形",
+    "answer": "heart"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "胃，肚子",
+    "answer": "stomach"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "后背，后面",
+    "answer": "back"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "向后的，回原处",
+    "answer": "back"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "皮肤，外皮",
+    "answer": "skin"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "骨，骨骼",
+    "answer": "bone"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "血液",
+    "answer": "blood"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "胡须",
+    "answer": "beard"
+  }
+]

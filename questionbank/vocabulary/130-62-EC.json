@@ -1,0 +1,116 @@
+[
+  {
+    "card_index": 1,
+    "hint": "名词",
+    "question": "line",
+    "answer": "线，路线，地铁线，航线"
+  },
+  {
+    "card_index": 2,
+    "hint": "林肯连接了南北",
+    "question": "link",
+    "answer": "连接"
+  },
+  {
+    "card_index": 3,
+    "hint": "名词",
+    "question": "lion",
+    "answer": "狮子"
+  },
+  {
+    "card_index": 4,
+    "hint": "流快的",
+    "question": "liquid",
+    "answer": "液体"
+  },
+  {
+    "card_index": 5,
+    "hint": "沙粒的",
+    "question": "solid",
+    "answer": "固体"
+  },
+  {
+    "card_index": 6,
+    "hint": "名词",
+    "question": "list",
+    "answer": "清单"
+  },
+  {
+    "card_index": 7,
+    "hint": "主动听，不是被动的hear",
+    "question": "listen",
+    "answer": "听"
+  },
+  {
+    "card_index": 8,
+    "hint": "强调随意丢弃",
+    "question": "litter",
+    "answer": "废物，随意丢弃的垃圾"
+  },
+  {
+    "card_index": 9,
+    "hint": "几乎没有，否定",
+    "question": "little",
+    "answer": "一点点"
+  },
+  {
+    "card_index": 10,
+    "hint": "live verb",
+    "question": "live",
+    "answer": "生活，居住"
+  },
+  {
+    "card_index": 11,
+    "hint": "live adj，同样的单词读 live",
+    "question": "live",
+    "answer": "现场直播的"
+  },
+  {
+    "card_index": 12,
+    "hint": "路口",
+    "question": "local",
+    "answer": "本地的，当地的"
+  },
+  {
+    "card_index": 13,
+    "hint": "动词",
+    "question": "locate",
+    "answer": "定位"
+  },
+  {
+    "card_index": 14,
+    "hint": "楼开升，楼价什么时候会开升",
+    "question": "location",
+    "answer": "位置"
+  },
+  {
+    "card_index": 15,
+    "hint": "名词",
+    "question": "lock",
+    "answer": "锁"
+  },
+  {
+    "card_index": 16,
+    "hint": "名词",
+    "question": "London",
+    "answer": "伦敦"
+  },
+  {
+    "card_index": 17,
+    "hint": "笼子里",
+    "question": "lonely",
+    "answer": "孤独的"
+  },
+  {
+    "card_index": 18,
+    "hint": "恶龙",
+    "question": "alone",
+    "answer": "单独的"
+  },
+  {
+    "card_index": 19,
+    "hint": "饿狼",
+    "question": "along",
+    "answer": "一起，沿着"
+  }
+]

@@ -1,0 +1,92 @@
+[
+  {
+    "card_index": 1,
+    "hint": "及物动词",
+    "question": "描绘、描述、形容",
+    "answer": "describe"
+  },
+  {
+    "card_index": 2,
+    "hint": "及物动词",
+    "question": "毁灭、摧毁",
+    "answer": "destroy"
+  },
+  {
+    "card_index": 3,
+    "hint": "及物动词",
+    "question": "遗弃、抛弃",
+    "answer": "desert"
+  },
+  {
+    "card_index": 4,
+    "hint": "不及物动词",
+    "question": "开小差",
+    "answer": "desert"
+  },
+  {
+    "card_index": 5,
+    "hint": "名词",
+    "question": "沙漠",
+    "answer": "desert"
+  },
+  {
+    "card_index": 6,
+    "hint": "名词",
+    "question": "甜食，餐后甜点",
+    "answer": "dessert"
+  },
+  {
+    "card_index": 7,
+    "hint": "名词",
+    "question": "日历，挂历",
+    "answer": "calendar"
+  },
+  {
+    "card_index": 8,
+    "hint": "行为动词",
+    "question": "使镇定，使平静",
+    "answer": "calm"
+  },
+  {
+    "card_index": 9,
+    "hint": "形容词",
+    "question": "心情镇定的、平静的，海风平浪静的",
+    "answer": "calm"
+  },
+  {
+    "card_index": 10,
+    "hint": "形容词",
+    "question": "当地的，本地的",
+    "answer": "local"
+  },
+  {
+    "card_index": 11,
+    "hint": "形容词",
+    "question": "小的，少的",
+    "answer": "little"
+  },
+  {
+    "card_index": 12,
+    "hint": "代词",
+    "question": "一点",
+    "answer": "little"
+  },
+  {
+    "card_index": 13,
+    "hint": "形容词",
+    "question": "温和的、柔和的、文雅的",
+    "answer": "gentle"
+  },
+  {
+    "card_index": 14,
+    "hint": "名词",
+    "question": "牛",
+    "answer": "cattle"
+  },
+  {
+    "card_index": 15,
+    "hint": "行为动词",
+    "question": "解决、定居",
+    "answer": "settle"
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "noun clause一共有几个链条？",
+    "answer": "12个"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "特有的链条是几个？",
+    "answer": "五个。分别是两个将军、一个原因、两个相同。"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "那么请问两个将军是什么？",
+    "answer": "what和how"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "一个原因是什么？",
+    "answer": "why"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "两个相同是什么？",
+    "answer": "weather和if"
+  }
+]

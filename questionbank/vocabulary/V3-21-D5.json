@@ -1,0 +1,122 @@
+[
+  {
+    "card_index": 1,
+    "hint": "名词",
+    "question": "外部，外面，外界",
+    "answer": "outside"
+  },
+  {
+    "card_index": 2,
+    "hint": "副词",
+    "question": "向外面，在外面",
+    "answer": "outside"
+  },
+  {
+    "card_index": 3,
+    "hint": "形容词",
+    "question": "宽阔的，广泛的",
+    "answer": "wide"
+  },
+  {
+    "card_index": 4,
+    "hint": "副词",
+    "question": "充分的，完全的",
+    "answer": "wide"
+  },
+  {
+    "card_index": 5,
+    "hint": "形容词或副词",
+    "question": "世界性的",
+    "answer": "worldwide"
+  },
+  {
+    "card_index": 6,
+    "hint": "介词",
+    "question": "在什么什么旁边",
+    "answer": "beside"
+  },
+  {
+    "card_index": 7,
+    "hint": "介词",
+    "question": "除什么什么之外还有",
+    "answer": "besides"
+  },
+  {
+    "card_index": 8,
+    "hint": "副词",
+    "question": "而且，还有",
+    "answer": "besides"
+  },
+  {
+    "card_index": 9,
+    "hint": "行为动词",
+    "question": "决定，裁定",
+    "answer": "decide"
+  },
+  {
+    "card_index": 10,
+    "hint": "及物动词",
+    "question": "使决定，使下决心",
+    "answer": "decide"
+  },
+  {
+    "card_index": 11,
+    "hint": "名词",
+    "question": "决定，判断，果断",
+    "answer": "decision"
+  },
+  {
+    "card_index": 12,
+    "hint": "行为动词",
+    "question": "把什么什么分成",
+    "answer": "divide"
+  },
+  {
+    "card_index": 13,
+    "hint": "及物动词",
+    "question": "提供，供给",
+    "answer": "provide"
+  },
+  {
+    "card_index": 14,
+    "hint": "行为动词",
+    "question": "骑",
+    "answer": "ride"
+  },
+  {
+    "card_index": 15,
+    "hint": "不及物动词",
+    "question": "乘车",
+    "answer": "ride"
+  },
+  {
+    "card_index": 16,
+    "hint": "名词",
+    "question": "旅行，骑马旅行",
+    "answer": "ride"
+  },
+  {
+    "card_index": 17,
+    "hint": "名词",
+    "question": "自尊心，自豪感，骄傲",
+    "answer": "pride"
+  },
+  {
+    "card_index": 18,
+    "hint": "形容词",
+    "question": "骄傲的，骄傲自大的，自豪的",
+    "answer": "proud"
+  },
+  {
+    "card_index": 19,
+    "hint": "名词",
+    "question": "区，地区",
+    "answer": "district"
+  },
+  {
+    "card_index": 20,
+    "hint": "名词",
+    "question": "小说",
+    "answer": "fiction"
+  }
+]

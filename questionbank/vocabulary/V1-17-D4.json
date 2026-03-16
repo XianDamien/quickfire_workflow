@@ -1,0 +1,56 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "soap",
+    "answer": "肥皂"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "bag",
+    "answer": "包，袋子"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "box",
+    "answer": "箱子"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "basket",
+    "answer": "篮子"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "wallet",
+    "answer": "钱包，皮夹子"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "packet",
+    "answer": "小包"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "case",
+    "answer": "箱子，案件"
+  },
+  {
+    "card_index": 8,
+    "hint": "名词",
+    "question": "pack",
+    "answer": "一副，一包"
+  },
+  {
+    "card_index": 9,
+    "hint": "动词",
+    "question": "pack",
+    "answer": "打包，装箱"
+  }
+]

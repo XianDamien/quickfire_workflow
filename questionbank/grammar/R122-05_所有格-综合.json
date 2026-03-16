@@ -1,0 +1,38 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "所有格就是东西归谁所有，所有格的标志是什么？",
+    "answer": "'s 当然是指有生命的东西"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "如果没有生命的东西，怎么表示所有格？",
+    "answer": "of"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "但是有四个没有生命同样能用's，分别是哪四个？",
+    "answer": "时间，距离，天体，地点"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "有时候所有格也就是's可以转换成复合形容词，转换有两个条件，一是什么？",
+    "answer": "形容词部分用连字符横杠连起来"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "二是什么？",
+    "answer": "名词要变原形"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "请问two hours' work 怎么变成复合形容词？",
+    "answer": "two 横杠hour后面没有s work"
+  }
+]

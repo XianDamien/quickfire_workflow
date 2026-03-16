@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "We need plenty of fruit every day.",
+    "question": "Fruit",
+    "answer": "水果"
+  },
+  {
+    "card_index": 2,
+    "hint": "This apple is very nice.",
+    "question": "Apple",
+    "answer": "苹果"
+  },
+  {
+    "card_index": 3,
+    "hint": "This pear tastes a bit sour.",
+    "question": "Pear",
+    "answer": "梨子"
+  },
+  {
+    "card_index": 4,
+    "hint": "I like beer, but I prefer orange juice.",
+    "question": "Orange",
+    "answer": "橙子"
+  },
+  {
+    "card_index": 5,
+    "hint": "The orange coat belongs to Mary.",
+    "question": "Orange",
+    "answer": "橘色"
+  },
+  {
+    "card_index": 6,
+    "hint": "The banana tree has broad leaves.",
+    "question": "Banana",
+    "answer": "香蕉"
+  },
+  {
+    "card_index": 7,
+    "hint": "Can I have some grapes?",
+    "question": "Grape",
+    "answer": "葡萄"
+  }
+]

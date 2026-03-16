@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "kindergarten",
+    "answer": "幼儿园"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "university",
+    "answer": "大学"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "classroom",
+    "answer": "教室"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "office",
+    "answer": "办公室"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "playground",
+    "answer": "操场，运动场"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "stadium",
+    "answer": "露天体育场"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "gym",
+    "answer": "体育馆，健身房"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "library",
+    "answer": "图书馆，图书室"
+  }
+]

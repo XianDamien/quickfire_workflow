@@ -1,0 +1,32 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "1. What a cute puppy Mike is!",
+    "answer": "What a cute puppy!"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "2. How delicious the cookies are!",
+    "answer": "How delicious!"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "3. What a colorful rainbow it is!",
+    "answer": "What a colorful rainbow!"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "4. How exciting the playground is!",
+    "answer": "How exciting!"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "5. What a funny clown he is!",
+    "answer": "What a funny clown!"
+  }
+]

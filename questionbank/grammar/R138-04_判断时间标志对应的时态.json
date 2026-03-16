@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "有两种情况下要使用完成状态，第一个是什么？",
+    "answer": "句子中明确说到完成两个字"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "第二种是什么？",
+    "answer": "有一长段时间"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "by the end of tomorrow",
+    "answer": "将来完成，其实用将来简单也可以，因为没有一段时间，只有一个截止日期。"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "at this moment",
+    "answer": "现在进行"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "from eight o'clock to nine thirty yesterday",
+    "answer": "过去进行"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "in the past seven years",
+    "answer": "现在完成"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "at that time",
+    "answer": "过去进行"
+  }
+]

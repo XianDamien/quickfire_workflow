@@ -1,0 +1,86 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "一个月用什么a month",
+    "answer": "in a month"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "spring用什么spring",
+    "answer": "in spring"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "October the first用什么",
+    "answer": "on"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "Sunday用什么",
+    "answer": "on Sunday"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "holiday用什么",
+    "answer": "on holiday"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "birthday用什么",
+    "answer": "on birthday"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "morning用什么",
+    "answer": "in the morning"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "但如果morning前面加上Monday，Monday morning用什么",
+    "answer": "on"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "Christmas用什么",
+    "answer": "at Christmas"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "New Year用什么",
+    "answer": "at New Year"
+  },
+  {
+    "card_index": 11,
+    "hint": "有day必on——只要出现day，介词就用on",
+    "question": "但是Christmas Day用什么",
+    "answer": "on Christmas Day"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "a cold morning前面用什么",
+    "answer": "也用on"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "Christmas Eve前面用什么",
+    "answer": "on"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "New Year's Eve用什么",
+    "answer": "也是on，on New Year's Eve"
+  }
+]

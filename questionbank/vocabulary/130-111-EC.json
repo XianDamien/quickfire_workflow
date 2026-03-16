@@ -1,0 +1,98 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "toy",
+    "answer": "玩具"
+  },
+  {
+    "card_index": 2,
+    "hint": "传的深",
+    "question": "tradition",
+    "answer": "传统"
+  },
+  {
+    "card_index": 3,
+    "hint": "传递神龙,传统的,龙是我们传统的庆祝活动",
+    "question": "traditional",
+    "answer": "传统的"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "traffic",
+    "answer": "交通"
+  },
+  {
+    "card_index": 5,
+    "hint": "none",
+    "question": "train",
+    "answer": "火车"
+  },
+  {
+    "card_index": 6,
+    "hint": "verb",
+    "question": "train",
+    "answer": "训练"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "training",
+    "answer": "训练"
+  },
+  {
+    "card_index": 8,
+    "hint": "转四类的,翻译就是思想的转换和传递",
+    "question": "translate",
+    "answer": "翻译"
+  },
+  {
+    "card_index": 9,
+    "hint": "船是破的,无法运输,词根词缀法,trans转变,port港口,转变港口就是运输",
+    "question": "transport",
+    "answer": "运输"
+  },
+  {
+    "card_index": 10,
+    "hint": "船是不太行,同样无法运输",
+    "question": "transportation",
+    "answer": "运输"
+  },
+  {
+    "card_index": 11,
+    "hint": "踹我",
+    "question": "trouble",
+    "answer": "麻烦、困难"
+  },
+  {
+    "card_index": 12,
+    "hint": "揣着,宝贝得揣着防止steal",
+    "question": "treasure",
+    "answer": "宝贝"
+  },
+  {
+    "card_index": 13,
+    "hint": "去eat",
+    "question": "treat",
+    "answer": "招待接待"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "tree",
+    "answer": "树"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "trick",
+    "answer": "恶作剧耍花招"
+  },
+  {
+    "card_index": 16,
+    "hint": "吹破,短途旅行,一个短途旅行就吹破天",
+    "question": "trip",
+    "answer": "短途旅行"
+  }
+]

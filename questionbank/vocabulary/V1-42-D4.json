@@ -1,0 +1,62 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "hike",
+    "answer": "远足，徒步旅行"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "row",
+    "answer": "划船"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "ride",
+    "answer": "骑"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "climb",
+    "answer": "爬，攀登"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "ski",
+    "answer": "滑雪"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "skate",
+    "answer": "溜冰，滑冰"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "skate",
+    "answer": "冰鞋"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "camp",
+    "answer": "露营"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "camp",
+    "answer": "营地"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "picnic",
+    "answer": "野餐"
+  }
+]

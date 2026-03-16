@@ -1,0 +1,68 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "colour",
+    "answer": "颜色"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "red",
+    "answer": "红的，红色的"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "green",
+    "answer": "绿色的"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "yellow",
+    "answer": "黄色的"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "blue",
+    "answer": "蓝色的"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "black",
+    "answer": "黑色的"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "white",
+    "answer": "白色的"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "grey",
+    "answer": "灰色的"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "brown",
+    "answer": "棕色的"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "pink",
+    "answer": "粉色的"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "purple",
+    "answer": "紫色的"
+  }
+]

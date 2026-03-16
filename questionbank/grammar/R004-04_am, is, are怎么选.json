@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "Am只能和哪一个词连用？",
+    "answer": "只能和I连用，例如I am a girl."
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "is和数量为几的事物连用?",
+    "answer": "0或1"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "没有人在房间怎么说？",
+    "answer": "Nobody is in the room."
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "Lily是一个好的老师，怎么说？",
+    "answer": "Lily is a good teacher."
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "you后面只能用哪个be动词？",
+    "answer": "are"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "你是我的朋友，怎么说？",
+    "answer": "You are my friend."
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "are和数量为几的事物一起用?",
+    "answer": "数量大于一的事物"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "我们是朋友，怎么说？",
+    "answer": "We are friends."
+  }
+]

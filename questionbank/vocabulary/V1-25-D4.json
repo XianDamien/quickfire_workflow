@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "Aunt 或者 aunt",
+    "answer": "阿姨"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "Uncle",
+    "answer": "叔叔"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "Daughter",
+    "answer": "女儿"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "Son",
+    "answer": "儿子"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "Sister",
+    "answer": "姐妹"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "Brother",
+    "answer": "兄弟"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "Cousin",
+    "answer": "侄子，堂兄弟"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "Niece",
+    "answer": "侄女"
+  }
+]

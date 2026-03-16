@@ -1,0 +1,32 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "偶然",
+    "answer": "By accident"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "匆忙地",
+    "answer": "In a hurry"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "依我看",
+    "answer": "In my opinion"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "住院",
+    "answer": "In hospital"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "寻找",
+    "answer": "Look for"
+  }
+]

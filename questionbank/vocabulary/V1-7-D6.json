@@ -1,0 +1,92 @@
+[
+  {
+    "card_index": 1,
+    "hint": "Many poets and artists have drawn their inspiration from nature.",
+    "question": "Nature",
+    "answer": "自然，大自然"
+  },
+  {
+    "card_index": 2,
+    "hint": "Jupiter is the biggest planet around the sun.",
+    "question": "Planet",
+    "answer": "行星"
+  },
+  {
+    "card_index": 3,
+    "hint": "You can travel into space in the future.",
+    "question": "Space",
+    "answer": "太空或者空间"
+  },
+  {
+    "card_index": 4,
+    "hint": "Blue is the color of sky and the sea.",
+    "question": "Sky",
+    "answer": "天空"
+  },
+  {
+    "card_index": 5,
+    "hint": "We are glad to be on land again.",
+    "question": "Land (noun)",
+    "answer": "土地，陆地"
+  },
+  {
+    "card_index": 6,
+    "hint": "The ship landed safely in the end.",
+    "question": "Land (verb)",
+    "answer": "着陆，登陆"
+  },
+  {
+    "card_index": 7,
+    "hint": "We can swim in the sea.",
+    "question": "Sea",
+    "answer": "海，海洋"
+  },
+  {
+    "card_index": 8,
+    "hint": "Some shells can be used to hold water.",
+    "question": "Shell",
+    "answer": "贝壳"
+  },
+  {
+    "card_index": 9,
+    "hint": "He rowed across the river.",
+    "question": "River",
+    "answer": "河"
+  },
+  {
+    "card_index": 10,
+    "hint": "He fell into the lake.",
+    "question": "Lake",
+    "answer": "湖"
+  },
+  {
+    "card_index": 11,
+    "hint": "The mountain is two thousand meters high.",
+    "question": "Mountain",
+    "answer": "山，山脉"
+  },
+  {
+    "card_index": 12,
+    "hint": "We're going to climb a hill tomorrow.",
+    "question": "Hill",
+    "answer": "小山"
+  },
+  {
+    "card_index": 13,
+    "hint": "We play football on the grass.",
+    "question": "Grass",
+    "answer": "草坪"
+  },
+  {
+    "card_index": 14,
+    "hint": "You shouldn't sit on the ground.",
+    "question": "Ground",
+    "answer": "地面，土地，土壤"
+  },
+  {
+    "card_index": 15,
+    "hint": "In the desert, some people travel by camel.",
+    "question": "Desert",
+    "answer": "沙漠"
+  }
+]

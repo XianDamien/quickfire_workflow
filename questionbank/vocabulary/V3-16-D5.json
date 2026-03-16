@@ -1,0 +1,122 @@
+[
+  {
+    "card_index": 1,
+    "hint": "名词",
+    "question": "结果，后果",
+    "answer": "outcome"
+  },
+  {
+    "card_index": 2,
+    "hint": "形容词",
+    "question": "脏的，肮脏的",
+    "answer": "dirty"
+  },
+  {
+    "card_index": 3,
+    "hint": "名词",
+    "question": "责任，义务，上班，值班",
+    "answer": "duty"
+  },
+  {
+    "card_index": 4,
+    "hint": "名词",
+    "question": "美，美人",
+    "answer": "beauty"
+  },
+  {
+    "card_index": 5,
+    "hint": "形容词",
+    "question": "好吃的，有趣的",
+    "answer": "tasty"
+  },
+  {
+    "card_index": 6,
+    "hint": "形容词",
+    "question": "咸的，含盐的",
+    "answer": "salty"
+  },
+  {
+    "card_index": 7,
+    "hint": "名词",
+    "question": "王朝，朝代",
+    "answer": "dynasty"
+  },
+  {
+    "card_index": 8,
+    "hint": "形容词",
+    "question": "空的",
+    "answer": "empty"
+  },
+  {
+    "card_index": 9,
+    "hint": "及物动词",
+    "question": "倒空，清空",
+    "answer": "empty"
+  },
+  {
+    "card_index": 10,
+    "hint": "不及物动词",
+    "question": "场所变空",
+    "answer": "empty"
+  },
+  {
+    "card_index": 11,
+    "hint": "形容词",
+    "question": "有罪的，内疚的",
+    "answer": "guilty"
+  },
+  {
+    "card_index": 12,
+    "hint": "代词",
+    "question": "丰富，充分",
+    "answer": "plenty"
+  },
+  {
+    "card_index": 13,
+    "hint": "名词",
+    "question": "富裕，充裕",
+    "answer": "plenty"
+  },
+  {
+    "card_index": 14,
+    "hint": "形容词",
+    "question": "漂亮的",
+    "answer": "pretty"
+  },
+  {
+    "card_index": 15,
+    "hint": "副词",
+    "question": "相当，颇",
+    "answer": "pretty"
+  },
+  {
+    "card_index": 16,
+    "hint": "名词",
+    "question": "慈善，施舍，宽容",
+    "answer": "charity"
+  },
+  {
+    "card_index": 17,
+    "hint": "名词",
+    "question": "品质，质量，特点，特征",
+    "answer": "quality"
+  },
+  {
+    "card_index": 18,
+    "hint": "名词",
+    "question": "权力，权威，当局，官方",
+    "answer": "authority"
+  },
+  {
+    "card_index": 19,
+    "hint": "名词",
+    "question": "普及，流行，受大众欢迎",
+    "answer": "popularity"
+  },
+  {
+    "card_index": 20,
+    "hint": "名词",
+    "question": "时机，机会",
+    "answer": "opportunity"
+  }
+]

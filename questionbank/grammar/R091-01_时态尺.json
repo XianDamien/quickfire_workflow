@@ -1,0 +1,56 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "这把时间尺上有哪三个时间？",
+    "answer": "过去，现在、将来。"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "简单状态是什么符号？",
+    "answer": "一个点。"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "进行状态是什么符号？",
+    "answer": "一个箭头"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "完成状态是一个什么符号？",
+    "answer": "一条章鱼。"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "章鱼符号的右侧是实线的，代表什么？",
+    "answer": "代表完成的时间是确定的。"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "章鱼符号的左边是虚线，虚线代表什么？",
+    "answer": "代表开始的时间是不确定的"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "怎么在时态尺上表示将来简单？",
+    "answer": "在将来下面画一个点。"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "怎么表示现在进行？",
+    "answer": "在现在下面画一个箭头"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "怎么表示过去完成？",
+    "answer": "在过去下面画一条章鱼"
+  }
+]

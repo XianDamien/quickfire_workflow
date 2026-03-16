@@ -1,0 +1,50 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "woman",
+    "answer": "女人"
+  },
+  {
+    "card_index": 2,
+    "hint": "尊称",
+    "question": "sir",
+    "answer": "先生"
+  },
+  {
+    "card_index": 3,
+    "hint": "尊称",
+    "question": "lady",
+    "answer": "女士、小姐、夫人"
+  },
+  {
+    "card_index": 4,
+    "hint": "尊称",
+    "question": "gentleman",
+    "answer": "先生、绅士"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "boy",
+    "answer": "男孩"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "girl或者girl",
+    "answer": "女孩"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "child",
+    "answer": "儿童、小孩"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "children",
+    "answer": "孩子们"
+  }
+]

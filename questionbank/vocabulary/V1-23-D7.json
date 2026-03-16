@@ -1,0 +1,92 @@
+[
+    {
+        "card_index": 1,
+        "hint": "名词",
+        "question": "单词，话语",
+        "answer": "word"
+    },
+    {
+        "card_index": 2,
+        "hint": "动词",
+        "question": "数数，计算",
+        "answer": "count"
+    },
+    {
+        "card_index": 3,
+        "hint": "动词",
+        "question": "加，增加",
+        "answer": "add"
+    },
+    {
+        "card_index": 4,
+        "hint": "名词",
+        "question": "家庭作业",
+        "answer": "homework"
+    },
+    {
+        "card_index": 5,
+        "hint": "名词",
+        "question": "问题",
+        "answer": "question"
+    },
+    {
+        "card_index": 6,
+        "hint": "名词",
+        "question": "困难",
+        "answer": "problem"
+    },
+    {
+        "card_index": 7,
+        "hint": "名词",
+        "question": "错误",
+        "answer": "mistake"
+    },
+    {
+        "card_index": 8,
+        "hint": "名词",
+        "question": "学期",
+        "answer": "term"
+    },
+    {
+        "card_index": 9,
+        "hint": "名词",
+        "question": "年级",
+        "answer": "grade"
+    },
+    {
+        "card_index": 10,
+        "hint": "名词",
+        "question": "俱乐部，社团",
+        "answer": "club"
+    },
+    {
+        "card_index": 11,
+        "hint": "名词",
+        "question": "一群，一组",
+        "answer": "group"
+    },
+    {
+        "card_index": 12,
+        "hint": "名词",
+        "question": "团队",
+        "answer": "team"
+    },
+    {
+        "card_index": 13,
+        "hint": "名词",
+        "question": "考试，测验",
+        "answer": "exam"
+    },
+    {
+        "card_index": 14,
+        "hint": "名词",
+        "question": "测验，测试",
+        "answer": "test"
+    },
+    {
+        "card_index": 15,
+        "hint": "动词",
+        "question": "检查，核实",
+        "answer": "check"
+    }
+]

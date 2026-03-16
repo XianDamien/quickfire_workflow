@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "Parrot",
+    "answer": "鹦鹉"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "Hen",
+    "answer": "母鸡"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "Chick",
+    "answer": "小鸡"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "Duck",
+    "answer": "鸭子"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "Goose",
+    "answer": "鹅"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "Cat",
+    "answer": "猫"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "Dog",
+    "answer": "狗"
+  }
+]

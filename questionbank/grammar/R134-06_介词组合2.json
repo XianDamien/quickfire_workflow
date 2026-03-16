@@ -1,0 +1,32 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "等待",
+    "answer": "Wait for"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "在工作",
+    "answer": "At work"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "到达（城市等比较大的地方）",
+    "answer": "Arrive in"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "为……做准备",
+    "answer": "Prepare for"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "上交",
+    "answer": "Hand in"
+  }
+]

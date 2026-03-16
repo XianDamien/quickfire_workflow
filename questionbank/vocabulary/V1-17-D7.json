@@ -1,0 +1,98 @@
+[
+  {
+    "card_index": 1,
+    "hint": "名词",
+    "question": "锁",
+    "answer": "lock"
+  },
+  {
+    "card_index": 2,
+    "hint": "动词",
+    "question": "上锁，锁上",
+    "answer": "lock"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "面具，口罩",
+    "answer": "mask"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "轮子",
+    "answer": "wheel"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "剪刀",
+    "answer": "scissors"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "伞",
+    "answer": "umbrella"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "扫帚",
+    "answer": "broom"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "肥皂",
+    "answer": "soap"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "包，袋子",
+    "answer": "bag"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "箱子",
+    "answer": "box"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "篮子",
+    "answer": "basket"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "钱包，皮夹子",
+    "answer": "wallet"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "小包",
+    "answer": "packet"
+  },
+  {
+    "card_index": 14,
+    "hint": "",
+    "question": "箱子，案件",
+    "answer": "case"
+  },
+  {
+    "card_index": 15,
+    "hint": "名词",
+    "question": "一副，一包",
+    "answer": "pack"
+  },
+  {
+    "card_index": 16,
+    "hint": "动词",
+    "question": "打包装箱",
+    "answer": "pack"
+  }
+]

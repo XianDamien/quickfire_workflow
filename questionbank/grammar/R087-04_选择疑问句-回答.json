@@ -1,0 +1,56 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "1. Do you like apples or bananas for a snack?\n你喜欢把苹果还是香蕉当零食?\n如果你喜欢的是香蕉，怎么回答。",
+    "answer": "I like bananas for a snack."
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "2. Is your favorite color red, blue, or green?\n你最喜欢的颜色是红色、蓝色还是绿色?\n如果你三种颜色都喜欢，怎么回答。",
+    "answer": "I like them all."
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "为什么用all？",
+    "answer": "因为选项有三个"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "3.Do you like spring or winter?\n如果你都喜欢，怎么回答？",
+    "answer": "I like both of them."
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "为什么用both？",
+    "answer": "因为两个打包都选"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "4.When can you have dinner with me, Saturday or Sunday?\n你什么时候能和我一起吃饭？周六还是周日？\n如果你两天都不能和她一起吃饭，要怎么回答？",
+    "answer": "Neither is OK."
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "为什么用Neither？",
+    "answer": "因为两个都不选"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "还是刚才的问题\nWhen can you have dinner with me, Saturday or Sunday?\n如果你两天中任何一天都能和他一起吃饭，要怎么回答？",
+    "answer": "Either is OK."
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "为什么用either？",
+    "answer": "因为两个里面任选其一"
+  }
+]

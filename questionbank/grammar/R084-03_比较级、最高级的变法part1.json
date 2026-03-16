@@ -1,0 +1,44 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "最常见的一种是怎么变的？",
+    "answer": "最常见的一种是加ER变成比较级，加EST变成最高级"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "举个例子。",
+    "answer": "Tall taller tallest"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "第二种，当一个单词是以辅音字母加Y结尾，要怎么样变比较级和最高级？",
+    "answer": "要把Y去掉，变成I以后再加ER或者是EST。"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "举个例子",
+    "answer": "Happy happier happiest"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "第三种，当一个单词的音素是辅元辅或辅辅元辅，要怎么变比较级和最高级？",
+    "answer": "需要先双写尾字母，然后再加ER或加EST"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "这个图片描写的是什么？",
+    "answer": "又胖又大又热又想要变瘦"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "所以常见的双写尾字母再加ER或加EST的单词有哪几个？",
+    "answer": "Fat big hot thin"
+  }
+]

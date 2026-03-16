@@ -1,0 +1,62 @@
+[
+  {
+    "card_index": 1,
+    "hint": "动词",
+    "question": "想思考",
+    "answer": "think"
+  },
+  {
+    "card_index": 2,
+    "hint": "动词",
+    "question": "知道认识懂得",
+    "answer": "know"
+  },
+  {
+    "card_index": 3,
+    "hint": "动词",
+    "question": "理解",
+    "answer": "understand"
+  },
+  {
+    "card_index": 4,
+    "hint": "动词",
+    "question": "回答接电话",
+    "answer": "answer"
+  },
+  {
+    "card_index": 5,
+    "hint": "名词",
+    "question": "答案",
+    "answer": "answer"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "回答回复收到请回复",
+    "answer": "reply"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "奖品奖金",
+    "answer": "prize"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "价格",
+    "answer": "price"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "手指指指点点",
+    "answer": "point"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "得到几个分数，或者是你有一个论点，有一个道理",
+    "answer": "point"
+  }
+]

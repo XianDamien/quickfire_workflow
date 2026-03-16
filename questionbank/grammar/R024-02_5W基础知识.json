@@ -1,0 +1,74 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "问一个东西是什么，用哪个词？",
+    "answer": "What"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "问一个地方在哪里，用哪个词？",
+    "answer": "Where"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "问一个人是谁，用哪个词？",
+    "answer": "Who"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "问原因用哪个词？",
+    "answer": "Why"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "问时间用哪个词？",
+    "answer": "When"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "对做事情的方式或对一个人的状态进行提问，用哪个词？",
+    "answer": "How"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "What是什么意思？",
+    "answer": "什么"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "Who是什么意思？",
+    "answer": "谁"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "Where是什么意思？",
+    "answer": "哪里"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "when是什么意思？",
+    "answer": "什么时候"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "Why是什么意思？",
+    "answer": "为什么"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "How是什么意思？",
+    "answer": "怎么样"
+  }
+]

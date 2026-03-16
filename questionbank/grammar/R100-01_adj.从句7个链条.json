@@ -1,0 +1,32 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "形容词从句一共有几个链条？",
+    "answer": "7个"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "我们用1234567这样的顺序说出7个。第一个",
+    "answer": "that"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "二三",
+    "answer": "who which"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "四五",
+    "answer": "when where"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "六七",
+    "answer": "whose whom"
+  }
+]

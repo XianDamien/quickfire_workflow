@@ -1,0 +1,80 @@
+[
+  {
+    "card_index": 1,
+    "hint": "形容词",
+    "question": "坏的，糟的",
+    "answer": "bad"
+  },
+  {
+    "card_index": 2,
+    "hint": "形容词",
+    "question": "令人悲哀的，难过的",
+    "answer": "sad"
+  },
+  {
+    "card_index": 3,
+    "hint": "形容词",
+    "question": "高兴的",
+    "answer": "glad"
+  },
+  {
+    "card_index": 4,
+    "hint": "行为动词",
+    "question": "增加，添加",
+    "answer": "add"
+  },
+  {
+    "card_index": 5,
+    "hint": "及物动词",
+    "question": "调整，使适合，校准",
+    "answer": "adjust"
+  },
+  {
+    "card_index": 6,
+    "hint": "不及物动词",
+    "question": "调整，适应",
+    "answer": "adjust"
+  },
+  {
+    "card_index": 7,
+    "hint": "行为动词",
+    "question": "登广告，宣传，告知",
+    "answer": "advertise"
+  },
+  {
+    "card_index": 8,
+    "hint": "行为动词",
+    "question": "及时赶上，接住，抓住",
+    "answer": "catch"
+  },
+  {
+    "card_index": 9,
+    "hint": "名词",
+    "question": "比赛，火柴",
+    "answer": "match"
+  },
+  {
+    "card_index": 10,
+    "hint": "行为动词",
+    "question": "拿来",
+    "answer": "fetch"
+  },
+  {
+    "card_index": 11,
+    "hint": "行为动词",
+    "question": "观看，注视",
+    "answer": "watch"
+  },
+  {
+    "card_index": 12,
+    "hint": "名词",
+    "question": "手表",
+    "answer": "watch"
+  },
+  {
+    "card_index": 13,
+    "hint": "名词",
+    "question": "脚，英尺",
+    "answer": "foot"
+  }
+]

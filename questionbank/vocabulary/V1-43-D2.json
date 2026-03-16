@@ -1,0 +1,62 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "dance",
+    "answer": "跳舞"
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "dance",
+    "answer": "舞蹈，舞会"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "cycle",
+    "answer": "骑自行车，循环"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "cycle",
+    "answer": "周期"
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "kung fu",
+    "answer": "中国功夫"
+  },
+  {
+    "card_index": 6,
+    "hint": "",
+    "question": "film",
+    "answer": "电影，胶卷"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "movie",
+    "answer": "电影"
+  },
+  {
+    "card_index": 8,
+    "hint": "",
+    "question": "video",
+    "answer": "录像带，录像"
+  },
+  {
+    "card_index": 9,
+    "hint": "",
+    "question": "show",
+    "answer": "演出，节目"
+  },
+  {
+    "card_index": 10,
+    "hint": "",
+    "question": "show",
+    "answer": "显露，展示"
+  }
+]

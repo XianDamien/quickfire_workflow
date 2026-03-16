@@ -1,0 +1,62 @@
+[
+    {
+        "card_index": 1,
+        "hint": "",
+        "question": "bike",
+        "answer": "自行车"
+    },
+    {
+        "card_index": 2,
+        "hint": "",
+        "question": "motorbike",
+        "answer": "摩托车"
+    },
+    {
+        "card_index": 3,
+        "hint": "",
+        "question": "bus",
+        "answer": "公共汽车"
+    },
+    {
+        "card_index": 4,
+        "hint": "",
+        "question": "car",
+        "answer": "汽车"
+    },
+    {
+        "card_index": 5,
+        "hint": "",
+        "question": "taxi",
+        "answer": "出租车"
+    },
+    {
+        "card_index": 6,
+        "hint": "",
+        "question": "van",
+        "answer": "货车"
+    },
+    {
+        "card_index": 7,
+        "hint": "",
+        "question": "subway",
+        "answer": "地铁"
+    },
+    {
+        "card_index": 8,
+        "hint": "",
+        "question": "train",
+        "answer": "火车"
+    },
+    {
+        "card_index": 9,
+        "hint": "",
+        "question": "ship",
+        "answer": "船、轮船、舰"
+    },
+    {
+        "card_index": 10,
+        "hint": "",
+        "question": "boat",
+        "answer": "小船"
+    }
+]

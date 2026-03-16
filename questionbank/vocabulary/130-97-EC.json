@@ -1,0 +1,92 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "side",
+    "answer": "旁边，边"
+  },
+  {
+    "card_index": 2,
+    "hint": "舌的什么差",
+    "question": "sight",
+    "answer": "视力"
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "sightseeing",
+    "answer": "游览，观光"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "sign",
+    "answer": "符号，签名"
+  },
+  {
+    "card_index": 5,
+    "hint": "四个呢",
+    "question": "signal",
+    "answer": "信号"
+  },
+  {
+    "card_index": 6,
+    "hint": "删了它",
+    "question": "silent",
+    "answer": "安静"
+  },
+  {
+    "card_index": 7,
+    "hint": "",
+    "question": "silk",
+    "answer": "丝绸"
+  },
+  {
+    "card_index": 8,
+    "hint": "认死理",
+    "question": "silly",
+    "answer": "傻的"
+  },
+  {
+    "card_index": 9,
+    "hint": "same了",
+    "question": "similar",
+    "answer": "相似"
+  },
+  {
+    "card_index": 10,
+    "hint": "新朴素",
+    "question": "simple",
+    "answer": "简单，朴素"
+  },
+  {
+    "card_index": 11,
+    "hint": "",
+    "question": "since",
+    "answer": "自从"
+  },
+  {
+    "card_index": 12,
+    "hint": "",
+    "question": "sing",
+    "answer": "唱歌"
+  },
+  {
+    "card_index": 13,
+    "hint": "",
+    "question": "singer",
+    "answer": "歌手"
+  },
+  {
+    "card_index": 14,
+    "hint": "是狗",
+    "question": "single",
+    "answer": "单一的，单身的"
+  },
+  {
+    "card_index": 15,
+    "hint": "",
+    "question": "sir",
+    "answer": "先生，阁下"
+  }
+]

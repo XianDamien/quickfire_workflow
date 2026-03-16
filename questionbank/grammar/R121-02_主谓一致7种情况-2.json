@@ -1,0 +1,32 @@
+[
+  {
+    "card_index": 1,
+    "hint": "",
+    "question": "翻译句子：炸鱼薯条是一个非常有名的菜。",
+    "answer": "Fish and chips is a very famous dish."
+  },
+  {
+    "card_index": 2,
+    "hint": "",
+    "question": "还有3个常见的由and连接的词有什么？",
+    "answer": "第一个黄油面包，Butter and bread."
+  },
+  {
+    "card_index": 3,
+    "hint": "",
+    "question": "请说明什么是there be的就近原则？",
+    "answer": "离be动词近的如果是单数,be动词用is。\n如果离be动词近的是复数，be动词用are"
+  },
+  {
+    "card_index": 4,
+    "hint": "",
+    "question": "翻译句子：桌子上有一个苹果和2个梨子，",
+    "answer": "There is an apple and two pears on the table."
+  },
+  {
+    "card_index": 5,
+    "hint": "",
+    "question": "翻译句子，桌子上有2个苹果和1个梨子。",
+    "answer": "There are two apples and one pear on the table."
+  }
+]
