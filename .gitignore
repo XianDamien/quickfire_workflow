@@ -131,8 +131,16 @@ htmlcov/
 docs/comparison_test/
 docs/**/test_*.md
 docs/**/*_EXECUTE*.md
+docs/asr_compare_qwen_vs_gemini.json
+docs/asr_compare_three/
+docs/grammar-numbering-scheme.md
+docs/qb-match-debug-patterns.md
+docs/review-R2-few-cards.md
+product_issues/
 scripts/qwen_audio.py
 
 # Worktrees and backups
+.agents/
+.worktree/
 .claude/worktrees/
 _backup_*/

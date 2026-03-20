@@ -38,14 +38,15 @@ ASR 文本 → [LLM 调用 1: 分类 + Q/A 解析] → { type, qa_pairs }
 `match_qb_file.py` 已将分类和 Q/A 解析合并为 1 次 LLM 调用，无需先运行 classify。
 
 ```bash
+# ⚠️ 必须加 PYTHONPATH=. 否则报 ModuleNotFoundError: No module named 'scripts'
 # 单个学生
-uv run python scripts/match_qb_file.py --student Jean --class Niko60900_2026-02-03
+PYTHONPATH=. uv run python scripts/match_qb_file.py --student Jean --class Niko60900_2026-02-03
 
-# 全班
-uv run python scripts/match_qb_file.py --class Niko60900_2026-02-03 --force
+# 全班（推荐，一次处理班内所有学生）
+PYTHONPATH=. uv run python scripts/match_qb_file.py --class Niko60900_2026-02-03 --force
 
 # 调整题目数量容差
-uv run python scripts/match_qb_file.py --tolerance 5
+PYTHONPATH=. uv run python scripts/match_qb_file.py --tolerance 5
 ```
 
 **输出**: 更新 `metadata.json`（写入 `qb_file`）+ `qb_match_<model>.json`
@@ -70,20 +71,38 @@ uv run python scripts/classify_asr_type.py --class Niko60900_2026-02-03 --force
 
 ## 并行运行（推荐）
 
-串行跑全班非常慢。**按学生拆分为并行进程**：
+串行跑全班非常慢。推荐两种并行策略：
 
-**Claude Code 中**：对每个学生启动后台 Bash 任务：
+### 策略 A：按班级批量 + 主 agent 后台任务（最简单）
+
+`--class` 不指定 `--student` 时会自动遍历班内所有学生（内部串行）。多个班级同时后台运行：
 
 ```
-Bash(run_in_background=true): uv run python scripts/match_qb_file.py --student Lucy --class Zoe41900_2026-02-04 --force
-Bash(run_in_background=true): uv run python scripts/match_qb_file.py --student Rico --class Zoe41900_2026-02-04 --force
-# ... 所有学生同一消息中并行发出
+# 每次并行 5 个班级（Claude Code 单条消息发出）
+Bash(run_in_background=true): PYTHONPATH=. uv run python scripts/match_qb_file.py --class Niko60900_2026-02-03 --force
+Bash(run_in_background=true): PYTHONPATH=. uv run python scripts/match_qb_file.py --class Niko60900_2026-02-04 --force
+Bash(run_in_background=true): PYTHONPATH=. uv run python scripts/match_qb_file.py --class Zoe41900_2026-02-02 --force
+Bash(run_in_background=true): PYTHONPATH=. uv run python scripts/match_qb_file.py --class Zoe41900_2026-02-04 --force
+Bash(run_in_background=true): PYTHONPATH=. uv run python scripts/match_qb_file.py --class Zoe51530_2026-02-03 --force
 ```
 
-**Shell 中**：
+### 策略 B：按班级派 subagent（context: fork，隔离性更强）
+
+每个班级启动一个独立子 agent，子 agent 内部并行跑所有学生（后台 Bash），完成后汇报匹配结果：
+
+```
+Agent(run_in_background=true, prompt="处理班级 Niko60900_2026-02-03，学生 Jean/Kyle/Nemo/Yiyi/Zoe，
+  同一条消息并行发出 5 个后台 Bash：
+  PYTHONPATH=. uv run python scripts/match_qb_file.py --student <name> --class Niko60900_2026-02-03 --force
+  等所有任务完成后读取各学生 metadata.json，返回 {type, qb_file} 汇总供主 agent 做一致性检查")
+```
+
+> **注意**：subagent 中的 Bash 后台任务不会继承主 agent 的工作目录，必须显式在命令里加 `PYTHONPATH=.`（或用 `cd /path/to/project &&`），否则报 `ModuleNotFoundError: No module named 'scripts'`。
+
+**Shell 中（学生粒度并行）**：
 ```bash
 for student in Lucy Rico Youyou; do
-  uv run python scripts/match_qb_file.py --student $student --class Zoe41900_2026-02-04 --force &
+  PYTHONPATH=. uv run python scripts/match_qb_file.py --student $student --class Zoe41900_2026-02-04 --force &
 done
 wait
 ```

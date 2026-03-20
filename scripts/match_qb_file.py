@@ -702,6 +702,41 @@ def seg_key_to_num(seg_key: str) -> str:
     return seg_key.split("/")[0]
 
 
+def build_seg_dir_map(student_dir: Path, segments: dict) -> dict[str, Path]:
+    """建立 seg_num → 实际子目录路径 的映射。
+
+    优先匹配数字目录名，若不存在则按 ground_truth 中的顺序
+    映射到学生目录下的子目录（排除非目录和以 . 开头的项）。
+    """
+    seg_nums = sorted(segments.keys(), key=lambda k: seg_key_to_num(k))
+    mapping: dict[str, Path] = {}
+
+    # 收集所有子目录（排除隐藏和非目录）
+    all_subdirs = sorted(
+        (p for p in student_dir.iterdir() if p.is_dir() and not p.name.startswith(".")),
+        key=lambda p: p.name,
+    )
+
+    for seg_key in seg_nums:
+        seg_num = seg_key_to_num(seg_key)
+        num_dir = student_dir / seg_num
+        if num_dir.is_dir():
+            mapping[seg_num] = num_dir
+        else:
+            # 数字目录不存在，尝试找包含 ASR 文件的子目录
+            for subdir in all_subdirs:
+                if subdir in mapping.values():
+                    continue  # 已被其他 seg 占用
+                for suffix in ("2_qwen_asr.json", "2_qwen_asr.txt"):
+                    if (subdir / suffix).exists():
+                        mapping[seg_num] = subdir
+                        break
+                if seg_num in mapping:
+                    break
+
+    return mapping
+
+
 # ---------------------------------------------------------------------------
 # 主流程
 # ---------------------------------------------------------------------------
@@ -776,19 +811,24 @@ def main() -> int:
             student_usage = {"input_tokens": 0, "output_tokens": 0, "elapsed_s": 0.0}
             student_t0 = time.monotonic()
 
+            # 建立 seg_num → 实际目录 映射（处理重命名目录）
+            seg_dir_map = build_seg_dir_map(student_dir, segments)
+
             for seg_key, gt_info in sorted(segments.items()):
                 seg_num = seg_key_to_num(seg_key)
                 gt_type = gt_info.get("type")
                 gt_qb_file = gt_info.get("qb_file")
                 has_gt = gt_qb_file is not None
 
-                # 读取 ASR 文本
+                # 读取 ASR 文本（使用映射后的实际目录）
                 asr_path = None
-                for suffix in ("2_qwen_asr.json", "2_qwen_asr.txt"):
-                    p = student_dir / seg_num / suffix
-                    if p.exists():
-                        asr_path = p
-                        break
+                actual_dir = seg_dir_map.get(seg_num)
+                if actual_dir:
+                    for suffix in ("2_qwen_asr.json", "2_qwen_asr.txt"):
+                        p = actual_dir / suffix
+                        if p.exists():
+                            asr_path = p
+                            break
 
                 asr_text = extract_asr_text(asr_path) if asr_path else ""
                 if not asr_text:
